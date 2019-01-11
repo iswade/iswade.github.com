@@ -1,0 +1,1038 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/16_optimizer_implementation_I/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>优化器实现 I - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#i" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                优化器实现 I
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="查询优化" class="md-nav__link">
+    查询优化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="架构概览" class="md-nav__link">
+    架构概览
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" title="逻辑 vs. 物理计划" class="md-nav__link">
+    逻辑 vs. 物理计划
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="关系代数等价" class="md-nav__link">
+    关系代数等价
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="观察结论" class="md-nav__link">
+    观察结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="代价估计" class="md-nav__link">
+    代价估计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="设计决策" class="md-nav__link">
+    设计决策
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="优化粒度" class="md-nav__link">
+    优化粒度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="优化时间" class="md-nav__link">
+    优化时间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="预备的语句" class="md-nav__link">
+    预备的语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="计划的稳定性" class="md-nav__link">
+    计划的稳定性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="优化查找策略" class="md-nav__link">
+    优化查找策略
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="1. 基于启发式的优化" class="md-nav__link">
+    1. 基于启发式的优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="2. 启发式 + 基于代价的连接查找" class="md-nav__link">
+    2. 启发式 + 基于代价的连接查找
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-r" title="SYSTEM R 优化器" class="md-nav__link">
+    SYSTEM R 优化器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="3. 随机算法" class="md-nav__link">
+    3. 随机算法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" title="模拟退火" class="md-nav__link">
+    模拟退火
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgres" title="Postgres 的优化器" class="md-nav__link">
+    Postgres 的优化器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" title="观察结论" class="md-nav__link">
+    观察结论
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" title="优化器生成器" class="md-nav__link">
+    优化器生成器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" title="3. 分层搜索" class="md-nav__link">
+    3. 分层搜索
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starburst" title="STARBURST 优化器" class="md-nav__link">
+    STARBURST 优化器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" title="4. 统一搜索" class="md-nav__link">
+    4. 统一搜索
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volcano" title="VOLCANO 优化器" class="md-nav__link">
+    VOLCANO 优化器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs_1" title="自顶向下 vs. 自底向上" class="md-nav__link">
+    自顶向下 vs. 自底向上
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volcano_1" title="VOLCANO 优化器" class="md-nav__link">
+    VOLCANO 优化器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="i">优化器实现 I</h1>
+<h2 id="_1">查询优化</h2>
+<p>对于一个给定的查询，找到一个正确的执行计划，这个计划的代价最低。</p>
+<p>这个是 DBMS 中最难实现的好的部分（被证明是 NP-完全的问题）。</p>
+<p>没有优化器能真正生成“最优”的计划。</p>
+<ul>
+<li>使用估计技术猜测实际的计划代价。</li>
+<li>使用启发式来限制搜索空间。</li>
+</ul>
+<h2 id="_2">架构概览</h2>
+<p>SQL重写；解析器；绑定；重写；优化</p>
+<h2 id="vs">逻辑 vs. 物理计划</h2>
+<p>优化器生成了从逻辑代数表达式到优化的代数表达式之间的等价映射。</p>
+<p>物理算子定义了指定的特定访问路径的执行策略。</p>
+<ul>
+<li>依赖处理数据的物理格式。（例如，排序和压缩）</li>
+<li>不总是1对1的从逻辑和物理计划映射。</li>
+</ul>
+<h2 id="_3">关系代数等价</h2>
+<p>两个关系代数表达式等价：如果在每个合法数据库实例上，这两个表达式生成相同的元组集。例如：<span><span class="MathJax_Preview">A \bowtie (B \bowtie C) = B \bowtie (A \bowtie C)</span><script type="math/tex">A \bowtie (B \bowtie C) = B \bowtie (A \bowtie C)</script></span></p>
+<h2 id="_4">观察结论</h2>
+<p>对于 OLTP 查询优化相对容易，因为是可优化搜索：</p>
+<ul>
+<li>通常仅仅找出最好的索引。</li>
+<li>连接几乎总是与小基数的外键关联。</li>
+<li>可以使用简单的启发式实现。</li>
+</ul>
+<p>这里我们主要关注 OLAP 查询。</p>
+<h2 id="_5">代价估计</h2>
+<p>对于数据库的当前状态，生成一个执行计划的代价的估计。</p>
+<ul>
+<li>与 DBMS 中其它工作的交互。</li>
+<li>中间结果的大小。</li>
+<li>算法选择，访问方法。</li>
+<li>资源利用（CPU、I/O、网络）</li>
+<li>数据属性（倾斜、排序、放置）</li>
+</ul>
+<h2 id="_6">设计决策</h2>
+<ol>
+<li>优化粒度</li>
+<li>优化时间</li>
+<li>预备的语句</li>
+<li>计划的稳定性</li>
+</ol>
+<h3 id="_7">优化粒度</h3>
+<ol>
+<li>选择1：单查询</li>
+<li>更小的搜索空间。</li>
+<li>DBMS 不能跨查询重用结果。</li>
+<li>为了解决资源争用问题，代价模型必须考虑当前正在运行的内容。</li>
+<li>选择2：多查询</li>
+<li>如果有许多相似的查询会更有效率。</li>
+<li>搜索空间比较大。</li>
+<li>对于扫描共享更有用。</li>
+</ol>
+<h3 id="_8">优化时间</h3>
+<ol>
+<li>选择1：静态查询</li>
+<li>执行前选择最佳计划。</li>
+<li>计划质量取决于代价模型的准确性。</li>
+<li>可以使用预备好的语句分摊执行。</li>
+<li>选择2：动态优化</li>
+<li>在查询执行时即时选择算子计划。</li>
+<li>将重新优化多次执行。</li>
+<li>很难实现/调试（非确定）。</li>
+<li>选择3：混合优化</li>
+<li>使用静态算法编译。</li>
+<li>如果估计的错误 &gt; 阈值，重新优化</li>
+</ol>
+<h3 id="_9">预备的语句</h3>
+<ol>
+<li>选择1：重新优化</li>
+<li>每次查询被调用时，重新运行优化</li>
+<li>重复使用现有计划作为起点。</li>
+<li>选择2：多个计划</li>
+<li>对多个参数值生成多个计划。</li>
+<li>选择3：平均计划</li>
+<li>选择一个参数的平均值，对所有的调用都使用。</li>
+</ol>
+<h3 id="_10">计划的稳定性</h3>
+<ol>
+<li>选择1：Hints</li>
+<li>DBA 给优化器提供 hints。</li>
+<li>选择2：固定的优化器版本</li>
+<li>设置优化器的版本号，一个个迁移到新的查询优化器。</li>
+<li>选择3：后向兼容的计划</li>
+<li>保存老版本查询计划，然后提供给新的DBMS。</li>
+</ol>
+<h2 id="_11">优化查找策略</h2>
+<ul>
+<li>启发式</li>
+<li>启发式 + 基于代价的 JOIN 顺序查找</li>
+<li>随机算法</li>
+<li>分层搜索</li>
+<li>统一搜索</li>
+</ul>
+<h3 id="1">1. 基于启发式的优化</h3>
+<p>定义静态规则，可以将逻辑的算子转换为物理计划。</p>
+<ul>
+<li>尽早执行最严格的选择</li>
+<li>在连接前执行所有的选择</li>
+<li>谓词/Limit/投影下推</li>
+<li>基于基数的连接</li>
+</ul>
+<p>例子：INGRES 和 Oracle 的原始版本（直到1990s 中期）</p>
+<p>步骤1. 将查询分解成单个变量的查询</p>
+<p>步骤2. 从 Q1到 Q3 到 Q4 替代值</p>
+<p>优势：</p>
+<ul>
+<li>很容易实现和调试</li>
+<li>对于简单查询工作得很好，并且速度很快</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>依靠预测计划决策效果的魔术常数</li>
+<li>当算子有很复杂的内部依赖时，几乎不可能生成好的计划</li>
+</ul>
+<h3 id="2">2. 启发式 + 基于代价的连接查找</h3>
+<p>使用静态的规则执行最初的优化。</p>
+<p>使用动态规划决定表的连接顺序。</p>
+<ul>
+<li>第一个基于代价的优化器</li>
+<li>使用分治查找方法的自底向上计划（正向链接）</li>
+</ul>
+<p>例如：System R，早期的 IBM DB2，大部分开源 DBMS</p>
+<h4 id="system-r">SYSTEM R 优化器</h4>
+<p>将查询分解成块，对每个块生成逻辑算子。</p>
+<p>对没阿哥逻辑算子，生成一系列物理算子来实现。</p>
+<ul>
+<li>所有连接算法和访问路径的组合。</li>
+<li>然后迭代地构造一个“左深”树，最小化执行计划的估计工作量。</li>
+</ul>
+<p>步骤1： 对每个表选择最合适的访问路径。</p>
+<p>步骤2： 对表枚举所有可能的连接顺序。</p>
+<p>步骤3： 确定最小代价的连接顺序。</p>
+<p>优势：</p>
+<ul>
+<li>通常可以找到合理的计划而无需进行详尽的搜索。</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>所有与仅仅使用启发式方法的相同问题。</li>
+<li>左深连接树并不总是最优的。</li>
+<li>必须考虑代价模型中数据的物理属性（例如排序）。</li>
+</ul>
+<h3 id="3">3. 随机算法</h3>
+<p>对查询的所有可能（有效）计划的空间执行随机游走。</p>
+<p>持续搜索直到达到一个代价阈值或者优化器运行了固定一段时间后。</p>
+<p>例如：Postgres 的遗传算法。</p>
+<h4 id="_12">模拟退火</h4>
+<p>使用一个由基于启发式生成的查询计划开始。</p>
+<p>计算算子的随机排列（例如交换连接顺序）</p>
+<ul>
+<li>总是接受一个减少代价的变更。</li>
+<li>概率接受一个代价增加的变更。</li>
+<li>拒绝所有违反正确性的变更。</li>
+</ul>
+<h4 id="postgres">Postgres 的优化器</h4>
+<p>更复杂的查询使用选择连接顺序的遗传算法。</p>
+<p>在每轮开始时，生成查询计划的不同变体。</p>
+<p>选择成本最低的计划并将其与其他计划进行置换。 重复。</p>
+<ul>
+<li>mutator 函数只生成有效的计划。</li>
+</ul>
+<p>随机算法的优势：</p>
+<ul>
+<li>在搜索空间随机跳跃，可能会使得优化器跳出局部最优。</li>
+<li>更少的内存消耗（如果不需要保存历史）。</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>很难确定为什么 DBMS 会选择特定的计划。</li>
+<li>必须做额外的工作保证查询加护是确定的。</li>
+<li>仍然需要实现正确的规则。</li>
+</ul>
+<h3 id="_13">观察结论</h3>
+<p>使用过程语言编写查询转换规则很困难，并且容易出错。</p>
+<ul>
+<li>没有运行大量的模糊测试，没有很容易的办法来验证规则的正确性。</li>
+<li>每个逻辑算子的物理算子的生成与关于查询的更深层语义分离。</li>
+</ul>
+<p>一个更好的方法是使用声明式的 DSL（领域专用语言）编写转换规则，然后让优化器在优化阶段强制执行它们。</p>
+<h4 id="_14">优化器生成器</h4>
+<p>使用一个规则引擎，运行转换修改查询计划算子。</p>
+<p>数据的物理属性嵌入到算子中。</p>
+<ol>
+<li>选择1：分层搜索。优化有多个阶段完成。</li>
+<li>选择2：统一搜索。仅执行一次查询优化。</li>
+</ol>
+<h3 id="3_1">3. 分层搜索</h3>
+<p>首先使用转换规则重写逻辑查询计划。</p>
+<ul>
+<li>引擎在应用规则前检查转换是否被允许。</li>
+<li>代价在这一步不会绝不会被考虑。</li>
+</ul>
+<p>然后执行基于代价的搜索，将逻辑计划映射到物理计划。</p>
+<h4 id="starburst">STARBURST 优化器</h4>
+<p>使用声明式规则的 System R 优化器的更好的实现。</p>
+<p>阶段1： 查询重写。计算查询的SQL块级关系演算表示。</p>
+<p>阶段2：计划优化。执行 System R 风格的动态规划阶段。</p>
+<p>例如，最新版本的 IBM DB2。</p>
+<p>优势：</p>
+<ul>
+<li>实际工作很好，并且性能好。</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>很难为转换分配优先级。</li>
+<li>如果不计算多个成本估算，很难评估某些转换。</li>
+<li>规则维护很痛苦。</li>
+</ul>
+<h3 id="4">4. 统一搜索</h3>
+<p>统一逻辑到逻辑和逻辑到物理的转换。</p>
+<ul>
+<li>没有必要区分阶段，因为所有的都是转换。</li>
+</ul>
+<p>这个方法生成了很多的转换，所以它大量使用了备忘信息来减少冗余的工作。</p>
+<h4 id="volcano">VOLCANO 优化器</h4>
+<p>通用的基于代价的查询优化器，基于代数规则的等价性。</p>
+<ul>
+<li>很容易增加新的操作和等价规则。</li>
+<li>在规划期间将数据的物理属性作为第一类实体。</li>
+<li>使用分支定界搜索的自顶向下的方法（后向链表）。</li>
+</ul>
+<p>例如，学术原型。</p>
+<h4 id="vs_1">自顶向下 vs. 自底向上</h4>
+<p>自顶向下优化</p>
+<ul>
+<li>从最终的期望的结果开始，然后向下找到最优的计划。</li>
+<li>例如：Volcano，Cascodes</li>
+</ul>
+<p>自底向上优化</p>
+<ul>
+<li>开始的时候什么都没有，然后向上构建计划，得到最终期望的结果。</li>
+<li>例如：System R，Starburst</li>
+</ul>
+<h4 id="volcano_1">VOLCANO 优化器</h4>
+<p>优化器需要枚举所有可能不重复的转换。</p>
+<p>从逻辑到物理尽可能快，尝试所有可能的计划。</p>
+<ul>
+<li>使用自顶向下规则引擎，执行分支定界剪枝。</li>
+<li>使用备忘录缓存等价的算子。</li>
+</ul>
+<p>优势：</p>
+<ul>
+<li>使用声明式的规则生成转换。</li>
+<li>高效的搜索引擎更好的扩展性。使用备忘录兼容冗余的评价。</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>在优化搜索之前，所有等价的类被往前展开成所有的逻辑算子。</li>
+<li>不是很容易修改谓词。</li>
+</ul>
+<p>查询优化很难。</p>
+<p>这就是为什么 NoSQL 系统不实现它的原因（一开始不实现）。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

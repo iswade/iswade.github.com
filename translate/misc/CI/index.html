@@ -1,0 +1,689 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/misc/CI/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>持续集成系统 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                持续集成系统
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="什么是持续集成系统？" class="md-nav__link">
+    什么是持续集成系统？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="项目约束和注意项" class="md-nav__link">
+    项目约束和注意项
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="介绍" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="组件" class="md-nav__link">
+    组件
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repo_observerpy" title="代码库监视器(repo_observer.py)" class="md-nav__link">
+    代码库监视器(repo_observer.py)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="错误处理" class="md-nav__link">
+    错误处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="结论" class="md-nav__link">
+    结论
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">持续集成系统</h1>
+<p>作者： Malini Das</p>
+<p>翻译： 王世德</p>
+<p>Malini Das 是一个软件工程师，她对快速安全的开发和解决交叉功能问题充满兴趣。她在Mozilla是一个工具工程师，现在在Twitch学习。可以通过<a href="https://twitter.com/malinidas">Twitter</a>或者<a href="http://malinidas.com/">博客</a>关注Manlini。</p>
+<h2 id="_2">什么是持续集成系统？</h2>
+<p>当我们开发软觉得时候，我们想要验证新的特性或者bug修改是安全的符合预期。我们通过运行测试用例验证。有时候，开发者或许没有时间在每个软件运行的系统上测试代码，进一步，当越来越多的代码添加进去的时候，运行用例的时间也会越来越长，有时候即使是局部运行，也是不切实际的。源于此，创建了持续集成系统。</p>
+<p>持续集成（CI)系统适用于测试新代码的专用系统，当提交代码到代码仓库的时候，持续集成系统的职责是验证本次提交不会破坏任何用例。为了实现这种效果，系统需要获取新的变更，运行测试用例，然后输出运行结果。与其他任何系统类似， 应该能抵抗失败，这意味着如果系统的任何部分出现故障，应该从那个点恢复然后继续运行。</p>
+<p>测试系统应该也可以很好地处理负载，这样我们可以在合理的实际范围内获得测试结果，防止提交比测试用例运行得更快。可以通过分布和并行测试工作来达到这样的效果。这个项目演示一个小规模的，分布式的持续集成系统，这是一个简单的系统，但设计成可以扩展的系统。</p>
+<h2 id="_3">项目约束和注意项</h2>
+<p>这个项目使用Git作为需要测试的代码库。仅仅标准的源代码管理调用会被使用，所以如果你不熟悉Git但对其它版本控制系统（VCS）如svn或者Mercurial熟悉，仍可以继续阅读下面的内容。</p>
+<p>这个项目假设你使用POSIX系统。</p>
+<p>因为对代码长度和测试用例用例的限制，简化了测试用例的发现。我们会*仅仅*运行那些在代码库中命名为<code class="codehilite">tests</code>目录下的测试用例。</p>
+<p>持续集成系统监视主仓库，通常会放置在web服务器上，对CI的文件系统而言，并不是本地的。对于我们的例子，会使用本地仓库而不是远程库。</p>
+<p>持续集成系统不需要再固定、定期运行。可以对一些提交运行，或者每个提交。对我们的例子而言，CI系统会周期运行，这意味着如果设置没5分钟检查一次变更，它会对5分钟后最近提交的代码运行测试用例。不会测试周期时间内的每次提交的代码，而仅仅是最近的一次。</p>
+<p>这个Ci系统被设计成周期检查变更，在实际的CI系统中，我们可以通过仓库监视器来获得通知。例如Github提供了 "post-commit hooks"，可以发送通知给一个URL。根据这个模型，仓库监视器可以由URL所在web服务器调用来响应通知。由于这样对本地建模比较复杂，所以由仓库监视器检查变更而不是被通知的方式。</p>
+<p>CI系统还需要报告信息，用例运行程序将结果报告给一个大家都能看到的组件，可能是一个web页面。为了简化，这个项目将促使结果收集起来然后以文件的形式保存在本地文件系统中给分发程序。</p>
+<p>注意这个CI系统使用的架构仅仅是很多可能中的一个。选择这个架构是为了将我们的案例学习简化为三个组件。</p>
+<h2 id="_4">介绍</h2>
+<p>持续集成系统的基本结构是由三个组件构成的：监视器，测试任务分发器和用例运行器。监视器监视仓库的变化。当监视到提交任务时，就会通知任务分发器，任务分发器找到一个用例运行器并且给其一个提交序号用于测试。</p>
+<p>有很多思路可用于构建CI系统，我们可以在单个机器的一个进程中实现监视器、分发器和运行器。这种方法非常局限，因为没有负载处理能力，所以如果更多的变更被提交，超过了CI系统的处理能力，积压的任务会增加，并且这种方法也没有容错能力，如果运行的计算机故障或者电源掉电，没有后备系统，会导致所有测试都无法运行，理想的系统是这样的：请求数量与测试任务匹配，当系统宕机时还能尽可能处理任务。</p>
+<p>为了构建一个CI系统，有容错能力和负载能力，在这个项目中，每个组件有自己的进程，这样每个进程之间都是相互独立的，可以运行多个实例。当同时有多于一个的测试任务要运行时这种方式很有用。我们可以派生出多个测试运行器并行运行，这样就允许我们运行多个任务，防止在积累很多测试任务。</p>
+<p>在这个项目中，不仅这些组件运行在分离的进程中，而且还通过套接字通讯，这样我们就可以在不同的用网络连接的机器上运行。唯一的host/port地址被分配给每个组件，每个进程可以通过分配的地址给其它进程发送消息。</p>
+<p>这种设计允许我们以分布式架构处理硬件故障，我们可以将监视器运行在一个机器上，测试任务分发器在另一个上运行，如果其中的一个机器宕机，可以安排拎一个机器启动，这样系统就是故障安全的。</p>
+<p>这个项目没有保护任务自动恢复代码，因为这依赖于分布式系统的架构，但在真实情况下，CI系统是运行在分布式环境中，所以需要故障恢复冗余（例如，如果一个进程所在的机器故障了，就可以启动备用的机器）。</p>
+<p>为了实现这个项目的目标，每个进程运行在本地，并且需要各自启动，因为进程需要互相通讯，他们运行在不同的本地端口。</p>
+<h2 id="_5">组件</h2>
+<h3 id="repo_observerpy">代码库监视器(repo_observer.py)</h3>
+<p>代码库监视器监视代码块库的变更，当有新的提交时通知分发器。为了适应所有版本控制系统（不是所有的版本控制系统都有内置的通知系统），代码库监视器通过周期性地检查代码块变更的方式检查新的提交，不是使用版本控制系统自身的通知变更系统来实现。</p>
+<p>监视器会周期性地轮询代码库，有变更时，会通知分发器新的提交ID，运行测试用例。监视器通过当前的提交ID检出代码，然后更新代码库，最后再获取到最新的提交ID并对比，对这个示例而言，监视器仅仅对最新的提交分发测试。当在一个周期内检查时，有两次代码提交记录，监视器仅仅运行最后一次提交的测试用例。通常情况下，CI系统会检测自最后一次测试后的所有提交代价，然后对每次提交都运行测试，但为了简化修改了这个条件。</p>
+<p>监视器必须知道需要监视哪个代码库，我们周期性地创建一个代码库克隆在<code class="codehilite">/path/to/test_repo_clone_obs</code>，监视器会用这个克隆来检测变更，为了让代码监视器使用这个克隆，在调用repo_observer.py文件时，将路径传给它。代码监视器会用这个克隆从主代码库中获取代码。</p>
+<p>我们必须将分发器的地址发给监视器，这样监视器就可以发送消息给它，当启动代码库监视器时，我们可以使用<code class="codehilite">--dispatcher-server</code>命令行参数将分发器的地址传递给监视器，如果不传地址，使用默认地址<code class="codehilite"><span class="n">localhost</span><span class="o">:</span><span class="mi">8888</span></code>。</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">poll</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--dispatcher-server&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;dispatcher host:port, &quot;</span> \
+                        <span class="s2">&quot;by default it uses localhost:8888&quot;</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost:8888&quot;</span><span class="p">,</span>
+                        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;repo&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;REPO&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;path to the repository this will observe&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">dispatcher_host</span><span class="p">,</span> <span class="n">dispatcher_port</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dispatcher_server</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+</pre></div>
+
+<p>当当代码库监视器文件被调用时，执行<code class="codehilite">poll()</code>函数，这个函数会解析命令行参数，然后启动无限while循环。while循环被用来周期性地检查代码库的变更，第一件事就是调用<code class="codehilite">update_repo.sh</code>这个bash脚本。<a href="Bash被用来检查文件是否存在，创建文件使用Git，shell脚本是最直接最容易的方式来实现这个功能。另外，有多平台的python库可以使用，如python的内置`os`库，可以用来访问文件系统，GitPython可以用于访问Git，当这样实现比较繁复。">^bash</a></p>
+<div class="codehilite"><pre><span></span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># call the bash script that will update the repo and check</span>
+            <span class="c1"># for changes. If there&#39;s a change, it will drop a .commit_id file</span>
+            <span class="c1"># with the latest commit in the current working directory</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;./update_repo.sh&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">repo</span><span class="p">])</span>
+        <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Could not update and check repository. &quot;</span> <span class="o">+</span>
+                            <span class="s2">&quot;Reason: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+
+<p><code class="codehilite">update_repo.sh</code>文件用来确定新的提交，然后通知监视器，当观察到新的提交时，会将提交ID发送，然后就可以更新代码库，并检查最新的提交ID，如果匹配，没有新的代码变更，监视器不需要做任何事情，但如果提交ID不一样，我们会知道有新的提交发生，这种情况下，<code class="codehilite">update_repo.sh</code>会创建一个称之为.commit_id的文件，并将最新的提交ID存储在里面。</p>
+<p><code class="codehilite">udpate_repo.sh</code>一步步的分解如下所示，首先，脚本<code class="codehilite">source</code>文件<code class="codehilite">run_or_fail.sh</code>，这个文件提供了<code class="codehilite">run_or_fail</code>方法，这个方法用来运行给定的命令，或者失败后输出给定的错误信息。</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">source</span> run_or_fail.sh 
+</pre></div>
+
+<p>接下来，脚本尝试移除名称为<code class="codehilite"><span class="na">.commit_id</span></code>的文件，应为<code class="codehilite">update_repo.sh</code>被<code class="codehilite">repo_observer.py</code>无限调用，如果前面有新的提交，<code class="codehilite"><span class="na">.commit_id</span></code>被创建，但会保存已经运行了测试的提交，因此，移除文件，有新的提交时创建一个新的文件。</p>
+<div class="codehilite"><pre><span></span>bash rm -f .commit_id 
+</pre></div>
+
+<p>移除了文件之后，会检查代码库，然后将其重置为最新的提交，防止出现不同步的情况。</p>
+<div class="codehilite"><pre><span></span>run_or_fail <span class="s2">&quot;Repository folder not found!&quot;</span> <span class="nb">pushd</span> <span class="nv">$1</span> <span class="m">1</span>&gt; /dev/null
+run_or_fail <span class="s2">&quot;Could not reset git&quot;</span> git reset --hard HEAD
+</pre></div>
+
+<p>然后，调用git log并解析输出内容，然后获取到最新的</p>
+<h2 id="_6">错误处理</h2>
+<h2 id="_7">结论</h2>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

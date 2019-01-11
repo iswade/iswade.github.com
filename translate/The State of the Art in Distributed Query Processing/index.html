@@ -1,0 +1,673 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/The State of the Art in Distributed Query Processing/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>分布式查询处理的最新进展 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                分布式查询处理的最新进展
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">分布式查询处理的最新进展</h1>
+<p>DONALD KOSSMANN</p>
+<p>University of Passau</p>
+<p>2000年发表</p>
+<p>分布式数据处理正在成为现实。企业希望这样做有很多原因，他们通常必须这样做才能保持竞争力。虽然分布式数据处理的大部分基础设施已经存在（例如，现代网络技术），但许多问题使得分布式数据处理仍然是一项复杂的工作：（1）分布式系统可能变得非常庞大，涉及包括PC在内的数千个异构站点 和大型机服务器机器; （2）分布式系统的状态变化很快，因为站点的负载随时间变化，新的站点被添加到系统中; （3）遗留系统需要集成 —— 这种遗留系统通常不是为分布式数据处理而设计的，现在需要与分布式环境中的其他（现代）系统进行交互。</p>
+<p>本文介绍了分布式数据库查询处理的最新技术
+和信息系统。本文介绍了分布式查询处理和一系列对分布式特别有用的技术，并和课本一样的结构进行组织。这些技术包括特殊的连接技术，利用内部查询并行性，降低通信成本的技术，以及利用缓存和数据复制的技术。 此外，本文还讨论了不同类型的分布式系统，如客户端服务器，中间件（多层）和异构数据库系统，并给出了查询处理在这些系统中的工作方式。</p>
+<h1 id="1">1. 介绍</h1>
+<h2 id="11">1.1 背景和动机</h2>
+<p>自从70年代以来，研究人员和参与人员就对分布式数据库系统很感兴趣。在那个时候，主要关注的是支持大型企业和组织的 <strong>分布式数据管理</strong>，这些企业和组织将数据保存在不同的办公室或子公司。尽管有很多清晰的需求和许多好的想法以及原型（例如，System R*， SSD-1，和分布式 Ingres），早期对于构建分布式数据库的努力未被成功商业。在一些方面，早期的分布式数据库系统领先于其时代。首先，通信技术对于传送 MB 字节的数据并不足够稳定。其次，大型企业通过发送磁带，磁盘或只是纸张在办公室之间交换数据，在没有复杂的分布式数据库技术的情况下设法生存。</p>
+<p>特别地，业务开始依赖分布式而不是中心化的数据库，原因如下：</p>
+<ol>
+<li>成本和可伸缩性</li>
+<li>集成不同的软件模块</li>
+<li>集成历史遗留系统</li>
+<li>新的应用</li>
+<li>市场压力</li>
+</ol>
+<p>假设用户和应用使用声明式查询语言如 SQL，并且不需要知道数据在分布式系统存储的格式。目标是尽可能高效执行这些查询，以便最小化用户的等待时间和应用程序的延迟。为此，我们将讨论一系列技术，这些技术对于在当今的分布式系统中执行查询特别有效。 例如，我们将描述查询优化器的设计，该查询优化器编译查询以执行，并确定执行查询的许多替代方法中的最佳可能方式。 我们还将展示如何使用缓存和复制等技术来提高分布式环境中查询的性能。 此外，我们将介绍客户端 - 服务器，中间件（多媒体）以及异构数据库和信息系统的特定查询处理技术，这些技术代表了实践中经常出现的体系结构。</p>
+<h2 id="12">1.2 论文的范围和相关研究</h2>
+<p>在数据库系统领域中已经做了大量工作。所有这些工作大致可分为 <strong>架构</strong> 和 <strong>事务处理</strong> 技术（即快速处理小型更新操作），<strong>处理查询处理</strong>（即主要是读取大量数据的读操作），以及用于高级应用程序的 <strong>数据模型，语言和用户界面</strong>。在这篇文章中，主要关注查询处理。</p>
+<p><strong>并行数据库</strong> 是一个特殊的分布式系统类型。分布式和并行有一些类似的属性和目标，特别是并行系统如果有“无共享”架构。并行数据库系统的目的是改善交易和查询响应时间，以及集中式应用程序的系统可用性。因此，并行系统强调上述成本/可伸缩性参数，而本文中讨论的分布式系统通常会解决诸如组件异构性等问题。 虽然一些查询处理技术对两种系统都有用，但这两个领域的研究人员都针对其特定环境开发了专用技术。 在本文中，我们将集中讨论分布式数据库系统感兴趣的技术，并且不讨论在并行数据库系统中专门使用的技术（例如，特殊的并行连接方法，在查询执行期间对数据进行重新分区等）。 DeWitt和Gray [1992]给出了并行数据库系统的一个很好的概述。</p>
+<h2 id="13">1.3 论文组织</h2>
+<ul>
+<li>第二节 给出了查询处理架构和基本的查询执行技术。</li>
+<li>低三节 深入研究一个特定且非常重要的分布式数据库系统的查询处理：客户端 —— 服务器数据库系统。</li>
+<li>第四节 处理异构数据库系统中出现的查询处理问题，即由具有不同模式，不同查询处理能力和应用程序编程接口的多个自治组件数据库组成的系统。</li>
+<li>第五节 显示数据放置（即复制和缓存）和查询处理如何交互，并显示数据如何动态和自动地在系统中分布，以实现良好的性能。</li>
+<li>第六节 描述了分布式数据处理的其他新兴和有前途的架构; 具体而言，本部分概述了分布式查询处理和基于传播的信息系统的经济模型。</li>
+<li>第七节 包含结论和总结未来研究的未解决问题。</li>
+</ul>
+<h1 id="2">2. 分布式查询处理：基本方法和技术</h1>
+<h2 id="21">2.1 查询处理的架构</h2>
+<p>查询处理架构，可以用于描述中心、分布式或者并行系统。</p>
+<p><img alt="image-20181230234122986" src="../image/2000_dist_query.png" /></p>
+<ul>
+<li>解析器：适用于单机和分布式。</li>
+<li>查询重写：转换一个查询以便执行良好的优化，而不关注系统的物理状态（表大小，索引、表副本的位置、机器的快慢等）。典型的转换是消除冗余谓词，简化表达式以及消除子查询和视图。在分布式系统中，查询重写还会选择表的分区。查询重写由复杂的复杂的规则引擎完成。（逻辑计划）</li>
+<li>查询优化：执行优化，依赖系统的物理状态。优化器决定使用哪个索引，那种方法（例如，哈希或者排序）执行查询操作（连接和分组），以及哪种顺序执行查询。查询优化器决定每个操作的查询执行分配多少内存。在分布式系统中，优化器必须决定每个操作在哪个站点上执行。为了完成这些决定，优化器列举了所有的可替换计划（如下所描述）使用代价估算模型选择最佳计划。几乎所有的优化器都基于动态规划，以便有效地实现枚举计划。（物理计划）</li>
+<li>计划：计划精确指定了查询的执行方式。可能每个数据系统都以相同的方式表示计划：树。计划的节点是算子，并且每个算子执行特定的操作（例如连接、分组、排序、扫描等）。计划的节点带有注释信息例如知识要执行算子的位置。计划的边表示算子的生产者消费者关系。</li>
+<li>计划细化/代码生成：此组件将优化程序生成的计划转换为 <strong>可执行计划</strong>。 例如，在System R中，这种转换涉及生成类似汇编程序的代码，以有效地评估表达式和谓词[Lorie and Wade 1979]。 在某些系统中，计划细化还涉及执行简单优化，这些优化不是由查询优化器执行的，以简化查询优化器的实现。</li>
+<li>查询执行引擎：所有流行的查询执行引擎都基于 <strong>迭代模型</strong>。在这个模型中，算子被实现为迭代器，所有的迭代器有相同的接口。这样两个迭代器可以是互相可插拔的（由一个计划的消费者——生产者关系指定）。迭代器模型的另一个优点是它支持从一个算子到另一个算子的结果 <strong>pipelining</strong> 操作，以实现良好的性能。</li>
+<li>系统表：存储了解析，重写和优化查询所需的所有信息。它维护**数据库的模式**（即表，视图，用户定义的类型和函数的定义，完整性约束等），<strong>分区模式</strong>（即有关全局表已被分区的信息以及如何可以重建它们），以及**物理信息**，例如表格分区副本的位置，索引信息以及用于估算计划成本的统计数据。在大多数关系数据库系统中，目录信息与表中的所有其他数据一样存储。在分布式数据库系统中，出现了存储目录的位置的问题。最简单的方法是将目录存储在一个中心站点。在广域网中，为了降低通信成本，在多个站点复制目录是有意义的。也可以在广域网中的站点缓存目录信息[Williams et al。 1981]。目录信息的复制和缓存都非常有效，因为目录通常非常小（数百千字节而不是千兆字节），并且在大多数环境中很少更新目录信息。但是，在某些环境中，目录可能会变得非常大并且经常更新。在这样的环境中，将目录数据分区并将目录数据存储在最需要的地方是有意义的。例如，分布式对象数据库的目录需要知道存储所有对象（可能是数百万）的副本的位置，并且每次迁移或复制对象时都需要更新此信息。这些目录可以按照Eickler等人的描述以分层方式实现。 [1997]。</li>
+</ul>
+<p>需要注意的是，上面给出的架构并不是唯一的处理查询的方式。<strong>没有完美的查询处理器</strong> 这样的东西。例如，Graefe和其他人开发了另一种架构，作为Exodus，Volcano和Cascades项目的一部分，并且被一些商业数据库产品使用（例如，SQL server 7.0）。在这个架构下，查询重写和查询优化在同一个阶段完成。此外，已经提出了优化一组查询而不是单个查询的建议[Sellis 1988]， 这种方法的优点是作为几个查询的一部分的常见子表达式（例如，联接）只需要对整个查询集执行一次。</p>
+<h2 id="22">2.2 查询优化</h2>
+<p>我们现在转向可用于实现分布式数据库系统的查询优化器的技术的描述。 我们将首先描述用于查询优化的最流行的枚举算法。之后，我们将描述两种可用于估算计划成本的成本模型。</p>
+<h3 id="221">2.2.1 使用动态规划实现计划枚举</h3>
+<p>动态规划算法被大部分商业数据库产品使用，首创于 IBM System R 项目。动态编程的优点是，如果代价模型足够准确，它可以产生最好的计划。该算法的缺点是它具有**指数时间和空间复杂度**，因此对于复杂查询而言它是不可行的; 特别地，在分布式系统中，动态规划的复杂性对于许多查询来说令人望而却步。动态规划算法的扩展称为 <strong>迭代动态规划</strong>。 这种扩展算法具有自适应性，可以为简单查询生成与基本动态编程一样好的计划，并为动态编程无法实现的复杂查询提供“尽可能好的计划”。 我们在本文中没有描述这种扩展的算法，有兴趣的读者可以参考 Kossmann和Stocker [2000]。</p>
+<p>基本的动态规划算法如下图所示：</p>
+<div class="codehilite"><pre><span></span><span class="n">Input</span><span class="o">:</span> <span class="n">SPJ</span> <span class="n">query</span> <span class="n">q</span> <span class="n">on</span> <span class="n">relations</span> <span class="n">R1</span><span class="o">,...,</span><span class="n">Rn</span>
+<span class="n">Output</span><span class="o">:</span> <span class="n">A</span> <span class="n">query</span> <span class="n">plan</span> <span class="k">for</span> <span class="n">q</span>
+<span class="mi">1</span><span class="o">:</span> <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span> <span class="k">do</span> <span class="o">{</span>
+<span class="mi">2</span><span class="o">:</span>     <span class="n">optPlan</span><span class="o">({</span><span class="n">Ri</span><span class="o">})</span> <span class="o">=</span> <span class="n">accessPlans</span><span class="o">(</span><span class="n">Ri</span><span class="o">)</span>
+<span class="mi">3</span><span class="o">:</span>     <span class="n">prunePlans</span><span class="o">(</span><span class="n">optPlan</span><span class="o">({</span><span class="n">Ri</span><span class="o">}))</span>
+<span class="mi">4</span><span class="o">:</span> <span class="o">}</span>
+<span class="mi">5</span><span class="o">:</span> <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">to</span> <span class="n">n</span> <span class="k">do</span> <span class="o">{</span>
+<span class="mi">6</span><span class="o">:</span>     <span class="k">for</span> <span class="n">all</span> <span class="n">S</span> <span class="err">⊆</span> <span class="o">{</span><span class="n">R1</span><span class="o">,</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">,</span> <span class="n">Rn</span><span class="o">}</span> <span class="n">such</span> <span class="n">that</span> <span class="o">|</span><span class="n">S</span><span class="o">|</span> <span class="o">=</span> <span class="n">i</span> <span class="k">do</span> <span class="o">{</span>
+<span class="mi">7</span><span class="o">:</span>         <span class="n">optPlan</span><span class="o">(</span><span class="n">S</span><span class="o">)</span> <span class="o">=</span> <span class="err">∅</span>
+<span class="mi">8</span><span class="o">:</span>         <span class="k">for</span> <span class="n">all</span> <span class="n">O</span> <span class="err">⊂</span> <span class="n">S</span> <span class="k">do</span> <span class="o">{</span>
+<span class="mi">9</span><span class="o">:</span>             <span class="n">optPlan</span><span class="o">(</span><span class="n">S</span><span class="o">)=</span><span class="n">optPlan</span><span class="o">(</span><span class="n">S</span><span class="o">)</span> <span class="n">U</span>
+                    <span class="n">joinPlans</span><span class="o">(</span><span class="n">optPlan</span><span class="o">(</span><span class="n">O</span><span class="o">),</span> <span class="n">optPlan</span><span class="o">(</span><span class="n">S</span> <span class="err">−</span> <span class="n">O</span><span class="o">))</span>
+<span class="mi">10</span><span class="o">:</span>             <span class="n">prunePlans</span><span class="o">(</span><span class="n">optPlan</span><span class="o">(</span><span class="n">S</span><span class="o">))</span>
+<span class="mi">11</span><span class="o">:</span>         <span class="o">}</span>
+<span class="mi">12</span><span class="o">:</span>     <span class="o">}</span>
+<span class="mi">13</span><span class="o">:</span> <span class="o">}</span>
+<span class="mi">14</span><span class="o">:</span> <span class="k">return</span> <span class="n">optPlan</span><span class="o">({</span><span class="n">R1</span><span class="o">,...,</span><span class="n">Rn</span><span class="o">})</span>
+</pre></div>
+
+<p>通过从简单的计划或者子计划开始，然后构建复杂的计划或者子计划的方式自底向上工作。第一步，算法对每个表构建一个访问计划，如果表 A 被复制到 S1 和 S2，算法会枚举 scan(A, S1) 和 scan(A, S2) 作为可选的访问计划。然后，算法使用访问计划作为构建块来枚举所有的两路 JOIN 计划。然后，算法枚举所有相关节点可选连接计划，即考虑在 S1和 S2上对 A 做连接。接下来，该算法使用坊文化节计划的双向连接计划作为构建块来构建三路连接计划。算法以这种方式继续，直到枚举了所有的 n 路连接计划。</p>
+<p>动态规划算法的优点在于尽可能早地丢弃（即修剪）劣等计划（第3和第10行）。 如果存在以较低成本执行相同或更多工作的替代计划，则可以修剪计划。 例如，动态规划将枚举A <span><span class="MathJax_Preview">\bowtie</span><script type="math/tex">\bowtie</script></span> B和B <span><span class="MathJax_Preview">\bowtie</span><script type="math/tex">\bowtie</script></span> A作为执行此连接的两个替代计划，但只有两个计划中代价较低的计划将在修剪后保留在optPlan(A，B)结构中。修剪显着降低了查询优化的复杂性; 早期的劣等计划被修剪，更好的一点是，更复杂的计划不是由这种劣等计划构建的。</p>
+<p>在分布式系统中，scan(A, S1) 或者 scan(A, S2)都不能立即剪切掉，以保证优化器找到一个好的计划。两个计划都是做了相同的工作，但是在不同的节点上生成结果。即使 scan(A, S1) 比 scan(A, S2) 代价更小，scan(A, S2) 必须被保存起来，因为它可能是整体计划的构建块，例如将查询结果在 S2上显示。只有 scan(A, S1)的代价加上把A从S1到 S2的传送代价比 scan(A, S2)的代价低才会被裁剪。</p>
+<p>在文献中，有大量的关于稠密或者左深度连接计划枚举，深度计划是每个连接都至少有一个基表，稠密计划更加通用；在稠密计划中，一个连接包含一个或者两个基表，或者一个或者两个其它连接操作的结果，上面的算法列举了所有的稠密的计划，并考虑了所有的稠密的计划，这也是大多数商业数据库系统采用的方法。执行查询的 <strong>最佳计划通常是稠密的而不是深度</strong> 的，特别是在分布式系统中。</p>
+<h3 id="222">2.2.2 计划的代价估计</h3>
+<p>经典的**代价模型**是对计划中的每个算子估计代价，然后将这些代价汇总。在这个模型中，计划的代价由计划的所有资源消息决定。在中心化系统中，一个算子的代价由 CPU 代价、磁盘 I/O 代价组成。磁盘 I/O 代价由朝赵，延迟和传输代价组成。</p>
+<p><strong>响应时间模型</strong>：经典的代价模型对优化系统的全局吞吐有好处。但是并没有考虑内部查询的并行性，因此，在机器负载较轻且通信速度较快的情况下，基于代价模型的优化器不一定能找到查询响应时间最短的计划。仔细观察模型，可以找到代价模型的不准确性使得优化器选择次优计划的情况，即使准确估算了单个算子的资源消耗。 但是，如果只有少数运算符并行运行，则成本模型运行良好。在几项研究中已经成功地将其用于查询优化（例如，Franklin等人[1996]和Urhan等人[1998]）。 与传统的代价模型一样，它能够非常快速地评估计划。这很重要，因为查询优化通常涉及将成本模型应用于数千个计划。</p>
+<h2 id="23">2.3 查询执行技术</h2>
+<h3 id="231">2.3.1 行块</h3>
+<p>其主要想法是以块的方式传送元组，而不是单独发送每个元组。</p>
+<h3 id="232">2.3.2 多播的优化</h3>
+<h3 id="233">2.3.3 多线程执行</h3>
+<p>为了充分利用内部查询并行性，有时在某个站点建立多个线程是有利的。</p>
+<h3 id="234-join">2.3.4 对水平分区的做 JOIN</h3>
+<p>如果数据做了水平分区，join 和 union 算子逻辑属性使得有几个不同的方法可以处理 join。例如表 A 是水平分区的，A=A1 ∪ A2，A <span><span class="MathJax_Preview">\bowtie</span><script type="math/tex">\bowtie</script></span> B 可以以下面的两种方法来计算。<span><span class="MathJax_Preview">(A1 \cup A2) \bowtie B</span><script type="math/tex">(A1 \cup A2) \bowtie B</script></span> 或者 <span><span class="MathJax_Preview">(A1 \bowtie B) \cup (A2 \bowtie B)</span><script type="math/tex">(A1 \bowtie B) \cup (A2 \bowtie B)</script></span> 。在一些场景下，A 和 B 以某种方式分区，可以推断出 <span><span class="MathJax_Preview">A_i \bowtie B_j</span><script type="math/tex">A_i \bowtie B_j</script></span> 是空集。优化器可以利用这些信息，消除掉空的表达式，减少 join 处理的代价。<span><span class="MathJax_Preview">(A_1 \cup ... \cup A_n) \bowtie (B_1 \cup ... \cup B_n) = (A_1 \bowtie B_1) \cup ... \cup (A_n \bowtie B_n)</span><script type="math/tex">(A_1 \cup ... \cup A_n) \bowtie (B_1 \cup ... \cup B_n) = (A_1 \bowtie B_1) \cup ... \cup (A_n \bowtie B_n)</script></span></p>
+<h3 id="235">2.3.5 半连接</h3>
+<p>半连接程序被提议作为另一种处理存储在不同站点的表之间的连接的技术。如果表 A 被存储在节点1上，表 B 被存储在节点2上，执行 A 和 B 的连接的通常的方法是将 A 从节点1传送到节点2，然后在节点2上执行连接。半连接程序的想法是仅发送评估从Site1到Site2的连接谓词所需的A列，找到符合站点2的连接资格的B的元组，将这些元组发送到站点1，然后将A与站点1处的B元组进行匹配。通常，这个过程可以用下面的方式描述（􏰅􏰅<span><span class="MathJax_Preview">\ltimes</span><script type="math/tex">\ltimes</script></span>表示半连接算子 <span><span class="MathJax_Preview">\pi(A)</span><script type="math/tex">\pi(A)</script></span> 表示对 A 的做连接的列进行投影）。</p>
+<p><span><span class="MathJax_Preview">A\bowtie B = A \bowtie (B \ltimes \pi(A))</span><script type="math/tex">A\bowtie B = A \bowtie (B \ltimes \pi(A))</script></span></p>
+<p>这种方法的变体旨在消除 <span><span class="MathJax_Preview">\pi(A)</span><script type="math/tex">\pi(A)</script></span>中的重复元组（在站点1处进行额外的工作以减少通信）并为A发送签名文件，称为布隆-hash过滤器，而不是 <span><span class="MathJax_Preview">\pi(A)</span><script type="math/tex">\pi(A)</script></span>。同样，优化器必须根据表的基数，连接谓词的选择性，决定使用哪个变体（如果有）以及执行半连接程序的方向，从站点1到站点2，反之亦然，以及查询的其他操作中使用的数据的位置。</p>
+<h3 id="236-pipeline">2.3.6 双向pipeline哈希连接</h3>
+<p>构造两个 hash 表，一个是 A，一个是 B。</p>
+<h3 id="237">2.3.7 基于点的连接和分布式对象组件</h3>
+<h3 id="238-top-n">2.3.8 Top N</h3>
+<h1 id="3-">3. 客户端 - 服务器数据库系统</h1>
+<h2 id="31-">3.1 客户端 - 服务器，点对点，多层架构</h2>
+<h2 id="32">3.2 利用客户端资源</h2>
+<h3 id="321-query-shipping">3.2.1 Query shipping</h3>
+<h3 id="322-data-shipping">3.2.2 Data shipping</h3>
+<h3 id="323-hybrid-shipping">3.2.3 Hybrid shipping</h3>
+<h3 id="324">3.2.4 其它混合传送方式</h3>
+<h3 id="325">3.2.5 讨论</h3>
+<h2 id="33">3.3 查询优化</h2>
+<h3 id="331">3.3.1 节点选择</h3>
+<h3 id="332">3.3.2 在哪里什么时候优化</h3>
+<h3 id="333">3.3.3 两步优化</h3>
+<h2 id="34">3.4 查询执行技术</h2>
+<h1 id="4">4. 异构数据库系统</h1>
+<h2 id="41-wrapper">4.1 异构数据库的 wrapper 体系结构</h2>
+<h2 id="42">4.2 查询优化</h2>
+<h2 id="43">4.3 查询执行技术</h2>
+<h2 id="44-outlook">4.4 Outlook</h2>
+<h1 id="5">5. 动态数据放置</h1>
+<h2 id="51-vs">5.1 复制 vs. 缓存</h2>
+<h2 id="52">5.2 动态复制算法</h2>
+<h2 id="53">5.3 缓存投资</h2>
+<h2 id="54">5.4 视图缓存，视图物化和数据仓库</h2>
+<h1 id="6">6. 分布式查询处理新的架构</h1>
+<h2 id="61">6.1 分布式查询处理的经济模型</h2>
+<h2 id="62">6.2 基于传播的信息系统</h2>
+<h1 id="7">7. 结论</h1>
+<p>值得关注的论文：</p>
+<p>The Volcano
+optimizer generator: Extensibility and efficient
+search. </p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

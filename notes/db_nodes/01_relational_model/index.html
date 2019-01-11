@@ -1,0 +1,826 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/db_nodes/01_relational_model/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>关系模型 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                关系模型
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="数据库" class="md-nav__link">
+    数据库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="示例数据库" class="md-nav__link">
+    示例数据库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="数据库管理系统" class="md-nav__link">
+    数据库管理系统
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbms" title="早期 DBMS" class="md-nav__link">
+    早期 DBMS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="关系模型" class="md-nav__link">
+    关系模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="数据模型" class="md-nav__link">
+    数据模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="关系模型" class="md-nav__link">
+    关系模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dml" title="DML" class="md-nav__link">
+    DML
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="关系代数" class="md-nav__link">
+    关系代数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="结论" class="md-nav__link">
+    结论
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">关系模型</h1>
+<h2 id="_2">数据库</h2>
+<p>相互关联数据的组织集合，模拟现实世界的某些方面。数据库是大多数计算机应用程序的核心组件。</p>
+<h2 id="_3">示例数据库</h2>
+<p>创建数据库对一个数字音乐商店建模来记录艺术家和唱片。需要做的事：1. 艺术家的信息；2. 这些艺术家发行的唱片。</p>
+<p>平面文件草稿：将数据库保存在我们自己的代码控制的逗号分隔值的文件（CSV）中：1. 每个实体使用单独的文件；2. 每次读取和更新记录时，应用程序需要解析文件。</p>
+<p>创建一个数据库对数字音乐商店建模。</p>
+<p>Artist(name, year, country)</p>
+<div class="codehilite"><pre><span></span>&quot;Wu Tang Clan&quot;,1992,&quot;USA&quot;
+&quot;Notorious BIG&quot;,1992,&quot;USA&quot;
+&quot;Ice Cube&quot;,1989,&quot;USA&quot;
+</pre></div>
+
+<p>Album(name, artist, year)</p>
+<div class="codehilite"><pre><span></span>&quot;Enter the Wu Tang&quot;,&quot;Wu Tang Clan&quot;,1993
+&quot;St.Ides Mix Tape&quot;,&quot;Wu Tang Clan&quot;,1994
+&quot;AmeriKKKa&#39;s Most Wanted&quot;,&quot;Ice Cube&quot;,1990
+</pre></div>
+
+<p>获得艺术家 Ice Cube 独奏的年份：</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="p">:</span>
+  <span class="n">record</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="k">if</span> <span class="err">“</span><span class="n">Ice</span> <span class="n">Cube</span><span class="err">”</span> <span class="o">==</span> <span class="n">record</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="nb">int</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+<p>平面文件：数据完整性</p>
+<ul>
+<li>如何保证对于每个唱片条目的艺术家相同。</li>
+<li>如果有人用无效的字符串覆盖专辑年份怎么办？</li>
+<li>我们如何存储专辑中有多位艺术家？</li>
+</ul>
+<p>平面文件：实现</p>
+<ul>
+<li>如何查找某条记录？</li>
+<li>如果我们要创建一个新的应用程序来使用相同数据库该怎么做？</li>
+<li>如果有两个线程尝试同时写入相同的文件怎么处理？</li>
+</ul>
+<p>平面文件：持久性</p>
+<ul>
+<li>如果我们的程序更新记录时出现崩溃怎么处理？</li>
+<li>如果我们希望将数据复制到多个机器上实现高可用该怎么处理？</li>
+</ul>
+<h2 id="_4">数据库管理系统</h2>
+<p>DBMS 是一个允许应用存储和分析数据库中信息的软件。</p>
+<p>通用的 DBMS 被设计用于：定义、创建、查询、更新和管理数据库。</p>
+<h2 id="dbms">早期 DBMS</h2>
+<p>数据库应用构建和维护很困难。</p>
+<p>逻辑和物理层紧耦合。</p>
+<p>在部署数据库之前，你必须知道引用执行的查询。</p>
+<h2 id="_5">关系模型</h2>
+<p>1970年由 Ted Codd 提出。</p>
+<p><img alt="image-20181007221730291" src="../../image/DBMS_01_Ted_Codd.png" /></p>
+<p><center>Edgar F. Codd</center></p>
+<p>数据库抽象用于避免这种维护：</p>
+<ul>
+<li>将数据库存储在简单的数据结构中。</li>
+<li>通过高级语言访问。</li>
+<li>物理存储留到实现阶段。</li>
+</ul>
+<h2 id="_6">数据模型</h2>
+<p><u>数据模型</u>是用于描述保存在数据库中数据的概念的集合。</p>
+<p><u>模式</u>是使用给定数据模型对特定数据集合的描述。</p>
+<p>主要的数据模型包括：</p>
+<ul>
+<li>关系模型（绝大部分数据库管理系统使用）</li>
+<li>Key/Value（NoSQL）</li>
+<li>图（NoSQL）</li>
+<li>文档（NoSQL）</li>
+<li>列族（NoSQL）</li>
+<li>数组/矩阵（机器学习）</li>
+<li>层次（废弃，很少使用）</li>
+<li>网络（废弃，很少使用）</li>
+</ul>
+<h2 id="_7">关系模型</h2>
+<p>结构：关系定义和其内容。</p>
+<p>完整：保证数据库的内容满足约束。</p>
+<p>操作：访问和修改数据库的内容。</p>
+<p><u>关系</u>是一个无序的集合，包含表示实体的属性关系。</p>
+<p><u>元组</u>是关系中一个属性值集合。</p>
+<ul>
+<li>值通常是原子/标量。</li>
+<li>特殊的值 NULL 是每个域的成员。</li>
+</ul>
+<p>Artist(name, year, country)</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>year</th>
+<th>country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wu Tang Clan</td>
+<td>1992</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>Notorious BIG</td>
+<td>1992</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>Ice Cube</td>
+<td>1989</td>
+<td>USA</td>
+</tr>
+</tbody>
+</table>
+<p>n元关系 = n列表</p>
+<p>主键</p>
+<ul>
+<li>一个关系的主键唯一确定一个元组。</li>
+<li>如果没有定义主键，一些 DBMS 自动创建一个内部的主键。</li>
+<li>自动生成的唯一整数主键：</li>
+<li>SEQUENCE(SQL:2003)</li>
+<li>AUTO_INCREMENT(MySQL)</li>
+</ul>
+<p>外键</p>
+<p>外键指定来自一个关系的属性必须映射到另一个关系中的元组。</p>
+<h2 id="dml">DML</h2>
+<p>如何从一个数据库中保存和检索信息。</p>
+<p>过程式：查询指定高级策略，DBMS 应该使用来查找期望结果。（关系：代数）</p>
+<p>非过程式：查询仅仅指定需要什么数据而不是如何使用。（关系：微积分）</p>
+<h2 id="_8">关系代数</h2>
+<p>检索和操作关系中元组的基本运算。<span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 基于集合代数。</p>
+<p>每个运算符使用一个或者多个关系作为其输入，输出一个关系。<span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 可以将操作符链起来创建更加复杂的运算。 </p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>名称</th>
+<th>含义</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span></td>
+<td>选择</td>
+<td>选择符合条件的元组集合</td>
+<td><span><span class="MathJax_Preview">\sigma_{predicate}(R)</span><script type="math/tex">\sigma_{predicate}(R)</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
+<td>投影</td>
+<td>生成只有包含指定的元组的关系</td>
+<td><span><span class="MathJax_Preview">\pi_{A1,A2,...,An}(R)</span><script type="math/tex">\pi_{A1,A2,...,An}(R)</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">\cup</span><script type="math/tex">\cup</script></span></td>
+<td>并集(UNION)</td>
+<td>生成包含所有元组的关系</td>
+<td><span><span class="MathJax_Preview">(R \cup S)</span><script type="math/tex">(R \cup S)</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">\cap</span><script type="math/tex">\cap</script></span></td>
+<td>交集(INTERSECTION)</td>
+<td>包含同时出现在两个输入关系中的元组</td>
+<td><span><span class="MathJax_Preview">(R \cap S)</span><script type="math/tex">(R \cap S)</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">-</span><script type="math/tex">-</script></span></td>
+<td>差集(DIFFERENCE)</td>
+<td>包含仅出现在第一个关系中的元组</td>
+<td><span><span class="MathJax_Preview">(R - S)</span><script type="math/tex">(R - S)</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span></td>
+<td>乘集(CROSS JOIN)</td>
+<td>所有可能的组合</td>
+<td><span><span class="MathJax_Preview">(R \times S)</span><script type="math/tex">(R \times S)</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">\bowtie</span><script type="math/tex">\bowtie</script></span></td>
+<td>连接(NATURAL JOIN)</td>
+<td>生成包含所有元组的关系，这些元组是两个元组（每个输入关系一个元组）的组合，具有一个或多个属性的公共值。</td>
+<td><span><span class="MathJax_Preview">(R \bowtie S)</span><script type="math/tex">(R \bowtie S)</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>​   </p>
+<p>其它操作符：</p>
+<ul>
+<li>Rename (ρ)</li>
+<li>Assignment (R←S)</li>
+<li>Duplicate Elimination (δ)</li>
+<li>Aggregation (γ)</li>
+<li>Sorting (τ)</li>
+<li>Division (R÷S)</li>
+</ul>
+<h2 id="_9">结论</h2>
+<p>数据库无处不在。</p>
+<p>关系代数定义了对关系数据库处理查询的元语。</p>
+<p>后面讨论查询优化和执行的时候还会讨论关系代数。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

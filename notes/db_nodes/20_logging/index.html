@@ -1,0 +1,809 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/db_nodes/20_logging/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>日志 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                日志
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="存储类别" class="md-nav__link">
+    存储类别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="故障类别" class="md-nav__link">
+    故障类别
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="事务故障" class="md-nav__link">
+    事务故障
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="系统故障" class="md-nav__link">
+    系统故障
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="存储媒介故障" class="md-nav__link">
+    存储媒介故障
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="观察结论" class="md-nav__link">
+    观察结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undo-vs-redo" title="UNDO vs. REDO" class="md-nav__link">
+    UNDO vs. REDO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wal" title="WAL" class="md-nav__link">
+    WAL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wal_1" title="WAL 协议" class="md-nav__link">
+    WAL 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wal_2" title="WAL 实现" class="md-nav__link">
+    WAL 实现
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wal_3" title="WAL 延迟更新" class="md-nav__link">
+    WAL 延迟更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="日志模式" class="md-nav__link">
+    日志模式
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="物理日志" class="md-nav__link">
+    物理日志
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="逻辑日志" class="md-nav__link">
+    逻辑日志
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="检查点" class="md-nav__link">
+    检查点
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" title="挑战" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">日志</h1>
+<p>动机：内存中未刷新到磁盘上的数据如何处理？</p>
+<p>故障恢复：故障恢复算法是保证数据库一致性，事务原子性和持久性的技术。恢复算法有两个部分：</p>
+<ol>
+<li>正常事务处理过程中的动作来保证 DBMS 可以在故障中恢复。</li>
+<li>故障后的动作来恢复数据库到一个可以保证原子性、一致性和持久性的状态。</li>
+</ol>
+<h2 id="_2">存储类别</h2>
+<ol>
+<li>易失性存储：数据断电后不会保存，DRAM，SRAM。</li>
+<li>非易失性存储：数据在断电后可以爆粗，HDD，SDD。</li>
+</ol>
+<h2 id="_3">故障类别</h2>
+<ol>
+<li>事务故障</li>
+<li>系统故障</li>
+<li>存储故障</li>
+</ol>
+<h3 id="_4">事务故障</h3>
+<ol>
+<li>逻辑故障：由于一些内部错误（例如，完整性约束违规），事务不能完成。</li>
+<li>内部状态错误：由于一个写错误的条件（例如，死锁）DBMS 必须终止一个活动的事务。</li>
+</ol>
+<h3 id="_5">系统故障</h3>
+<ol>
+<li>软件故障：DBMS 实现（例如未处理的除零异常）。</li>
+<li>硬件故障：计算机主机宕机（电源被拔）。</li>
+<li>故障停止假设：驾驶系统崩溃不会破坏易失性存储内容。</li>
+</ol>
+<h3 id="_6">存储媒介故障</h3>
+<ol>
+<li>不可修复的硬件故障</li>
+<li>头部崩溃或者类似的磁盘故障会破坏全部或者部分非易失性存储。</li>
+<li>假设毁坏是可以检测的（例如，磁盘控制器使用校验和来检测故障）。</li>
+</ol>
+<p>没有系统可以从这种故障中恢复，数据库必须从归档的版本来恢复数据。</p>
+<h2 id="_7">观察结论</h2>
+<p>数据库系统的主要的存储位置在非易失性存储上，但是比易失性存储慢得多。</p>
+<p>使用内存可以更快访问：</p>
+<ol>
+<li>首先将目标记录复制到内存中。</li>
+<li>在内存中执行写入。</li>
+<li>将脏记录写回磁盘。</li>
+</ol>
+<p>DBMS 需要保证：</p>
+<ul>
+<li>一旦 DBMS 已经提交，任何事务的变更都是持久的。</li>
+<li>如果事务中止，没有事务的变更是持久的。</li>
+</ul>
+<h2 id="undo-vs-redo">UNDO vs. REDO</h2>
+<p>Undo: 移除未完成或者中止事务的影响的过程。</p>
+<p>Redo: 重新发起已经提交事务对持久性的影响的过程。</p>
+<p>DBMS 如何支持这个功能依赖其如何管理缓存池。</p>
+<h2 id="wal">WAL</h2>
+<p>在变更发生之前，记录数据库的变更到一个日志文件中。</p>
+<ul>
+<li>假设日志在稳定存储中</li>
+<li>日志包含足够的信息来执行必要的 undo 和 redo 动作来恢复数据库。</li>
+</ul>
+<h3 id="wal_1">WAL 协议</h3>
+<p>DBMS 将所有事务的日志记录分级到易失性存储中（通常由缓冲池支持）。</p>
+<p>在页面本身被重写到非易失性存储器之前，所有与更新页面有关的日志记录都被写入非易失性存储器。</p>
+<p>一个事务不能被认为是提交的，直到所有的日志被写入到稳定存储。</p>
+<p>在每个事务的日志开始写一个 <BEGIN> 记录。</p>
+<p>当一个事务结束时，DBMS 将会：</p>
+<ol>
+<li>写一个<COMMIT>记录到日志中</li>
+<li>在返回确认消息给应用之前，保证所有日志记录被写到磁盘。</li>
+</ol>
+<p>每个日志条目包含单个对象变更的信息：</p>
+<ol>
+<li>事务 id</li>
+<li>对象 id</li>
+<li>写之前的值（UNDO）</li>
+<li>写之后的值（REDO）</li>
+</ol>
+<h3 id="wal_2">WAL 实现</h3>
+<p>什么时候 DBMS 将会写日志条目到磁盘？</p>
+<ul>
+<li>事务提交时。</li>
+<li>可以使用组提交来批量化多个日志同时刷新来分摊开销。</li>
+</ul>
+<p>什么时候 DBMS 写脏页到磁盘？</p>
+<h3 id="wal_3">WAL 延迟更新</h3>
+<p>如果我们避免 DBMS 写脏页到磁盘，直到事务提交，然后我们不需要保存原始的值。</p>
+<p>如果事务的变更多于可用内存的数量，这就无法工作了。</p>
+<p>如果在日志中不包含原始的值，DBMS 不能撤销中止事务的变更。</p>
+<p><img alt="image-20181208231731459" src="../../image/DBMS_20_loging_policies.png" /></p>
+<h2 id="_8">日志模式</h2>
+<h3 id="_9">物理日志</h3>
+<p>记录特定位置的变更。</p>
+<h3 id="_10">逻辑日志</h3>
+<p>记录事务执行的高级操作。</p>
+<p>不需要限制到单个页面。</p>
+<p>在日志记录中，逻辑日志比物理日志需要的数据更少。</p>
+<p>如果有并发事务，逻辑日志很难进行恢复。</p>
+<ul>
+<li>很难决定数据库的哪个部分在故障之前被修改。</li>
+<li>需要更长的时间来恢复，因为必须重头重新执行每个事务。</li>
+</ul>
+<h2 id="_11">检查点</h2>
+<p>WAL 会一直增长。</p>
+<p>在故障后，DBMS 必须重放全部的日志，这需要很长的时间。</p>
+<p>DBMS 周期性地执行检查点，在这个点的所有缓存被写出到磁盘。</p>
+<h3 id="_12">挑战</h3>
+<p>我们必须在检查点时停止所有txns以确保一致的快照。</p>
+<p>扫描日志找到未提交的事务需要很长时间。</p>
+<p>多长时间 DBMS 执行一次检查点并不是很明显。</p>
+<p>检查点太频繁导致运行性能降级。系统花费更多时间刷新缓存。</p>
+<p>但是等待时间太长也会有问题：</p>
+<ul>
+<li>检查点会更大更慢。</li>
+<li>恢复时间变得更长。</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

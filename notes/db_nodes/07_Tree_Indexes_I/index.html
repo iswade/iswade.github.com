@@ -1,0 +1,790 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/db_nodes/07_Tree_Indexes_I/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>树索引（I） - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#i" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                树索引（I）
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="表索引" class="md-nav__link">
+    表索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" title="B 树家族" class="md-nav__link">
+    B 树家族
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#btree" title="B+Tree" class="md-nav__link">
+    B+Tree
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="性质" class="md-nav__link">
+    性质
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="节点" class="md-nav__link">
+    节点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="叶节点值" class="md-nav__link">
+    叶节点值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tree-vs-btree" title="B-Tree vs. B+Tree" class="md-nav__link">
+    B-Tree vs. B+Tree
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree_1" title="B+Tree 插入" class="md-nav__link">
+    B+Tree 插入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree_2" title="B+Tree 删除" class="md-nav__link">
+    B+Tree 删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree_3" title="B+Tree 实践" class="md-nav__link">
+    B+Tree 实践
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="聚簇索引" class="md-nav__link">
+    聚簇索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="选择条件" class="md-nav__link">
+    选择条件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#btree_4" title="B+Tree 设计选择" class="md-nav__link">
+    B+Tree 设计选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="优化" class="md-nav__link">
+    优化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="结论" class="md-nav__link">
+    结论
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="i">树索引（I）</h1>
+<h2 id="_1">表索引</h2>
+<p>表索引是一个表的列的子集的一个副本，被组织起来或者被排序，在使用这些列的子集时可以提高访问效率。</p>
+<p>DBMS 保证表的内容和索引的内容是同步的。</p>
+<p>DBMS 负责找出最合适的索引来执行每个查询。</p>
+<p>每个数据库都需要权衡建立索引的数量。</p>
+<ul>
+<li>存储开销</li>
+<li>维护开销</li>
+</ul>
+<h2 id="b">B 树家族</h2>
+<p>有一个特定的数据结构称之为 B-Tree，但是人们还使用这个形式来表示一类数据结构。</p>
+<ul>
+<li>B-Tree</li>
+<li>B+Tree</li>
+<li>B<span><span class="MathJax_Preview">^{link}</span><script type="math/tex">^{link}</script></span>-Tree</li>
+<li>B*Tree</li>
+</ul>
+<h2 id="btree">B+Tree</h2>
+<p>B+Tree 是一个自平衡的树数据结构，保持数据有限，以时间复杂度 O(log n) 查找、顺序访问、插入、删除。</p>
+<ul>
+<li>二叉搜索树的泛化，即节点可以有两个以上的子节点。</li>
+<li>针对读取和写入大量数据的系统进行了优化。</li>
+</ul>
+<p>论文《无处不在的B树》：<a href="http://www.ezdoum.com/upload/14/20020512204603/TheUbiquitousB-Tree.pdf">link</a></p>
+<h3 id="_2">性质</h3>
+<p>B+Tree 是一个 M-路 搜索树，并且有下面的性质：</p>
+<ul>
+<li>保持平衡（例如，每个叶节点在相同的深度）</li>
+<li>除了根节点，每个内部节点至少是半满的 <span><span class="MathJax_Preview">\frac{M}{2}-1 \leqslant \#keys  \leqslant M-1</span><script type="math/tex">\frac{M}{2}-1 \leqslant \#keys  \leqslant M-1</script></span></li>
+<li>每个内部有 k 个键的节点有 k+1 个非空孩子</li>
+</ul>
+<p><img alt="image-20181024224256600" src="../../image/DBMS_12_b_plus_tree.png" /></p>
+<h3 id="_3">节点</h3>
+<p>在 B+Tree 内部的每个节点包含一个 key/value 对。</p>
+<ul>
+<li>key 是列或者多个列（创建索引的列）</li>
+<li>value 根据内部节点或者叶子节点内容不同</li>
+</ul>
+<p>数组总是保持以 key 的顺序保持有序。</p>
+<h3 id="_4">叶节点值</h3>
+<p>方式 #1：记录 ID，指向索引条目对应的元组位置的指针。</p>
+<p>PostgreSQL，SQL Server，DB2，ORACLE</p>
+<p>方式 #2：元组数据，实际的元组内容保存在页节点上，辅助索引必须将记录ID存储为其值。</p>
+<p>SQLite，SQL Server，MySQL，ORACLE</p>
+<p><img alt="image-20181024225329116" src="../../image/DBMS_13_b_plus_tree_leaf_node.png" /></p>
+<p><img alt="image-20181024225411983" src="../../image/DBMS_13_b_plus_tree_leaf_node_2.png" /></p>
+<h3 id="b-tree-vs-btree">B-Tree vs. B+Tree</h3>
+<p>1972年最初的 B-Tree 保存 keys 和 values 在树的所有节点内。</p>
+<ul>
+<li>每个 key 仅在树中出现一次，更加节省空间</li>
+</ul>
+<p>B+Tree 仅仅在页节点中爆粗，内部节点仅仅用于查找过程。</p>
+<h3 id="btree_1">B+Tree 插入</h3>
+<ol>
+<li>找到正确的叶节点 L</li>
+<li>将数据入口以有序的方式放入 L</li>
+<li>如果 L 有足够的空间，结束！</li>
+<li>否则，必须将 L 分裂为 L 和一个新的几点 L2</li>
+<li>均匀重新分配条目，复制中间的键。</li>
+<li>将指向L2的索引条目插入到L的父级中。</li>
+<li>为了分裂内部节点，重新均匀分配条目，但是上推中间 key。</li>
+</ol>
+<p><a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html">B+Tree动画演示</a></p>
+<h3 id="btree_2">B+Tree 删除</h3>
+<ol>
+<li>从根节点开始，找到包含条目的叶L</li>
+<li>删除条目</li>
+<li>如果 L 是半满的，结束！</li>
+<li>如果 L 仅有 M/2-1 个条目</li>
+<li>尝试重新分配，借用兄弟姐妹（邻近的与 L 具有相同父节点的节点）</li>
+<li>如果重新分配失败，合并 L 和兄弟节点</li>
+<li>如果发生合并，必须从 L 的父节点删除条目（指向 L 或者兄弟）</li>
+</ol>
+<h3 id="btree_3">B+Tree 实践</h3>
+<p>典型的填充因子：67%</p>
+<ul>
+<li>平均扇出 = 2 * 100 * 0.67 = 134</li>
+</ul>
+<p>典型的容量：</p>
+<ul>
+<li>高度4：1334 = 312900721 条目</li>
+<li>高度3：1333 =     2406104 条目</li>
+</ul>
+<p>每层的页数：</p>
+<ul>
+<li>第一层 =               1页    =    8KB</li>
+<li>第二次 =           134页    =    1MB</li>
+<li>第三层 =       17956页    = 140MB</li>
+</ul>
+<h2 id="_5">聚簇索引</h2>
+<p>表按照主键有序存储。既可以是 heap 组织存储，也可以是 index 组织存储。</p>
+<p>一些 DBMS 总是使用聚簇索引。</p>
+<ul>
+<li>如果一个表不包含主键，DBMS 自动生成一个隐藏的列 id 的主键。</li>
+</ul>
+<p>其它 DBMS 不能使用。</p>
+<h2 id="_6">选择条件</h2>
+<p>DBMS 可以使用 B+Tree 索引，如果查询有任意一个属性。</p>
+<p>例如，在<a, b, c>上建立索引，支持(a=5 and b =2)按索引查找，也支持(b=3)。</p>
+<p>不是所有 DBMS 支持这个特性。</p>
+<p>例如对于 hash 索引，所有的查找 key 必须是所有属性。</p>
+<h2 id="btree_4">B+Tree 设计选择</h2>
+<ol>
+<li>节点大小</li>
+<li>合并阈值</li>
+<li>可变长度键</li>
+<li>非唯一索引</li>
+<li>内部节点搜索</li>
+</ol>
+<p>论文：<a href="https://dl.acm.org/citation.cfm?id=2185842">Modern B-tree techniques</a></p>
+<h2 id="_7">优化</h2>
+<ul>
+<li>前缀压缩</li>
+<li>后缀截断</li>
+<li>批量插入（先将 key 排序，然后从底向上构建索引）</li>
+<li>指针混写</li>
+</ul>
+<h2 id="_8">结论</h2>
+<p>久负盛名的 B+Tree 永远是你的 DBMS 一个不错的选择。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

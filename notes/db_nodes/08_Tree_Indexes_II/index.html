@@ -1,0 +1,749 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/db_nodes/08_Tree_Indexes_II/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>树索引（II） - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#ii" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                树索引（II）
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="隐式索引" class="md-nav__link">
+    隐式索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="部分索引" class="md-nav__link">
+    部分索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="覆盖索引" class="md-nav__link">
+    覆盖索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="索引包含列" class="md-nav__link">
+    索引包含列
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="函数/表达式索引" class="md-nav__link">
+    函数/表达式索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="观察结论" class="md-nav__link">
+    观察结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="跳跃表" class="md-nav__link">
+    跳跃表
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="基数树" class="md-nav__link">
+    基数树
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="观察结论" class="md-nav__link">
+    观察结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="倒排索引" class="md-nav__link">
+    倒排索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="查找类型" class="md-nav__link">
+    查找类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="设计决策" class="md-nav__link">
+    设计决策
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="结论" class="md-nav__link">
+    结论
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="ii">树索引（II）</h1>
+<h2 id="_1">隐式索引</h2>
+<p>大部分 DBMS 自动创建一个索引来强制进行完整性约束。</p>
+<ul>
+<li>主键</li>
+<li>唯一约束</li>
+<li>外键（?）</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">foo</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">val1</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">val2</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">UNIQUE</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">foo_pkey</span> <span class="k">ON</span> <span class="n">foo</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">foo_val2_key</span> <span class="k">ON</span> <span class="n">foo</span> <span class="p">(</span><span class="n">val2</span><span class="p">);</span>
+</pre></div>
+
+<h2 id="_2">部分索引</h2>
+<p>创建一个表的子集上的索引。这可能会减小其大小和维护它的开销。</p>
+<p>一个常用的使用例子是通过日期范围来分区索引。</p>
+<ul>
+<li>每月、每年创建一个分离的索引。</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_foo</span> <span class="k">ON</span> <span class="n">foo</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">WHERE</span> <span class="k">c</span> <span class="o">=</span> <span class="s1">&#39;WuTang&#39;</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">b</span> <span class="k">FROM</span> <span class="n">foo</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">123</span> <span class="k">AND</span> <span class="k">c</span> <span class="o">=</span> <span class="s1">&#39;WuTang&#39;</span><span class="p">;</span>
+</pre></div>
+
+<h2 id="_3">覆盖索引</h2>
+<p>如果处理查询所需的所有字段都在索引中可用，则DBMS不需要检索元组。</p>
+<p>这减少了对DBMS缓冲池资源的争用。</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_foo</span> <span class="k">ON</span> <span class="n">foo</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="n">b</span> <span class="k">FROM</span> <span class="n">foo</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+</pre></div>
+
+<h2 id="_4">索引包含列</h2>
+<h2 id="_5">函数/表达式索引</h2>
+<h2 id="_6">观察结论</h2>
+<p>最简单的实现动态有序索引的方式是使用排序链表。</p>
+<p>所有操作都是线性搜索。平均复杂度：O(N)</p>
+<h2 id="_7">跳跃表</h2>
+<p>跳跃表是一个数据结构，可以在有序的序列上进行快速查找。</p>
+<h2 id="_8">基数树</h2>
+<p>key 以单个的字符表示，可以通过一个接一个前缀检查的方式来比较 key。</p>
+<ul>
+<li>树的高度依赖 key 的长度</li>
+<li>不需要平衡</li>
+<li>叶节点的路径表示叶的 key</li>
+<li>key 被隐式存储，可以通过路径来构造</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Trie</th>
+<th align="center">Radix Tree</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="image-20181104130409682" src="../../image/DBMS_14_trie.png" /></td>
+<td align="center"><img alt="image-20181104130457542" src="../../image/DBMS_15_radix_tree.png" /></td>
+</tr>
+<tr>
+<td align="center">HELLO, HAT, HAVE</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">观察结论</h2>
+<p>树索引对于点查找和范围查找很有用。</p>
+<p>但是对于关键词查找则不友好。</p>
+<ul>
+<li>从维基百科中找出所有包含单词 “Pavlo”的文章</li>
+</ul>
+<h2 id="_10">倒排索引</h2>
+<p>倒排索引保存单词到记录的映射，记录中包含了这些单词。</p>
+<ul>
+<li>有时也称之为全文查找索引</li>
+<li>也称为古老（如旧）时代的一致性</li>
+</ul>
+<p>大部分 DBMS 支持这个特性。</p>
+<p>也有一些特殊的数据库系统。(elasticsearch, Solr, Sphinx)</p>
+<h2 id="_11">查找类型</h2>
+<p>短语查找：找到包含以给定顺序的一系列单词的记录。</p>
+<p>近似查找：查找两个单词出现在彼此的n个单词中的记录。</p>
+<p>通配符查找：查找包含与某些模式匹配的单词的记录（例如，正则表达式）。</p>
+<h2 id="_12">设计决策</h2>
+<p>决策#1：保存什么？</p>
+<ul>
+<li>索引需要至少保存每个记录中的单词（以标点符号分割）。</li>
+<li>还能保存访问次数、位置和其他元数据</li>
+</ul>
+<p>决策#2：什么时候更新？</p>
+<ul>
+<li>维护辅助数据结构以“分级”更新，然后批量更新索引。</li>
+</ul>
+<h2 id="_13">结论</h2>
+<p>B+Tree 仍然是树索引的方法。</p>
+<p>还有其他树索引，例如地理空间树索引。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

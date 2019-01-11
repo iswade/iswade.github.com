@@ -1,0 +1,888 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/partition/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>数据分区 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                数据分区
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        数据分区
+      </label>
+    
+    <a href="./" title="数据分区" class="md-nav__link md-nav__link--active">
+      数据分区
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="概述" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="分区策略" class="md-nav__link">
+    分区策略
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="哈希分区" class="md-nav__link">
+    哈希分区
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="范围分区" class="md-nav__link">
+    范围分区
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="其它策略" class="md-nav__link">
+    其它策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="分区的问题" class="md-nav__link">
+    分区的问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="数据路由" class="md-nav__link">
+    数据路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="实例分析" class="md-nav__link">
+    实例分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pgxc" title="PGXC" class="md-nav__link">
+    PGXC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cockroachdb" title="CockroachDB" class="md-nav__link">
+    CockroachDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="参考资料" class="md-nav__link">
+    参考资料
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="概述" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="分区策略" class="md-nav__link">
+    分区策略
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="哈希分区" class="md-nav__link">
+    哈希分区
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="范围分区" class="md-nav__link">
+    范围分区
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="其它策略" class="md-nav__link">
+    其它策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="分区的问题" class="md-nav__link">
+    分区的问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="数据路由" class="md-nav__link">
+    数据路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="实例分析" class="md-nav__link">
+    实例分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pgxc" title="PGXC" class="md-nav__link">
+    PGXC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cockroachdb" title="CockroachDB" class="md-nav__link">
+    CockroachDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="参考资料" class="md-nav__link">
+    参考资料
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">数据分区</h1>
+<h2 id="_2">概述</h2>
+<p>分布式数据处理系统第一个要解决的问题就是如何将数据进行拆分，利用多台计算机处理大规模数据。对于数据量很大的数据集，单机无法保存或者处理时，通过对数据集进行水平拆分，将不同的数据子集存放到不同的处理节点，这种对数据进行拆分的方式叫做 <strong>分区（partition）</strong>。</p>
+<p>不同数据库中对分区的名称定义有所差异，有些称之为分区（partition），有些称之为分片（sharding），还有一些称之为区域（Region），但是其含义都是基本相同的。需要注意的是，这里的分区跟 CAP 中的网络分区和单机的单机分区表没有关系。</p>
+<p>对于大部分实现方案，数据被分区后，各个分区由不同的独立、完整的数据库进行保存和处理，然后由一个或多个协调节点进行请求的路由处理。基本结构如下图所示：</p>
+<p><img alt="partition_system" src="../res/partition_system.svg" /></p>
+<ul>
+<li><strong>CN</strong>: 协调节点（coordinator node），根据分区策略对数据做分区处理。</li>
+<li><strong>DN</strong>: 数据节点（data node），用于保存数据，独立维护自己的元数据，通常都是完整的数据库，每个 DN 保存一个数据子集，每个数据子集都是一个分区。</li>
+</ul>
+<p>这里给出数据分区下的数据处理基本单元的逻辑结构，协调者和数据分区可能在同一个进程中或者同一个节点中。</p>
+<p>通常情况下，对 SQL 数据库、KV 数据库进行分区的处理策略类似，每条记录数据、一个键值对保存在一个分区中，分区策略定义了对每条数据的处理方式，SQL 数据集库一般在建表时通过 SQL 语法指定分区策略，KV 数据库一般是数据库内部进行分区，数据库多个分区进行操作时，对应用通常是透明的。</p>
+<p>在无共享架构下，对大数据集进行分区处理是当前分布式数据处理系统最常见处理方式。分区主要是为了提升系统的 <strong>可扩展性</strong>，读写负载都可以随着分区的增加而扩展。不同的分区可以放在无共享集群中的不同节点上。因此，大数据集可以分布在多个磁盘上，并且查询负载可以分布在多个处理器上。</p>
+<p>对于在单个分区上运行的查询，每个节点可以独立执行对自己分区的查询，因此可以通过添加更多的节点来扩大查询吞吐量。复杂的查询可能会跨越多个节点并行处理。</p>
+<p>在本文中，我们将重点介绍划分大数据集的分区策略，简单介绍对多个分区进行数据操作的方法，然后介绍如何协调查询将请求路由到处理节点，最后我们介绍业界分布式数据库系统对数据分区的处理策略。</p>
+<h2 id="_3">分区策略</h2>
+<p>对于一个分布式数据处理系统，将数据分布到多个分区有两种比较典型的方案：</p>
+<ol>
+<li>一种是根据键做哈希，根据哈希值选择对应的数据节点。</li>
+<li>另一种是范围分区，某一段连续的键都保存在一个数据节点上。</li>
+</ol>
+<h3 id="_4">哈希分区</h3>
+<p>哈希分区是最常见的数据分区方式，通过按照数据的key、或者用户指定的一个或者多个字段计算哈希，然后将计算后的哈希与计算节点进行映射，从而将不同哈希值的数据分布到不同节点上。</p>
+<p>例如，有3条记录<code class="codehilite">(key1, value1), (key2, value2), (key3, value3)</code> 通过对键进行计算哈希（对 key 进行 md5哈希，然后取前两个字符作为哈希值），哈希桶个数255个，当前有两个分区，偶数哈希值放到分区0，奇数哈希值放到分区1，计算后的数据分布如下图所示。</p>
+<p><img alt="partition_hash" src="../res/partition_hash.svg" /></p>
+<p>哈希分区需要仔细选取哈希函数，如果用户可以指定哈希字段时，则要考虑字段经过哈希之后散列性是否满足需求。如果选取的哈希函数散列性较好，则可以将数据大致均匀地分布到几个分区中。</p>
+<p>哈希分区的一个优点是，保存的元数据很简单，只需要保存桶与分区的映射关系即可。但是缺点也很明显，可扩展性差，如果增加一个节点进行扩容，则需要对所有数据进行重新计算哈希，然后对数据进行重新分布，对于均匀分布的哈希函数而言，一般而言，在扩容时每个分区都需要扩容，通过成倍增加节点，然后通过调整映射关系，重新分布一半的数据到新分区。另一个缺点是，如果哈希函数选择不合理，则很容易出现数据倾斜，导致某个分区数据量很大。</p>
+<h3 id="_5">范围分区</h3>
+<p>按数据范围分区是另一个常见的分布方式，通过按照数据的key、或者用户指定的一个或者多个字段计算所在的分区范围，从而确定数据所在的分区。</p>
+<p>例如，一个简单的例子：key 小于等于 r 的分布到分区0，key 小于等于 z 的数据分布到分区1，三条记录<code class="codehilite">(a, value1), (r, value2), (x, value3)</code>则分别分布到了分区0，分区0，分区1中。</p>
+<p><img alt="partition_hash" src="../res/partition_range.svg" /></p>
+<p>对于手动可以指定分区范围的系统，则在创建数据模式时指定那些字段作为分区字段，分区范围是什么。有些系统则是数据库系统自动进行范围分区。</p>
+<p>当然分区也会出现上面哈希分区出现的数据倾斜问题，为了保证数据负载均衡，有些系统则采用了动态分区调整或者分裂，使得每个分区的数据量尽可能相同。</p>
+<p>与哈希分布不一样的是，范围分区需要记录所有的数据分布情况，可能会有大量元数据。范围分区还有一个问题是，对于特定的数据处理请求可能会造成热点访问，例如我们按时间进行范围分区，每天的数据保存在一个分区上，则对某一天的数据查询处理，只能在这一个分区上进行，无法利用多分区的并行处理能力，这时就要求应用开发人员定义分片特征时，仔细选择特征字段进行范围分区。</p>
+<h3 id="_6">其它策略</h3>
+<p>除了上面两种较常见的数据分区策略之外，还有一些其它的一些分区策略：</p>
+<ul>
+<li>复制：无分区，在各个分区节点上都保存相同的表，对于数据量较小需要频繁访问的数据，可以采用复制表。这里的复制与节点保证高可用的主备复制不同。</li>
+<li>轮询：新增数据循环插入到不同的分区，每个分区数据均匀，但是对于数据请求路由，并不能根据请求的条件获取到所在的分区，查询或者更新时需要将请求发送给所有分区节点。</li>
+<li>列表：指定数据分布方式，对于某个值指定所在的分区，例如，<code class="codehilite">(1, 2, 4) in P0</code>，<code class="codehilite">(3, 5) in P1</code>。</li>
+<li>一致性哈希：通过一致性哈希函数计算数据的哈希值，一些系统中也在使用这种分区方式。</li>
+<li>动态分区：单独的定位器服务跟踪节点之间的分区，动态分区对数据分布不均匀的数据更适用。</li>
+</ul>
+<p>除了上面提到的分区策略之外，组合多种分区策略在实践中也有使用。</p>
+<p>上面是最常见的分区策略，但是分区一般都需要应用程序考虑数据的特征，针对数据特征选择合适的分区策略。</p>
+<p>随着业务数据越来越多，或者需要系统支持更大的吞吐量，我们可能需要考虑对分片上的数据重新分布，重新分布数据时还需要能正常处理业务，对大量数据进行重新分布需要非常大的代价。对于当前的新型 NewSQL 数据库比如 TiDB、Cockroach 数据库，都使用了基于字典序的自动范围分区策略，每个分区保存很少的数据量（64MB），分区根据数据量和负载进行动态平衡、分裂、合并，动态分区对可以较容易地支持数据重分布。</p>
+<h3 id="_7">分区的问题</h3>
+<p>前面已经大致大致给出了分区的一些问题，分区策略确定后，根据分区特征计算出的分区数据量必须能够在单个节点上保存，单个分片是存储单位，不能跨越多个分区，这是一个很强的假设，并且在后续很难被改变。</p>
+<p>范围分区很容易出现热点访问的问题，离散的哈希分布可能会解决这个问题，但是对哈希分布对数据重分布处理起来很困难。</p>
+<p>动态分区对不平衡数据更友好，但突发的负载量可能会降低其有效性。在动态分区的情况下，可能需要大量的元数据进行分区的管理，这也是一个很大的挑战。</p>
+<p>对于选择通过多个分区做扩展的分布式数据库而言，有几个通用的问题需要解决，首先就是跨分区的一致性保证，大部分常用系统是通过 2PC 来解决分布式事务一致性问题，但是 2PC 在一些故障场景下，可能需要人工干涉才能解决，有些数据库甚至不提供一致性保证。其次就是跨分区的连接、聚合等操作等，有些数据库则提供了对部分算子的优化，其它算子则通过较低性能的解决方案用于解决多分区的连接，在这种情况下，需要应用侧权衡是否适用于当前业务。</p>
+<p>还有一个值得关注的方面是，用于分析的大规模并行处理（MPP）关系型数据库，其主要场景是用于支持商业决策的数据分析类数据仓库，MPP所支持的查询类型比其它交易型数据库要复杂很多，查询包含多个连接，过滤，分组和聚合操作，查询优化器将查询分解成许多执行阶段和分区，这样可以在多个分区上并行执行。</p>
+<h2 id="_8">数据路由</h2>
+<p>上面我们介绍了将大数据集拆分到不同分区的策略，但是如何将用户的数据操作请求发送到对应分区呢？随着数据的重新分布，分区对应的节点也会随之发生变化。一般情况下，分区的路由信息需要由某个组件进行维护，根据不同维护路由信息组件不同，我们可以将常见的路由方式分成如下四种：</p>
+<ol>
+<li>协调组件维护路由信息，如果有多个协调组件，每个组件都需要保存相同的分区信息，保证客户端连接到任意协调组件时都可以正确进行请求的路由。对于 SQL 分区数据库，可能需要在执行 DDL 操作时，需要将DDL 操作信息发送到其它所有的协调节点，客户端连接到其它 CN 时也可以正确对数据进行路由。</li>
+<li>元数据服务器保存路由信息，每次客户端从元数据服务器获取分区信息，或者订阅元数据信息，只有路由信息发生变化，则通知协调节点。</li>
+<li>客户端直接访问分区数据，客户端保存了分区信息，客户端直接进行路由计算。</li>
+<li>分区节点直接提供路由支持，允许客户端连接任何分区。如果该节点恰巧拥有请求的分区，则它可以直接处理该请求；否则，它将请求转发到适当的节点，接收回复并传递给客户端。</li>
+</ol>
+<p><img alt="partition_route" src="../res/partition_route.svg" /></p>
+<h2 id="_9">实例分析</h2>
+<h3 id="pgxc">PGXC</h3>
+<p>在MPPDB中，每个表可以被定义为分区或者复制方式，分区策略仅支持 hash 分区，路由信息全部记录在CN中，多个CN的元数据保持一致。分区相关信息在下面几个系统表中定义：</p>
+<ul>
+<li><code class="codehilite">PGXC_NODE</code> 记录节点信息，也即CN和DN地址地址相关路由信息。</li>
+<li><code class="codehilite">PGXC_CLASS</code> 记录建表时指定的分区策略，所在的 group 等。</li>
+<li><code class="codehilite">PGXC_GROUP</code> 记录节点组信息。</li>
+</ul>
+<p>通过上面的几个系统表，完全描述了分区所在的节点，分区策略，以及路由等信息。</p>
+<h3 id="cockroachdb">CockroachDB</h3>
+<p>CockroachDB 将数据存储在单一键值对的有序映射中。分布策略是自动的范围分区。键空间描述了集群中的所有数据以及其位置，将其分割为我们称之为 “range” 的连续的键空间块，这样每个键总是可以在单个范围内找到。单一键值有序映射有两个基本的元素构成：</p>
+<ul>
+<li>系统数据，其包含了 <strong>元范围（meta ranges）</strong>，描述了数据在集群中的位置。所有 range 的位置保存在键空间开始部分的两级索引中，称之为元范围，一级索引（meta1）定位二级索引，二级索引（meta2）定位数据。每个节点都可以定位 meta1 范围（称之为范围描述符，下面有详细介绍），这个 range 不会分裂。</li>
+<li>用户数据，保存了集群中的 <strong>表数据（table data）</strong>，这些数据保存在元范围后面。这些数据被分成称为范围的连续键空间的 64MB 的 range。这些 range 在集群范围内被随机排列。</li>
+</ul>
+<p>当一个节点接受到请求时，通过比较请求中的键和 meta2 范围中的键，找出请求要被路由到哪个节点。然后这个节点发送这些 KV 操作给对应的 range 所在节点（在二级索引 meta2 范围中保存）。但是，数据可能被移动，在这种情况下，不再有该信息的节点会回复它现在所在的请求节点。在这种情况下，我们继续返回到二级范围，然后更新信息后重试。</p>
+<h2 id="_10">参考资料</h2>
+<ol>
+<li>Designing Data-Intensive Applications</li>
+<li>Postgres-XC Concept, Implementation and Achievements</li>
+<li><a href="https://www.cockroachlabs.com">https://www.cockroachlabs.com</a></li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../translate/F1_query/" title="F1 Query" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                F1 Query
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../boltdb/" title="Bolt 数据库" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Bolt 数据库
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

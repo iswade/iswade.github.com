@@ -1,0 +1,745 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_sql_layer/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>SQL 层 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#sql" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                SQL 层
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="概述" class="md-nav__link">
+    概述
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="与其他层的交互" class="md-nav__link">
+    与其他层的交互
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="组件" class="md-nav__link">
+    组件
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="关系结构" class="md-nav__link">
+    关系结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-api" title="SQL API" class="md-nav__link">
+    SQL API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" title="PostgreSQL 协议" class="md-nav__link">
+    PostgreSQL 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" title="SQL 解析器，优化器，执行器" class="md-nav__link">
+    SQL 解析器，优化器，执行器
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="解析" class="md-nav__link">
+    解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="逻辑计划" class="md-nav__link">
+    逻辑计划
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="物理计划" class="md-nav__link">
+    物理计划
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="查询执行" class="md-nav__link">
+    查询执行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="编码" class="md-nav__link">
+    编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distsql" title="DistSQL" class="md-nav__link">
+    DistSQL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="与其他层的技术交互" class="md-nav__link">
+    与其他层的技术交互
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_2" title="SQL 层和事务层" class="md-nav__link">
+    SQL 层和事务层
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="sql">SQL 层</h1>
+<p>SQL 层暴露了 SQL API 接口给开发，将 SQL 语句转换为 KV 操作。</p>
+<h2 id="_1">概述</h2>
+<p>一旦部署了CockroachDB，开发人员只需要一个连接到集群的连接字符串和SQL语句即可开始工作。</p>
+<p>因为 CockroachDB 的节点的行为都是对称的，开发人员可以将请求发送给任何一个节点（这意味着 CockroachDB 可以与 LB 很好的配合工作）。不管哪个节点收到请求，都扮演了一个“网关节点”的角色， 因为有其它层处理请求。</p>
+<p>当开发者发送请求给集群时，以 SQL 的形式送达，但是数据最终从存储层被写入和读取都是 KV 对。为了处理这种场景，SQL 层将 SQL 语句转换为一个 KV 操作的计划，然后将其传递给事务层。</p>
+<h3 id="_2">与其他层的交互</h3>
+<p>在 CockroachDB 中，SQL 层与其他层的关系是：</p>
+<ul>
+<li>将请求发送给事务层</li>
+</ul>
+<h2 id="_3">组件</h2>
+<h3 id="_4">关系结构</h3>
+<p>开发人员以关系结构（即行和列）存储在CockroachDB中的数据。行和列的组合被组织到表中。表的集合被组织到数据库中。您的群集可以包含许多数据库。</p>
+<p>由于这种结构，CockroachDB提供了典型的关系特征，如约束（例如，外键）。这使应用程序开发人员可以相信数据库将确保应用程序数据的一致结构化;数据验证不需要单独构建到应用程序逻辑中。</p>
+<h3 id="sql-api">SQL API</h3>
+<p>CockroachDB实现了ANSI SQL标准的很大一部分来显示其关系结构。您可以在此处查看 <a href="https://www.cockroachlabs.com/docs/stable/sql-feature-support.html">CockroachDB支持的所有SQL功能</a>。</p>
+<p>重要的是，通过SQL API，我们还允许开发人员使用ACID语义事务，就像通过任何SQL数据库（BEGIN，END，ISOLATION LEVELS等）一样。</p>
+<h3 id="postgresql">PostgreSQL 协议</h3>
+<p>SQL查询通过 PostgreSQL 协议到达您的集群。 这使得通过支持大多数与PostgreSQL兼容的驱动程序以及许多PostgreSQL ORM（例如GORM（Go）和Hibernate（Java）），可以简化将应用程序连接到集群。</p>
+<h3 id="sql_1">SQL 解析器，优化器，执行器</h3>
+<p>在节点最终从客户端收到SQL请求后，CockroachDB会解析该语句，创建查询计划，然后执行该计划。</p>
+<h4 id="_5">解析</h4>
+<p>接收的查询将根据我们的yacc文件（描述我们支持的语法）进行解析，并将每个查询的字符串版本转换为抽象语法树（AST）。</p>
+<h4 id="_6">逻辑计划</h4>
+<p>AST随后分三个阶段转换为查询计划：</p>
+<ol>
+<li>AST被转换为高级逻辑查询计划。 在此转换期间，CockroachDB还执行语义分析，包括检查查询是否有效，解析名称，消除不需要的中间计算以及最终确定用于中间结果的数据类型。</li>
+<li>简化逻辑计划，使用始终有效的转换进行优化。</li>
+<li>使用搜索算法优化逻辑计划，该算法评估执行查询的许多可能方式并选择成本最低的执行计划。</li>
+</ol>
+<p>优化阶段的结果是优化的逻辑计划。这可以通过EXPLAIN观察到。</p>
+<h4 id="_7">物理计划</h4>
+<p>物理规划阶段基于范围局部性信息决定哪些节点将参与查询的执行。 这是CockroachDB决定分发查询以执行接近数据存储位置的一些计算的地方。</p>
+<p>The result of physical planning is a physical plan and can be observed with <a href="https://www.cockroachlabs.com/docs/stable/explain.html"><code class="codehilite">EXPLAIN(DISTSQL)</code></a>.</p>
+<h4 id="_8">查询执行</h4>
+<p>物理计划的组件被发送到一个或多个节点以供执行。在每个节点上，CockroachDB生成一个逻辑处理器来计算查询的一部分。节点内部或跨节点的逻辑处理器通过逻辑数据流相互通信。查询的组合结果将发送回收到查询的第一个节点，以便进一步发送到SQL客户端。</p>
+<p>每个处理器使用编码形式作为查询操纵的标量值。这是一种二进制形式，与SQL中使用的形式不同。因此，必须对SQL查询中列出的值进行编码，并且必须在将逻辑处理器发送回SQL客户端之前对逻辑处理器之间通信并从磁盘读取的数据进行解码。</p>
+<h3 id="_9">编码</h3>
+<p>尽管SQL查询是用可解析的字符串编写的，但CockroachDB的较低层主要以字节为单位进行处理。 这意味着在SQL层，在查询执行中，CockroachDB必须将行数据从其SQL表示形式转换为字符串，并将从较低层返回的字节转换为可以传递回客户端的SQL数据。</p>
+<p>对于索引列而言，此字节编码保留与其表示的数据类型相同的排序顺序也很重要。 这是因为CockroachDB最终将数据存储在已排序的键值映射中; 以与其表示的数据相同的顺序存储字节使我们能够有效地扫描KV数据。</p>
+<p>但是，对于非索引列（例如，非PRIMARY KEY列），CockroachDB使用编码（称为“值编码”），它消耗较少的空间但不保留排序。</p>
+<p>您可以在<a href="https://github.com/cockroachdb/cockroach/blob/master/docs/tech-notes/encoding.md">编码技术说明</a>中找到更详尽的详细信息。</p>
+<h3 id="distsql">DistSQL</h3>
+<p>由于CockroachDB是一个分布式数据库，我们为一些查询开发了一个分布式SQL（DistSQL）优化工具，可以大大加快涉及多个范围的查询。 虽然DistSQL的架构值得拥有自己的文档，但这个粗略的解释可以提供一些有关它如何工作的见解。</p>
+<p>在非分布式查询中，协调节点接收与其查询匹配的所有行，然后对整个数据集执行任何计算。</p>
+<p>但是，对于与DistSQL兼容的查询，每个节点对其包含的行进行计算，然后将结果（而不是整行）发送到协调节点。 然后，协调节点聚合来自每个节点的结果，最后向客户端返回单个响应。</p>
+<p>这大大减少了带到协调节点的数据量，并利用了久经考验的并行计算概念，最终减少了复杂查询完成所需的时间。 此外，它处理已经存储它的节点上的数据，这使得CockroachDB可以处理大于单个节点存储的行集。</p>
+<p>要以分布式方式运行SQL语句，我们引入了几个概念：</p>
+<ul>
+<li>逻辑计划：与上述AST / planNode树类似，它表示通过计算阶段的抽象（非分布式）数据流。</li>
+<li>物理计划：物理计划在概念上是逻辑计划节点到运行 CockroachDB 的物理机器的映射。 逻辑计划节点将根据群集拓扑进行复制和专用。 与上面的planNodes一样，物理计划的这些组件也在集群上进行调度和运行。</li>
+</ul>
+<p>您可以在 <a href="https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20160421_distributed_sql.md">DistSQL RFC</a> 中找到更多详细信息。</p>
+<h2 id="_10">与其他层的技术交互</h2>
+<h3 id="sql_2">SQL 层和事务层</h3>
+<p>来自已执行的planNode的KV操作被发送到事务层。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

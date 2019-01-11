@@ -1,0 +1,983 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/go_interface/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>如何使用 Go 接口 - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#go" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                如何使用 Go 接口
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        如何使用 Go 接口
+      </label>
+    
+    <a href="./" title="如何使用 Go 接口" class="md-nav__link md-nav__link--active">
+      如何使用 Go 接口
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="接口介绍" class="md-nav__link">
+    接口介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" title="interface{} 类型" class="md-nav__link">
+    interface{} 类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="指针和接口" class="md-nav__link">
+    指针和接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="真实的示例" class="md-nav__link">
+    真实的示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="实际的接口" class="md-nav__link">
+    实际的接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="结束语" class="md-nav__link">
+    结束语
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="接口介绍" class="md-nav__link">
+    接口介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" title="interface{} 类型" class="md-nav__link">
+    interface{} 类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="指针和接口" class="md-nav__link">
+    指针和接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="真实的示例" class="md-nav__link">
+    真实的示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="实际的接口" class="md-nav__link">
+    实际的接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="结束语" class="md-nav__link">
+    结束语
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="go">如何使用 Go 接口？</h1>
+<p>在开始 Go 语言编程之前，我所有的工作基本都是用 Python 完成的。作为一个 Python 程序员，我发现在 Go 语言中如何使用接口是非常困难的。基础部分非常简单，我也知道如何使用标准库中的接口，但是在设计自己的接口之前，我还是花费了一些时间来做练习的。在这篇文章中，我会讨论一下 Go 的类型系统，以解释如何有效地使用接口。</p>
+<h2 id="_1">接口介绍</h2>
+<p>什么是接口呢？接口是由两部分组成：一个方法集合，以及一个类型。首先我们将关注点集中到方法集合上。</p>
+<p>通常情况下，我们都会介绍一些例子。让我们写一些程序，这些程序定义了 <code class="codehilite">Animial</code> 数据类型，这也是现实生活中经常发生的事情，<code class="codehilite">Animal</code> 类型是一个接口，定义 <code class="codehilite">Animal</code> 类型为任何可以说话的东西。这是 Go 语言类型系统的核心：我们不是以可以容纳的数据类型的形式定义我们的抽象，而是根据我们的类型可以执行的动作类设计我们的抽象。</p>
+<p>我们用定义我们的 <code class="codehilite">Animal</code> 接口作为开始：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Animal</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Speak</span><span class="p">()</span> <span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>非常简单：我们定义 <code class="codehilite">Animal</code> 可以是任何有一个名为 <code class="codehilite">Speak</code> 方法的类型。<code class="codehilite">Speak</code> 方法没有入参，返回值是一个字符串。任何定义了这个方法的类型都满足 <code class="codehilite">Animal</code> 接口。在 Go 语言中没有 <code class="codehilite">implements</code> 关键字：一个类型是否满足一个接口是自动确定的。让我们创建一些类型，这些类型都满足这个接口：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Dog</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">d</span> <span class="nx">Dog</span><span class="p">)</span> <span class="nx">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Woof~~&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Cat</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">Cat</span><span class="p">)</span> <span class="nx">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Meow~~&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Llama</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">l</span> <span class="nx">Llama</span><span class="p">)</span> <span class="nx">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;~~~~~~&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">JavaProgrammer</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">JavaProgrammer</span><span class="p">)</span> <span class="nx">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Design patterns~~&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>现在我们定义了5个不同的动物类型：一条狗、一个猫、一个骆驼以及一个 Java 程序员。在 <code class="codehilite">main()</code> 函数中，可以创建动物类型的切片，然后将每个类型中的一个放到切片中，我们来看看每个动物会说什么。让我们现在开始：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">animals</span> <span class="o">:=</span> <span class="p">[]</span><span class="nx">Animal</span><span class="p">{</span><span class="nx">Dow</span><span class="p">{},</span> <span class="nx">Cat</span><span class="p">{},</span> <span class="nx">Llama</span><span class="p">{},</span> <span class="nx">JavaProgrammer</span><span class="p">{}}</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">animal</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">animals</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">animal</span><span class="p">.</span><span class="nx">Speak</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>可以在这个链接中查看示例：<a href="https://play.golang.org/p/fZIzZHEYsj8">https://play.golang.org/p/fZIzZHEYsj8</a></p>
+<p>非常好，你现在知道如何使用接口了，我不再需要讨论了，确实如此？实际并非如此。让我们看一些对于新手 Go 程序员并不是那么明显的内容。</p>
+<h2 id="interface"><code class="codehilite">interface{}</code> 类型</h2>
+<p><code class="codehilite">interface{}</code> 类型（空接口）是混乱的根源。<code class="codehilite">interface{}</code> 类型是一个没有任何方法的接口。由于没有 <code class="codehilite">implements</code> 关键字，所有类型至少实现了零个方法，并且自动满足一个接口，所有类型都满足空接口。这意味着，如果你写了一个以 <code class="codehilite">interface{}</code> 做为入参类型，你可以给该函数任何值。所以，这个函数：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">DoSomething</span><span class="p">(</span><span class="nx">v</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>可以接受任何参数。</p>
+<p>这里会令人困惑：在 <code class="codehilite">DoSomething</code> 函数的内部，v 的类型是什么？新手认为“v 是任何类型”，但这是错误的。v 不是任何类型：它是 <code class="codehilite">interface{}</code> 类型。什么？当给 <code class="codehilite">DoSomething</code> 函数传入一个值，如有必要，Go 运行时会进行类型转换，将一个值转换为 <code class="codehilite">interface{}</code> 值。所有的值在运行时被转换为一个类型，v 的一个静态类型是 <code class="codehilite">interface{}</code>。</p>
+<p>这会让你有点怀疑：如果发生了转换，实际被传递给这个函数的是什么（或者说，存储在 <code class="codehilite">[]Animal</code> 切片中的实际内容是什么）？一个接口值由两个字段构成：一个字段用来指向值的底层类型的方法表，另一个字段指向保存值的实际内容。我不想无休止地地谈论这件事了。如果你理解一个接口的值是两个字的大小，并且它包含一个指向底层数据的指针，这就足以避免常见的陷阱。如果你对接口的实现感兴趣，<a href="https://research.swtch.com/interfaces">Russ Cox 的接口描述</a>很有帮助。</p>
+<p>前面的例子中，当构造一个 <code class="codehilite">Animal</code> 值得切片的时候，不需要构造 <code class="codehilite">Animal(Dog{})</code> ，将一个 <code class="codehilite">Dog</code> 类型的值存到 <code class="codehilite">Animal</code> 值的切片中，转换对我们来说是自动处理的。在 <code class="codehilite">animals</code> 切片的内部，每个元素都是 <code class="codehilite">Animal</code> 类型，但是不同的值有不同的底层类型。</p>
+<p>所以…… 为什么这很重要呢？理解接口在内存中如何表示会使得一些令人困惑的事情变得非常明显。例如这个问题“我可以将 <code class="codehilite">[]T</code> 转换为 <code class="codehilite">[]interface</code> 吗？”，就很容易回答了，如果你已经理解了接口如何在内存中表示。 有一个例子可以代表对常见的误解 <code class="codehilite">interface{}</code> 类型：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">PrintAll</span><span class="p">(</span><span class="nx">vals</span> <span class="p">[]</span><span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">val</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vals</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">names</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;standley&quot;</span><span class="p">,</span> <span class="s">&quot;david&quot;</span><span class="p">,</span> <span class="s">&quot;oscar&quot;</span><span class="p">}</span>
+    <span class="nx">PrintAll</span><span class="p">(</span><span class="nx">names</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>在这里运行：<a href="https://play.golang.org/p/YRCLmkxLZ-v">https://play.golang.org/p/YRCLmkxLZ-v</a></p>
+<p>通过运行，你可以看到会有如下的报错信息：<code class="codehilite">cannot use names (type []string) as type []interface {} in argument to PrintAll</code>。如果你想实际将代码运行其阿里，可以转换 <code class="codehilite">[]string</code> 为 <code class="codehilite">[]interface{}</code>:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">PrintAll</span><span class="p">(</span><span class="nx">vals</span> <span class="p">[]</span><span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">val</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vals</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">names</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;stanley&quot;</span><span class="p">,</span> <span class="s">&quot;david&quot;</span><span class="p">,</span> <span class="s">&quot;oscar&quot;</span><span class="p">}</span>
+    <span class="nx">vals</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kd">interface</span><span class="p">{},</span> <span class="nb">len</span><span class="p">(</span><span class="nx">names</span><span class="p">))</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">names</span> <span class="p">{</span>
+        <span class="nx">vals</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">v</span>
+    <span class="p">}</span>
+    <span class="nx">PrintAll</span><span class="p">(</span><span class="nx">vals</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>在这里运行：<a href="https://play.golang.org/p/GwJQV4aVjJ1">https://play.golang.org/p/GwJQV4aVjJ1</a></p>
+<p>这些代码很丑，但这是实际情况。不是一切事情都是完美的。（实际情况是，这不经常出现，因为 <code class="codehilite">[]interface{}</code> 比你最初期望的用处少）</p>
+<h2 id="_2">指针和接口</h2>
+<p>接口的另一个微妙之处在于接口定义并不规定实现者是否应该使用指针接受者或者值接受者来实现接口。当你给一个接口值的时候，这里并没有保证底层类型是或者不是一个指针。在前面的例子中，我们在值接受者上定义了所有的方法。我们稍作更改并且将猫的 <code class="codehilite">Speak()</code> 方法变为指针接受者：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cat</span><span class="p">)</span> <span class="nx">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Meow~&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>如果改变了一个签名，然后尝试运行同样的程序(<a href="https://play.golang.org/p/TvR758rfre">https://play.golang.org/p/TvR758rfre</a>)，你会看到下面的报错信息：</p>
+<div class="codehilite"><pre><span></span>prog.go:40: cannot use Cat literal (type Cat) as type Animal in array element:
+    Cat does not implement Animal (Speak method requires pointer receiver)
+</pre></div>
+
+<p>说实话，这条报错信息乍一看有点令人困惑。不是说接口 <code class="codehilite">Animal</code> 满足你定义的指针接受者的方法，而是你尝试将 <code class="codehilite">Cat</code> 结构转换为一个 <code class="codehilite">Animal</code> 接口值，但是只有 <code class="codehilite">*Cat</code> 满足这个接口。如果你想修改这个 bug，可以传递一个 <code class="codehilite">*Cat</code> 指针给 <code class="codehilite">Animal</code> 切片，而不是 <code class="codehilite">Cat</code> 值，通过使用 <code class="codehilite">new(Cat)</code>（也可以使用 <code class="codehilite">&amp;Cat</code>，我更喜欢用 <code class="codehilite">new(Cat)</code>）：</p>
+<div class="codehilite"><pre><span></span><span class="nx">animals</span> <span class="o">:=</span> <span class="p">[]</span><span class="nx">Animal</span><span class="p">{</span><span class="nx">Dog</span><span class="p">{},</span> <span class="nb">new</span><span class="p">(</span><span class="nx">Cat</span><span class="p">),</span> <span class="nx">Llama</span><span class="p">{},</span> <span class="nx">JavaProgrammer</span><span class="p">{}}</span>
+</pre></div>
+
+<p>现在我们的程序又正常工作了：<a href="https://play.golang.org/p/x5VwyExxBM">https://play.golang.org/p/x5VwyExxBM</a></p>
+<p>我们朝相反的方向看一下：使用 <code class="codehilite">*Dog</code> 指针替代 <code class="codehilite">Dog</code> 值，但是我们不变更 <code class="codehilite">Dog</code> 类型的 <code class="codehilite">Speak</code> 方法：</p>
+<div class="codehilite"><pre><span></span><span class="nx">animals</span> <span class="o">:=</span> <span class="p">[]</span><span class="nx">Animal</span><span class="p">{</span><span class="nb">new</span><span class="p">(</span><span class="nx">Dog</span><span class="p">),</span> <span class="nb">new</span><span class="p">(</span><span class="nx">Cat</span><span class="p">),</span> <span class="nx">Llama</span><span class="p">{},</span> <span class="nx">JavaProgrammer</span><span class="p">{}}</span>
+</pre></div>
+
+<p>这也是正常工作的（<a href="https://play.golang.org/p/UZ618qbPkj">https://play.golang.org/p/UZ618qbPkj</a>)，但是需要注意一些细微的差异：我们没有必要变更 Speak 方法的接受者的类型。能正常工作的原因是指针类型可以访问关联值类型的方法，但反之却不行。一个 <code class="codehilite">*Dog</code> 值可以使用 Speak 方法，但正如我们前面看到的，不能使用定义在 <code class="codehilite">*Cat</code> 上的 <code class="codehilite">Speak</code> 方法。</p>
+<p>这听起来有点神秘，但是当你记下如下内容时就有意义了：Go 中一切都是按照值来传递的。每次调用方法的时候，都会拷贝传递的数据。在有一个值接受者的场景下，当调用方法的时候值被拷贝。当你理解如下方法签名的时候，就会更加明白了：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="nx">T</span><span class="p">)</span><span class="nx">MyMethod</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>是一个类型 <code class="codehilite">func(T, string)</code> 的函数；方法接受者被传递给函数就像另一个参数一样。</p>
+<p>在一个值类型上定义的方法，对于接受者的任何变更都是在方法的内部（例如：<code class="codehilite">func (d Dob) Speak() { … }</code>），所以不会被任何调用者看到，因为调用者在处理完全分离的 <code class="codehilite">Dog</code> 值。由于一切都是按值传递，所以一个 <code class="codehilite">*Cat</code> 方法不能被 <code class="codehilite">Cat</code> 值类型使用；任何 <code class="codehilite">Cat</code> 值可以有任意个数的 <code class="codehilite">*Cat</code> 指针指向它。如果我们尝试通过 <code class="codehilite">Cat</code> 值来调用 <code class="codehilite">*Cat</code> 方法，我们没有一个 <code class="codehilite">*Cat</code> 指针开始。反过来，如果我们有一个 <code class="codehilite">Dog</code> 类型的方法，我们有一个 <code class="codehilite">*Dog</code> 指针，当调用这个方法的时候，我们会很准确地知道哪个 <code class="codehilite">Dog</code> 值来使用。因为 <code class="codehilite">*Dog</code> 指针只会指向一个 <code class="codehilite">Dog</code> 值。如有必要，Go运行时解引用指针为其关联的 <code class="codehilite">Dog</code> 值。这就意味着，给定一个 <code class="codehilite">*Dog</code> 值 <code class="codehilite">d</code> 和一个 <code class="codehilite">Dog</code> 类型上的 <code class="codehilite">Speak</code> 方法，我们可以通过 <code class="codehilite">d.Speak()</code> 这种方式调用方法，不需要跟其它语言一样使用 <code class="codehilite">d-&gt;Speak()</code> 进行调用。</p>
+<h2 id="_3">真实的示例</h2>
+<p>从 Twitter API 获取正确的时间戳。Twitter API 使用一个如下格式的字符串来表示时间戳：</p>
+<div class="codehilite"><pre><span></span>&quot;Thu May 31 00:00:01 +0000 2012&quot;
+</pre></div>
+
+<p>当然，在 JSON 文档中，时间戳可以用其它的一些方法表示，因为时间戳不是 JSON 规范的一部分。为了保持简洁，我们不会放置一条 tweet 的所有 JSON 表示，让我们仅看一下 <code class="codehilite">create_at</code> 字段如何通过 <code class="codehilite">encoding/json</code> 处理：</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;encoding/json&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;reflect&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// start with a string representation of our JSON data</span>
+<span class="kd">var</span> <span class="nx">input</span> <span class="p">=</span> <span class="s">`</span>
+<span class="s">{</span>
+<span class="s">    &quot;created_at&quot;: &quot;Thu May 31 00:00:01 +0000 2012&quot;</span>
+<span class="s">}</span>
+<span class="s">`</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// our taarget will be of type map[string]interface{}, which is a </span>
+    <span class="c1">// pretty generic type that will give us a hashtable whose keys</span>
+    <span class="c1">// are strings, and whose values are of type interface{}</span>
+    <span class="kd">var</span> <span class="nx">val</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">input</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">val</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">val</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>在这里运行：<a href="https://play.golang.org/p/VJAyqO3hTF">https://play.golang.org/p/VJAyqO3hTF</a></p>
+<p>运行这个应用程序，我们会看到如下的输出：</p>
+<div class="codehilite"><pre><span></span>map[created_at:Thu May 31 00:00:01 +0000 2012]
+created_at string
+</pre></div>
+
+<p>可以看到，我们正确接受到了 <code class="codehilite">key</code>，但是获得了并不是很有用的字符串格式。如果我们想比较哪个时间戳更早，或者我们想知道给定一个值之后，跟当前时间比较过去了多久，使用纯字符串不会有任何帮助。</p>
+<p>我们将尝试将字符串转换为一个时间类型：<code class="codehilite">time.Time</code> 值，这是标准库中表示时间的方式 ，我们会获得 <code class="codehilite">error</code> 类型，做如下的变更：</p>
+<div class="codehilite"><pre><span></span>   <span class="kd">var</span> <span class="nx">val</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">input</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">val</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+<p>运行后，我们会获得如下的错误：</p>
+<div class="codehilite"><pre><span></span>parsing time &quot;&quot;Thu May 31 00:00:01 +0000 2012&quot;&quot; as &quot;&quot;2006-01-02T15:04:05Z07:00&quot;&quot;:
+    cannot parse &quot;Thu May 31 00:00:01 +0000 2012&quot;&quot; as &quot;2006&quot;
+</pre></div>
+
+<p>上面有点令人困惑的错误信息是由于 Go 中处理 <code class="codehilite">time.Time</code> 类型时间转换的的方式。简而言之，我们给出的字符串的表示方式与标准时间格式不一致（因为 Twitter 的 API 最初是由 Ruby 语言编写的，Ruby 中默认的格式与 Go 中默认的格式不一致）。为了正确解码，我们需要定义自己的类型。<code class="codehilite">encoding/json</code> 包会查看传递给 <code class="codehilite">json.Unmarshal</code> 的值是否满足 <code class="codehilite">json.Unmarshaler</code> 接口，看起来像这样：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Unmarshaler</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">UnmarshalJSON</span><span class="p">([]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>引用自文档：<a href="https://golang.org/pkg/encoding/json/#Unmarshaler">https://golang.org/pkg/encoding/json/#Unmarshaler</a></p>
+<p>所以我们需要的是一个带有 <code class="codehilite">UnmarshalJSON([]byte)  error</code> 方法的 <code class="codehilite">time.Time</code> 值：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Timestamp</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">Timestamp</span><span class="p">)</span> <span class="nx">UnmarshalJSON</span><span class="p">(</span><span class="nx">b</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="c1">// ....</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>通过实现这个方法，满足了 <code class="codehilite">json.Unmarshaler</code> 接口，当看到 <code class="codehilite">Timestamp</code> 值时，<code class="codehilite">json.Unmarshal</code> 会调用我们实现的代码。这种情况下，使用一个指针方法，因为我们想要调用者看到变更的内容。为了设置一个指针指向的值，我们可以通过手动使用 * 操作符进行解引用。在 <code class="codehilite">UnmarshalJSON</code> 方法内部，<code class="codehilite">t</code> 表示一个指向 <code class="codehilite">Timestamp</code> 类型的指。通过使用 <code class="codehilite">*t</code>，我们可以解引用指针 <code class="codehilite">t</code>，可以访问 <code class="codehilite">t</code> 指向的值。记住：在 Go 中一切都是通过值传递。在 <code class="codehilite">UnmarshalJSON</code> 方法内部，指针 t 跟调用上下文中的指针是不一样的：是一个拷贝。如果我们给 t 赋值为另一个值，你仅仅是给一个函数内部的变量赋值，变更不会被调用者看到。但是，在方法内部的指针跟调用上下文中的指针指向同一块数据，通过解引用指针，我们可以将变更传递给调用者。</p>
+<p>我们可以使用 <code class="codehilite">time.Parse</code> 方法，带有签名信息 <code class="codehilite">func(layout, value string) (Time, error)</code>。有两个字符串入参：第一个字符串是一个布局字符串，描述了我们如何格式化时间戳，第二个是希望解析的值。返回一个 <code class="codehilite">time.Time</code> 值，以及一个错误信息（在出现解析失败的时候使用）。你可以在<a href="https://golang.org/pkg/time/">时间包文档</a>中阅读关于布局字符串语义的更多信息，但在本例中，我们不需要手动给出布局字符串，因为这些布局信息已经在标准包中存在了，例如值 <code class="codehilite">time.RubyDate</code>。所以实际上，我们可以解析字符串 "Thu May 31 00:00:01 +0000 2012" 为一个 time.Time 值，通过调用 <code class="codehilite">time.Parse(time.RubyDate, &quot;Thu May 31 00:00:01 +0000 2012&quot;)</code>。我们接受到的值是一个 <code class="codehilite">time.Time</code> 类型的。我们可以转换 <code class="codehilite">time.Time</code> 值为 <code class="codehilite">Timestamp</code> 值通过调用 <code class="codehilite">Timestamp(v)</code>，这里 <code class="codehilite">v</code> 是我们的 <code class="codehilite">time.Time</code> 值。最终，我们可以使用的  <code class="codehilite">UnmarshalJSON</code> 函数如下所示：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">Timestamp</span><span class="p">)</span> <span class="nx">UnmarshalJSON</span><span class="p">(</span><span class="nx">b</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">v</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RubyDate</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="o">*</span><span class="nx">t</span> <span class="p">=</span> <span class="nx">Timestamp</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>在这个例子中，我们将入参的 <code class="codehilite">byte</code> 切片处理成子切片，因为输入的子切片是 JSON 元素的原始数据，包含的引号，在传入 <code class="codehilite">time.Parse</code> 之前，我们将引号删除掉。</p>
+<p>完整的时间戳类型的例子可以在这里查看（也可以运行）：<a href="http://play.golang.org/p/QpiFsJi-nZ">http://play.golang.org/p/QpiFsJi-nZ</a></p>
+<h2 id="_4">实际的接口</h2>
+<p>从一个 http 请求中获取一个对象。让我们来看看如何设计一个接口来解决一个常见的 web 开发问题：我们希望将 HTTP 请求的正文解析为一些对象数据。首先，这不是一个非常明确的定义接口。我们或许可以这样说：我们要这样从 HTTP 请求获取资源：</p>
+<div class="codehilite"><pre><span></span><span class="nx">GetEntity</span><span class="p">(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span>
+</pre></div>
+
+<p>因为一个 <code class="codehilite">interface{}</code> 可以用来处理任何底层类型，所以我们可以仅仅将我们的请求解析，然后返回我们需要的内容。这被认为是一个非常不好的策略，原因是我们在 <code class="codehilite">GetEntity</code> 函数中粘贴了太多的逻辑，这个函数对于每个新的类型都需要做修改，并且我们需要使用类型断言来处理返回的 interface{} 值。在实践中，一个返回 <code class="codehilite">interface{}</code> 值的函数会令人非常讨厌，作为一个经验法则，您可以记住，接受 <code class="codehilite">interface{}</code> 值作为参数通常比返回接口值更好。（Postel 定律，也适用于接口）</p>
+<p>我们或许会尝试使用如下类型固定的函数：</p>
+<div class="codehilite"><pre><span></span><span class="nx">GetUser</span><span class="p">(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">(</span><span class="nx">User</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+</pre></div>
+
+<p>这也被证明是非常不灵活的，因为每个类型我们都需要不同的函数，但是没有合理的方法来将他们通用化。相反，我们真真需要的是像下面的这样：</p>
+<div class="codehilite"><pre><span></span><span class="kd">type</span> <span class="nx">Entity</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">UnmarshalHTTP</span><span class="p">(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">GetEntity</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">Http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">v</span> <span class="nx">Entity</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">UnmarshalHTTP</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>这里的 <code class="codehilite">GetEntity</code> 函数采用了一个具有 <code class="codehilite">UnmarshalHTTP</code> 方法的接口值。为了利用这一点，我们将在对象上定义一些方法，允许用户描述如何从 HTTP 请求中获得自己的信息：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="p">(</span><span class="nx">u</span> <span class="o">*</span><span class="nx">User</span><span class="p">)</span> <span class="nx">UnmarshalHTTP</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+   <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>在我们的应用代码中，你会定义一个 <code class="codehilite">User</code> 类型的变量，然后将指针传递给 <code class="codehilite">GetEntity</code> 函数：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">u</span> <span class="nx">User</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">GetEntity</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">u</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>这跟你如何解析 JSON 数据非常相似。这种类型使用的方式可以正常安全地工作，因为语句 <code class="codehilite">var u User</code> 会自动将 <code class="codehilite">User</code> 结构体归零。Go 不像其它语言需要什么的初始化分开，不初始化的申明变量会导致访问到无效数据，当申明变量的时候，运行时会自动将对应的内存内容清零，即使我们的 <code class="codehilite">UnmarshalHTTP</code> 方法处理一些字段失败，这些字段也会包含零值而不是垃圾数据。</p>
+<p>如果你是一名 Python 程序员，这对你来说肯定很奇怪，因为 Python 中通常不会这么做。这种形式变得很方便的原因是我们可以定义任意数量的数据类型，每个类型都负责从 http 请求中自行解析。现在由实体定义决定如何表示它们，然后我们可以围绕 Entity 类型来创建类似于通用 HTTP 的处理程序。</p>
+<h2 id="_5">结束语</h2>
+<p>我希望，在阅读这篇文章后，你会在 Go 中使用接口感觉更加顺畅。请记住如下几点：</p>
+<ul>
+<li>通过考虑数据类型之间通用的功能来创建抽象，而不是数据类型之间的通用字段</li>
+<li><code class="codehilite">interface{}</code> 接口不是任何类型：它是一个 <code class="codehilite">interface{}</code> 类型</li>
+<li>接口是两个字的宽度：示意图如(type, value)</li>
+<li>接受 <code class="codehilite">interface{}</code> 值作为入参比返回一个 <code class="codehilite">interface{}</code> 值更好</li>
+<li>一个指针类型可以调用关联值类型的方法，但是反之却不行</li>
+<li>一切都是通过值传递，及时是一个方法的接受者</li>
+<li>一个借口类型不是严格的指针或者非指针，仅仅是一个接口</li>
+<li>如果你需要完全重写一个方法的内部的值，使用 <code class="codehilite">*</code> 操作符来手动解应用一个指针</li>
+</ul>
+<p>我认为已经总结了我个人觉得所有关于接口的令人困惑的场景。编码快乐 :)</p>
+<p>原文链接：<a href="http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go">http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go</a></p>
+<p>作者：Jordan Orelli</p>
+<p>翻译：王世德</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Go 并发编程
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                数据库笔记
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

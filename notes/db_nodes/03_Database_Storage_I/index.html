@@ -1,0 +1,1018 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/db_nodes/03_Database_Storage_I/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
+        <title>数据库存储（I） - iswade</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#i" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                iswade
+              </span>
+              <span class="md-header-nav__topic">
+                数据库存储（I）
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
+      
+        <img src="../../../images/me.jpg" width="48" height="48">
+      
+    </a>
+    iswade
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      编程语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      分布式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        分布式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      其它
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        其它
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="概述" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="基于磁盘的架构" class="md-nav__link">
+    基于磁盘的架构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="存储等级结构" class="md-nav__link">
+    存储等级结构
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="系统设计目标" class="md-nav__link">
+    系统设计目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" title="顺序访问 vs. 随机访问" class="md-nav__link">
+    顺序访问 vs. 随机访问
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#os" title="为什么不使用 OS" class="md-nav__link">
+    为什么不使用 OS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="数据库存储" class="md-nav__link">
+    数据库存储
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="文件存储" class="md-nav__link">
+    文件存储
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="存储管理器" class="md-nav__link">
+    存储管理器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="数据库页面" class="md-nav__link">
+    数据库页面
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="页面存储架构" class="md-nav__link">
+    页面存储架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="数据库堆" class="md-nav__link">
+    数据库堆
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="堆文件：链表" class="md-nav__link">
+    堆文件：链表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" title="堆文件：页目录" class="md-nav__link">
+    堆文件：页目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" title="页面头" class="md-nav__link">
+    页面头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" title="页面布局" class="md-nav__link">
+    页面布局
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" title="元组存储" class="md-nav__link">
+    元组存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" title="带槽页面" class="md-nav__link">
+    带槽页面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" title="日志结构文件组织" class="md-nav__link">
+    日志结构文件组织
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" title="日志结构压缩" class="md-nav__link">
+    日志结构压缩
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" title="元组的布局" class="md-nav__link">
+    元组的布局
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" title="元组的头部" class="md-nav__link">
+    元组的头部
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" title="元组的数据" class="md-nav__link">
+    元组的数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" title="记录的 ID" class="md-nav__link">
+    记录的 ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" title="结论" class="md-nav__link">
+    结论
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="i">数据库存储（I）</h1>
+<h2 id="_1">概述</h2>
+<p>前面我们已经从逻辑层理解了什么是数据库，如何编写查询来读取写入数据。</p>
+<p>下面我们学习如何构建一个软件来管理数据库。</p>
+<p>主要内容包括：</p>
+<ul>
+<li>关系数据库</li>
+<li>存储</li>
+<li>执行</li>
+<li>并发控制</li>
+<li>恢复</li>
+<li>分布式数据库</li>
+<li>杂项</li>
+</ul>
+<p>课程介绍的存储相关主要内容：</p>
+<ul>
+<li>查询计划</li>
+<li>算子执行</li>
+<li>访问方法</li>
+<li>缓存池管理器</li>
+<li>磁盘管理器              <span><span class="MathJax_Preview">\Leftarrow</span><script type="math/tex">\Leftarrow</script></span></li>
+</ul>
+<h2 id="_2">基于磁盘的架构</h2>
+<p>DBMS 假定数据库主存储器的位置在非易失性磁盘上。</p>
+<p>DBMS 的组件管理在易失性存储与非易失性存储之间的移动。</p>
+<h3 id="_3">存储等级结构</h3>
+<table>
+<thead>
+<tr>
+<th>存储</th>
+<th>容量</th>
+<th><a href="https://gist.github.com/hellerbarde/2843375">速度</a></th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU 寄存器</td>
+<td><span><span class="MathJax_Preview">\star</span><script type="math/tex">\star</script></span></td>
+<td>0.5ns</td>
+<td>易失性存储</td>
+</tr>
+<tr>
+<td>CPU Cache</td>
+<td><span><span class="MathJax_Preview">\star\star</span><script type="math/tex">\star\star</script></span></td>
+<td>7ns</td>
+<td>易失性存储</td>
+</tr>
+<tr>
+<td>DRAM</td>
+<td><span><span class="MathJax_Preview">\star\star\star</span><script type="math/tex">\star\star\star</script></span></td>
+<td>100ns</td>
+<td>易失性存储</td>
+</tr>
+<tr>
+<td>SSD</td>
+<td><span><span class="MathJax_Preview">\star\star\star \star</span><script type="math/tex">\star\star\star \star</script></span></td>
+<td>150,000ns</td>
+<td>非易失性存储</td>
+</tr>
+<tr>
+<td>HDD</td>
+<td><span><span class="MathJax_Preview">\star\star\star\star\star</span><script type="math/tex">\star\star\star\star\star</script></span></td>
+<td>10,000,000 ns</td>
+<td>非易失性存储</td>
+</tr>
+<tr>
+<td>网络存储</td>
+<td><span><span class="MathJax_Preview">\star\star\star\star\star\star</span><script type="math/tex">\star\star\star\star\star\star</script></span></td>
+<td>~30,000,000 ns</td>
+<td>非易失性存储</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">系统设计目标</h2>
+<p>允许 DBMS 管理超过可用内存的数据库。</p>
+<p>从磁盘读取和写入代价很高，所以需要仔细管理，避免大的停顿和性能下降。</p>
+<h2 id="vs">顺序访问 vs. 随机访问</h2>
+<p>随机访问 HDD 要比顺序访问慢很多。</p>
+<p>传统的数据库系统被设计为最大化顺序访问。</p>
+<ul>
+<li>算法尝试减少随机页写入数量，这样数据就可以保存在连续的块中。</li>
+<li>同时分配多个页被称之为 extent。</li>
+</ul>
+<h2 id="os">为什么不使用 OS</h2>
+<p>可以使用 mmap 将文件的内容映射到进程的地址空间。</p>
+<p>OS 负责在内存和磁盘之间移动文件的页。</p>
+<p>如果我们允许多个线程访问 mmap 文件以隐藏缺页停顿怎么办？</p>
+<p>这种方式对读取访问很好，但是对于多个写操作非常复杂。</p>
+<p>对于这个问题，有一些解决方案：</p>
+<ul>
+<li>madvise: 告诉 OS 你期望读取确定的页。</li>
+<li>mlock: 告诉 OS 内存范围不能被换出。</li>
+<li>msync: 告诉 OS 将内存范围刷新到磁盘。</li>
+</ul>
+<p>全面使用：monetdb LMDB</p>
+<p>部分使用：mongoDB MEMSQL SQLite influxdb</p>
+<p>DBMS 通常希望完全自己控制，这样可以更好地开展工作。</p>
+<ul>
+<li>以正确的顺序将脏页刷到磁盘。</li>
+<li>专门的预取操作。</li>
+<li>buffer 替换策略。</li>
+<li>线程/进程调度。</li>
+</ul>
+<p>所以，操作系统不是你的朋友。</p>
+<h2 id="_5">数据库存储</h2>
+<p>问题1：DBMS 如何表示磁盘上的文件？</p>
+<p>问题2：DBMS 如何管理内存，怎么在磁盘和内存之间来回移动？</p>
+<h2 id="_6">文件存储</h2>
+<p>DBMS 保存数据库为一个或者多个文件。</p>
+<p>OS 不了解文件的任何信息。</p>
+<ul>
+<li>所有的标准文件系统保护被使用。</li>
+<li>19世纪80年代的早期系统在裸存储上使用定制的文件系统。</li>
+</ul>
+<h2 id="_7">存储管理器</h2>
+<p>存储管理器负责管理数据库的文件。</p>
+<p>将文件以页面集合的方式组织。</p>
+<ul>
+<li>跟踪数据读取/写入到页。</li>
+<li>跟踪可用的空间。</li>
+</ul>
+<h2 id="_8">数据库页面</h2>
+<p>一个页面是一个固定大小的数据块。</p>
+<ul>
+<li>可以包含元组、元数据、索引、日志记录等等。</li>
+<li>大部分系统不会混合页面类型。</li>
+<li>一些系统要求页面是自包含的。</li>
+</ul>
+<p>每一页被赋予一个唯一的标识符。</p>
+<ul>
+<li>DBMS 使用一个间接层来映射页面 id 到物理位置。</li>
+</ul>
+<p>在 DBMS 中，有三种不同的页标记：</p>
+<ul>
+<li>硬件页（通常4KB）</li>
+<li>OS 页（通常4KB）</li>
+<li>数据库页（1~16KB）</li>
+</ul>
+<p>通过硬件页面，我们的意思是设备可以保证“故障安全写入”的级别。</p>
+<ul>
+<li>1KB: SQLite</li>
+<li>4KB: DB2 ORACLE</li>
+<li>8KB: SQL Server; PostgreSQL</li>
+<li>16KB: MySQL</li>
+</ul>
+<h3 id="_9">页面存储架构</h3>
+<p>不同的 DBMS 以不同的方式管理磁盘文件中的页。</p>
+<ul>
+<li>堆文件管理</li>
+<li>顺序/排序文件管理</li>
+<li>哈希文件管理</li>
+</ul>
+<p>在层次结构的这一点上，我们不需要知道页面内部的内容。</p>
+<h3 id="_10">数据库堆</h3>
+<p>堆文件是一个未排序的页面集合，元组以任意的顺序存放</p>
+<ul>
+<li>获取/删除页面</li>
+<li>还要支持在所有页上迭代</li>
+</ul>
+<p>需要元数据保持跟踪什么页存在，哪个页有空余空间。</p>
+<p>两种方式表示堆文件：</p>
+<ul>
+<li>链表</li>
+<li>页目录</li>
+</ul>
+<h3 id="_11">堆文件：链表</h3>
+<p>在文件的开始维护一个头页面保存：</p>
+<ul>
+<li>空闲页面链表的头。</li>
+<li>数据页面链表的头。</li>
+</ul>
+<p>每个页面保持跟踪自己空闲的槽位数量。</p>
+<p><img alt="head_pages" src="../../image/DBMS_04_heap_pages.svg" /></p>
+<h3 id="_12">堆文件：页目录</h3>
+<p>DBMS 维护特殊的页面来跟踪数据页在数据库文件中的位置。</p>
+<p>目录还记录每页的空闲槽位数量。</p>
+<p>DBMS 还要确保目录页与数据页同步。</p>
+<h3 id="_13">页面头</h3>
+<p>每个页包含元数据的头部来描述页面的内容。</p>
+<ul>
+<li>页面大小</li>
+<li>校验和</li>
+<li>DBMS 版本</li>
+<li>事务可见性</li>
+<li>压缩信息</li>
+</ul>
+<p>一些系统要求页面是自包含的（例如：Oracle）。</p>
+<h3 id="_14">页面布局</h3>
+<p>对于任何页面存储架构，我们当前需要了解如何组织在页面内部的内容。</p>
+<ul>
+<li>我们还假设我们仅仅存储元组</li>
+</ul>
+<p>两种方法：</p>
+<ol>
+<li>面向元组的</li>
+<li>日志结构</li>
+</ol>
+<h3 id="_15">元组存储</h3>
+<p>如何在页面中保存元组？</p>
+<p>朴素的想法：保持跟踪在页面中的元组数量，仅仅将新的元组追加到末尾。</p>
+<p>如果我们删除一个元组，会发生什么？</p>
+<p>如果我们有一个可变长度的字段，会发生什么？</p>
+<h3 id="_16">带槽页面</h3>
+<p>大部分常见的布局模式是带槽页面。</p>
+<p>槽位数组将槽位映射到元组的开始位置的偏移。</p>
+<p>头部跟踪：</p>
+<ul>
+<li>已经使用槽位的数量</li>
+<li>最后一个槽位的开始位置的偏移</li>
+</ul>
+<p><img alt="image-20181013074516247" src="../../image/DBMS_05_slotted_page.png" /></p>
+<p>slot array 从前往后增长，tuple 从后往前增长。</p>
+<p>删除一个元组 Tuple #3 后，Tuple #4需要向后移动，覆盖 Tuple #3 的位置。</p>
+<h3 id="_17">日志结构文件组织</h3>
+<p>DBMS 不存储页面的元组，仅存储日志记录。</p>
+<p>构建索引可以直接跳到日志的位置。</p>
+<p><img alt="image-20181014202352080" src="../../image/DBMS_06_log_structured_page.png" /></p>
+<p>读取记录时，DBMS 从后往前扫描日志，并“重新创建”元组以找到所需内容。</p>
+<p><img alt="image-20181014202744072" src="../../image/DBMS_08_log_structured_page_index.png" /></p>
+<p><img alt="image-20181014202946614" src="../../image/DBMS_07_log_structured_page_tuple.png" /></p>
+<p>定期压缩日志。</p>
+<p>使用日志结构的存储系统：HBASE，Cassandra，LevelDB，RocksDB</p>
+<h3 id="_18">日志结构压缩</h3>
+<p>压缩：通过删除不必要的记录将较大的日志文件合并为较小的文件。</p>
+<h2 id="_19">元组的布局</h2>
+<p>一个元组本质上是字节的序列。</p>
+<p>DBMS 负责将这些字节解释为属性类型和值。</p>
+<h3 id="_20">元组的头部</h3>
+<p>每个元组有一个头部作为前缀，包含了元信息。</p>
+<ul>
+<li>可见性信息（并发控制）</li>
+<li>NULL 值的 Bit Map</li>
+</ul>
+<p>不需要保存模式的元信息。</p>
+<h3 id="_21">元组的数据</h3>
+<p>属性通常是按顺序保存，创建表时指定。</p>
+<p>这是出于软件工程的原因。</p>
+<p>在 CMU 的新 DBMS 中，我们会重新自动排序属性。</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">foo</span> <span class="p">(</span>
+    <span class="n">a</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">b</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">c</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">d</span> <span class="n">DOUBLE</span><span class="p">,</span>
+    <span class="n">e</span> <span class="nb">FLOAT</span>
+<span class="p">);</span>
+</pre></div>
+
+<p><img alt="image-20181014204944368" src="../../image/DBMS_09_tuple.png" /></p>
+<h3 id="id">记录的 ID</h3>
+<p>DBMS 需要一种方法来跟踪单个元组。</p>
+<p>每个元组赋予一个唯一的记录 ID。</p>
+<ul>
+<li>大部分通常是：page_id + offset/slot</li>
+<li>可能也包括文件位置信息</li>
+</ul>
+<p>应用程序不能依赖这些 ID。</p>
+<ul>
+<li>PostgreSQL CTID（4B） </li>
+<li>SQLite OWID（8B）</li>
+<li>ORACLE ROWID（10B）</li>
+</ul>
+<h2 id="_22">结论</h2>
+<p>数据库以页的形式组织。</p>
+<p>不同的方式跟踪页面。</p>
+<p>不同方式保存页面。</p>
+<p>不同的方式保存元组。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
