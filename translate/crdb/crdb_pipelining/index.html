@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://iswade.github.io/translate/misc/gobyexample/Channel_Buffering/">
+        <link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_pipelining/">
       
       
       
@@ -33,18 +33,18 @@
       
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
-      <link rel="shortcut icon" href="../../../../images/favicon.png">
+      <link rel="shortcut icon" href="../../../images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
     
     
       
-        <title>Channel Buffering - iswade</title>
+        <title>管道化共识写入加速分布式 SQL 事务 - iswade</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.11e41852.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.11e41852.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -53,7 +53,7 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.20ef595d.js"></script>
+      <script src="../../../assets/javascripts/modernizr.20ef595d.js"></script>
     
     
       
@@ -62,10 +62,10 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="../../../../themes/extra.css">
+      <link rel="stylesheet" href="../../../themes/extra.css">
     
     
   </head>
@@ -84,7 +84,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#channel-buffering" tabindex="1" class="md-skip">
+      <a href="#sql" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -95,7 +95,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo">
           
-            <img src="../../../../images/me.jpg" width="24" height="24">
+            <img src="../../../images/me.jpg" width="24" height="24">
           
         </a>
       </div>
@@ -110,7 +110,7 @@
                 iswade
               </span>
               <span class="md-header-nav__topic">
-                Channel Buffering
+                管道化共识写入加速分布式 SQL 事务
               </span>
             
           
@@ -167,7 +167,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo">
       
-        <img src="../../../../images/me.jpg" width="48" height="48">
+        <img src="../../../images/me.jpg" width="48" height="48">
       
     </a>
     iswade
@@ -181,7 +181,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../.." title="首页" class="md-nav__link">
+    <a href="../../.." title="首页" class="md-nav__link">
       首页
     </a>
   </li>
@@ -212,7 +212,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
       数据库笔记
     </a>
   </li>
@@ -224,7 +224,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../F1_query/" title="F1 Query" class="md-nav__link">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
       F1 Query
     </a>
   </li>
@@ -236,7 +236,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/partition/" title="数据分区" class="md-nav__link">
+    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
       数据分区
     </a>
   </li>
@@ -248,7 +248,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
       Bolt 数据库
     </a>
   </li>
@@ -284,7 +284,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
       强一致性模型
     </a>
   </li>
@@ -296,7 +296,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../zookeeper/" title="Zookeeper" class="md-nav__link">
+    <a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">
       Zookeeper
     </a>
   </li>
@@ -332,7 +332,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
       Go 并发编程
     </a>
   </li>
@@ -344,7 +344,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
       如何使用 Go 接口
     </a>
   </li>
@@ -380,7 +380,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
       linux 系统管理
     </a>
   </li>
@@ -392,7 +392,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/git/" title="git 入门教程" class="md-nav__link">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
       git 入门教程
     </a>
   </li>
@@ -428,7 +428,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
       How to be a manager
     </a>
   </li>
@@ -445,7 +445,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../about/" title="关于" class="md-nav__link">
+    <a href="../../../about/" title="关于" class="md-nav__link">
       关于
     </a>
   </li>
@@ -468,6 +468,57 @@
     
   
   
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="分布式事务" class="md-nav__link">
+    分布式事务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="分布式事务的开销" class="md-nav__link">
+    分布式事务的开销
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="现有技术" class="md-nav__link">
+    现有技术
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="写入缓存直到提交" class="md-nav__link">
+    写入缓存直到提交
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="异步共识" class="md-nav__link">
+    异步共识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intent" title="验证 intent 写入" class="md-nav__link">
+    验证 intent 写入
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -479,28 +530,35 @@
               
                 
                 
-                <h1 id="channel-buffering">Channel Buffering</h1>
-<p>默认情况下，通道是无缓冲的，意味着只有在接受(&lt;-chan)通道准备好时，才允许进行发送(chan &lt;-)。可缓冲通道允许在没有对应接受方的情况下，缓存限定数量的值。</p>
-<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="c1">// 这里我们创建了一个通道，最多允许缓存2个值</span>
-    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-   <span class="c1">// 因为这个通道是有缓冲区的，即使没有对应的并发接受方</span>
-   <span class="c1">// 我们仍然可以发送这些值</span>
-    <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;buffered&quot;</span>
-    <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;channel&quot;</span>
-
-   <span class="c1">// 然后我们可以像前面一样接受这两个值</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>下一个：<a href="../Channel_Synchronization/">Channel Synchronization</a></p>
+                <h1 id="sql">管道化共识写入加速分布式 SQL 事务</h1>
+<p><img alt="img" src="https://d33wubrfki0l68.cloudfront.net/71eff32dc144bfe6c4f7f2d46617cf6f9f4413d2/d3f40/uploads/2017/11/demand-zero-rpo-by-tsjisse-talsma.jpg" /></p>
+<h3 id="_1">分布式事务</h3>
+<ol>
+<li>存储</li>
+<li>复制</li>
+<li>分布</li>
+<li>事务：preparation, commit, cleanup</li>
+</ol>
+<h3 id="_2">分布式事务的开销</h3>
+<p>主要的延迟开销是：存储延迟和复制延迟。</p>
+<p><span><span class="MathJax_Preview">L_{txn} = L_{prep} + L_{commit}</span><script type="math/tex">L_{txn} = L_{prep} + L_{commit}</script></span></p>
+<p><span><span class="MathJax_Preview">L_{prep} = R * L_r + W * L_w \simeq W * L_w = W * L_c</span><script type="math/tex">L_{prep} = R * L_r + W * L_w \simeq W * L_w = W * L_c</script></span></p>
+<p><span><span class="MathJax_Preview">L_{commit} = L_c</span><script type="math/tex">L_{commit} = L_c</script></span></p>
+<p><span><span class="MathJax_Preview">L_{txn} = (W + 1) * L_c</span><script type="math/tex">L_{txn} = (W + 1) * L_c</script></span></p>
+<p><span><span class="MathJax_Preview">L_c​</span><script type="math/tex">L_c​</script></span>: 单位延迟</p>
+<h3 id="_3">现有技术</h3>
+<p>v1.0 并行语句执行；通过立即返回使得客户端可以执行下一条语句</p>
+<h3 id="_4">写入缓存直到提交</h3>
+<p>对竞争的事务产生负面影响。</p>
+<p>write intent 类似于传统数据库的行锁，通过在事务的生命周期中“获取”这些锁并允许其他事务的读取在过渡期间创建**读写冲突**，我们在运行TPC-C等工作负载时观察到事务中止的大幅上升。事实证明，在事务结束时执行所有写入（即获取所有锁定）会使较弱的隔离级别（如快照隔离），因为此类隔离级别允许事务的读取时间戳和其写入时间戳分开。</p>
+<h3 id="_5">异步共识</h3>
+<p>在写入过程中，只需要提交 Raft 写即可，不需要等待成功就可以立即返回。这样就可以忽略 <span><span class="MathJax_Preview">W * L_c</span><script type="math/tex">W * L_c</script></span></p>
+<h3 id="intent">验证 intent 写入</h3>
+<p>提交事务之前，需要等待所有的共识写入完成。所有 intent 成功之后，事务可以将 record 中的开关变为 COMMIT。</p>
+<p>事务管道化会影响我们的延迟模型。</p>
+<p><span><span class="MathJax_Preview">L_{txn} = L_{commit} = 2 * L_c</span><script type="math/tex">L_{txn} = L_{commit} = 2 * L_c</script></span></p>
+<p>下一步：<strong>并行提交</strong> 允许在事务提交时发生的两个操作，验证 intent 写入和变更记录上的开关并行运行。</p>
+<p>注：CockroachDB 已经把乐观并发控制变为悲观控制。</p>
                 
                   
                 
@@ -541,26 +599,26 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.905597d0.js"></script>
+      <script src="../../../assets/javascripts/application.905597d0.js"></script>
       
         
         
           
-          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
-                <script src="../../../../assets/javascripts/lunr/tinyseg.js"></script>
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
               
               
-                <script src="../../../../assets/javascripts/lunr/lunr.jp.js"></script>
+                <script src="../../../assets/javascripts/lunr/lunr.jp.js"></script>
               
             
           
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

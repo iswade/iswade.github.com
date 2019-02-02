@@ -41,6 +41,10 @@ h1,
     color: #0c0c0c;
 }
 
+.md-search__inner {
+    display: none;
+}
+
 @media print {
   a[href]:after {
     content: none !important;
