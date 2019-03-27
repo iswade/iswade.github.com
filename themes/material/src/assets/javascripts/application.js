@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -42,7 +42,6 @@ window.Promise = window.Promise || Promise
  * ------------------------------------------------------------------------- */
 
 import Clipboard from "clipboard"
-import FastClick from "fastclick"
 
 import Material from "./components/Material"
 
@@ -75,13 +74,10 @@ const translate = key => {
  */
 function initialize(config) { // eslint-disable-line func-style
 
-  /* Initialize Modernizr and FastClick */
+  /* Initialize Modernizr */
   new Material.Event.Listener(document, "DOMContentLoaded", () => {
     if (!(document.body instanceof HTMLElement))
       throw new ReferenceError
-
-    /* Attach FastClick to mitigate 300ms delay on touch devices */
-    FastClick.attach(document.body)
 
     /* Test for iOS */
     Modernizr.addTest("ios", () => {
@@ -259,7 +255,7 @@ function initialize(config) { // eslint-disable-line func-style
   /* Component: link blurring for table of contents */
   new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(window, "scroll",
-      new Material.Nav.Blur("[data-md-component=toc] [href]")))
+      new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
 
   /* Component: collapsible elements for navigation */
   const collapsibles =
@@ -288,9 +284,7 @@ function initialize(config) { // eslint-disable-line func-style
     new Material.Event.Listener("[data-md-component=query]", [
       "focus", "keyup", "change"
     ], new Material.Search.Result("[data-md-component=result]", () => {
-      return fetch(`${config.url.base}/${
-        config.version < "0.17" ? "mkdocs" : "search"
-      }/search_index.json`, {
+      return fetch(`${config.url.base}/search/search_index.json`, {
         credentials: "same-origin"
       }).then(response => response.json())
         .then(data => {
@@ -345,6 +339,11 @@ function initialize(config) { // eslint-disable-line func-style
       const query = document.querySelector("[data-md-component=query]")
       if (!(query instanceof HTMLInputElement))
         throw new ReferenceError
+
+      /* Skip editable elements */
+      if (document.activeElement instanceof HTMLElement &&
+          document.activeElement.contentEditable === "true")
+        return
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
       if (ev.metaKey || ev.ctrlKey)
@@ -504,6 +503,20 @@ function initialize(config) { // eslint-disable-line func-style
         .initialize(facts)
     })
   })
+
+  /* Before-print hook */
+  const print = () => {
+    const details = document.querySelectorAll("details")
+    Array.prototype.forEach.call(details, detail => {
+      detail.setAttribute("open", "")
+    })
+  }
+
+  /* Open details before printing */
+  new Material.Event.MatchMedia("print", {
+    listen: print, unlisten: () => {}
+  }) // Webkit
+  window.onbeforeprint = print // IE, FF
 }
 
 /* ----------------------------------------------------------------------------

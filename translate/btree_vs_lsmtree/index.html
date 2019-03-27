@@ -1,0 +1,741 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/btree_vs_lsmtree/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>现代存储系统背后的算法 - wangsd</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="wangsd" class="md-header-nav__button md-logo">
+          
+            <img src="../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              wangsd
+            </span>
+            <span class="md-header-nav__topic">
+              现代存储系统背后的算法
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="wangsd" class="md-nav__button md-logo">
+      
+        <img src="../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    wangsd
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Database
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Database
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#b-trees" title="B-trees" class="md-nav__link">
+    B-trees
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b" title="B树剖析" class="md-nav__link">
+    B树剖析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="查找" class="md-nav__link">
+    查找
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="修改" class="md-nav__link">
+    修改
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lsm" title="LSM树" class="md-nav__link">
+    LSM树
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lsm_1" title="LSM树剖析" class="md-nav__link">
+    LSM树剖析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sst" title="SST" class="md-nav__link">
+    SST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="查找" class="md-nav__link">
+    查找
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm_2" title="LSM树维护" class="md-nav__link">
+    LSM树维护
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="原子性和持久性" class="md-nav__link">
+    原子性和持久性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="评价存储系统" class="md-nav__link">
+    评价存储系统
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="参考" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">现代存储系统背后的算法</h1>
+<p>读优化B树和写优化LSM树的不同用途。</p>
+<p>应用处理的**数据量**不断增长，随着这种增长，<strong>扩展**存储变得更具挑战。每个数据库都有自己的**权衡</strong>。了解这些权衡是至关重要的，因为其帮助我们从众多选项中做正确的**选择**。</p>
+<p>每个应用有自己独特的读写负载形式、一致性需求、延迟和访问模式。熟悉数据库和存储内部结构有助于进行架构决策，有助于解释系统为何以某种方式运行，有助于解决出现的问题，并根据工作负载对数据库进行调优。</p>
+<p>在各个方面优化系统是不可能的。在理想情况下，会有数据结构来保证最佳的读写性能，而不需要存储开销，但在实践中，这是不可能的。</p>
+<p>本文更详细地介绍了大多数现代数据库中使用的两种存储系统设计：读优化的B-Trees[1]和写优化的LSM（日志结构合并）Trees[5]，并描述了它们的使用案例和权衡。</p>
+<h2 id="b-trees">B-trees</h2>
+<p>B树是一种常用的读优化索引数据结构和二叉树泛化。它们有许多不同的版本，并用于许多数据库（包括MySQL InnoDB[4]和PostgreSQL[7]），甚至文件系统（HDFS+[8]，ext4[9]中的HTrees）。B-Tree中的B代表原始数据结构的作者Bayer，或者波音，他当时在那里工作。</p>
+<p>在平衡二叉树中，每个节点都有两个子节点（称为左子节点和右子节点）。左、右子树分别保存小于和大于当前节点键的键。为了使树的深度保持最小，必须平衡二叉树：当随机排列的键被添加到树中时，树的一边最终会比另一边更深是很自然的。</p>
+<p>重新平衡二叉树的一种方法是使用所谓的旋转：重新排列节点，将较长子树的父节点向下推到其子树的下面，并将此子树向上拉，有效地将其置于其父树的位置。图1是用于平衡二叉树的旋转示例。在左边，二叉树在添加节点2之后是不平衡的。为了平衡树，节点3被用作轴（树围绕它旋转）。然后，节点5（以前是根节点和3的父节点）成为其子节点。完成旋转步骤后，左子树的高度降低1，右子树的高度增加1。树的最大深度已经减小了。</p>
+<p><img alt="binary tree" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov1.png" /></p>
+<p>二叉树是最有用的内存数据结构。由于平衡（需要将所有子树的深度保持在最小）和低扇出（每个节点最多两个指针），它们在磁盘上不能很好地工作。B-树允许每个节点存储两个以上的指针，并且通过将节点大小与页面大小（例如4KB）匹配，可以很好地使用块设备。现在的一些实现使用更大的节点大小，跨越多个页面的大小。</p>
+<p>B-树具有以下特性：</p>
+<ul>
+<li><strong>排序</strong>。这允许顺序扫描并简化查找。</li>
+<li><strong>自我平衡</strong>。在插入和删除过程中不需要平衡树：当一个B-树节点满时，它被分成两部分，当相邻节点的占用率低于某个阈值时，节点被合并。这也意味着叶与根的距离相等，并且可以在查找期间使用相同数量的步骤进行定位。</li>
+<li><strong>对数查找时间的保证</strong>。这使得B树成为数据库索引的一个很好的选择，因为查找时间很重要。</li>
+<li><strong>易变的</strong>。插入、更新和删除（以及后续的拆分和合并）将在磁盘上就地执行。为了使就地更新成为可能，需要一定的空间开销。B树可以组织为聚集索引，其中实际数据存储在叶节点上，或者作为具有未聚集B树索引的堆文件。</li>
+</ul>
+<p>本文讨论B+树[3]是B-树的一个现代变体，常用于数据库存储。B+树不同于原始的B-Tree[1]，因为</p>
+<ol>
+<li>它有一个外加层的链接叶节点来保存值，</li>
+<li>值不能存储在内部节点上。</li>
+</ol>
+<h3 id="b">B树剖析</h3>
+<p>让我们先仔细看看B树构建块，如图2所示。B-树有几个节点类型：根、内部和叶。根（顶部）是没有父节点的节点（即，它不是任何其他节点的子节点）。内部节点（中间）同时具有父节点和子节点；它们将根节点与叶节点连接起来。叶节点（底部）承载数据，没有子节点。图2描述了一个分支因子为4（四个指针、内部节点中的三个键和叶上的四个键/值对）的B树。</p>
+<p><img alt="b+tree" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov2.png" /></p>
+<p>B-树的特征如下：</p>
+<ul>
+<li>分支因子——指向子节点的指针数（<em>N</em>）。除了指针之外，根节点和内部节点最多可容纳*N-1*个键。</li>
+<li>占用率——节点当前持有的子项指针的数量与可用最大值的比值。例如，如果树分支因子为N，并且节点当前持有N/2指针，则占用率为50%。</li>
+<li>高度——B树层的数目，表示在查找期间必须遍历多少指针。</li>
+</ul>
+<p>树中的每个非叶节点最多可容纳N个键（索引项），将树分为N+1子树，这些子树可通过相应的指针定位。从一个条目<span><span class="MathJax_Preview">K_i</span><script type="math/tex">K_i</script></span>指向一个子树的指针i，其中所有的索引条目都是这样的：<span><span class="MathJax_Preview">K_{i-1}&lt;=K_{searched}&lt;K_ i</span><script type="math/tex">K_{i-1}<=K_{searched}<K_ i</script></span>（其中K是一组键）。第一个和最后一个指针是特殊情况，指向子树，其中所有条目都小于或等于<span><span class="MathJax_Preview">K_0</span><script type="math/tex">K_0</script></span>（对于最左边的子项），或大于<span><span class="MathJax_Preview">K_{n-1}</span><script type="math/tex">K_{n-1}</script></span>（对于最右边的子项）。叶节点还可以保存指向同一级别上的前一个和下一个节点的指针，从而形成兄弟节点的双重链接列表。所有节点中的键总是排序的。</p>
+<h3 id="_2">查找</h3>
+<p>执行查找时，搜索从根节点开始，并递归地跟踪内部节点，直至叶子层。在每一个层上，搜索空间都会通过跟踪子指针到子子树（此子树的范围包括搜索值）。图3显示了在一个B树中进行的一次查找，在两个键之间的指针后面进行单根到叶传递，其中一个键大于（或等于）搜索项，另一个键小于搜索项。执行点查询时，在定位叶节点后完成搜索。在范围扫描期间，将遍历找到的叶的键和值，然后遍历同级叶的节点，直到达到范围的结尾。</p>
+<p><img alt="lookup" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov3.png" /></p>
+<p>在复杂性方面，B树保证<span><span class="MathJax_Preview">log(n)</span><script type="math/tex">log(n)</script></span>查找，因为在节点内查找键是使用二分搜索执行的，如图4所示。二分搜索很容易解释为在字典中搜索以某个字母开头的单词，所有单词都按字母顺序排序。首先，你把字典正好放在中间。如果按字母顺序搜索的字母“小于”（出现在打开的字母之前），则在字典的左半部分继续搜索；否则，在右半部分继续搜索。你不断地将剩余的页面范围缩小一半，然后选择要跟随的边，直到找到所需的字母。每一步都将搜索空间减半，使查找时间为对数。B树中的搜索具有对数复杂性，因为在节点级别上对键进行排序，并执行二进制搜索以查找匹配项。这也是为什么在整个树上保持占用率高和统一很重要的原因。</p>
+<p><img alt="binary search" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov4.png" /></p>
+<h3 id="_3">修改</h3>
+<p>插入、更新和删除。</p>
+<p>执行插入时，第一步是定位目标叶节点。为此，使用上述搜索算法。在目标节点被定位之后，键和值被插入。如果叶子节点没有足够的可用空间，则这种情况称为溢出，必须将叶拆分为两部分。这是通过分配一个新的叶，将一半的元素移动到它，并将一个指针加入到这个新分配的叶节点的父级来完成的。如果父级也没有可用空间，则在父级也执行拆分。操作将继续，直到到达根目录。当根溢出时，其内容在新分配的节点之间被拆分，并且根节点本身被覆盖，以避免重新定位。这也意味着树（及其高度）总是通过拆分根节点来增长。</p>
+<h2 id="lsm">LSM树</h2>
+<p>日志结构合并树是一个不可变的磁盘写优化数据结构。它最适用于写操作比检索记录的查找更频繁的系统。LSM树得到了越来越多的关注，因为它们可以消除随机插入、更新和删除。</p>
+<h3 id="lsm_1">LSM树剖析</h3>
+<p>为了实现顺序写，LSM树在内存中批量写入和更新（通常使用允许对数时间查找的数据结构实现，例如二分搜索树或跳跃表），直到其大小达到阈值，在这个点写出到磁盘（这个操作称之为flush）。检索数据需要搜索树中所有驻留磁盘的部分，检查内存中的表，并在返回结果之前合并它们的内容。图5显示了LSM树的结构：用于写入的内存驻留表。每当内存表足够大时，其排序的内容都会写出到磁盘。提供读取服务，同时命中磁盘和内存驻留表，需要合并进程来协调数据。</p>
+<p><img alt="lsm structure" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov5.png" /></p>
+<h3 id="sst">SST</h3>
+<p>许多现代的LSM树实现（如rocksdb和apache cassandra）将磁盘驻留表作为SSTables（排序字符串表）实现，因为它们简单（易于写入、搜索和读取）和合并属性（在合并期间，源SSTable扫描和合并结果写入是连续的）。</p>
+<p>SSTable是一种驻留在磁盘上的有序不变的数据结构。从结构上讲，SSTable分为两部分：数据块和索引块，如图6所示。数据块由按键排序的顺序写入的唯一键/值对组成。索引块包含映射到数据块指针的键，指向实际记录所在的位置。索引通常是使用为快速搜索而优化的格式实现的，例如B树，或者使用哈希表进行点查询。SSTable中的每个值项都有一个与之相关联的时间戳。这指定插入和更新的写入时间（通常不可区分）和删除的删除时间。</p>
+<p><img alt="sst" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov6.png" /></p>
+<p>SSTables有一些很好的属性：</p>
+<ul>
+<li>点查询（即按键查找值）可以通过查找主键索引快速完成。</li>
+<li>扫描（即，在指定的键范围内对所有键/值对进行迭代）需从数据块中按顺序读取键/值对，就可以有效地完成扫描。</li>
+</ul>
+<p>SSTable表示一段时间内所有数据库操作的快照，因为SSTable是由内存驻留表中的刷新进程创建的，该内存驻留表用作此期间针对数据库状态进行操作的缓冲区。</p>
+<h3 id="_4">查找</h3>
+<p>检索数据需要搜索磁盘上的所有SSTable，检查内存驻留表，并在返回结果之前合并它们的内容。读取过程中需要合并步骤，因为查找的数据可以驻留在多个SSTable中。</p>
+<p>合并步骤也是确保删除和更新工作所必需的。在LSM树中删除插入占位符（通常称为逻辑删除），指定标记要删除的键。类似地，更新只是一个时间戳较新的记录。在读取过程中，将跳过被删除隐藏的记录，而不会返回到客户端。更新也会发生类似的事情：在两个具有相同键的记录中，只有一个具有更晚的时间戳。图7显示了一个合并步骤，对存储在不同表中的相同键的数据进行协调：如图所示，Alex的记录用时间戳100写入，并用新电话和时间戳200更新；John的记录被删除。其他两个条目按原样处理。</p>
+<p><img alt="example-merge" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov7.png" /></p>
+<p>为了减少搜索的SSTable的数量并避免检查每个SSTable以查找搜索的键，许多存储系统使用一种称为布隆过滤器[10]的数据结构。这是一种概率数据结构，可用于测试元素是否是集合的成员。它可以产生模糊匹配（即，声明元素是集合的成员，而实际上它不存在于集合中），但不能产生不存在匹配（即，如果返回不存在匹配，则保证元素不属于集合的成员）。换句话说，布隆过滤器用于判断键“可能在SSTable中”还是“绝对不在SSTable中”。在查询过程中跳过布隆过滤器返回不存在匹配的SSTable。</p>
+<h3 id="lsm_2">LSM树维护</h3>
+<p>因为SSTables是不可变的，所以它们是按顺序编写的，并且没有保留用于就地修改的空白空间。这意味着插入、更新或删除操作需要重写整个文件。修改数据库状态的所有操作都在内存常驻表中“批处理”。随着时间的推移，磁盘驻留表的数量将增加（位于多个文件中的同一个键的数据、同一记录的多个版本、被删除操作隐藏的冗余记录），并且读取代价将越来越高。</p>
+<p>为了降低读取代价，协调隐藏记录占用的空间，并减少磁盘驻留表的数量，LSM树需要一个压缩过程，该过程从磁盘读取完整的SSTable并合并它们。因为sstables是按键排序的，并且压缩工作类似于合并排序，所以此操作非常有效：记录是按顺序从多个源中读取的，合并的输出可以立即添加到结果文件中，也可以按顺序进行。合并排序的一个优点是它可以有效地工作，即使不能完全保存在内存的大型文件也是如此。生成的表保留原始SSTables的顺序。</p>
+<p>在此过程中，合并的SSTable将被丢弃并替换为它们的“压缩”版本，如图8所示。压缩将多个SSTable合并为一个SSTable。有些数据库系统逻辑上将相同大小的表分组到相同的“级别”，并在特定级别上有足够的表时启动合并过程。在压缩之后，必须寻址的SSTable的数量会减少，从而使查询更加高效。</p>
+<p><img alt="compaction" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov8.png" /></p>
+<h2 id="_5">原子性和持久性</h2>
+<p>为了减少I/O操作的数量并使它们连续，在进行实际更新之前，B树和LSM树都会在内存中批处理操作。这意味着在故障情况下不能保证数据完整性，并且不能确保原子性和耐久性属性。</p>
+<p>为了解决这个问题，大多数现代存储系统都采用了提前写日志WAL（write ahead logging）。WAL背后的关键思想是，所有数据库状态修改都首先持久地保存在只追加日志的磁盘中。如果进程在操作过程中崩溃，则会重放日志，确保没有数据丢失，所有更改都以原子形式出现。</p>
+<p>在B树中，使用WAL可以理解为只在记录数据文件之后才将更改写入数据文件。通常，B树存储系统的日志大小相对较小：只要将更改应用于持久存储，就可以丢弃它们。WAL作为操作的备份：任何未应用于数据页的更改都可以从日志记录中重做。</p>
+<p>在LSM树中，WAL用于持久化已到达memtables但尚未在磁盘上完全刷新的更改。一旦一个memtable被完全刷新和切换，以便可以从新创建的SSTable中执行读取操作，就可以丢弃保存刷新memtable数据的WAL。</p>
+<h2 id="_6">总结</h2>
+<p>B树和LSM树之间最大的区别之一是它们的优化目的和这些优化的含义。</p>
+<p>让我们比较一下B树和LSM树的特性。总之，B树具有以下特性：</p>
+<ul>
+<li>它们是经过读取优化的，这意味着它们不需要从多个源读取（随后合并），从而简化了读取路径。</li>
+<li>写操作可能会触发层叠的节点拆分，使得一些写操作更加昂贵。</li>
+<li>它们针对无法进行字节寻址的分页环境（块存储）进行了优化。</li>
+<li>频繁更新导致的碎片化可能需要额外的维护和块重写。但是，与LSM树存储相比，B树通常需要较少的维护。</li>
+<li>并发访问需要读写隔离，涉及锁和闩。</li>
+</ul>
+<p>LSM树具有以下特性：</p>
+<ul>
+<li>它们是**不变**的。SSTables只写在磁盘上一次，从不更新。压缩用于协调已删除项占用的空间，并合并来自多个数据文件的相同键数据。作为压缩过程的一部分，成功合并后的SSTable将被丢弃并删除。来自不可变性的另一个有用属性是可以同时访问刷新的表。</li>
+<li>它们是**写优化**的，这意味着写操作按顺序在磁盘上进行缓冲和刷新，可能允许磁盘上的空间位置。</li>
+<li>**读取**可能需要从多个源访问数据，因为同一密钥的数据，在不同的时间写入，可能会落在不同的数据文件中。在返回到客户机之前，记录必须经过合并过程。</li>
+<li>需要维护/<strong>压缩</strong>，因为缓冲写入被刷新到磁盘上。</li>
+</ul>
+<h2 id="_7">评价存储系统</h2>
+<p>开发存储系统总是提出相同的挑战和考虑的因素。决定优化的对象对结果有很大的影响。您可以在写入期间花费更多的时间，以便为更高效的读取安排结构，为就地更新保留额外的空间，促进更快的写入，并在内存中缓冲数据，以确保顺序写入操作。然而，这是不可能同时做到的。理想的存储系统具有最低的读取成本、最低的写入成本和无开销。在实践中，数据结构在多个因素之间妥协。了解这些妥协是很重要的。</p>
+<p>哈佛大学DASlab（数据系统实验室）的研究人员总结了数据库系统优化的三个关键参数：<strong>读取开销、更新开销和内存开销</strong>，或RUM。了解这些参数中的哪些对您的用例最重要，会影响数据结构的选择、访问方法，甚至对某些工作负载的适用性，因为算法是根据特定用例进行定制的。</p>
+<p>RUM推测[2]指出，为上述两项管理费用设定上限也为第三项管理费用设定下限。例如，B树是以写开销为代价进行读优化的，并且必须保留空空间（从而导致内存开销）。LSM树的空间开销较低，但由于在读取过程中必须访问多个磁盘驻留表而带来的读取开销。这三个参数形成了一个竞争三角形，并且一方面的改进可能意味着另一方面的妥协。图9说明了RUM推测。</p>
+<p><img alt="RUM conjecture" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov9.png" /></p>
+<p>B树优化读取性能：索引的布局方式可以最小化遍历树所需的磁盘访问。只有一个索引文件必须被访问才能定位数据。这是通过保持索引文件可变来实现的，这也增加了由于节点拆分和合并、重新定位以及与碎片/不平衡相关的维护而导致的**写放大**。为了分摊更新成本并减少拆分次数，B树在所有层的节点中都保留了额外的空闲空间。这有助于推迟写入放大，直到节点满为止。简而言之，B树交换更新和内存开销，以获得更好的读取性能。</p>
+<p>LSM树可优化写入性能。更新和删除都不需要在磁盘上定位数据（B树就是这样），它们通过缓冲内存常驻表中的所有插入、更新和删除操作来保证顺序写入。这是以更高的维护成本和压缩需求（这只是一种降低不断增长的读取价格和减少磁盘驻留表数量的方法）和更昂贵的读取（因为数据必须从多个源读取并合并）为代价的。同时，LSM树通过不保留任何空空间（与B树节点不同，B树节点的平均占用率为70%，就地更新所需的开销）以及允许块压缩（因为最终文件具有更好的占用率和不可变性）来消除内存开销。简而言之，LSM树权衡读取性能和维护，以获得更好的写入性能和更低的内存开销。</p>
+<p>有数据结构可以针对每个所需的属性进行优化。使用自适应数据结构可以以更高的维护成本获得更好的读取性能。添加元数据促进遍历（如部分级联）将对写入时间和占用空间产生影响，但可以提高读取时间。使用压缩优化内存效率（例如，Gorilla压缩[6]、增量编码和许多其他算法）将增加一些开销，用于在写入时打包数据和在读取时解包数据。有时，您可以用功能来换取效率。例如，由于文件格式简单，堆文件和散列索引可以提供很好的性能保证和较小的空间开销，这是因为除了点查询之外，不能执行任何操作的代价。您还可以使用近似的数据结构（如布隆过滤器、HyperlogLog、Count-Min概览等）来交换空间和效率。</p>
+<p>三个可调的读取、更新和内存开销可以帮助您评估数据库，并深入了解它最适合的工作负载。所有这些都是非常直观的，通常很容易将存储系统分类到其中一个存储桶中，并猜测它将如何执行，然后通过广泛的测试验证您的假设。</p>
+<p>当然，在评估存储系统时还需要考虑其他重要因素，例如维护开销、操作简单性、系统要求、频繁更新和删除的适用性、访问模式等。RUM推测只是一个经验法则，有助于发展直觉并提供一个初始方向。了解您的工作负载是构建可扩展后端的第一步。</p>
+<p>有些因素可能因实现而异，甚至使用类似存储设计原则的两个数据库的性能也可能不同。数据库是一个复杂的系统，有许多可移动的部件，是许多应用程序的重要组成部分。这些信息将帮助您窥视数据库的底层，并且知道底层数据结构和它们的内部行为之间的区别，决定什么对您最有利。</p>
+<h2 id="_8">参考</h2>
+<ol>
+<li>
+<p>Comer, D. 1979. The ubiquitous B-tree. *Computing Surveys*11(2); 121-137; </p>
+</li>
+<li>
+<p>Data Systems Laboratory at Harvard. <a href="http://daslab.seas.harvard.edu/rum-conjecture/">The RUM Conjecture</a>. </p>
+</li>
+<li>
+<p>Graefe, G. 2011. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.219.7269&amp;rep=rep1&amp;type=pdf">Modern B-tree techniques. Foundations and Trends in Databases</a> 3(4): 203-402.</p>
+</li>
+<li>
+<p>MySQL 5.7 Reference Manual. <a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-physical-structure.html">The physical structure of an InnoDB index</a>.</p>
+</li>
+<li>
+<p>O'Neil, P., Cheng, E., Gawlick, D., O'Neil, E. 1996. The log-structured merge-tree. <em>Acta Informatica</em> 33(4): 351-385; <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.2782&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.2782</a>.</p>
+</li>
+<li>
+<p>Pelkonen, T., Franklin, S., Teller, J., Cavallaro, P., Huang, Q., Meza, J., Veeraraghavan, K. 2015. <a href="http://www.vldb.org/pvldb/vol8/p1816-teller.pdf">Gorilla: a fast, scalable, in-memory time series database</a>. <em>Proceedings of the VLDB Endowment</em> 8(12): 1816-1827.</p>
+</li>
+<li>
+<p>Suzuki, H. 2015-2018. <a href="http://www.interdb.jp/pg/pgsql01.html">The internals of PostgreSQL</a>.</p>
+</li>
+<li>
+<p><a href="https://developer.apple.com/legacy/library/technotes/tn/tn1150.html#BTrees">Apple HFS Plus Volume Format</a>.</p>
+</li>
+<li>
+<p>Mathur, A., Cao, M., Bhattacharya, S., Dilger, A., Tomas, A., Vivier, L. (2007). <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.111.798&amp;rep=rep1&amp;type=pdf">The new ext4 filesystem: current status and future plans</a>. <em>Proceedings of the Linux Symposium</em>. Ottawa, Canada: Red Hat.</p>
+</li>
+<li>
+<p>Bloom, B. H. (1970), <a href="https://dl.acm.org/citation.cfm?doid=362686.362692">Space/time trade-offs in hash coding with allowable errors</a>,<em>Communications of the ACM</em>, 13 (7): 422-426</p>
+</li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.51c3f73e.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

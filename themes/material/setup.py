@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -42,6 +42,7 @@ setup(
     author = package["author"]["name"],
     author_email = package["author"]["email"],
     keywords = package["keywords"],
+    classifiers = package["classifiers"],
     packages = find_packages(),
     include_package_data = True,
     install_requires = install_requires,

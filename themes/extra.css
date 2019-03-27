@@ -14,18 +14,22 @@ h1,
 
 .md-typeset h1, .md-typeset h2 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
-    font-weight: 400;
+    /*font-weight: 400;*/
 }
 
 .md-header {
-    position: relative;
+    /*position: fixed;*/
     font-size: 40%;
-    height: 0;
+    /*height: 0;*/
 }
 
 .md-footer {
     padding: 0px 0% 0px 0%;
     display: none;
+}
+
+.md-header[data-md-state=shadow] {
+    box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0);
 }
 
 .md-sidebar__scrollwrap {
@@ -41,9 +45,10 @@ h1,
     color: #0c0c0c;
 }
 
-.md-search__inner {
+.md-search__inner, .md-icon--search {
     display: none;
 }
+
 
 @media print {
   a[href]:after {
