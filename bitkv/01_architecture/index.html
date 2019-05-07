@@ -1,0 +1,823 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/bitkv/01_architecture/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+    
+    
+      
+        <title>BitKV 架构设计 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#bitkv" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
+          
+            <img src="../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              BitKV 架构设计
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img src="../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Database
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Database
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/Aurora/" title="Aurora：F我们如何设计云原生关系数据库" class="md-nav__link">
+      Aurora：F我们如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="数据分区" class="md-nav__link">
+      数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+      Zookeeper
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bitkv_1" title="BitKV的设计目标" class="md-nav__link">
+    BitKV的设计目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="词汇表" class="md-nav__link">
+    词汇表
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="概念" class="md-nav__link">
+    概念
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="概览" class="md-nav__link">
+    概览
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="协调者" class="md-nav__link">
+    协调者
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="事务处理" class="md-nav__link">
+    事务处理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="写和读（阶段 1）" class="md-nav__link">
+    写和读（阶段 1）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="提交（阶段 2）" class="md-nav__link">
+    提交（阶段 2）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="清理（异步阶段 3）" class="md-nav__link">
+    清理（异步阶段 3）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time" title="Time" class="md-nav__link">
+    Time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="时间戳缓存" class="md-nav__link">
+    时间戳缓存
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="数据分布" class="md-nav__link">
+    数据分布
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="复制" class="md-nav__link">
+    复制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="存储" class="md-nav__link">
+    存储
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="bitkv">BitKV 架构设计</h1>
+<p>BitKV 被设计成一个分布式的 K-V 数据库集群，并且提供事务支持。</p>
+<h2 id="bitkv_1">BitKV的设计目标</h2>
+<p>BitKV 被设计的主要目标包括：</p>
+<ol>
+<li>生活更加美好：于操作人员的高度自动化，对开发人员来说简单易懂。</li>
+<li>提供强一致性：提供分布式事务，没有最终一致性，或者过时读取。</li>
+<li>提供高可用性：所有节点都可以读写，不会产生冲突。</li>
+<li>易部署易扩展：简单的命令实现部署和弹性扩容。</li>
+</ol>
+<h2 id="_1">词汇表</h2>
+<h3 id="_2">术语</h3>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cluster</strong></td>
+<td>集群：作为一个独立运行的单一逻辑实体，对外提供服务。</td>
+</tr>
+<tr>
+<td><strong>Node</strong></td>
+<td>节点：运行 BitKV 的单个机器，许多节点组合到一起形成集群。</td>
+</tr>
+<tr>
+<td><strong>Range</strong></td>
+<td>范围：BitKV 存储所有用户数据和系统数据都保存在巨大的排序的 k-v 映射表中。键空间被分割为多个范围：键空间的连续块，所以每个键仅存在于单个范围中。当越来越多的 kv 保存到范围中之后，范围增长到 64MB 之后，会分割为两个范围。</td>
+</tr>
+<tr>
+<td><strong>Replica</strong></td>
+<td>副本：BitKV 复制每个范围（默认 3 次）保存到不同的节点上。</td>
+</tr>
+<tr>
+<td><strong>Leaseholder</strong></td>
+<td>租约保持者：对于每个范围，有一个副本持有范围租约。这个部分就称之为租约保持者。这个副本负责协调对这个范围的所有读取和写入。</td>
+</tr>
+<tr>
+<td><strong>Raft Leader</strong></td>
+<td>对于每个范围，一个副本是写请求的 leader。通通过 Raft 协议，这个副本保证多数副本（leader 和足够多的 follower）基于 Raft 对写入提交达成一致。 Raft leader 几乎总是与租约保持者是同一个副本。</td>
+</tr>
+<tr>
+<td><strong>Raft Log</strong></td>
+<td>对于每个范围，对范围的按时间排序的写入日志，副本已经达成一致。这个日志存在于磁盘上，并且是范围的一致性复制的真正来源。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">概念</h3>
+<p>BitKV 依赖下面的概念，熟悉这些概念能帮助我们了解架构设计所实现的目标。</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>BitKV 在 ACID 语义和 CAP 定理的意义上使用“一致性”，尽管不是正式定义的那样，但是我们试图用这个术语来表达数据是无异常的。</td>
+</tr>
+<tr>
+<td><strong>Consensus</strong></td>
+<td>当一个范围接受到写入请求后，包含范围的多数副本确认写入。这表示数据被安全地存储，并且多数节点对数据库的当前状态达成一致，即使节点中的一些离线。写入没有达成共识，转发进程会停止以保持集群内的一致性。（CP）</td>
+</tr>
+<tr>
+<td><strong>Replication</strong></td>
+<td>复制涉及创建和分发数据副本，以及确保副本保持一致。</td>
+</tr>
+<tr>
+<td><strong>Transactions</strong></td>
+<td>在数据库上执行的一组操作，满足 ACID 语义的要求。</td>
+</tr>
+<tr>
+<td><strong>Multi-Active Availability</strong></td>
+<td>我们基于共识的高可用性概念，允许集群中的每个节点处理对存储数据子集的读写（基于每个范围）。 这与主动 - 被动复制形成对比，在主动 - 被动复制中，主动节点接收100％的请求流量，以及主动 - 主动复制，其中所有节点都接受请求，但通常无法保证读取都是最新的并且快速。</td>
+</tr>
+</tbody>
+</table>
+<p>可用性分析：</p>
+<div class="codehilite"><pre><span></span>N1   N2   N3   N4   N5
+---- ---- ---- ---- ----   
+R11  R12  R13
+     R21  R22  R23
+          R31  R32  R33
+R1 R2 R3 三个 range。每个 range 3 个副本。调度情况如上所示。
+只能容忍一个节点故障。
+</pre></div>
+
+<h2 id="_4">概览</h2>
+<p>BitKV 通过命令 <code class="codehilite">bitkv start</code> 启动节点，通过命令 <code class="codehilite">bitkv join</code> 加入集群。</p>
+<p>bitkv 进程运行之后，就可以通过客户端 bitkv 与之交互。由于节点是对称的，可以将命令发送给任何一个节点处理，这保证 bitkv 很容易与负载均衡器集成。</p>
+<p>接受到客户端的 RPC 消息之后，节点将其转换为对我们分布式 k-v 存储的操作。集群处理数据时，BitKV会在算法上开始在节点之间分配数据，将数据分解为我们称之为范围的64MiB块。每个范围都复制到至少3个节点，以确保高可用性。只要将数据复制到其他节点，如果节点发生故障，您仍然可以获得可用于读取和写入的数据副本。</p>
+<p>如果节点收到读取或写入请求，无法直接服务，它只是找到可以处理请求的节点，并与之通信。这样您就不需要知道数据的存在位置，CockroachDB会为您跟踪数据，并为每个节点启用对称行为。</p>
+<p>对范围内的数据所做的任何更改都依赖于共识算法，以确保其大多数副本同意提交更改，确保行业领先的隔离保证并为您的应用程序提供一致的读取，无论您与哪个节点进行通信。</p>
+<p>最终，使用高效的存储引擎将数据写入磁盘并从磁盘读取数据，该引擎能够跟踪数据的时间戳。<del>这样可以支持按时间读取历史数据的功能。</del></p>
+<p>然而，虽然这个高层概述为您提供了BitKV的功能概念，但了解 tikv 进程如何对这些需求进行处理将使您更好地理解我们的架构。</p>
+<p>在，BitKV 将客户端的语句转换为 kv 数据，在节点之间分布，写入到磁盘。我们的架构是我们实现这一目标的过程，表现为许多层与它们上面和下面的层相互作用，并且作为相对不透明的服务。</p>
+<p>以下描述了每个层执行的功能，但大多数情况下忽略了其他层的细节。这种描述适用于本层，层通常将其他层视为黑盒API。 层之间存在相互作用，这些相互作用没有明确表达，需要了解每一层的功能才能理解整个过程。</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th align="center">顺序</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinator</td>
+<td align="center">1</td>
+<td>1. 事务处理：允许对多个范围做分布式事务。<br>2. 数据分布：将复制 KV 范围表示为单个实体。</td>
+</tr>
+<tr>
+<td>Replication</td>
+<td align="center">2</td>
+<td>1. 写入处理：在多个节点上一致且同步复制 KV 范围。<br>2. 该层还能通过租约实现一致的读取。</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td align="center">3</td>
+<td>在磁盘上写入和读取 KV 数据。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">协调者</h2>
+<p>最小化协调或阻止同时执行的操作之间的通信是最大化数据库系统中的可伸缩性，可用性和高性能的关键。</p>
+<h3 id="_6">事务处理</h3>
+<p>单 range 事务，多 range 事务</p>
+<p>优化的两阶段提交协议。</p>
+<h4 id="1">写和读（阶段 1）</h4>
+<p><strong>写</strong>：事务处理写入操作时，并不是直接写入到磁盘，创建了两个东西来实现分布式事务：</p>
+<ol>
+<li>transaction record：保存在第一个写入发生的 range 中，包含了事务的当前状态（从<code class="codehilite">PENDING</code>开始，以<code class="codehilite">COMMITED</code>或者<code class="codehilite">ABORTED</code>结束）</li>
+<li>一个事务的所有写入的 write intents 表示代表临时的，未提交的状态。它们与标准多版本并发控制（MVCC）值基本相同，但也包含指向存储在集群上的 transaction record 的指针。</li>
+</ol>
+<p>当 write intents 创建后，BitKV 检查新的已经提交的值，如果存在，事务重启，对于相同 keys 的已经存在的 write intents，通过事务冲突解决。</p>
+<p><strong>读</strong>：如果事务没有中止，则开始执行读取操作。如果读取到标准的 MVCC 值，一切都很完美。但是如果遇到任何 write intents，则操作必须通过事务冲突来解决。注释：如果直接读取老版本，保证快照隔离是不是就可以提升性能了呢？</p>
+<h4 id="2">提交（阶段 2）</h4>
+<p>BitKV 检查运行事务的 record 检查是否其被中止。如果被中止，则重启事务。</p>
+<p>如果事务通过这些检查，则变更为提交状态，将事务成功的应答发送给客户端。</p>
+<h4 id="3">清理（异步阶段 3）</h4>
+<p>在事务处理完后，所有的write intents 也需要被处理。协调者需要保持对所有写入 key 的跟踪，直到值满足：</p>
+<ul>
+<li>通过移除指向 transaction record 的信息，将 write intents 处理为 MVCC 值。</li>
+<li>删除 write intents。</li>
+</ul>
+<p>这仅仅是一个优化，如果后续的操作遇到 write intents，总是检查它们的 transaction records，通过任何操作都可以处理或者移除 write intents。</p>
+<h4 id="time">Time</h4>
+<p>在处理事务的过程中，协调者节点使用 HLC 时间获取一个时间戳。时间戳被用来跟踪值的版本(MVCC)，并且提供了事务隔离保证。当节点发送请求给其它节点时，会包含本地 HLC 时间戳。节点收到请求时，通知本地 HLC收到了发送来的时间戳，这对于保证节点上读/写的所有数据的时间戳小于下一个HLC时间非常有用。这还保证了负责 range 读取的节点保证事务读取的数据 HLC 时间大于 MVCC 值的时间戳（读取总是发生在写入之后。）</p>
+<p>如果一个读取事务的时间戳小于遇到的值的时间戳，读取事务需要重试。</p>
+<h4 id="_7">时间戳缓存</h4>
+<p>为了保证可串行化，每当操作读取值时，我们将操作的时间戳存储在时间戳缓存中，该缓存显示正在读取的值的高水位线。每当发生写入时，都会根据时间戳缓存检查其时间戳。 如果时间戳小于时间戳缓存的最新值，我们会尝试将其事务的时间戳推送到以后的时间。 推送时间戳可能会导致事务在事务的第二阶段重新启动（请参阅<a href="https://www.cockroachlabs.com/docs/stable/architecture/transaction-layer.html#read-refreshing">读取刷新</a>）。</p>
+<h3 id="_8">数据分布</h3>
+<h2 id="_9">复制</h2>
+<h2 id="_10">存储</h2>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.51c3f73e.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

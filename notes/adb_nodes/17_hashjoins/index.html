@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/18_cost_models/">
+        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/17_hashjoins/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>基于代价的优化 - wangsd</title>
+        <title>并行 JOIN 算法（Hashing） - Blog</title>
       
     
     
@@ -87,7 +87,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#_1" tabindex="1" class="md-skip">
+      <a href="#join-hashing" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -96,7 +96,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="wangsd" class="md-header-nav__button md-logo">
+        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
           
             <img src="../../../themes/me.jpg" width="24" height="24">
           
@@ -109,10 +109,10 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             <span class="md-header-nav__topic">
-              wangsd
+              Blog
             </span>
             <span class="md-header-nav__topic">
-              基于代价的优化
+              并行 JOIN 算法（Hashing）
             </span>
           
         </div>
@@ -164,12 +164,12 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="wangsd" class="md-nav__button md-logo">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
       
         <img src="../../../themes/me.jpg" width="48" height="48">
       
     </a>
-    wangsd
+    Blog
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -204,6 +204,42 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Aurora/" title="Aurora：F我们如何设计云原生关系数据库" class="md-nav__link">
+      Aurora：F我们如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
         
           
           
@@ -423,100 +459,76 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" title="代价模型组成" class="md-nav__link">
-    代价模型组成
+  <a href="#join" title="并行 JOIN 算法" class="md-nav__link">
+    并行 JOIN 算法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="连接算法设计目标" class="md-nav__link">
+    连接算法设计目标
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dbms" title="基于磁盘的 DBMS 代价模型" class="md-nav__link">
-    基于磁盘的 DBMS 代价模型
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="提升缓存行为" class="md-nav__link">
+    提升缓存行为
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#postgres" title="Postgres 代价模型" class="md-nav__link">
-    Postgres 代价模型
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="并行化哈希连接" class="md-nav__link">
+    并行化哈希连接
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ibm-db2" title="IBM DB2代价模型" class="md-nav__link">
-    IBM DB2代价模型
+        
+          <li class="md-nav__item">
+  <a href="#r-bowtie-sr-bowtie-s" title="哈希连接（R \bowtie SR \bowtie S）" class="md-nav__link">
+    哈希连接（R \bowtie SR \bowtie S）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="分区阶段" class="md-nav__link">
+    分区阶段
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="非阻塞分区" class="md-nav__link">
+    非阻塞分区
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dbms_1" title="内存 DBMS 代价模型" class="md-nav__link">
-    内存 DBMS 代价模型
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="构建阶段" class="md-nav__link">
+    构建阶段
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="小型代价模型" class="md-nav__link">
-    小型代价模型
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="观察结论" class="md-nav__link">
-    观察结论
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" title="选择度" class="md-nav__link">
-    选择度
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ibm-db2-" title="IBM DB2 - 学习优化器" class="md-nav__link">
-    IBM DB2 - 学习优化器
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" title="近似" class="md-nav__link">
-    近似
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" title="采样" class="md-nav__link">
-    采样
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" title="结果基数" class="md-nav__link">
-    结果基数
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" title="学习到的内容" class="md-nav__link">
-    学习到的内容
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" title="部分思考" class="md-nav__link">
-    部分思考
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -537,143 +549,98 @@
               
                 
                 
-                <h1 id="_1">基于代价的优化</h1>
-<p>生成对于当前数据库状态的执行一个特定查询计划的代价评估。</p>
-<ul>
-<li>评估仅对数据库内部有意义。</li>
-</ul>
-<p>对于查找策略，是独立的。</p>
-<h2 id="_2">代价模型组成</h2>
+                <h1 id="join-hashing">并行 JOIN 算法（Hashing）</h1>
+<p>背景</p>
+<p>并行化 hash 连接</p>
+<p>hash 函数</p>
+<p>hashing 模式</p>
+<p>评价</p>
+<h2 id="join">并行 JOIN 算法</h2>
+<p>在多个线程上同时执行两个关系的连接来加速操作。</p>
+<p>两种主要的方法：</p>
 <ol>
-<li>物理代价</li>
-<li>预估CPU周期，I/O，缓存不命中，RAM消耗，预取等等。</li>
-<li>依赖硬件。</li>
-<li>逻辑代价</li>
-<li>估计每个算子的结果集大小。</li>
-<li>独立的算子算法。</li>
-<li>对算子结果集大小需要做估计。</li>
-<li>算法代价</li>
-<li>算子算法实现的复杂度。</li>
+<li>hash 连接</li>
+<li>sort-merge 连接</li>
 </ol>
-<h2 id="dbms">基于磁盘的 DBMS 代价模型</h2>
-<p>磁盘访问的次数总是占查询执行时间的主要部分。</p>
-<ul>
-<li>CPU 代价几乎可以忽略。</li>
-<li>需要考虑顺序和随机 I/O。</li>
-</ul>
-<p>如果 DBMS 对缓存管理完全控制，就很容易建模。</p>
-<ul>
-<li>我们知道替换策略，固定方式，对磁盘的独占访问。</li>
-</ul>
-<h2 id="postgres">Postgres 代价模型</h2>
-<p>使用 CPU 和 I/O 代价的组合，通过常量因子来加权。</p>
-<p>默认设置对于没有大量内存的磁盘驻留数据库比较友好。</p>
-<ul>
-<li>处理在内存中个一个元组比从磁盘上读取快 400 倍。</li>
-<li>顺序读 I/O 比随机读快4倍。</li>
-</ul>
-<h2 id="ibm-db2">IBM DB2代价模型</h2>
-<p>在系统表中的数据库特征。</p>
-<p>硬件环境。</p>
-<p>存储设备特点。</p>
-<p>通信带宽（仅分布式）</p>
-<p>内存资源（缓存池，排序堆）</p>
-<p>并发环境：平均用户数量，隔离级别/阻塞，可用锁数量</p>
-<h2 id="dbms_1">内存 DBMS 代价模型</h2>
-<p>没有 IO 代价，但是我们需要计算 CPU 和内存访问代价。</p>
-<p>内存代价很难计算因为 DBMS 没有控制缓存管理。</p>
-<ul>
-<li>未知的替换策略，没有固定、共享缓存，非统一的内存访问。</li>
-</ul>
-<p>每个算子处理的元组数量对 CPU 代价而言是一个合理的估计。</p>
-<h2 id="_3">小型代价模型</h2>
-<p>两阶段模型自动生成从逻辑模型生成硬件模型。</p>
-<p>阶段1：指定执行原语。</p>
-<ul>
-<li>当执行一个查询时 DBMS 的操作列表。</li>
-<li>例如，估计谓词，索引探测，排序。</li>
-</ul>
-<p>阶段2：微测评</p>
-<ul>
-<li>在启动时，配置操作来计算 CPU 内存代价。</li>
-<li>这些测量用在公式中计算基于表大小的算子代价。</li>
-</ul>
-<h2 id="_4">观察结论</h2>
-<p>每个算子处理的元组数量依赖下面三个因素：</p>
+<p>我们不讨论嵌套循环连接...（循环嵌套的并行化如何做？左表分块、右表不分块；左表不分块、右表分块；左表分块、右表分块；）</p>
+<p>许多 OLTP 数据库系统不实现哈希连接。但是对于少量结果元组**索引嵌套循环连接**比哈希连接或多或少等价于哈希连接。</p>
+<p><a href="https://imdm.ws/2013/papers/Lang.pdf">Massively Parallel NUMA-aware Hash Joins</a></p>
+<p><a href="http://www.vldb.org/pvldb/2/vldb09-257.pdf">Sort vs. Hash Revisited: Fast Join Implementation on
+Modern Multi-Core CPUs</a></p>
+<p><a href="https://15721.courses.cs.cmu.edu/spring2019/papers/18-sortmergejoins/p1064-albutiu.pdf">Massively Parallel Sort-Merge Joins
+in Main Memory Multi-Core Database Systems</a></p>
+<p><a href="https://15721.courses.cs.cmu.edu/spring2019/papers/17-hashjoins/p37-blanas.pdf">Design and Evaluation of Main Memory
+Hash Join Algorithms for Multi-core CPUs</a></p>
+<p><a href="https://15721.courses.cs.cmu.edu/spring2019/papers/17-hashjoins/schuh-sigmod2016.pdf">An Experimental Comparison of Thirteen Relational
+Equi-Joins in Main Memory</a></p>
+<p><a href="https://15721.courses.cs.cmu.edu/spring2019/papers/17-hashjoins/balkesen-icde2013.pdf">Main-Memory Hash Joins on Multi-Core CPUs:
+Tuning to the Underlying Hardware</a></p>
+<h3 id="_1">连接算法设计目标</h3>
 <ol>
-<li>每个表可用的访问方法。</li>
-<li>在数据库中属性中值得分布。</li>
-<li>查询中使用的谓词。</li>
+<li>目标一：最小化同步。避免在执行期间获取 latch。</li>
+<li>目标二：最小化 CPU 缓存未命中。保证数据对于工作线程总是局部的。</li>
 </ol>
-<p>简单查询很容易计算，复杂的查询不容易评估。</p>
-<h2 id="_5">选择度</h2>
-<p>一个算子的选择度是每个谓词访问数据的百分比。</p>
+<h3 id="_2">提升缓存行为</h3>
+<p>在数据库中影响缓存未命中的因素：</p>
 <ul>
-<li>建模为是否满足任何给定元组的谓词的概率。</li>
+<li>缓存+TLB（转义后背缓存器；页表缓存）容量。</li>
+<li>局部性（时间和空间）。</li>
 </ul>
-<p>DBMS 计算选择度使用：</p>
+<p>非随机访问（Scan）：</p>
 <ul>
-<li>域约束</li>
-<li>预先计算的统计数据（区域地图）</li>
-<li>直方图/近似值</li>
-<li>采样</li>
+<li>聚集到一个缓存行。</li>
+<li>对缓存行执行更多的操作。</li>
 </ul>
-<h2 id="ibm-db2-">IBM DB2 - 学习优化器</h2>
-<p>DBMS 在正常处理查询过程中扫描一个表时更新表的统计信息。</p>
-<p>检查优化器的评估是否与实际数据中遇到的值相匹配，并逐步更新它们。</p>
-<h2 id="_6">近似</h2>
-<p>维护准确的统计信息代价很高速度很慢。</p>
-<p>使用近似的数据结构 草图 生成限制误差的估计。</p>
+<p>随机访问（Lookups）：</p>
 <ul>
-<li>count distinct</li>
-<li>分位数</li>
-<li>频繁访问条目</li>
-<li>元组草图</li>
+<li>分区数据以适应缓存+TLB。</li>
 </ul>
-<p><a href="https://datasketches.github.io/">Yahoo! Sketching Library</a></p>
-<h2 id="_7">采样</h2>
-<p>对目标数据集的随机样本上执行一个谓词。</p>
-<p>元组的个数依赖表的大小。</p>
-<p>方法1：维护只读副本</p>
+<h3 id="_3">并行化哈希连接</h3>
+<p>哈希连接是 DBMS 中 OLAP 负载最重要的算子。</p>
+<p>使用多核优势提升速度非常重要。我们希望保持所有核心的繁忙，而不会受到内存限制。</p>
+<h3 id="r-bowtie-sr-bowtie-s">哈希连接（<span><span class="MathJax_Preview">R \bowtie S</span><script type="math/tex">R \bowtie S</script></span>）</h3>
+<p>阶段1：分区（可选）：将 R 和 S 的元组使用相同的连接键进行哈希拆分。</p>
+<p>阶段2：构建：扫描关系 R 然后在连接键上建立一个哈希表。</p>
+<p>阶段3：查找：对于 S 中的每个元组，对于 R 在哈希表中查找哈希键。如果匹配，输出组合元组。</p>
+<h4 id="_4">分区阶段</h4>
+<p>通过对元组的哈希键进行哈希，将输入关系分解到分区缓冲区中。</p>
 <ul>
-<li>周期性刷新来维护准确性。</li>
+<li>理想情况下，分区成本低于构建阶段缓存未命中的成本。</li>
+<li>有时称为混合散列连接。</li>
 </ul>
-<p>方法2：采样实际表</p>
+<p>缓冲区的内容依赖存储模型：</p>
 <ul>
-<li>使用读未提交隔离级别。</li>
-<li>可能会读取相同逻辑元组的多个版本。</li>
+<li>NSM：整个元组或者属性的子集。（行存储）</li>
+<li>DSM：对连接+偏移需要的列。（列存储）</li>
 </ul>
-<h2 id="_8">结果基数</h2>
-<p>每个算子将生成的元组数量是根据其**选择性**乘以其输入中的**元组数**来计算的。</p>
-<p>假设＃1：统一数据
-→值的分布是相同的。</p>
-<p>假设＃2：独立谓词
-→属性的谓词是独立的</p>
-<p>假设＃3：包含原则
-→连接键的域重叠，使得内部关系中的每个键也将存在于外部表中。</p>
-<h2 id="_9">学习到的内容</h2>
-<p>查询优化比快速引擎更加重要。</p>
+<p>方法1：非阻塞分区。一次仅仅扫描输入表的一行；立刻输出结果。</p>
+<p>方法2：阻塞分区(Radix)。多次扫描输入表；每次仅物化结果；有时被叫做 radix 哈希连接。</p>
+<h5 id="_5">非阻塞分区</h5>
+<p>仅扫描一次输入表，立即生成输出结果。</p>
+<p>方法1：共享分区。</p>
 <ul>
-<li>基于代价的连接顺序是必须的。</li>
+<li>所有线程都更新的单个全局分区集合。</li>
+<li>必须使用 latch 来同步线程。</li>
 </ul>
-<p>基数估计通常是错误的。</p>
+<p>方法2：私有分区。</p>
 <ul>
-<li>尝试使用不依赖估计的算子。</li>
+<li>每个线程有其自己的分区集。</li>
+<li>必须在所有线程完成后将结果合并。</li>
 </ul>
-<p>Hash 连接 + 顺序扫描是一个可靠的执行模型。</p>
-<ul>
-<li>可用的索引越多，计划就越脆弱（但平均速度也更快）。</li>
-</ul>
-<p>使用精确模型是浪费时间。</p>
-<ul>
-<li>更好地改进基数估算</li>
-</ul>
-<h2 id="_10">部分思考</h2>
-<p>使用处理的元组数是内存DBMS的合理成本模型。</p>
-<ul>
-<li>但如何计算这个并不简单。</li>
-</ul>
-<p>我认为采样+草图的组合是实现准确估算的方法。</p>
+<h4 id="_6">构建阶段</h4>
+<p>线程然后扫描 R 的元组（或者分区）。</p>
+<p>对于每个元组，哈希连接键属性，将其加入到每个哈希表的合适的桶中。</p>
+<p>哈希表：</p>
+<ol>
+<li>设计决策1：哈希函数，如何将一个很大的键空间映射到小的域，更快vs.碰撞率之间的权衡。</li>
+<li>设计决策2：哈希模式，如何在哈希后处理冲突，大哈希表与查找插入键更多指令之间的权衡。</li>
+</ol>
+<p>哈希函数：对于我们的连接算法，我们不想使用加密哈希函数。我们期望更快、碰撞率更小的哈希函数。最佳速度：总是在 '1'；最佳的碰撞率：完美哈希。</p>
+<p>CRC-32(1975)：在网络中的错误检测。</p>
+<p>MurmerHash(2008)：被设计用来实现更快、通用的哈希函数。</p>
+<p>Google CityHash(2011)：被设计用来实现短 key（&lt;64字节）的更快的哈希。</p>
+<p>Google FarmHash(2014)：CityHash 的新版本有更好的冲突率。</p>
+<p>CLHash(2016)：基于无进位乘法的快速哈希函数。</p>
                 
                   
                 

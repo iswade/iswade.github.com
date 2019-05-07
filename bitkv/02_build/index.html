@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/17_optimizer_implementation_II/">
+        <link rel="canonical" href="https://iswade.github.io/bitkv/02_build/">
       
       
       
@@ -33,18 +33,18 @@
       
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
-      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <link rel="shortcut icon" href="../../themes/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
     
     
       
-        <title>优化器实现 II - wangsd</title>
+        <title>02 build - Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.982221ab.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -53,7 +53,7 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
     
     
       
@@ -62,10 +62,10 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="../../../themes/extra.css">
+      <link rel="stylesheet" href="../../themes/extra.css">
     
     
       
@@ -87,7 +87,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#ii" tabindex="1" class="md-skip">
+      <a href="#client" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -96,9 +96,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="wangsd" class="md-header-nav__button md-logo">
+        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
           
-            <img src="../../../themes/me.jpg" width="24" height="24">
+            <img src="../../themes/me.jpg" width="24" height="24">
           
         </a>
       </div>
@@ -109,10 +109,10 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             <span class="md-header-nav__topic">
-              wangsd
+              Blog
             </span>
             <span class="md-header-nav__topic">
-              优化器实现 II
+              02 build
             </span>
           
         </div>
@@ -164,12 +164,12 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="wangsd" class="md-nav__button md-logo">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
       
-        <img src="../../../themes/me.jpg" width="48" height="48">
+        <img src="../../themes/me.jpg" width="48" height="48">
       
     </a>
-    wangsd
+    Blog
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -180,7 +180,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../.." title="Home" class="md-nav__link">
+    <a href="../.." title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -211,7 +211,43 @@
 
 
   <li class="md-nav__item">
-    <a href="../../db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+    <a href="../../translate/faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/Aurora/" title="Aurora：F我们如何设计云原生关系数据库" class="md-nav__link">
+      Aurora：F我们如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
       数据库笔记
     </a>
   </li>
@@ -223,7 +259,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
       F1 Query
     </a>
   </li>
@@ -235,7 +271,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
+    <a href="../../articles/partition/" title="数据分区" class="md-nav__link">
       数据分区
     </a>
   </li>
@@ -247,7 +283,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
       Bolt 数据库
     </a>
   </li>
@@ -259,7 +295,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
       强一致性模型
     </a>
   </li>
@@ -271,7 +307,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
+    <a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
       Zookeeper
     </a>
   </li>
@@ -307,7 +343,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
       Go 并发编程
     </a>
   </li>
@@ -319,7 +355,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
       如何使用 Go 接口
     </a>
   </li>
@@ -355,7 +391,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
       linux 系统管理
     </a>
   </li>
@@ -367,7 +403,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../git/" title="git 入门教程" class="md-nav__link">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
       git 入门教程
     </a>
   </li>
@@ -379,7 +415,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
       How to be a manager
     </a>
   </li>
@@ -396,7 +432,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../about/" title="About" class="md-nav__link">
+    <a href="../../about/" title="About" class="md-nav__link">
       About
     </a>
   </li>
@@ -416,58 +452,27 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="查询优化策略" class="md-nav__link">
-    查询优化策略
+  <a href="#client" title="client" class="md-nav__link">
+    client
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bench_kv" title="bench_kv" class="md-nav__link">
+    bench_kv
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#postgres" title="Postgres 优化器" class="md-nav__link">
-    Postgres 优化器
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="优化器生成器" class="md-nav__link">
-    优化器生成器
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="分层搜索" class="md-nav__link">
-    分层搜索
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="统一搜索" class="md-nav__link">
-    统一搜索
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cascades" title="CASCADES 优化器" class="md-nav__link">
-    CASCADES 优化器
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cascades_1" title="CASCADES 实现" class="md-nav__link">
-    CASCADES 实现
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -488,68 +493,49 @@
               
                 
                 
-                <h1 id="ii">优化器实现 II</h1>
-<p>Cascades/Columnbia</p>
-<p>Orca 优化器</p>
-<p>MemSQL 优化器</p>
-<h2 id="_1">查询优化策略</h2>
-<ol>
-<li>启发式：INGRES，Oracle（直到90年代中期）</li>
-<li>启发式+基于代价的连接：System R，早期 DB2，大部分开源 DBMS</li>
-<li>随机搜索：80年代学术，当前的 Postgres</li>
-<li>分层搜索：IBM 的 STARBURST（80年代后期），当前的 DB2，Oracle</li>
-<li>统一搜索：90年代的Volcano/Cascades，当前的 MSSQL + Greenplum</li>
+                  <h1>02 build</h1>
+                
+                <ol>
+<li>storage</li>
+<li>client</li>
+<li>server</li>
+<li>replication</li>
+<li>range</li>
+<li>distribute</li>
+<li>transaction</li>
 </ol>
-<h2 id="postgres">Postgres 优化器</h2>
-<p>为查询优化强加了一个严格的流程：</p>
-<ul>
-<li>第一个阶段执行启发式规则的重写。</li>
-<li>然后执行基于代价的搜索找到优化的连接顺序。</li>
-<li>所有其它的部分都被当做“附件”。</li>
-<li>然后递归下降执行子查询优化。</li>
-</ul>
-<p>很难修改或者扩展，因为顺序必须保留。</p>
-<h2 id="_2">优化器生成器</h2>
-<p>允许 DBMS 实现者对优化查询编写声明式规则框架。</p>
-<ul>
-<li>将搜索策略和数据模型分离。</li>
-<li>将转换规则和逻辑算子到物理规则和物理算子分离。</li>
-</ul>
-<p>实现可以独立于优化器的搜索策略。</p>
-<p>例如：Starburst, Exodus, Volcano, Cascades,
-OPT++</p>
-<h2 id="_3">分层搜索</h2>
-<p>首先使用转换规则重写逻辑查询计划。</p>
-<ul>
-<li>引擎检查在引用前检查是否被允许。</li>
-<li>在这一步不考虑代价。</li>
-</ul>
-<p>然后执行基于代价的搜索将逻辑计划映射到物理计划。</p>
-<h2 id="_4">统一搜索</h2>
-<p>统一从逻辑到逻辑和逻辑到物理转换的概念。</p>
-<ul>
-<li>不需要分离各个阶段，因为所有的都是转换。</li>
-</ul>
-<p>这个方法生成了更多的转换，所以重度依赖备忘来减少冗余的工作。</p>
-<h2 id="cascades">CASCADES 优化器</h2>
-<p>Volcano 查询优化器的面向对象的实现。</p>
-<p>可以通过直接映射函数对简单表达式重写而不是通过穷举搜索。</p>
-<h2 id="cascades_1">CASCADES 实现</h2>
-<p>独立的：</p>
-<ol>
-<li><a href="http://pages.cs.wisc.edu/~navin/research/apg.html">Wisconsin OPT++</a>(1990s)</li>
-<li><a href="http://web.cecs.pdx.edu/~len/Columbia/">Portland State Columbia</a>(1990s)</li>
-<li><a href="https://github.com/greenplum-db/gporca">Pivotal Orca</a>(2010s)</li>
-<li><a href="https://calcite.apache.org/">Apache Calcite</a>(2010s)</li>
-</ol>
-<p>集成的：</p>
-<ol>
-<li>Microsoft SQL Server(1990s)</li>
-<li>Tandem NonStop SQL(1990s)</li>
-<li>Clustrix(2000s)</li>
-<li><a href="https://github.com/cmu-db/peloton/tree/master/src/optimizer">CMU Peloton</a>(2010s)</li>
-</ol>
-<p><img alt="image-20190217224027760" src="../image/17_databases.png" /></p>
+<h2 id="client">client</h2>
+<h3 id="bench_kv">bench_kv</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="codehilite">--batch</code></td>
+<td>每次网络交互 set /get 设置或者获取的 kv 数</td>
+</tr>
+<tr>
+<td><code class="codehilite">--concurrency</code></td>
+<td>并发数</td>
+</tr>
+<tr>
+<td><code class="codehilite">--duration</code></td>
+<td>持续时间</td>
+</tr>
+<tr>
+<td><code class="codehilite">--histograms</code></td>
+<td>增量和汇总结果的直方图数据写入文件</td>
+</tr>
+<tr>
+<td><code class="codehilite">--read-percent</code></td>
+<td>读取百分比</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
@@ -588,26 +574,26 @@ OPT++</p>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.51c3f73e.js"></script>
+      <script src="../../assets/javascripts/application.51c3f73e.js"></script>
       
         
         
           
-          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
-                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
               
               
-                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
               
             
           
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

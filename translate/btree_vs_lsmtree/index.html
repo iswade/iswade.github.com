@@ -38,7 +38,7 @@
     
     
       
-        <title>现代存储系统背后的算法 - wangsd</title>
+        <title>现代存储系统背后的算法 - Blog</title>
       
     
     
@@ -96,7 +96,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="wangsd" class="md-header-nav__button md-logo">
+        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
           
             <img src="../../themes/me.jpg" width="24" height="24">
           
@@ -109,7 +109,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             <span class="md-header-nav__topic">
-              wangsd
+              Blog
             </span>
             <span class="md-header-nav__topic">
               现代存储系统背后的算法
@@ -164,12 +164,12 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="wangsd" class="md-nav__button md-logo">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
       
         <img src="../../themes/me.jpg" width="48" height="48">
       
     </a>
-    wangsd
+    Blog
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -190,10 +190,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Database
@@ -204,6 +206,176 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Aurora/" title="Aurora：F我们如何设计云原生关系数据库" class="md-nav__link">
+      Aurora：F我们如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        现代存储系统背后的算法
+      </label>
+    
+    <a href="./" title="现代存储系统背后的算法" class="md-nav__link md-nav__link--active">
+      现代存储系统背后的算法
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#b-trees" title="B-trees" class="md-nav__link">
+    B-trees
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b" title="B树剖析" class="md-nav__link">
+    B树剖析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="查找" class="md-nav__link">
+    查找
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="修改" class="md-nav__link">
+    修改
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lsm" title="LSM树" class="md-nav__link">
+    LSM树
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lsm_1" title="LSM树剖析" class="md-nav__link">
+    LSM树剖析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sst" title="SST" class="md-nav__link">
+    SST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="查找" class="md-nav__link">
+    查找
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm_2" title="LSM树维护" class="md-nav__link">
+    LSM树维护
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="原子性和持久性" class="md-nav__link">
+    原子性和持久性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="评价存储系统" class="md-nav__link">
+    评价存储系统
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="参考" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
         
           
           
@@ -544,7 +716,8 @@
                 
                 <h1 id="_1">现代存储系统背后的算法</h1>
 <p>读优化B树和写优化LSM树的不同用途。</p>
-<p>应用处理的**数据量**不断增长，随着这种增长，<strong>扩展**存储变得更具挑战。每个数据库都有自己的**权衡</strong>。了解这些权衡是至关重要的，因为其帮助我们从众多选项中做正确的**选择**。</p>
+<p>Alex Petrov</p>
+<p>应用处理的 <strong>数据量</strong> 不断增长，随着这种增长，<strong>扩展</strong> 存储变得更具挑战。每个数据库都有自己的 <strong>权衡</strong>。了解这些权衡是至关重要的，因为其帮助我们从众多选项中做正确的 <strong>选择</strong>。</p>
 <p>每个应用有自己独特的读写负载形式、一致性需求、延迟和访问模式。熟悉数据库和存储内部结构有助于进行架构决策，有助于解释系统为何以某种方式运行，有助于解决出现的问题，并根据工作负载对数据库进行调优。</p>
 <p>在各个方面优化系统是不可能的。在理想情况下，会有数据结构来保证最佳的读写性能，而不需要存储开销，但在实践中，这是不可能的。</p>
 <p>本文更详细地介绍了大多数现代数据库中使用的两种存储系统设计：读优化的B-Trees[1]和写优化的LSM（日志结构合并）Trees[5]，并描述了它们的使用案例和权衡。</p>
@@ -626,9 +799,9 @@
 </ul>
 <p>LSM树具有以下特性：</p>
 <ul>
-<li>它们是**不变**的。SSTables只写在磁盘上一次，从不更新。压缩用于协调已删除项占用的空间，并合并来自多个数据文件的相同键数据。作为压缩过程的一部分，成功合并后的SSTable将被丢弃并删除。来自不可变性的另一个有用属性是可以同时访问刷新的表。</li>
-<li>它们是**写优化**的，这意味着写操作按顺序在磁盘上进行缓冲和刷新，可能允许磁盘上的空间位置。</li>
-<li>**读取**可能需要从多个源访问数据，因为同一密钥的数据，在不同的时间写入，可能会落在不同的数据文件中。在返回到客户机之前，记录必须经过合并过程。</li>
+<li>它们是 <strong>不变</strong> 的。SSTables只写在磁盘上一次，从不更新。压缩用于协调已删除项占用的空间，并合并来自多个数据文件的相同键数据。作为压缩过程的一部分，成功合并后的SSTable将被丢弃并删除。来自不可变性的另一个有用属性是可以同时访问刷新的表。</li>
+<li>它们是 <strong>写优化</strong> 的，这意味着写操作按顺序在磁盘上进行缓冲和刷新，可能允许磁盘上的空间位置。</li>
+<li><strong>读取</strong> 可能需要从多个源访问数据，因为同一个 key的数据，在不同的时间写入，可能会落在不同的数据文件中。在返回到客户机之前，记录必须经过合并过程。</li>
 <li>需要维护/<strong>压缩</strong>，因为缓冲写入被刷新到磁盘上。</li>
 </ul>
 <h2 id="_7">评价存储系统</h2>
@@ -636,7 +809,7 @@
 <p>哈佛大学DASlab（数据系统实验室）的研究人员总结了数据库系统优化的三个关键参数：<strong>读取开销、更新开销和内存开销</strong>，或RUM。了解这些参数中的哪些对您的用例最重要，会影响数据结构的选择、访问方法，甚至对某些工作负载的适用性，因为算法是根据特定用例进行定制的。</p>
 <p>RUM推测[2]指出，为上述两项管理费用设定上限也为第三项管理费用设定下限。例如，B树是以写开销为代价进行读优化的，并且必须保留空空间（从而导致内存开销）。LSM树的空间开销较低，但由于在读取过程中必须访问多个磁盘驻留表而带来的读取开销。这三个参数形成了一个竞争三角形，并且一方面的改进可能意味着另一方面的妥协。图9说明了RUM推测。</p>
 <p><img alt="RUM conjecture" src="http://deliveryimages.acm.org/10.1145/3230000/3220266/petrov9.png" /></p>
-<p>B树优化读取性能：索引的布局方式可以最小化遍历树所需的磁盘访问。只有一个索引文件必须被访问才能定位数据。这是通过保持索引文件可变来实现的，这也增加了由于节点拆分和合并、重新定位以及与碎片/不平衡相关的维护而导致的**写放大**。为了分摊更新成本并减少拆分次数，B树在所有层的节点中都保留了额外的空闲空间。这有助于推迟写入放大，直到节点满为止。简而言之，B树交换更新和内存开销，以获得更好的读取性能。</p>
+<p>B树优化读取性能：索引的布局方式可以最小化遍历树所需的磁盘访问。只有一个索引文件必须被访问才能定位数据。这是通过保持索引文件可变来实现的，这也增加了由于节点拆分和合并、重新定位以及与碎片/不平衡相关的维护而导致的 <strong>写放大</strong>。为了分摊更新成本并减少拆分次数，B树在所有层的节点中都保留了额外的空闲空间。这有助于推迟写入放大，直到节点满为止。简而言之，B树交换更新和内存开销，以获得更好的读取性能。</p>
 <p>LSM树可优化写入性能。更新和删除都不需要在磁盘上定位数据（B树就是这样），它们通过缓冲内存常驻表中的所有插入、更新和删除操作来保证顺序写入。这是以更高的维护成本和压缩需求（这只是一种降低不断增长的读取价格和减少磁盘驻留表数量的方法）和更昂贵的读取（因为数据必须从多个源读取并合并）为代价的。同时，LSM树通过不保留任何空空间（与B树节点不同，B树节点的平均占用率为70%，就地更新所需的开销）以及允许块压缩（因为最终文件具有更好的占用率和不可变性）来消除内存开销。简而言之，LSM树权衡读取性能和维护，以获得更好的写入性能和更低的内存开销。</p>
 <p>有数据结构可以针对每个所需的属性进行优化。使用自适应数据结构可以以更高的维护成本获得更好的读取性能。添加元数据促进遍历（如部分级联）将对写入时间和占用空间产生影响，但可以提高读取时间。使用压缩优化内存效率（例如，Gorilla压缩[6]、增量编码和许多其他算法）将增加一些开销，用于在写入时打包数据和在读取时解包数据。有时，您可以用功能来换取效率。例如，由于文件格式简单，堆文件和散列索引可以提供很好的性能保证和较小的空间开销，这是因为除了点查询之外，不能执行任何操作的代价。您还可以使用近似的数据结构（如布隆过滤器、HyperlogLog、Count-Min概览等）来交换空间和效率。</p>
 <p>三个可调的读取、更新和内存开销可以帮助您评估数据库，并深入了解它最适合的工作负载。所有这些都是非常直观的，通常很容易将存储系统分类到其中一个存储桶中，并猜测它将如何执行，然后通过广泛的测试验证您的假设。</p>
@@ -691,6 +864,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Aurora/" title="Aurora：F我们如何设计云原生关系数据库" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Aurora：F我们如何设计云原生关系数据库
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                数据库笔记
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
