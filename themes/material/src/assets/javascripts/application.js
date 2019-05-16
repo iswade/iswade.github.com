@@ -320,16 +320,15 @@ function initialize(config) { // eslint-disable-line func-style
     }).listen()
 
     /* Listener: open search on focus */
-    new Material.Event.MatchMedia("(min-width: 960px)",
-      new Material.Event.Listener("[data-md-component=query]", "focus", () => {
-        const toggle = document.querySelector("[data-md-toggle=search]")
-        if (!(toggle instanceof HTMLInputElement))
-          throw new ReferenceError
-        if (!toggle.checked) {
-          toggle.checked = true
-          toggle.dispatchEvent(new CustomEvent("change"))
-        }
-      }))
+    new Material.Event.Listener("[data-md-component=query]", "focus", () => {
+      const toggle = document.querySelector("[data-md-toggle=search]")
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (!toggle.checked) {
+        toggle.checked = true
+        toggle.dispatchEvent(new CustomEvent("change"))
+      }
+    }).listen()
 
     /* Listener: keyboard handlers */ // eslint-disable-next-line complexity
     new Material.Event.Listener(window, "keydown", ev => {                        // TODO: split up into component to reduce complexity
@@ -342,7 +341,7 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Skip editable elements */
       if (document.activeElement instanceof HTMLElement &&
-          document.activeElement.contentEditable === "true")
+          document.activeElement.isContentEditable)
         return
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
@@ -420,6 +419,11 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Search is closed and we're not inside a form */
       } else if (document.activeElement && !document.activeElement.form) {
+
+        /* Fixes #1026: search grabs focus for non-form input elements */
+        if (document.activeElement.tagName === "TEXTAREA" ||
+            document.activeElement.tagName === "INPUT")
+          return
 
         /* F/S: Open search if not in input field */
         if (ev.keyCode === 70 || ev.keyCode === 83) {
