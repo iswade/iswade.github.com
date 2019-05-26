@@ -1,958 +1,30 @@
-
-
-
-
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-      
-        <link rel="canonical" href="https://iswade.github.io/notes/git/">
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
-      <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
-    
-    
-      
-        <title>git 入门教程 - Blog</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application.750b69bd.css">
-      
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="">
-      
-    
-    
-      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
-    
-    
-      <link rel="stylesheet" href="../../themes/extra.css">
-    
-    
-      
-    
-    
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#git" tabindex="1" class="md-skip">
-        跳转至
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
-          
-            <img src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              git 入门教程
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            键入以开始搜索
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        
-      </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
-      
-        <img src="../../themes/me.jpg" width="48" height="48">
-      
-    </a>
-    Blog
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="Home" class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Database
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
-      无时钟的一致性：FaunaDB的分布式事务协议
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/Aurora/" title="Aurora：我们如何设计云原生关系数据库" class="md-nav__link">
-      Aurora：我们如何设计云原生关系数据库
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
-      现代存储系统背后的算法
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
-      数据库笔记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
-      F1 Query
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../articles/partition/" title="数据分区" class="md-nav__link">
-      数据分区
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
-      Bolt 数据库
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Distribute
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Distribute
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">
-      分布式系统大纲
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
-      强一致性模型
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
-      Zookeeper
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Language
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Language
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
-      Go 并发编程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
-      如何使用 Go 接口
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
-    
-    <label class="md-nav__link" for="nav-5">
-      Engineering
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Engineering
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
-      linux 系统管理
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        git 入门教程
-      </label>
-    
-    <a href="./" title="git 入门教程" class="md-nav__link md-nav__link--active">
-      git 入门教程
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="第一章 入门介绍" class="md-nav__link">
-    第一章 入门介绍
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" title="1.1 基本命令" class="md-nav__link">
-    1.1 基本命令
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" title="1.2 工作区与暂存区" class="md-nav__link">
-    1.2 工作区与暂存区
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13" title="1.3 删除文件" class="md-nav__link">
-    1.3 删除文件
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="第二章 远程仓库" class="md-nav__link">
-    第二章 远程仓库
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-github" title="2.1 创建一个库推送到github" class="md-nav__link">
-    2.1 创建一个库推送到github
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22" title="2.2 克隆一个远程仓库" class="md-nav__link">
-    2.2 克隆一个远程仓库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" title="2.3 更新到远程仓库" class="md-nav__link">
-    2.3 更新到远程仓库
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="第三章 分支管理" class="md-nav__link">
-    第三章 分支管理
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" title="3.1 创建与合并分支" class="md-nav__link">
-    3.1 创建与合并分支
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" title="3.2 冲突管理" class="md-nav__link">
-    3.2 冲突管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" title="3.3 多人协作" class="md-nav__link">
-    3.3 多人协作
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="第四章 搭建服务" class="md-nav__link">
-    第四章 搭建服务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git_1" title="第五章 配置GIT" class="md-nav__link">
-    第五章 配置GIT
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alias" title="alias" class="md-nav__link">
-    alias
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" title="配置文件" class="md-nav__link">
-    配置文件
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#diff" title="Diff 工具配置" class="md-nav__link">
-    Diff 工具配置
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" title="第七章 工作流" class="md-nav__link">
-    第七章 工作流
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" title="合并" class="md-nav__link">
-    合并
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fork" title="fork 分支同步" class="md-nav__link">
-    fork 分支同步
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" title="删除远程分支" class="md-nav__link">
-    删除远程分支
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" title="第八章 速查表" class="md-nav__link">
-    第八章 速查表
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" title="参考书" class="md-nav__link">
-    参考书
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
-      How to be a manager
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../about/" title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="第一章 入门介绍" class="md-nav__link">
-    第一章 入门介绍
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" title="1.1 基本命令" class="md-nav__link">
-    1.1 基本命令
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" title="1.2 工作区与暂存区" class="md-nav__link">
-    1.2 工作区与暂存区
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13" title="1.3 删除文件" class="md-nav__link">
-    1.3 删除文件
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="第二章 远程仓库" class="md-nav__link">
-    第二章 远程仓库
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-github" title="2.1 创建一个库推送到github" class="md-nav__link">
-    2.1 创建一个库推送到github
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22" title="2.2 克隆一个远程仓库" class="md-nav__link">
-    2.2 克隆一个远程仓库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" title="2.3 更新到远程仓库" class="md-nav__link">
-    2.3 更新到远程仓库
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="第三章 分支管理" class="md-nav__link">
-    第三章 分支管理
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" title="3.1 创建与合并分支" class="md-nav__link">
-    3.1 创建与合并分支
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" title="3.2 冲突管理" class="md-nav__link">
-    3.2 冲突管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" title="3.3 多人协作" class="md-nav__link">
-    3.3 多人协作
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="第四章 搭建服务" class="md-nav__link">
-    第四章 搭建服务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git_1" title="第五章 配置GIT" class="md-nav__link">
-    第五章 配置GIT
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alias" title="alias" class="md-nav__link">
-    alias
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" title="配置文件" class="md-nav__link">
-    配置文件
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#diff" title="Diff 工具配置" class="md-nav__link">
-    Diff 工具配置
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" title="第七章 工作流" class="md-nav__link">
-    第七章 工作流
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" title="合并" class="md-nav__link">
-    合并
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fork" title="fork 分支同步" class="md-nav__link">
-    fork 分支同步
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" title="删除远程分支" class="md-nav__link">
-    删除远程分支
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" title="第八章 速查表" class="md-nav__link">
-    第八章 速查表
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" title="参考书" class="md-nav__link">
-    参考书
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <h1 id="git">git 入门教程</h1>
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/notes/git/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>git 入门教程 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#git" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">git 入门教程</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../translate/Aurora/" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">git 入门教程</label><a href="./" title="git 入门教程" class="md-nav__link md-nav__link--active">git 入门教程</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="第一章 入门介绍" class="md-nav__link">第一章 入门介绍</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#11" title="1.1 基本命令" class="md-nav__link">1.1 基本命令</a></li><li class="md-nav__item"><a href="#12" title="1.2 工作区与暂存区" class="md-nav__link">1.2 工作区与暂存区</a></li><li class="md-nav__item"><a href="#13" title="1.3 删除文件" class="md-nav__link">1.3 删除文件</a></li></ul></nav></li><li class="md-nav__item"><a href="#_2" title="第二章 远程仓库" class="md-nav__link">第二章 远程仓库</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#21-github" title="2.1 创建一个库推送到github" class="md-nav__link">2.1 创建一个库推送到github</a></li><li class="md-nav__item"><a href="#22" title="2.2 克隆一个远程仓库" class="md-nav__link">2.2 克隆一个远程仓库</a></li><li class="md-nav__item"><a href="#23" title="2.3 更新到远程仓库" class="md-nav__link">2.3 更新到远程仓库</a></li></ul></nav></li><li class="md-nav__item"><a href="#_3" title="第三章 分支管理" class="md-nav__link">第三章 分支管理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#31" title="3.1 创建与合并分支" class="md-nav__link">3.1 创建与合并分支</a></li><li class="md-nav__item"><a href="#32" title="3.2 冲突管理" class="md-nav__link">3.2 冲突管理</a></li><li class="md-nav__item"><a href="#33" title="3.3 多人协作" class="md-nav__link">3.3 多人协作</a></li></ul></nav></li><li class="md-nav__item"><a href="#_4" title="第四章 搭建服务" class="md-nav__link">第四章 搭建服务</a></li><li class="md-nav__item"><a href="#git_1" title="第五章 配置GIT" class="md-nav__link">第五章 配置GIT</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#alias" title="alias" class="md-nav__link">alias</a></li><li class="md-nav__item"><a href="#_5" title="配置文件" class="md-nav__link">配置文件</a></li><li class="md-nav__item"><a href="#diff" title="Diff 工具配置" class="md-nav__link">Diff 工具配置</a></li></ul></nav></li><li class="md-nav__item"><a href="#_6" title="第七章 工作流" class="md-nav__link">第七章 工作流</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_7" title="合并" class="md-nav__link">合并</a></li><li class="md-nav__item"><a href="#fork" title="fork 分支同步" class="md-nav__link">fork 分支同步</a></li><li class="md-nav__item"><a href="#_8" title="删除远程分支" class="md-nav__link">删除远程分支</a></li></ul></nav></li><li class="md-nav__item"><a href="#_9" title="第八章 速查表" class="md-nav__link">第八章 速查表</a></li><li class="md-nav__item"><a href="#_10" title="参考书" class="md-nav__link">参考书</a></li></ul></nav></li><li class="md-nav__item"><a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="第一章 入门介绍" class="md-nav__link">第一章 入门介绍</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#11" title="1.1 基本命令" class="md-nav__link">1.1 基本命令</a></li><li class="md-nav__item"><a href="#12" title="1.2 工作区与暂存区" class="md-nav__link">1.2 工作区与暂存区</a></li><li class="md-nav__item"><a href="#13" title="1.3 删除文件" class="md-nav__link">1.3 删除文件</a></li></ul></nav></li><li class="md-nav__item"><a href="#_2" title="第二章 远程仓库" class="md-nav__link">第二章 远程仓库</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#21-github" title="2.1 创建一个库推送到github" class="md-nav__link">2.1 创建一个库推送到github</a></li><li class="md-nav__item"><a href="#22" title="2.2 克隆一个远程仓库" class="md-nav__link">2.2 克隆一个远程仓库</a></li><li class="md-nav__item"><a href="#23" title="2.3 更新到远程仓库" class="md-nav__link">2.3 更新到远程仓库</a></li></ul></nav></li><li class="md-nav__item"><a href="#_3" title="第三章 分支管理" class="md-nav__link">第三章 分支管理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#31" title="3.1 创建与合并分支" class="md-nav__link">3.1 创建与合并分支</a></li><li class="md-nav__item"><a href="#32" title="3.2 冲突管理" class="md-nav__link">3.2 冲突管理</a></li><li class="md-nav__item"><a href="#33" title="3.3 多人协作" class="md-nav__link">3.3 多人协作</a></li></ul></nav></li><li class="md-nav__item"><a href="#_4" title="第四章 搭建服务" class="md-nav__link">第四章 搭建服务</a></li><li class="md-nav__item"><a href="#git_1" title="第五章 配置GIT" class="md-nav__link">第五章 配置GIT</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#alias" title="alias" class="md-nav__link">alias</a></li><li class="md-nav__item"><a href="#_5" title="配置文件" class="md-nav__link">配置文件</a></li><li class="md-nav__item"><a href="#diff" title="Diff 工具配置" class="md-nav__link">Diff 工具配置</a></li></ul></nav></li><li class="md-nav__item"><a href="#_6" title="第七章 工作流" class="md-nav__link">第七章 工作流</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_7" title="合并" class="md-nav__link">合并</a></li><li class="md-nav__item"><a href="#fork" title="fork 分支同步" class="md-nav__link">fork 分支同步</a></li><li class="md-nav__item"><a href="#_8" title="删除远程分支" class="md-nav__link">删除远程分支</a></li></ul></nav></li><li class="md-nav__item"><a href="#_9" title="第八章 速查表" class="md-nav__link">第八章 速查表</a></li><li class="md-nav__item"><a href="#_10" title="参考书" class="md-nav__link">参考书</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="git">git 入门教程</h1>
 <h2 id="_1">第一章 入门介绍</h2>
 <h3 id="11">1.1 基本命令</h3>
-<div class="codehilite"><pre><span></span>mkdir notes
-<span class="nb">cd</span> notes
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>mkdir notes
+<span style="color: #003388">cd</span> notes
 
-<span class="c1"># 初始化一个git仓库 </span>
+<span style="color: #888888"># 初始化一个git仓库 </span>
 git init
 
-<span class="nb">echo</span> <span class="s2">&quot;my notes&quot;</span> &gt; readme.md
+<span style="color: #003388">echo</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;my notes&quot;</span> &gt; readme.md
 
-<span class="c1"># 查看状态</span>
+<span style="color: #888888"># 查看状态</span>
 git status
 
-<span class="c1"># 查看修改内容</span>
+<span style="color: #888888"># 查看修改内容</span>
 git diff readme.md
 
-<span class="c1"># 添加文件到仓库</span>
+<span style="color: #888888"># 添加文件到仓库</span>
 git add readme.md
 
-<span class="c1"># 提交更改</span>
-git commit -m <span class="s2">&quot;add readme&quot;</span>
+<span style="color: #888888"># 提交更改</span>
+git commit -m <span style="color: #dd2200; background-color: #fff0f0">&quot;add readme&quot;</span>
 
-<span class="c1"># 查看提交日志</span>
-git log --pretty<span class="o">=</span>oneline
+<span style="color: #888888"># 查看提交日志</span>
+git log --pretty=oneline
 
-<span class="c1"># 回退到上一个版本</span>
+<span style="color: #888888"># 回退到上一个版本</span>
 git reset --hard HEAD^
 
 HEAD: 当前版本
@@ -963,30 +35,30 @@ HEAD~100: 前一百个版本
 
 <h3 id="12">1.2 工作区与暂存区</h3>
 <p>工作区 -- git add &rarr; 暂存区 -- git commit &rarr; 分支</p>
-<div class="codehilite"><pre><span></span><span class="c1"># 查看工作区与暂存区文件的差异</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 查看工作区与暂存区文件的差异</span>
 git diff readme.md
 
-<span class="c1"># 查看工作区和版本库最新版本的差异</span>
+<span style="color: #888888"># 查看工作区和版本库最新版本的差异</span>
 git diff HEAD -- readme.md
 
-<span class="c1"># 放弃工作区的修改(还没有执行 git add 命令)</span>
+<span style="color: #888888"># 放弃工作区的修改(还没有执行 git add 命令)</span>
 git checkout -- readme.md
 
-<span class="c1"># 撤销暂存区（已经执行了 git add 命令）</span>
+<span style="color: #888888"># 撤销暂存区（已经执行了 git add 命令）</span>
 git reset HEAD readme.md
 </pre></div>
 
 <h3 id="13">1.3 删除文件</h3>
-<div class="codehilite"><pre><span></span><span class="c1"># 删除没用的文件</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 删除没用的文件</span>
 rm test.txt
 git add test.txt
-git commit -m <span class="s2">&quot;rm test.txt&quot;</span>
+git commit -m <span style="color: #dd2200; background-color: #fff0f0">&quot;rm test.txt&quot;</span>
 
-<span class="c1"># 直接从版本库中删除文件</span>
+<span style="color: #888888"># 直接从版本库中删除文件</span>
 git rm test.txt
-git commit -m <span class="s2">&quot;git rm test.txt&quot;</span>
+git commit -m <span style="color: #dd2200; background-color: #fff0f0">&quot;git rm test.txt&quot;</span>
 
-<span class="c1"># 还原文件</span>
+<span style="color: #888888"># 还原文件</span>
 git reset --hard CommitID
 </pre></div>
 
@@ -994,51 +66,51 @@ git reset --hard CommitID
 <h3 id="21-github">2.1 创建一个库推送到github</h3>
 <p>在github上创建一个仓库 gitlearn</p>
 <p>在本地创建一个gitlearn目录，并进入</p>
-<div class="codehilite"><pre><span></span>mkdir gitlearn
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>mkdir gitlearn
 cd gitlearn
 </pre></div>
 
 
 <p>使用命令git init初始化一个库</p>
-<div class="codehilite"><pre><span></span>git init
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git init
 </pre></div>
 
 
 <p>然后使用如下命令添加远程库 origin</p>
-<div class="codehilite"><pre><span></span>git remote add origin git@github.com:iswade/gitlearn.git
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git remote add origin git@github.com:iswade/gitlearn.git
 </pre></div>
 
 
 <p>生成一个readme.md文件</p>
-<div class="codehilite"><pre><span></span>echo &quot;git learn is very easy!&quot; &amp;gt; readme.md
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>echo &quot;git learn is very easy!&quot; &amp;gt; readme.md
 </pre></div>
 
 
 <p>添加文件到仓库</p>
-<div class="codehilite"><pre><span></span>git add readme.md
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git add readme.md
 </pre></div>
 
 
 <p>提交更改</p>
-<div class="codehilite"><pre><span></span>git commit -m &quot;add readme file&quot;
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit -m &quot;add readme file&quot;
 </pre></div>
 
 
 <p>执行向远程仓库origin master分支推送更新（-u 参数用于关联远程仓库）
 下面的命令用户把当前分支 master 推送到远程：</p>
-<div class="codehilite"><pre><span></span>git push -u origin master
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git push -u origin master
 </pre></div>
 
 
 <h3 id="22">2.2 克隆一个远程仓库</h3>
 <p>在github上创建一个仓库 gitlearn</p>
 <p>从github上克隆仓库</p>
-<div class="codehilite"><pre><span></span>git clone git@github.com:iswade/gitlearn.git
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git clone git@github.com:iswade/gitlearn.git
 </pre></div>
 
 
 <h3 id="23">2.3 更新到远程仓库</h3>
-<div class="codehilite"><pre><span></span># 获得当前远程仓库的url
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span># 获得当前远程仓库的url
 git remote get-url --all origin
 
 # 重新设置远程仓库的url
@@ -1048,25 +120,25 @@ git remote set-url origin git@github.com:iswade/blog.git
 
 <h2 id="_3">第三章 分支管理</h2>
 <h3 id="31">3.1 创建与合并分支</h3>
-<div class="codehilite"><pre><span></span><span class="c1"># 创建分支</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 创建分支</span>
 git branch dev
 
-<span class="c1"># 切换分支</span>
+<span style="color: #888888"># 切换分支</span>
 git checkout dev
 
-<span class="c1"># 创建并切换分支</span>
+<span style="color: #888888"># 创建并切换分支</span>
 git checkout -b dev
 
-<span class="c1"># 查看分支, 带有*的分支为当前分支</span>
+<span style="color: #888888"># 查看分支, 带有*的分支为当前分支</span>
 git branch
 
-<span class="c1"># 切换到master分支</span>
+<span style="color: #888888"># 切换到master分支</span>
 git checkout master
 
-<span class="c1"># 合并指定分支到当前分支(合并 dev 分支到 master 分支)</span>
+<span style="color: #888888"># 合并指定分支到当前分支(合并 dev 分支到 master 分支)</span>
 git merge dev 
 
-<span class="c1"># 删除分支</span>
+<span style="color: #888888"># 删除分支</span>
 git branch -d dev
 </pre></div>
 
@@ -1074,12 +146,12 @@ git branch -d dev
 <p>在master分支上修改readme.md，新增一行内容。提交修改。
 在dev分支上修改readme.md，也新增一行内容。提交修改。</p>
 <p>然后切换到master分支，将dev分支的内容合并。</p>
-<div class="codehilite"><pre><span></span>git merge dev
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git merge dev
 </pre></div>
 
 
 <p>会有冲突提醒。打开 readme.md:</p>
-<div class="codehilite"><pre><span></span> &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span> &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
 Creating a new branch is quick &amp;amp; simple.
 =======
 Creating a new branch is quick AND simple.
@@ -1088,112 +160,109 @@ Creating a new branch is quick AND simple.
 
 
 <p>然后修改内容。再次提交。</p>
-<div class="codehilite"><pre><span></span># 查看分支合并情况
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 查看分支合并情况</span>
 git log --graph  --pretty=oneline --abbrev-commit
 
-# 工作现场“储藏”
+<span style="color: #888888"># 工作现场“储藏”</span>
 git stash
 
-# 查看储藏的你内容
+<span style="color: #888888"># 查看储藏的你内容</span>
 git stash list
 
-# 恢复储藏的内容
-git stash apply stash@{0}
+<span style="color: #888888"># 恢复储藏的内容</span>
+git stash apply stash@{<span style="color: #0000DD; font-weight: bold">0</span>}
 
-# 删除储藏的内容
+<span style="color: #888888"># 删除储藏的内容</span>
 git stash drop
 
-# 恢复储藏的内容，并删除
+<span style="color: #888888"># 恢复储藏的内容，并删除</span>
 git stash pop
 </pre></div>
 
-
 <h3 id="33">3.3 多人协作</h3>
-<div class="codehilite"><pre><span></span># 查看远程库的信息
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 查看远程库的信息</span>
 git remote
 git remote -v
 
-# 推送分支(推送本地分支到远程分支 master 上)
-git push origin master
+<span style="color: #888888"># 推送分支(推送本地分支到远程分支 master 上)</span>
+git push origin master 
 
-# 创建本地分支
+<span style="color: #888888"># 创建本地分支</span>
 git checkout -b dev origin/dev
 
-# 设置本地 dev 分支与远程 origin/dev 分支的链接
+<span style="color: #888888"># 设置本地 dev 分支与远程 origin/dev 分支的链接</span>
 git branch --set-upstream dev origin/dev
 
-# 拉取分支
+<span style="color: #888888"># 拉取分支</span>
 git pull
 </pre></div>
 
-
 <h2 id="_4">第四章 搭建服务</h2>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
-<span class="cp"># 创建一个用户git来运行git服务</span>
-<span class="n">adduser</span> <span class="n">git</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>(server)
+<span style="color: #888888"># 创建一个用户git来运行git服务</span>
+adduser git
 
-<span class="cp"># 创建一个裸仓库(sample.git 所在目录/root/git/)</span>
-<span class="n">git</span> <span class="n">init</span> <span class="o">--</span><span class="n">bare</span> <span class="n">sample</span><span class="p">.</span><span class="n">git</span>
+<span style="color: #888888"># 创建一个裸仓库(sample.git 所在目录/root/git/)</span>
+git init --bare sample.git
 
-<span class="cp"># 改变用户</span>
-<span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="nl">git</span><span class="p">:</span><span class="n">git</span> <span class="n">sample</span><span class="p">.</span><span class="n">git</span>
+<span style="color: #888888"># 改变用户</span>
+sudo chown -R git:git sample.git
 
-<span class="cp"># 添加客户端的公钥到/root/.ssh/authorized_keys</span>
+<span style="color: #888888"># 添加客户端的公钥到/root/.ssh/authorized_keys</span>
 
-<span class="p">(</span><span class="n">client</span><span class="p">)</span>
-<span class="cp"># 克隆sample.git</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="mf">@192.168.137.200</span><span class="o">:/</span><span class="n">root</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">sample</span><span class="p">.</span><span class="n">git</span>
+(client)
+<span style="color: #888888"># 克隆sample.git</span>
+git clone git@192.168.137.200:/root/git/sample.git
 
-<span class="cp"># 增加readme.md</span>
-<span class="n">echo</span> <span class="s">&quot;my first server sample&quot;</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">readme</span><span class="p">.</span><span class="n">md</span>
-<span class="n">git</span> <span class="n">add</span> <span class="n">readme</span><span class="p">.</span><span class="n">md</span>
-<span class="n">git</span> <span class="n">command</span> <span class="s">&quot;my first server sample&quot;</span>
-<span class="n">git</span> <span class="n">push</span>
+<span style="color: #888888"># 增加readme.md</span>
+<span style="color: #003388">echo</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;my first server sample&quot;</span> &gt; readme.md
+git add readme.md
+git <span style="color: #003388">command</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;my first server sample&quot;</span>
+git push
 </pre></div>
-
 
 <h2 id="git_1">第五章 配置GIT</h2>
 <h3 id="alias">alias</h3>
-<div class="codehilite"><pre><span></span><span class="c1"># 所在文件 ~/.gitconfig</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 所在文件 ~/.gitconfig</span>
 
-<span class="o">[</span>alias<span class="o">]</span>
-    <span class="nv">lg</span> <span class="o">=</span> log --color --pretty<span class="o">=</span>format:<span class="s1">&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset&#39;</span> --abbrev-commit
-    <span class="nv">lp</span> <span class="o">=</span> log --pretty<span class="o">=</span>oneline --abbrev-commit
+[alias]
+    <span style="color: #336699">lg</span> = log --color --pretty=format:<span style="color: #dd2200; background-color: #fff0f0">&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset&#39;</span> --abbrev-commit
+    <span style="color: #336699">lp</span> = log --pretty=oneline --abbrev-commit
 
-<span class="c1"># 配置 log 信息输出格式</span>
-git config --global alias.lg <span class="s2">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
+<span style="color: #888888"># 配置 log 信息输出格式</span>
+git config --global alias.lg <span style="color: #dd2200; background-color: #fff0f0">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
 
-<span class="c1"># 配置缩写</span>
-git config --global alias.co <span class="s1">&#39;checkout&#39;</span>
+<span style="color: #888888"># 配置缩写</span>
+git config --global alias.co <span style="color: #dd2200; background-color: #fff0f0">&#39;checkout&#39;</span>
 </pre></div>
 
 <h3 id="_5">配置文件</h3>
-<div class="codehilite"><pre><span></span><span class="k">[user]</span>
-    <span class="na">name</span> <span class="o">=</span> <span class="s">iswade</span>
-<span class="s">    email = iswade@163.com</span>
-<span class="k">[alias]</span>
-    <span class="na">co</span> <span class="o">=</span> <span class="s">checkout</span>
-<span class="s">    ci = commit</span>
-<span class="s">    st = status</span>
-<span class="s">    dt = difftool</span>
-<span class="s">    ca = commit -a</span>
-<span class="s">    br = branch</span>
-<span class="s">    lg = log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit</span>
-<span class="s">    last = log -1</span>
-<span class="k">[diff]</span>
-    <span class="na">tool</span> <span class="o">=</span> <span class="s">bc4</span>
-<span class="k">[difftool &quot;bc4&quot;]</span>
-    <span class="na">cmd</span> <span class="o">=</span> <span class="s">\&quot;/Applications/Beyond Compare.app/Contents/MacOS/bcomp\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">[user]</span>
+    <span style="color: #336699">name</span> = <span style="color: #dd2200; background-color: #fff0f0">iswade</span>
+<span style="color: #dd2200; background-color: #fff0f0">    email = iswade@163.com</span>
+<span style="color: #008800; font-weight: bold">[alias]</span>
+    <span style="color: #336699">co</span> = <span style="color: #dd2200; background-color: #fff0f0">checkout</span>
+<span style="color: #dd2200; background-color: #fff0f0">    ci = commit</span>
+<span style="color: #dd2200; background-color: #fff0f0">    st = status</span>
+<span style="color: #dd2200; background-color: #fff0f0">    dt = difftool</span>
+<span style="color: #dd2200; background-color: #fff0f0">    ca = commit -a</span>
+<span style="color: #dd2200; background-color: #fff0f0">    br = branch</span>
+<span style="color: #dd2200; background-color: #fff0f0">    lg = log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit</span>
+<span style="color: #dd2200; background-color: #fff0f0">    last = log -1</span>
+<span style="color: #008800; font-weight: bold">[diff]</span>
+    <span style="color: #336699">tool</span> = <span style="color: #dd2200; background-color: #fff0f0">bc4</span>
+<span style="color: #008800; font-weight: bold">[difftool &quot;bc4&quot;]</span>
+    <span style="color: #336699">cmd</span> = <span style="color: #dd2200; background-color: #fff0f0">\&quot;/Applications/Beyond Compare.app/Contents/MacOS/bcomp\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;</span>
 </pre></div>
 
 <h3 id="diff">Diff 工具配置</h3>
 <p>At a Windows command prompt enter the commands: </p>
-<div class="codehilite"><pre><span></span>git config --global difftool.bc3.cmd <span class="s2">&quot;&quot;</span>c:/program files/beyond compare <span class="m">3</span>/bcomp.exe<span class="s2">&quot; &quot;</span>LOCAL<span class="se">\&quot;</span> <span class="se">\&quot;</span>REMOTE<span class="s2">&quot;&quot;</span>
-git config --global difftool.prompt <span class="nb">false</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git config --global difftool.bc3.cmd <span style="color: #dd2200; background-color: #fff0f0">&quot;&quot;</span>c:/program files/beyond compare <span style="color: #0000DD; font-weight: bold">3</span>/bcomp.exe<span style="color: #dd2200; background-color: #fff0f0">&quot; &quot;</span>LOCAL<span style="color: #0044dd; background-color: #fff0f0">\&quot;</span> <span style="color: #0044dd; background-color: #fff0f0">\&quot;</span>REMOTE<span style="color: #dd2200; background-color: #fff0f0">&quot;&quot;</span>
+git config --global difftool.prompt <span style="color: #003388">false</span>
 git difftool foofile.txt 
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="c1"># 输出差异文件</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 输出差异文件</span>
 git diff --color branch1 branch2 &gt; foo.diff
 git diff --color commit1 commit2 -- readme.txt &gt; readme.diff
 </pre></div>
@@ -1229,279 +298,180 @@ git diff --color commit1 commit2 -- readme.txt &gt; readme.diff
 </li>
 </ol>
 <h4 id="fork">fork 分支同步</h4>
-<div class="codehilite"><pre><span></span><span class="c1"># 查看远程库</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># 查看远程库</span>
 git remote -v
 
-<span class="c1"># 增加远程仓库、设置别名为 upstream</span>
+<span style="color: #888888"># 增加远程仓库、设置别名为 upstream</span>
 git remote add upstream git@github.com:octocat/Spoon-Knife.git
 
-<span class="c1"># 检出 upstream 分支的更新</span>
+<span style="color: #888888"># 检出 upstream 分支的更新</span>
 git fetch upstream
 
-<span class="c1"># 合并分支</span>
+<span style="color: #888888"># 合并分支</span>
 git merge upstream/master
 
-<span class="c1"># 提交</span>
+<span style="color: #888888"># 提交</span>
 git push
 </pre></div>
 
 <h4 id="_8">删除远程分支</h4>
-<div class="codehilite"><pre><span></span>git push origin --delete dev
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git push origin --delete dev
 </pre></div>
 
 <h2 id="_9">第八章 速查表</h2>
-<div class="codehilite"><pre><span></span>git add .                                     <span class="c1"># 增加当前子目录下所有更改过的文件至index</span>
-git add FILENAME                              <span class="c1"># 添加一个文件到git index</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git add .                                     <span style="color: #888888"># 增加当前子目录下所有更改过的文件至index</span>
+git add FILENAME                              <span style="color: #888888"># 添加一个文件到git index</span>
 
-git blame FILENAME                            <span class="c1"># 显示文件每一行的修改记录(提交ID, 修改人员)</span>
+git blame FILENAME                            <span style="color: #888888"># 显示文件每一行的修改记录(提交ID, 修改人员)</span>
 
-git branch                                    <span class="c1"># 显示本地分支</span>
-git branch -a                                 <span class="c1"># 显示所有分支</span>
-git branch -r                                 <span class="c1"># 查看远程所有分支</span>
-git branch -vv                                <span class="c1"># 查看本地和远程的关联关系</span>
-git branch branch_0.1 master                  <span class="c1"># 从主分支master创建branch_0.1分支</span>
-git branch --contains <span class="m">50089</span>                   <span class="c1"># 显示包含提交50089的分支</span>
-git branch -D hotfixes/BJVEP933               <span class="c1"># 强制删除分支hotfixes/BJVEP933</span>
-git branch -d hotfixes/BJVEP933               <span class="c1"># 删除分支hotfixes/BJVEP933</span>
-git branch -D master develop                  <span class="c1"># 删除本地库develop</span>
-git branch -m branch_0.1 branch_1.0           <span class="c1"># 将branch_0.1重命名为branch_1.0</span>
-git branch -m master master_copy              <span class="c1"># 本地分支改名</span>
-git branch --merged                           <span class="c1"># 显示所有已合并到当前分支的分支</span>
-git branch --no-merged                        <span class="c1"># 显示所有未合并到当前分支的分支</span>
-git branch -r -d branch_remote_name           <span class="c1"># 删除远程branch</span>
+git branch                                    <span style="color: #888888"># 显示本地分支</span>
+git branch -a                                 <span style="color: #888888"># 显示所有分支</span>
+git branch -r                                 <span style="color: #888888"># 查看远程所有分支</span>
+git branch -vv                                <span style="color: #888888"># 查看本地和远程的关联关系</span>
+git branch branch_0.1 master                  <span style="color: #888888"># 从主分支master创建branch_0.1分支</span>
+git branch --contains <span style="color: #0000DD; font-weight: bold">50089</span>                   <span style="color: #888888"># 显示包含提交50089的分支</span>
+git branch -D hotfixes/BJVEP933               <span style="color: #888888"># 强制删除分支hotfixes/BJVEP933</span>
+git branch -d hotfixes/BJVEP933               <span style="color: #888888"># 删除分支hotfixes/BJVEP933</span>
+git branch -D master develop                  <span style="color: #888888"># 删除本地库develop</span>
+git branch -m branch_0.1 branch_1.0           <span style="color: #888888"># 将branch_0.1重命名为branch_1.0</span>
+git branch -m master master_copy              <span style="color: #888888"># 本地分支改名</span>
+git branch --merged                           <span style="color: #888888"># 显示所有已合并到当前分支的分支</span>
+git branch --no-merged                        <span style="color: #888888"># 显示所有未合并到当前分支的分支</span>
+git branch -r -d branch_remote_name           <span style="color: #888888"># 删除远程branch</span>
 
-git checkout -- README                        <span class="c1"># 检出head版本的README文件（可用于修改错误回退）</span>
-git checkout -b dev                           <span class="c1"># 建立一个新的本地分支dev</span>
-git checkout -b devel origin/develop          <span class="c1"># 从远程分支develop创建新本地分支devel并检出</span>
-git checkout -b master master_copy            <span class="c1"># 上面的完整版</span>
-git checkout -b master_copy                   <span class="c1"># 从当前分支创建新分支master_copy并检出</span>
-git checkout branch_1.0/master                <span class="c1"># 切换到branch_1.0/master分支</span>
-git checkout dev                              <span class="c1"># 切换到本地dev分支</span>
-git checkout features/performance             <span class="c1"># 检出已存在的features/performance分支</span>
-git checkout --track hotfixes/BJVEP933        <span class="c1"># 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span>
-git checkout --track origin/dev               <span class="c1"># 切换到远程dev分支</span>
-git checkout v2.0                             <span class="c1"># 检出版本v2.0</span>
-git cherry-pick ff44785404a8e                 <span class="c1"># 合并提交ff44785404a8e的修改</span>
+git checkout -- README                        <span style="color: #888888"># 检出head版本的README文件（可用于修改错误回退）</span>
+git checkout -b dev                           <span style="color: #888888"># 建立一个新的本地分支dev</span>
+git checkout -b devel origin/develop          <span style="color: #888888"># 从远程分支develop创建新本地分支devel并检出</span>
+git checkout -b master master_copy            <span style="color: #888888"># 上面的完整版</span>
+git checkout -b master_copy                   <span style="color: #888888"># 从当前分支创建新分支master_copy并检出</span>
+git checkout branch_1.0/master                <span style="color: #888888"># 切换到branch_1.0/master分支</span>
+git checkout dev                              <span style="color: #888888"># 切换到本地dev分支</span>
+git checkout features/performance             <span style="color: #888888"># 检出已存在的features/performance分支</span>
+git checkout --track hotfixes/BJVEP933        <span style="color: #888888"># 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span>
+git checkout --track origin/dev               <span style="color: #888888"># 切换到远程dev分支</span>
+git checkout v2.0                             <span style="color: #888888"># 检出版本v2.0</span>
+git cherry-pick ff44785404a8e                 <span style="color: #888888"># 合并提交ff44785404a8e的修改</span>
 
-git clone GIT_REPO_LINK                       <span class="c1"># 从服务器上将代码给拉下来</span>
+git clone GIT_REPO_LINK                       <span style="color: #888888"># 从服务器上将代码给拉下来</span>
 
-git commit -am <span class="s1">&#39;xxx&#39;</span>                          <span class="c1"># 将add和commit合为一步</span>
-git commit -m <span class="s1">&#39;xxx&#39;</span>                           <span class="c1"># 提交</span>
-git commit -a -m                              <span class="c1"># add/commit</span>
-git commit -a -v                              <span class="c1"># 一般提交命令</span>
-git commit --amend -m <span class="s1">&#39;xxx&#39;</span>                   <span class="c1"># 合并上一次提交（用于反复修改）</span>
-git commit -v                                 <span class="c1"># 当你用－v参数的时候可以看commit的差异</span>
+git commit -am <span style="color: #dd2200; background-color: #fff0f0">&#39;xxx&#39;</span>                          <span style="color: #888888"># 将add和commit合为一步</span>
+git commit -m <span style="color: #dd2200; background-color: #fff0f0">&#39;xxx&#39;</span>                           <span style="color: #888888"># 提交</span>
+git commit -a -m                              <span style="color: #888888"># add/commit</span>
+git commit -a -v                              <span style="color: #888888"># 一般提交命令</span>
+git commit --amend -m <span style="color: #dd2200; background-color: #fff0f0">&#39;xxx&#39;</span>                   <span style="color: #888888"># 合并上一次提交（用于反复修改）</span>
+git commit -v                                 <span style="color: #888888"># 当你用－v参数的时候可以看commit的差异</span>
 
-git-clean                                     <span class="c1"># Remove untracked files from the working tree</span>
+git clean -df
 
 git config --global color.branch auto
 git config --global color.diff auto
 git config --global color.interactive auto
 git config --global color.status auto
-git config --global color.ui <span class="nb">true</span>             <span class="c1"># git status等命令自动着色</span>
-git config --global user.email <span class="s2">&quot;xxx@xxx.com&quot;</span>  <span class="c1"># 配置邮件</span>
-git config --global user.name <span class="s2">&quot;xxx&quot;</span>           <span class="c1"># 配置用户名</span>
-git config --list                             <span class="c1"># 看所有用户</span>
-git config --system                           <span class="c1"># 配置所有用户公用配置</span>
+git config --global color.ui <span style="color: #003388">true</span>             <span style="color: #888888"># git status等命令自动着色</span>
+git config --global user.email <span style="color: #dd2200; background-color: #fff0f0">&quot;xxx@xxx.com&quot;</span>  <span style="color: #888888"># 配置邮件</span>
+git config --global user.name <span style="color: #dd2200; background-color: #fff0f0">&quot;xxx&quot;</span>           <span style="color: #888888"># 配置用户名</span>
+git config --list                             <span style="color: #888888"># 看所有用户</span>
+git config --system                           <span style="color: #888888"># 配置所有用户公用配置</span>
 
-git diff                                      <span class="c1"># 显示所有未添加至index的变更</span>
-git diff HEAD^                                <span class="c1"># 比较与上一个版本的差异</span>
-git diff COMMITID1 COMMITID2 --name-only      <span class="c1"># 显示两个节点之间的所有差异文件名</span>
-git diff --cached                             <span class="c1"># 显示所有已添加index但还未commit的变更</span>
-git diff --staged                             <span class="c1"># 同上</span>
-git diff HEAD -- ./lib                        <span class="c1"># 比较与HEAD版本lib目录的差异</span>
-git diff origin/master..master                <span class="c1"># 比较远程分支master上有本地分支master上没有的</span>
-git diff origin/master..master --stat         <span class="c1"># 只显示差异的文件，不显示具体内容</span>
+git diff                                      <span style="color: #888888"># 显示所有未添加至index的变更</span>
+git diff HEAD^                                <span style="color: #888888"># 比较与上一个版本的差异</span>
+git diff COMMITID1 COMMITID2 --name-only      <span style="color: #888888"># 显示两个节点之间的所有差异文件名</span>
+git diff --cached                             <span style="color: #888888"># 显示所有已添加index但还未commit的变更</span>
+git diff --staged                             <span style="color: #888888"># 同上</span>
+git diff HEAD -- ./lib                        <span style="color: #888888"># 比较与HEAD版本lib目录的差异</span>
+git diff origin/master..master                <span style="color: #888888"># 比较远程分支master上有本地分支master上没有的</span>
+git diff origin/master..master --stat         <span style="color: #888888"># 只显示差异的文件，不显示具体内容</span>
 
-git fetch                                     <span class="c1"># 获取所有远程分支（不更新本地分支，另需merge）</span>
-git fetch --prune                             <span class="c1"># 获取所有原创分支并清除服务器上已删掉的分支</span>
+git fetch                                     <span style="color: #888888"># 获取所有远程分支（不更新本地分支，另需merge）</span>
+git fetch --prune                             <span style="color: #888888"># 获取所有原创分支并清除服务器上已删掉的分支</span>
 
-git format-patch  CMTID                       <span class="c1"># 生成所有的补丁(CMTID, HEAD]  </span>
-git am <span class="m">0001</span>-Fix1.patch                        <span class="c1"># 按生成顺序0001,0002应用补丁即可</span>
+git format-patch  CMTID                       <span style="color: #888888"># 生成所有的补丁(CMTID, HEAD]  </span>
+git am <span style="color: #0000DD; font-weight: bold">0001</span>-Fix1.patch                        <span style="color: #888888"># 按生成顺序0001,0002应用补丁即可</span>
 
 git fsck
 git gc
-git grep <span class="s2">&quot;delete from&quot;</span>                        <span class="c1"># 文件中搜索文本“delete from”</span>
-git grep -e <span class="s1">&#39;#define&#39;</span> --and -e SORT_DIRENT
-git init                                      <span class="c1"># 初始化本地git仓库（创建新仓库）</span>
+git grep <span style="color: #dd2200; background-color: #fff0f0">&quot;delete from&quot;</span>                        <span style="color: #888888"># 文件中搜索文本“delete from”</span>
+git grep -e <span style="color: #dd2200; background-color: #fff0f0">&#39;#define&#39;</span> --and -e SORT_DIRENT
+git init                                      <span style="color: #888888"># 初始化本地git仓库（创建新仓库）</span>
 
-git log                                       <span class="c1"># 显示提交日志</span>
-git log -1                                    <span class="c1"># 显示1行日志 -n为n行</span>
+git log                                       <span style="color: #888888"># 显示提交日志</span>
+git log -1                                    <span style="color: #888888"># 显示1行日志 -n为n行</span>
 git log -5
-git log --stat                                <span class="c1"># 显示提交日志及相关变动文件</span>
-git log v2.0                                  <span class="c1"># 显示v2.0的日志</span>
+git log --stat                                <span style="color: #888888"># 显示提交日志及相关变动文件</span>
+git log v2.0                                  <span style="color: #888888"># 显示v2.0的日志</span>
 
-git ls-files                                  <span class="c1"># 列出git index包含的文件</span>
-git ls-tree HEAD                              <span class="c1"># 内部命令：显示某个git对象</span>
+git ls-files                                  <span style="color: #888888"># 列出git index包含的文件</span>
+git ls-tree HEAD                              <span style="color: #888888"># 内部命令：显示某个git对象</span>
 
-git merge origin/dev                          <span class="c1"># 将分支dev与当前分支进行合并</span>
-git merge origin/master                       <span class="c1"># 合并远程master分支至当前分支</span>
+git merge origin/dev                          <span style="color: #888888"># 将分支dev与当前分支进行合并</span>
+git merge origin/master                       <span style="color: #888888"># 合并远程master分支至当前分支</span>
 
-git mv README README2                         <span class="c1"># 重命名文件README为README2</span>
+git mv README README2                         <span style="color: #888888"># 重命名文件README为README2</span>
 
-git pull                                      <span class="c1"># 本地与服务器端同步</span>
-git pull origin master                        <span class="c1"># 获取远程分支master并merge到当前分支</span>
-git push remote_repo branch_name              <span class="c1"># 将本地分支推送到服务器上去。</span>
-git push --force                              <span class="c1"># 推送会失败，可用强制推送</span>
+git pull                                      <span style="color: #888888"># 本地与服务器端同步</span>
+git pull origin master                        <span style="color: #888888"># 获取远程分支master并merge到当前分支</span>
+git push remote_repo branch_name              <span style="color: #888888"># 将本地分支推送到服务器上去。</span>
+git push --force                              <span style="color: #888888"># 推送会失败，可用强制推送</span>
 
 git push origin :branch_remote_name
-git push origin :hotfixes/BJVEP933            <span class="c1"># 删除远程仓库的hotfixes/BJVEP933分支</span>
-git push origin master                        <span class="c1"># 将当前分支push到远程master分支</span>
-git push origin master:hb-dev                 <span class="c1"># 将本地库与服务器上的库进行关联</span>
-git push --tags                               <span class="c1"># 把所有tag推送到远程仓库</span>
+git push origin :hotfixes/BJVEP933            <span style="color: #888888"># 删除远程仓库的hotfixes/BJVEP933分支</span>
+git push origin master                        <span style="color: #888888"># 将当前分支push到远程master分支</span>
+git push origin master:hb-dev                 <span style="color: #888888"># 将本地库与服务器上的库进行关联</span>
+git push --tags                               <span style="color: #888888"># 把所有tag推送到远程仓库</span>
 
-git rebase upstream/branch                    <span class="c1"># 合并分支</span>
-git rebase -i <span class="m">408700955</span>                       <span class="c1"># 合并多次提交为一次提交</span>
+git rebase upstream/branch                    <span style="color: #888888"># 合并分支</span>
+git rebase -i <span style="color: #0000DD; font-weight: bold">408700955</span>                       <span style="color: #888888"># 合并多次提交为一次提交</span>
 
-git reflog                                    <span class="c1"># 显示所有提交，包括孤立节点</span>
+git reflog                                    <span style="color: #888888"># 显示所有提交，包括孤立节点</span>
 
-git remote add upstream  URL                  <span class="c1"># 增加远程定义（用于push/pull/fetch）</span>
-git remote show origin                        <span class="c1"># 显示远程库origin里的资源</span>
-git remote show                               <span class="c1"># 查看远程库</span>
+git remote add upstream  URL                  <span style="color: #888888"># 增加远程定义（用于push/pull/fetch）</span>
+git remote show origin                        <span style="color: #888888"># 显示远程库origin里的资源</span>
+git remote show                               <span style="color: #888888"># 查看远程库</span>
 
-git reset --hard HEAD                         <span class="c1"># 将当前版本重置为HEAD（通常用于merge失败回退）</span>
-git revert dfb02e6e4                          <span class="c1"># 撤销提交 dfb02e6e4</span>
-git rev-parse v2.0                            <span class="c1"># 内部命令：显示某个ref对于的SHA1 HASH</span>
+git reset --hard HEAD                         <span style="color: #888888"># 将当前版本重置为HEAD（</span>
+git revert dfb02e6e4                          <span style="color: #888888"># 撤销提交 dfb02e6e4</span>
+git rev-parse v2.0                            <span style="color: #888888"># 内部命令：显示某个ref对于的SHA1 HASH</span>
 
-git rm <span class="o">[</span>file name<span class="o">]</span>                            <span class="c1"># 删除一个文件</span>
-git rm a.a                                    <span class="c1"># 移除文件(从暂存区和工作区中删除)</span>
-git rm --cached a.a                           <span class="c1"># 移除文件(只从暂存区中删除)</span>
-git rm -f a.a                                 <span class="c1"># 强行移除修改后文件(从暂存区和工作区中删除)</span>
-git rm -r *                                   <span class="c1"># 递归删除</span>
-git rm xxx                                    <span class="c1"># 删除index中的文件</span>
-git rm FILENAME                               <span class="c1"># 从git中删除指定文件</span>
+git rm [file name]                            <span style="color: #888888"># 删除一个文件</span>
+git rm a.a                                    <span style="color: #888888"># 移除文件(从暂存区和工作区中删除)</span>
+git rm --cached a.a                           <span style="color: #888888"># 移除文件(只从暂存区中删除)</span>
+git rm -f a.a                                 <span style="color: #888888"># 强行移除修改后文件(从暂存区和工作区中删除)</span>
+git rm -r *                                   <span style="color: #888888"># 递归删除</span>
+git rm xxx                                    <span style="color: #888888"># 删除index中的文件</span>
+git rm FILENAME                               <span style="color: #888888"># 从git中删除指定文件</span>
 
-git show                                      <span class="c1"># 等价于 git show HEAD</span>
-git show CMTID                                <span class="c1"># 显示某个提交的详细内容</span>
+git show                                      <span style="color: #888888"># 等价于 git show HEAD</span>
+git show CMTID                                <span style="color: #888888"># 显示某个提交的详细内容</span>
 git show CMTID --name-only
-git show HEAD                                 <span class="c1"># 显示HEAD提交日志</span>
-git show HEAD@<span class="o">{</span><span class="m">5</span><span class="o">}</span>
-git show HEAD^                                <span class="c1"># 显示HEAD的父（上一个版本）的提交日志 </span>
+git show HEAD                                 <span style="color: #888888"># 显示HEAD提交日志</span>
+git show HEAD@{<span style="color: #0000DD; font-weight: bold">5</span>}
+git show HEAD^                                <span style="color: #888888"># 显示HEAD的父（上一个版本）的提交日志 </span>
 git show HEAD~3
-git show master@<span class="o">{</span>yesterday<span class="o">}</span>                   <span class="c1"># 显示master分支昨天的状态</span>
-git show -s --pretty<span class="o">=</span>raw CMTID
-git show v2.0                                 <span class="c1"># 显示v2.0的日志及详细内容</span>
-git show-branch                               <span class="c1"># 图示当前分支历史</span>
-git show-branch --all                         <span class="c1"># 图示所有分支历史</span>
+git show master@{yesterday}                   <span style="color: #888888"># 显示master分支昨天的状态</span>
+git show -s --pretty=raw CMTID
+git show v2.0                                 <span style="color: #888888"># 显示v2.0的日志及详细内容</span>
+git show-branch                               <span style="color: #888888"># 图示当前分支历史</span>
+git show-branch --all                         <span style="color: #888888"># 图示所有分支历史</span>
 
-git stash                                     <span class="c1"># 暂存当前修改，将所有至为HEAD状态</span>
-git stash apply stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>                     <span class="c1"># 应用第一次暂存</span>
-git stash list                                <span class="c1"># 查看所有暂存</span>
-git stash pop                                 <span class="c1"># 将文件从临时空间pop下来</span>
-git stash push                                <span class="c1"># 将文件给push到一个临时空间中</span>
-git stash show -p stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>                   <span class="c1"># 参考第一次暂存</span>
-git status                                    <span class="c1"># 查看当前版本状态（是否修改）</span>
+git stash                                     <span style="color: #888888"># 暂存当前修改，将所有至为HEAD状态</span>
+git stash apply stash@{<span style="color: #0000DD; font-weight: bold">0</span>}                     <span style="color: #888888"># 应用第一次暂存</span>
+git stash list                                <span style="color: #888888"># 查看所有暂存</span>
+git stash pop                                 <span style="color: #888888"># 将文件从临时空间pop下来</span>
+git stash push                                <span style="color: #888888"># 将文件给push到一个临时空间中</span>
+git stash show -p stash@{<span style="color: #0000DD; font-weight: bold">0</span>}                   <span style="color: #888888"># 参考第一次暂存</span>
+git status                                    <span style="color: #888888"># 查看当前版本状态（是否修改）</span>
 
-git tag                                       <span class="c1"># 显示已存在的tag</span>
-git tag -a v2.0 -m <span class="s1">&#39;xxx&#39;</span>                      <span class="c1"># 增加v2.0的tag</span>
+git tag                                       <span style="color: #888888"># 显示已存在的tag</span>
+git tag -a v2.0 -m <span style="color: #dd2200; background-color: #fff0f0">&#39;xxx&#39;</span>                      <span style="color: #888888"># 增加v2.0的tag</span>
 
-git whatchanged                               <span class="c1"># 显示提交历史对应的文件修改</span>
+git whatchanged                               <span style="color: #888888"># 显示提交历史对应的文件修改</span>
 
-git update-index --assume-unchanged file      <span class="c1"># 忽略修改，git status不会显示</span>
-git update-index --no-assume-unchanged file   <span class="c1"># 添加被忽略文件，git status会显示</span>
+git update-index --assume-unchanged file      <span style="color: #888888"># 忽略修改，git status不会显示</span>
+git update-index --no-assume-unchanged file   <span style="color: #888888"># 添加被忽略文件，git status会显示</span>
 </pre></div>
 
 <h2 id="_10">参考书</h2>
 <ol>
 <li><a href="http://git.oschina.net/progit/index.html">pro git 中文版</a></li>
 <li><a href="../res/github-git-cheat-sheet.pdf">git cheat sheet(pdf)</a></li>
-</ol>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  后退
-                </span>
-                linux 系统管理
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  前进
-                </span>
-                How to be a manager
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2016 - 2019 iswade
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../assets/javascripts/application.8c0d971c.js"></script>
-      
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-  </body>
-</html>
+</ol></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">后退</span>linux 系统管理</span></div></a><a href="../../translate/to_be_manager/" title="How to be a manager" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前进</span>How to be a manager</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.d5a09f94.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

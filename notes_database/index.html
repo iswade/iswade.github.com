@@ -1,917 +1,23 @@
-
-
-
-
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-      
-        <link rel="canonical" href="https://iswade.github.io/notes_database/">
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
-      <link rel="shortcut icon" href="../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
-    
-    
-      
-        <title>Database Notes - Blog</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
-      
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="">
-      
-    
-    
-      <script src="../assets/javascripts/modernizr.74668098.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
-    
-    
-      <link rel="stylesheet" href="../themes/extra.css">
-    
-    
-      
-    
-    
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#database-notes" tabindex="1" class="md-skip">
-        跳转至
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
-          
-            <img src="../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              Database Notes
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            键入以开始搜索
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        
-      </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
-      
-        <img src="../themes/me.jpg" width="48" height="48">
-      
-    </a>
-    Blog
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href=".." title="Home" class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Database
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
-      无时钟的一致性：FaunaDB的分布式事务协议
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/Aurora/" title="Aurora：我们如何设计云原生关系数据库" class="md-nav__link">
-      Aurora：我们如何设计云原生关系数据库
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
-      现代存储系统背后的算法
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
-      数据库笔记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/F1_query/" title="F1 Query" class="md-nav__link">
-      F1 Query
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../articles/partition/" title="数据分区" class="md-nav__link">
-      数据分区
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
-      Bolt 数据库
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Distribute
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Distribute
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/distsys/" title="分布式系统大纲" class="md-nav__link">
-      分布式系统大纲
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
-      强一致性模型
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/zookeeper/" title="Zookeeper" class="md-nav__link">
-      Zookeeper
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Language
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Language
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
-      Go 并发编程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
-      如何使用 Go 接口
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Engineering
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Engineering
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
-      linux 系统管理
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../notes/git/" title="git 入门教程" class="md-nav__link">
-      git 入门教程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
-      How to be a manager
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#todo" title="TODO" class="md-nav__link">
-    TODO
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#faq" title="FAQ" class="md-nav__link">
-    FAQ
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="专项" class="md-nav__link">
-    专项
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" title="顶级会议" class="md-nav__link">
-    顶级会议
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" title="分布式系统" class="md-nav__link">
-    分布式系统
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" title="一致性与共识" class="md-nav__link">
-    一致性与共识
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" title="并行查询" class="md-nav__link">
-    并行查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" title="编译器" class="md-nav__link">
-    编译器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" title="扩容" class="md-nav__link">
-    扩容
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#turing-award" title="Turing Award" class="md-nav__link">
-    Turing Award
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#misc" title="misc" class="md-nav__link">
-    misc
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" title="关注" class="md-nav__link">
-    关注
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" title="书籍" class="md-nav__link">
-    书籍
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" title="文章" class="md-nav__link">
-    文章
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" title="分布式" class="md-nav__link">
-    分布式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#newsql" title="NewSQL" class="md-nav__link">
-    NewSQL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" title="其它" class="md-nav__link">
-    其它
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" title="论文" class="md-nav__link">
-    论文
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" title="数据库实例汇总" class="md-nav__link">
-    数据库实例汇总
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#microsoft" title="Microsoft" class="md-nav__link">
-    Microsoft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#anna" title="Anna" class="md-nav__link">
-    Anna
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#faunadb" title="FaunaDB" class="md-nav__link">
-    FaunaDB
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#faunadb-an-architectural-overview" title="FaunaDB: An Architectural Overview" class="md-nav__link">
-    FaunaDB: An Architectural Overview
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calvin" title="Calvin" class="md-nav__link">
-    Calvin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#voltdb" title="voltDB" class="md-nav__link">
-    voltDB
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aurora" title="Aurora" class="md-nav__link">
-    Aurora
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spanner" title="Spanner" class="md-nav__link">
-    Spanner
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sql" title="SQL 数据库" class="md-nav__link">
-    SQL 数据库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" title="分布式数据库" class="md-nav__link">
-    分布式数据库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" title="数据仓库" class="md-nav__link">
-    数据仓库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nosql" title="NoSQL" class="md-nav__link">
-    NoSQL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" title="多模数据库" class="md-nav__link">
-    多模数据库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" title="未来技术方向" class="md-nav__link">
-    未来技术方向
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#newsql_1" title="NewSQL" class="md-nav__link">
-    NewSQL
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" title="数据结构与算法" class="md-nav__link">
-    数据结构与算法
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" title="无锁" class="md-nav__link">
-    无锁
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hash" title="hash" class="md-nav__link">
-    hash
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" title="并行原理" class="md-nav__link">
-    并行原理
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" title="并行方式" class="md-nav__link">
-    并行方式
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#join" title="JOIN" class="md-nav__link">
-    JOIN
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_23" title="连接方式" class="md-nav__link">
-    连接方式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" title="连接算法" class="md-nav__link">
-    连接算法
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nested-loop" title="nested loop" class="md-nav__link">
-    nested loop
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hash-join" title="hash join" class="md-nav__link">
-    hash join
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#merge-join" title="merge join" class="md-nav__link">
-    merge join
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#group-by" title="GROUP BY" class="md-nav__link">
-    GROUP BY
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" title="未来方向" class="md-nav__link">
-    未来方向
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" title="术语" class="md-nav__link">
-    术语
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#misc_1" title="misc" class="md-nav__link">
-    misc
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <h1 id="database-notes">Database Notes</h1>
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/notes_database/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Database Notes - Blog</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><link rel="stylesheet" href="../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#database-notes" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Database Notes</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../translate/Aurora/" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../translate/F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../translate/distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../translate/zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#todo" title="TODO" class="md-nav__link">TODO</a></li><li class="md-nav__item"><a href="#faq" title="FAQ" class="md-nav__link">FAQ</a></li><li class="md-nav__item"><a href="#_1" title="专项" class="md-nav__link">专项</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_2" title="顶级会议" class="md-nav__link">顶级会议</a></li><li class="md-nav__item"><a href="#_3" title="分布式系统" class="md-nav__link">分布式系统</a></li><li class="md-nav__item"><a href="#_4" title="一致性与共识" class="md-nav__link">一致性与共识</a></li><li class="md-nav__item"><a href="#_5" title="并行查询" class="md-nav__link">并行查询</a></li><li class="md-nav__item"><a href="#_6" title="编译器" class="md-nav__link">编译器</a></li><li class="md-nav__item"><a href="#_7" title="扩容" class="md-nav__link">扩容</a></li><li class="md-nav__item"><a href="#turing-award" title="Turing Award" class="md-nav__link">Turing Award</a></li><li class="md-nav__item"><a href="#misc" title="misc" class="md-nav__link">misc</a></li></ul></nav></li><li class="md-nav__item"><a href="#_8" title="关注" class="md-nav__link">关注</a></li><li class="md-nav__item"><a href="#_9" title="书籍" class="md-nav__link">书籍</a></li><li class="md-nav__item"><a href="#_10" title="文章" class="md-nav__link">文章</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_11" title="分布式" class="md-nav__link">分布式</a></li><li class="md-nav__item"><a href="#newsql" title="NewSQL" class="md-nav__link">NewSQL</a></li><li class="md-nav__item"><a href="#_12" title="其它" class="md-nav__link">其它</a></li></ul></nav></li><li class="md-nav__item"><a href="#_13" title="论文" class="md-nav__link">论文</a></li><li class="md-nav__item"><a href="#_14" title="数据库实例汇总" class="md-nav__link">数据库实例汇总</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#microsoft" title="Microsoft" class="md-nav__link">Microsoft</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#the-new-sql-server-in-the-cloud" title="The New SQL Server in the Cloud" class="md-nav__link">The New SQL Server in the Cloud</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#1" title="1. 介绍" class="md-nav__link">1. 介绍</a></li><li class="md-nav__item"><a href="#2" title="2. 现有技术" class="md-nav__link">2. 现有技术</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#anna" title="Anna" class="md-nav__link">Anna</a></li><li class="md-nav__item"><a href="#faunadb" title="FaunaDB" class="md-nav__link">FaunaDB</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#faunadb-an-architectural-overview" title="FaunaDB: An Architectural Overview" class="md-nav__link">FaunaDB: An Architectural Overview</a></li></ul></nav></li><li class="md-nav__item"><a href="#calvin" title="Calvin" class="md-nav__link">Calvin</a></li><li class="md-nav__item"><a href="#voltdb" title="voltDB" class="md-nav__link">voltDB</a></li><li class="md-nav__item"><a href="#aurora" title="Aurora" class="md-nav__link">Aurora</a></li><li class="md-nav__item"><a href="#spanner" title="Spanner" class="md-nav__link">Spanner</a></li><li class="md-nav__item"><a href="#sql" title="SQL 数据库" class="md-nav__link">SQL 数据库</a></li><li class="md-nav__item"><a href="#_15" title="分布式数据库" class="md-nav__link">分布式数据库</a></li><li class="md-nav__item"><a href="#_16" title="数据仓库" class="md-nav__link">数据仓库</a></li><li class="md-nav__item"><a href="#nosql" title="NoSQL" class="md-nav__link">NoSQL</a></li><li class="md-nav__item"><a href="#_17" title="多模数据库" class="md-nav__link">多模数据库</a></li><li class="md-nav__item"><a href="#_18" title="未来技术方向" class="md-nav__link">未来技术方向</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#newsql_1" title="NewSQL" class="md-nav__link">NewSQL</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_19" title="数据结构与算法" class="md-nav__link">数据结构与算法</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_20" title="无锁" class="md-nav__link">无锁</a></li><li class="md-nav__item"><a href="#hash" title="hash" class="md-nav__link">hash</a></li><li class="md-nav__item"><a href="#_21" title="并行原理" class="md-nav__link">并行原理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_22" title="并行方式" class="md-nav__link">并行方式</a></li></ul></nav></li><li class="md-nav__item"><a href="#join" title="JOIN" class="md-nav__link">JOIN</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_23" title="连接顺序" class="md-nav__link">连接顺序</a></li><li class="md-nav__item"><a href="#_24" title="连接方式" class="md-nav__link">连接方式</a></li><li class="md-nav__item"><a href="#_25" title="连接算法" class="md-nav__link">连接算法</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#nested-loop" title="nested loop" class="md-nav__link">nested loop</a></li><li class="md-nav__item"><a href="#hash-join" title="hash join" class="md-nav__link">hash join</a></li><li class="md-nav__item"><a href="#merge-join" title="merge join" class="md-nav__link">merge join</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#group-by" title="GROUP BY" class="md-nav__link">GROUP BY</a></li></ul></nav></li><li class="md-nav__item"><a href="#_26" title="未来方向" class="md-nav__link">未来方向</a></li><li class="md-nav__item"><a href="#_27" title="术语" class="md-nav__link">术语</a></li><li class="md-nav__item"><a href="#misc_1" title="misc" class="md-nav__link">misc</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="database-notes">Database Notes</h1>
 <p>标签：数据库</p>
+<p>安装、运行、研究原理、测试、研究源码</p>
+<p>Golang 可以用 gdb 调试：
+1. .gdbinit中新增行：add-auto-load-safe-path /root/go/go/src/runtime/runtime-gdb.py
+2. b github.com/bitkv/bitkv/pkg/server.(*Server).Get
+3. info routines
+4. routines 3</p>
+<p><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/01/mod057.pdf">Fast General Distributed Transactions with Opacity</a></p>
+<p><a href="http://dbgroup.cs.tsinghua.edu.cn/ligl/papers/sigmod19-cdbtune.pdf">An End-to-End Automatic Cloud Database Tuning
+System Using Deep Reinforcement Learning</a></p>
+<p><a href="https://rise.cs.berkeley.edu/blog/what-is-the-role-of-machine-learning-in-databases/">https://rise.cs.berkeley.edu/blog/what-is-the-role-of-machine-learning-in-databases/</a></p>
+<p><a href="https://rise.cs.berkeley.edu/blog/sql-query-optimization-meets-deep-reinforcement-learning/">https://rise.cs.berkeley.edu/blog/sql-query-optimization-meets-deep-reinforcement-learning/</a></p>
+<p><a href="https://www.cs.cmu.edu/~ggordon/van-aken-etal-parameters.pdf">Automatic Database Management System Tuning Through
+Large-scale Machine Learning</a></p>
+<p><a href="https://cs.brown.edu/people/mmarkovi/publication/fit/">FITing-Tree: A Data-aware Index Structure</a>：我们提出了一种新的数据感知索引结构，称为FITing-Tree，它使用分段线性函数近似索引，并在构造时指定有界误差。大幅度减少空间利用。</p>
+<p>There Is More Consensus in Egalitarian Parliaments: EPaxos公平的Paxos，没有强领导者，更好的负载均衡，并且很容易在 WAN 网络环境下获得很低的延迟。raft需要强领导者。</p>
 <p><a href="https://www.inkandswitch.com/local-first.html">Martin Kleppmann Local-first software: You own your data, in spite of the cloud</a></p>
-<p><a href="https://fauna.com/blog/a-comparison-of-scalable-database-isolation-levels?utm_source=hootsuite&amp;utm_medium=twitter">FaunaDB: A Comparison of Scalable Database Isolation Levels</a> 比较Fauna,Spanner,FoundationDB,CockroachDB,YugabyteDB,DynamoDB,CosmosDB,Cassandra,MongoDB,Oracle,MySQL,PostgreSQL 的隔离级别</p>
+<p><a href="https://fauna.com/blog/a-comparison-of-scalable-database-isolation-levels?utm_source=hootsuite&amp;utm_medium=twitter">FaunaDB: A Comparison of Scalable Database Isolation Levels</a> </p>
+<p>比较Fauna,Spanner,FoundationDB,CockroachDB,YugabyteDB,DynamoDB,CosmosDB,Cassandra,MongoDB,Oracle,MySQL, PostgreSQL 的隔离级别</p>
 <p><a href="http://www.vldb.org/pvldb/vol11/p432-ramachandra.pdf">Froid: Optimization of Imperative Programs in a Relational Database</a> 将 UDF 转换为 SQL 语句的框架</p>
 <p><a href="https://andrestc.com/post/cgroups-io/">Using cgroups to limit I/O</a></p>
 <p><a href="http://web.stanford.edu/class/cs166/handouts/100%20Suggested%20Final%20Project%20Topics.pdf">Topics in Advanced Data Structures</a> 各种高级数据结构的罗列</p>
@@ -937,6 +43,7 @@
 </ul>
 <h2 id="faq">FAQ</h2>
 <ul>
+<li>共识算法与2PC算法：参考亚马逊大神的回答</li>
 <li>事务和可扩展性的能力有什么冲突？</li>
 <li>一致性：CAP和ACID？</li>
 <li>LSM-tree/B-tree/KV ... 分别最适合的磁盘介质是什么？磁盘？SSD？</li>
@@ -947,19 +54,25 @@
 <h2 id="_1">专项</h2>
 <p><a href="https://www.hackernewspapers.com/">hacker news papers</a></p>
 <h3 id="_2">顶级会议</h3>
-<p>SIGMOD: ACM SIGMOD Conf on Management of Data
-VLDB: Very Large Data Bases
-OSDI：系统领域
-SOSP：系统领域</p>
+<ul>
+<li>SIGMOD: ACM SIGMOD Conf on Management of Data</li>
+<li>VLDB: Very Large Data Bases</li>
+<li>OSDI：系统领域</li>
+<li>SOSP：系统领域</li>
+</ul>
 <h3 id="_3">分布式系统</h3>
 <ol>
-<li><a href="http://nil.csail.mit.edu/6.824/2018/">MIT 6.824</a></li>
-<li>Lab 1: MapReduce</li>
-<li>Lab 2: Raft</li>
-<li>Lab 3: Fault-tolerant Key/Value Service</li>
-<li>Lab 4: Sharded Key/Value Service</li>
-<li><a href="https://www.cs.vu.nl/~tcs/da/daslides.pdf">Distributed Algorithms: An Intuitive Approach </a></li>
+<li><a href="http://nil.csail.mit.edu/6.824/2018/">MIT 6.824</a>
+  - Lab 1: MapReduce
+  - Lab 2: Raft
+  - Lab 3: Fault-tolerant Key/Value Service
+  - Lab 4: Sharded Key/Value Service</li>
+<li>
+<p><a href="https://www.cs.vu.nl/~tcs/da/daslides.pdf">Distributed Algorithms: An Intuitive Approach </a></p>
+</li>
 <li><a href="https://www.distributed-systems.net/index.php/books/distributed-systems-3rd-edition-2017/">Distributed Systems Third edition Maarten van Steen</a></li>
+<li>Distributed.Systems.An.Algorithmic.Approach.2<sup>nd</sup>.Edition</li>
+<li>2010 Scalability patterns(slides).pdf</li>
 </ol>
 <h3 id="_4">一致性与共识</h3>
 <ul>
@@ -990,10 +103,10 @@ SOSP：系统领域</p>
 <li><a href="http://dl.acm.org/citation.cfm?id=320076">A majority consensus approach to concurrency control for multiple copy databases</a> 1380多次引用</li>
 <li><a href="https://irenezhang.net/blog/2015/02/01/consistency.html">Consistency should be more consistent!</a></li>
 </ul>
-<p><strong>Sequential (or serializable) consistency</strong> ensures that the same operations are applied in the same order to every copy of a set of data items. **顺序/序列化一致性**确保以相同的顺序将相同的操作应用于一组数据项的每个副本。</p>
-<p><strong>Serializable isolation</strong> ensures that transactions execute as if they were executing one at a time on a single copy of the database. **可序列化隔离**确保事务执行就好像它们在数据库的单个副本上一次执行一个。</p>
-<p><strong>Linearizable consistency</strong> ensures that the same operations are applied in the same order to every copy of the data item and that the order reflects the order in which the operations <em>appear</em> to execute to an external observer (like the application). **可线性化的一致性**确保以相同的顺序对数据项的每个副本应用相同的操作，并且该顺序反映了操作*出现*对外部观察者（如应用程序）执行的顺序。</p>
-<p><strong>Strict serializable isolation</strong> ensures that transactions execute as if they were executing one at a time on a single copy of the database and that the order matches the order in which the transactions <em>appear</em> to execute to an external observer (like the application). **严格的可序列化隔离**确保事务执行就好像它们在数据库的单个副本上一次执行一个，并且顺序与事务*出现*的顺序匹配，以执行外部观察者（如 应用）。</p>
+<p><strong>Sequential (or serializable) consistency</strong> ensures that the same operations are applied in the same order to every copy of a set of data items. <strong>顺序/序列化一致性</strong>确保以相同的顺序将相同的操作应用于一组数据项的每个副本。</p>
+<p><strong>Serializable isolation</strong> ensures that transactions execute as if they were executing one at a time on a single copy of the database. <strong>可序列化隔离</strong>确保事务执行就好像它们在数据库的单个副本上一次执行一个。</p>
+<p><strong>Linearizable consistency</strong> ensures that the same operations are applied in the same order to every copy of the data item and that the order reflects the order in which the operations <em>appear</em> to execute to an external observer (like the application). <strong>可线性化的一致性</strong>确保以相同的顺序对数据项的每个副本应用相同的操作，并且该顺序反映了操作<em>出现</em>对外部观察者（如应用程序）执行的顺序。</p>
+<p><strong>Strict serializable isolation</strong> ensures that transactions execute as if they were executing one at a time on a single copy of the database and that the order matches the order in which the transactions <em>appear</em> to execute to an external observer (like the application). <strong>严格的可序列化隔离</strong>确保事务执行就好像它们在数据库的单个副本上一次执行一个，并且顺序与事务<em>出现</em>的顺序匹配，以执行外部观察者（如 应用）。</p>
 <p>There has been much discussion of externally consistent (or linearizable) transactions since the publication of Google’s Spanner system [2]. Traditionally, the guarantees provided by Spanner and applied to transactions would be called strict serializability. Practically, it doesn’t matter: <em>linearizability is just strict serializability for single operations.</em> 自Google的Spanner系统发布以来，对外部一致（或线性化）事务进行了大量讨论。传统上，Spanner提供并应用于事务的保证称为严格可序列化。 实际上，它并不重要：<em>线性化只是单个操作的严格可序列化。</em></p>
 <p><a href="http://bitsavers.org/pdf/xerox/parc/techReports/CSL-81-8_Information_Storage_in_a_Decentralized_Computer_System.pdf">Information storage in a decentralized computer system</a>
 外部一致性的定义：External Consistency. External consistency guarantees that a transaction will always receive current information. Using the concepts we have just introduced, we can provide a formal definition of external consistency. The actual time order in which transactions complete defines a unique serial schedule. This serial schedule is called the external schedule. A system is said to provide external consistency if it guarantees that the schedule it will use to process a set of transactions is equivalent to its external schedule. </p>
@@ -1032,7 +145,7 @@ SOSP：系统领域</p>
 <li><a href="https://15721.courses.cs.cmu.edu/spring2018/papers/03-compilation/shaikhha-sigmod2016.pdf">How to Architect a Query Compiler</a></li>
 </ul>
 <h3 id="_7">扩容</h3>
-<div class="codehilite"><pre><span></span>MPPDB公开论文中的算法
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>MPPDB公开论文中的算法
 Algorithm 1 Algorithm Redistribution DML
  1: 建立一个shadow表S，与原始表T的模式一样
  2: 将表T作为append-only模式
@@ -1293,6 +406,22 @@ Algorithm 1 Algorithm Redistribution DML
 <li><a href="https://docs.microsoft.com/zh-cn/azure/cosmos-db/">https://docs.microsoft.com/zh-cn/azure/cosmos-db/</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Cosmos_DB">https://en.wikipedia.org/wiki/Cosmos_DB</a></li>
 </ul>
+<h4 id="the-new-sql-server-in-the-cloud">The New SQL Server in the Cloud</h4>
+<p><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/05/socrates.pdf">Socrates: The New SQL Server in the Cloud</a></p>
+<h5 id="1">1. 介绍</h5>
+<p>高安全、高额可用、低成本、灵活性、高性能。上市时间、按需付费、99.999%可用性、大规模数据（100TB）、高性能、弹性。</p>
+<ol>
+<li>传统数据库提前部署的方式，无法弹性、按需付费：为了满足高吞吐或者低吞吐，需要将一个很大的数据库从一个机器移动到另一个机器，但是代价会非常高。</li>
+<li>另一个更微妙的问题是支持大型事务数据库的目标与高可用性之间存在冲突：高可用性需要很小的平均恢复时间（MTTR），传统上只能通过小型数据库实现。这个问题在传统数据库上不会出现，因为不熟采用了典型的昂贵的硬件来满足高可用（例如存储区域网络或SAN），这种硬件在云上不可用，传统数据库通过控制软件更新周期以及非常小心的计划停机来实现高可用，这种方式在云上都是不可行的。</li>
+</ol>
+<p>过去10年都在研究云上新OLTP数据库系统架构。一个想法是解耦DBMS的功能单元，独立地部署计算服务（例如事务处理）和存储服务（例如检查点和恢复）。Socrates也采用了这种架构，并且将数据库日志从存储中分离出来，作为第一类对象对待，分离日志的方式也将持久性和可用性分割开来。</p>
+<h5 id="2">2. 现有技术</h5>
+<ol>
+<li>SQL Server：HADR， Socrates</li>
+<li>Spanner：分区splits</li>
+<li>Aurora：共享磁盘，数据和日志分区</li>
+<li>Oracle：基于 Exadata 和 RAC</li>
+</ol>
 <h3 id="anna">Anna</h3>
 <p>格 lattice</p>
 <p>交换性：$t（a，b）= t（b，a）∀a，b∈S $</p>
@@ -1324,19 +453,19 @@ Google Spanner vs. Calvin: Is There a Clear Winner in the Battle for Global Cons
 <li>基于策略的工作负载资源管理器(CPU/MEM/IO)</li>
 <li>数据中心感知的路由层</li>
 <li>临时存储系统(维护记录和索引的历史)。</li>
-<li><strong>数据模型</strong>：半结构化，无模式对象关系数据模型，是关系，文档，面向对象和图形范例的严格超集。</li>
-<li>记录被插入到半结构化文档的实例中，可以包含递归嵌套对象和数组以及标量类型</li>
-<li>实例被分组为类，类似于关系数据库中的表，但是与文档数据库一样，类中的全部或者部分共享模式是可选的，不是强制的。</li>
-<li>类被组织成数据库。跟文件系统目录类似，数据库可以递归包含其它数据库。</li>
-<li>数据库访问由密钥控制。</li>
-<li>派生关系是使用索引构建的。索引是将一组输入实例转换为由术语和值组成的一个或多个结果集。 索引表示为部分应用的查询，可以转换，覆盖，排序其输入，并强制执行约束（在FaunaDB中，索引和视图是相同的）</li>
-<li>查询可以参数化为函数，类似于SQL系统中的存储过程，为了跨应用程序共享逻辑，从应用程序中抽象逻辑就地升级或者定制安全模型很困难。</li>
+<li><strong>数据模型</strong>：半结构化，无模式对象关系数据模型，是关系，文档，面向对象和图形范例的严格超集。
+   - 记录被插入到半结构化文档的实例中，可以包含递归嵌套对象和数组以及标量类型
+   - 实例被分组为类，类似于关系数据库中的表，但是与文档数据库一样，类中的全部或者部分共享模式是可选的，不是强制的。
+   - 类被组织成数据库。跟文件系统目录类似，数据库可以递归包含其它数据库。
+   - 数据库访问由密钥控制。
+   - 派生关系是使用索引构建的。索引是将一组输入实例转换为由术语和值组成的一个或多个结果集。 索引表示为部分应用的查询，可以转换，覆盖，排序其输入，并强制执行约束（在FaunaDB中，索引和视图是相同的）
+   - 查询可以参数化为函数，类似于SQL系统中的存储过程，为了跨应用程序共享逻辑，从应用程序中抽象逻辑就地升级或者定制安全模型很困难。</li>
 <li><strong>查询语言</strong></li>
 <li><strong>安全性</strong></li>
-<li><strong>可伸缩性</strong>：水平和垂直伸缩，自协调，无单点故障。集群中的每个节点同时执行下面的三种角色：查询协调器，数据副本，日志副本。</li>
-<li>路由：如果事务是只读的，则会立即给客户端应答；如果事务包含写操作，则会转发到合适的日志副本来处理事务决议。日志副本转发事务给涉及的数据副本，这些数据副本将最终解析事务并将应答返回给客户端连接的节点，然后该应答将返回给客户端。</li>
-<li>数据分区：在每个数据中心内部，逻辑数据布局被数据中心内的所有节点分区。实例，包含历史通过主键来分区。索引按term分区。无论实际情况和物理集群中的节点数量如何，实例和索引都会线性扩展以进行读取和写入。如果特定索引条目的读取或写入速度超过中值大小，则索引中的热点是可能的。 在这种情况下，FaunaDB可以跨多个范围对实例或索引条目进行分区，并在读取时执行部分离散-收集读取查询，类似于搜索系统。</li>
-<li>容错与 CAP：CP。容错：节点临时故障，节点永久故障，节点变慢，网络分区隔离了一个数据中心被隔离的数据中心可以继续读但是不能写。</li>
+<li><strong>可伸缩性</strong>：水平和垂直伸缩，自协调，无单点故障。集群中的每个节点同时执行下面的三种角色：查询协调器，数据副本，日志副本。
+  - 路由：如果事务是只读的，则会立即给客户端应答；如果事务包含写操作，则会转发到合适的日志副本来处理事务决议。日志副本转发事务给涉及的数据副本，这些数据副本将最终解析事务并将应答返回给客户端连接的节点，然后该应答将返回给客户端。
+  - 数据分区：在每个数据中心内部，逻辑数据布局被数据中心内的所有节点分区。实例，包含历史通过主键来分区。索引按term分区。无论实际情况和物理集群中的节点数量如何，实例和索引都会线性扩展以进行读取和写入。如果特定索引条目的读取或写入速度超过中值大小，则索引中的热点是可能的。 在这种情况下，FaunaDB可以跨多个范围对实例或索引条目进行分区，并在读取时执行部分离散-收集读取查询，类似于搜索系统。
+  - 容错与 CAP：CP。容错：节点临时故障，节点永久故障，节点变慢，网络分区隔离了一个数据中心被隔离的数据中心可以继续读但是不能写。</li>
 <li><strong>持久性</strong>：压缩的 LSM-tree，对磁盘和 SSD 都合适。</li>
 <li><strong>事务一致性</strong>：严格的可序列化被广泛认为是理想的一致性模型。读写事务是严格可串行化的。只读事务是穿行化的。FaunaDB的主要权衡是写入延迟是发起数据中心与其他数据中心子集之间的往返延迟的下限。网络延迟严格地比最终一致的分布式键/值存储所暴露的延迟更严重，这些存储在确认提交之前不会尝试保证全局持久性，或者依赖于异步复制并且不能从副本提供一致读取的SQL系统。增加应用程序并行性可以补偿单个写入的延迟，而不会影响总体吞吐量。</li>
 <li><strong>负载资源管理</strong>：QOS</li>
@@ -1435,7 +564,7 @@ scale out
 <p>NewSQL既有NoSQL的特点，又有传统关系型数据库的特点。向数据发送查询，而不是将数据带给查询，更少的网络开销。对于MPP OLAP系统，还不能称之为NewSQL。</p>
 <h2 id="_19">数据结构与算法</h2>
 <ul class="task-list">
-<li>B+tree</li>
+<li>B+-tree</li>
 <li>LSM-tree</li>
 <li>Bloom Filter: 多列模糊等值匹配，不存在测试, lsm树中用于加快查找</li>
 <li>HyperLogLog: 模糊 count(distinct ..) 计算</li>
@@ -1457,7 +586,7 @@ scale out
 </li>
 </ul>
 <h3 id="_20">无锁</h3>
-<p>无锁数据结构实现起来比较复杂，正确性证明也比较困难。</p>
+<p>无锁数据结构实现起来比较复杂，正确性证明也比较困难。如果已经证明了算法的正确性，还需要保证实现是正确的，可以通过大量并发测试来减少风险。</p>
 <p>A non-blocking algorithm is lock-free if there is guaranteed system-wide progress, and wait-free if there is also guaranteed per-thread progress.
 如果系统范围内进程可以有保证，则不阻塞的算法是无锁的。
 如果进程中每个线程有保证，则不阻塞算法是无等待的。</p>
@@ -1465,8 +594,8 @@ scale out
 无等待是进程的最有力的非阻塞保证，它将保证的全系统吞吐量与无饥饿结合起来。如果每个操作都对操作完成前算法将采取的步骤数有限制，则算法是无等待的。此属性对于实时系统至关重要，只要性能成本不太高，它总是很好拥有的。</p>
 <p>lock-free 
 无锁允许单个线程挨饿，但可以保证整个系统的吞吐量。如果在程序线程运行足够长的时间后，至少有一个线程取得了进展（对于某些合理的进度定义），则算法是无锁的。所有的无等待算法都是无锁的。如果一个线程持有锁后睡眠，如果其它线程则会阻塞，这种情况肯定是有锁的。</p>
-<p><a href="https://en.wikipedia.org/wiki/Non-blocking_algorithm">https://en.wikipedia.org/wiki/Non-blocking_algorithm</a>
-Serializable, <strong>Lockless</strong>, Distributed: Isolation in CockroachDB</p>
+<p><a href="https://en.wikipedia.org/wiki/Non-blocking_algorithm">https://en.wikipedia.org/wiki/Non-blocking_algorithm</a></p>
+<p>Serializable, <strong>Lockless</strong>, Distributed: Isolation in CockroachDB</p>
 <h3 id="hash">hash</h3>
 <ul>
 <li><a href="https://blog.codingnow.com/2019/04/concurrent_hash_map.html">并发 Hash Map 的实现</a></li>
@@ -1494,18 +623,21 @@ Serializable, <strong>Lockless</strong>, Distributed: Isolation in CockroachDB</
 <p>向量化引擎：将数据运载方式，由一次一元组变为一次一批元组。</p>
 <p>SIMD：指令译码后多个寄存器同时访问内存，一次性获取多个操作数同时进行运算。</p>
 <h3 id="join">JOIN</h3>
-<h4 id="_23">连接方式</h4>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="_23">连接顺序</h4>
+<p>结论1：JOIN的顺序影响中间结果的数据量，决定了JOIN的执行效率</p>
+<p>结论2：JOIN的顺序影响具体JOIN算法的效率，决定了JOIN的执行效率</p>
+<h4 id="_24">连接方式</h4>
 <ol>
 <li>内连接（相等连接，自然连接，交叉连接）</li>
 <li>外连接（左连接，右连接，全连接）</li>
 <li>自连接</li>
 <li>连接算法（嵌套循环、合并连接、哈希连接）</li>
 </ol>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="_24">连接算法</h4>
+<h4 id="_25">连接算法</h4>
 <ol>
 <li>nested loop：获取一条左表（outer）的记录循环匹配右表（inner）所有记录，外表驱动内表，外表也称之为驱动表。</li>
 <li>Indexed nested loop：右边有索引，获取左表的一套记录，索引查找右表</li>
@@ -1513,22 +645,22 @@ Serializable, <strong>Lockless</strong>, Distributed: Isolation in CockroachDB</
 <li>hash join: 对同一个字段</li>
 </ol>
 <h5 id="nested-loop">nested loop</h5>
-<div class="codehilite"><pre><span></span>for ri in R1:         -- outer table
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>for ri in R1:         -- outer table
    for rj in R2:      -- inner table
       if ri.id = rj.id:
          print(ri,rj)
 </pre></div>
 
 <p>小表做驱动表（外表），大表做被驱动表（外表）。<br />
-<div class="codehilite"><pre><span></span><span class="n">t1</span><span class="p">:</span> <span class="mi">100</span>
-<span class="n">t2</span><span class="p">:</span> <span class="mi">50000</span>
-<span class="n">t2上有索引</span>
-<span class="k">select</span> <span class="cm">/*+use_nl(t2,t1) leading(t2,t1)*/</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  <span class="k">from</span> <span class="n">t2</span><span class="p">,</span><span class="n">t1</span> <span class="k">where</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>  <span class="c1">-- 2.697s 大表做驱动表</span>
-<span class="k">select</span> <span class="cm">/*+use_nl(t1,t2) leading(t1,t2)*/</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  <span class="k">from</span> <span class="n">t1</span><span class="p">,</span><span class="n">t2</span> <span class="k">where</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>  <span class="c1">-- 0.004s 小表做驱动表</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>t1: <span style="color: #0000DD; font-weight: bold">100</span>
+t2: <span style="color: #0000DD; font-weight: bold">50000</span>
+t2上有索引
+<span style="color: #008800; font-weight: bold">select</span> <span style="color: #888888">/*+use_nl(t2,t1) leading(t2,t1)*/</span> <span style="color: #008800; font-weight: bold">count</span>(*)  <span style="color: #008800; font-weight: bold">from</span> t2,t1 <span style="color: #008800; font-weight: bold">where</span> t1.id = t2.id;  <span style="color: #888888">-- 2.697s 大表做驱动表</span>
+<span style="color: #008800; font-weight: bold">select</span> <span style="color: #888888">/*+use_nl(t1,t2) leading(t1,t2)*/</span> <span style="color: #008800; font-weight: bold">count</span>(*)  <span style="color: #008800; font-weight: bold">from</span> t1,t2 <span style="color: #008800; font-weight: bold">where</span> t1.id = t2.id;  <span style="color: #888888">-- 0.004s 小表做驱动表</span>
 </pre></div></p>
 <h5 id="hash-join">hash join</h5>
 <p>被驱动表（右表，小表）先建立 hash 表，然后对另一个表中的元素散列到已经生成的桶中
-<div class="codehilite"><pre><span></span>for ri in R2:
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>for ri in R2:
     build_hash_table(HT, ri)
 
 for rj in R1:
@@ -1537,50 +669,50 @@ for rj in R1:
 <p>并行hash算法：
 1. 并行外表：外表分片，然后扫描内表（哈希表）；每个分片对应内表的一个哈希表，哈希表有多个拷贝，内表比较小的时候可用。
 2. 并行哈希连接：并行扫描内表，多个线程并行建立一个共享的哈希表，多个线程并行扫描外表</p>
-<div class="codehilite"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="k">simple</span> <span class="k">select</span> <span class="n">generate_series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">);</span>
-<span class="k">analyze</span> <span class="k">simple</span><span class="p">;</span>
-<span class="k">explain</span> <span class="p">(</span><span class="k">verbose</span><span class="p">,</span><span class="n">costs</span> <span class="k">off</span><span class="p">)</span>  <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="k">simple</span> <span class="n">r</span> <span class="k">join</span> <span class="k">simple</span> <span class="n">s</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
-                             <span class="n">QUERY</span> <span class="n">PLAN</span>                             
-<span class="c1">--------------------------------------------------------------------</span>
- <span class="n">Finalize</span> <span class="k">Aggregate</span>
-   <span class="k">Output</span><span class="p">:</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-   <span class="o">-&gt;</span>  <span class="n">Gather</span>
-         <span class="k">Output</span><span class="p">:</span> <span class="p">(</span><span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">))</span>
-         <span class="n">Workers</span> <span class="n">Planned</span><span class="p">:</span> <span class="mi">2</span>
-         <span class="o">-&gt;</span>  <span class="k">Partial</span> <span class="k">Aggregate</span>
-               <span class="k">Output</span><span class="p">:</span> <span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-               <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Hash</span> <span class="k">Join</span>
-                     <span class="n">Hash</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
-                     <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">r</span>
-                           <span class="k">Output</span><span class="p">:</span> <span class="n">r</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="ss">&quot;?column?&quot;</span>
-                     <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Hash</span>
-                           <span class="k">Output</span><span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span>
-                           <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">s</span>
-                                 <span class="k">Output</span><span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span>
-<span class="p">(</span><span class="mi">15</span> <span class="k">rows</span><span class="p">)</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">insert</span> <span style="color: #008800; font-weight: bold">into</span> <span style="color: #008800; font-weight: bold">simple</span> <span style="color: #008800; font-weight: bold">select</span> generate_series(<span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">100000</span>);
+<span style="color: #008800; font-weight: bold">analyze</span> <span style="color: #008800; font-weight: bold">simple</span>;
+<span style="color: #008800; font-weight: bold">explain</span> (<span style="color: #008800; font-weight: bold">verbose</span>,costs <span style="color: #008800; font-weight: bold">off</span>)  <span style="color: #008800; font-weight: bold">select</span> <span style="color: #008800; font-weight: bold">count</span>(*) <span style="color: #008800; font-weight: bold">from</span> <span style="color: #008800; font-weight: bold">simple</span> r <span style="color: #008800; font-weight: bold">join</span> <span style="color: #008800; font-weight: bold">simple</span> s <span style="color: #008800; font-weight: bold">using</span> (id);
+                             QUERY PLAN                             
+<span style="color: #888888">--------------------------------------------------------------------</span>
+ Finalize <span style="color: #008800; font-weight: bold">Aggregate</span>
+   <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">count</span>(*)
+   -&gt;  Gather
+         <span style="color: #008800; font-weight: bold">Output</span>: (<span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*))
+         Workers Planned: <span style="color: #0000DD; font-weight: bold">2</span>
+         -&gt;  <span style="color: #008800; font-weight: bold">Partial</span> <span style="color: #008800; font-weight: bold">Aggregate</span>
+               <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*)
+               -&gt;  Parallel Hash <span style="color: #008800; font-weight: bold">Join</span>
+                     Hash Cond: (r.id = s.id)
+                     -&gt;  Parallel Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> r
+                           <span style="color: #008800; font-weight: bold">Output</span>: r.id, r.<span style="color: #aa6600; background-color: #fff0f0">&quot;?column?&quot;</span>
+                     -&gt;  Parallel Hash
+                           <span style="color: #008800; font-weight: bold">Output</span>: s.id
+                           -&gt;  Parallel Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> s
+                                 <span style="color: #008800; font-weight: bold">Output</span>: s.id
+(<span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #008800; font-weight: bold">rows</span>)
 
-<span class="k">set</span> <span class="n">enable_hashjoin</span><span class="o">=</span><span class="k">off</span><span class="p">;</span>
-<span class="k">set</span> <span class="n">enable_mergejoin</span><span class="o">=</span><span class="k">off</span><span class="p">;</span>
-<span class="k">explain</span> <span class="p">(</span><span class="k">verbose</span><span class="p">,</span><span class="n">costs</span> <span class="k">off</span><span class="p">)</span>  <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="k">simple</span> <span class="n">r</span> <span class="k">join</span> <span class="k">simple</span> <span class="n">s</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
-                          <span class="n">QUERY</span> <span class="n">PLAN</span>                          
-<span class="c1">--------------------------------------------------------------</span>
- <span class="n">Finalize</span> <span class="k">Aggregate</span>
-   <span class="k">Output</span><span class="p">:</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-   <span class="o">-&gt;</span>  <span class="n">Gather</span>
-         <span class="k">Output</span><span class="p">:</span> <span class="p">(</span><span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">))</span>
-         <span class="n">Workers</span> <span class="n">Planned</span><span class="p">:</span> <span class="mi">2</span>
-         <span class="o">-&gt;</span>  <span class="k">Partial</span> <span class="k">Aggregate</span>
-               <span class="k">Output</span><span class="p">:</span> <span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-               <span class="o">-&gt;</span>  <span class="n">Nested</span> <span class="n">Loop</span>
-                     <span class="k">Join</span> <span class="n">Filter</span><span class="p">:</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
-                     <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">r</span>
-                           <span class="k">Output</span><span class="p">:</span> <span class="n">r</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="ss">&quot;?column?&quot;</span>
-                     <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">s</span>
-                           <span class="k">Output</span><span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="ss">&quot;?column?&quot;</span>
-<span class="p">(</span><span class="mi">13</span> <span class="k">rows</span><span class="p">)</span>
-<span class="c1">-- Gather节点后面的部分计划都是在子线程上处理</span>
-<span class="c1">-- Parallel Seq Scan： 多个线程并行扫描，每个扫一部分</span>
-<span class="c1">-- Seq Scan: 多个线程每个都是扫描全表</span>
+<span style="color: #008800; font-weight: bold">set</span> enable_hashjoin=<span style="color: #008800; font-weight: bold">off</span>;
+<span style="color: #008800; font-weight: bold">set</span> enable_mergejoin=<span style="color: #008800; font-weight: bold">off</span>;
+<span style="color: #008800; font-weight: bold">explain</span> (<span style="color: #008800; font-weight: bold">verbose</span>,costs <span style="color: #008800; font-weight: bold">off</span>)  <span style="color: #008800; font-weight: bold">select</span> <span style="color: #008800; font-weight: bold">count</span>(*) <span style="color: #008800; font-weight: bold">from</span> <span style="color: #008800; font-weight: bold">simple</span> r <span style="color: #008800; font-weight: bold">join</span> <span style="color: #008800; font-weight: bold">simple</span> s <span style="color: #008800; font-weight: bold">using</span> (id);
+                          QUERY PLAN                          
+<span style="color: #888888">--------------------------------------------------------------</span>
+ Finalize <span style="color: #008800; font-weight: bold">Aggregate</span>
+   <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">count</span>(*)
+   -&gt;  Gather
+         <span style="color: #008800; font-weight: bold">Output</span>: (<span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*))
+         Workers Planned: <span style="color: #0000DD; font-weight: bold">2</span>
+         -&gt;  <span style="color: #008800; font-weight: bold">Partial</span> <span style="color: #008800; font-weight: bold">Aggregate</span>
+               <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*)
+               -&gt;  Nested Loop
+                     <span style="color: #008800; font-weight: bold">Join</span> Filter: (r.id = s.id)
+                     -&gt;  Parallel Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> r
+                           <span style="color: #008800; font-weight: bold">Output</span>: r.id, r.<span style="color: #aa6600; background-color: #fff0f0">&quot;?column?&quot;</span>
+                     -&gt;  Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> s
+                           <span style="color: #008800; font-weight: bold">Output</span>: s.id, s.<span style="color: #aa6600; background-color: #fff0f0">&quot;?column?&quot;</span>
+(<span style="color: #0000DD; font-weight: bold">13</span> <span style="color: #008800; font-weight: bold">rows</span>)
+<span style="color: #888888">-- Gather节点后面的部分计划都是在子线程上处理</span>
+<span style="color: #888888">-- Parallel Seq Scan： 多个线程并行扫描，每个扫一部分</span>
+<span style="color: #888888">-- Seq Scan: 多个线程每个都是扫描全表</span>
 </pre></div>
 
 <p>参考PG的sql/join.sql测试文件</p>
@@ -1595,13 +727,13 @@ for rj in R1:
 <li>pipeline/stream: 基于排序，计算下一个分组时对前一个分组可以输出</li>
 <li>sort group: 基于排序，但是先把所有数据插入到btree中；group by c1 order by c1 优化成 sort group by c1取消sort plan</li>
 </ol>
-<h2 id="_25">未来方向</h2>
-<p>数据库会随着业务**云化**，未来一切的业务都会跑在云端，不管是私有云或者公有云，运维团队接触的可能再也不是真实的物理机，而是一个个隔离的容器或者「计算资源」。这对数据库也是一个挑战，因为数据库天生就是有状态的，数据总是要存储在物理的磁盘上，而数据的移动的代价比移动容器的代价可能大很多。</p>
-<p>**多租户**技术会成为标配，一个大数据库承载一切的业务，数据在底层打通，上层通过权限，容器等技术进行隔离；但是数据的打通和扩展会变得异常简单，结合第一点提到的云化，业务层可以再也不用关心物理机的容量和拓扑，只需要认为底层是一个无穷大的数据库平台即可，不用再担心单机容量和负载均衡等问题。</p>
+<h2 id="_26">未来方向</h2>
+<p>数据库会随着业务<strong>云化</strong>，未来一切的业务都会跑在云端，不管是私有云或者公有云，运维团队接触的可能再也不是真实的物理机，而是一个个隔离的容器或者「计算资源」。这对数据库也是一个挑战，因为数据库天生就是有状态的，数据总是要存储在物理的磁盘上，而数据的移动的代价比移动容器的代价可能大很多。</p>
+<p><strong>多租户</strong>技术会成为标配，一个大数据库承载一切的业务，数据在底层打通，上层通过权限，容器等技术进行隔离；但是数据的打通和扩展会变得异常简单，结合第一点提到的云化，业务层可以再也不用关心物理机的容量和拓扑，只需要认为底层是一个无穷大的数据库平台即可，不用再担心单机容量和负载均衡等问题。</p>
 <p><strong>OLAP 和 OLTP</strong> 会进一步细分，底层存储也许会共享一套，但是SQL优化器这层的实现一定是千差万别的。对于用户而言，如果能使用同一套标准的语法和规则来进行数据的读写和分析，会有更好的体验。</p>
 <p>在未来分布式数据库系统上，主从日志同步这样落后的备份方式会被 Multi-Paxos / <strong>Raft</strong> 这样更强的分布式一致性算法替代，人工的数据库运维在管理大规模数据库集群时是不可能的，所有的故障恢复和高可用都会是高度自动化的。</p>
 <p>数据库应用程序的下一个趋势是能够对新获取的数据执行分析查询和机器学习算法。这种通常也称为“实时分析”或者“混合事务分析处理（hybrid transaction-analytical processing，HTAP）”的应用通过分析新数据和历史数据的组合来进行知识推断，获得洞察力。</p>
-<h2 id="_26">术语</h2>
+<h2 id="_27">术语</h2>
 <ul>
 <li>TPS 每秒事务数</li>
 <li>TPM 每分钟事务数</li>
@@ -1610,68 +742,4 @@ for rj in R1:
 <h2 id="misc_1">misc</h2>
 <ol>
 <li>八卦一下，memcached的作者Brad Fitzpatrick，现在在 Google，大家如果用 Golang 的话，Go 的官方 HTTP 包就是这哥们写的，是个很高产的工程师</li>
-</ol>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2016 - 2019 iswade
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../assets/javascripts/application.8c0d971c.js"></script>
-      
-        
-        
-          
-          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-  </body>
-</html>
+</ol></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.d5a09f94.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

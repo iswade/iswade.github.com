@@ -1,807 +1,36 @@
-
-
-
-
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-      
-        <link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch4/">
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
-      <link rel="shortcut icon" href="../../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
-    
-    
-      
-        <title>第四章 编码与演化 - Blog</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
-      
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="">
-      
-    
-    
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
-    
-    
-      <link rel="stylesheet" href="../../../themes/extra.css">
-    
-    
-      
-    
-    
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#_1" tabindex="1" class="md-skip">
-        跳转至
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
-          
-            <img src="../../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              第四章 编码与演化
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            键入以开始搜索
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        
-      </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
-      
-        <img src="../../../themes/me.jpg" width="48" height="48">
-      
-    </a>
-    Blog
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../.." title="Home" class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Database
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
-      无时钟的一致性：FaunaDB的分布式事务协议
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/" title="Aurora：我们如何设计云原生关系数据库" class="md-nav__link">
-      Aurora：我们如何设计云原生关系数据库
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
-      现代存储系统背后的算法
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
-      数据库笔记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
-      F1 Query
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
-      数据分区
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
-      Bolt 数据库
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Distribute
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Distribute
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
-      分布式系统大纲
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
-      强一致性模型
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">
-      Zookeeper
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Language
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Language
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
-      Go 并发编程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
-      如何使用 Go 接口
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Engineering
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Engineering
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
-      linux 系统管理
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
-      git 入门教程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
-      How to be a manager
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../about/" title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="编码数据的格式" class="md-nav__link">
-    编码数据的格式
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" title="术语冲突" class="md-nav__link">
-    术语冲突
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" title="语言特定的格式" class="md-nav__link">
-    语言特定的格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jsonxml" title="JSON，XML和二进制变体" class="md-nav__link">
-    JSON，XML和二进制变体
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" title="二进制编码" class="md-nav__link">
-    二进制编码
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#thriftprotocol-buffers" title="Thrift与Protocol Buffers" class="md-nav__link">
-    Thrift与Protocol Buffers
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" title="字段标签和模式演变" class="md-nav__link">
-    字段标签和模式演变
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" title="数据类型和模式演变" class="md-nav__link">
-    数据类型和模式演变
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#avro" title="Avro" class="md-nav__link">
-    Avro
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" title="作者模式与读者模式" class="md-nav__link">
-    作者模式与读者模式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" title="模式演变规则" class="md-nav__link">
-    模式演变规则
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" title="但作者模式到底是什么？" class="md-nav__link">
-    但作者模式到底是什么？
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" title="动态生成的模式" class="md-nav__link">
-    动态生成的模式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" title="代码生成和动态类型的语言" class="md-nav__link">
-    代码生成和动态类型的语言
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" title="模式的优点" class="md-nav__link">
-    模式的优点
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" title="数据流的类型" class="md-nav__link">
-    数据流的类型
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" title="数据库中的数据流" class="md-nav__link">
-    数据库中的数据流
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" title="在不同的时间写入不同的值" class="md-nav__link">
-    在不同的时间写入不同的值
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" title="归档存储" class="md-nav__link">
-    归档存储
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rest-rpc" title="服务中的数据流：REST 与 RPC" class="md-nav__link">
-    服务中的数据流：REST 与 RPC
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web" title="Web服务" class="md-nav__link">
-    Web服务
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" title="远程过程调用（RPC）的问题" class="md-nav__link">
-    远程过程调用（RPC）的问题
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc_1" title="RPC的当前方向" class="md-nav__link">
-    RPC的当前方向
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc_2" title="数据编码与RPC的演化" class="md-nav__link">
-    数据编码与RPC的演化
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" title="消息传递中的数据流" class="md-nav__link">
-    消息传递中的数据流
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_19" title="消息掮客" class="md-nav__link">
-    消息掮客
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#actor" title="分布式的Actor框架" class="md-nav__link">
-    分布式的Actor框架
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" title="本章小结" class="md-nav__link">
-    本章小结
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_21" title="参考文献" class="md-nav__link">
-    参考文献
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <h1 id="_1">第四章 编码与演化</h1>
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch4/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>第四章 编码与演化 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">第四章 编码与演化</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora/" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_2" title="编码数据的格式" class="md-nav__link">编码数据的格式</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="术语冲突" class="md-nav__link">术语冲突</a></li><li class="md-nav__item"><a href="#_4" title="语言特定的格式" class="md-nav__link">语言特定的格式</a></li><li class="md-nav__item"><a href="#jsonxml" title="JSON，XML和二进制变体" class="md-nav__link">JSON，XML和二进制变体</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_5" title="二进制编码" class="md-nav__link">二进制编码</a></li></ul></nav></li><li class="md-nav__item"><a href="#thriftprotocol-buffers" title="Thrift与Protocol Buffers" class="md-nav__link">Thrift与Protocol Buffers</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_6" title="字段标签和模式演变" class="md-nav__link">字段标签和模式演变</a></li><li class="md-nav__item"><a href="#_7" title="数据类型和模式演变" class="md-nav__link">数据类型和模式演变</a></li></ul></nav></li><li class="md-nav__item"><a href="#avro" title="Avro" class="md-nav__link">Avro</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_8" title="作者模式与读者模式" class="md-nav__link">作者模式与读者模式</a></li><li class="md-nav__item"><a href="#_9" title="模式演变规则" class="md-nav__link">模式演变规则</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_10" title="但作者模式到底是什么？" class="md-nav__link">但作者模式到底是什么？</a></li></ul></nav></li><li class="md-nav__item"><a href="#_11" title="动态生成的模式" class="md-nav__link">动态生成的模式</a></li><li class="md-nav__item"><a href="#_12" title="代码生成和动态类型的语言" class="md-nav__link">代码生成和动态类型的语言</a></li></ul></nav></li><li class="md-nav__item"><a href="#_13" title="模式的优点" class="md-nav__link">模式的优点</a></li></ul></nav></li><li class="md-nav__item"><a href="#_14" title="数据流的类型" class="md-nav__link">数据流的类型</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_15" title="数据库中的数据流" class="md-nav__link">数据库中的数据流</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_16" title="在不同的时间写入不同的值" class="md-nav__link">在不同的时间写入不同的值</a></li><li class="md-nav__item"><a href="#_17" title="归档存储" class="md-nav__link">归档存储</a></li></ul></nav></li><li class="md-nav__item"><a href="#rest-rpc" title="服务中的数据流：REST 与 RPC" class="md-nav__link">服务中的数据流：REST 与 RPC</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#web" title="Web服务" class="md-nav__link">Web服务</a></li><li class="md-nav__item"><a href="#rpc" title="远程过程调用（RPC）的问题" class="md-nav__link">远程过程调用（RPC）的问题</a></li><li class="md-nav__item"><a href="#rpc_1" title="RPC的当前方向" class="md-nav__link">RPC的当前方向</a></li><li class="md-nav__item"><a href="#rpc_2" title="数据编码与RPC的演化" class="md-nav__link">数据编码与RPC的演化</a></li></ul></nav></li><li class="md-nav__item"><a href="#_18" title="消息传递中的数据流" class="md-nav__link">消息传递中的数据流</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_19" title="消息掮客" class="md-nav__link">消息掮客</a></li><li class="md-nav__item"><a href="#actor" title="分布式的Actor框架" class="md-nav__link">分布式的Actor框架</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_20" title="本章小结" class="md-nav__link">本章小结</a></li><li class="md-nav__item"><a href="#_21" title="参考文献" class="md-nav__link">参考文献</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="_1">第四章 编码与演化</h1>
 <p><img alt="" src="../img/ch4.png" /></p>
 <blockquote>
 <p>唯变所适</p>
 <p>——以弗所的赫拉克利特，为柏拉图所引（公元前360年）<br />
 </p>
 </blockquote>
-<p>应用程序不可避免地随时间而变化。新产品的推出，对需求的深入理解，或者商业环境的变化，总会伴随着**功能（feature）**的增增改改。<a href="../ch1/">第一章</a>介绍了<a href="../ch1/#可演化性：拥抱变化"><strong>可演化性(evolvability)</strong></a>的概念：应该尽力构建能灵活适应变化的系统（参阅“<a href="">可演化性：拥抱变化</a>”）。</p>
+<p>应用程序不可避免地随时间而变化。新产品的推出，对需求的深入理解，或者商业环境的变化，总会伴随着<strong>功能（feature）</strong>的增增改改。<a href="../ch1/">第一章</a>介绍了<a href="../ch1/#可演化性：拥抱变化"><strong>可演化性(evolvability)</strong></a>的概念：应该尽力构建能灵活适应变化的系统（参阅“<a href="">可演化性：拥抱变化</a>”）。</p>
 <p>在大多数情况下，修改应用程序的功能也意味着需要更改其存储的数据：可能需要使用新的字段或记录类型，或者以新方式展示现有数据。</p>
 <p>我们在<a href="../ch2/">第二章</a>讨论的数据模型有不同的方法来应对这种变化。关系数据库通常假定数据库中的所有数据都遵循一个模式：尽管可以更改该模式（通过模式迁移，即<code class="codehilite">ALTER</code>语句），但是在任何时间点都有且仅有一个正确的模式。相比之下，<strong>读时模式（schema-on-read）</strong>（或 <strong>无模式（schemaless）</strong>）数据库不会强制一个模式，因此数据库可以包含在不同时间写入的新老数据格式的混合（参阅 “文档模型中的模式灵活性” ）。</p>
-<p>当数据**格式（format）**或**模式（schema）**发生变化时，通常需要对应用程序代码进行相应的更改（例如，为记录添加新字段，然后修改程序开始读写该字段）。但在大型应用程序中，代码变更通常不会立即完成：</p>
+<p>当数据<strong>格式（format）</strong>或<strong>模式（schema）</strong>发生变化时，通常需要对应用程序代码进行相应的更改（例如，为记录添加新字段，然后修改程序开始读写该字段）。但在大型应用程序中，代码变更通常不会立即完成：</p>
 <ul>
-<li>对于**服务端（server-side）<strong>应用程序，可能需要执行**滚动升级 （rolling upgrade）</strong>（也称为**阶段发布（staged rollout）**），一次将新版本部署到少数几个节点，检查新版本是否运行正常，然后逐渐部完所有的节点。这样无需中断服务即可部署新版本，为频繁发布提供了可行性，从而带来更好的可演化性。</li>
-<li>对于**客户端（client-side）**应用程序，升不升级就要看用户的心情了。用户可能相当长一段时间里都不会去升级软件。</li>
+<li>对于<strong>服务端（server-side）</strong>应用程序，可能需要执行<strong>滚动升级 （rolling upgrade）</strong>（也称为<strong>阶段发布（staged rollout）</strong>），一次将新版本部署到少数几个节点，检查新版本是否运行正常，然后逐渐部完所有的节点。这样无需中断服务即可部署新版本，为频繁发布提供了可行性，从而带来更好的可演化性。</li>
+<li>对于<strong>客户端（client-side）</strong>应用程序，升不升级就要看用户的心情了。用户可能相当长一段时间里都不会去升级软件。</li>
 </ul>
-<p>这意味着，新旧版本的代码，以及新旧数据格式可能会在系统中同时共处。系统想要继续顺利运行，就需要保持**双向兼容性**：</p>
+<p>这意味着，新旧版本的代码，以及新旧数据格式可能会在系统中同时共处。系统想要继续顺利运行，就需要保持<strong>双向兼容性</strong>：</p>
 <p><strong><em>向后兼容 (backward compatibility)</em></strong></p>
 <p>​   新代码可以读旧数据。</p>
 <p><strong><em>向前兼容 (forward compatibility)</em></strong></p>
 <p>​   旧代码可以读新数据。</p>
 <p>向后兼容性通常并不难实现：新代码的作者当然知道由旧代码使用的数据格式，因此可以显示地处理它（最简单的办法是，保留旧代码即可读取旧数据）。</p>
 <p>向前兼容性可能会更棘手，因为旧版的程序需要忽略新版数据格式中新增的部分。</p>
-<p>本章中将介绍几种编码数据的格式，包括 JSON，XML，Protocol Buffers，Thrift和Avro。尤其将关注这些格式如何应对模式变化，以及它们如何对新旧代码数据需要共存的系统提供支持。然后将讨论如何使用这些格式进行数据存储和通信：在Web服务中，<strong>具象状态传输（REST）**和**远程过程调用（RPC）</strong>，以及**消息传递系统**（如Actor和消息队列）。</p>
+<p>本章中将介绍几种编码数据的格式，包括 JSON，XML，Protocol Buffers，Thrift和Avro。尤其将关注这些格式如何应对模式变化，以及它们如何对新旧代码数据需要共存的系统提供支持。然后将讨论如何使用这些格式进行数据存储和通信：在Web服务中，<strong>具象状态传输（REST）</strong>和<strong>远程过程调用（RPC）</strong>，以及<strong>消息传递系统</strong>（如Actor和消息队列）。</p>
 <h2 id="_2">编码数据的格式</h2>
 <p>程序通常（至少）使用两种形式的数据：</p>
 <ol>
 <li>在内存中，数据保存在对象，结构体，列表，数组，哈希表，树等中。 这些数据结构针对CPU的高效访问和操作进行了优化（通常使用指针）。</li>
-<li>如果要将数据写入文件，或通过网络发送，则必须将其**编码（encode）**为某种自包含的字节序列（例如，JSON文档）。 由于每个进程都有自己独立的地址空间，一个进程中的指针对任何其他进程都没有意义，所以这个字节序列表示会与通常在内存中使用的数据结构完全不同<a href="除一些特殊情况外，例如某些内存映射文件或直接在压缩数据上操作（如“[列压缩](ch4.md#列压缩)”中所述）。">^i</a>。</li>
+<li>如果要将数据写入文件，或通过网络发送，则必须将其<strong>编码（encode）</strong>为某种自包含的字节序列（例如，JSON文档）。 由于每个进程都有自己独立的地址空间，一个进程中的指针对任何其他进程都没有意义，所以这个字节序列表示会与通常在内存中使用的数据结构完全不同<sup id="fnref:i"><a class="footnote-ref" href="#fn:i" rel="footnote">1</a></sup>。</li>
 </ol>
-<p>所以，需要在两种表示之间进行某种类型的翻译。 从内存中表示到字节序列的转换称为**编码（Encoding）<strong>（也称为**序列化（serialization）**或**编组（marshalling）</strong>），反过来称为**解码（Decoding）<strong>[^ii]（**解析（Parsing）</strong>，<strong>反序列化（deserialization）</strong>，<strong>反编组() unmarshalling）</strong>）<a href="Marshal与Serialization的区别：Marshal不仅传输对象的状态，而且会一起传输对象的方法（相关代码）。">^译i</a>。</p>
-<p>[^ii]: 请注意，**编码（encode）**与**加密（encryption）**无关。 本书不讨论加密。</p>
+<p>所以，需要在两种表示之间进行某种类型的翻译。 从内存中表示到字节序列的转换称为<strong>编码（Encoding）</strong>（也称为<strong>序列化（serialization）</strong>或<strong>编组（marshalling）</strong>），反过来称为<strong>解码（Decoding）</strong><sup id="fnref:ii"><a class="footnote-ref" href="#fn:ii" rel="footnote">2</a></sup>（<strong>解析（Parsing）</strong>，<strong>反序列化（deserialization）</strong>，<strong>反编组() unmarshalling）</strong>）<sup id="fnref:译i"><a class="footnote-ref" href="#fn:译i" rel="footnote">3</a></sup>。</p>
 <blockquote>
 <h4 id="_3">术语冲突</h4>
-<p>不幸的是，在<a href="../ch7/">第七章</a>：**事务（Transaction）**的上下文里，**序列化（Serialization）**这个术语也出现了，而且具有完全不同的含义。尽管序列化可能是更常见的术语，为了避免术语重载，本书中坚持使用**编码（Encoding）**表达此含义。</p>
+<p>不幸的是，在<a href="../ch7/">第七章</a>：<strong>事务（Transaction）</strong>的上下文里，<strong>序列化（Serialization）</strong>这个术语也出现了，而且具有完全不同的含义。尽管序列化可能是更常见的术语，为了避免术语重载，本书中坚持使用<strong>编码（Encoding）</strong>表达此含义。</p>
 </blockquote>
 <p>这是一个常见的问题，因而有许多库和编码格式可供选择。 首先让我们概览一下。</p>
 <h3 id="_4">语言特定的格式</h3>
@@ -809,7 +38,7 @@
 <p>这些编码库非常方便，可以用很少的额外代码实现内存对象的保存与恢复。但是它们也有一些深层次的问题：</p>
 <ul>
 <li>这类编码通常与特定的编程语言深度绑定，其他语言很难读取这种数据。如果以这类编码存储或传输数据，那你就和这门语言绑死在一起了。并且很难将系统与其他组织的系统（可能用的是不同的语言）进行集成。</li>
-<li>为了恢复相同对象类型的数据，解码过程需要**实例化任意类**的能力，这通常是安全问题的一个来源【5】：如果攻击者可以让应用程序解码任意的字节序列，他们就能实例化任意的类，这会允许他们做可怕的事情，如远程执行任意代码【6,7】。</li>
+<li>为了恢复相同对象类型的数据，解码过程需要<strong>实例化任意类</strong>的能力，这通常是安全问题的一个来源【5】：如果攻击者可以让应用程序解码任意的字节序列，他们就能实例化任意的类，这会允许他们做可怕的事情，如远程执行任意代码【6,7】。</li>
 <li>在这些库中，数据版本控制通常是事后才考虑的。因为它们旨在快速简便地对数据进行编码，所以往往忽略了前向后向兼容性带来的麻烦问题。</li>
 <li>效率（编码或解码所花费的CPU时间，以及编码结构的大小）往往也是事后才考虑的。 例如，Java的内置序列化由于其糟糕的性能和臃肿的编码而臭名昭着【8】。</li>
 </ul>
@@ -829,17 +58,17 @@
 <p>JSON比XML简洁，但与二进制格式一比，还是太占地方。这一事实导致大量二进制编码版本JSON &amp; XML的出现，JSON（MessagePack，BSON，BJSON，UBJSON，BISON和Smile等）（例如WBXML和Fast Infoset）。这些格式已经被各种各样的领域所采用，但是没有一个像JSON和XML的文本版本那样被广泛采用。</p>
 <p>这些格式中的一些扩展了一组数据类型（例如，区分整数和浮点数，或者增加对二进制字符串的支持），另一方面，它们没有盖面JSON / XML的数据模型。特别是由于它们没有规定模式，所以它们需要在编码数据中包含所有的对象字段名称。也就是说，在<a href="">例4-1</a>中的JSON文档的二进制编码中，需要在某处包含字符串<code class="codehilite">userName</code>，<code class="codehilite">favoriteNumber</code>和<code class="codehilite">interest</code>。</p>
 <p><strong>例4-1 本章中用于展示二进制编码的示例记录</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;Martin&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;favoriteNumber&quot;</span><span class="p">:</span> <span class="mi">1337</span><span class="p">,</span>
-    <span class="nt">&quot;interests&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;daydreaming&quot;</span><span class="p">,</span> <span class="s2">&quot;hacking&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>{
+    <span style="color: #bb0066; font-weight: bold">&quot;userName&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Martin&quot;</span>,
+    <span style="color: #bb0066; font-weight: bold">&quot;favoriteNumber&quot;</span>: <span style="color: #0000DD; font-weight: bold">1337</span>,
+    <span style="color: #bb0066; font-weight: bold">&quot;interests&quot;</span>: [<span style="color: #dd2200; background-color: #fff0f0">&quot;daydreaming&quot;</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;hacking&quot;</span>]
+}
 </pre></div>
 
 <p>我们来看一个MessagePack的例子，它是一个JSON的二进制编码。图4-1显示了如果使用MessagePack 【14】对<a href="">例4-1</a>中的JSON文档进行编码，则得到的字节序列。前几个字节如下：</p>
 <ol>
-<li>第一个字节<code class="codehilite">0x83</code>表示接下来是**3**个字段（低四位= <code class="codehilite">0x03</code>）的**对象 object**（高四位= <code class="codehilite">0x80</code>）。 （如果想知道如果一个对象有15个以上的字段会发生什么情况，字段的数量塞不进4个bit里，那么它会用另一个不同的类型标识符，字段的数量被编码两个或四个字节）。</li>
-<li>第二个字节<code class="codehilite">0xa8</code>表示接下来是**8**字节长的字符串（最高四位= 0x08）。</li>
+<li>第一个字节<code class="codehilite">0x83</code>表示接下来是<strong>3</strong>个字段（低四位= <code class="codehilite">0x03</code>）的<strong>对象 object</strong>（高四位= <code class="codehilite">0x80</code>）。 （如果想知道如果一个对象有15个以上的字段会发生什么情况，字段的数量塞不进4个bit里，那么它会用另一个不同的类型标识符，字段的数量被编码两个或四个字节）。</li>
+<li>第二个字节<code class="codehilite">0xa8</code>表示接下来是<strong>8</strong>字节长的字符串（最高四位= 0x08）。</li>
 <li>接下来八个字节是ASCII字符串形式的字段名称<code class="codehilite">userName</code>。由于之前已经指明长度，不需要任何标记来标识字符串的结束位置（或者任何转义）。</li>
 <li>接下来的七个字节对前缀为<code class="codehilite">0xa6</code>的六个字母的字符串值<code class="codehilite">Martin</code>进行编码，依此类推。</li>
 </ol>
@@ -849,27 +78,26 @@
 <p><strong>图4-1 使用MessagePack编码的记录（例4-1）</strong></p>
 <h3 id="thriftprotocol-buffers">Thrift与Protocol Buffers</h3>
 <p>Apache Thrift 【15】和Protocol Buffers（protobuf）【16】是基于相同原理的二进制编码库。 Protocol Buffers最初是在Google开发的，Thrift最初是在Facebook开发的，并且在2007~2008年都是开源的【17】。
-Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thrift的<a href="">例4-1</a>中对数据进行编码，可以使用Thrift**接口定义语言（IDL）**来描述模式，如下所示：</p>
-<div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">Person</span> <span class="p">{</span>
-    <span class="mi">1</span><span class="o">:</span> <span class="n">required</span> <span class="n">string</span>       <span class="n">userName</span><span class="p">,</span>
-    <span class="mi">2</span><span class="o">:</span> <span class="n">optional</span> <span class="n">i64</span>          <span class="n">favoriteNumber</span><span class="p">,</span>
-    <span class="mi">3</span><span class="o">:</span> <span class="n">optional</span> <span class="n">list</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">interests</span>
-<span class="p">}</span>
+Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thrift的<a href="">例4-1</a>中对数据进行编码，可以使用Thrift<strong>接口定义语言（IDL）</strong>来描述模式，如下所示：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">struct</span> Person {
+    <span style="color: #0000DD; font-weight: bold">1</span>: required string       userName,
+    <span style="color: #0000DD; font-weight: bold">2</span>: optional i64          favoriteNumber,
+    <span style="color: #0000DD; font-weight: bold">3</span>: optional list&lt;string&gt; interests
+}
 </pre></div>
 
 <p>Protocol Buffers的等效模式定义看起来非常相似：</p>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">Person</span> <span class="p">{</span>
-    <span class="k">required</span> <span class="kt">string</span> <span class="na">user_name</span>       <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">optional</span> <span class="kt">int64</span>  <span class="na">favorite_number</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">repeated</span> <span class="kt">string</span> <span class="na">interests</span>       <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">message</span> <span style="color: #bb0066; font-weight: bold">Person</span> {
+    <span style="color: #008800; font-weight: bold">required</span> <span style="color: #888888; font-weight: bold">string</span> <span style="color: #336699">user_name</span>       = <span style="color: #0000DD; font-weight: bold">1</span>;
+    <span style="color: #008800; font-weight: bold">optional</span> <span style="color: #888888; font-weight: bold">int64</span>  <span style="color: #336699">favorite_number</span> = <span style="color: #0000DD; font-weight: bold">2</span>;
+    <span style="color: #008800; font-weight: bold">repeated</span> <span style="color: #888888; font-weight: bold">string</span> <span style="color: #336699">interests</span>       = <span style="color: #0000DD; font-weight: bold">3</span>;
+}
 </pre></div>
 
 <p>Thrift和Protocol Buffers每一个都带有一个代码生成工具，它采用了类似于这里所示的模式定义，并且生成了以各种编程语言实现模式的类【18】。您的应用程序代码可以调用此生成的代码来对模式的记录进行编码或解码。
-用这个模式编码的数据是什么样的？令人困惑的是，Thrift有两种不同的二进制编码格式[^iii]，分别称为BinaryProtocol和CompactProtocol。先来看看BinaryProtocol。使用这种格式的编码来编码<a href="">例4-1</a>中的消息只需要59个字节，如<a href="../img/fig4-2.png">图4-2</a>所示【19】。</p>
+用这个模式编码的数据是什么样的？令人困惑的是，Thrift有两种不同的二进制编码格式<sup id="fnref:iii"><a class="footnote-ref" href="#fn:iii" rel="footnote">4</a></sup>，分别称为BinaryProtocol和CompactProtocol。先来看看BinaryProtocol。使用这种格式的编码来编码<a href="">例4-1</a>中的消息只需要59个字节，如<a href="../img/fig4-2.png">图4-2</a>所示【19】。</p>
 <p><img alt="" src="../img/fig4-2.png" /></p>
 <p><strong>图4-2 使用Thrift二进制协议编码的记录</strong></p>
-<p>[^iii]: 实际上，Thrift有三种二进制协议：CompactProtocol和DenseProtocol，尽管DenseProtocol只支持C ++实现，所以不算作跨语言[18]。 除此之外，它还有两种不同的基于JSON的编码格式【19】。 真逗！</p>
 <p>与<a href="Img/fig4-1.png">图4-1</a>类似，每个字段都有一个类型注释（用于指示它是一个字符串，整数，列表等），还可以根据需要指定长度（字符串的长度，列表中的项目数） 。出现在数据中的字符串<code class="codehilite">(“Martin”, “daydreaming”, “hacking”)</code>也被编码为ASCII（或者说，UTF-8），与之前类似。</p>
 <p>与<a href="../img/fig4-1.png">图4-1</a>相比，最大的区别是没有字段名<code class="codehilite">(userName, favoriteNumber, interest)</code>。相反，编码数据包含字段标签，它们是数字<code class="codehilite">(1, 2和3)</code>。这些是模式定义中出现的数字。字段标记就像字段的别名 - 它们是说我们正在谈论的字段的一种紧凑的方式，而不必拼出字段名称。</p>
 <p>Thrift CompactProtocol编码在语义上等同于BinaryProtocol，但是如<a href="../img/fig4-3.png">图4-3</a>所示，它只将相同的信息打包成只有34个字节。它通过将字段类型和标签号打包到单个字节中，并使用可变长度整数来实现。数字1337不是使用全部八个字节，而是用两个字节编码，每个字节的最高位用来指示是否还有更多的字节来。这意味着-64到63之间的数字被编码为一个字节，-8192和8191之间的数字以两个字节编码，等等。较大的数字使用更多的字节。</p>
@@ -883,7 +111,7 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 <p>我们之前说过，模式不可避免地需要随着时间而改变。我们称之为模式演变。 Thrift和Protocol Buffers如何处理模式更改，同时保持向后兼容性？</p>
 <p>从示例中可以看出，编码的记录就是其编码字段的拼接。每个字段由其标签号码（样本模式中的数字1,2,3）标识，并用数据类型（例如字符串或整数）注释。如果没有设置字段值，则简单地从编码记录中省略。从中可以看到，字段标记对编码数据的含义至关重要。您可以更改架构中字段的名称，因为编码的数据永远不会引用字段名称，但不能更改字段的标记，因为这会使所有现有的编码数据无效。</p>
 <p>您可以添加新的字段到架构，只要您给每个字段一个新的标签号码。如果旧的代码（不知道你添加的新的标签号码）试图读取新代码写入的数据，包括一个新的字段，其标签号码不能识别，它可以简单地忽略该字段。数据类型注释允许解析器确定需要跳过的字节数。这保持了前向兼容性：旧代码可以读取由新代码编写的记录。</p>
-<p>向后兼容性呢？只要每个字段都有一个唯一的标签号码，新的代码总是可以读取旧的数据，因为标签号码仍然具有相同的含义。唯一的细节是，如果你添加一个新的领域，你不能要求。如果您要添加一个字段并将其设置为必需，那么如果新代码读取旧代码写入的数据，则该检查将失败，因为旧代码不会写入您添加的新字段。因此，为了保持向后兼容性，在模式的初始部署之后**添加的每个字段必须是可选的或具有默认值**。</p>
+<p>向后兼容性呢？只要每个字段都有一个唯一的标签号码，新的代码总是可以读取旧的数据，因为标签号码仍然具有相同的含义。唯一的细节是，如果你添加一个新的领域，你不能要求。如果您要添加一个字段并将其设置为必需，那么如果新代码读取旧代码写入的数据，则该检查将失败，因为旧代码不会写入您添加的新字段。因此，为了保持向后兼容性，在模式的初始部署之后<strong>添加的每个字段必须是可选的或具有默认值</strong>。</p>
 <p>删除一个字段就像添加一个字段，倒退和向前兼容性问题相反。这意味着您只能删除一个可选的字段（必填字段永远不能删除），而且您不能再次使用相同的标签号码（因为您可能仍然有数据写在包含旧标签号码的地方，而该字段必须被新代码忽略）。</p>
 <h4 id="_7">数据类型和模式演变</h4>
 <p>如何改变字段的数据类型？这可能是可能的——检查文件的细节——但是有一个风险，值将失去精度或被扼杀。例如，假设你将一个32位的整数变成一个64位的整数。新代码可以轻松读取旧代码写入的数据，因为解析器可以用零填充任何缺失的位。但是，如果旧代码读取由新代码写入的数据，则旧代码仍使用32位变量来保存该值。如果解码的64位值不适合32位，则它将被截断。</p>
@@ -893,23 +121,23 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 <p>Apache Avro 【20】是另一种二进制编码格式，与Protocol Buffers和Thrift有趣的不同。 它是作为Hadoop的一个子项目在2009年开始的，因为Thrift不适合Hadoop的用例【21】。</p>
 <p>Avro也使用模式来指定正在编码的数据的结构。 它有两种模式语言：一种（Avro IDL）用于人工编辑，一种（基于JSON），更易于机器读取。</p>
 <p>我们用Avro IDL编写的示例模式可能如下所示：</p>
-<div class="codehilite"><pre><span></span><span class="n">record</span> <span class="n">Person</span> <span class="p">{</span>
-    <span class="n">string</span>                <span class="n">userName</span><span class="p">;</span>
-    <span class="k">union</span> <span class="p">{</span> <span class="n">null</span><span class="p">,</span> <span class="kt">long</span> <span class="p">}</span>  <span class="n">favoriteNumber</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-    <span class="n">array</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>         <span class="n">interests</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>record Person {
+    string                userName;
+    <span style="color: #008800; font-weight: bold">union</span> { null, <span style="color: #888888; font-weight: bold">long</span> }  favoriteNumber = null;
+    array&lt;string&gt;         interests;
+}
 </pre></div>
 
 <p>等价的JSON表示：</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;record&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Person&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;userName&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;favoriteNumber&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;null&quot;</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">],</span> <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">},</span>
-        <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;interests&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>
-    <span class="err">]</span> 
-<span class="p">}</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>{
+    <span style="color: #bb0066; font-weight: bold">&quot;type&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;record&quot;</span>,
+    <span style="color: #bb0066; font-weight: bold">&quot;name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Person&quot;</span>,
+    <span style="color: #bb0066; font-weight: bold">&quot;fields&quot;</span>: [
+        {<span style="color: #bb0066; font-weight: bold">&quot;name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;userName&quot;</span>, <span style="color: #bb0066; font-weight: bold">&quot;type&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;string&quot;</span>},
+        {<span style="color: #bb0066; font-weight: bold">&quot;name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;favoriteNumber&quot;</span>, <span style="color: #bb0066; font-weight: bold">&quot;type&quot;</span>: [<span style="color: #dd2200; background-color: #fff0f0">&quot;null&quot;</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;long&quot;</span>], <span style="color: #bb0066; font-weight: bold">&quot;default&quot;</span>: <span style="color: #008800; font-weight: bold">null</span>},
+        {<span style="color: #bb0066; font-weight: bold">&quot;name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;interests&quot;</span>, <span style="color: #bb0066; font-weight: bold">&quot;type&quot;</span>: {<span style="color: #bb0066; font-weight: bold">&quot;type&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;array&quot;</span>, <span style="color: #bb0066; font-weight: bold">&quot;items&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;string&quot;</span>}
+    <span style="color: #a61717; background-color: #e3d2d2">]</span> 
+}
 </pre></div>
 
 <p>首先，请注意架构中没有标签号码。 如果我们使用这个模式编码我们的例子记录（<a href="">例4-1</a>），Avro二进制编码只有32个字节长，这是我们所见过的所有编码中最紧凑的。 编码字节序列的分解如<a href="../img/fig4-5.png">图4-5</a>所示。</p>
@@ -928,7 +156,7 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 <h4 id="_9">模式演变规则</h4>
 <p>使用Avro，向前兼容性意味着您可以将新版本的架构作为编写器，并将旧版本的架构作为读者。相反，向后兼容意味着你可以有一个作为读者的新版本的模式和作为作者的旧版本。</p>
 <p>为了保持兼容性，您只能添加或删除具有默认值的字段。 （我们的Avro模式中的字段<code class="codehilite">favourNumber</code>的默认值为<code class="codehilite">null</code>）。例如，假设您添加一个默认值的字段，所以这个新的字段存在于新的模式中，而不是旧的。当使用新模式的阅读器读取使用旧模式写入的记录时，将为缺少的字段填充默认值。</p>
-<p>如果你要添加一个没有默认值的字段，新的阅读器将无法读取旧作者写的数据，所以你会破坏向后兼容性。如果您要删除没有默认值的字段，旧的阅读器将无法读取新作者写入的数据，因此您会打破兼容性。在一些编程语言中，null是任何变量可以接受的默认值，但在Avro中并不是这样：如果要允许一个字段为<code class="codehilite">null</code>，则必须使用联合类型。例如，<code class="codehilite">union {null，long，string}</code>字段;表示该字段可以是数字或字符串，也可以是<code class="codehilite">null</code>。如果它是union的分支之一，那么只能使用null作为默认值<a href="确切地说，默认值必须是联合的第一个分支的类型，尽管这是Avro的特定限制，而不是联合类型的一般特征。">^iv</a>。这比默认情况下可以为<code class="codehilite">null</code>是更加冗长的，但是通过明确什么可以和不可以是什么，有助于防止错误的<code class="codehilite">null</code> 【22】。</p>
+<p>如果你要添加一个没有默认值的字段，新的阅读器将无法读取旧作者写的数据，所以你会破坏向后兼容性。如果您要删除没有默认值的字段，旧的阅读器将无法读取新作者写入的数据，因此您会打破兼容性。在一些编程语言中，null是任何变量可以接受的默认值，但在Avro中并不是这样：如果要允许一个字段为<code class="codehilite">null</code>，则必须使用联合类型。例如，<code class="codehilite">union {null，long，string}</code>字段;表示该字段可以是数字或字符串，也可以是<code class="codehilite">null</code>。如果它是union的分支之一，那么只能使用null作为默认值<sup id="fnref:iv"><a class="footnote-ref" href="#fn:iv" rel="footnote">5</a></sup>。这比默认情况下可以为<code class="codehilite">null</code>是更加冗长的，但是通过明确什么可以和不可以是什么，有助于防止错误的<code class="codehilite">null</code> 【22】。</p>
 <p>因此，Avro没有像Protocol Buffers和Thrift那样的<code class="codehilite">optional</code>和<code class="codehilite">required</code>标记（它有联合类型和默认值）。</p>
 <p>只要Avro可以转换类型，就可以改变字段的数据类型。更改字段的名称是可能的，但有点棘手：读者的模式可以包含字段名称的别名，所以它可以匹配旧作家的模式字段名称与别名。这意味着更改字段名称是向后兼容的，但不能向前兼容。同样，向联合类型添加分支也是向后兼容的，但不能向前兼容。</p>
 <h5 id="_10">但作者模式到底是什么？</h5>
@@ -991,7 +219,7 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 <h4 id="_16">在不同的时间写入不同的值</h4>
 <p>数据库通常允许任何时候更新任何值。这意味着在一个单一的数据库中，可能有一些价值是五毫秒前写的，而一些价值是五年前写的。</p>
 <p>在部署应用程序的新版本（至少是服务器端应用程序）时，您可能会在几分钟内完全用新版本替换旧版本。数据库内容也是如此：五年前的数据仍然存在于原始编码中，除非您已经明确地重写了它。这种观察有时被总结为数据超出代码。</p>
-<p>将数据重写（迁移）到一个新的模式当然是可能的，但是在一个大数据集上执行是一个昂贵的事情，所以大多数数据库如果可能的话就避免它。大多数关系数据库都允许简单的模式更改，例如添加一个默认值为空的新列，而不重写现有数据<a href="除了MySQL，即使并非真的必要，它也经常会重写整个表，正如“[文档模型中的架构灵活性](ch3.md#文档模型中的灵活性)”中所提到的。">^v</a>读取旧行时，数据库将填充编码数据中缺少的任何列的空值在磁盘上。 LinkedIn的文档数据库Espresso使用Avro存储，允许它使用Avro的模式演变规则【23】。</p>
+<p>将数据重写（迁移）到一个新的模式当然是可能的，但是在一个大数据集上执行是一个昂贵的事情，所以大多数数据库如果可能的话就避免它。大多数关系数据库都允许简单的模式更改，例如添加一个默认值为空的新列，而不重写现有数据<sup id="fnref:v"><a class="footnote-ref" href="#fn:v" rel="footnote">6</a></sup>读取旧行时，数据库将填充编码数据中缺少的任何列的空值在磁盘上。 LinkedIn的文档数据库Espresso使用Avro存储，允许它使用Avro的模式演变规则【23】。</p>
 <p>因此，架构演变允许整个数据库看起来好像是用单个模式编码的，即使底层存储可能包含用模式的各种历史版本编码的记录。</p>
 <h4 id="_17">归档存储</h4>
 <p>也许您不时为数据库创建一个快照，例如备份或加载到数据仓库（参阅“<a href="../ch3/#数据仓库">数据仓库</a>”）。在这种情况下，即使源数据库中的原始编码包含来自不同时代的模式版本的混合，数据转储通常也将使用最新模式进行编码。既然你正在复制数据，那么你可能会一直对数据的副本进行编码。</p>
@@ -1001,17 +229,17 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 <p>当您需要通过网络进行通信的进程时，安排该通信的方式有几种。最常见的安排是有两个角色：客户端和服务器。服务器通过网络公开API，并且客户端可以连接到服务器以向该API发出请求。服务器公开的API被称为服务。</p>
 <p>Web以这种方式工作：客户（Web浏览器）向Web服务器发出请求，使GET请求下载HTML，CSS，JavaScript，图像等，并向POST请求提交数据到服务器。 API包含一组标准的协议和数据格式（HTTP，URL，SSL/TLS，HTML等）。由于网络浏览器，网络服务器和网站作者大多同意这些标准，您可以使用任何网络浏览器访问任何网站（至少在理论上！）。</p>
 <p>Web浏览器不是唯一的客户端类型。例如，在移动设备或桌面计算机上运行的本地应用程序也可以向服务器发出网络请求，并且在Web浏览器内运行的客户端JavaScript应用程序可以使用XMLHttpRequest成为HTTP客户端（该技术被称为Ajax 【30】）。在这种情况下，服务器的响应通常不是用于显示给人的HTML，而是用于便于客户端应用程序代码（如JSON）进一步处理的编码数据。尽管HTTP可能被用作传输协议，但顶层实现的API是特定于应用程序的，客户端和服务器需要就该API的细节达成一致。</p>
-<p>此外，服务器本身可以是另一个服务的客户端（例如，典型的Web应用服务器充当数据库的客户端）。这种方法通常用于将大型应用程序按照功能区域分解为较小的服务，这样当一个服务需要来自另一个服务的某些功能或数据时，就会向另一个服务发出请求。这种构建应用程序的方式传统上被称为**面向服务的体系结构（service-oriented architecture，SOA）**，最近被改进和更名为**微服务架构 **【31,32】。</p>
+<p>此外，服务器本身可以是另一个服务的客户端（例如，典型的Web应用服务器充当数据库的客户端）。这种方法通常用于将大型应用程序按照功能区域分解为较小的服务，这样当一个服务需要来自另一个服务的某些功能或数据时，就会向另一个服务发出请求。这种构建应用程序的方式传统上被称为<strong>面向服务的体系结构（service-oriented architecture，SOA）</strong>，最近被改进和更名为<strong>微服务架构 </strong>【31,32】。</p>
 <p>在某些方面，服务类似于数据库：它们通常允许客户端提交和查询数据。但是，虽然数据库允许使用我们在第2章  中讨论的查询语言进行任意查询，但是服务公开了一个特定于应用程序的API，它只允许由服务的业务逻辑（应用程序代码）预定的输入和输出【33】。这种限制提供了一定程度的封装：服务可以对客户可以做什么和不可以做什么施加细粒度的限制。</p>
 <p>面向服务/微服务架构的一个关键设计目标是通过使服务独立部署和演化来使应用程序更易于更改和维护。例如，每个服务应该由一个团队拥有，并且该团队应该能够经常发布新版本的服务，而不必与其他团队协调。换句话说，我们应该期望服务器和客户端的旧版本和新版本同时运行，因此服务器和客户端使用的数据编码必须在不同版本的服务API之间兼容——正是我们所做的本章一直在谈论。</p>
 <h4 id="web">Web服务</h4>
 <p><strong>当服务使用HTTP作为底层通信协议时，可称之为Web服务</strong>。这可能是一个小错误，因为Web服务不仅在Web上使用，而且在几个不同的环境中使用。例如：</p>
 <ol>
 <li>运行在用户设备上的客户端应用程序（例如，移动设备上的本地应用程序，或使用Ajax的JavaScript web应用程序）通过HTTP向服务发出请求。这些请求通常通过公共互联网进行。</li>
-<li>一种服务向同一组织拥有的另一项服务提出请求，这些服务通常位于同一数据中心内，作为面向服务/微型架构的一部分。 （支持这种用例的软件有时被称为**中间件（middleware）**。）</li>
+<li>一种服务向同一组织拥有的另一项服务提出请求，这些服务通常位于同一数据中心内，作为面向服务/微型架构的一部分。 （支持这种用例的软件有时被称为<strong>中间件（middleware）</strong>。）</li>
 <li>一种服务通过互联网向不同组织所拥有的服务提出请求。这用于不同组织后端系统之间的数据交换。此类别包括由在线服务（如信用卡处理系统）提供的公共API，或用于共享访问用户数据的OAuth。</li>
 </ol>
-<p>有两种流行的Web服务方法：REST和SOAP。他们在哲学方面几乎是截然相反的，往往是各自支持者之间的激烈辩论（即使在每个阵营内也有很多争论。 例如，**HATEOAS（超媒体作为应用程序状态的引擎）**经常引发讨论【35】。）</p>
+<p>有两种流行的Web服务方法：REST和SOAP。他们在哲学方面几乎是截然相反的，往往是各自支持者之间的激烈辩论（即使在每个阵营内也有很多争论。 例如，<strong>HATEOAS（超媒体作为应用程序状态的引擎）</strong>经常引发讨论【35】。）</p>
 <p>REST不是一个协议，而是一个基于HTTP原则的设计哲学【34,35】。它强调简单的数据格式，使用URL来标识资源，并使用HTTP功能进行缓存控制，身份验证和内容类型协商。与SOAP相比，REST已经越来越受欢迎，至少在跨组织服务集成的背景下【36】，并经常与微服务相关[31]。根据REST原则设计的API称为RESTful。</p>
 <p>相比之下，SOAP是用于制作网络API请求的基于XML的协议（ 尽管首字母缩写词相似，SOAP并不是SOA的要求。 SOAP是一种特殊的技术，而SOA是构建系统的一般方法。）。虽然它最常用于HTTP，但其目的是独立于HTTP，并避免使用大多数HTTP功能。相反，它带有庞大而复杂的多种相关标准（Web服务框架，称为<code class="codehilite">WS-*</code>），它们增加了各种功能【37】。</p>
 <p>SOAP Web服务的API使用称为Web服务描述语言（WSDL）的基于XML的语言来描述。 WSDL支持代码生成，客户端可以使用本地类和方法调用（编码为XML消息并由框架再次解码）访问远程服务。这在静态类型编程语言中非常有用，但在动态类型编程语言中很少（参阅“<a href="#代码生成和动态类型化语言">代码生成和动态类型化语言</a>”）。</p>
@@ -1019,8 +247,8 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 <p>尽管SOAP及其各种扩展表面上是标准化的，但是不同厂商的实现之间的互操作性往往会造成问题【39】。由于所有这些原因，尽管许多大型企业仍然使用SOAP，但在大多数小公司中已经不再受到青睐。</p>
 <p>REST风格的API倾向于更简单的方法，通常涉及较少的代码生成和自动化工具。定义格式（如OpenAPI，也称为Swagger 【40】）可用于描述RESTful API并生成文档。</p>
 <h4 id="rpc">远程过程调用（RPC）的问题</h4>
-<p>Web服务仅仅是通过网络进行API请求的一系列技术的最新版本，其中许多技术受到了大量的炒作，但是存在严重的问题。 Enterprise JavaBeans（EJB）和Java的**远程方法调用（RMI）**仅限于Java。**分布式组件对象模型（DCOM）**仅限于Microsoft平台。**公共对象请求代理体系结构（CORBA）**过于复杂，不提供前向或后向兼容性【41】。</p>
-<p>所有这些都是基于**远程过程调用（RPC）**的思想，该过程调用自20世纪70年代以来一直存在【42】。 RPC模型试图向远程网络服务发出请求，看起来与在同一进程中调用编程语言中的函数或方法相同（这种抽象称为位置透明）。尽管RPC起初看起来很方便，但这种方法根本上是有缺陷的【43,44】。网络请求与本地函数调用非常不同：</p>
+<p>Web服务仅仅是通过网络进行API请求的一系列技术的最新版本，其中许多技术受到了大量的炒作，但是存在严重的问题。 Enterprise JavaBeans（EJB）和Java的<strong>远程方法调用（RMI）</strong>仅限于Java。<strong>分布式组件对象模型（DCOM）</strong>仅限于Microsoft平台。<strong>公共对象请求代理体系结构（CORBA）</strong>过于复杂，不提供前向或后向兼容性【41】。</p>
+<p>所有这些都是基于<strong>远程过程调用（RPC）</strong>的思想，该过程调用自20世纪70年代以来一直存在【42】。 RPC模型试图向远程网络服务发出请求，看起来与在同一进程中调用编程语言中的函数或方法相同（这种抽象称为位置透明）。尽管RPC起初看起来很方便，但这种方法根本上是有缺陷的【43,44】。网络请求与本地函数调用非常不同：</p>
 <ul>
 <li>本地函数调用是可预测的，并且成功或失败，这仅取决于受您控制的参数。网络请求是不可预知的：由于网络问题，请求或响应可能会丢失，或者远程计算机可能很慢或不可用，这些问题完全不在您的控制范围之内。网络问题是常见的，所以你必须预测他们，例如通过重试失败的请求。</li>
 <li>本地函数调用要么返回结果，要么抛出异常，或者永远不返回（因为进入无限循环或进程崩溃）。网络请求有另一个可能的结果：由于超时，它可能会返回没有结果。在这种情况下，你根本不知道发生了什么：如果你没有得到来自远程服务的响应，你无法知道请求是否通过。 （我们将在<a href="../ch8/">第8章</a>更详细地讨论这个问题。）</li>
@@ -1275,67 +503,26 @@ Thrift和Protocol Buffers都需要一个模式来编码任何数据。要在Thri
 </tr>
 </tbody>
 </table>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2016 - 2019 iswade
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../../assets/javascripts/application.8c0d971c.js"></script>
-      
-        
-        
-          
-          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-  </body>
-</html>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:i">
+<p>除一些特殊情况外，例如某些内存映射文件或直接在压缩数据上操作（如“<a href="./#列压缩">列压缩</a>”中所述）。&#160;<a class="footnote-backref" href="#fnref:i" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ii">
+<p>请注意，<strong>编码（encode）</strong>与<strong>加密（encryption）</strong>无关。 本书不讨论加密。&#160;<a class="footnote-backref" href="#fnref:ii" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:译i">
+<p>Marshal与Serialization的区别：Marshal不仅传输对象的状态，而且会一起传输对象的方法（相关代码）。&#160;<a class="footnote-backref" href="#fnref:译i" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:iii">
+<p>实际上，Thrift有三种二进制协议：CompactProtocol和DenseProtocol，尽管DenseProtocol只支持C ++实现，所以不算作跨语言[18]。 除此之外，它还有两种不同的基于JSON的编码格式【19】。 真逗！&#160;<a class="footnote-backref" href="#fnref:iii" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:iv">
+<p>确切地说，默认值必须是联合的第一个分支的类型，尽管这是Avro的特定限制，而不是联合类型的一般特征。&#160;<a class="footnote-backref" href="#fnref:iv" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:v">
+<p>除了MySQL，即使并非真的必要，它也经常会重写整个表，正如“<a href="../ch3/#文档模型中的灵活性">文档模型中的架构灵活性</a>”中所提到的。&#160;<a class="footnote-backref" href="#fnref:v" rev="footnote" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

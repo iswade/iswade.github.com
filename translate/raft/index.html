@@ -1,0 +1,269 @@
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/raft/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>raft详解 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#raft" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">raft详解</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../Aurora/" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="使用复制状态机提供容错服务" class="md-nav__link">使用复制状态机提供容错服务</a></li><li class="md-nav__item"><a href="#_2" title="如何避免脑裂？" class="md-nav__link">如何避免脑裂？</a></li><li class="md-nav__item"><a href="#raft_1" title="Raft概览" class="md-nav__link">Raft概览</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#raft_2" title="使用Raft的状态机复制" class="md-nav__link">使用Raft的状态机复制</a></li><li class="md-nav__item"><a href="#_3" title="异常场景分析" class="md-nav__link">异常场景分析</a></li><li class="md-nav__item"><a href="#_4" title="为什么需要日志？" class="md-nav__link">为什么需要日志？</a></li></ul></nav></li><li class="md-nav__item"><a href="#_5" title="领导者选举" class="md-nav__link">领导者选举</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_6" title="为什么需要领导者？" class="md-nav__link">为什么需要领导者？</a></li><li class="md-nav__item"><a href="#_7" title="任期" class="md-nav__link">任期</a></li><li class="md-nav__item"><a href="#_8" title="选举" class="md-nav__link">选举</a></li><li class="md-nav__item"><a href="#_9" title="候选者" class="md-nav__link">候选者</a></li><li class="md-nav__item"><a href="#_10" title="如何保证一个任期最多一个领导者？" class="md-nav__link">如何保证一个任期最多一个领导者？</a></li><li class="md-nav__item"><a href="#_11" title="一个新的领导者是如何建立自己的？" class="md-nav__link">一个新的领导者是如何建立自己的？</a></li><li class="md-nav__item"><a href="#_12" title="如何设置选举超时？" class="md-nav__link">如何设置选举超时？</a></li></ul></nav></li><li class="md-nav__item"><a href="#raft_3" title="Raft日志" class="md-nav__link">Raft日志</a></li><li class="md-nav__item"><a href="#raft_4" title="Raft接口" class="md-nav__link">Raft接口</a></li><li class="md-nav__item"><a href="#_13" title="回顾" class="md-nav__link">回顾</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_14" title="回顾全局" class="md-nav__link">回顾全局</a></li><li class="md-nav__item"><a href="#_15" title="几个提醒" class="md-nav__link">几个提醒</a></li></ul></nav></li><li class="md-nav__item"><a href="#raft_5" title="Raft日志（续）" class="md-nav__link">Raft日志（续）</a></li><li class="md-nav__item"><a href="#_16" title="持久性" class="md-nav__link">持久性</a></li><li class="md-nav__item"><a href="#_17" title="日志压缩和快照" class="md-nav__link">日志压缩和快照</a></li><li class="md-nav__item"><a href="#_18" title="配置变更" class="md-nav__link">配置变更</a></li><li class="md-nav__item"><a href="#_19" title="性能" class="md-nav__link">性能</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="raft">raft详解</h1>
+<p>分布式共识，主要解决的问题是在不可靠的多个节点就一个值如何达成一致。
+分布式共识是人们几十年来努力解决的一个难题。</p>
+<p>raft通过将算法分解为：领导者选举、日志复制、安全性几个模块，减少状态机的状态来提升可理解性。</p>
+<h2 id="_1">使用复制状态机提供容错服务</h2>
+<p>复制状态机：状态机基础上增加复制多个服务来实现来实现分布式系统的容错。通常而言，一个支持F个故障的系统，必须至少包含2F+1个副本。复制状态机通常都是基于复制日志实现的。每一个服务器存储一个包含一系列指令的日志，并且按照日志的顺序进行执行。每一个日志都按照相同的顺序包含相同的指令，所以每一个服务器都执行相同的指令序列。因为每个状态机都是确定的，每一次执行操作都产生相同的状态和同样的序列。保证复制日志相同就是一致性算法的工作了。服务器集群看起来形成一个高可靠的状态机。</p>
+<p>[clients, replica servers]</p>
+<ul>
+<li>实例：配置服务器，例如MapReduce或者GFS的master</li>
+<li>实例：key/value存储服务，put()/get()</li>
+<li>目标：与单个非复制服务器相同的客户端行为，但是一些服务器故障时还是可用的</li>
+<li>策略：</li>
+<li>每个副本服务器以相同的顺序执行命令</li>
+<li>因此，它们在执行时仍然是副本（即相同的副本）</li>
+<li>所以如果一个失败了，其他人可以继续</li>
+<li>当失败时，客户机切换到另一台服务器</li>
+<li>GFS和VMware FT都是这种风格</li>
+</ul>
+<h2 id="_2">如何避免脑裂？</h2>
+<p>假设客户端可以连接副本A，但是不能连接副本B，客户端可以仅仅用使用副本A吗？如果B已经故障了，客户端必须在没有B的情况下进行处理，否则服务就没法容忍这种故障。</p>
+<p>如果B是好的，但是网络阻止客户端连接到B，或者客户端应该在没有B的情况下处理吗？因为它可能还活着，并且为其他客户服务——这样就有脑裂的问题。</p>
+<p>下面用例子展示一下为什么应该避免脑裂？</p>
+<p>容错的 key/value 数据库：</p>
+<p>C1和C2在不同网络分区，客户源和不同的服务器通信。</p>
+<p>C1: put("k1", "v1")</p>
+<p>C2: put("k2", "v2")</p>
+<p>C1: get("k1") <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> ???</p>
+<p>正确答案是"v2"，因为这是非复制服务器将产生的结果。</p>
+<p>但是如果两个服务器由于分区独立服务C1，C2。C1仍然会得到 "v1"。</p>
+<p>问题：计算机无法区分崩溃的机器和分区的网络，两者都表明无法与一台或多台计算机通信。</p>
+<p>我们需要一个满足三个目标的状态机复制方案：</p>
+<ol>
+<li>尽管有任何一个（故障停止）故障，仍然可用</li>
+<li>处理分区，无裂脑</li>
+<li>如果故障太多：等待修复，然后恢复</li>
+</ol>
+<p>应对副本分区：多数派投票</p>
+<p>2f+1个服务器可以容忍f个故障，例如3个服务器可以容忍1个故障。</p>
+<p>必须获得多数服务器(f+1)同意继续，f个故障服务器保留f+1个多数派，就可以继续处理。</p>
+<p>为什么多数派就能避免脑裂呢？</p>
+<p>最多一个分区可以有一个多数派。</p>
+<p>注意：大多数服务器都是2F+1服务器，而不仅仅是活动服务器关于多数，真正有用的是任何两个都必须相交。交集中的服务器只能以一种方式投票交叉口可以传达关于先前决定的信息。</p>
+<p>1990年左右发明了两种允许分区的复制方案，paxos和VR在过去的10年里，在现实世界中得到了大量的应用。raft是对现代技术的一个很好的介绍。</p>
+<h2 id="raft_1">Raft概览</h2>
+<h3 id="raft_2">使用Raft的状态机复制</h3>
+<p>[图示:  客户端, 3个副本,  k/v层, raft层, 日志]</p>
+<ol>
+<li>服务器的Raft层选择一个领导者。</li>
+<li>客户端向领导者发送RPC给k/v层，Put/Get/Append。</li>
+<li>k/v层转发请求给Raft层，但是不会立即给客户端发送响应。</li>
+<li>领导者的Raft层发送每个客户端的命令到所有的副本，通过 AppendEntries RPC。</li>
+<li>每个跟随者附加到本地日志（但是还没有提交），然后发送应答给领导者。</li>
+<li>在领导者服务器，如果大多数已经将其添加到日志中，则entry变为已提交，保证不会被忘记。多数派：肯定会被下一个领导者的投票请求看到。</li>
+<li>一旦领导者提交，通过下一个AppendEntries RPC（通过commitIndex）找到已经提交的entry，然后服务器就将操作应用到k/v状态机。</li>
+<li>在提交后，领导者将应答返回给k/v层，k/v层对DB应用Put操作，或者获取Get的结果。</li>
+<li>领导者将执行结果返回给客户端。</li>
+</ol>
+<h3 id="_3">异常场景分析</h3>
+<p>注意一下，第6步中，收到大多数的请求后，领导者就会将entry变为<strong>已提交</strong></p>
+<ul>
+<li>此时可以返回应答给k/v层，k/v层可以做Put操作</li>
+<li>与此同时，领导者将通过AppendEntries RPC发送给跟随者，通知其将entry状态修改为已提交</li>
+</ul>
+<p>有两种场景需要考虑，</p>
+<ol>
+<li>如果跟随者没有将entry状态修改为未提交的时候，但是领导者已经变为已提交的状态时，领导者宕机。</li>
+<li>如果跟随者没有将entry状态修改为未提交的时候，但是领导者还没有变为已提交的状态时，领导者宕机。</li>
+</ol>
+<p>此时，只有收到最新日志的跟随者，才会被选举变为领导者。对于已经已经持久化的日志，一种是已经已提交，一种是未提交，新的领导者提交一个新任期的 no-op entry，一旦该entry存储在大多数服务器上，它就会增加提交索引，并将新的提交索引发送给所有跟随者。所以，这个entry不会丢失。新的领导者将确保这一点。</p>
+<p><a href="https://stackoverflow.com/questions/37108309/raft-committed-entry-may-be-lost">https://stackoverflow.com/questions/37108309/raft-committed-entry-may-be-lost</a></p>
+<h3 id="_4">为什么需要日志？</h3>
+<p>服务器保持状态机状态，例如键/值db为什么还不够？</p>
+<p>对命令编号很重要，帮助副本在单个执行顺序上达成一致，帮助领导者确保跟随者拥有相同的日志。</p>
+<p>副本使用日志保存命令，直到领导者提交。所以如果一个跟随者丢失一些日志，领导者可以重新发送，可以在下次重启后持久化和重演出数据。</p>
+<p>Raft设计有两个主要的部分：</p>
+<ol>
+<li>选择一个新的领导者</li>
+<li>保证在故障的情况下有相同的日志。</li>
+</ol>
+<h2 id="_5">领导者选举</h2>
+<h3 id="_6">为什么需要领导者？</h3>
+<p>保证所有副本以相同的顺序执行相同的命令。</p>
+<p>raft使用“任期”对领导序列进行编号。</p>
+<p>新的领导者会有新的任期。</p>
+<h3 id="_7">任期</h3>
+<p>一个任期最多有一个领导者，可能没有领导者。</p>
+<p>每次选举也跟一个特殊的任期关联，每个任期知会有一个成功的选举。</p>
+<p>任期编号帮助服务器跟踪最新的领导者，而不是被取代的领导者。</p>
+<h3 id="_8">选举</h3>
+<p>什么时候Raft会开始领导者选举？</p>
+<p>AppendEntries是隐含的心跳；领导者定期发送它们。</p>
+<p>如果其他服务器没有收到当前领导的“选举超时”消息，假设领导者已经宕机，开始一轮选举。</p>
+<p>[状态转移图，图4： 跟随者、候选者、领导者]</p>
+<p>跟随者增加本地的 currentTerm，变为后选择，开始选举。</p>
+<p>注：这可能导致不需要的选举；这是缓慢但安全的</p>
+<p>注：旧的领导者可能还活着，认为是领导者</p>
+<h3 id="_9">候选者</h3>
+<p>当服务器成为候选服务器时会发生什么？三种可能</p>
+<ol>
+<li>获得多数投票，转化为领导者，本地观察和计数选票，注意：不适应拜占庭式故障！</li>
+<li>没有获得多数，从另一位领导者那里获取到信息，成为跟随者。</li>
+<li>没有获得多数，但是不能从新领导获取信息，例如网络分区，超时开始新的选举（保持候选者）。</li>
+</ol>
+<p>注：在第3种情况下，可以继续增加任期但不能添加日志entry，因为在少数派中，而不是领导者。一旦分区问题不存在，由于更高的任期，选举就随之而来。但是：大多数分区中的任何一个日志都较长（因此长期候选人被拒绝）或者如果什么都没有发生，他们的长度是相同的在多数分区中（这样，长期候选人可以获胜，但不会造成损害）。</p>
+<h3 id="_10">如何保证一个任期最多一个领导者？</h3>
+<p>（论文图2：RequestVote RPC 以及 Rules for Servers）</p>
+<p>领导者必须获得多数派服务器的“yes”投票。</p>
+<p>每台服务器只能投一票。</p>
+<p>在一个给定的任期内，最多只能有一个服务器获得多数选票。</p>
+<ul>
+<li>即使网络分区，也最多有一个领导者。</li>
+<li>即使某些服务器出现故障，选举也可以成功。</li>
+</ul>
+<h3 id="_11">一个新的领导者是如何建立自己的？</h3>
+<p>胜利者获得多数赞成票。</p>
+<p>立即向所有人发送Appendents RPC（心跳）。</p>
+<p>新领导人的心跳抑制了任何新的选举。</p>
+<p>选举不能成功有两个原因：</p>
+<ul>
+<li>又一次超时（没有心跳），又一次选举。</li>
+<li>更高的任期优先，较旧任期的候选人退出</li>
+</ul>
+<h3 id="_12">如何设置选举超时？</h3>
+<p>每台服务器选择一个随机选择超时有助于避免分裂投票。</p>
+<p>随机性破坏了服务器之间的对称性。</p>
+<ul>
+<li>选择最小的随机延迟</li>
+<li>避免所有人同时开始选举，为自己投票</li>
+</ul>
+<p>希望有足够的时间在下一个超时到期之前进行选择。</p>
+<p>其他人会看到新领导人的AppendEntries心跳和不成为候选人</p>
+<p>什么值？</p>
+<p>至少几个心跳间隔（网络可能会中断或延迟心跳）</p>
+<p>一个随机的部分，足够让一个候选人在下一个开始开始前。</p>
+<p>足够短，以便在测试人员感到不安之前，进行几次重新尝试。</p>
+<p>测试人员要求在5秒或更短时间内完成选举。</p>
+<h2 id="raft_3">Raft日志</h2>
+<p>我们讨论了领导者如何复制日志entry。</p>
+<p>重要区别：复制entry与提交entry</p>
+<ul>
+<li>承诺的entry保证永远不会消失。</li>
+<li>已复制，但未提交的entry可能会被覆盖！</li>
+</ul>
+<p>帮助思考每个参与者的明确“提交边界”。</p>
+<p>将服务器日志是否总是彼此的精确副本?</p>
+<p>不是：一些副本可能会延迟。</p>
+<p>不是：我们将看到它们可以暂时有不同的entry。</p>
+<p>好的消息：</p>
+<ul>
+<li>他们最终会收敛</li>
+<li>提交机制确保服务器只执行已提交的entry</li>
+</ul>
+<p><strong>其它标准：领导者不能简单地复制和提交旧任期的entry</strong></p>
+<p><img alt="1557819371316" src="../image/raft_01.png" /></p>
+<p>S1没有成功复制任期2的entry到大多数，然后故障。</p>
+<p>S5成为新的领导者，任期为3，增加entry，但是没有成功复制。</p>
+<p>S1回来后，变为领导者。</p>
+<ul>
+<li>从任期2复制旧entry，以迫使追随者采用其日志。</li>
+<li>一旦term 2entry位于大多数服务器上，是否允许提交?</li>
+</ul>
+<p>答案是否定的!想想如果我们这样做会发生什么：</p>
+<ul>
+<li>任期2的entry复制到S3</li>
+<li>S1提交（因为大多数服务器已经成功）</li>
+<li>S1又一次故障</li>
+<li>S5被选择，任期为4，因为日志的结束有任期3的entry，每个在日志末尾有任期2 entry的人都投票给S5</li>
+</ul>
+<p>S5变为领导者，强制将其日志复制到其它服务器。</p>
+<ul>
+<li>任期2的entry，在索引2处，会被任期3的entry覆盖。</li>
+<li>但是该entry应该是提交的。</li>
+<li>所以，违反了领导者完整性属性。</li>
+</ul>
+<p>解决方案：等到S1也复制并提交了任期4的entry，保证S5不再被选为领导者。因此，现在也可以提交任期2的entry了。</p>
+<p><strong>Raft什么时候可以覆盖日志entry？</strong>（见图7的问题）</p>
+<p>必须是未提交的。</p>
+<p>可以截断和覆盖更长的日志吗？图7 (f)就是一个很好的例子。</p>
+<p>例如，领导者增加了许多entry到日志中，但是没有成功复制这些entry，可能是由于网络分区。</p>
+<p>其它领导者，以后来的任期，也会在相同的索引中添加entry。（图7 (a) - (e))</p>
+<ul>
+<li>至少提交其中的一些</li>
+<li>现在不能再修改这个日志索引了</li>
+</ul>
+<p>过期的服务器接收AppendEntries，覆盖未提交的日志entry</p>
+<p>即使日志比当前领导人的要长得多!</p>
+<p>这是可以的，因为leader只在entry提交后响应客户端。</p>
+<p>因此，在(f)中生成覆盖项的leader不可能这样做。</p>
+<h2 id="raft_4">Raft接口</h2>
+<p><strong>rf.Start(command) (index, term, isleader)</strong></p>
+<p>k/v服务器的 Put()/Get() RPC处理程序调用 Start()</p>
+<p>Start()立即返回 —— RPC处理程序必须等待提交。如果服务器在提交命令之前失去领导权，则可能无法成功。</p>
+<p>isleader：如果这个服务器不是Raft领导者，客户端应该尝试另一个。</p>
+<p>term：currentTerm，帮助调用者检测领导者是否降级。</p>
+<p>index: 要查看命令是否已提交的日志entry。</p>
+<p><strong>ApplyMsg</strong>：带有索引和命令。</p>
+<p>Raft在“apply channel”上给提交的日志entry发送消息。然后，服务知道如何执行命令，领导者使用ApplyMsg知道何时/什么响应等待的客户端RPC。</p>
+<h2 id="_13">回顾</h2>
+<h3 id="_14">回顾全局</h3>
+<p>k/v服务作为一个示例</p>
+<p>目标：提供与单个非复制服务器相同的行为</p>
+<p>目标：少数服务器失败/断开连接时，仍然可用</p>
+<p>注意网络分区和脑裂！</p>
+<p>[图：客户端、k/v层、k/v表、raft层、raft日志]</p>
+<p>[客户端RPC -&gt; Start() -&gt; 多数提交协议 -&gt; applyCh]</p>
+<p>状态机，应用，服务</p>
+<h3 id="_15">几个提醒</h3>
+<ul>
+<li>在大多数应答 AppendEntries 后，领导者提交/执行</li>
+<li>领导者告诉跟随者提交，执行（发送applyCh）</li>
+<li>为什么只需要大多数？为什么不等待所有的节点？<ul>
+<li>可用性的需求，在少数故障的情况下，仍然能够给正常处理。</li>
+</ul>
+</li>
+<li>为什么多数就足够了?<ul>
+<li>任何两个多数派有交集</li>
+<li>因此，连续几任领导人的多数派至少与一个对端重叠</li>
+<li>因此，下一个领导者保证可以看到前一个领导者提交的任何日志条目</li>
+</ul>
+</li>
+<li>它是所有节点的大多数(无论是死是活)，而不仅仅是存活节点中的大多数</li>
+</ul>
+<h2 id="raft_5">Raft日志（续）</h2>
+<p>只要领导者存活：</p>
+<ul>
+<li>客户端只需要与领导者交互</li>
+<li>客户端不会受到跟随者的影响</li>
+</ul>
+<p>当变更领导者时，事情就会变得更有趣。例如在旧的领导者者故障后，在客户端不会看到异常的情况下，如何变更领导者。旧数据读取，重复操作，丢失操作，不同的顺序，等等。</p>
+<p>我们想保证什么？如果任何一个服务器执行在日志entry中的命令，那就没有服务器为该日志entry执行其他操作。（图3，状态机安全性）。为什么呢？如果服务器不同意操作，则领导变更可能会改变客户端可见的状态，这违反了我们模仿单个服务器的目标。</p>
+<p>例如：</p>
+<p>S1: put(k1, v1)    | put(k1, v2)    | ...</p>
+<p>S2: put(k1, v1)    | put(k2, x)      | ...</p>
+<p>不能同时执行两个日志项!</p>
+<h2 id="_16">持久性</h2>
+<h2 id="_17">日志压缩和快照</h2>
+<h2 id="_18">配置变更</h2>
+<h2 id="_19">性能</h2>
+<p>注：许多场景不需要高性能</p>
+<ul>
+<li>k/v存储可能需要</li>
+<li>但是GFS或者MapReduce主节点则不需要</li>
+</ul>
+<p>大多数复制系统具有类似的常见情况下的性能:</p>
+<ul>
+<li>一次RPC交互和达成一致的一次磁盘写入</li>
+<li>所以Raft是消息复杂性的典型代表</li>
+</ul>
+<p>Raft做了一些牺牲性能的简单设计选择:</p>
+<ul>
+<li>跟随者拒绝无序的AppendEntries RPC。（必须有序）<ul>
+<li>而不是等到洞被填满后再保存起来使用。</li>
+<li>如果网络大量重新排序数据包，这一点可能很重要。</li>
+</ul>
+</li>
+<li>不提供批处理或流水线 AppendEntries 。</li>
+<li>快照对于大的状态来说是浪费。</li>
+<li>一个慢的领导者可能会伤害Raft，例如在地理复制方面。</li>
+</ul>
+<p>这些对性能有很大的影响:</p>
+<ul>
+<li>为了持久性的磁盘写入。</li>
+<li>消息/包/ RPC开销。</li>
+<li>需要按顺序执行已记录的命令。</li>
+<li>只读操作的快速通道。</li>
+</ul>
+<p>更注重性能的论文: Zookeeper/ZAB; Paxos Made Live; Harp</p>
+<p><a href="https://pdos.csail.mit.edu/6.824/notes/l-raft.txt">https://pdos.csail.mit.edu/6.824/notes/l-raft.txt</a></p>
+<p><a href="https://pdos.csail.mit.edu/6.824/notes/l-raft2.txt">https://pdos.csail.mit.edu/6.824/notes/l-raft2.txt</a></p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.d5a09f94.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

@@ -1,711 +1,15 @@
-
-
-
-
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-      
-        <link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch6/">
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
-      <link rel="shortcut icon" href="../../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
-    
-    
-      
-        <title>Ch6 - Blog</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
-      
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="">
-      
-    
-    
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
-    
-    
-      <link rel="stylesheet" href="../../../themes/extra.css">
-    
-    
-      
-    
-    
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#_1" tabindex="1" class="md-skip">
-        跳转至
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo">
-          
-            <img src="../../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              Ch6
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            键入以开始搜索
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        
-      </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
-      
-        <img src="../../../themes/me.jpg" width="48" height="48">
-      
-    </a>
-    Blog
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../.." title="Home" class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Database
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
-      无时钟的一致性：FaunaDB的分布式事务协议
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/" title="Aurora：我们如何设计云原生关系数据库" class="md-nav__link">
-      Aurora：我们如何设计云原生关系数据库
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
-      现代存储系统背后的算法
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
-      数据库笔记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
-      F1 Query
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../articles/partition/" title="数据分区" class="md-nav__link">
-      数据分区
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
-      Bolt 数据库
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Distribute
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Distribute
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
-      分布式系统大纲
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
-      强一致性模型
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">
-      Zookeeper
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Language
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Language
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
-      Go 并发编程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
-      如何使用 Go 接口
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Engineering
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Engineering
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
-      linux 系统管理
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
-      git 入门教程
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
-      How to be a manager
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../about/" title="About" class="md-nav__link">
-      About
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="术语澄清" class="md-nav__link">
-    术语澄清
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="分区与复制" class="md-nav__link">
-    分区与复制
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="键值数据的分区" class="md-nav__link">
-    键值数据的分区
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" title="根据键的范围分区" class="md-nav__link">
-    根据键的范围分区
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" title="根据键的散列分区" class="md-nav__link">
-    根据键的散列分区
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" title="一致性哈希" class="md-nav__link">
-    一致性哈希
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" title="负载倾斜与消除热点" class="md-nav__link">
-    负载倾斜与消除热点
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" title="分片与辅助索引" class="md-nav__link">
-    分片与辅助索引
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" title="基于文档的分区辅助索引" class="md-nav__link">
-    基于文档的分区辅助索引
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#term" title="根据关键词(Term)的辅助索引" class="md-nav__link">
-    根据关键词(Term)的辅助索引
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" title="分区再平衡" class="md-nav__link">
-    分区再平衡
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" title="平衡策略" class="md-nav__link">
-    平衡策略
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hash-mod-n" title="反面教材：hash mod N" class="md-nav__link">
-    反面教材：hash mod N
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" title="固定数量的分区" class="md-nav__link">
-    固定数量的分区
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" title="动态分区" class="md-nav__link">
-    动态分区
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" title="按节点比例分区" class="md-nav__link">
-    按节点比例分区
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" title="运维：手动还是自动平衡" class="md-nav__link">
-    运维：手动还是自动平衡
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" title="请求路由" class="md-nav__link">
-    请求路由
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" title="并行查询执行" class="md-nav__link">
-    并行查询执行
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" title="本章小结" class="md-nav__link">
-    本章小结
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" title="参考文献" class="md-nav__link">
-    参考文献
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <p><img alt="" src="../img/ch6.png" /></p>
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch6/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Ch6 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Ch6</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora/" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_2" title="术语澄清" class="md-nav__link">术语澄清</a></li><li class="md-nav__item"><a href="#_3" title="分区与复制" class="md-nav__link">分区与复制</a></li><li class="md-nav__item"><a href="#_4" title="键值数据的分区" class="md-nav__link">键值数据的分区</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_5" title="根据键的范围分区" class="md-nav__link">根据键的范围分区</a></li><li class="md-nav__item"><a href="#_6" title="根据键的散列分区" class="md-nav__link">根据键的散列分区</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_7" title="一致性哈希" class="md-nav__link">一致性哈希</a></li></ul></nav></li><li class="md-nav__item"><a href="#_8" title="负载倾斜与消除热点" class="md-nav__link">负载倾斜与消除热点</a></li></ul></nav></li><li class="md-nav__item"><a href="#_9" title="分片与辅助索引" class="md-nav__link">分片与辅助索引</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_10" title="基于文档的分区辅助索引" class="md-nav__link">基于文档的分区辅助索引</a></li><li class="md-nav__item"><a href="#term" title="根据关键词(Term)的辅助索引" class="md-nav__link">根据关键词(Term)的辅助索引</a></li></ul></nav></li><li class="md-nav__item"><a href="#_11" title="分区再平衡" class="md-nav__link">分区再平衡</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_12" title="平衡策略" class="md-nav__link">平衡策略</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#hash-mod-n" title="反面教材：hash mod N" class="md-nav__link">反面教材：hash mod N</a></li><li class="md-nav__item"><a href="#_13" title="固定数量的分区" class="md-nav__link">固定数量的分区</a></li><li class="md-nav__item"><a href="#_14" title="动态分区" class="md-nav__link">动态分区</a></li><li class="md-nav__item"><a href="#_15" title="按节点比例分区" class="md-nav__link">按节点比例分区</a></li></ul></nav></li><li class="md-nav__item"><a href="#_16" title="运维：手动还是自动平衡" class="md-nav__link">运维：手动还是自动平衡</a></li></ul></nav></li><li class="md-nav__item"><a href="#_17" title="请求路由" class="md-nav__link">请求路由</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_18" title="并行查询执行" class="md-nav__link">并行查询执行</a></li></ul></nav></li><li class="md-nav__item"><a href="#_19" title="本章小结" class="md-nav__link">本章小结</a></li><li class="md-nav__item"><a href="#_20" title="参考文献" class="md-nav__link">参考文献</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><p><img alt="" src="../img/ch6.png" /></p>
 <h1 id="_1">第六章 分区</h1>
 <blockquote>
 <p>我们必须跳出电脑指令序列的窠臼。 我们必须描述定义，提供数据的优先级和描述。我们必须描述关系，而不是程序。</p>
 <p>—— Grace Murray Hopper，未来的计算机及其管理（1962）
 </p>
 </blockquote>
-<p>在<a href="../ch5/">第5章</a>中，我们讨论了复制——即数据在不同节点上的副本,对于非常大的数据集,或非常高的吞吐量，仅仅进行复制是不够的：我们需要将数据进行**分区（partitions）<strong>，也称为**分片（sharding）</strong></p>
+<p>在<a href="../ch5/">第5章</a>中，我们讨论了复制——即数据在不同节点上的副本,对于非常大的数据集,或非常高的吞吐量，仅仅进行复制是不够的：我们需要将数据进行<strong>分区（partitions）</strong>，也称为<strong>分片（sharding）</strong></p>
 <blockquote>
-<p>注：正如本章所讨论的，分区是一种有意将大型数据库分解成小型数据库的方式。它与**网络分区（net splits）**无关，这是节点之间网络中的一种故障类型。我们将在<a href="../ch8/">第8章</a>讨论这些错误。</p>
+<p>注：正如本章所讨论的，分区是一种有意将大型数据库分解成小型数据库的方式。它与<strong>网络分区（net splits）</strong>无关，这是节点之间网络中的一种故障类型。我们将在<a href="../ch8/">第8章</a>讨论这些错误。</p>
 <h5 id="_2">术语澄清</h5>
-<p>上文中的**分区(partition)<strong>，在MongoDB、Elasticsearch和Solr Cloud中被称为**分片(shard)</strong>，在HBase中称之为**区域(Region)<strong>，Bigtable中则是**表块（tablet）</strong>，Cassandra和Riak中是**虚节点（vnode)<strong>，Couchbase中叫做**虚桶(vBucket)</strong>。但是**分区(partition)**是约定俗成的叫法，所以我们也使用这个叫法。
+<p>上文中的<strong>分区(partition)</strong>，在MongoDB、Elasticsearch和Solr Cloud中被称为<strong>分片(shard)</strong>，在HBase中称之为<strong>区域(Region)</strong>，Bigtable中则是<strong>表块（tablet）</strong>，Cassandra和Riak中是<strong>虚节点（vnode)</strong>，Couchbase中叫做<strong>虚桶(vBucket)</strong>。但是<strong>分区(partition)</strong>是约定俗成的叫法，所以我们也使用这个叫法。
 </p>
 </blockquote>
 <p>通常情况下，每条数据（每条记录，每行或每个文档）属于且仅属于一个分区。有很多方法可以实现这一点，本章将进行深入讨论。实际上，每个分区都是自己的小型数据库，尽管数据库可能支持同时进行多个分区的操作。</p>
@@ -715,7 +19,7 @@
 <p>例如：互联网行业普遍使用的各种 sharding 方案，底层是一个完整的关系型单机数据库，单机数据库有自己的复制方案实现单机的高可用。如 MyCAT，pgxc 等。</p>
 <p>NewSQL 数据库，底层也是完整的单机KV数据库，这些数据库负责完整的单机事务，上层有协调节点进行分布式事务的处理。如 TiDB，CockroachDB。</p>
 </blockquote>
-<p>分区主要是为了**可扩展性**。不同的分区可以放在无共享集群中的不同节点上（参阅<a href="../part-ii/">第二部分</a>关于<a href="../part-ii/#无共享架构">无共享架构</a>的定义）。因此，大数据集可以分布在多个磁盘上，并且查询负载可以分布在多个处理器上。</p>
+<p>分区主要是为了<strong>可扩展性</strong>。不同的分区可以放在无共享集群中的不同节点上（参阅<a href="../part-ii/">第二部分</a>关于<a href="../part-ii/#无共享架构">无共享架构</a>的定义）。因此，大数据集可以分布在多个磁盘上，并且查询负载可以分布在多个处理器上。</p>
 <p>对于在单个分区上运行的查询，每个节点可以独立执行对自己分区的查询，因此可以通过添加更多的节点来扩大查询吞吐量。大型，复杂的查询可能会跨越多个节点并行处理，尽管这非常困难。</p>
 <p>分区数据库在20世纪80年代由Teradata和Tandem NonStop SQL【1】等产品率先推出，最近因为NoSQL数据库和基于Hadoop的数据仓库重新被关注。有些系统是为交易型负载设计的，有些系统则是为了分析（参阅“[事务处理或分析]”）：这种差异会影响系统的运作方式，但是分区的基本原理均适用于这两种工作方式。</p>
 <p>在本章中，我们将首先介绍分割大型数据集的不同方法，并观察索引如何与分区配合。然后我们将讨论<a href="#重新平衡分区">重新平衡分区</a>，如果想要添加或删除群集中的节点，则必须进行再平衡。最后，我们将概述数据库如何将请求路由到正确的分区并执行查询。</p>
@@ -727,7 +31,7 @@
 <h2 id="_4">键值数据的分区</h2>
 <p>假设你有大量数据并且想要分区,如何决定在哪些节点上存储哪些记录呢？</p>
 <p>分区目标是将数据和查询负载均匀分布在各个节点上。如果每个节点公平分享数据和负载，那么理论上10个节点应该能够处理10倍的数据量和10倍的单个节点的读写吞吐量（暂时忽略复制）。</p>
-<p>如果分区是不公平的，一些分区比其他分区有更多的数据或查询，我们称之为**偏斜（skew）<strong>。数据偏斜的存在使分区效率下降很多。在极端的情况下，所有的负载可能压在一个分区上，其余9个节点空闲的，瓶颈落在这一个繁忙的节点上。不均衡导致的高负载的分区被称为**热点（hot spot）</strong>。</p>
+<p>如果分区是不公平的，一些分区比其他分区有更多的数据或查询，我们称之为<strong>偏斜（skew）</strong>。数据偏斜的存在使分区效率下降很多。在极端的情况下，所有的负载可能压在一个分区上，其余9个节点空闲的，瓶颈落在这一个繁忙的节点上。不均衡导致的高负载的分区被称为<strong>热点（hot spot）</strong>。</p>
 <p>避免热点最简单的方法是将记录随机分配给节点。这将在所有节点上平均分配数据，但是它有一个很大的缺点：当你试图读取一个特定的值时，你无法知道它在哪个节点上，所以你必须并行地查询所有的节点。</p>
 <p>我们可以做得更好。现在假设您有一个简单的键值数据模型，其中您总是通过其主键访问记录。例如，在一本老式的纸质百科全书中，你可以通过标题来查找一个条目；由于所有条目按字母顺序排序，因此您可以快速找到您要查找的条目。</p>
 <h3 id="_5">根据键的范围分区</h3>
@@ -746,11 +50,11 @@
 <p>一旦你有一个合适的键散列函数，你可以为每个分区分配一个散列范围（而不是键的范围），每个通过哈希散列落在分区范围内的键将被存储在该分区中。如<a href="../img/fig6-3.png">图6-3</a>所示。</p>
 <p><img alt="" src="../img/fig6-3.png" /></p>
 <p><strong>图6-3 按哈希键分区</strong></p>
-<p>这种技术擅长在分区之间分配键。分区边界可以是均匀间隔的，也可以是伪随机选择的（在这种情况下，该技术有时也被称为**一致性哈希（consistent hashing）**）。</p>
+<p>这种技术擅长在分区之间分配键。分区边界可以是均匀间隔的，也可以是伪随机选择的（在这种情况下，该技术有时也被称为<strong>一致性哈希（consistent hashing）</strong>）。</p>
 <blockquote>
 <h4 id="_7">一致性哈希</h4>
-<p>一致性哈希由Karger等人定义。【7】 用于跨互联网级别的缓存系统，例如CDN中，是一种能均匀分配负载的方法。它使用随机选择的**分区边界（partition boundaries）**来避免中央控制或分布式一致性的需要。 请注意，这里的一致性与复制一致性（请参阅第5章）或ACID一致性（参阅<a href="../ch7/">第7章</a>）无关，而是描述了重新平衡的特定方法。</p>
-<p>正如我们将在“<a href="#重新平衡分区">重新平衡分区</a>”中所看到的，这种特殊的方法对于数据库实际上并不是很好，所以在实际中很少使用（某些数据库的文档仍然指的是一致性哈希，但是它往往是不准确的）。 因为有可能产生混淆，所以最好避免使用一致性哈希这个术语，而只是把它称为**散列分区（hash partitioning）**。</p>
+<p>一致性哈希由Karger等人定义。【7】 用于跨互联网级别的缓存系统，例如CDN中，是一种能均匀分配负载的方法。它使用随机选择的<strong>分区边界（partition boundaries）</strong>来避免中央控制或分布式一致性的需要。 请注意，这里的一致性与复制一致性（请参阅第5章）或ACID一致性（参阅<a href="../ch7/">第7章</a>）无关，而是描述了重新平衡的特定方法。</p>
+<p>正如我们将在“<a href="#重新平衡分区">重新平衡分区</a>”中所看到的，这种特殊的方法对于数据库实际上并不是很好，所以在实际中很少使用（某些数据库的文档仍然指的是一致性哈希，但是它往往是不准确的）。 因为有可能产生混淆，所以最好避免使用一致性哈希这个术语，而只是把它称为<strong>散列分区（hash partitioning）</strong>。</p>
 </blockquote>
 <p>不幸的是，通过使用Key散列进行分区，我们失去了键范围分区的一个很好的属性：高效执行范围查询的能力。曾经相邻的key现在分散在所有分区中，所以它们之间的顺序就丢失了。在MongoDB中，如果您使用了基于散列的分区模式，则任何范围查询都必须发送到所有分区【4】。Riak 【9】，Couchbase 【10】或Voldemort不支持主键上的范围查询。</p>
 <p>Cassandra采取了折衷的策略【11, 12, 13】。 Cassandra中的表可以使用由多个列组成的复合主键来声明。键中只有第一列会作为散列的依据，而其他列则被用作Casssandra的SSTables中排序数据的连接索引。尽管查询无法在复合主键的第一列中按范围扫表，但如果第一列已经指定了固定值，则可以对该键的其他列执行有效的范围扫描。</p>
@@ -765,28 +69,28 @@
 <p>到目前为止，我们讨论的分区方案依赖于键值数据模型。如果只通过主键访问记录，我们可以从该键确定分区，并使用它来将读写请求路由到负责该键的分区。</p>
 <p>如果涉及辅助索引，情况会变得更加复杂（参考“<a href="">其他索引结构</a>”）。辅助索引通常并不能唯一地标识记录，而是一种搜索记录中出现特定值的方式：查找用户123的所有操作，查找包含词语<code class="codehilite">hogwash</code>的所有文章，查找所有颜色为红色的车辆等等。</p>
 <p>辅助索引是关系型数据库的基础，并且在文档数据库中也很普遍。许多键值存储（如HBase和Volde-mort）为了减少实现的复杂度而放弃了辅助索引，但是一些（如Riak）已经开始添加它们，因为它们对于数据模型实在是太有用了。并且辅助索引也是Solr和Elasticsearch等搜索服务器的基石。</p>
-<p>辅助索引的问题是它们不能整齐地映射到分区。有两种用辅助索引对数据库进行分区的方法：<strong>基于文档的分区（document-based）**和**基于关键词（term-based）的分区</strong>。</p>
+<p>辅助索引的问题是它们不能整齐地映射到分区。有两种用辅助索引对数据库进行分区的方法：<strong>基于文档的分区（document-based）</strong>和<strong>基于关键词（term-based）的分区</strong>。</p>
 <h3 id="_10">基于文档的分区辅助索引</h3>
 <p>假设你正在经营一个销售二手车的网站（如<a href="../img/fig6-4.png">图6-4</a>所示）。 每个列表都有一个唯一的ID——称之为文档ID——并且用文档ID对数据库进行分区（例如，分区0中的ID 0到499，分区1中的ID 500到999等）。</p>
-<p>你想让用户搜索汽车，允许他们通过颜色和厂商过滤，所以需要一个在颜色和厂商上的辅助索引（文档数据库中这些是**字段（field）<strong>，关系数据库中这些是**列（column）</strong> ）。 如果您声明了索引，则数据库可以自动执行索引。例如，无论何时将红色汽车添加到数据库，数据库分区都会自动将其添加到索引条目<code class="codehilite">color：red</code>的文档ID列表中。</p>
+<p>你想让用户搜索汽车，允许他们通过颜色和厂商过滤，所以需要一个在颜色和厂商上的辅助索引（文档数据库中这些是<strong>字段（field）</strong>，关系数据库中这些是<strong>列（column）</strong> ）。 如果您声明了索引，则数据库可以自动执行索引。例如，无论何时将红色汽车添加到数据库，数据库分区都会自动将其添加到索引条目<code class="codehilite">color：red</code>的文档ID列表中。</p>
 <blockquote>
 <p>注：如果数据库仅支持键值模型，则你可能会尝试在应用程序代码中创建从值到文档ID的映射来实现辅助索引。 如果沿着这条路线走下去，请万分小心，确保您的索引与底层数据保持一致。 竞争条件和间歇性写入失败（其中一些更改已保存，但其他更改未保存）很容易导致数据不同步 - 参见“<a href="">多对象事务的需求</a>”。</p>
 </blockquote>
 <p><img alt="" src="../img/fig6-4.png" /></p>
 <p><strong>图6-4 基于文档分区辅助索引</strong></p>
-<p>在这种索引方法中，每个分区是完全独立的：每个分区维护自己的辅助索引，仅覆盖该分区中的文档。它不关心存储在其他分区的数据。无论何时您需要写入数据库（添加，删除或更新文档），只需处理包含您正在编写的文档ID的分区即可。出于这个原因，<strong>文档分区索引**也被称为**本地索引（local index）</strong>（而不是将在下一节中描述的**全局索引（global index）**）。</p>
+<p>在这种索引方法中，每个分区是完全独立的：每个分区维护自己的辅助索引，仅覆盖该分区中的文档。它不关心存储在其他分区的数据。无论何时您需要写入数据库（添加，删除或更新文档），只需处理包含您正在编写的文档ID的分区即可。出于这个原因，<strong>文档分区索引</strong>也被称为<strong>本地索引（local index）</strong>（而不是将在下一节中描述的<strong>全局索引（global index）</strong>）。</p>
 <p>但是，从文档分区索引中读取需要注意：除非您对文档ID做了特别的处理，否则没有理由将所有具有特定颜色或特定品牌的汽车放在同一个分区中。在<a href="../img/fig6-4.png">图6-4</a>中，红色汽车出现在分区0和分区1中。因此，如果要搜索红色汽车，则需要将查询发送到所有分区，并合并所有返回的结果。</p>
-<p>这种查询分区数据库的方法有时被称为**分散/聚集（scatter/gather）**，并且可能会使辅助索引上的读取查询相当昂贵。即使并行查询分区，分散/聚集也容易导致尾部延迟放大（参阅“<a href="../ch1/#实践中的百分位点">实践中的百分位点</a>”）。然而，它被广泛使用：MongoDB，Riak 【15】，Cassandra 【16】，Elasticsearch 【17】，SolrCloud 【18】和VoltDB 【19】都使用文档分区辅助索引。大多数数据库供应商建议您构建一个能从单个分区提供辅助索引查询的分区方案，但这并不总是可行，尤其是当在单个查询中使用多个辅助索引时（例如同时需要按颜色和制造商查询）。</p>
+<p>这种查询分区数据库的方法有时被称为<strong>分散/聚集（scatter/gather）</strong>，并且可能会使辅助索引上的读取查询相当昂贵。即使并行查询分区，分散/聚集也容易导致尾部延迟放大（参阅“<a href="../ch1/#实践中的百分位点">实践中的百分位点</a>”）。然而，它被广泛使用：MongoDB，Riak 【15】，Cassandra 【16】，Elasticsearch 【17】，SolrCloud 【18】和VoltDB 【19】都使用文档分区辅助索引。大多数数据库供应商建议您构建一个能从单个分区提供辅助索引查询的分区方案，但这并不总是可行，尤其是当在单个查询中使用多个辅助索引时（例如同时需要按颜色和制造商查询）。</p>
 <h3 id="term">根据关键词(Term)的辅助索引</h3>
-<p>我们可以构建一个覆盖所有分区数据的**全局索引**，而不是给每个分区创建自己的辅助索引（本地索引）。但是，我们不能只把这个索引存储在一个节点上，因为它可能会成为瓶颈，违背了分区的目的。全局索引也必须进行分区，但可以采用与主键不同的分区方式。</p>
+<p>我们可以构建一个覆盖所有分区数据的<strong>全局索引</strong>，而不是给每个分区创建自己的辅助索引（本地索引）。但是，我们不能只把这个索引存储在一个节点上，因为它可能会成为瓶颈，违背了分区的目的。全局索引也必须进行分区，但可以采用与主键不同的分区方式。</p>
 <p><a href="../img/fig6-5.png">图6-5</a>阐述了这可能是什么样子：来自所有分区的红色汽车在红色索引中，并且索引是分区的，首字母从<code class="codehilite">a</code>到<code class="codehilite">r</code>的颜色在分区0中，<code class="codehilite">s</code>到<code class="codehilite">z</code>的在分区1。汽车制造商的索引也与之类似（分区边界在<code class="codehilite">f</code>和<code class="codehilite">h</code>之间）。</p>
 <p><img alt="" src="../img/fig6-5.png" /></p>
 <p><strong>图6-5 按关键词对辅助索引进行分区</strong></p>
-<p>我们将这种索引称为**关键词分区（term-partitioned）<strong>，因为我们寻找的关键词决定了索引的分区方式。例如，一个关键词可能是：<code class="codehilite">颜色：红色</code>。**关键词(Term)</strong> 来源于来自全文搜索索引（一种特殊的辅助索引），指文档中出现的所有单词。</p>
-<p>和之前一样，我们可以通过**关键词**本身或者它的散列进行索引分区。根据它本身分区对于范围扫描非常有用（例如对于数字，像汽车的报价），而对关键词的哈希分区提供了负载均衡的能力。</p>
-<p>关键词分区的全局索引优于文档分区索引的地方是它可以使读取更有效率：不需要**分散/收集**所有分区，客户端只需要向包含关键词的分区发出请求。全局索引的缺点在于写入速度较慢且较为复杂，因为写入单个文档现在可能会影响索引的多个分区（文档中的每个关键词可能位于不同的分区或者不同的节点上） 。</p>
+<p>我们将这种索引称为<strong>关键词分区（term-partitioned）</strong>，因为我们寻找的关键词决定了索引的分区方式。例如，一个关键词可能是：<code class="codehilite">颜色：红色</code>。<strong>关键词(Term)</strong> 来源于来自全文搜索索引（一种特殊的辅助索引），指文档中出现的所有单词。</p>
+<p>和之前一样，我们可以通过<strong>关键词</strong>本身或者它的散列进行索引分区。根据它本身分区对于范围扫描非常有用（例如对于数字，像汽车的报价），而对关键词的哈希分区提供了负载均衡的能力。</p>
+<p>关键词分区的全局索引优于文档分区索引的地方是它可以使读取更有效率：不需要<strong>分散/收集</strong>所有分区，客户端只需要向包含关键词的分区发出请求。全局索引的缺点在于写入速度较慢且较为复杂，因为写入单个文档现在可能会影响索引的多个分区（文档中的每个关键词可能位于不同的分区或者不同的节点上） 。</p>
 <p>理想情况下，索引总是最新的，写入数据库的每个文档都会立即反映在索引中。但是，在关键词分区索引中，这需要跨分区的分布式事务，并不是所有数据库都支持（请参阅<a href="../ch7/">第7章</a>和<a href="../ch9/">第9章</a>）。</p>
-<p>在实践中，对全局辅助索引的更新通常是**异步**的（也就是说，如果在写入之后不久读取索引，刚才所做的更改可能尚未反映在索引中）。例如，Amazon DynamoDB声称在正常情况下，其全局辅助索引会在不到一秒的时间内更新，但在基础架构出现故障的情况下可能会有延迟【20】。</p>
+<p>在实践中，对全局辅助索引的更新通常是<strong>异步</strong>的（也就是说，如果在写入之后不久读取索引，刚才所做的更改可能尚未反映在索引中）。例如，Amazon DynamoDB声称在正常情况下，其全局辅助索引会在不到一秒的时间内更新，但在基础架构出现故障的情况下可能会有延迟【20】。</p>
 <p>全局关键词分区索引的其他用途包括Riak的搜索功能【21】和Oracle数据仓库，它允许您在本地和全局索引之间进行选择【22】。我们将在<a href="../ch12/">第12章</a>中涉及实现关键字辅助索引的话题。</p>
 <h2 id="_11">分区再平衡</h2>
 <p>随着时间的推移，数据库会有各种变化。</p>
@@ -795,7 +99,7 @@
 <li>数据集大小增加，所以您想添加更多的磁盘和RAM来存储它。</li>
 <li>机器出现故障，其他机器需要接管故障机器的责任。</li>
 </ul>
-<p>所有这些更改都需要数据和请求从一个节点移动到另一个节点。 将负载从集群中的一个节点向另一个节点移动的过程称为**再平衡（reblancing）**。</p>
+<p>所有这些更改都需要数据和请求从一个节点移动到另一个节点。 将负载从集群中的一个节点向另一个节点移动的过程称为<strong>再平衡（reblancing）</strong>。</p>
 <p>无论使用哪种分区方案，再平衡通常都要满足一些最低要求：</p>
 <ul>
 <li>再平衡之后，负载（数据存储，读取和写入请求）应该在集群中的节点之间公平地共享。</li>
@@ -806,12 +110,12 @@
 <p>有几种不同的分区分配方法【23】,让我们依次简要讨论一下。</p>
 <h4 id="hash-mod-n">反面教材：hash mod N</h4>
 <p>我们在前面说过（<a href="../img/fig6-3.png">图6-3</a>），最好将可能的散列分成不同的范围，并将每个范围分配给一个分区（例如，如果<span><span class="MathJax_Preview">0≤hash(key)&lt;b_0</span><script type="math/tex">0≤hash(key)<b_0</script></span>，则将键分配给分区0，如果<span><span class="MathJax_Preview">b_0 ≤ hash(key) &lt;b_1</span><script type="math/tex">b_0 ≤ hash(key) <b_1</script></span>，则分配给分区1）</p>
-<p>也许你想知道为什么我们不使用***mod***（许多编程语言中的％运算符）。例如，<code class="codehilite">hash(key) mod 10</code>会返回一个介于0和9之间的数字（如果我们将散列写为十进制数，散列模10将是最后一个数字）。如果我们有10个节点，编号为0到9，这似乎是将每个键分配给一个节点的简单方法。</p>
+<p>也许你想知道为什么我们不使用<strong><em>mod</em></strong>（许多编程语言中的％运算符）。例如，<code class="codehilite">hash(key) mod 10</code>会返回一个介于0和9之间的数字（如果我们将散列写为十进制数，散列模10将是最后一个数字）。如果我们有10个节点，编号为0到9，这似乎是将每个键分配给一个节点的简单方法。</p>
 <p>模<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>方法的问题是，如果节点数量N发生变化，大多数密钥将需要从一个节点移动到另一个节点。例如，假设<span><span class="MathJax_Preview">hash(key)=123456</span><script type="math/tex">hash(key)=123456</script></span>。如果最初有10个节点，那么这个键一开始放在节点6上（因为<span><span class="MathJax_Preview">123456\ mod\  10 = 6</span><script type="math/tex">123456\ mod\  10 = 6</script></span>）。当您增长到11个节点时，密钥需要移动到节点3（<span><span class="MathJax_Preview">123456\ mod\ 11 = 3</span><script type="math/tex">123456\ mod\ 11 = 3</script></span>），当您增长到12个节点时，需要移动到节点0（<span><span class="MathJax_Preview">123456\ mod\ 12 = 0</span><script type="math/tex">123456\ mod\ 12 = 0</script></span>）。这种频繁的举动使得重新平衡过于昂贵。</p>
 <p>我们需要一种只移动必需数据的方法。</p>
 <h4 id="_13">固定数量的分区</h4>
 <p>幸运的是，有一个相当简单的解决方案：创建比节点更多的分区，并为每个节点分配多个分区。例如，运行在10个节点的集群上的数据库可能会从一开始就被拆分为1,000个分区，因此大约有100个分区被分配给每个节点。</p>
-<p>现在，如果一个节点被添加到集群中，新节点可以从当前每个节点中**窃取**一些分区，直到分区再次公平分配。这个过程如<a href="../img/fig6-6.png">图6-6</a>所示。如果从集群中删除一个节点，则会发生相反的情况。</p>
+<p>现在，如果一个节点被添加到集群中，新节点可以从当前每个节点中<strong>窃取</strong>一些分区，直到分区再次公平分配。这个过程如<a href="../img/fig6-6.png">图6-6</a>所示。如果从集群中删除一个节点，则会发生相反的情况。</p>
 <p>只有分区在节点之间的移动。分区的数量不会改变，键所指定的分区也不会改变。唯一改变的是分区所在的节点。这种变更并不是即时的 — 在网络上传输大量的数据需要一些时间 — 所以在传输过程中，原有分区仍然会接受读写操作。</p>
 <p><img alt="" src="../img/fig6-6.png" /></p>
 <p><strong>图6-6 将新节点添加到每个节点具有多个分区的数据库群集。</strong></p>
@@ -823,7 +127,7 @@
 <p>出于这个原因，按键的范围进行分区的数据库（如HBase和RethinkDB）会动态创建分区。当分区增长到超过配置的大小时（在HBase上，默认值是10GB），会被分成两个分区，每个分区约占一半的数据【26】。与之相反，如果大量数据被删除并且分区缩小到某个阈值以下，则可以将其与相邻分区合并。此过程与B树顶层发生的过程类似（参阅“<a href="../ch2/#B树">B树</a>”）。</p>
 <p>每个分区分配给一个节点，每个节点可以处理多个分区，就像固定数量的分区一样。大型分区拆分后，可以将其中的一半转移到另一个节点，以平衡负载。在HBase中，分区文件的传输通过HDFS（底层分布式文件系统）来实现【3】。</p>
 <p>动态分区的一个优点是分区数量适应总数据量。如果只有少量的数据，少量的分区就足够了，所以开销很小;如果有大量的数据，每个分区的大小被限制在一个可配置的最大值【23】。</p>
-<p>需要注意的是，一个空的数据库从一个分区开始，因为没有关于在哪里绘制分区边界的先验信息。数据集开始时很小，直到达到第一个分区的分割点，所有写入操作都必须由单个节点处理，而其他节点则处于空闲状态。为了解决这个问题，HBase和MongoDB允许在一个空的数据库上配置一组初始分区（这被称为**预分割（pre-splitting）**）。在键范围分区的情况中，预分割需要提前知道键是如何进行分配的【4,26】。</p>
+<p>需要注意的是，一个空的数据库从一个分区开始，因为没有关于在哪里绘制分区边界的先验信息。数据集开始时很小，直到达到第一个分区的分割点，所有写入操作都必须由单个节点处理，而其他节点则处于空闲状态。为了解决这个问题，HBase和MongoDB允许在一个空的数据库上配置一组初始分区（这被称为<strong>预分割（pre-splitting）</strong>）。在键范围分区的情况中，预分割需要提前知道键是如何进行分配的【4,26】。</p>
 <p>动态分区不仅适用于数据的范围分区，而且也适用于散列分区。从版本2.4开始，MongoDB同时支持范围和哈希分区，并且都是进行动态分割分区。</p>
 <h4 id="_15">按节点比例分区</h4>
 <p>通过动态分区，分区的数量与数据集的大小成正比，因为拆分和合并过程将每个分区的大小保持在固定的最小值和最大值之间。另一方面，对于固定数量的分区，每个分区的大小与数据集的大小成正比。在这两种情况下，分区的数量都与节点的数量无关。</p>
@@ -841,7 +145,7 @@
 <p>这个问题可以概括为 <strong>服务发现(service discovery)</strong> ，它不仅限于数据库。任何可通过网络访问的软件都有这个问题，特别是如果它的目标是高可用的（在多台机器上运行冗余配置）。许多公司已经编写了自己的内部服务发现工具，其中许多已经作为开源发布【30】。</p>
 <p>概括来说，这个问题有几种不同的方案（如图6-7所示）:</p>
 <ol>
-<li>允许客户端连接任何节点（例如，通过**循环策略的负载均衡（Round-Robin Load Balancer）**）。如果该节点恰巧拥有请求的分区，则它可以直接处理该请求；否则，它将请求转发到适当的节点，接收回复并传递给客户端。</li>
+<li>允许客户端连接任何节点（例如，通过<strong>循环策略的负载均衡（Round-Robin Load Balancer）</strong>）。如果该节点恰巧拥有请求的分区，则它可以直接处理该请求；否则，它将请求转发到适当的节点，接收回复并传递给客户端。</li>
 <li>首先将所有来自客户端的请求发送到路由层，它决定了应该处理请求的节点，并相应地转发。此路由层本身不处理任何请求；它仅负责分区的负载均衡。</li>
 <li>要求客户端知道分区和节点的分配。在这种情况下，客户端可以直接连接到适当的节点，而不需要任何中介。</li>
 </ol>
@@ -852,13 +156,13 @@
 <p>许多分布式数据系统都依赖于一个独立的协调服务，比如ZooKeeper来跟踪集群元数据，如<a href="../img/fig6-8.png">图6-8</a>所示。 每个节点在ZooKeeper中注册自己，ZooKeeper维护分区到节点的可靠映射。 其他参与者（如路由层或分区感知客户端）可以在ZooKeeper中订阅此信息。 只要分区分配发生的改变，或者集群中添加或删除了一个节点，ZooKeeper就会通知路由层使路由信息保持最新状态。</p>
 <p><img alt="" src="../img/fig6-8.png" /></p>
 <p><strong>图6-8 使用ZooKeeper跟踪分区分配给节点。</strong></p>
-<p>例如，LinkedIn的Espresso使用Helix 【31】进行集群管理（依靠ZooKeeper），实现了如<a href="../img/fig6-8.png">图6-8</a>所示的路由层。 HBase，SolrCloud和Kafka也使用ZooKeeper来跟踪分区分配。 MongoDB具有类似的体系结构，但它依赖于自己的**配置服务器（config server）** 实现和mongos守护进程作为路由层。</p>
-<p>Cassandra和Riak采取不同的方法：他们在节点之间使用**流言协议（gossip protocol）** 来传播群集状态的变化。请求可以发送到任意节点，该节点会转发到包含所请求的分区的适当节点（<a href="">图6-7</a>中的方法1）。这个模型在数据库节点中增加了更多的复杂性，但是避免了对像ZooKeeper这样的外部协调服务的依赖。</p>
+<p>例如，LinkedIn的Espresso使用Helix 【31】进行集群管理（依靠ZooKeeper），实现了如<a href="../img/fig6-8.png">图6-8</a>所示的路由层。 HBase，SolrCloud和Kafka也使用ZooKeeper来跟踪分区分配。 MongoDB具有类似的体系结构，但它依赖于自己的<strong>配置服务器（config server）</strong> 实现和mongos守护进程作为路由层。</p>
+<p>Cassandra和Riak采取不同的方法：他们在节点之间使用<strong>流言协议（gossip protocol）</strong> 来传播群集状态的变化。请求可以发送到任意节点，该节点会转发到包含所请求的分区的适当节点（<a href="">图6-7</a>中的方法1）。这个模型在数据库节点中增加了更多的复杂性，但是避免了对像ZooKeeper这样的外部协调服务的依赖。</p>
 <p>Couchbase不会自动重新平衡，这简化了设计。通常情况下，它配置了一个名为moxi的路由层，它会从集群节点了解路由变化【32】。</p>
 <p>当使用路由层或向随机节点发送请求时，客户端仍然需要找到要连接的IP地址。这些地址并不像分区的节点分布变化的那么快，所以使用DNS通常就足够了。</p>
 <h3 id="_18">并行查询执行</h3>
 <p>到目前为止，我们只关注读取或写入单个键的非常简单的查询（对于文档分区的辅助索引，另外还有分散/聚集查询）。这与大多数NoSQL分布式数据存储所支持的访问级别有关。</p>
-<p>然而，通常用于分析的**大规模并行处理（MPP, Massively parallel processing）** 关系型数据库产品在其支持的查询类型方面要复杂得多。一个典型的数据仓库查询包含多个连接，过滤，分组和聚合操作。 MPP查询优化器将这个复杂的查询分解成许多执行阶段和分区，其中许多可以在数据库集群的不同节点上并行执行。涉及扫描大规模数据集的查询特别受益于这种并行执行。</p>
+<p>然而，通常用于分析的<strong>大规模并行处理（MPP, Massively parallel processing）</strong> 关系型数据库产品在其支持的查询类型方面要复杂得多。一个典型的数据仓库查询包含多个连接，过滤，分组和聚合操作。 MPP查询优化器将这个复杂的查询分解成许多执行阶段和分区，其中许多可以在数据库集群的不同节点上并行执行。涉及扫描大规模数据集的查询特别受益于这种并行执行。</p>
 <p>数据仓库查询的快速并行执行是一个专门的话题，由于分析有很重要的商业意义，可以带来很多利益。我们将在第10章讨论并行查询执行的一些技巧。有关并行数据库中使用的技术的更详细的概述，请参阅参考文献【1,33】。</p>
 <h2 id="_19">本章小结</h2>
 <p>在本章中，我们探讨了将大数据集划分成更小的子集的不同方法。数据量非常大的时候，在单台机器上存储和处理不再可行，则分区十分必要。分区的目标是在多台机器上均匀分布数据和查询负载，避免出现热点（负载不成比例的节点）。这需要选择适合于您的数据的分区方案，并在将节点添加到集群或从集群删除时进行再分区。</p>
@@ -982,68 +286,4 @@
 <li>
 <p>Shivnath Babu and Herodotos Herodotou: “<a href="http://research.microsoft.com/pubs/206464/db-mr-survey-final.pdf">Massively Parallel Databases and MapReduce Systems</a>,” <em>Foundations and Trends in Databases</em>, volume 5, number 1, pages 1–104, November 2013.<a href="http://dx.doi.org/10.1561/1900000036">doi:10.1561/1900000036</a></p>
 </li>
-</ol>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2016 - 2019 iswade
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../../assets/javascripts/application.8c0d971c.js"></script>
-      
-        
-        
-          
-          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-  </body>
-</html>
+</ol></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
