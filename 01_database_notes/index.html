@@ -1,0 +1,745 @@
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/01_database_notes/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Database Notes - Blog</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><link rel="stylesheet" href="../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#database-notes" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Database Notes</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../translate/Aurora.md" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../translate/F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1"><label class="md-nav__link" for="nav-3-1">分布式系统:算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-1">分布式系统:算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../distributed_systems/01_introduction/" title="第一章:概述" class="md-nav__link">第一章:概述</a></li><li class="md-nav__item"><a href="../distributed_systems/02_interprocess/" title="第二章:进程间通信" class="md-nav__link">第二章:进程间通信</a></li></ul></nav></li><li class="md-nav__item"><a href="../translate/distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../translate/zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#todo" title="TODO" class="md-nav__link">TODO</a></li><li class="md-nav__item"><a href="#faq" title="FAQ" class="md-nav__link">FAQ</a></li><li class="md-nav__item"><a href="#_1" title="专项" class="md-nav__link">专项</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_2" title="顶级会议" class="md-nav__link">顶级会议</a></li><li class="md-nav__item"><a href="#_3" title="分布式系统" class="md-nav__link">分布式系统</a></li><li class="md-nav__item"><a href="#_4" title="一致性与共识" class="md-nav__link">一致性与共识</a></li><li class="md-nav__item"><a href="#_5" title="并行查询" class="md-nav__link">并行查询</a></li><li class="md-nav__item"><a href="#_6" title="编译器" class="md-nav__link">编译器</a></li><li class="md-nav__item"><a href="#_7" title="扩容" class="md-nav__link">扩容</a></li><li class="md-nav__item"><a href="#turing-award" title="Turing Award" class="md-nav__link">Turing Award</a></li><li class="md-nav__item"><a href="#misc" title="misc" class="md-nav__link">misc</a></li></ul></nav></li><li class="md-nav__item"><a href="#_8" title="关注" class="md-nav__link">关注</a></li><li class="md-nav__item"><a href="#_9" title="书籍" class="md-nav__link">书籍</a></li><li class="md-nav__item"><a href="#_10" title="文章" class="md-nav__link">文章</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_11" title="分布式" class="md-nav__link">分布式</a></li><li class="md-nav__item"><a href="#newsql" title="NewSQL" class="md-nav__link">NewSQL</a></li><li class="md-nav__item"><a href="#_12" title="其它" class="md-nav__link">其它</a></li></ul></nav></li><li class="md-nav__item"><a href="#_13" title="论文" class="md-nav__link">论文</a></li><li class="md-nav__item"><a href="#_14" title="数据库实例汇总" class="md-nav__link">数据库实例汇总</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#microsoft" title="Microsoft" class="md-nav__link">Microsoft</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#the-new-sql-server-in-the-cloud" title="The New SQL Server in the Cloud" class="md-nav__link">The New SQL Server in the Cloud</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#1" title="1. 介绍" class="md-nav__link">1. 介绍</a></li><li class="md-nav__item"><a href="#2" title="2. 现有技术" class="md-nav__link">2. 现有技术</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#anna" title="Anna" class="md-nav__link">Anna</a></li><li class="md-nav__item"><a href="#faunadb" title="FaunaDB" class="md-nav__link">FaunaDB</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#faunadb-an-architectural-overview" title="FaunaDB: An Architectural Overview" class="md-nav__link">FaunaDB: An Architectural Overview</a></li></ul></nav></li><li class="md-nav__item"><a href="#calvin" title="Calvin" class="md-nav__link">Calvin</a></li><li class="md-nav__item"><a href="#voltdb" title="voltDB" class="md-nav__link">voltDB</a></li><li class="md-nav__item"><a href="#aurora" title="Aurora" class="md-nav__link">Aurora</a></li><li class="md-nav__item"><a href="#spanner" title="Spanner" class="md-nav__link">Spanner</a></li><li class="md-nav__item"><a href="#sql" title="SQL 数据库" class="md-nav__link">SQL 数据库</a></li><li class="md-nav__item"><a href="#_15" title="分布式数据库" class="md-nav__link">分布式数据库</a></li><li class="md-nav__item"><a href="#_16" title="数据仓库" class="md-nav__link">数据仓库</a></li><li class="md-nav__item"><a href="#nosql" title="NoSQL" class="md-nav__link">NoSQL</a></li><li class="md-nav__item"><a href="#_17" title="多模数据库" class="md-nav__link">多模数据库</a></li><li class="md-nav__item"><a href="#_18" title="未来技术方向" class="md-nav__link">未来技术方向</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#newsql_1" title="NewSQL" class="md-nav__link">NewSQL</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_19" title="数据结构与算法" class="md-nav__link">数据结构与算法</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_20" title="无锁" class="md-nav__link">无锁</a></li><li class="md-nav__item"><a href="#hash" title="hash" class="md-nav__link">hash</a></li><li class="md-nav__item"><a href="#_21" title="并行原理" class="md-nav__link">并行原理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_22" title="并行方式" class="md-nav__link">并行方式</a></li></ul></nav></li><li class="md-nav__item"><a href="#join" title="JOIN" class="md-nav__link">JOIN</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_23" title="连接顺序" class="md-nav__link">连接顺序</a></li><li class="md-nav__item"><a href="#_24" title="连接方式" class="md-nav__link">连接方式</a></li><li class="md-nav__item"><a href="#_25" title="连接算法" class="md-nav__link">连接算法</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#nested-loop" title="nested loop" class="md-nav__link">nested loop</a></li><li class="md-nav__item"><a href="#hash-join" title="hash join" class="md-nav__link">hash join</a></li><li class="md-nav__item"><a href="#merge-join" title="merge join" class="md-nav__link">merge join</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#group-by" title="GROUP BY" class="md-nav__link">GROUP BY</a></li></ul></nav></li><li class="md-nav__item"><a href="#_26" title="未来方向" class="md-nav__link">未来方向</a></li><li class="md-nav__item"><a href="#_27" title="术语" class="md-nav__link">术语</a></li><li class="md-nav__item"><a href="#misc_1" title="misc" class="md-nav__link">misc</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="database-notes">Database Notes</h1>
+<p>标签：数据库</p>
+<p>安装、运行、研究原理、测试、研究源码</p>
+<p>Golang 可以用 gdb 调试：
+1. .gdbinit中新增行：add-auto-load-safe-path /root/go/go/src/runtime/runtime-gdb.py
+2. <code class="codehilite">b github.com/bitkv/bitkv/pkg/server.(*Server).Get</code>
+3. info routines
+4. routines 3</p>
+<p><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/01/mod057.pdf">Fast General Distributed Transactions with Opacity</a></p>
+<p><a href="http://dbgroup.cs.tsinghua.edu.cn/ligl/papers/sigmod19-cdbtune.pdf">An End-to-End Automatic Cloud Database Tuning
+System Using Deep Reinforcement Learning</a></p>
+<p><a href="https://rise.cs.berkeley.edu/blog/what-is-the-role-of-machine-learning-in-databases/">https://rise.cs.berkeley.edu/blog/what-is-the-role-of-machine-learning-in-databases/</a></p>
+<p><a href="https://rise.cs.berkeley.edu/blog/sql-query-optimization-meets-deep-reinforcement-learning/">https://rise.cs.berkeley.edu/blog/sql-query-optimization-meets-deep-reinforcement-learning/</a></p>
+<p><a href="https://www.cs.cmu.edu/~ggordon/van-aken-etal-parameters.pdf">Automatic Database Management System Tuning Through
+Large-scale Machine Learning</a></p>
+<p><a href="https://cs.brown.edu/people/mmarkovi/publication/fit/">FITing-Tree: A Data-aware Index Structure</a>：我们提出了一种新的数据感知索引结构，称为FITing-Tree，它使用分段线性函数近似索引，并在构造时指定有界误差。大幅度减少空间利用。</p>
+<p>There Is More Consensus in Egalitarian Parliaments: EPaxos公平的Paxos，没有强领导者，更好的负载均衡，并且很容易在 WAN 网络环境下获得很低的延迟。raft需要强领导者。</p>
+<p><a href="https://www.inkandswitch.com/local-first.html">Martin Kleppmann Local-first software: You own your data, in spite of the cloud</a></p>
+<p><a href="https://fauna.com/blog/a-comparison-of-scalable-database-isolation-levels?utm_source=hootsuite&amp;utm_medium=twitter">FaunaDB: A Comparison of Scalable Database Isolation Levels</a> </p>
+<p>比较Fauna,Spanner,FoundationDB,CockroachDB,YugabyteDB,DynamoDB,CosmosDB,Cassandra,MongoDB,Oracle,MySQL, PostgreSQL 的隔离级别</p>
+<p><a href="http://www.vldb.org/pvldb/vol11/p432-ramachandra.pdf">Froid: Optimization of Imperative Programs in a Relational Database</a> 将 UDF 转换为 SQL 语句的框架</p>
+<p><a href="https://andrestc.com/post/cgroups-io/">Using cgroups to limit I/O</a></p>
+<p><a href="http://web.stanford.edu/class/cs166/handouts/100%20Suggested%20Final%20Project%20Topics.pdf">Topics in Advanced Data Structures</a> 各种高级数据结构的罗列</p>
+<p><a href="https://arxiv.org/pdf/1904.09954.pdf">Why Software Projects need Heroes</a> 研究了1100多个github开源项目，软件英雄比文献中提出的更为常见和有价值，特别是从代码质量的角度来看。</p>
+<p><a href="https://news.ycombinator.com/item?id=19712057">Ask HN: What is your money-making side project outside programming?</a></p>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>在保持工作负载稳定性的同时创新查询优化是一项巨大的挑战。 </li>
+<li>行列混合存储SQL Spanner: PAX Ressi</li>
+<li>偏序，全序；格</li>
+<li>LLVM for PG</li>
+<li>事务（单机、分布式）隔离级别（可重复读、幻读、写偏）； </li>
+<li>一致性和共识 分布式：线性化</li>
+<li>分布式数据库时间、一致性</li>
+<li>查询优化器概述</li>
+<li>索引</li>
+<li>分布式执行计划</li>
+<li>编码：序列化/反序列化；二进制/字符串；扩展性</li>
+<li>PostgreSQL flow with diagram</li>
+<li>Life of a SQL Query from PostgreSQL</li>
+<li>Life of a SQL Query from CockroachDB</li>
+<li>重新 review 翻译论文 <a href="https://www.usenix.org/legacy/event/atc10/tech/full_papers/Hunt.pdf">ZooKeeper</a></li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<ul>
+<li>共识算法与2PC算法：参考亚马逊大神的回答</li>
+<li>事务和可扩展性的能力有什么冲突？</li>
+<li>一致性：CAP和ACID？</li>
+<li>LSM-tree/B-tree/KV ... 分别最适合的磁盘介质是什么？磁盘？SSD？</li>
+<li>并行与分布式数据库的区别是什么？</li>
+<li><a href="https://en.wikipedia.org/wiki/Write_amplification">写放大问题</a>？</li>
+<li>Best questions for an engineer to ask a CEO during a job interview?</li>
+</ul>
+<h2 id="_1">专项</h2>
+<p><a href="https://www.hackernewspapers.com/">hacker news papers</a></p>
+<h3 id="_2">顶级会议</h3>
+<ul>
+<li>SIGMOD: ACM SIGMOD Conf on Management of Data</li>
+<li>VLDB: Very Large Data Bases</li>
+<li>OSDI：系统领域</li>
+<li>SOSP：系统领域</li>
+</ul>
+<h3 id="_3">分布式系统</h3>
+<ol>
+<li><a href="http://nil.csail.mit.edu/6.824/2018/">MIT 6.824</a>
+  - Lab 1: MapReduce
+  - Lab 2: Raft
+  - Lab 3: Fault-tolerant Key/Value Service
+  - Lab 4: Sharded Key/Value Service</li>
+<li>
+<p><a href="https://www.cs.vu.nl/~tcs/da/daslides.pdf">Distributed Algorithms: An Intuitive Approach </a></p>
+</li>
+<li><a href="https://www.distributed-systems.net/index.php/books/distributed-systems-3rd-edition-2017/">Distributed Systems Third edition Maarten van Steen</a></li>
+<li>Distributed.Systems.An.Algorithmic.Approach.2<sup>nd</sup>.Edition</li>
+<li>2010 Scalability patterns(slides).pdf</li>
+</ol>
+<h3 id="_4">一致性与共识</h3>
+<ul>
+<li><a href="https://jepsen.io/consistency">https://jepsen.io/consistency</a> 各种一致性和隔离级别的汇总</li>
+<li>DDIA 中一致性和共识的详细内容，有很多深刻的结论，例如如下的问题都是与共识问题是等价的
+  Linearizable compare-and-set registers
+  Atomic transaction commit
+  Total order broadcast
+  Locks and leases
+  Membership/coordination service
+  Uniqueness constraint</li>
+<li><a href="http://raft.github.io/">raft</a> 当前需要重点深入理解的协议</li>
+<li><a href="https://www.cs.cornell.edu/fbs/publications/SMSurvey.pdf">Implementing fault-tolerant services using the state machine approach</a> 2000多引用 </li>
+<li><a href="https://dl.acm.org/citation.cfm?id=62549">Viewstamped Replication: A New Primary Copy Method to Support Highly-Available Distributed Systems</a></li>
+<li><a href="https://jepsen.io/analyses/faunadb-2.5.4">faunadb jepsen测试</a> </li>
+<li><a href="https://jepsen.io/consistency">https://jepsen.io/consistency</a> 各种一致性的定义</li>
+<li><a href="https://arxiv.org/abs/1902.06776">A Generalised Solution to Distributed Consensus</a> </li>
+<li><a href="https://news.ycombinator.com/item?id=19343398">hckernew讨论</a></li>
+<li><a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-935.html">Distributed consensus revised</a> 博士论文</li>
+<li><a href="https://arxiv.org/abs/1802.07000">CASPaxos: Replicated State Machines without logs</a></li>
+<li><a href="https://www.jianshu.com/p/3673e612cce2">一致性模型</a></li>
+<li><a href="http://loopjump.com/distributed_consistency_model/">浅析分布式一致性模型</a></li>
+</ul>
+<p>外部一致性和可线性化还是有差异的：
+外部一致性保证系统处理事务调度顺序与外部调度等价。
+线性化保证单个对象写入后读取到的一定是最新的。</p>
+<ul>
+<li><a href="http://dl.acm.org/citation.cfm?id=320076">A majority consensus approach to concurrency control for multiple copy databases</a> 1380多次引用</li>
+<li><a href="https://irenezhang.net/blog/2015/02/01/consistency.html">Consistency should be more consistent!</a></li>
+</ul>
+<p><strong>Sequential (or serializable) consistency</strong> ensures that the same operations are applied in the same order to every copy of a set of data items. <strong>顺序/序列化一致性</strong>确保以相同的顺序将相同的操作应用于一组数据项的每个副本。</p>
+<p><strong>Serializable isolation</strong> ensures that transactions execute as if they were executing one at a time on a single copy of the database. <strong>可序列化隔离</strong>确保事务执行就好像它们在数据库的单个副本上一次执行一个。</p>
+<p><strong>Linearizable consistency</strong> ensures that the same operations are applied in the same order to every copy of the data item and that the order reflects the order in which the operations <em>appear</em> to execute to an external observer (like the application). <strong>可线性化的一致性</strong>确保以相同的顺序对数据项的每个副本应用相同的操作，并且该顺序反映了操作<em>出现</em>对外部观察者（如应用程序）执行的顺序。</p>
+<p><strong>Strict serializable isolation</strong> ensures that transactions execute as if they were executing one at a time on a single copy of the database and that the order matches the order in which the transactions <em>appear</em> to execute to an external observer (like the application). <strong>严格的可序列化隔离</strong>确保事务执行就好像它们在数据库的单个副本上一次执行一个，并且顺序与事务<em>出现</em>的顺序匹配，以执行外部观察者（如 应用）。</p>
+<p>There has been much discussion of externally consistent (or linearizable) transactions since the publication of Google’s Spanner system [2]. Traditionally, the guarantees provided by Spanner and applied to transactions would be called strict serializability. Practically, it doesn’t matter: <em>linearizability is just strict serializability for single operations.</em> 自Google的Spanner系统发布以来，对外部一致（或线性化）事务进行了大量讨论。传统上，Spanner提供并应用于事务的保证称为严格可序列化。 实际上，它并不重要：<em>线性化只是单个操作的严格可序列化。</em></p>
+<p><a href="http://bitsavers.org/pdf/xerox/parc/techReports/CSL-81-8_Information_Storage_in_a_Decentralized_Computer_System.pdf">Information storage in a decentralized computer system</a>
+外部一致性的定义：External Consistency. External consistency guarantees that a transaction will always receive current information. Using the concepts we have just introduced, we can provide a formal definition of external consistency. The actual time order in which transactions complete defines a unique serial schedule. This serial schedule is called the external schedule. A system is said to provide external consistency if it guarantees that the schedule it will use to process a set of transactions is equivalent to its external schedule. </p>
+<p><a href="https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf"> Linearizability: A Correctness Condition for Concurrent Objects</a>
+线性化的定义：</p>
+<h3 id="_5">并行查询</h3>
+<ul>
+<li><a href="https://yq.aliyun.com/articles/684431">PostgreSQL 并行查询概述</a></li>
+<li><a href="https://db.in.tum.de/teaching/ss14/moderndbs/chapter7.pdf?lang=de">https://db.in.tum.de/teaching/ss14/moderndbs/chapter7.pdf?lang=de</a></li>
+<li><a href="http://infocenter.sybase.com/help/topic/com.sybase.infocenter.dc00743.1570/html/queryprocessing/CHDGHJBC.htm">http://infocenter.sybase.com/help/topic/com.sybase.infocenter.dc00743.1570/html/queryprocessing/CHDGHJBC.htm</a></li>
+<li>Design and Evaluation of Main Memory Hash Join Algorithms for Multi-core CPUs</li>
+<li>The Volcano Optimizer Generator: Extensibility and Efficient Search</li>
+<li>Encapsulation of Parallehsm in the Volcano Query Processmg System</li>
+<li><a href="https://www.percona.com/blog/2019/02/21/parallel-queries-in-postgresql/">https://www.percona.com/blog/2019/02/21/parallel-queries-in-postgresql/</a></li>
+<li><a href="https://www.postgresql.eu/events/pgconfeu2018/sessions/session/2140/slides/141/PQ_PGCON_EU_2018.pdf">https://www.postgresql.eu/events/pgconfeu2018/sessions/session/2140/slides/141/PQ_PGCON_EU_2018.pdf</a></li>
+<li><a href="https://www.pgcon.org/2017/schedule/attachments/455_pgcon-2017-hash-joins.pdf">https://www.pgcon.org/2017/schedule/attachments/455_pgcon-2017-hash-joins.pdf</a></li>
+<li><a href="https://www.postgresql.org/docs/11/parallel-plans.html">https://www.postgresql.org/docs/11/parallel-plans.html</a></li>
+<li><a href="https://www.enterprisedb.com/blog/parallel-hash-postgresql">https://www.enterprisedb.com/blog/parallel-hash-postgresql</a></li>
+<li><a href="http://pages.cs.wisc.edu/~dewitt/includes/paralleldb/sigmod89.pdf">http://pages.cs.wisc.edu/~dewitt/includes/paralleldb/sigmod89.pdf</a></li>
+<li><a href="http://ceur-ws.org/Vol-735/paper10.pdf">http://ceur-ws.org/Vol-735/paper10.pdf</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">https://en.wikipedia.org/wiki/Amdahl%27s_law</a> </li>
+<li><a href="https://www.sqlshack.com/parallel-nested-loop-joins-the-inner-side-of-nested-loop-joins-and-residual-predicates/">https://www.sqlshack.com/parallel-nested-loop-joins-the-inner-side-of-nested-loop-joins-and-residual-predicates/</a></li>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008-r2/gg415714(v=msdn.10">https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008-r2/gg415714(v=msdn.10</a>)</li>
+<li><a href="http://pages.cs.wisc.edu/~dewitt/includes/paralleldb/vldb92.pdf">http://pages.cs.wisc.edu/~dewitt/includes/paralleldb/vldb92.pdf</a></li>
+<li><a href="http://www.dcs.ed.ac.uk/home/tz/phd/thesis/node12.htm">http://www.dcs.ed.ac.uk/home/tz/phd/thesis/node12.htm</a></li>
+<li><a href="https://15721.courses.cs.cmu.edu/spring2016/papers/p37-blanas.pdf">https://15721.courses.cs.cmu.edu/spring2016/papers/p37-blanas.pdf</a></li>
+<li>HadoopDB MPP and MapReduce</li>
+<li><a href="http://www.vldb.org/pvldb/2/vldb09-861.pdf">http://www.vldb.org/pvldb/2/vldb09-861.pdf</a></li>
+</ul>
+<p>阿姆达尔定律（英语：Amdahl's law，Amdahl's argument），一个计算机科学界的经验法则，因吉恩·阿姆达尔而得名。它代表了处理器并行运算之后效率提升的能力。当并行度提升到一定程度之后，一定存在某种程度的争用，导致效率无法继续提升。</p>
+<h3 id="_6">编译器</h3>
+<ul>
+<li><a href="https://tiarkrompf.github.io/index.html">作者Tiark  Rompf的主页</a></li>
+<li><a href="https://www.cs.purdue.edu/homes/rompf/papers/rompf-icfp15.pdf">Functional Pearl: A SQL to C Compiler in 500 Lines of Code</a></li>
+<li><a href="">How to Architect a Query Compiler, Revisited</a></li>
+<li><a href="https://15721.courses.cs.cmu.edu/spring2018/papers/03-compilation/shaikhha-sigmod2016.pdf">How to Architect a Query Compiler</a></li>
+</ul>
+<h3 id="_7">扩容</h3>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>MPPDB公开论文中的算法
+Algorithm 1 Algorithm Redistribution DML
+ 1: 建立一个shadow表S，与原始表T的模式一样
+ 2: 将表T作为append-only模式
+ 3: 设置T不进行垃圾回收
+ 4: 建立T表删除数据的 delete-delta 表D
+ 5: 将T中的数据段重分布到S
+ 6: 将D中的数据应用到S中
+ 7: 提交变更
+ 8: 重复5-7知道T中的数据小于阈值
+ 9: 锁定原始表，重分布剩余的插入和删除的增量，与5-6一致
+10: 将表T在系统表中转换为S
+11: 提交变更
+12: 重建索引
+</pre></div>
+
+
+<h3 id="turing-award">Turing Award</h3>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Charles_Bachman">Charles W. Bachman</a></td>
+<td>For his outstanding contributions to <a href="https://en.wikipedia.org/wiki/Database">database</a> technology.</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Edgar_F._Codd">Edgar F. Codd</a></td>
+<td>For his fundamental and continuing contributions to the theory and practice of database management systems, esp. <a href="https://en.wikipedia.org/wiki/Relational_database">relational databases</a>.</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Jim_Gray_(computer_scientist)">Jim Gray</a></td>
+<td>For seminal contributions to <a href="https://en.wikipedia.org/wiki/Database">database</a> and <a href="https://en.wikipedia.org/wiki/Transaction_processing">transaction processing</a>research and technical leadership in system implementation.</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Leslie_Lamport">Leslie Lamport</a></td>
+<td>For fundamental contributions to the theory and practice of distributed and concurrent systems, notably the invention of concepts such as causality and logical clocks, safety and liveness, replicated state machines, and sequential consistency.</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Michael_Stonebraker">Michael Stonebraker</a></td>
+<td>For fundamental contributions to the concepts and practices underlying modern database systems.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="misc">misc</h3>
+<ol>
+<li>新的协议和正确性问题(面向新的场景和需求，提出新的协议)</li>
+<li>OCC</li>
+<li>MVCC</li>
+<li>确定的事务调度</li>
+<li>Distributed Snapshot Isolation</li>
+<li>传统技术：Plan Cache, Result Cache, BufferPool淘汰算法，etc.</li>
+<li>多核：MVCC协议，锁表设计，bufferpool，日志提交算法，lock-free btree/hash</li>
+<li>大内存：all in memory, Numa-Aware, Anti-caching, 压缩技术</li>
+<li>SCM：write behind logging, 新的Checkpoint算法</li>
+<li>性能稳定性: 在高并发，大负载下能够持续稳定的运行(垃圾回收，Buffer算法，持续Checkpoint)</li>
+<li>TPCC性能指标：Hyper-DB : 单机20核15万TPS，NAM-DB：16核 56节点，650万new-order tps</li>
+<li>高可用问题(单点、DC、城市级高可用，5-6个9)</li>
+<li>共享缓冲区的集群架构：大机，PureScale, Oracle RAC</li>
+<li>云分布式架构: Aurora，Spanner</li>
+</ol>
+<h2 id="_8">关注</h2>
+<ul>
+<li><a href="https://db.cs.cmu.edu/courses/">CMU数据库课程</a></li>
+<li><a href="https://www.cs.columbia.edu/~du/ds/schedule.html">哥伦比亚大学分布式</a></li>
+<li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/lecture-notes/">MIT数据库课程</a></li>
+<li><a href="http://daslab.seas.harvard.edu/classes/cs165/">哈佛数据库课程</a></li>
+<li><a href="http://zoo.cs.yale.edu/classes/cs637/index.html">耶鲁大学数据库课程</a></li>
+<li><a href="http://db.csail.mit.edu/">MIT Database Group</a></li>
+<li><a href="http://mysql.taobao.org/monthly/">数据库内核月报</a></li>
+<li><a href="http://www.cs.cmu.edu/~pavlo/">CMU数据库大牛</a></li>
+<li><a href="http://www.bailis.org/">Peter Bailis Highly Available, Seldom Consistent</a></li>
+<li><a href="http://dbmsmusings.blogspot.com/">DBMS musings</a> </li>
+<li><a href="http://cs.yale.edu/homes/thomson/">Alexander Thomson calvin研究人员</a> </li>
+<li><a href="https://hyeontaek.com/">Hyeontaek Lim CMU PhD</a></li>
+<li><a href="https://www.allthingsdistributed.com">AWS CTO blog</a></li>
+<li><a href="http://db.csail.mit.edu/madden/">教授Samuel Madden</a></li>
+<li><a href="https://cs.uwaterloo.ca/~tozsu/">分布式数据库系统原理作者</a></li>
+<li><a href="http://www.cs.umd.edu/~abadi/">Daniel Abadi Calvin DB 作者</a></li>
+<li><a href="https://www.csail.mit.edu/user/1547">Michael Stonebraker</a></li>
+<li><a href="https://sigmod.org/sigmod-awards/people/goetz-graefe-2017-sigmod-edgar-f-codd-innovations-award/">Goetz Graefe — 2017 SIGMOD Edgar F. Codd Innovations Award</a></li>
+<li><a href="https://scholar.google.com/citations?hl=en&amp;user=pdDeRScAAAAJ">Goetz Graefe papers</a></li>
+</ul>
+<h2 id="_9">书籍</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/4838430/">数据库系统实现</a></li>
+<li><a href="http://shop.oreilly.com/product/0636920032175.do">Designing Data-Intensive Applications</a></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.219.7269&amp;rep=rep1&amp;type=pdf">Modern B-Tree Techniques</a></li>
+<li><a href="http://www.redbook.io/">Readings in Database Systems, 5<sup>th</sup> Edition</a> 2015 介绍数据库领域主要内容和方向</li>
+<li><a href="http://dblab.xmu.edu.cn/post/architecture-of-a-database-system/">Architecture of a Database System（中文版）</a></li>
+<li><a href="http://book.mixu.net/distsys/">Distributed systems for fun and profit</a></li>
+<li>Streaming Systems The What, Where, When, and How of Large-Scale Data Processing - Tyler Akidau.pdf</li>
+<li>2010 Scalability patterns Scalability, Availability &amp; Stability (slides).pdf</li>
+<li>A Philosophy of Software Design - John Ousterhout.pdf</li>
+<li>An Architecture for Fast and General Data Processing on Large Clusters.pdf</li>
+<li>Consensus on Transaction Commit.pdf</li>
+<li>database_system_concepts_en_6th.pdf</li>
+<li>Distributed.Systems.An.Algorithmic.Approach.2<sup>nd</sup>.Edition.pdf</li>
+<li>F1 Query.pdf</li>
+<li>Making Databases Work.pdf</li>
+<li>postgresql_introduction_and_concepts.pdf</li>
+<li>Postgres-XC Concept, Implementation and Achievements.pdf</li>
+<li>Architecture of a Database System (2007)</li>
+<li>Readings in Database Systems, 5<sup>th</sup> Edition</li>
+<li><a href="https://book.douban.com/subject/1788421/">UNIX环境高级编程</a></li>
+<li>UNIX网络编程</li>
+<li>PostgreSQL数据库内核分析</li>
+<li>MySQL内核：InnoDB存储引擎</li>
+<li><a href="https://www.tutorialspoint.com/sqlite/">SQLite Tutorial</a></li>
+<li><a href="https://learntla.com/book/">Learn TLA+</a></li>
+<li>面对软件错误构建可靠的分布式系统 Joe Armstrong Erlang作者博士论文</li>
+</ul>
+<h2 id="_10">文章</h2>
+<h3 id="_11">分布式</h3>
+<p><a href="https://draveness.me/etcd-introduction">高可用分布式存储 etcd 的实现原理</a>
+<a href="https://mp.weixin.qq.com/s?__biz=MzI4NDMyNTU2Mw==&amp;mid=2247483695&amp;idx=1&amp;sn=91ea422913fc62579e020e941d1d059e#rd">微信自研生产级paxos类库PhxPaxos实现原理介绍</a> 比较详细的原理介绍</p>
+<h3 id="newsql">NewSQL</h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Spanner: Google’s Globally Distributed Database</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://cloud.google.com/spanner/docs/true-time-external-consistency?hl=zh-CN">https://cloud.google.com/spanner/docs/true-time-external-consistency?hl=zh-CN</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/45855.pdf">cloud spanner 技术白皮书</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://news.ycombinator.com/item?id=18039489">NewSQL databases fail to guarantee consistency and I blame Spanner</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/docs/stable/strong-consistency.html">https://www.cockroachlabs.com/docs/stable/strong-consistency.html</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/docs/stable/distributed-transactions.html">https://www.cockroachlabs.com/docs/stable/distributed-transactions.html</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/serializable-lockless-distributed-isolation-cockroachdb/">https://www.cockroachlabs.com/blog/serializable-lockless-distributed-isolation-cockroachdb/</a>  Serializable, Lockless, Distributed: Isolation in CockroachDB</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/acid-rain/">https://www.cockroachlabs.com/blog/acid-rain/</a>  Real Transactions are Serializable</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/consistency-model/">https://www.cockroachlabs.com/blog/consistency-model/</a> CockroachDB's Consistency Model</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/living-without-atomic-clocks/">https://www.cockroachlabs.com/blog/living-without-atomic-clocks/</a> </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/how-cockroachdb-distributes-atomic-transactions/">https://www.cockroachlabs.com/blog/how-cockroachdb-distributes-atomic-transactions/</a>  How CockroachDB Does Distributed, Atomic Transactions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Consensus, Made Thrive</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Trust, But Verify: How CockroachDB Checks Replication</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The CockroachDB Architecture Document</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/local-and-distributed-processing-in-cockroachdb/">https://www.cockroachlabs.com/blog/local-and-distributed-processing-in-cockroachdb/</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/memory-usage-cockroachdb/">https://www.cockroachlabs.com/blog/memory-usage-cockroachdb/</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cockroachlabs.com/blog/limits-of-the-cap-theorem/">https://www.cockroachlabs.com/blog/limits-of-the-cap-theorem/</a></li>
+</ul>
+<h3 id="_12">其它</h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://en.wikipedia.org/wiki/Consistency_model">维基百科 Consistency model</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://iswade.github.io/translate/strong_consistency_models/">强一致性模型</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.jianshu.com/p/8500882ab38c">siddontang分布式系统中的时间</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="http://www.nosqlnotes.com/technotes/mvcc-snapshot-isolation/">mvcc-snapshot-isolation</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.jianshu.com/nb/4437">siddontang一致性模型</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.jianshu.com/p/f307bd2023f5">Spanner: CAP, TrueTime and Transaction</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="http://daslab.seas.harvard.edu/rum-conjecture/">Read update memory 推测</a></li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/wiredtiger/wiredtiger/wiki/Btree-vs-LSM">Btree vs LSM performance</a></p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="http://docs.aws.amazon.com/zh_cn/redshift/latest/dg/welcome.html">Redshift 介绍</a></p>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://zhuanlan.zhihu.com/p/23866692">NewSQL系统综述——NewSQL到底New在哪里？</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://mp.weixin.qq.com/s?__biz=MzI4MjE3MTcwNA==&amp;mid=2664334610&amp;idx=1&amp;sn=9c09ba95f0f2dae6b83d8e521054fae9">开源数据库的现状</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://pingcap.com/blog-cloud-native-db-zh">云时代数据库的核心特点</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://postgres-x2.github.io/reference/1.2/html/index.html">Postgres-XC 1.2.1 Documentation</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://postgres-x2.github.io/presentation_docs/2015-07-25_HangZhou/PGXC_Scaleout_Approach.pdf">PGXL</a> 主要介绍XL，同时介绍XC-XL的区别</li>
+</ul>
+<h2 id="_13">论文</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> FoundationDB Record Layer: A Multi-Tenant Structured Datastore 2019sigmod</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.vldb.org/pvldb/vldb2010/papers/R106.pdf">Tree Indexing on Solid State Drives</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://pages.cs.wisc.edu/~yinan/paper/fdtree_pvldb.pdf">Tree Indexing on Solid State Drives</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://15721.courses.cs.cmu.edu/spring2017/papers/08-oltpindexes2/bwtree-icde2013.pdf">The Bw-Tree: A B-tree for New Hardware Platforms</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://hyeontaek.com/papers/openbwtree-sigmod2018.pdf">Building a Bw-Tree Takes More Than Just Buzz Words</a> 2018sigmod</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://github.com/wangziqi2013/BwTree">peloton Bw-Tree implementation</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://paulcavallaro.com/blog/the-bw-tree/">The Bw-Tree</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://news.ycombinator.com/item?id=15409757">Modern B-Tree Techniques (2011) </a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf">Schema-Agnostic Indexing with Azure DocumentDB</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf">Automatically Indexing Millions of Databases in Microsoft Azure SQL Database</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A critique of ANSI SQL isolation levels 1110引用</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Concurrency control and recovery in database systems 6000引用 book</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Serializable Isolation for Snapshot Databases. 213引用 博士论文 2009.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Making snapshot isolation serializable 330引用</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Serializable snapshot isolation in PostgreSQL 89引用</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The End of an Architectural Era 744引用 </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.sigops.org/s/conferences/sosp/2011/current/2011-Cascais/printable/11-calder.pdf">Windows Azure Storage: a highly available cloud storage service with strong consistency</a> 679次引用</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.vldb.org/pvldb/vol8/p185-bailis.pdf">Coordination Avoidance in Database Systems</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://db.cs.berkeley.edu/jmh/papers/anna_ieee18.pdf">Anna: A KVS For Any Scale</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://juejin.im/post/5aaa5495518825557b4c7966">伯克利推出世界最快的KVS数据库Anna：秒杀Redis和Cassandra</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.microsoft.com/en-us/research/publication/the-bw-tree-a-b-tree-for-new-hardware/">The Bw-Tree: A B-tree for New Hardware Platforms</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A Survey of B-Tree Locking Techniques</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://en.wikipedia.org/wiki/Snapshot_isolation">快照隔离 wiki</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Distributed Snapshot Isolation Global Transactions Pay Globally, Local Transactions Pay Locally</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Efficient Optimistic Concurrency Control Using Loosely Synchronized Clocks</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Clock-SI: Snapshot Isolation for Partitioned Data Stores Using Loosely Synchronized Clocks 完全去中心化的一个协议， 无需中心时间服务器，直接通过本地时间加等待的方式实现快照隔离。使用2pc做原子提交。重点关注一下，是否可以使用到当前系统中？</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.pgcon.org/2018/schedule/attachments/498_Towards%20scalable%20ACID%20PostgreSQL%20with%20pg_shardman">Towards ACID scalable PostgreSQL with partitioning and logical replication</a> 有一点clock-SI的介绍。</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.bailis.org/papers/ramp-sigmod2014.pdf">Scalable Atomic Visibility with RAMP Transactions</a> 原子可见性</p>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://pages.cs.wisc.edu/~yinan/paper/fdtree_pvldb.pdf">Tree Indexing on Solid State Drives</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="http://s4lab.ustc.edu.cn/_upload/article/files/d3/dd/8de86d2c4056b9ebbf07507414f2/91bd85b9-2a80-432d-aec9-a44b73d5d059.pptx">LSbM-tree:一个读写兼优的大数据存储结构</a></li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="http://www.csc.lsu.edu/~fchen/publications/papers/icdcs17-lsbm.pdf">LSbM-tree: Re-enabling Buffer Caching in Data Management for Mixed Reads and Writes</a></p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf">Cassandra - A Decentralized Structured Storage System</a> 2000 被引用</p>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging (1992) 事务-恢复</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Hybrid Transactional/Analytical Processing: A Survey</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Calvin: Fast Distributed Transactions for Partitioned Database Systems</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Distributed Architecture of Oracle Database In-memory </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Query Optimization in Oracle 12c Database In-Memory</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Cost-based query transformation in Oracle 2006</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Linearizability: a correctness condition for concurrent objects</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Benchmarking cloud serving systems with YCSB</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SQL查询的语义验证 A Formal Semantics of SQL Queries, Its Validation, and Applications</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 微软自动建立百万数据库索引 Automatically Indexing Millions of Databases in Microsoft Azure SQL Database</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> FDB的记录层 FoundationDB Record Layer: A Multi-Tenant Structured Datastore</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 直接记录SQL语句作为SQLite的日志 SQL Statement Logging for Making SQLite Truly Lite</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Highly Available Transactions: Virtues and Limitations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Revisiting Memory Errors in Large-Scale Production Data Centers: Analysis and Modeling of New Trends from the Field.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Failure Trends in a Large Disk Drive Population.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A Large-Scale Study of Flash Memory Failures in the Field.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Failure Analysis of Virtual and Physical Machines:Patterns, Causes and Characteristics</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.cs.duke.edu/courses/cps296.4/fall13/838-CloudPapers/dean_longtail.pdf">www.cs.duke.edu/courses/cps296.4/fall13/838-CloudPapers/dean_longtail.pdf</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://arxiv.org/pdf/1701.03100.pdf">https://arxiv.org/pdf/1701.03100.pdf</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Datacenter Scale Evaluation of the Impact of Temperature on Hard Disk Drive Failures</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://blog.fosketts.net/2011/07/06/defining-failure-mttr-mttf-mtbf/">http://blog.fosketts.net/2011/07/06/defining-failure-mttr-mttf-mtbf/</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Understanding Network Failures in Data Centers: Measurement, Analysis, and Implications</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://cs.unc.edu/xcms/wpfiles/50th-symp/Moorthy.pdf">http://cs.unc.edu/xcms/wpfiles/50th-symp/Moorthy.pdf</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf">http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.bailis.org/papers/hat-vldb2014.pdf">http://www.bailis.org/papers/hat-vldb2014.pdf</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lessons learnt from building a globally distributed database from the ground up</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Logical Physical Clocks and Consistent Snapshots in Globally Distributed Databases</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> I/O Reference Behavior of Production Database Workloads and the TPC Benchmarks - An Analysis at the Logical Level</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The End of Slow Networks: It's Time for a Redesign</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The CAT Theorem and Performance of Transactional Distributed Systems</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Deuteronomy: Transaction Support for Cloud Data.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Transactions: From Local Atomicity to Atomicity in the Cloud</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Spanner's SQL Evolution， Data@Scale 2017, Seattle</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.percona.com/blog/2016/07/26/testing-samsung-storage-in-tpcc-mysql-benchmark-percona-server/">www.percona.com/blog/2016/07/26/testing-samsung-storage-in-tpcc-mysql-benchmark-percona-server/</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.nextplatform.com/2017/08/15/hardware-drives-shape-databases-come/">https://www.nextplatform.com/2017/08/15/hardware-drives-shape-databases-come/</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> How disruptive is Modern Hardware?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="http://www.jos.org.cn/jos/ch/reader/view_abstract.aspx?flag=1&amp;file_no=4416&amp;journal_id=jos">支持大数据管理的NoSQL系统研究综述</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1997 <a href="http://www.cs.sfu.ca/CourseCentral/459/han/papers/chaudhuri97.pdf">An overview of data warehousing and OLAP technology</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2016 ☆ <a href="http://ieeexplore.ieee.org/abstract/document/7751638/">A unified OLAP/OLTP big data processing framework in telecom industry</a> </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Towards a Non-2PC Transaction Management in Distributed Database Systems，介绍如何消除2PC事务，相关博客文章http://dbmsmusings.blogspot.com/2019/01/its-time-to-move-on-from-two-phase.html</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 2007 <a href="http://dblab.xmu.edu.cn/post/architecture-of-a-database-system/">Architecture of a Database System</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 2011 <a href="http://www.thebigdata.cn/upload/2014-08/14080113469511.pdf">架构大数据: 挑战, 现状与展望</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://www.cs.utexas.edu/users/misra/scannedPdf.dir/DistrDeadlockDetection.pdf">Distributed Deadlock Detection</a> 分布式死锁检测</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="http://www.jos.org.cn/1000-9825/5644.htm">大数据管理系统的历史、现状与未来</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 大数据管理：概念、技术与挑战 1000+引用</li>
+</ul>
+<h2 id="_14">数据库实例汇总</h2>
+<h3 id="microsoft">Microsoft</h3>
+<ul>
+<li>FASTER: A Concurrent Key-Value Store with In-Place Updates</li>
+<li>Hekaton: SQL server's memory-optimized OLTP engine</li>
+<li>CosmosDB</li>
+<li><a href="https://azure.microsoft.com/zh-cn/blog/a-technical-overview-of-azure-cosmos-db/">https://azure.microsoft.com/zh-cn/blog/a-technical-overview-of-azure-cosmos-db/</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels">https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels</a></li>
+<li><a href="https://www.snia.org/sites/default/files/SDC15_presentations/database/SudiptaSengupta_Bw-Tree-Key_Value.pdf">https://www.snia.org/sites/default/files/SDC15_presentations/database/SudiptaSengupta_Bw-Tree-Key_Value.pdf</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/azure/cosmos-db/">https://docs.microsoft.com/zh-cn/azure/cosmos-db/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cosmos_DB">https://en.wikipedia.org/wiki/Cosmos_DB</a></li>
+</ul>
+<h4 id="the-new-sql-server-in-the-cloud">The New SQL Server in the Cloud</h4>
+<p><a href="https://www.microsoft.com/en-us/research/uploads/prod/2019/05/socrates.pdf">Socrates: The New SQL Server in the Cloud</a></p>
+<h5 id="1">1. 介绍</h5>
+<p>高安全、高额可用、低成本、灵活性、高性能。上市时间、按需付费、99.999%可用性、大规模数据（100TB）、高性能、弹性。</p>
+<ol>
+<li>传统数据库提前部署的方式，无法弹性、按需付费：为了满足高吞吐或者低吞吐，需要将一个很大的数据库从一个机器移动到另一个机器，但是代价会非常高。</li>
+<li>另一个更微妙的问题是支持大型事务数据库的目标与高可用性之间存在冲突：高可用性需要很小的平均恢复时间（MTTR），传统上只能通过小型数据库实现。这个问题在传统数据库上不会出现，因为不熟采用了典型的昂贵的硬件来满足高可用（例如存储区域网络或SAN），这种硬件在云上不可用，传统数据库通过控制软件更新周期以及非常小心的计划停机来实现高可用，这种方式在云上都是不可行的。</li>
+</ol>
+<p>过去10年都在研究云上新OLTP数据库系统架构。一个想法是解耦DBMS的功能单元，独立地部署计算服务（例如事务处理）和存储服务（例如检查点和恢复）。Socrates也采用了这种架构，并且将数据库日志从存储中分离出来，作为第一类对象对待，分离日志的方式也将持久性和可用性分割开来。</p>
+<h5 id="2">2. 现有技术</h5>
+<ol>
+<li>SQL Server：HADR， Socrates</li>
+<li>Spanner：分区splits</li>
+<li>Aurora：共享磁盘，数据和日志分区</li>
+<li>Oracle：基于 Exadata 和 RAC</li>
+</ol>
+<h3 id="anna">Anna</h3>
+<p>格 lattice</p>
+<p>交换性：$t（a，b）= t（b，a）∀a，b∈S $</p>
+<p>相关性：<span><span class="MathJax_Preview">t（t（a，b），c）= t（a，t（b，c））∀a，b，c∈S</span><script type="math/tex">t（t（a，b），c）= t（a，t（b，c））∀a，b，c∈S</script></span></p>
+<p>幂等性：<span><span class="MathJax_Preview">t（a，a）=a∀a∈S</span><script type="math/tex">t（a，a）=a∀a∈S</script></span></p>
+<p>复制 hot keys 可以提升性能</p>
+<p>使用格来实现异步merge</p>
+<p>可配置的一致性：读已提交，未提交，last-writer-win</p>
+<ul>
+<li><a href="https://github.com/fluent-project/fluent">https://github.com/fluent-project/fluent</a></li>
+<li><a href="http://www.redbook.io/">http://www.redbook.io/</a> Joe Hellerstein Anna</li>
+<li><a href="https://rise.cs.berkeley.edu/">https://rise.cs.berkeley.edu/</a></li>
+<li><a href="https://arxiv.org/pdf/1809.00089.pdf">https://arxiv.org/pdf/1809.00089.pdf</a></li>
+<li><a href="http://db.cs.berkeley.edu/jmh/papers/anna_ieee18.pdf">http://db.cs.berkeley.edu/jmh/papers/anna_ieee18.pdf</a></li>
+<li>Coordination Avoidance in Database Systems</li>
+<li><a href="https://news.ycombinator.com/item?id=16551072">https://news.ycombinator.com/item?id=16551072</a></li>
+</ul>
+<h3 id="faunadb">FaunaDB</h3>
+<p>基于 Calvin 的数据库，对于 spanner 衍生类系统和 Calvin 风格系统由很多讨论
+Google Spanner vs. Calvin: Is There a Clear Winner in the Battle for Global Consistency at Scale?</p>
+<h4 id="faunadb-an-architectural-overview">FaunaDB: An Architectural Overview</h4>
+<ol>
+<li><strong>起源</strong>：数据库管理系统的历史是一种日益增长的抽象。事务 NoSQL 数据库，伸缩，易用，生产力，ACID。</li>
+<li><strong>基础</strong>：分布式数据操作系统。子系统：</li>
+<li>NoSQL 查询语言</li>
+<li>半结构化文档模型</li>
+<li>分布式 ACID 事务引擎</li>
+<li>行级访问控制系统 </li>
+<li>基于策略的工作负载资源管理器(CPU/MEM/IO)</li>
+<li>数据中心感知的路由层</li>
+<li>临时存储系统(维护记录和索引的历史)。</li>
+<li><strong>数据模型</strong>：半结构化，无模式对象关系数据模型，是关系，文档，面向对象和图形范例的严格超集。
+   - 记录被插入到半结构化文档的实例中，可以包含递归嵌套对象和数组以及标量类型
+   - 实例被分组为类，类似于关系数据库中的表，但是与文档数据库一样，类中的全部或者部分共享模式是可选的，不是强制的。
+   - 类被组织成数据库。跟文件系统目录类似，数据库可以递归包含其它数据库。
+   - 数据库访问由密钥控制。
+   - 派生关系是使用索引构建的。索引是将一组输入实例转换为由术语和值组成的一个或多个结果集。 索引表示为部分应用的查询，可以转换，覆盖，排序其输入，并强制执行约束（在FaunaDB中，索引和视图是相同的）
+   - 查询可以参数化为函数，类似于SQL系统中的存储过程，为了跨应用程序共享逻辑，从应用程序中抽象逻辑就地升级或者定制安全模型很困难。</li>
+<li><strong>查询语言</strong></li>
+<li><strong>安全性</strong></li>
+<li><strong>可伸缩性</strong>：水平和垂直伸缩，自协调，无单点故障。集群中的每个节点同时执行下面的三种角色：查询协调器，数据副本，日志副本。
+  - 路由：如果事务是只读的，则会立即给客户端应答；如果事务包含写操作，则会转发到合适的日志副本来处理事务决议。日志副本转发事务给涉及的数据副本，这些数据副本将最终解析事务并将应答返回给客户端连接的节点，然后该应答将返回给客户端。
+  - 数据分区：在每个数据中心内部，逻辑数据布局被数据中心内的所有节点分区。实例，包含历史通过主键来分区。索引按term分区。无论实际情况和物理集群中的节点数量如何，实例和索引都会线性扩展以进行读取和写入。如果特定索引条目的读取或写入速度超过中值大小，则索引中的热点是可能的。 在这种情况下，FaunaDB可以跨多个范围对实例或索引条目进行分区，并在读取时执行部分离散-收集读取查询，类似于搜索系统。
+  - 容错与 CAP：CP。容错：节点临时故障，节点永久故障，节点变慢，网络分区隔离了一个数据中心被隔离的数据中心可以继续读但是不能写。</li>
+<li><strong>持久性</strong>：压缩的 LSM-tree，对磁盘和 SSD 都合适。</li>
+<li><strong>事务一致性</strong>：严格的可序列化被广泛认为是理想的一致性模型。读写事务是严格可串行化的。只读事务是穿行化的。FaunaDB的主要权衡是写入延迟是发起数据中心与其他数据中心子集之间的往返延迟的下限。网络延迟严格地比最终一致的分布式键/值存储所暴露的延迟更严重，这些存储在确认提交之前不会尝试保证全局持久性，或者依赖于异步复制并且不能从副本提供一致读取的SQL系统。增加应用程序并行性可以补偿单个写入的延迟，而不会影响总体吞吐量。</li>
+<li><strong>负载资源管理</strong>：QOS</li>
+<li><strong>后台任务</strong>：诸如索引构建之类的后台任务是遗留数据库系统中可用性问题的常见来源。为了缓解这种情况，FaunaDB中的后台工作由一个记录的，拓扑感知的任务调度程序内部管理，类似于Apache Hadoop YARN。FaunaDB的实现是通用的。任务可以限于跨群集或每个数据库的一个实例，或者被分配特定数据范围（在这种情况下，执行节点将是该范围的数据副本）。每个任务的执行状态都保存在一致的元数据存储中，这意味着计划任务可以以节点无关的方式运行：如果节点出现故障或离开集群，其任务将自动重新分配给其他有效节点并重新启动或恢复。任务执行吞吐量由FaunaDB的资源调度程序控制。与任何租户无关的常规后台工作以低优先级运行，允许任务在空闲资源允许的情况下继续，并消除后台任务对同步请求的影响。</li>
+<li><strong>运维</strong>：拓扑变更（增加、删除、替换节点；增加删除数据中心；变更复制配置），其它维护任务（使用逻辑和物理隔离备份、执行反熵检查、升级磁盘存储格式）</li>
+<li><strong>应用场景</strong>：金融、电子商务、SaaS等。</li>
+<li><strong>结论</strong>：本文概述了FaunaDB的设计和体系结构，FaunaDB是一个具有租户感知资源管理系统和灵活操作配置文件的事务性NoSQL数据库。FaunaDB是我们为现代企业的关键任务用例构建数据库的努力。 我们的工作基于数据库和操作系统方面的最新研究和行业进展，以及丰富的实践操作经验。虽然我们试图全面描述，我们遗漏了很多细节。我们期待着工作与开发人员社区，学术界以及当前和未来的客户共同实现现代操作数据库管理的共同愿景。</li>
+</ol>
+<h3 id="calvin">Calvin</h3>
+<p>确定性数据库
+- [ ] calvin数据库 根据siddontang的介绍，是确定性数据库，需要对事务排序
+- [ ] <a href="https://www.jianshu.com/p/43909447728f">Calvin：一个为分区数据库设计的快速分布式事务框架</a>
+- [ ] <a href="http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf">Calvin: Fast Distributed Transactions for Partitioned Database Systems</a> 358引用
+- [ ] <a href="http://cs.yale.edu/homes/thomson/publications/calvin-ieee13.pdf">http://cs.yale.edu/homes/thomson/publications/calvin-ieee13.pdf</a>
+- [ ] <a href="http://www.vldb.org/pvldb/vol7/p821-ren.pdf">An Evaluation of the Advantages and Disadvantages of Deterministic Database Systems</a>
+- <a href="https://fauna.com/blog/consistency-without-clocks-faunadb-transaction-protocol">https://fauna.com/blog/consistency-without-clocks-faunadb-transaction-protocol</a>
+- <a href="https://www.tuicool.com/articles/AnYVjyY">https://www.tuicool.com/articles/AnYVjyY</a>
+- <a href="https://fauna.com/blog/partitioned-consensus-and-its-impact-on-spanners-latency">https://fauna.com/blog/partitioned-consensus-and-its-impact-on-spanners-latency</a>
+- The Case for Determinism in Database Systems appeared in VLDB 2010.
+- Lightweight Locking for Main Memory Database Systems appeared in VLDB 2013.
+- Modularity and Scalability in Calvin appeared in IEEE Data Engineering Bulletin in 2013.</p>
+<p>摘要：最近关于确定性数据库系统设计的提议认为确定性数据库系统便于复制，因为相同的输入可以独立地发送到两个不同的副本而不用考虑副本分歧。此外，他们认为确定性会产生性能优势，这是由于（1）引入了死锁避免技术，（2）减少（或消除）分布式提交协议，以及（3）轻量级锁定。但是，这些性能优势并非普遍适用，并且确定性存在若干缺点，包括（1）处理事务的额外开销，事先不知道将访问哪些数据，（2）无法中止事务任意地（例如，在数据库或分区过载的情况下），以及（3）预处理层所需的增加的延迟，其确保将相同的输入发送到每个副本。本文提供了一个全面的实验研究，仔细研究了确定性的优缺点，以便让数据库用户更全面地了解用于给定数据库工作负载和群集配置的数据库。
+结论：在本文中，我们提出了一个深入的研究，比较确定性和非确定性系统。</p>
+<p>很明显，对于某些工作负载，确定性数据库系统是合适的，而对于某些工作负载则不是。对于对延迟敏感的应用程序，确定性系统中“预处理”事务所需的额外延迟可能会有问题，而非确定性系统可能更适合。此外，当没有其他方法来减少节点上的负载时，确定性数据库系统不能任意中止事务以处理节点过载也会限制吞吐量。但是，确定性数据库系统显然能够扩展到分布式事务的更高吞吐量，这主要是由于它们能够避免分布式死锁。因此，对于需要极高事务可伸缩性且不介意支付额外延迟成本的工作负载，确定性数据库系统可能非常适合。</p>
+<h3 id="voltdb">voltDB</h3>
+<p>OLTP Through the Looking Glass, and What We Found There
+HStore:A HighPerformance,Distributed Main MemoryTransaction Processing System</p>
+<h3 id="aurora">Aurora</h3>
+<p>Amazon Aurora: Design considerations for high throughput cloud-native relational databases
+Amazon Aurora: OnAvoidingDistributed Consensus for I/Os, Commits, and Membership Changes</p>
+<h3 id="spanner">Spanner</h3>
+<p>Spanner, TrueTime and the CAP Theorey
+Spanner: Google'sglobally distributed database
+Spanner:Becoming a SQL system
+F1: A Distributed SQL Database That Scales
+F1 Query: Declarative Querying at Scale</p>
+<h3 id="sql">SQL 数据库</h3>
+<ul>
+<li>Oracle, MySQL, SQL Server</li>
+<li>EnterpriseDB, DB2, Greenplum, Teradata, </li>
+<li>PostgreSQL</li>
+</ul>
+<h3 id="_15">分布式数据库</h3>
+<ul>
+<li>spanner</li>
+<li>TIDB</li>
+<li><a href="https://github.com/cockroachdb/cockroach">CockroachDB</a>: inspired by spanner with golang</li>
+<li>OceanBase</li>
+<li>pgxc: pg-xl, pgx2, pgxz</li>
+<li><a href="http://mysql.taobao.org/monthly/2017/09/01/">PolarDB</a></li>
+<li><a href="http://delivery.acm.org/10.1145/3060000/3056101/p1041-verbitski.pdf?ip=103.218.216.127&amp;id=3056101&amp;acc=OPENTOC&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E9F04A3A78F7D3B8D&amp;CFID=993534440&amp;CFTOKEN=82234434&amp;__acm__=1507628397_0845ec0b8c3dfe760d260281e2ebb9ef">Aurora</a>: AWS paper</li>
+<li>Oracle Sharding: 性能随 sharding 数线性增长(完美sharding)</li>
+</ul>
+<h3 id="_16">数据仓库</h3>
+<ul>
+<li>AWS redshift</li>
+<li>阿里 HybridDB</li>
+<li>微软 SQL server</li>
+<li>Teredata</li>
+<li>GreenplumDB</li>
+</ul>
+<h3 id="nosql">NoSQL</h3>
+<ul>
+<li>RocksDB</li>
+<li>Redis</li>
+<li>cassandra</li>
+<li><a href="http://daslab.seas.harvard.edu/monkey/">Monkey</a>: LSMTree kv DB</li>
+<li><a href="http://wiki.dreamrunner.org/public_html/C-C++/Library-Notes/LMDB.html">LMDB</a>: Light Memory Map DB</li>
+<li><a href="https://www.progville.com/go/bolt-embedded-db-golang/">boltdb</a>: LMDB by Go</li>
+<li>ManogoDB</li>
+<li>LevelDB</li>
+<li>LMDB</li>
+<li>BoltDB</li>
+<li>Dynamo</li>
+<li>bigtable</li>
+</ul>
+<h3 id="_17">多模数据库</h3>
+<h3 id="_18">未来技术方向</h3>
+<ul>
+<li>native分布式关系数据库</li>
+<li>newSQL</li>
+</ul>
+<h4 id="newsql_1">NewSQL</h4>
+<p>ACID
+scale out
+关系型</p>
+<ol>
+<li>基于内存的存储引擎</li>
+<li>基于数据分区的水平扩展性</li>
+<li>全局索引</li>
+<li>基于MVCC的分布式事务</li>
+<li>强一致的数据复制（多副本）</li>
+<li>自动容灾高可用</li>
+<li>同时支持OLTP和OLAP处理（行列混合存储，大规模并行处理能力）</li>
+</ol>
+<p>NewSQL既有NoSQL的特点，又有传统关系型数据库的特点。向数据发送查询，而不是将数据带给查询，更少的网络开销。对于MPP OLAP系统，还不能称之为NewSQL。</p>
+<h2 id="_19">数据结构与算法</h2>
+<ul class="task-list">
+<li>B+-tree</li>
+<li>LSM-tree</li>
+<li>Bloom Filter: 多列模糊等值匹配，不存在测试, lsm树中用于加快查找</li>
+<li>HyperLogLog: 模糊 count(distinct ..) 计算</li>
+<li>Bit-Map</li>
+<li>堆(Heap)</li>
+<li>双层桶划分</li>
+<li>数据库索引</li>
+<li>倒排索引（Inverted Index）</li>
+<li>外排序</li>
+<li>Trie树</li>
+<li>MapReduce</li>
+<li>CRDT: Conflict-free replicated data type</li>
+<li>Append-Only</li>
+<li>
+<p>日志</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://queue.acm.org/detail.cfm?id=3220266">Algorithms Behind Modern Storage Systems</a></p>
+</li>
+</ul>
+<h3 id="_20">无锁</h3>
+<p>无锁数据结构实现起来比较复杂，正确性证明也比较困难。如果已经证明了算法的正确性，还需要保证实现是正确的，可以通过大量并发测试来减少风险。</p>
+<p>A non-blocking algorithm is lock-free if there is guaranteed system-wide progress, and wait-free if there is also guaranteed per-thread progress.
+如果系统范围内进程可以有保证，则不阻塞的算法是无锁的。
+如果进程中每个线程有保证，则不阻塞算法是无等待的。</p>
+<p>wait-free 
+无等待是进程的最有力的非阻塞保证，它将保证的全系统吞吐量与无饥饿结合起来。如果每个操作都对操作完成前算法将采取的步骤数有限制，则算法是无等待的。此属性对于实时系统至关重要，只要性能成本不太高，它总是很好拥有的。</p>
+<p>lock-free 
+无锁允许单个线程挨饿，但可以保证整个系统的吞吐量。如果在程序线程运行足够长的时间后，至少有一个线程取得了进展（对于某些合理的进度定义），则算法是无锁的。所有的无等待算法都是无锁的。如果一个线程持有锁后睡眠，如果其它线程则会阻塞，这种情况肯定是有锁的。</p>
+<p><a href="https://en.wikipedia.org/wiki/Non-blocking_algorithm">https://en.wikipedia.org/wiki/Non-blocking_algorithm</a></p>
+<p>Serializable, <strong>Lockless</strong>, Distributed: Isolation in CockroachDB</p>
+<h3 id="hash">hash</h3>
+<ul>
+<li><a href="https://blog.codingnow.com/2019/04/concurrent_hash_map.html">并发 Hash Map 的实现</a></li>
+<li>哈希树：叶子节点是数据，中间节点是 hash 值，不断向上计算 hash，通过比较 hash 节点的不同一层层往下找到对应的叶子的不同。也称之为Merkle_tree。写入时要生成整个树的代价还是比较高。</li>
+</ul>
+<h3 id="_21">并行原理</h3>
+<h4 id="_22">并行方式</h4>
+<ol>
+<li>
+<p>节点间并行。MPP</p>
+</li>
+<li>
+<p>节点内并行。SMP</p>
+<ol>
+<li>
+<p>语句间并行（增加系统的处理吞吐量）</p>
+</li>
+<li>
+<p>语句内并行（加快一条语句的处理速度）</p>
+<p>算子内并行（单个算子并行）</p>
+<p>算子间并行（不同的算子用不同线程实现，流水线）</p>
+</li>
+<li>
+<p>指令级并行（向量化引擎+SIMD技术）</p>
+<p>向量化引擎：将数据运载方式，由一次一元组变为一次一批元组。</p>
+<p>SIMD：指令译码后多个寄存器同时访问内存，一次性获取多个操作数同时进行运算。</p>
+<h3 id="join">JOIN</h3>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="_23">连接顺序</h4>
+<p>结论1：JOIN的顺序影响中间结果的数据量，决定了JOIN的执行效率</p>
+<p>结论2：JOIN的顺序影响具体JOIN算法的效率，决定了JOIN的执行效率</p>
+<h4 id="_24">连接方式</h4>
+<ol>
+<li>内连接（相等连接，自然连接，交叉连接）</li>
+<li>外连接（左连接，右连接，全连接）</li>
+<li>自连接</li>
+<li>连接算法（嵌套循环、合并连接、哈希连接）</li>
+</ol>
+<h4 id="_25">连接算法</h4>
+<ol>
+<li>nested loop：获取一条左表（outer）的记录循环匹配右表（inner）所有记录，外表驱动内表，外表也称之为驱动表。</li>
+<li>Indexed nested loop：右边有索引，获取左表的一套记录，索引查找右表</li>
+<li>merge join: 对于已经排序的表，可以用合并排序</li>
+<li>hash join: 对同一个字段</li>
+</ol>
+<h5 id="nested-loop">nested loop</h5>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>for ri in R1:         -- outer table
+   for rj in R2:      -- inner table
+      if ri.id = rj.id:
+         print(ri,rj)
+</pre></div>
+
+<p>小表做驱动表（外表），大表做被驱动表（外表）。<br />
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>t1: <span style="color: #0000DD; font-weight: bold">100</span>
+t2: <span style="color: #0000DD; font-weight: bold">50000</span>
+t2上有索引
+<span style="color: #008800; font-weight: bold">select</span> <span style="color: #888888">/*+use_nl(t2,t1) leading(t2,t1)*/</span> <span style="color: #008800; font-weight: bold">count</span>(*)  <span style="color: #008800; font-weight: bold">from</span> t2,t1 <span style="color: #008800; font-weight: bold">where</span> t1.id = t2.id;  <span style="color: #888888">-- 2.697s 大表做驱动表</span>
+<span style="color: #008800; font-weight: bold">select</span> <span style="color: #888888">/*+use_nl(t1,t2) leading(t1,t2)*/</span> <span style="color: #008800; font-weight: bold">count</span>(*)  <span style="color: #008800; font-weight: bold">from</span> t1,t2 <span style="color: #008800; font-weight: bold">where</span> t1.id = t2.id;  <span style="color: #888888">-- 0.004s 小表做驱动表</span>
+</pre></div></p>
+<h5 id="hash-join">hash join</h5>
+<p>被驱动表（右表，小表）先建立 hash 表，然后对另一个表中的元素散列到已经生成的桶中
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>for ri in R2:
+    build_hash_table(HT, ri)
+
+for rj in R1:
+    probe(HT, rj)
+</pre></div></p>
+<p>并行hash算法：
+1. 并行外表：外表分片，然后扫描内表（哈希表）；每个分片对应内表的一个哈希表，哈希表有多个拷贝，内表比较小的时候可用。
+2. 并行哈希连接：并行扫描内表，多个线程并行建立一个共享的哈希表，多个线程并行扫描外表</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">insert</span> <span style="color: #008800; font-weight: bold">into</span> <span style="color: #008800; font-weight: bold">simple</span> <span style="color: #008800; font-weight: bold">select</span> generate_series(<span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">100000</span>);
+<span style="color: #008800; font-weight: bold">analyze</span> <span style="color: #008800; font-weight: bold">simple</span>;
+<span style="color: #008800; font-weight: bold">explain</span> (<span style="color: #008800; font-weight: bold">verbose</span>,costs <span style="color: #008800; font-weight: bold">off</span>)  <span style="color: #008800; font-weight: bold">select</span> <span style="color: #008800; font-weight: bold">count</span>(*) <span style="color: #008800; font-weight: bold">from</span> <span style="color: #008800; font-weight: bold">simple</span> r <span style="color: #008800; font-weight: bold">join</span> <span style="color: #008800; font-weight: bold">simple</span> s <span style="color: #008800; font-weight: bold">using</span> (id);
+                             QUERY PLAN                             
+<span style="color: #888888">--------------------------------------------------------------------</span>
+ Finalize <span style="color: #008800; font-weight: bold">Aggregate</span>
+   <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">count</span>(*)
+   -&gt;  Gather
+         <span style="color: #008800; font-weight: bold">Output</span>: (<span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*))
+         Workers Planned: <span style="color: #0000DD; font-weight: bold">2</span>
+         -&gt;  <span style="color: #008800; font-weight: bold">Partial</span> <span style="color: #008800; font-weight: bold">Aggregate</span>
+               <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*)
+               -&gt;  Parallel Hash <span style="color: #008800; font-weight: bold">Join</span>
+                     Hash Cond: (r.id = s.id)
+                     -&gt;  Parallel Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> r
+                           <span style="color: #008800; font-weight: bold">Output</span>: r.id, r.<span style="color: #aa6600; background-color: #fff0f0">&quot;?column?&quot;</span>
+                     -&gt;  Parallel Hash
+                           <span style="color: #008800; font-weight: bold">Output</span>: s.id
+                           -&gt;  Parallel Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> s
+                                 <span style="color: #008800; font-weight: bold">Output</span>: s.id
+(<span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #008800; font-weight: bold">rows</span>)
+
+<span style="color: #008800; font-weight: bold">set</span> enable_hashjoin=<span style="color: #008800; font-weight: bold">off</span>;
+<span style="color: #008800; font-weight: bold">set</span> enable_mergejoin=<span style="color: #008800; font-weight: bold">off</span>;
+<span style="color: #008800; font-weight: bold">explain</span> (<span style="color: #008800; font-weight: bold">verbose</span>,costs <span style="color: #008800; font-weight: bold">off</span>)  <span style="color: #008800; font-weight: bold">select</span> <span style="color: #008800; font-weight: bold">count</span>(*) <span style="color: #008800; font-weight: bold">from</span> <span style="color: #008800; font-weight: bold">simple</span> r <span style="color: #008800; font-weight: bold">join</span> <span style="color: #008800; font-weight: bold">simple</span> s <span style="color: #008800; font-weight: bold">using</span> (id);
+                          QUERY PLAN                          
+<span style="color: #888888">--------------------------------------------------------------</span>
+ Finalize <span style="color: #008800; font-weight: bold">Aggregate</span>
+   <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">count</span>(*)
+   -&gt;  Gather
+         <span style="color: #008800; font-weight: bold">Output</span>: (<span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*))
+         Workers Planned: <span style="color: #0000DD; font-weight: bold">2</span>
+         -&gt;  <span style="color: #008800; font-weight: bold">Partial</span> <span style="color: #008800; font-weight: bold">Aggregate</span>
+               <span style="color: #008800; font-weight: bold">Output</span>: <span style="color: #008800; font-weight: bold">PARTIAL</span> <span style="color: #008800; font-weight: bold">count</span>(*)
+               -&gt;  Nested Loop
+                     <span style="color: #008800; font-weight: bold">Join</span> Filter: (r.id = s.id)
+                     -&gt;  Parallel Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> r
+                           <span style="color: #008800; font-weight: bold">Output</span>: r.id, r.<span style="color: #aa6600; background-color: #fff0f0">&quot;?column?&quot;</span>
+                     -&gt;  Seq Scan <span style="color: #008800; font-weight: bold">on</span> <span style="color: #008800; font-weight: bold">public</span>.<span style="color: #008800; font-weight: bold">simple</span> s
+                           <span style="color: #008800; font-weight: bold">Output</span>: s.id, s.<span style="color: #aa6600; background-color: #fff0f0">&quot;?column?&quot;</span>
+(<span style="color: #0000DD; font-weight: bold">13</span> <span style="color: #008800; font-weight: bold">rows</span>)
+<span style="color: #888888">-- Gather节点后面的部分计划都是在子线程上处理</span>
+<span style="color: #888888">-- Parallel Seq Scan： 多个线程并行扫描，每个扫一部分</span>
+<span style="color: #888888">-- Seq Scan: 多个线程每个都是扫描全表</span>
+</pre></div>
+
+<p>参考PG的sql/join.sql测试文件</p>
+<h5 id="merge-join">merge join</h5>
+<p>两个表已经根据连接键排好序
+1, 2, 2, 5, 8
+2, 3, 5, 5, 7</p>
+<p>左边右表按照最小的元素向后移动，如果相同则连接成功</p>
+<h3 id="group-by">GROUP BY</h3>
+<ol>
+<li>hash group: 建立 hash 表，然后进行分组聚合</li>
+<li>pipeline/stream: 基于排序，计算下一个分组时对前一个分组可以输出</li>
+<li>sort group: 基于排序，但是先把所有数据插入到btree中；group by c1 order by c1 优化成 sort group by c1取消sort plan</li>
+</ol>
+<h2 id="_26">未来方向</h2>
+<p>数据库会随着业务<strong>云化</strong>，未来一切的业务都会跑在云端，不管是私有云或者公有云，运维团队接触的可能再也不是真实的物理机，而是一个个隔离的容器或者「计算资源」。这对数据库也是一个挑战，因为数据库天生就是有状态的，数据总是要存储在物理的磁盘上，而数据的移动的代价比移动容器的代价可能大很多。</p>
+<p><strong>多租户</strong>技术会成为标配，一个大数据库承载一切的业务，数据在底层打通，上层通过权限，容器等技术进行隔离；但是数据的打通和扩展会变得异常简单，结合第一点提到的云化，业务层可以再也不用关心物理机的容量和拓扑，只需要认为底层是一个无穷大的数据库平台即可，不用再担心单机容量和负载均衡等问题。</p>
+<p><strong>OLAP 和 OLTP</strong> 会进一步细分，底层存储也许会共享一套，但是SQL优化器这层的实现一定是千差万别的。对于用户而言，如果能使用同一套标准的语法和规则来进行数据的读写和分析，会有更好的体验。</p>
+<p>在未来分布式数据库系统上，主从日志同步这样落后的备份方式会被 Multi-Paxos / <strong>Raft</strong> 这样更强的分布式一致性算法替代，人工的数据库运维在管理大规模数据库集群时是不可能的，所有的故障恢复和高可用都会是高度自动化的。</p>
+<p>数据库应用程序的下一个趋势是能够对新获取的数据执行分析查询和机器学习算法。这种通常也称为“实时分析”或者“混合事务分析处理（hybrid transaction-analytical processing，HTAP）”的应用通过分析新数据和历史数据的组合来进行知识推断，获得洞察力。</p>
+<h2 id="_27">术语</h2>
+<ul>
+<li>TPS 每秒事务数</li>
+<li>TPM 每分钟事务数</li>
+<li>QPS 每秒查询率</li>
+</ul>
+<h2 id="misc_1">misc</h2>
+<ol>
+<li>八卦一下，memcached的作者Brad Fitzpatrick，现在在 Google，大家如果用 Golang 的话，Go 的官方 HTTP 包就是这哥们写的，是个很高产的工程师</li>
+</ol></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.d5a09f94.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

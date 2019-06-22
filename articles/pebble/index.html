@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/articles/pebble/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>pebble kv存储引擎 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#pebble" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">pebble kv存储引擎</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">pebble kv存储引擎</label><a href="./" title="pebble kv存储引擎" class="md-nav__link md-nav__link--active">pebble kv存储引擎</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="安装" class="md-nav__link">安装</a></li><li class="md-nav__item"><a href="#_2" title="使用" class="md-nav__link">使用</a></li><li class="md-nav__item"><a href="#_3" title="原理" class="md-nav__link">原理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#memtable" title="memtable" class="md-nav__link">memtable</a></li><li class="md-nav__item"><a href="#_4" title="跳跃表" class="md-nav__link">跳跃表</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_5" title="数据结构" class="md-nav__link">数据结构</a></li><li class="md-nav__item"><a href="#_6" title="插入" class="md-nav__link">插入</a></li><li class="md-nav__item"><a href="#_7" title="无锁" class="md-nav__link">无锁</a></li><li class="md-nav__item"><a href="#_8" title="查找" class="md-nav__link">查找</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_9" title="测试" class="md-nav__link">测试</a></li><li class="md-nav__item"><a href="#_10" title="代码" class="md-nav__link">代码</a></li><li class="md-nav__item"><a href="#_11" title="参考" class="md-nav__link">参考</a></li></ul></nav></li><li class="md-nav__item"><a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../translate/Aurora/" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="安装" class="md-nav__link">安装</a></li><li class="md-nav__item"><a href="#_2" title="使用" class="md-nav__link">使用</a></li><li class="md-nav__item"><a href="#_3" title="原理" class="md-nav__link">原理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#memtable" title="memtable" class="md-nav__link">memtable</a></li><li class="md-nav__item"><a href="#_4" title="跳跃表" class="md-nav__link">跳跃表</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_5" title="数据结构" class="md-nav__link">数据结构</a></li><li class="md-nav__item"><a href="#_6" title="插入" class="md-nav__link">插入</a></li><li class="md-nav__item"><a href="#_7" title="无锁" class="md-nav__link">无锁</a></li><li class="md-nav__item"><a href="#_8" title="查找" class="md-nav__link">查找</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_9" title="测试" class="md-nav__link">测试</a></li><li class="md-nav__item"><a href="#_10" title="代码" class="md-nav__link">代码</a></li><li class="md-nav__item"><a href="#_11" title="参考" class="md-nav__link">参考</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="pebble">Pebble</h1>
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/articles/pebble/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>pebble kv存储引擎 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#pebble" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">pebble kv存储引擎</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">pebble kv存储引擎</label><a href="./" title="pebble kv存储引擎" class="md-nav__link md-nav__link--active">pebble kv存储引擎</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="安装" class="md-nav__link">安装</a></li><li class="md-nav__item"><a href="#_2" title="使用" class="md-nav__link">使用</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="写流程" class="md-nav__link">写流程</a></li><li class="md-nav__item"><a href="#_4" title="读流程" class="md-nav__link">读流程</a></li><li class="md-nav__item"><a href="#_5" title="其它" class="md-nav__link">其它</a></li></ul></nav></li><li class="md-nav__item"><a href="#_6" title="原理" class="md-nav__link">原理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_7" title="内存表" class="md-nav__link">内存表</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_8" title="跳跃表" class="md-nav__link">跳跃表</a></li><li class="md-nav__item"><a href="#_9" title="插入" class="md-nav__link">插入</a></li><li class="md-nav__item"><a href="#_10" title="无锁" class="md-nav__link">无锁</a></li><li class="md-nav__item"><a href="#_11" title="查找" class="md-nav__link">查找</a></li></ul></nav></li><li class="md-nav__item"><a href="#_12" title="预写日志" class="md-nav__link">预写日志</a></li><li class="md-nav__item"><a href="#_13" title="提交管道" class="md-nav__link">提交管道</a></li><li class="md-nav__item"><a href="#_14" title="合并" class="md-nav__link">合并</a></li><li class="md-nav__item"><a href="#_15" title="快照" class="md-nav__link">快照</a></li></ul></nav></li><li class="md-nav__item"><a href="#_16" title="测试" class="md-nav__link">测试</a></li><li class="md-nav__item"><a href="#_17" title="代码" class="md-nav__link">代码</a></li><li class="md-nav__item"><a href="#_18" title="参考" class="md-nav__link">参考</a></li></ul></nav></li><li class="md-nav__item"><a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../translate/Aurora.md" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1"><label class="md-nav__link" for="nav-3-1">分布式系统:算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-1">分布式系统:算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../distributed_systems/01_introduction/" title="第一章:概述" class="md-nav__link">第一章:概述</a></li><li class="md-nav__item"><a href="../../distributed_systems/02_interprocess/" title="第二章:进程间通信" class="md-nav__link">第二章:进程间通信</a></li></ul></nav></li><li class="md-nav__item"><a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../translate/zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="安装" class="md-nav__link">安装</a></li><li class="md-nav__item"><a href="#_2" title="使用" class="md-nav__link">使用</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="写流程" class="md-nav__link">写流程</a></li><li class="md-nav__item"><a href="#_4" title="读流程" class="md-nav__link">读流程</a></li><li class="md-nav__item"><a href="#_5" title="其它" class="md-nav__link">其它</a></li></ul></nav></li><li class="md-nav__item"><a href="#_6" title="原理" class="md-nav__link">原理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_7" title="内存表" class="md-nav__link">内存表</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_8" title="跳跃表" class="md-nav__link">跳跃表</a></li><li class="md-nav__item"><a href="#_9" title="插入" class="md-nav__link">插入</a></li><li class="md-nav__item"><a href="#_10" title="无锁" class="md-nav__link">无锁</a></li><li class="md-nav__item"><a href="#_11" title="查找" class="md-nav__link">查找</a></li></ul></nav></li><li class="md-nav__item"><a href="#_12" title="预写日志" class="md-nav__link">预写日志</a></li><li class="md-nav__item"><a href="#_13" title="提交管道" class="md-nav__link">提交管道</a></li><li class="md-nav__item"><a href="#_14" title="合并" class="md-nav__link">合并</a></li><li class="md-nav__item"><a href="#_15" title="快照" class="md-nav__link">快照</a></li></ul></nav></li><li class="md-nav__item"><a href="#_16" title="测试" class="md-nav__link">测试</a></li><li class="md-nav__item"><a href="#_17" title="代码" class="md-nav__link">代码</a></li><li class="md-nav__item"><a href="#_18" title="参考" class="md-nav__link">参考</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="pebble">Pebble</h1>
 <p>Pebble是一个基于Go语言开发的KV存储引擎，支持事务。底层数据模型是LSM树（日志结构合并树），所以与LSM树方式实现的其它存储引擎有类似的特性，是一个不可变的磁盘写优化数据结构，它适用于写入比查找更频繁的系统。LSM树得到了越来越多的关注，因为它们可以消除随机插入、更新和删除。</p>
 <p>为了实现顺序写，LSM树在内存中批量写入和更新（通常使用允许对数时间查找的数据结构实现，例如二分搜索树或跳跃表），直到其大小达到阈值，然后写出到磁盘。检索数据需要搜索树中所有驻留磁盘的部分，检查内存中的表，并在返回结果之前合并它们的内容。</p>
 <p>Pebble代码基于goLevelDB开发，扩展了RocksDB的一些功能，但是并没有完全支持RocksDB的所有功能。目前还在开发中。</p>
@@ -15,57 +15,54 @@ go build
 </pre></div>
 
 <h2 id="_2">使用</h2>
-<p>Pebble以库的方式提供，提供了一个简单的命令用于测试，在 <code class="codehilite">cmd/pebble/</code> 目录下。如果希望使用所有接口，可以使用单元测试目录下的测试文件进行调试研究具体接口的使用方式。</p>
+<p>在这一部分，主要介绍主要的使用流程。包括读、写流程以及两类合并。</p>
+<h3 id="_3">写流程</h3>
+<p>Pebble中的写操作首先写日志文件，然后再去写内存中的内存表，写日志是为了保证数据的持久性，一旦宕机，内存表中的数据还没有持久化，系统启动时可以从日志文件中读取，进行数据恢复。</p>
+<h3 id="_4">读流程</h3>
+<h3 id="_5">其它</h3>
 <ul>
-<li>Set</li>
 <li>Delete</li>
-<li>Get</li>
 <li>Batch: Get/Set/Delete/Commit/Apply</li>
-<li>Compact</li>
 <li>Flush: Flush the memtable to stable storage</li>
 <li>Metrics</li>
 <li>NewIter</li>
 <li>NewSnapshot</li>
 </ul>
-<h2 id="_3">原理</h2>
-<p>在Pebble中三个主要的结构是：memtable、sstable 以及logfile。memtable是内存中的结构，新的写入被插入memtable中，并且被写入到logfile中。
-logfile是在存储系统上的一个顺序写入的文件。在sstable中的数据是排好序的，以方便查找。读取必须在从sstable文件读取之前查询memtable，因为memtable中的数据更新。一旦memtable满了，它就会变成一成不变的，并被一个新的memtable取代。后台线程将memtable的内容刷新为SST文件，之后可以销毁memtable，然后logfile就可以被安全地删除了。</p>
+<p>Pebble以库的方式提供，提供了一个简单的命令用于测试，在 <code class="codehilite">cmd/pebble/</code> 目录下。如果希望使用所有接口，可以使用单元测试目录下的测试文件进行调试研究具体接口的使用方式。</p>
+<h2 id="_6">原理</h2>
+<p>在Pebble中三个主要的结构是：memtable、sstable 以及logfile。内存表是内存中的结构，新的写入被插入内存表中，并且被写入到日志文件中。日志文件是在存储系统上的一个顺序写入的文件。在sstable中的数据是排好序的，以方便查找。读取必须在从sstable文件读取之前查询内存表，因为内存表中的数据更新。一旦内存表满了，它就会变为不可变的，并被一个新的内存表取代。后台线程将memtable的内容刷新为SST文件，之后可以销毁内存表，然后logfile就可以被安全地删除了。</p>
 <ul>
 <li>memtable       pebble/mem_table.go</li>
 <li>skiplist            pebble/internal/arenaskl</li>
 <li>sstable             pebble/sstable</li>
-<li>压缩</li>
+<li>compact</li>
 <li>logfile</li>
 <li>bloom              pebble/bloom</li>
 <li>快照</li>
 <li>检查点</li>
 <li>pipeline</li>
-<li>MANIFEST：数据库中的MANIFEST文件记录数据库状态。压缩过程添加新文件并从数据库中删除现有文件，并通过将它们记录在MANIFEST文件中使这些操作持久化。</li>
+<li>MANIFEST：数据库中的MANIFEST文件记录数据库状态。合并过程添加新文件并从数据库中删除现有文件，并通过将它们记录在MANIFEST文件中使这些操作持久化。</li>
 </ul>
-<h3 id="memtable">memtable</h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888">// 新建 memtable</span>
-<span style="color: #008800; font-weight: bold">func</span> newMemTable(o *db.Options) *memTable {
-    o = o.EnsureDefaults()
-    m := &amp;memTable{
-        cmp:       o.Comparer.Compare,
-        equal:     o.Comparer.Equal,
-        refs:      <span style="color: #0000DD; font-weight: bold">1</span>,
-        flushedCh: <span style="color: #003388">make</span>(<span style="color: #008800; font-weight: bold">chan</span> <span style="color: #008800; font-weight: bold">struct</span>{}),
-    }
+<h3 id="_7">内存表</h3>
+<p>内存表（memtable）的写出到磁盘的流程的调用栈如下所示（调试时，可以将MemTableSize大小设置为 4MB，在函数<code class="codehilite">func (m *memTable) unref()</code>中 v == 0的分支设置断点，然后调试跟踪写出流程）：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>(d *DB) runCompaction  <span style="color: #888888">// 新建文件，然后将 memtable 内容写出到磁盘</span>
+(d *DB) compact1()
+(d *DB) compact()
+<span style="color: #008800; font-weight: bold">go</span> d.compact()
 
-    <span style="color: #888888">// 一般情况下MemTableSize大小为64MB</span>
-    arena := arenaskl.NewArena(<span style="color: #003388">uint32</span>(o.MemTableSize), <span style="color: #0000DD; font-weight: bold">0</span>) 
-
-    <span style="color: #888888">// 复位跳跃表</span>
-    m.skl.Reset(arena, m.cmp)
-    m.rangeDelSkl.Reset(arena, m.cmp)
-    m.emptySize = arena.Size()
-    <span style="color: #008800; font-weight: bold">return</span> m
-}
+pebble.(*DB) maybeScheduleFlush
+pebble.(*memTable).unref
+pebble.(*DB).makeRoomForWrite
+pebble.(*DB).commitWrite
+pebble.(*DB).commitWrite-fm
+pebble.(*commitPipeline).prepare
+pebble.(*commitPipeline).Commit
+pebble.(*DB).Apply
+pebble.(*Batch).Commit
 </pre></div>
 
-<h3 id="_4">跳跃表</h3>
-<p>memtable的默认实现是跳跃表。skiplist是一个有序集合，当工作负载交错有范围扫描和写入操作时，这是一个必要的结构。简而言之，跳跃表是一种类似链表的结构，同时允许快速查找。</p>
+<h4 id="_8">跳跃表</h4>
+<p>内存表的默认实现是跳跃表。跳跃表是一个有序集合，当工作负载既有范围扫描，又有写入操作时，这是一个必要的结构。简而言之，跳跃表是一种类似链表的结构，同时允许快速查找。</p>
 <div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>  | 2 |  |  -------------------------------------&gt;  |
 L |   |  |  &lt;-------------------------------------  |
 E |   |  |                                          | 
@@ -85,7 +82,6 @@ S | 0 |  |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; NIL
 <p>其主要优势来自于专用性，无法提供通用跳跃表的实现：
 - 区域的大小设置了跳跃表节点，键和值的组合大小的上限。 此限制包括已删除节点，键和值的大小。
 - 不支持删除。相反，更高级别的代码会添加kv值和删除类型的新条目，并需要适当地处理这些条目的删除。</p>
-<h4 id="_5">数据结构</h4>
 <div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888">// 跳跃表的节点信息</span>
 <span style="color: #008800; font-weight: bold">type</span> node <span style="color: #008800; font-weight: bold">struct</span> {
     <span style="color: #888888">// 不可变字段，所以不需要对其加锁访问</span>
@@ -119,14 +115,14 @@ S | 0 |  |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; NIL
 </pre></div>
 
 <p>值得注意的是，节点分配内存，前后指针等，都是在固定区域的内存中分配，指针都是通过偏移来实现。</p>
-<h4 id="_6">插入</h4>
+<h4 id="_9">插入</h4>
 <ol>
-<li>随机选择一个新插入节点的高度：h层的概率：<span><span class="MathJax_Preview">rand(1, 64)  &lt; max_{uint32} * 1.0/e^{h-1}</span><script type="math/tex">rand(1, 64)  < max_{uint32} * 1.0/e^{h-1}</script></span>，层数越高，概率约小，指数下降。</li>
+<li>随机选择一个新插入节点的高度：h层的概率：<span><span class="MathJax_Preview">rand\_uint64()  &lt; max\_uint32 * 1.0/e^{h-1}</span><script type="math/tex">rand\_uint64()  < max\_uint32 * 1.0/e^{h-1}</script></span>，层数越高，概率约小，指数下降。</li>
 <li>找出每层需要插入的位置，第0层到第h层的位置都找到需要找到。</li>
 <li>然后生成新的节点，根据已经找到的插入位置，修改新节点中每层的前后指针，指向正确的位置。</li>
 <li>然后通过无锁方法，将每层的链表中的前后指针指向新节点。处理完成。</li>
 </ol>
-<h4 id="_7">无锁</h4>
+<h4 id="_10">无锁</h4>
 <p>从第0层到第h层，每一层通过双向链表的无锁CAS实现：</p>
 <div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>+----------------+     +------------+     +----------------+
 |      prev      |     |     nd     |     |      next      |
@@ -145,8 +141,9 @@ S | 0 |  |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; NIL
 <li>加入next的线程还米有计划添加prev链接（但是很短的时间之后会添加）</li>
 <li>另一个线程已经在prev和next之间加了一个新连接</li>
 </ol>
+<p>操作过程出现冲突的情况，需要重新定位插入位置，前后指针信息，然后再次插入，如果有一个新的相同key插入了，则报错已存在，然后退出。</p>
 <p>详细参考：文件 skl.go 的函数 addInternal 。</p>
-<h4 id="_8">查找</h4>
+<h4 id="_11">查找</h4>
 <p>当前的arenaskl实现，通过迭代器的方式提供：</p>
 <div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888">// memTable的get方法用于查找对应的key</span>
 <span style="color: #008800; font-weight: bold">func</span> (m *memTable) get(key []<span style="color: #888888; font-weight: bold">byte</span>) (value []<span style="color: #888888; font-weight: bold">byte</span>, err <span style="color: #888888; font-weight: bold">error</span>) {
@@ -182,7 +179,55 @@ S | 0 |  |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; NIL
 <li><a href="https://homepage.cs.uiowa.edu/~ghosh/skip.pdf">https://homepage.cs.uiowa.edu/~ghosh/skip.pdf</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</a></li>
 </ol>
-<h2 id="_9">测试</h2>
+<h3 id="_12">预写日志</h3>
+<p>WAL 相关的内容在 <code class="codehilite">pebble/internal/record</code> 目录中。</p>
+<p>WAL 日志写出流程：</p>
+<ol>
+<li>在提交写入时(commitWrite)，将 wal日志写到队列中</li>
+<li>在一个 goroutine 中循环flushLoop接受数据，然后刷新到磁盘中</li>
+</ol>
+<h3 id="_13">提交管道</h3>
+<p>提交管道用于管理一系列原子提交变更（在单批中包含）到DB的阶段。主要包括</p>
+<ol>
+<li>将批写入到WAL，并且可选是否将WAL刷新到磁盘。</li>
+<li>将变更应用到memtable。</li>
+</ol>
+<p>这两个步骤在期望高性能的场景下变得很复杂。在没有并发的情况下，性能被限制为一批数据写入（刷新）到WAL以及添加到memtable中的速度，这两个点都在提交管道的范围之外。提交管道主要关注并发场景的性能，同时还要维护下面的两个不变性：</p>
+<ol>
+<li>所有batch需要以序列号的顺序写出到WAL。</li>
+<li>所有batch需要以序列号的顺序对读操作可见。这种不变性源于使用单个序列号来指示哪些变更是可见的。</li>
+</ol>
+<p>考虑这两种不变性，让我们重新考虑提交管道需要做的工作。将批量操作以串行化的方式写入WAL是必须的，因为只有一个WAL对象。注意，写WAL非常快，通常都是内存拷贝。将批量变更应用到内存表可以并发处理，因为底层跳跃表支持并发插入。发布可见序列是另一个串行化点，但是有一个变化：可见序列号不能被碰撞，直到早期批次的变更已经完成应用于内存表（可见序列号只是棘轮）。
+最后，如果发出请求，则提交等待WAL同步。
+请注意，在棘轮显示可见序列号后等待WAL同步，允许另一个goroutine在WAL同步之前读取已提交的数据。这与RocksDB的手动WAL刷新功能类似。
+如有必要，应用程序代码需要对此进行保护。</p>
+<p>提交管道操作的完整操作如下：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>加锁：
+    分配批操作序列号
+    将批写到WAL
+将批刷新到WAL同步列表中（可选）
+将批操作应用到memtable中（并发地）
+等待更早的批应用完成
+棘轮读序列号
+等待WAL刷新（可选）
+</pre></div>
+
+<p>一旦批处理被写入WAL，就会释放提交管道的互斥锁，允许另一个批处理写入WAL。
+每个提交操作单独将其批处理应用于提供并发的内存表。 WAL同步与应用内存表同时发生（请参阅commitPipeline.syncLoop）。</p>
+<p>“等待早期批次应用”的工作比预期要复杂得多。显而易见的方法是保留待处理批次的队列，并为每个批次等待上一批次完成提交。
+这种方法最初尝试过，结果太慢了。
+问题在于它会导致过多的Go例程活动，因为每个提交的Go例程都需要唤醒，以便下一个Go例程被解除阻塞。当前代码中采用的方法在概念上是相似的，但它避免唤醒Go例程来执行另一个Go例程可以执行的工作。 
+commitQueue（单生产者，多消费者队列）包含提交批次的有序列表。
+在保存commitPipeline.mutex的同时完成对队列的添加，确保队列中批次的顺序与WAL中的排序相同。
+当批处理完成对内存表的应用时，它会自动更新其Batch.applied字段。
+通过commitPipeline.publish完成可见序列号的棘轮操作，该循环使“应用”批次出队列并使棘轮显示可见序列号。
+如果我们在队列的头部遇到未应用的批处理，我们可以阻塞，因为我们知道提交该未应用的批处理最终将在队列中找到我们的（应用的）批。
+请参阅commitPipeline.publish以获取其他评论。</p>
+<p>上面的内容主要<a href="https://github.com/petermattis/pebble/blob/ac24a9f2af5377ec9f62e878bbe9bee6c56e4389/commit.go#L143">参考这个文件commit.go中的注释</a>。</p>
+<h3 id="_14">合并</h3>
+<h3 id="_15">快照</h3>
+<h2 id="_16">测试</h2>
+<p>如何细粒度分析Pebble的瓶颈？考虑CPU(cache miss)、内存、磁盘IO、线程切换、锁竞争等瓶颈？</p>
 <p>单元测试：</p>
 <div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #003388">cd</span> <span style="color: #336699">$GOPATH</span>/src/github.com/petermattis/pebble/
 go <span style="color: #003388">test</span>
@@ -215,8 +260,8 @@ go <span style="color: #003388">test</span>
 <span style="color: #888888">// go tool pprof cpu.prof</span>
 </pre></div>
 
-<h2 id="_10">代码</h2>
-<h2 id="_11">参考</h2>
+<h2 id="_17">代码</h2>
+<h2 id="_18">参考</h2>
 <ol>
 <li><a href="https://github.com/petermattis/pebble">https://github.com/petermattis/pebble</a></li>
 <li><a href="https://github.com/facebook/rocksdb/wiki/rocksdb-basics">https://github.com/facebook/rocksdb/wiki/rocksdb-basics</a></li>

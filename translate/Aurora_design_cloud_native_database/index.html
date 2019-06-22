@@ -1,0 +1,86 @@
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/Aurora_design_cloud_native_database/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Aurora：我们如何设计云原生关系数据库 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#aurora" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Aurora：我们如何设计云原生关系数据库</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Database</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Database</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/pebble/" title="pebble kv存储引擎" class="md-nav__link">pebble kv存储引擎</a></li><li class="md-nav__item"><a href="../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../Aurora.md" title="Aurora如何设计云原生关系数据库" class="md-nav__link">Aurora如何设计云原生关系数据库</a></li><li class="md-nav__item"><a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../articles/partition/" title="数据分区" class="md-nav__link">数据分区</a></li><li class="md-nav__item"><a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distribute</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distribute</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1"><label class="md-nav__link" for="nav-3-1">分布式系统:算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-1">分布式系统:算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../distributed_systems/01_introduction/" title="第一章:概述" class="md-nav__link">第一章:概述</a></li><li class="md-nav__item"><a href="../../distributed_systems/02_interprocess/" title="第二章:进程间通信" class="md-nav__link">第二章:进程间通信</a></li></ul></nav></li><li class="md-nav__item"><a href="../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../zookeeper/" title="Zookeeper" class="md-nav__link">Zookeeper</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li><li class="md-nav__item"><a href="../../about/" title="About" class="md-nav__link">About</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="关系数据库的重新构想" class="md-nav__link">关系数据库的重新构想</a></li><li class="md-nav__item"><a href="#redo" title="卸载REDO日志：日志是数据库" class="md-nav__link">卸载REDO日志：日志是数据库</a></li><li class="md-nav__item"><a href="#_2" title="基于单元的架构" class="md-nav__link">基于单元的架构</a></li><li class="md-nav__item"><a href="#the-beauty-of-quorums" title="The beauty of quorums" class="md-nav__link">The beauty of quorums</a></li><li class="md-nav__item"><a href="#_3" title="快速修复和追赶" class="md-nav__link">快速修复和追赶</a></li><li class="md-nav__item"><a href="#_4" title="创新的基础" class="md-nav__link">创新的基础</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="aurora">Aurora：我们如何设计云原生关系数据库</h1>
+<p>关系数据库已经存在很多年了，关系模型在70年代由E.F. Codd首创。支撑当今主要关系数据库管理系统的核心技术是在1980-1990年代开发的。关系数据库基础，包括数据关系、事务ACID和SQL查询语言，经受住了时间的考验。这些基础知识使关系数据库在世界各地的用户中非常流行。它们仍然是许多公司IT基础架构的基石。</p>
+<p>这并不是说系统管理员必然会喜欢处理关系数据库。几十年来，管理关系数据库一直是一项高技能、劳动密集型的任务。这是一项需要专门系统和数据库管理员全神贯注完成的任务。在保持容错性、性能和故障影响范围的同时，<strong>扩展</strong> 关系数据库一直是管理员面临的一个挑战。</p>
+<p>同时，现代互联网工作负载变得越来越苛刻，需要基础设施的几个基本属性：
+1. 用户希望从较小的规模开始，然后在不限制其速度的基础设施的情况下能够大规模增长。
+2. 在大型系统中，故障是一种常态，而非例外。客户工作负载必须与组件故障或系统故障隔离。
+3. 影响范围小。没有人希望单个系统故障对他们的业务产生很大影响。</p>
+<p>这些都是很困难的问题，解决这些问题需要摆脱旧的关系数据库体系结构。当Amazon面临像Oracle这样的老式关系数据库的局限性时，我们创建了一个现代的关系数据库服务Amazon Aurora。</p>
+<p>Aurora的设计保留了关系数据库的核心事务一致性优势。它在存储层进行创新，创建一个为云构建的数据库，该数据库可以支持现代工作负载，而不会牺牲性能。客户喜欢这一点，因为Aurora以十分之一的成本提供商业级数据库的性能和可用性。自Aurora最初发布以来，它一直是AWS历史上增长最快的服务。</p>
+<p>在这篇文章中，我想让你看看我们是如何建造Aurora的。我还将讨论为什么客户采用它的速度比AWS历史上任何其他服务都快。</p>
+<h2 id="_1">关系数据库的重新构想</h2>
+<p>老式关系数据库体系结构：
+<img alt="database architecture" src="https://www.allthingsdistributed.com/images/auroradesign2.png" /></p>
+<p>在过去的30-40年中，这种单一的关系数据库栈没有发生太大的变化。尽管存在用于扩展数据库的不同传统方法（例如，分片、无共享或共享磁盘），但所有这些方法都共享相同的基本数据库体系结构。它们都不能解决大规模的性能、弹性和故障范围的问题，因为紧密耦合的单体的基本约束仍然存在。</p>
+<p>为了开始解决关系数据库的局限性，我们通过将系统分解为基本的构建块来重新认识栈。我们认识到 <strong>缓存和日志记录层</strong> 已经成熟，可以进行创新。我们可以将这些层移动到专门构建、扩展、自我修复、多租户、数据库优化的存储服务中。当我们开始构建分布式存储系统时，Amazon Aurora诞生了。</p>
+<h2 id="redo">卸载REDO日志：日志是数据库</h2>
+<p>传统的关系数据库在页面中组织数据，当页面被修改时，它们必须定期刷新到磁盘。为了抵御失败和维护ACID语义，页面修改也记录在REDO日志记录中，REDO日志记录以连续流的形式写入磁盘。虽然这种体系结构提供了支持关系数据库管理系统所需的基本功能，但它存在效率低下的问题。例如，一个逻辑写入会变成多个（最多五个）物理磁盘写入，从而导致性能问题。</p>
+<p>数据库管理员试图通过减少页面刷新频率来解决写放大问题。这反过来又恶化了崩溃恢复持续时间的问题。刷新间隔越长，意味着用于重建正确页面从磁盘读取的REDO日志记录越多。这会导致恢复较慢。</p>
+<p>在Amazon Aurora中，日志是数据库。数据库实例将REDO日志记录写入分布式存储层，存储负责根据需要从日志记录构建页面。数据库实例从不需要刷新脏页，因为存储层总是知道页面内容。这提高了数据库的性能和可靠性。由于消除了写放大和使用扩展存储组，写性能大大提高。</p>
+<p>例如，与运行在类似硬件上的Amazon RDS for MySQL相比，Amazon Aurora MySQL兼容版在SysBench基准测试中显示了5倍的写入IOPS。数据库崩溃恢复时间大大缩短，因为数据库实例不再需要执行REDO日志流重演。存储层负责REDO日志在读取时的页面的生成，从而使新的存储服务不受传统数据库体系结构的约束，因此可以进一步进行创新。</p>
+<h2 id="_2">基于单元的架构</h2>
+<p>正如我之前所说，一切都会出现故障。在大型系统中，组件会发生故障，并且经常发生故障。整个实例出现故障。网络故障可以隔离大量基础设施。更不常见的是，由于自然灾害，整个数据中心可能会变得孤立或瘫痪。在AWS，我们处理故障，并且在问题发生之前依靠基于单元的体系结构来解决问题。</p>
+<p>AWS有多个地理区域（20个），在每个区域内，我们有多个可用区域。利用多个区域和区域，设计良好的服务可以在不影响服务可用性的情况下，在组件故障和更大的灾难中生存下来。Amazon Aurora将所有写操作复制到三个区域，以提供卓越的数据耐久性和可用性。事实上，Aurora可以在不丢失数据可用性的情况下容忍整个区域的丢失，并且可以从更大的故障中快速恢复。</p>
+<p><img alt="cell-based architecture" src="https://www.allthingsdistributed.com/images/auroradesign3.png" /></p>
+<p>然而，众所周知复制是资源密集型的，那么，是什么使得Aurora能够在提供高性能的同时提供强大的数据复制呢？答案在于quorums。</p>
+<h2 id="the-beauty-of-quorums">The beauty of quorums</h2>
+<p>一切都会出现故障。系统越大，某物在某个地方被破坏的可能性就越大：网络链路、SSD、整个实例或软件组件。即使软件组件没有bug，它仍然需要定期重启进行升级。</p>
+<p>传统的阻塞I/O处理直到故障转移可以执行，并且在出现故障组件时以“降级模式”运行的方法在规模上存在问题。应用程序通常不能很好地容忍I/O中断。通过中等复杂的数学计算，可以证明，在大型系统中，随着系统规模的增大，降级模式下运行的概率接近1。然后，有一个真正令人讨厌的“灰色故障”问题，当组件没有完全失效，而是变慢时，就会出现这种问题。如果系统设计没有预见到滞后，慢的组件会拖累整个系统的性能。</p>
+<p>Amazon Aurora使用Quorums来解决组件故障和性能下降的问题。写仲裁的基本思想很简单：写入尽可能多的副本，以确保仲裁读取总是找到最新的数据。最基本的Quorums示例是“三取二”：</p>
+<div>
+<div class="MathJax_Preview">V_w+V_r &gt; V</div>
+<script type="math/tex; mode=display">V_w+V_r > V</script>
+</div>
+<div>
+<div class="MathJax_Preview">V_w &gt; V / 2</div>
+<script type="math/tex; mode=display">V_w > V / 2</script>
+</div>
+<div>
+<div class="MathJax_Preview">V=3</div>
+<script type="math/tex; mode=display">V=3</script>
+</div>
+<div>
+<div class="MathJax_Preview">V_w=V_r=2</div>
+<script type="math/tex; mode=display">V_w=V_r=2</script>
+</div>
+<p>例如，您可能要执行三次物理写入，写入仲裁为2。在逻辑写入操作成功之前，您不必等待所有三个操作都完成。如果一次写入失败或速度慢，这是正常的，因为总体操作结果和延迟不会受到异常值的影响。这很重要：即使有什么东西坏了，写入也能成功而且速度很快。</p>
+<p>简单的&#8532;仲裁允许您容忍整个可用性区域的故障。不过，这还不够好。虽然一个区域的故障是一个罕见的事件，但它不会降低其他区域中组件故障的可能性。使用Aurora，我们的目标是可用性区域+1：我们希望能够容忍一个区域的丢失，再加上一个故障，而不会造成任何数据持久性丢失，并且对数据可用性的影响最小。我们使用4/6的Quorums来实现这一目标：</p>
+<div>
+<div class="MathJax_Preview">V_w+V_r &gt; V</div>
+<script type="math/tex; mode=display">V_w+V_r > V</script>
+</div>
+<div>
+<div class="MathJax_Preview">V_w &gt; V / 2</div>
+<script type="math/tex; mode=display">V_w > V / 2</script>
+</div>
+<div>
+<div class="MathJax_Preview">V=6</div>
+<script type="math/tex; mode=display">V=6</script>
+</div>
+<div>
+<div class="MathJax_Preview">V_w=4</div>
+<script type="math/tex; mode=display">V_w=4</script>
+</div>
+<div>
+<div class="MathJax_Preview">V_r=3</div>
+<script type="math/tex; mode=display">V_r=3</script>
+</div>
+<p>对于每个逻辑日志写入，我们发出六个物理副本写入，并考虑当其中四个写入完成时写入操作成功。在每个区域有两个副本的情况下，如果整个可用性区域发生故障，则写入仍将完成。如果某个区域出现故障，并且发生其他故障，您仍然可以达到读取仲裁，然后通过快速修复快速恢复写入能力。</p>
+<h2 id="_3">快速修复和追赶</h2>
+<p>数据复制有不同的方法。在传统存储系统中，数据镜像或擦除编码发生在整个物理存储单元的级别上，几个单元组合在一个RAID阵列中。这种方法使修复速度变慢。RAID阵列重建性能受到阵列中少数设备功能的限制。随着存储设备越来越大，在重建过程中应复制的数据量也会越来越大。</p>
+<p>Amazon Aurora使用了一种完全不同的复制方法，基于分片和扩展架构。Aurora数据库卷逻辑上分为10GB逻辑单元（保护组），每个保护组以六种方式复制到物理单元（段）。单个存储段分布在一个大型分布式存储中。当发生故障并取出一个段时，修复单个保护组只需要移动大约10GB的数据，这在几秒钟内完成。</p>
+<p>此外，当必须修复多个保护组时，整个存储组都会参与修复过程。这提供了大量的带宽来快速完成整个修复。因此，如果区域故障后又出现另一个组件故障，对于给定的保护组，Aurora可能会在几秒钟内失去写入仲裁。然而，一个自动启动的修复然后恢复高速可写性。换言之，Aurora的储存会很快自我修复。</p>
+<p>读取怎么样？Quorum读取代价很高，最好避免。客户端Aurora存储驱动程序跟踪哪些段的写入成功。它不需要在常规的页面读取上执行仲裁读取，因为它总是知道从何处获取页面的最新副本。此外，驱动程序跟踪读取延迟，并始终尝试从存储节点读取，该节点显示了过去的最低延迟。唯一需要仲裁读取的情况是在数据库实例重新启动时进行恢复。初始的LSN标记集必须通过询问存储节点来重建。</p>
+<h2 id="_4">创新的基础</h2>
+<p>许多引人注目的新Aurora功能都直接由分布式自愈存储体系结构实现。举几个例子：</p>
+<ul>
+<li><strong>读可伸缩性</strong>：除了主数据库实例外，在Aurora的多个区域中最多可以提供15个读副本，以实现读可伸缩性和更高的可用性。读取副本使用与主机相同的共享存储卷。</li>
+<li><strong>连续备份和时间点恢复</strong>：Aurora存储层连续透明地将REDO日志流备份到Amazon S3。您可以执行时间点还原到配置的备份窗口中的任何时间戳。不需要计划快照创建，并且当最接近感兴趣时间的快照距离较远时，不会丢失任何事务。</li>
+<li><strong>快速克隆</strong>：Aurora存储层可以快速创建卷的物理副本，而无需复制所有页面。页面最初在父卷和子卷之间共享，在修改页面时完成写入时的复制。克隆卷时没有重复成本。</li>
+<li><strong>Backtrack</strong>：将数据库回退到特定时间点的快速方法，无需从备份中进行完全恢复。误丢了一张表？你可以用Aurora Backtrack来回退。</li>
+</ul>
+<p>在Aurora存储引擎的基础上建立了更多的关系数据库创新。我们都进入了关系数据库的新时代，而Aurora只是一个开始。客户的声音是最好的回应。Capital One、Dow Jones、Netflix和Verizon等各行业的领导者都在将关系数据库工作负载迁移到Aurora，包括MySQL和PostgreSQL兼容版本。</p>
+<p>想进一步了解Amazon Aurora设计吗？</p>
+<p><a href="https://www.allthingsdistributed.com/files/p1041-verbitski.pdf">Amazon Aurora: Design Considerations for High Throughput Cloud-Native Relational Databases</a>. <em>In SIGMOD 2017</em></p>
+<p><a href="https://dl.acm.org/citation.cfm?id=3183713.3196937">Amazon Aurora: On Avoiding Distributed Consensus for I/Os, Commits, and Membership Changes</a>. <em>In SIGMOD 2018</em></p>
+<p>根据<a href="https://www.allthingsdistributed.com/2019/03/Amazon-Aurora-design-cloud-native-relational-database.html">英文原文</a>翻译而来。</p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.d5a09f94.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
