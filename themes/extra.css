@@ -71,7 +71,8 @@ h1,
     margin-right: auto;
 }
 
-table {
-    position: relative;
-    left: 40%;
+.md-typeset__table {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
 }
