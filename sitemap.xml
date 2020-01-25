@@ -2,117 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://iswade.github.io/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/articles/pebble/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/faunadb_transaction/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://iswade.github.io/translate/Aurora_design_cloud_native_database/</loc>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/btree_vs_lsmtree/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/notes/db_nodes/00_database_systems_2018/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/F1_query/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/articles/partition/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/articles/boltdb/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://iswade.github.io/distributed_systems/00_preface/</loc>
-     <lastmod>2019-07-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://iswade.github.io/distributed_systems/01_introduction/</loc>
-     <lastmod>2019-07-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://iswade.github.io/distributed_systems/02_interprocess/</loc>
-     <lastmod>2019-07-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://iswade.github.io/distributed_systems/03_models/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <loc>https://iswade.github.io/database/db_internals_ch09_failure_detection/</loc>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/distsys/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/strong_consistency_models/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/distributed_systems/00_preface/</loc>
+     <lastmod>2020-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/distributed_systems/01_introduction/</loc>
+     <lastmod>2020-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/distributed_systems/02_interprocess/</loc>
+     <lastmod>2020-01-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/distributed_systems/03_models/</loc>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/zookeeper/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/articles/go_concurrency/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/go_interface/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/advanced_markdown/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/linux_sysadmin/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/notes/git/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://iswade.github.io/translate/to_be_manager/</loc>
-     <lastmod>2019-07-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://iswade.github.io/about/</loc>
-     <lastmod>2019-07-07</lastmod>
+     <lastmod>2020-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
