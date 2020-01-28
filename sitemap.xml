@@ -36,22 +36,7 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://iswade.github.io/articles/partition/</loc>
-     <lastmod>2020-01-28</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
      <loc>https://iswade.github.io/articles/boltdb/</loc>
-     <lastmod>2020-01-28</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://iswade.github.io/database/db_internals_ch14_consensus/</loc>
-     <lastmod>2020-01-28</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://iswade.github.io/database/db_internals_ch09_failure_detection/</loc>
      <lastmod>2020-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -61,7 +46,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://iswade.github.io/translate/strong_consistency_models/</loc>
+     <loc>https://iswade.github.io/articles/partition/</loc>
+     <lastmod>2020-01-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/database/db_internals_ch09_failure_detection/</loc>
+     <lastmod>2020-01-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/database/db_internals_ch14_consensus/</loc>
      <lastmod>2020-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -82,6 +77,11 @@
     </url>
     <url>
      <loc>https://iswade.github.io/distributed_systems/03_models/</loc>
+     <lastmod>2020-01-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://iswade.github.io/translate/strong_consistency_models/</loc>
      <lastmod>2020-01-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
