@@ -1,4 +1,706 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_sql_life/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>[译] SQL的一生（CRDB） - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#sqlcrdb" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">[译] SQL的一生（CRDB）</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="介绍" class="md-nav__link">介绍</a></li><li class="md-nav__item"><a href="#_2" title="限制" class="md-nav__link">限制</a></li><li class="md-nav__item"><a href="#postgres" title="Postgres协议" class="md-nav__link">Postgres协议</a></li><li class="md-nav__item"><a href="#sql" title="SQL 执行器" class="md-nav__link">SQL 执行器</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="解析" class="md-nav__link">解析</a></li><li class="md-nav__item"><a href="#_4" title="执行" class="md-nav__link">执行</a></li><li class="md-nav__item"><a href="#_5" title="构建执行计划" class="md-nav__link">构建执行计划</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="sqlcrdb">[译] SQL的一生（CRDB）</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_sql_life/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>[译] SQL的一生（CRDB） - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#sqlcrdb" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                [译] SQL的一生（CRDB）
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    限制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postgres" class="md-nav__link">
+    Postgres协议
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    SQL 执行器
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    构建执行计划
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="sqlcrdb">[译] SQL的一生（CRDB）</h1>
 <h2 id="_1">介绍</h2>
 <p>这篇文章旨在解释 CockroachDB 中 SQL 查询的执行流程，解释系统中经过各个层的代码路径（网络协议、SQL session 管理、解析、执行计划、语法树转换、查询运行、KV 代码的接口、KV 请求的路由、请求处理、Raft、磁盘存储引擎）。主要想法是给出各类组件结构的高层统一视图；不会深入探讨某一个特定的部分，但是会给出其它的一些文档。以及相关的代码。</p>
 <p>这篇文档不会讨论设计决策，会聚焦在跟踪当前实际代码上。</p>
@@ -6,14 +708,79 @@
 <h2 id="_2">限制</h2>
 <h2 id="postgres">Postgres协议</h2>
 <h2 id="sql">SQL 执行器</h2>
-<p><code class="codehilite">sql.Executor</code> 负责解析语句、执行然返回结果给 <code class="codehilite">pgwire.v3Conn</code>。入口点是 <code class="codehilite">Executer.execRequest</code>，这个接口接收的是 <code class="codehilite">string</code> 类型的一批语句。语句的执行过程在 <code class="codehilite">sql.Session</code> 对象的上下文中完成，这个对象聚集了连接的状态信息（例如：选择的数据库、可以设置的各种变量、事务状态），也会在任意给定的时间统计这个连接内存使用情况。<code class="codehilite">Executor</code> 也会操纵一个 <code class="codehilite">planner</code> 结构，这个结构提供了用来规划和执行一个查询请求的主要功能。</p>
-<p><code class="codehilite">Executor.execRequest()</code> 实现了从 <code class="codehilite">pgwire</code> 批量接受语句的状态机，一条条地执行，更新 <code class="codehilite">Session</code>' 的事务状态（是否一个新的事务开始了，或者一个旧的事务结束了，是否当前遇到了一个错误必须要退出当前事务）并且会返回结果和控制信息给 <code class="codehilite">pgwire</code>。从客户端会继续接收到下一批语句会从上一批的事务状态继续。</p>
+<p><code class="codehilite"><span style="color: #000000">sql.Executor</span></code> 负责解析语句、执行然返回结果给 <code class="codehilite"><span style="color: #000000">pgwire.v3Conn</span></code>。入口点是 <code class="codehilite"><span style="color: #000000">Executer.execRequest</span></code>，这个接口接收的是 <code class="codehilite"><span style="color: #000000">string</span></code> 类型的一批语句。语句的执行过程在 <code class="codehilite"><span style="color: #000000">sql.Session</span></code> 对象的上下文中完成，这个对象聚集了连接的状态信息（例如：选择的数据库、可以设置的各种变量、事务状态），也会在任意给定的时间统计这个连接内存使用情况。<code class="codehilite"><span style="color: #000000">Executor</span></code> 也会操纵一个 <code class="codehilite"><span style="color: #000000">planner</span></code> 结构，这个结构提供了用来规划和执行一个查询请求的主要功能。</p>
+<p><code class="codehilite"><span style="color: #000000">Executor.execRequest()</span></code> 实现了从 <code class="codehilite"><span style="color: #000000">pgwire</span></code> 批量接受语句的状态机，一条条地执行，更新 <code class="codehilite"><span style="color: #000000">Session</span></code>' 的事务状态（是否一个新的事务开始了，或者一个旧的事务结束了，是否当前遇到了一个错误必须要退出当前事务）并且会返回结果和控制信息给 <code class="codehilite"><span style="color: #000000">pgwire</span></code>。从客户端会继续接收到下一批语句会从上一批的事务状态继续。</p>
 <h3 id="_3">解析</h3>
-<p>执行器第一件做的事情是解析语句，解析过程用到了 <a href="https://github.com/cockroachdb/cockroach/blob/677f6f18b63355cb2d040b251af202fe6505128f/pkg/sql/parser/sql.y">yacc 类似的语法文件</a>，由<code class="codehilite">go-yacc</code> 生成的 LALR 解析器，最初是从 Postgres 拷贝并剥离下来，然后随着越来越多的 SQL 支持慢慢增长。解析过程将 <code class="codehilite">string</code> 转换成一个由抽象语法树（AST）组成的数组，一个语句一条记录。AST 节点是结构体定义在 <code class="codehilite">sql.parser</code> 包中，一般是两种类型 ：语句和表达式。表达式实现了通用接口方便应用树转换。这些 AST 会被 <code class="codehilite">planner</code> 转换为执行计划。</p>
+<p>执行器第一件做的事情是解析语句，解析过程用到了 <a href="https://github.com/cockroachdb/cockroach/blob/677f6f18b63355cb2d040b251af202fe6505128f/pkg/sql/parser/sql.y">yacc 类似的语法文件</a>，由<code class="codehilite"><span style="color: #000000">go-yacc</span></code> 生成的 LALR 解析器，最初是从 Postgres 拷贝并剥离下来，然后随着越来越多的 SQL 支持慢慢增长。解析过程将 <code class="codehilite"><span style="color: #000000">string</span></code> 转换成一个由抽象语法树（AST）组成的数组，一个语句一条记录。AST 节点是结构体定义在 <code class="codehilite"><span style="color: #000000">sql.parser</span></code> 包中，一般是两种类型 ：语句和表达式。表达式实现了通用接口方便应用树转换。这些 AST 会被 <code class="codehilite"><span style="color: #000000">planner</span></code> 转换为执行计划。</p>
 <h3 id="_4">执行</h3>
-<p>当前有一个语句的列表，<code class="codehilite">Executor.execRequest()</code> 按顺序遍历，一次执行一个事务中的语句（例如：语句在 <code class="codehilite">BEGIN</code> 和 <code class="codehilite">COMMIT/ROLLBACK</code> 之间的一组语句，或者在事务之外的一条语句）。如果一个会话在前一批执行执行完之后事务被开启，会继续后面的语句直到遇到一个 <code class="codehilite">COMMIT/ROLLBACK</code>。“继续执行语句”由 <code class="codehilite">runTxnAttempt</code> 完成；这个函数会返回到执行时遇到 <code class="codehilite">COMMIT/ROLLBACK</code>。</p>
+<p>当前有一个语句的列表，<code class="codehilite"><span style="color: #000000">Executor.execRequest()</span></code> 按顺序遍历，一次执行一个事务中的语句（例如：语句在 <code class="codehilite"><span style="color: #000000">BEGIN</span></code> 和 <code class="codehilite"><span style="color: #000000">COMMIT/ROLLBACK</span></code> 之间的一组语句，或者在事务之外的一条语句）。如果一个会话在前一批执行执行完之后事务被开启，会继续后面的语句直到遇到一个 <code class="codehilite"><span style="color: #000000">COMMIT/ROLLBACK</span></code>。“继续执行语句”由 <code class="codehilite"><span style="color: #000000">runTxnAttempt</span></code> 完成；这个函数会返回到执行时遇到 <code class="codehilite"><span style="color: #000000">COMMIT/ROLLBACK</span></code>。</p>
 <p>(Todo)</p>
 <h3 id="_5">构建执行计划</h3>
 <h2 id="_6"></h2>
 <p>作者：Andrei Matei</p>
-<p>翻译：王世德</p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p>翻译：王世德</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,842 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/database/db_internals_ch13_dist_transactions/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>分布式系统之分布式事务 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                分布式系统之分布式事务
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    使操作看起来像原子的
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    两阶段提交
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    参与者故障
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    协调者故障
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    三阶段提交
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    协调者故障
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calvin" class="md-nav__link">
+    Calvin 的分布式事务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spanner" class="md-nav__link">
+    Spanner 的分布式事务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    数据库分区
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#percolator" class="md-nav__link">
+    Percolator 的分布式事务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    避免协调
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">分布式系统之分布式事务</h1>
+<p>为了保持分布式系统中的顺序，我们必须保证至少某些一致性。在“一致性模型”中，我们讨论了单对象单操作一致性模型，这些模型有助于我们对各个操作进行推理。但是，在数据库中，我们经常需要自动执行多个操作。</p>
+<p>原子操作是根据状态转换来解释的：在启动特定事务之前，数据库处于状态A；到完成时，状态从A变为B。在操作方面，这很容易理解，因为事务没有预定的附加状态。相反，它们从某个时间点开始将操作应用于数据记录。这使我们在调度和执行方面具有一定的灵活性：可以对事务进行重新排序，甚至可以重试。</p>
+<p>事务处理的主要重点是确定允许的历史记录，以建模和表示可能的交错执行方案。在这种情况下，历史记录表示依赖关系图：在执行当前事务之前已执行了哪些事务。如果历史记录与顺序执行这些事务的某些历史记录等效（即具有相同的依赖关系图），则可以说该历史记录是可穿行化的。您可以在“可串行化”中查看历史的概念，它们的等效性，可串行化性以及其他概念。通常，本章与第5章的分布式系统相对应，我们在第5章讨论了节点本地事务处理。</p>
+<p>单分区事务涉及我们在第5章中讨论过的悲观（基于锁或跟踪）或乐观（尝试并验证）并发控制方案，但是这些方法均不能解决需要在不同服务器之间进行协调、分布式提交和回滚协议的多分区事务的问题。</p>
+<p>一般来说，当您将资金从一个帐户转移到另一个帐户时，您既要同时贷记第一个帐户，又要同时借记第二个帐户的费用。但是，如果我们将交易分为几个步骤，即使是借方还是贷方乍一看也不是原子的：我们需要读取旧余额，添加或减去所需的金额，然后保存此结果。这些子步骤中的每个步骤都涉及几个操作：节点接收请求，解析请求，在磁盘上定位数据，进行写操作并最终确认。即使这是一个相当高级的视图：要执行简单的写入，我们必须执行数百个小步骤。</p>
+<p>这意味着我们必须首先执行事务，然后才使其结果可见。但是，让我们首先定义什么是事务。事务是一组操作，是执行的基本单位。事务的原子性意味着它的所有结果都<strong>变得可见或不可见</strong>。例如，如果我们在单个事务中修改了几行甚至表，则将应用所有修改或不应用任何修改。</p>
+<p>为了确保原子性，事务应该是可恢复的。换句话说，如果事务无法完成，中止或超时，则其结果必须完全回滚。不可恢复的，部分执行的事务可能会使数据库处于不一致状态。总而言之，在事务执行失败的情况下，必须将数据库状态恢复为之前的状态，就像从未尝试过该事务一样。</p>
+<p>另一个重要方面是网络分区和节点故障：系统中的节点发生故障并独立恢复，但是它们的状态必须保持一致。这意味着原子性要求不仅适用于本地操作，而且还适用于在其他节点上执行的操作：更改必须持久地传播到事务中涉及的所有节点，或者不传播给所有节点。</p>
+<h2 id="_2">使操作看起来像原子的</h2>
+<p>为了使多个操作看起来像原子操作，特别是如果其中一些操作是远程操作时，我们需要使用一类称为原子承诺的算法。原子承诺不允许参与者之间产生分歧：即使有一个参与者投票反对，交易也不会承诺。同时，这意味着失败的流程必须与其他同类团队得出相同的结论。此事实的另一个重要含义是，原子承诺算法在存在拜占庭式故障的情况下不起作用：当过程处于状态或决定任意值时，因为它与一致意见相矛盾。</p>
+<p>原子承诺试图解决的问题正在就是否执行提议事务达成一致。同类群组无法选择，影响或更改所提议的交易或提出任何替代方案：他们只能对是否愿意执行该交易进行投票。</p>
+<p>原子承诺算法并未对事务准备，提交或回滚操作的语义设置严格的要求。数据库实施者必须决定：</p>
+<ul>
+<li>当数据准备好提交时，它们只是交换指针使得变更对外可见。</li>
+<li>如何自己执行提交以使交易结果在最短的时间内可见。</li>
+<li>如果算法决定不提交，如何回滚事务所做的更改。</li>
+</ul>
+<p>我们在第5章中讨论了这些过程的本地节点实现。</p>
+<p>许多分布式系统使用原子提交算法，例如MySQL（用于分布式事务）和Kafka（用于生产者和消费者交互[MEHTA17]）。</p>
+<p>在数据库中，分布式事务由通常称为事务管理器<span><span class="MathJax_Preview">RM</span><script type="math/tex">RM</script></span>的组件执行。事务管理器<span><span class="MathJax_Preview">TM</span><script type="math/tex">TM</script></span>是一个子系统，负责调度，协调，执行和跟踪事务。在分布式环境中，事务管理器负责确保节点本地可见性保证与分布式原子操作规定的可见性一致。换句话说，事务在所有分区以及所有副本中提交。</p>
+<p>我们将讨论两种原子的提交算法：两阶段提交，它解决了提交问题，但又不允许协调程序失败。和三阶段提交，它解决了无阻塞原子提交问题，并且即使在协调员失败的情况下，也允许参与者继续。</p>
+<h2 id="_3">两阶段提交</h2>
+<h3 id="_4">参与者故障</h3>
+<h3 id="_5">协调者故障</h3>
+<h2 id="_6">三阶段提交</h2>
+<h3 id="_7">协调者故障</h3>
+<h2 id="calvin">Calvin 的分布式事务</h2>
+<p>确定性事务，sequencer 组件</p>
+<h2 id="spanner">Spanner 的分布式事务</h2>
+<h2 id="_8">数据库分区</h2>
+<h2 id="percolator">Percolator 的分布式事务</h2>
+<h2 id="_9">避免协调</h2>
+<h2 id="_10">总结</h2>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

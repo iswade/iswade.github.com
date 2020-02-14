@@ -1,4 +1,642 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/The State of the Art in Distributed Query Processing/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>分布式查询处理的最新进展 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">分布式查询处理的最新进展</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="_1">分布式查询处理的最新进展</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/The State of the Art in Distributed Query Processing/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>分布式查询处理的最新进展 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                分布式查询处理的最新进展
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">分布式查询处理的最新进展</h1>
 <p>DONALD KOSSMANN</p>
 <p>University of Passau</p>
 <p>2000年发表</p>
@@ -47,23 +685,23 @@
 <h3 id="221">2.2.1 使用动态规划实现计划枚举</h3>
 <p>动态规划算法被大部分商业数据库产品使用，首创于 IBM System R 项目。动态规划的优点是，如果代价模型足够准确，它可以产生最好的计划。该算法的缺点是它具有<strong>指数时间和空间复杂度</strong>，因此对于复杂查询而言它是不可行的; 特别地，在分布式系统中，动态规划的复杂性对于许多查询来说令人望而却步。动态规划算法的扩展称为 <strong>迭代动态规划</strong>。这种扩展算法具有自适应性，可以为简单查询生成与基本动态规划一样好的计划，并为动态规划无法实现的复杂查询提供“尽可能好的计划”。 我们在本文中没有描述这种扩展的算法，有兴趣的读者可以参考 Kossmann和Stocker [2000]。</p>
 <p>基本的动态规划算法如下图所示：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #a61717; background-color: #e3d2d2">输入</span>: SPJ query q on relations R1,...,Rn
-<span style="color: #a61717; background-color: #e3d2d2">输出</span>: A query plan <span style="color: #008800; font-weight: bold">for</span> q
- <span style="color: #0000DD; font-weight: bold">1</span>: <span style="color: #008800; font-weight: bold">for</span> i = <span style="color: #0000DD; font-weight: bold">1</span> to n <span style="color: #008800; font-weight: bold">do</span> {
- <span style="color: #0000DD; font-weight: bold">2</span>:     optPlan({Ri}) = accessPlans(Ri)
- <span style="color: #0000DD; font-weight: bold">3</span>:     prunePlans(optPlan({Ri}))
- <span style="color: #0000DD; font-weight: bold">4</span>: }
- <span style="color: #0000DD; font-weight: bold">5</span>: <span style="color: #008800; font-weight: bold">for</span> i = <span style="color: #0000DD; font-weight: bold">2</span> to n <span style="color: #008800; font-weight: bold">do</span> {
- <span style="color: #0000DD; font-weight: bold">6</span>:     <span style="color: #008800; font-weight: bold">for</span> all S <span style="color: #a61717; background-color: #e3d2d2">⊆</span> {R1, . . . , Rn} such that |S| = i <span style="color: #008800; font-weight: bold">do</span> {
- <span style="color: #0000DD; font-weight: bold">7</span>:         optPlan(S) = <span style="color: #a61717; background-color: #e3d2d2">∅</span>
- <span style="color: #0000DD; font-weight: bold">8</span>:         <span style="color: #008800; font-weight: bold">for</span> all O <span style="color: #a61717; background-color: #e3d2d2">⊂</span> S <span style="color: #008800; font-weight: bold">do</span> {
- <span style="color: #0000DD; font-weight: bold">9</span>:             optPlan(S)=optPlan(S) U joinPlans(optPlan(O), optPlan(S <span style="color: #a61717; background-color: #e3d2d2">−</span> O))
-<span style="color: #0000DD; font-weight: bold">10</span>:             prunePlans(optPlan(S))
-<span style="color: #0000DD; font-weight: bold">11</span>:         }
-<span style="color: #0000DD; font-weight: bold">12</span>:     }
-<span style="color: #0000DD; font-weight: bold">13</span>: }
-<span style="color: #0000DD; font-weight: bold">14</span>: <span style="color: #008800; font-weight: bold">return</span> optPlan({R1,...,Rn})
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">输入:</span> <span style="color: #000000">SPJ</span> <span style="color: #000000">query</span> <span style="color: #000000">q</span> <span style="color: #000000">on</span> <span style="color: #000000">relations</span> <span style="color: #000000">R1,...,Rn</span>
+<span style="color: #000000">输出:</span> <span style="color: #000000">A</span> <span style="color: #000000">query</span> <span style="color: #000000">plan</span> <span style="color: #A90D91">for</span> <span style="color: #000000">q</span>
+ <span style="color: #1C01CE">1</span><span style="color: #000000">:</span> <span style="color: #A90D91">for</span> <span style="color: #000000">i</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">1</span> <span style="color: #000000">to</span> <span style="color: #000000">n</span> <span style="color: #A90D91">do</span> <span style="color: #000000">{</span>
+ <span style="color: #1C01CE">2</span><span style="color: #000000">:</span>     <span style="color: #000000">optPlan({Ri})</span> <span style="color: #000000">=</span> <span style="color: #000000">accessPlans(Ri)</span>
+ <span style="color: #1C01CE">3</span><span style="color: #000000">:</span>     <span style="color: #000000">prunePlans(optPlan({Ri}))</span>
+ <span style="color: #1C01CE">4</span><span style="color: #000000">:</span> <span style="color: #000000">}</span>
+ <span style="color: #1C01CE">5</span><span style="color: #000000">:</span> <span style="color: #A90D91">for</span> <span style="color: #000000">i</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">2</span> <span style="color: #000000">to</span> <span style="color: #000000">n</span> <span style="color: #A90D91">do</span> <span style="color: #000000">{</span>
+ <span style="color: #1C01CE">6</span><span style="color: #000000">:</span>     <span style="color: #A90D91">for</span> <span style="color: #000000">all</span> <span style="color: #000000">S</span> <span style="color: #000000">⊆</span> <span style="color: #000000">{R1,</span> <span style="color: #000000">.</span> <span style="color: #000000">.</span> <span style="color: #000000">.</span> <span style="color: #000000">,</span> <span style="color: #000000">Rn}</span> <span style="color: #000000">such</span> <span style="color: #000000">that</span> <span style="color: #000000">|S|</span> <span style="color: #000000">=</span> <span style="color: #000000">i</span> <span style="color: #A90D91">do</span> <span style="color: #000000">{</span>
+ <span style="color: #1C01CE">7</span><span style="color: #000000">:</span>         <span style="color: #000000">optPlan(S)</span> <span style="color: #000000">=</span> <span style="color: #000000">∅</span>
+ <span style="color: #1C01CE">8</span><span style="color: #000000">:</span>         <span style="color: #A90D91">for</span> <span style="color: #000000">all</span> <span style="color: #000000">O</span> <span style="color: #000000">⊂</span> <span style="color: #000000">S</span> <span style="color: #A90D91">do</span> <span style="color: #000000">{</span>
+ <span style="color: #1C01CE">9</span><span style="color: #000000">:</span>             <span style="color: #000000">optPlan(S)=optPlan(S)</span> <span style="color: #000000">U</span> <span style="color: #000000">joinPlans(optPlan(O),</span> <span style="color: #000000">optPlan(S</span> <span style="color: #000000">−</span> <span style="color: #000000">O))</span>
+<span style="color: #1C01CE">10</span><span style="color: #000000">:</span>             <span style="color: #000000">prunePlans(optPlan(S))</span>
+<span style="color: #1C01CE">11</span><span style="color: #000000">:</span>         <span style="color: #000000">}</span>
+<span style="color: #1C01CE">12</span><span style="color: #000000">:</span>     <span style="color: #000000">}</span>
+<span style="color: #1C01CE">13</span><span style="color: #000000">:</span> <span style="color: #000000">}</span>
+<span style="color: #1C01CE">14</span><span style="color: #000000">:</span> <span style="color: #A90D91">return</span> <span style="color: #000000">optPlan({R1,...,Rn})</span>
+</code></pre></div>
 
 <p>通过从简单的计划或者子计划开始，然后构建复杂的计划或者子计划的方式<strong>自底向上</strong>工作。第一步，算法对每个表构建一个访问计划，如果表 A 被复制到 S1 和 S2，算法会枚举 scan(A, S1) 和 scan(A, S2) 作为可选的访问计划。然后，算法使用访问计划作为构建块来枚举所有的两路 JOIN 计划。然后，算法枚举所有相关节点可选连接计划，即考虑在 S1和 S2上对 A 做连接。接下来，该算法使用坊文化节计划的两路连接计划作为构建块来构建三路连接计划。算法以这种方式继续，直到枚举了所有的 n 路连接计划。</p>
 <p>动态规划算法的优点在于尽可能早地丢弃（即修剪）劣等计划（第3和第10行）。 如果存在以较低成本执行相同或更多工作的替代计划，则可以修剪计划。 例如，动态规划将枚举A <span><span class="MathJax_Preview">\bowtie</span><script type="math/tex">\bowtie</script></span> B和B <span><span class="MathJax_Preview">\bowtie</span><script type="math/tex">\bowtie</script></span> A作为执行此连接的两个替代计划，但只有两个计划中代价较低的计划将在修剪后保留在optPlan(A，B)结构中。修剪显着降低了查询优化的复杂性; 早期的劣等计划被裁剪，更好的一点是，更复杂的计划不是由这种劣等计划构建的。</p>
@@ -138,4 +776,69 @@
 <p>值得关注的论文：</p>
 <p>The Volcano
 optimizer generator: Extensibility and efficient
-search. </p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.d5a09f94.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+search. </p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

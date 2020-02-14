@@ -1,4 +1,1036 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch10/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>第十章 批处理 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">第十章 批处理</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#unix" title="使用Unix工具的批处理" class="md-nav__link">使用Unix工具的批处理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_2" title="分析简单日志" class="md-nav__link">分析简单日志</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="命令链与自定义程序" class="md-nav__link">命令链与自定义程序</a></li><li class="md-nav__item"><a href="#_4" title="排序与内存中的聚合" class="md-nav__link">排序与内存中的聚合</a></li></ul></nav></li><li class="md-nav__item"><a href="#unix_1" title="Unix哲学" class="md-nav__link">Unix哲学</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_5" title="统一的接口" class="md-nav__link">统一的接口</a></li><li class="md-nav__item"><a href="#_6" title="逻辑和布线相分离" class="md-nav__link">逻辑和布线相分离</a></li><li class="md-nav__item"><a href="#_7" title="透明度和实验" class="md-nav__link">透明度和实验</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#mapreduce" title="MapReduce和分布式文件系统" class="md-nav__link">MapReduce和分布式文件系统</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#mapreduce_1" title="MapReduce作业执行" class="md-nav__link">MapReduce作业执行</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#mapreduce_2" title="分布式执行MapReduce" class="md-nav__link">分布式执行MapReduce</a></li><li class="md-nav__item"><a href="#mapreduce_3" title="MapReduce工作流" class="md-nav__link">MapReduce工作流</a></li></ul></nav></li><li class="md-nav__item"><a href="#reduce" title="Reduce端连接与分组" class="md-nav__link">Reduce端连接与分组</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_8" title="示例：分析用户活动事件" class="md-nav__link">示例：分析用户活动事件</a></li><li class="md-nav__item"><a href="#_9" title="排序合并连接" class="md-nav__link">排序合并连接</a></li><li class="md-nav__item"><a href="#_10" title="把相关数据放在一起" class="md-nav__link">把相关数据放在一起</a></li></ul></nav></li><li class="md-nav__item"><a href="#group-by" title="GROUP BY" class="md-nav__link">GROUP BY</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_11" title="处理倾斜" class="md-nav__link">处理倾斜</a></li></ul></nav></li><li class="md-nav__item"><a href="#map" title="Map端连接" class="md-nav__link">Map端连接</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_12" title="广播散列连接" class="md-nav__link">广播散列连接</a></li><li class="md-nav__item"><a href="#_13" title="分区散列连接" class="md-nav__link">分区散列连接</a></li><li class="md-nav__item"><a href="#mapreducemap" title="MapReduce与Map端连接的工作流程" class="md-nav__link">MapReduce与Map端连接的工作流程</a></li></ul></nav></li><li class="md-nav__item"><a href="#_14" title="工作流的输出" class="md-nav__link">工作流的输出</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_15" title="建立搜索索引" class="md-nav__link">建立搜索索引</a></li><li class="md-nav__item"><a href="#_16" title="键值存储作为批处理输出" class="md-nav__link">键值存储作为批处理输出</a></li><li class="md-nav__item"><a href="#_17" title="批量过程输出的哲学" class="md-nav__link">批量过程输出的哲学</a></li></ul></nav></li><li class="md-nav__item"><a href="#hadoop" title="比较Hadoop和分布式数据库" class="md-nav__link">比较Hadoop和分布式数据库</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_18" title="存储的多样性" class="md-nav__link">存储的多样性</a></li><li class="md-nav__item"><a href="#_19" title="加工模型的多样性" class="md-nav__link">加工模型的多样性</a></li><li class="md-nav__item"><a href="#_20" title="为频繁的故障而设计" class="md-nav__link">为频繁的故障而设计</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#mapreduce_4" title="后MapReduce时代" class="md-nav__link">后MapReduce时代</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_21" title="内部状态表示" class="md-nav__link">内部状态表示</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_22" title="数据流引擎" class="md-nav__link">数据流引擎</a></li><li class="md-nav__item"><a href="#_23" title="容错" class="md-nav__link">容错</a></li><li class="md-nav__item"><a href="#_24" title="关于物化的讨论" class="md-nav__link">关于物化的讨论</a></li></ul></nav></li><li class="md-nav__item"><a href="#_25" title="图与迭代处理" class="md-nav__link">图与迭代处理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_26" title="容错" class="md-nav__link">容错</a></li><li class="md-nav__item"><a href="#_27" title="并行执行" class="md-nav__link">并行执行</a></li></ul></nav></li><li class="md-nav__item"><a href="#api" title="高级API和语言" class="md-nav__link">高级API和语言</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_28" title="向声明式查询语言的转变" class="md-nav__link">向声明式查询语言的转变</a></li><li class="md-nav__item"><a href="#_29" title="专业化的不同领域" class="md-nav__link">专业化的不同领域</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_30" title="本章小结" class="md-nav__link">本章小结</a></li><li class="md-nav__item"><a href="#_31" title="参考文献" class="md-nav__link">参考文献</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="_1">第十章 批处理</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch10/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>第十章 批处理 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                第十章 批处理
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unix" class="md-nav__link">
+    使用Unix工具的批处理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    分析简单日志
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    命令链与自定义程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    排序与内存中的聚合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix_1" class="md-nav__link">
+    Unix哲学
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    统一的接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    逻辑和布线相分离
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    透明度和实验
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    MapReduce和分布式文件系统
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_1" class="md-nav__link">
+    MapReduce作业执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_2" class="md-nav__link">
+    分布式执行MapReduce
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_3" class="md-nav__link">
+    MapReduce工作流
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reduce" class="md-nav__link">
+    Reduce端连接与分组
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    示例：分析用户活动事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    排序合并连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    把相关数据放在一起
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    GROUP BY
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    处理倾斜
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    Map端连接
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    广播散列连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    分区散列连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreducemap" class="md-nav__link">
+    MapReduce与Map端连接的工作流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    工作流的输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    建立搜索索引
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    键值存储作为批处理输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    批量过程输出的哲学
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    比较Hadoop和分布式数据库
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    存储的多样性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    加工模型的多样性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    为频繁的故障而设计
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapreduce_4" class="md-nav__link">
+    后MapReduce时代
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    内部状态表示
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    数据流引擎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    容错
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    关于物化的讨论
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    图与迭代处理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    容错
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    并行执行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    高级API和语言
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    向声明式查询语言的转变
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    专业化的不同领域
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    本章小结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">第十章 批处理</h1>
 <p><img alt="" src="../img/ch10.png" /></p>
 <blockquote>
 <p>带有太强个人色彩的系统无法成功。当第一版健壮的设计完成时，不同的人们以自己的方式来测试时，真正的考验才开始。</p>
@@ -19,60 +1051,60 @@
 <p>在本章中，我们将看看MapReduce和其他一些批处理算法和框架，并探讨它们在现代数据系统中的使用方式。但首先，我们将从如何使用标准Unix工具进行数据处理开始。即使你已经熟悉了它们，也值得重温一下Unix哲学，因为从Unix的想法和经验教训能转移到大规模，异构的分布式数据系统。</p>
 <h2 id="unix">使用Unix工具的批处理</h2>
 <p>我们从一个简单的例子开始。假设你有一台Web服务器，每次提供请求时都会在日志文件中附加一行。例如，使用nginx默认访问日志格式，日志的一行可能如下所示：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #0000DD; font-weight: bold">216</span>.58.210.78 - - [<span style="color: #0000DD; font-weight: bold">27</span>/Feb/2015:17:55:11 +0000] <span style="color: #dd2200; background-color: #fff0f0">&quot;GET /css/typography.css HTTP/1.1&quot;</span> 
-<span style="color: #0000DD; font-weight: bold">200</span> <span style="color: #0000DD; font-weight: bold">3377</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;http://martin.kleppmann.com/&quot;</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) </span>
-<span style="color: #dd2200; background-color: #fff0f0">AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36&quot;</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #1C01CE">216</span>.58.210.78 - - <span style="color: #000000">[</span><span style="color: #1C01CE">27</span>/Feb/2015:17:55:11 +0000<span style="color: #000000">]</span> <span style="color: #C41A16">&quot;GET /css/typography.css HTTP/1.1&quot;</span> 
+<span style="color: #1C01CE">200</span> <span style="color: #1C01CE">3377</span> <span style="color: #C41A16">&quot;http://martin.kleppmann.com/&quot;</span> <span style="color: #C41A16">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) </span>
+<span style="color: #C41A16">AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36&quot;</span>
+</code></pre></div>
 
 <p>（实际上这只是一行，为了可读性拆分为多行）。这一行中有很多信息。为了解释它，你需要看一看日志格式的定义，如下所示：:</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span> <span style="color: #336699">$remote_addr</span> - <span style="color: #336699">$remote_user</span> [<span style="color: #336699">$time_local</span>] <span style="color: #dd2200; background-color: #fff0f0">&quot;</span><span style="color: #336699">$request</span><span style="color: #dd2200; background-color: #fff0f0">&quot;</span>
- <span style="color: #336699">$status</span> <span style="color: #336699">$body_bytes_sent</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;</span><span style="color: #336699">$http_referer</span><span style="color: #dd2200; background-color: #fff0f0">&quot;</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;</span><span style="color: #336699">$http_user_agent</span><span style="color: #dd2200; background-color: #fff0f0">&quot;</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code> <span style="color: #000000">$remote_addr</span> - <span style="color: #000000">$remote_user</span> <span style="color: #000000">[$time_local]</span> <span style="color: #C41A16">&quot;</span><span style="color: #000000">$request</span><span style="color: #C41A16">&quot;</span>
+ <span style="color: #000000">$status</span> <span style="color: #000000">$body_bytes_sent</span> <span style="color: #C41A16">&quot;</span><span style="color: #000000">$http_referer</span><span style="color: #C41A16">&quot;</span> <span style="color: #C41A16">&quot;</span><span style="color: #000000">$http_user_agent</span><span style="color: #C41A16">&quot;</span>
+</code></pre></div>
 
-<p>因此，日志的这一行表明，在<code class="codehilite">2015-02-27 17:55:11 UTC</code>，服务器从客户端IP地址<code class="codehilite">216.58.210.78</code>接收到文件<code class="codehilite">/css/typography.css</code>的请求。用户没有被认证，所以<code class="codehilite">$remote_user</code>被设置为连字符（<code class="codehilite">-</code> ）。响应状态是200（即请求成功），响应的大小是3377字节。网页浏览器是Chrome 40，并且它加载了该文件，因为它是在URL <code class="codehilite">http://martin.kleppmann.com/</code>的页面中引用的。</p>
+<p>因此，日志的这一行表明，在<code class="codehilite"><span style="color: #000000">2015-02-27 17:55:11 UTC</span></code>，服务器从客户端IP地址<code class="codehilite"><span style="color: #000000">216.58.210.78</span></code>接收到文件<code class="codehilite"><span style="color: #000000">/css/typography.css</span></code>的请求。用户没有被认证，所以<code class="codehilite"><span style="color: #000000">$remote_user</span></code>被设置为连字符（<code class="codehilite"><span style="color: #000000">-</span></code> ）。响应状态是200（即请求成功），响应的大小是3377字节。网页浏览器是Chrome 40，并且它加载了该文件，因为它是在URL <code class="codehilite"><span style="color: #177500">http://martin.kleppmann.com/</span></code>的页面中引用的。</p>
 <h3 id="_2">分析简单日志</h3>
 <p>各种工具可以把这些日志文件，并产生漂亮的报告有关你的网站流量，但出于练习的目的，让我们使用基本的Unix工具自己写一个。 例如，假设你想在你的网站上找到五个最受欢迎的网页。 可以在Unix shell中这样做：<sup id="fnref:i"><a class="footnote-ref" href="#fn:i" rel="footnote">1</a></sup></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>cat /var/log/nginx/access.log | <span style="color: #888888">#1</span>
-    awk <span style="color: #dd2200; background-color: #fff0f0">&#39;{print $7}&#39;</span> | <span style="color: #888888">#2</span>
-    sort             | <span style="color: #888888">#3</span>
-    uniq -c          | <span style="color: #888888">#4</span>
-    sort -r -n       | <span style="color: #888888">#5</span>
-    head -n <span style="color: #0000DD; font-weight: bold">5</span>          <span style="color: #888888">#6</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>cat /var/log/nginx/access.log | <span style="color: #177500">#1</span>
+    awk <span style="color: #C41A16">&#39;{print $7}&#39;</span> | <span style="color: #177500">#2</span>
+    sort             | <span style="color: #177500">#3</span>
+    uniq -c          | <span style="color: #177500">#4</span>
+    sort -r -n       | <span style="color: #177500">#5</span>
+    head -n <span style="color: #1C01CE">5</span>          <span style="color: #177500">#6</span>
+</code></pre></div>
 
 <ol>
 <li>读取日志文件</li>
-<li>将每一行按空格分割成不同的字段，每行只输出第七个这样的字段，恰好是请求的URL。在我们的示例行中，这个请求URL是<code class="codehilite">/css/typography.css</code>。</li>
+<li>将每一行按空格分割成不同的字段，每行只输出第七个这样的字段，恰好是请求的URL。在我们的示例行中，这个请求URL是<code class="codehilite"><span style="color: #000000">/css/typography.css</span></code>。</li>
 <li>按字母顺序排列请求的URL列表。如果某个URL被请求过n次，那么排序后，该文件将包含连续n次重复的URL。</li>
-<li>uniq命令通过检查两条相邻的行是否相同来过滤掉其输入中的重复行。 <code class="codehilite">-c</code>选项告诉它也输出一个计数器：对于每个不同的URL，它会报告输入中出现该URL的次数。</li>
-<li>第二种排序按每行起始处的数字（<code class="codehilite">-n</code>）排序，这是请求URL的次数。然后以反向（<code class="codehilite">-r</code>）顺序返回结果，即首先以最大的数字返回结果。</li>
-<li>最后，头只输出输入的前五行（<code class="codehilite">-n 5</code>），并丢弃其余的。该系列命令的输出如下所示：</li>
+<li>uniq命令通过检查两条相邻的行是否相同来过滤掉其输入中的重复行。 <code class="codehilite"><span style="color: #000000">-c</span></code>选项告诉它也输出一个计数器：对于每个不同的URL，它会报告输入中出现该URL的次数。</li>
+<li>第二种排序按每行起始处的数字（<code class="codehilite"><span style="color: #000000">-n</span></code>）排序，这是请求URL的次数。然后以反向（<code class="codehilite"><span style="color: #000000">-r</span></code>）顺序返回结果，即首先以最大的数字返回结果。</li>
+<li>最后，头只输出输入的前五行（<code class="codehilite"><span style="color: #000000">-n 5</span></code>），并丢弃其余的。该系列命令的输出如下所示：</li>
 </ol>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>    <span style="color: #0000DD; font-weight: bold">4189</span> /favicon.ico
-    <span style="color: #0000DD; font-weight: bold">3631</span> /2013/05/24/improving-security-of-ssh-private-keys.html
-    <span style="color: #0000DD; font-weight: bold">2124</span> /2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html
-    <span style="color: #0000DD; font-weight: bold">1369</span> /
-     <span style="color: #0000DD; font-weight: bold">915</span> /css/typography.css
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>    <span style="color: #1C01CE">4189</span> /favicon.ico
+    <span style="color: #1C01CE">3631</span> /2013/05/24/improving-security-of-ssh-private-keys.html
+    <span style="color: #1C01CE">2124</span> /2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html
+    <span style="color: #1C01CE">1369</span> /
+     <span style="color: #1C01CE">915</span> /css/typography.css
+</code></pre></div>
 
-<p>尽管如果你不熟悉Unix工具，上面的命令行可能看起来有点模糊，但是它非常强大。它将在几秒钟内处理千兆字节的日志文件，你可以轻松修改分析以适应你的需求。例如，如果要从报告中省略CSS文件，请将<code class="codehilite">awk</code>参数更改为<code class="codehilite">&#39;$7 !~ /\.css$/ {print $7}&#39;</code>等等。</p>
+<p>尽管如果你不熟悉Unix工具，上面的命令行可能看起来有点模糊，但是它非常强大。它将在几秒钟内处理千兆字节的日志文件，你可以轻松修改分析以适应你的需求。例如，如果要从报告中省略CSS文件，请将<code class="codehilite"><span style="color: #000000">awk</span></code>参数更改为<code class="codehilite"><span style="color: #000000">&#39;$7 !~ /\.css$/ {print $7}&#39;</span></code>等等。</p>
 <p>本书中没有空间来详细探索Unix工具，但是非常值得学习。令人惊讶的是，使用awk，sed，grep，sort，uniq和xargs的组合，可以在几分钟内完成许多数据分析，并且它们的表现令人惊讶地很好【8】。</p>
 <h4 id="_3">命令链与自定义程序</h4>
 <p>除了Unix命令链，你还可以写一个简单的程序来做同样的事情。例如在Ruby中，它可能看起来像这样：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>counts = <span style="color: #003366; font-weight: bold">Hash</span>.new(<span style="color: #0000DD; font-weight: bold">0</span>)         <span style="color: #888888"># 1</span>
-<span style="color: #003366; font-weight: bold">File</span>.open(<span style="color: #dd2200; background-color: #fff0f0">&#39;/var/log/nginx/access.log&#39;</span>) <span style="color: #008800; font-weight: bold">do</span> |file| 
-    file.each <span style="color: #008800; font-weight: bold">do</span> |line|
-        url = line.split<span style="color: #a61717; background-color: #e3d2d2">【</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #a61717; background-color: #e3d2d2">】</span>  <span style="color: #888888"># 2</span>
-        counts[url] += <span style="color: #0000DD; font-weight: bold">1</span>     <span style="color: #888888"># 3</span>
-    <span style="color: #008800; font-weight: bold">end</span>
-<span style="color: #008800; font-weight: bold">end</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">counts</span> <span style="color: #000000">=</span> <span style="color: #000000">Hash.new</span>(<span style="color: #1C01CE">0</span>)         <span style="color: #177500"># 1</span>
+<span style="color: #000000">File.open</span>(<span style="color: #C41A16">&#39;/var/log/nginx/access.log&#39;</span>) <span style="color: #A90D91">do</span> <span style="color: #000000">|file|</span> 
+    <span style="color: #000000">file.each</span> <span style="color: #A90D91">do</span> <span style="color: #000000">|line|</span>
+        <span style="color: #000000">url</span> <span style="color: #000000">=</span> <span style="color: #000000">line.split【</span><span style="color: #1C01CE">6</span><span style="color: #000000">】</span>  <span style="color: #177500"># 2</span>
+        <span style="color: #000000">counts[url]</span> <span style="color: #000000">+=</span> <span style="color: #1C01CE">1</span>     <span style="color: #177500"># 3</span>
+    <span style="color: #A90D91">end</span>
+<span style="color: #A90D91">end</span>
 
-top5 = counts.map{|url, count| [count, url] }.sort.reverse[<span style="color: #0000DD; font-weight: bold">0</span>...<span style="color: #0000DD; font-weight: bold">5</span>] <span style="color: #888888"># 4</span>
-top5.each{|count, url| <span style="color: #003388">puts</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;</span><span style="color: #3333bb; background-color: #fff0f0">#{</span>count<span style="color: #3333bb; background-color: #fff0f0">}</span><span style="color: #dd2200; background-color: #fff0f0"> </span><span style="color: #3333bb; background-color: #fff0f0">#{</span>url<span style="color: #3333bb; background-color: #fff0f0">}</span><span style="color: #dd2200; background-color: #fff0f0">&quot;</span> }                   <span style="color: #888888"># 5</span>
-</pre></div>
+<span style="color: #000000">top5</span> <span style="color: #000000">=</span> <span style="color: #000000">counts.map</span>{<span style="color: #000000">|url</span>, <span style="color: #000000">count|</span> <span style="color: #000000">[count</span>, <span style="color: #000000">url]</span> }<span style="color: #000000">.sort.reverse[</span><span style="color: #1C01CE">0</span><span style="color: #000000">...</span><span style="color: #1C01CE">5</span><span style="color: #000000">]</span> <span style="color: #177500"># 4</span>
+<span style="color: #000000">top5.each</span>{<span style="color: #000000">|count</span>, <span style="color: #000000">url|</span> <span style="color: #A90D91">puts</span> <span style="color: #C41A16">&quot;#{</span><span style="color: #000000">count</span><span style="color: #C41A16">} #{</span><span style="color: #000000">url</span><span style="color: #C41A16">}&quot;</span> }                   <span style="color: #177500"># 5</span>
+</code></pre></div>
 
 <ol>
-<li><code class="codehilite">counts</code>是一个哈希表，保存了我们浏览每个URL次数的计数器，计数器默认为零。</li>
+<li><code class="codehilite"><span style="color: #000000">counts</span></code>是一个哈希表，保存了我们浏览每个URL次数的计数器，计数器默认为零。</li>
 <li>对日志的每一行，从第七个空格分隔的字段提取URL（这里的数组索引是6，因为Ruby的数组索引从零开始）。</li>
 <li>增加日志当前行中URL的计数器。</li>
 <li>按计数器值（降序）对散列表内容进行排序，并取前五位。</li>
@@ -94,14 +1126,14 @@ top5.each{|count, url| <span style="color: #003388">puts</span> <span style="col
 <li>优先使用工具，而不是不熟练的帮助来减轻编程任务，即使必须曲线救国编写工具，并期望在用完后扔掉大部分。</li>
 </ol>
 <p>这种方法 —— 自动化，快速原型设计，迭代式迭代，实验友好，将大型项目分解成可管理的块 —— 听起来非常像今天的敏捷开发和DevOps运动。奇怪的是，四十年来变化不大。</p>
-<p>排序工具是一个很好的例子。它可以说是一个比大多数编程语言在其标准库（不会溢出到磁盘并且不使用多线程，即使是有益的）中更好的排序实现。然而，单独使用<code class="codehilite">sort</code> 几乎没什么用。它只能与其他Unix工具（如<code class="codehilite">uniq</code>）结合使用。</p>
+<p>排序工具是一个很好的例子。它可以说是一个比大多数编程语言在其标准库（不会溢出到磁盘并且不使用多线程，即使是有益的）中更好的排序实现。然而，单独使用<code class="codehilite"><span style="color: #000000">sort</span></code> 几乎没什么用。它只能与其他Unix工具（如<code class="codehilite"><span style="color: #000000">uniq</span></code>）结合使用。</p>
 <p>像bash这样的Unix shell可以让我们轻松地将这些小程序组合成令人惊讶的强大数据处理作业。尽管这些程序中有很多是由不同人群编写的，但它们可以灵活地结合在一起。 Unix如何实现这种可组合性？</p>
 <h4 id="_5">统一的接口</h4>
 <p>如果你希望一个程序的输出成为另一个程序的输入，那意味着这些程序必须使用相同的数据格式 —— 换句话说，一个兼容的接口。如果你希望能够将任何程序的输出连接到任何程序的输入，那意味着所有程序必须使用相同的I/O接口。</p>
-<p>在Unix中，这种接口是一个<strong>文件（file）</strong>（更准确地说，是一个<strong>文件描述符（file descriptor）</strong>）。一个文件只是一串有序的字节序列。因为这是一个非常简单的接口，所以可以使用相同的接口来表示许多不同的东西：文件系统上的真实文件，到另一个进程（Unix套接字，stdin，stdout）的通信通道，设备驱动程序（比如<code class="codehilite">/dev/audio</code>或<code class="codehilite">/dev/lp0</code>），表示TCP连接的套接字等等。很容易将这些视为理所当然的事情，但实际上这是非常出色的设计：这些非常不同的事物可以共享一个统一的接口，所以它们可以很容易地连接在一起<sup id="fnref:ii"><a class="footnote-ref" href="#fn:ii" rel="footnote">2</a></sup>。</p>
-<p>按照惯例，许多（但不是全部）Unix程序将这个字节序列视为ASCII文本。我们的日志分析示例使用了这个事实：awk，sort，uniq和head都将它们的输入文件视为由<code class="codehilite">\n</code>（换行符，ASCII 0x0A）字符分隔的记录列表。 <code class="codehilite">\n</code>的选择是任意的 —— 可以说，ASCII记录分隔符<code class="codehilite">0x1E</code>本来就是一个更好的选择，因为它是为了这个目的而设计的【14】，但是无论如何，所有这些程序都使用相同的记录分隔符允许它们互操作。</p>
-<p>每个记录（即一行输入）的解析更加模糊。 Unix工具通常通过空白或制表符将行分割成字段，但也使用CSV（逗号分隔），管道分隔和其他编码。即使像<code class="codehilite">xargs</code>这样一个相当简单的工具也有六个命令行选项，用于指定如何解析输入。</p>
-<p>ASCII文本的统一接口主要工作，但它不是很漂亮：我们的日志分析示例使用<code class="codehilite">{print $7}</code>来提取网址，这样可读性不是很好。在理想的世界中，这可能是<code class="codehilite">{print $request_url}</code>或类似的东西。我们稍后会回到这个想法。</p>
+<p>在Unix中，这种接口是一个<strong>文件（file）</strong>（更准确地说，是一个<strong>文件描述符（file descriptor）</strong>）。一个文件只是一串有序的字节序列。因为这是一个非常简单的接口，所以可以使用相同的接口来表示许多不同的东西：文件系统上的真实文件，到另一个进程（Unix套接字，stdin，stdout）的通信通道，设备驱动程序（比如<code class="codehilite"><span style="color: #000000">/dev/audio</span></code>或<code class="codehilite"><span style="color: #000000">/dev/lp0</span></code>），表示TCP连接的套接字等等。很容易将这些视为理所当然的事情，但实际上这是非常出色的设计：这些非常不同的事物可以共享一个统一的接口，所以它们可以很容易地连接在一起<sup id="fnref:ii"><a class="footnote-ref" href="#fn:ii" rel="footnote">2</a></sup>。</p>
+<p>按照惯例，许多（但不是全部）Unix程序将这个字节序列视为ASCII文本。我们的日志分析示例使用了这个事实：awk，sort，uniq和head都将它们的输入文件视为由<code class="codehilite"><span style="color: #000000">\n</span></code>（换行符，ASCII 0x0A）字符分隔的记录列表。 <code class="codehilite"><span style="color: #000000">\n</span></code>的选择是任意的 —— 可以说，ASCII记录分隔符<code class="codehilite"><span style="color: #000000">0x1E</span></code>本来就是一个更好的选择，因为它是为了这个目的而设计的【14】，但是无论如何，所有这些程序都使用相同的记录分隔符允许它们互操作。</p>
+<p>每个记录（即一行输入）的解析更加模糊。 Unix工具通常通过空白或制表符将行分割成字段，但也使用CSV（逗号分隔），管道分隔和其他编码。即使像<code class="codehilite"><span style="color: #000000">xargs</span></code>这样一个相当简单的工具也有六个命令行选项，用于指定如何解析输入。</p>
+<p>ASCII文本的统一接口主要工作，但它不是很漂亮：我们的日志分析示例使用<code class="codehilite"><span style="color: #000000">{print $7}</span></code>来提取网址，这样可读性不是很好。在理想的世界中，这可能是<code class="codehilite"><span style="color: #000000">{print $request_url}</span></code>或类似的东西。我们稍后会回到这个想法。</p>
 <p>尽管几十年后还不够完美，但统一的Unix接口仍然是非常出色的设计。与Unix工具一样，软件的交互操作和编写并不是很多，你不能通过自定义分析工具轻松地将电子邮件帐户的内容和在线购物历史记录传送到电子表格中，并将结果发布到社交网络或维基。今天，像Unix工具一样流畅地运行程序是一个例外，而不是规范。</p>
 <p>即使是具有<strong>相同数据模型（same data model）</strong>的数据库，将数据从一种导到另一种也并不容易。缺乏整合导致了数据的巴尔干化<sup id="fnref:译注i"><a class="footnote-ref" href="#fn:译注i" rel="footnote">3</a></sup>。</p>
 <h4 id="_6">逻辑和布线相分离</h4>
@@ -116,7 +1148,7 @@ top5.each{|count, url| <span style="color: #003388">puts</span> <span style="col
 <p>Unix命令的输入文件通常被视为不可变的。这意味着你可以随意运行命令，尝试各种命令行选项，而不会损坏输入文件。</p>
 </li>
 <li>
-<p>你可以在任何时候结束管道，将管道输出到<code class="codehilite">less</code>，然后查看它是否具有预期的形式。这种检查能力对调试非常有用。</p>
+<p>你可以在任何时候结束管道，将管道输出到<code class="codehilite"><span style="color: #000000">less</span></code>，然后查看它是否具有预期的形式。这种检查能力对调试非常有用。</p>
 </li>
 <li>你可以将一个流水线阶段的输出写入文件，并将该文件用作下一阶段的输入。这使你可以重新启动后面的阶段，而无需重新运行整个管道。</li>
 </ul>
@@ -134,10 +1166,10 @@ top5.each{|count, url| <span style="color: #003388">puts</span> <span style="col
 <h3 id="mapreduce_1">MapReduce作业执行</h3>
 <p>MapReduce是一个编程框架，你可以使用它编写代码来处理HDFS等分布式文件系统中的大型数据集。理解它的最简单方法是参考“<a href="#简单日志分析">简单日志分析</a>”中的Web服务器日志分析示例。MapReduce中的数据处理模式与此示例非常相似：</p>
 <ol>
-<li>读取一组输入文件，并将其分解成记录。在Web服务器日志示例中，每条记录都是日志中的一行（即<code class="codehilite">\n</code>是记录分隔符）。</li>
-<li>调用Mapper函数从每个输入记录中提取一个键和值。在前面的例子中，mapper函数是<code class="codehilite">awk&#39;{print $7}&#39;</code>：它提取<code class="codehilite">URL($7)</code>作为关键字，并将值保留为空。</li>
+<li>读取一组输入文件，并将其分解成记录。在Web服务器日志示例中，每条记录都是日志中的一行（即<code class="codehilite"><span style="color: #000000">\n</span></code>是记录分隔符）。</li>
+<li>调用Mapper函数从每个输入记录中提取一个键和值。在前面的例子中，mapper函数是<code class="codehilite"><span style="color: #000000">awk&#39;{print $7}&#39;</span></code>：它提取<code class="codehilite"><span style="color: #000000">URL($7)</span></code>作为关键字，并将值保留为空。</li>
 <li>按键排序所有的键值对。在日志示例中，这由第一个排序命令完成。</li>
-<li>调用reducer函数遍历排序后的键值对。如果同一个键出现多次，排序使它们在列表中相邻，所以很容易组合这些值而不必在内存中保留很多状态。在前面的例子中，reducer是由<code class="codehilite">uniq -c</code>命令实现的，该命令使用相同的键来统计相邻记录的数量。</li>
+<li>调用reducer函数遍历排序后的键值对。如果同一个键出现多次，排序使它们在列表中相邻，所以很容易组合这些值而不必在内存中保留很多状态。在前面的例子中，reducer是由<code class="codehilite"><span style="color: #000000">uniq -c</span></code>命令实现的，该命令使用相同的键来统计相邻记录的数量。</li>
 </ol>
 <p>这四个步骤可以由一个MapReduce作业执行。步骤2（Map）和4（Reduce）是你编写自定义数据处理代码的地方。步骤1（将文件分解成记录）由输入格式解析器处理。步骤3中的排序步骤隐含在MapReduce中 —— 你不必编写它，因为Mapper的输出始终在送往reducer之前进行排序。</p>
 <p>要创建MapReduce作业，你需要实现两个回调函数，mapper和reducer，其行为如下（参阅“<a href="../ch2/#MapReduce查询">MapReduce查询</a>”）：</p>
@@ -196,7 +1228,7 @@ MapReduce框架采用由Mapper生成的键值对，收集属于同一个键的�
 <p>除了连接之外，“将相关数据引入同一地点”模式的另一个常见用法是通过某个键（如SQL中的GROUP BY子句）对记录进行分组。所有用相同的键记录一个组，并且下一步往往是在每个组内进行某种聚合，例如：</p>
 <ul>
 <li>计算每个组中记录的数量（例如，在统计页面视图的示例中，你将在SQL中表示为COUNT（*）聚合）</li>
-<li>在SQL中的一个特定字段（<code class="codehilite">SUM(fieldname)</code>）中添加值</li>
+<li>在SQL中的一个特定字段（<code class="codehilite"><span style="color: #000000">SUM(fieldname)</span></code>）中添加值</li>
 <li>根据某些排名函数选择前k个记录</li>
 </ul>
 <p>使用MapReduce实现这种分组操作的最简单方法是设置Mapper，以便它们生成的键值对使用所需的分组键。然后，分区和排序过程将所有记录与同一个Reducer中的相同键集合在一起。因此，在MapReduce上实现时，分组和连接看起来非常相似。</p>
@@ -264,7 +1296,7 @@ MapReduce框架采用由Mapper生成的键值对，收集属于同一个键的�
 <li>同一组文件可用作各种不同作业的输入，其中包括计算度量标准的计算作业，并评估作业的输出是否具有预期的特性（例如，将其与前一次运行的输出进行比较并测量差异） 。</li>
 <li>与Unix工具类似，MapReduce作业将逻辑与布线（配置输入和输出目录）分开，这就提供了关注点的分离，并且可以重用代码：一个团队可以专注于实现一件好事的工作其他团队可以决定何时何地运行这项工作。</li>
 </ul>
-<p>在这些领域，对Unix运行良好的设计原则似乎也适用于Hadoop，但Unix和Hadoop在某些方面也有所不同。例如，因为大多数Unix工具都假定没有类型的文本文件，所以他们必须做大量的输入解析（本章开头的日志分析示例使用<code class="codehilite">{print $7}</code>来提取URL）。在Hadoop上，通过使用更多结构化的文件格式，可以消除一些低价值的语法转换：Avro（参阅“<a href="../ch4/#Avro">Avro</a>”）和Parquet（参阅第95页上的“<a href="../ch3/#列存储">列存储</a>”）经常使用，因为它们提供高效的基于模式的编码，并允许随着时间的推移模式的演变（见第4章）。</p>
+<p>在这些领域，对Unix运行良好的设计原则似乎也适用于Hadoop，但Unix和Hadoop在某些方面也有所不同。例如，因为大多数Unix工具都假定没有类型的文本文件，所以他们必须做大量的输入解析（本章开头的日志分析示例使用<code class="codehilite"><span style="color: #000000">{print $7}</span></code>来提取URL）。在Hadoop上，通过使用更多结构化的文件格式，可以消除一些低价值的语法转换：Avro（参阅“<a href="../ch4/#Avro">Avro</a>”）和Parquet（参阅第95页上的“<a href="../ch3/#列存储">列存储</a>”）经常使用，因为它们提供高效的基于模式的编码，并允许随着时间的推移模式的演变（见第4章）。</p>
 <h3 id="hadoop">比较Hadoop和分布式数据库</h3>
 <p>正如我们所看到的，Hadoop有点像Unix的分布式版本，其中HDFS是文件系统，而MapReduce是Unix进程的古怪实现（这恰好总是在映射阶段和缩小阶段之间运行排序实用程序）。我们看到了如何在这些基元之上实现各种连接和分组操作。</p>
 <p>当MapReduce论文【1】发表时，它在某种意义上说并不新鲜。我们在前几节中讨论的所有处理和并行连接算法已经在十多年前的所谓的<strong>大规模并行处理（MPP， massively parallel processing）</strong>数据库中实现了【3,40】。例如，Gamma数据库机器，Teradata和Tandem NonStop SQL是这方面的先驱【52】。</p>
@@ -796,7 +1828,7 @@ Pregel处理模型</p>
 <hr />
 <ol>
 <li id="fn:i">
-<p>有些人喜欢抬杠，认为<code class="codehilite">cat</code>这里并没有必要，因为输入文件可以直接作为awk的参数。 但这种写法让流水线更显眼。&#160;<a class="footnote-backref" href="#fnref:i" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>有些人喜欢抬杠，认为<code class="codehilite"><span style="color: #000000">cat</span></code>这里并没有必要，因为输入文件可以直接作为awk的参数。 但这种写法让流水线更显眼。&#160;<a class="footnote-backref" href="#fnref:i" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ii">
 <p>统一接口的另一个例子是URL和HTTP，这是Web的基础。 一个URL标识一个网站上的一个特定的东西（资源），你可以链接到任何其他网站的任何网址。 具有网络浏览器的用户因此可以通过跟随链接在网站之间无缝跳转，即使服务器可能由完全不相关的组织操作。 这个原则今天似乎很明显，但它是使网络取得今天成功的关键。 之前的系统并不是那么统一：例如，在公告板系统（BBS）时代，每个系统都有自己的电话号码和波特率配置。 从一个BBS到另一个BBS的引用必须以电话号码和调制解调器设置的形式; 用户将不得不挂断，拨打其他BBS，然后手动找到他们正在寻找的信息。 这是不可能的直接链接到另一个BBS内的一些内容。&#160;<a class="footnote-backref" href="#fnref:ii" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
@@ -805,7 +1837,7 @@ Pregel处理模型</p>
 <p><strong>**巴尔干化（Balkanization）</strong>是一个常带有贬义的地缘政治学术语，其定义为：一个国家或政区分裂成多个互相敌对的国家或政区的过程。&#160;<a class="footnote-backref" href="#fnref:译注i" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:iii">
-<p>除了使用一个单独的工具，如<code class="codehilite">netcat</code>或<code class="codehilite">curl</code>。 Unix开始试图将所有东西都表示为文件，但是BSD套接字API偏离了这个惯例【17】。研究用操作系统Plan 9和Inferno在使用文件方面更加一致：它们将TCP连接表示为<code class="codehilite">/net/tcp</code>中的文件【18】。&#160;<a class="footnote-backref" href="#fnref:iii" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>除了使用一个单独的工具，如<code class="codehilite"><span style="color: #000000">netcat</span></code>或<code class="codehilite"><span style="color: #000000">curl</span></code>。 Unix开始试图将所有东西都表示为文件，但是BSD套接字API偏离了这个惯例【17】。研究用操作系统Plan 9和Inferno在使用文件方面更加一致：它们将TCP连接表示为<code class="codehilite"><span style="color: #000000">/net/tcp</span></code>中的文件【18】。&#160;<a class="footnote-backref" href="#fnref:iii" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:iv">
 <p>一个不同之处在于，对于HDFS，可以将计算任务安排在存储特定文件副本的计算机上运行，而对象存储通常将存储和计算分开。如果网络带宽是一个瓶颈，从本地磁盘读取有性能优势。但是请注意，如果使用删除编码，局部优势将会丢失，因为来自多台机器的数据必须进行合并以重建原始文件【20】。&#160;<a class="footnote-backref" href="#fnref:iv" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
@@ -817,4 +1849,69 @@ Pregel处理模型</p>
 <p>这个例子假定散列表中的每个键只有一个条目，这对用户数据库（用户ID唯一标识一个用户）可能是正确的。通常，哈希表可能需要包含具有相同键的多个条目，并且连接运算符将输出关键字的所有匹配。&#160;<a class="footnote-backref" href="#fnref:vi" rev="footnote" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 </ol>
-</div></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+</div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

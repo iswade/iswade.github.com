@@ -1,4 +1,725 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_distribution_layer/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>分布层 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">分布层</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_2" title="概述" class="md-nav__link">概述</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="单一有序映射结构" class="md-nav__link">单一有序映射结构</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_4" title="元范围" class="md-nav__link">元范围</a></li><li class="md-nav__item"><a href="#_5" title="表数据" class="md-nav__link">表数据</a></li></ul></nav></li><li class="md-nav__item"><a href="#_6" title="使用单一有序映射" class="md-nav__link">使用单一有序映射</a></li></ul></nav></li><li class="md-nav__item"><a href="#_7" title="技术细节 &amp; 组件" class="md-nav__link">技术细节 &amp; 组件</a></li><li class="md-nav__item"><a href="#kv" title="元范围 KV 结构" class="md-nav__link">元范围 KV 结构</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_8" title="实例" class="md-nav__link">实例</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="_1">分布层</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_distribution_layer/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>分布层 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                分布层
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    概述
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    单一有序映射结构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    元范围
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    表数据
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    使用单一有序映射
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    技术细节 &amp; 组件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kv" class="md-nav__link">
+    元范围 KV 结构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    实例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">分布层</h1>
 <p>CockroachDB 架构的分发层提供了集群数据的统一视图。 </p>
 <h2 id="_2">概述</h2>
 <p>为了让任意节点可以访问集群中的所有数据，CockroachDB 将数据存储在单一键值对的有序映射中。键空间描述了集群中的所有数据，以及其位置，并将其分为我们称之为 “range” 的连续的键空间块，这样每个键总是可以在单个范围内找到。</p>
@@ -30,8 +751,8 @@
 <p>TODO</p>
 <h2 id="kv">元范围 KV 结构</h2>
 <p>跟集群中其它数据一样，元范围也是 KV 结构。两种元范围有相似的结构：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>metaX/successorKey -&gt; LeaseholderAddress, [list of other nodes containing data]
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">metaX/successorKey -&gt; LeaseholderAddress, [list of other nodes containing data]</span>
+</code></pre></div>
 
 <table>
 <thead>
@@ -42,15 +763,15 @@
 </thead>
 <tbody>
 <tr>
-<td><code class="codehilite">metaX</code></td>
-<td>元范围的层次. 这里我们使用简化的 <code class="codehilite">meta1</code> 或者 <code class="codehilite">meta2</code>，但是实际是用 <code class="codehilite">\x02</code> 和 <code class="codehilite">\x03</code>表示的.</td>
+<td><code class="codehilite"><span style="color: #000000">metaX</span></code></td>
+<td>元范围的层次. 这里我们使用简化的 <code class="codehilite"><span style="color: #000000">meta1</span></code> 或者 <code class="codehilite"><span style="color: #000000">meta2</span></code>，但是实际是用 <code class="codehilite"><span style="color: #000000">\x02</span></code> 和 <code class="codehilite"><span style="color: #000000">\x03</span></code>表示的.</td>
 </tr>
 <tr>
-<td><code class="codehilite">successorKey</code></td>
-<td>The first key <em>greater</em> than the key you're scanning for. This makes CockroachDB's scans efficient; it simply scans the keys until it finds a value greater than the key it's looking for, and that is where it finds the relevant data.  The <code class="codehilite">successorKey</code> for the end of a keyspace is identified as <code class="codehilite">maxKey</code>.</td>
+<td><code class="codehilite"><span style="color: #000000">successorKey</span></code></td>
+<td>The first key <em>greater</em> than the key you're scanning for. This makes CockroachDB's scans efficient; it simply scans the keys until it finds a value greater than the key it's looking for, and that is where it finds the relevant data.  The <code class="codehilite"><span style="color: #000000">successorKey</span></code> for the end of a keyspace is identified as <code class="codehilite"><span style="color: #000000">maxKey</span></code>.</td>
 </tr>
 <tr>
-<td><code class="codehilite">LeaseholderAddress</code></td>
+<td><code class="codehilite"><span style="color: #000000">LeaseholderAddress</span></code></td>
 <td>The replica primarily responsible for reads and writes, known as the Leaseholder. The Replication Layer contains more information about <a href="https://www.cockroachlabs.com/docs/stable/architecture/replication-layer.html#leases">Leases</a>.</td>
 </tr>
 </tbody>
@@ -59,7 +780,72 @@
 <p>design doc: Range Metadata</p>
 <p>The default approximate size of a range is 64M (2^26 B). In order to support 1P (2^50 B) of logical data, metadata is needed for roughly 2^(50 - 26) = 2^24 ranges. A reasonable upper bound on range metadata size is roughly 256 bytes (3*12 bytes for the triplicated node locations and 220 bytes for the range key itself). 2^24 ranges * 2^8 B would require roughly 4G (2^32 B) to store--too much to duplicate between machines. Our conclusion is that range metadata must be distributed for large installations.</p>
 <p>To keep key lookups relatively fast in the presence of distributed metadata, we store all the top-level metadata in a single range (the first range). These top-level metadata keys are known as <em>meta1</em> keys, and are prefixed such that they sort to the beginning of the key space. Given the metadata size of 256 bytes given above, a single 64M range would support 64M/256B = 2^18 ranges, which gives a total storage of 64M * 2^18 = 16T. To support the 1P quoted above, we need two levels of indirection, where the first level addresses the second, and the second addresses user data. With two levels of indirection, we can address 2^(18 + 18) = 2^36 ranges; each range addresses 2^26 B, and altogether we address 2^(36+26) B = 2^62 B = 4E of user data.</p>
-<p>For a given user-addressable <code class="codehilite">key1</code>, the associated <em>meta1</em> record is found at the successor key to <code class="codehilite">key1</code> in the <em>meta1</em> space. Since the <em>meta1</em> space is sparse, the successor key is defined as the next key which is present. The <em>meta1</em> record identifies the range containing the <em>meta2</em> record, which is found using the same process. The <em>meta2</em> record identifies the range containing <code class="codehilite">key1</code>, which is again found the same way (see examples below).</p>
-<p>Concretely, metadata keys are prefixed by <code class="codehilite">\x02</code> (meta1) and <code class="codehilite">\x03</code> (meta2); the prefixes <code class="codehilite">\x02</code> and <code class="codehilite">\x03</code> provide for the desired sorting behaviour. Thus, <code class="codehilite">key1</code>'s <em>meta1</em> record will reside at the successor key to <code class="codehilite">\x02&lt;key1&gt;</code>.</p>
+<p>For a given user-addressable <code class="codehilite"><span style="color: #000000">key1</span></code>, the associated <em>meta1</em> record is found at the successor key to <code class="codehilite"><span style="color: #000000">key1</span></code> in the <em>meta1</em> space. Since the <em>meta1</em> space is sparse, the successor key is defined as the next key which is present. The <em>meta1</em> record identifies the range containing the <em>meta2</em> record, which is found using the same process. The <em>meta2</em> record identifies the range containing <code class="codehilite"><span style="color: #000000">key1</span></code>, which is again found the same way (see examples below).</p>
+<p>Concretely, metadata keys are prefixed by <code class="codehilite"><span style="color: #000000">\x02</span></code> (meta1) and <code class="codehilite"><span style="color: #000000">\x03</span></code> (meta2); the prefixes <code class="codehilite"><span style="color: #000000">\x02</span></code> and <code class="codehilite"><span style="color: #000000">\x03</span></code> provide for the desired sorting behaviour. Thus, <code class="codehilite"><span style="color: #000000">key1</span></code>'s <em>meta1</em> record will reside at the successor key to <code class="codehilite"><span style="color: #000000">\x02&lt;key1&gt;</span></code>.</p>
 <p>Note: we append the end key of each range to meta{1,2} records because the RocksDB iterator only supports a Seek() interface which acts as a Ceil(). Using the start key of the range would cause Seek() to find the key <em>after</em> the meta indexing record we’re looking for, which would result in having to back the iterator up, an option which is both less efficient and not available in all cases.</p>
-<p>The following example shows the directory structure for a map with three ranges worth of data. Ellipses indicate additional key/value pairs to fill an entire range of data. For clarity, the examples use <code class="codehilite">meta1</code> and <code class="codehilite">meta2</code> to refer to the prefixes <code class="codehilite">\x02</code> and <code class="codehilite">\x03</code>. Except for the fact that splitting ranges requires updates to the range metadata with knowledge of the metadata layout, the range metadata itself requires no special treatment or bootstrapping.</p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p>The following example shows the directory structure for a map with three ranges worth of data. Ellipses indicate additional key/value pairs to fill an entire range of data. For clarity, the examples use <code class="codehilite"><span style="color: #000000">meta1</span></code> and <code class="codehilite"><span style="color: #000000">meta2</span></code> to refer to the prefixes <code class="codehilite"><span style="color: #000000">\x02</span></code> and <code class="codehilite"><span style="color: #000000">\x03</span></code>. Except for the fact that splitting ranges requires updates to the range metadata with knowledge of the metadata layout, the range metadata itself requires no special treatment or bootstrapping.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

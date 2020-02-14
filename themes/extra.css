@@ -76,3 +76,7 @@ h1,
     margin-right: 5%;
     width: 90%;
 }
+
+.md-typeset pre {
+    background-color: hsla(0, 0%, 100%, 0);
+}

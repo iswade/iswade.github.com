@@ -1,4 +1,1108 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/F1_query/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>F1 Query - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#f1-query" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">F1 Query</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">F1 Query</label><a href="./" title="F1 Query" class="md-nav__link md-nav__link--active">F1 Query</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="摘要" class="md-nav__link">摘要</a></li><li class="md-nav__item"><a href="#1" title="1. 引言" class="md-nav__link">1. 引言</a></li><li class="md-nav__item"><a href="#2-f1-query" title="2. F1 Query 概述" class="md-nav__link">2. F1 Query 概述</a></li><li class="md-nav__item"><a href="#3" title="3. 交互执行" class="md-nav__link">3. 交互执行</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#31" title="3.1 单线程执行内核" class="md-nav__link">3.1 单线程执行内核</a></li><li class="md-nav__item"><a href="#32" title="3.2 分布式执行" class="md-nav__link">3.2 分布式执行</a></li><li class="md-nav__item"><a href="#33" title="3.3 分区策略" class="md-nav__link">3.3 分区策略</a></li><li class="md-nav__item"><a href="#34" title="3.4 性能考虑" class="md-nav__link">3.4 性能考虑</a></li></ul></nav></li><li class="md-nav__item"><a href="#4" title="4. 批量执行" class="md-nav__link">4. 批量执行</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#41" title="4.1 批量执行框架" class="md-nav__link">4.1 批量执行框架</a></li><li class="md-nav__item"><a href="#42" title="4.2 批量服务框架" class="md-nav__link">4.2 批量服务框架</a></li></ul></nav></li><li class="md-nav__item"><a href="#5" title="5. 查询优化架构" class="md-nav__link">5. 查询优化架构</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#51" title="5.1 优化器基础结构" class="md-nav__link">5.1 优化器基础结构</a></li><li class="md-nav__item"><a href="#52" title="5.2 逻辑查询计划优化" class="md-nav__link">5.2 逻辑查询计划优化</a></li><li class="md-nav__item"><a href="#53" title="5.3 物理查询计划构造" class="md-nav__link">5.3 物理查询计划构造</a></li><li class="md-nav__item"><a href="#54" title="5.4 执行计划段生成器" class="md-nav__link">5.4 执行计划段生成器</a></li></ul></nav></li><li class="md-nav__item"><a href="#6" title="6. 可扩展性" class="md-nav__link">6. 可扩展性</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#61" title="6.1 标量函数" class="md-nav__link">6.1 标量函数</a></li><li class="md-nav__item"><a href="#62" title="6.2 聚集函数" class="md-nav__link">6.2 聚集函数</a></li><li class="md-nav__item"><a href="#63" title="6.3 表值函数" class="md-nav__link">6.3 表值函数</a></li></ul></nav></li><li class="md-nav__item"><a href="#7" title="7. 高级功能" class="md-nav__link">7. 高级功能</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#71" title="7.1 稳健的性能" class="md-nav__link">7.1 稳健的性能</a></li><li class="md-nav__item"><a href="#72-protocol-buffer" title="7.2 Protocol Buffer中的嵌套数据" class="md-nav__link">7.2 Protocol Buffer中的嵌套数据</a></li></ul></nav></li><li class="md-nav__item"><a href="#8" title="8. 生产环境指标" class="md-nav__link">8. 生产环境指标</a></li><li class="md-nav__item"><a href="#9" title="9. 相关工作" class="md-nav__link">9. 相关工作</a></li><li class="md-nav__item"><a href="#10" title="10. 结论和将来的工作" class="md-nav__link">10. 结论和将来的工作</a></li></ul></nav></li><li class="md-nav__item"><a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="摘要" class="md-nav__link">摘要</a></li><li class="md-nav__item"><a href="#1" title="1. 引言" class="md-nav__link">1. 引言</a></li><li class="md-nav__item"><a href="#2-f1-query" title="2. F1 Query 概述" class="md-nav__link">2. F1 Query 概述</a></li><li class="md-nav__item"><a href="#3" title="3. 交互执行" class="md-nav__link">3. 交互执行</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#31" title="3.1 单线程执行内核" class="md-nav__link">3.1 单线程执行内核</a></li><li class="md-nav__item"><a href="#32" title="3.2 分布式执行" class="md-nav__link">3.2 分布式执行</a></li><li class="md-nav__item"><a href="#33" title="3.3 分区策略" class="md-nav__link">3.3 分区策略</a></li><li class="md-nav__item"><a href="#34" title="3.4 性能考虑" class="md-nav__link">3.4 性能考虑</a></li></ul></nav></li><li class="md-nav__item"><a href="#4" title="4. 批量执行" class="md-nav__link">4. 批量执行</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#41" title="4.1 批量执行框架" class="md-nav__link">4.1 批量执行框架</a></li><li class="md-nav__item"><a href="#42" title="4.2 批量服务框架" class="md-nav__link">4.2 批量服务框架</a></li></ul></nav></li><li class="md-nav__item"><a href="#5" title="5. 查询优化架构" class="md-nav__link">5. 查询优化架构</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#51" title="5.1 优化器基础结构" class="md-nav__link">5.1 优化器基础结构</a></li><li class="md-nav__item"><a href="#52" title="5.2 逻辑查询计划优化" class="md-nav__link">5.2 逻辑查询计划优化</a></li><li class="md-nav__item"><a href="#53" title="5.3 物理查询计划构造" class="md-nav__link">5.3 物理查询计划构造</a></li><li class="md-nav__item"><a href="#54" title="5.4 执行计划段生成器" class="md-nav__link">5.4 执行计划段生成器</a></li></ul></nav></li><li class="md-nav__item"><a href="#6" title="6. 可扩展性" class="md-nav__link">6. 可扩展性</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#61" title="6.1 标量函数" class="md-nav__link">6.1 标量函数</a></li><li class="md-nav__item"><a href="#62" title="6.2 聚集函数" class="md-nav__link">6.2 聚集函数</a></li><li class="md-nav__item"><a href="#63" title="6.3 表值函数" class="md-nav__link">6.3 表值函数</a></li></ul></nav></li><li class="md-nav__item"><a href="#7" title="7. 高级功能" class="md-nav__link">7. 高级功能</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#71" title="7.1 稳健的性能" class="md-nav__link">7.1 稳健的性能</a></li><li class="md-nav__item"><a href="#72-protocol-buffer" title="7.2 Protocol Buffer中的嵌套数据" class="md-nav__link">7.2 Protocol Buffer中的嵌套数据</a></li></ul></nav></li><li class="md-nav__item"><a href="#8" title="8. 生产环境指标" class="md-nav__link">8. 生产环境指标</a></li><li class="md-nav__item"><a href="#9" title="9. 相关工作" class="md-nav__link">9. 相关工作</a></li><li class="md-nav__item"><a href="#10" title="10. 结论和将来的工作" class="md-nav__link">10. 结论和将来的工作</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="f1-query">F1 Query：大规模数据的声明式查询</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/F1_query/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>F1 Query - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#f1-query" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                F1 Query
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        F1 Query
+      </label>
+    
+    <a href="./" title="F1 Query" class="md-nav__link md-nav__link--active">
+      F1 Query
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-f1-query" class="md-nav__link">
+    2. F1 Query 概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 交互执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 单线程执行内核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 分布式执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 分区策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 性能考虑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 批量执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 批量执行框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 批量服务框架
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 查询优化架构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 优化器基础结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 逻辑查询计划优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 物理查询计划构造
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 执行计划段生成器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 可扩展性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 标量函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 聚集函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    6.3 表值函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 高级功能
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 稳健的性能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-protocol-buffer" class="md-nav__link">
+    7.2 Protocol Buffer中的嵌套数据
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8. 生产环境指标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. 相关工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. 结论和将来的工作
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-f1-query" class="md-nav__link">
+    2. F1 Query 概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 交互执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 单线程执行内核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 分布式执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 分区策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 性能考虑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 批量执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 批量执行框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 批量服务框架
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 查询优化架构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 优化器基础结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 逻辑查询计划优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 物理查询计划构造
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 执行计划段生成器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 可扩展性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 标量函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 聚集函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    6.3 表值函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 高级功能
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 稳健的性能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-protocol-buffer" class="md-nav__link">
+    7.2 Protocol Buffer中的嵌套数据
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8. 生产环境指标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. 相关工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. 结论和将来的工作
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="f1-query">F1 Query：大规模数据的声明式查询</h1>
 <h2 id="_1">摘要</h2>
 <p>F1 Query 是一套独立的，联合的查询处理平台，可以对 Google 保存在不同文格式和不同存储系统中的数据进行查询（例如：Bigtable、Spanner、Google 电子表格等）。F1 Query 消除了维护不同类型数据处理负载传统的差异化需求。主要是通过同时支持下面的需求来实现：</p>
 <ol>
@@ -43,14 +1147,14 @@
 <p><strong>数据源</strong>：在数据中心的 F1 服务器和 worker 不仅可以访问其所在的数据中心，也可以访问任意 Google 数据中心的数据。处理和存储的分离保证数据可以从多个源来获取，可以从分布式存储系统如 Spanner 和 Bigtable 中获取数据，也可以从普通文件如 CSV 中获取数据，也可以是面向记录的二进制文件格式和压缩的列文件格式如 ColumnIO [51] 和 Capacitor
 [6]。F1 Query 对数据源提供了一致的和/或可重复读，包括被 Spanner 存储服务管理的数据。</p>
 <p>为了支持异构数据源的查询，F1 Query 抽象出每种存储类型的细节。使得所有数据像存储在关系表中一样（以 Protocol Buffer 的形式提供了丰富的结构数据类型；可以查看7.2小节），也能够进行不同数据源的 JOIN 操作。使用了全局目录服务维护和检索不同格式系统的数据源元数据。F1 Query 还可以通过全局目录服务使得查询源不可用。在这种场景下，客户端必须提供 DEFINE TABLE 语句描述如何表示底层数据源，如关系数据库中的表。下面，我们给出一个示例，从 Colossus 的 CSV 格式的文件检索数据。F1 Query 必须知道位置和格式以及名称和包含列的类型。不同的数据源可能需要不同的信息来描述其结构，这依赖其不同的属性。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>DEFINE <span style="color: #008800; font-weight: bold">TABLE</span> People(
-    format = <span style="color: #a61717; background-color: #e3d2d2">‘</span>csv<span style="color: #a61717; background-color: #e3d2d2">’</span>,
-    path = <span style="color: #a61717; background-color: #e3d2d2">‘</span>/path/<span style="color: #008800; font-weight: bold">to</span>/peoplefile<span style="color: #a61717; background-color: #e3d2d2">’</span>,
-    columns = <span style="color: #a61717; background-color: #e3d2d2">‘</span>name:STRING,
-               DateOfBirth:<span style="color: #003388">DATE</span><span style="color: #a61717; background-color: #e3d2d2">’</span>);
-<span style="color: #008800; font-weight: bold">SELECT</span> Name, DateOfBirth <span style="color: #008800; font-weight: bold">FROM</span> People
-<span style="color: #008800; font-weight: bold">WHERE</span> Name = <span style="color: #a61717; background-color: #e3d2d2">‘</span>John Doe<span style="color: #a61717; background-color: #e3d2d2">’</span>;
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">DEFINE</span> <span style="color: #A90D91">TABLE</span> <span style="color: #000000">People</span>(
+    <span style="color: #000000">format</span> <span style="color: #000000">=</span> <span style="color: #000000">‘csv’</span>,
+    <span style="color: #000000">path</span> <span style="color: #000000">=</span> <span style="color: #000000">‘/path/</span><span style="color: #A90D91">to</span><span style="color: #000000">/peoplefile’</span>,
+    <span style="color: #000000">columns</span> <span style="color: #000000">=</span> <span style="color: #000000">‘name</span>:<span style="color: #000000">STRING</span>,
+               <span style="color: #000000">DateOfBirth</span>:<span style="color: #A90D91">DATE</span><span style="color: #000000">’</span>);
+<span style="color: #A90D91">SELECT</span> <span style="color: #000000">Name</span>, <span style="color: #000000">DateOfBirth</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">People</span>
+<span style="color: #A90D91">WHERE</span> <span style="color: #000000">Name</span> <span style="color: #000000">=</span> <span style="color: #000000">‘John</span> <span style="color: #000000">Doe’</span>;
+</code></pre></div>
 
 <p>虽然 F1 Query 本身支持 Google 内部广泛使用的数据源，但客户端偶尔需要通过事先未知的机制访问数据。为了这个目的，F1 支持增加新的定制数据源，这个特性通过提供一个称之为表值函数（TVF）扩展的 API 来实现，6.3小节有更加详细的描述。</p>
 <p><strong>数据接收器</strong>：查询的输出可以被返回到客户端，但是一个查询也可以请求将其输出存储到外部的数据接收器。接收器可能由不同格式或者一些远程存储服务组成。与数据源一样，接收器可以是目录服务管理的表或者手动指定的目标。管理的表通过 CREATE TABLE 语句创建。默认实现为存储在 Colossus 文件系统上的文件。手动指定的存储目标通过使用 EXPORT DATA 语句指定，使用一个与 DEFINE TABLE 读取相同数据类似的规范。处理这些选项，查询可以创建会话级的临时表。</p>
@@ -58,10 +1162,10 @@
 <h2 id="3">3. 交互执行</h2>
 <p>F1 Query 默认使用交互执行模式执行查询。F1 Query 支持两种类型的交互执行模式：中心化的和分布式的。在规划阶段，优化器分析查询决定使用中心化的执行还是分布式的执行。在中心模式中，当前的 F1 服务器会立即以单线程的方式执行查询。相反，在分布式模式下，当前 F1 服务器扮演查询协调的角色。会将任务调度到其它 F1 worker，F1 worker 同时并行执行。在这一节中，描述 F1 Query 交互执行模式的细节。</p>
 <h3 id="31">3.1 单线程执行内核</h3>
-<p>图3描述在中心化模式下的一条 SQL 查询，以及最后的查询计划。在这个模式下，F1 Query 使用单线程执行内核。方框表示执行计划算子。单线程执行使用递归 pull 模式每一批处理8KB 元组。执行算子递归调用 <code class="codehilite">GetNext()</code> 直到叶子算子获取到一批元组。叶节点通常是 scan 算子，从数据源读取数据。每个数据源有自己的扫描算子实现，一些源允许全表扫描，一些支持基于 Key 的索引查找。一些源支持下推非关键字段的简单过滤表达式。一个分离的 ARRAY 扫描算子从一个数组类型表达式处理行。对于可能包含 Protocol Buffer 的输入数据，所有扫描算子都会在数据源节点上支持 Protocol Buffer 解码，保证执行器不传递大型 Protocol Buffer 块，除非他们全部需要。每个扫描算子立即抽取查询需要的最小的字段集合（在7.2节有更加详细的讨论）。F1 Query 支持一些高性能列数据源，分开保存了 Protocol Buffer 的字段或 SQL 结构，不需要任何 Protocol Buffer 解码。</p>
+<p>图3描述在中心化模式下的一条 SQL 查询，以及最后的查询计划。在这个模式下，F1 Query 使用单线程执行内核。方框表示执行计划算子。单线程执行使用递归 pull 模式每一批处理8KB 元组。执行算子递归调用 <code class="codehilite"><span style="color: #000000">GetNext()</span></code> 直到叶子算子获取到一批元组。叶节点通常是 scan 算子，从数据源读取数据。每个数据源有自己的扫描算子实现，一些源允许全表扫描，一些支持基于 Key 的索引查找。一些源支持下推非关键字段的简单过滤表达式。一个分离的 ARRAY 扫描算子从一个数组类型表达式处理行。对于可能包含 Protocol Buffer 的输入数据，所有扫描算子都会在数据源节点上支持 Protocol Buffer 解码，保证执行器不传递大型 Protocol Buffer 块，除非他们全部需要。每个扫描算子立即抽取查询需要的最小的字段集合（在7.2节有更加详细的讨论）。F1 Query 支持一些高性能列数据源，分开保存了 Protocol Buffer 的字段或 SQL 结构，不需要任何 Protocol Buffer 解码。</p>
 <p><img alt="image-20180923102205790" src="../image/f1_query_3_central_execution.png" /></p>
 <p><center>图3 在一个 F1 服务器上的中心化查询执行</center></p>
-<p>F1 Query支持一些 JOIN 算子，包括 lookup join（索引嵌套循环 join）、hash join、merge join 和 array join。hash join 算子实现为多层的递归混合 hash join，使用 Colossus 分布式文件系统作为外置磁盘。查询连接算子从左边输入读取包含键的每行数据，使用这些键执行右边输入的索引查找（必须是扫描算子）。归并连接算子将数据以相同的排序顺序进行合并。F1 Query 还有一个集成扫描/合并算子，用于 Spanner 表，用于将来自底层表的数据流进行归并连接。数组连接是数组扫描的相关连接，其中数组表达式引用作为连接的左输入，可以将数组值表达式 <code class="codehilite">f()</code> 写成 SQL 查询：<code class="codehilite">T JOIN UNNEST(f(T))</code>。</p>
+<p>F1 Query支持一些 JOIN 算子，包括 lookup join（索引嵌套循环 join）、hash join、merge join 和 array join。hash join 算子实现为多层的递归混合 hash join，使用 Colossus 分布式文件系统作为外置磁盘。查询连接算子从左边输入读取包含键的每行数据，使用这些键执行右边输入的索引查找（必须是扫描算子）。归并连接算子将数据以相同的排序顺序进行合并。F1 Query 还有一个集成扫描/合并算子，用于 Spanner 表，用于将来自底层表的数据流进行归并连接。数组连接是数组扫描的相关连接，其中数组表达式引用作为连接的左输入，可以将数组值表达式 <code class="codehilite"><span style="color: #000000">f()</span></code> 写成 SQL 查询：<code class="codehilite"><span style="color: #000000">T JOIN UNNEST(f(T))</span></code>。</p>
 <p>除了扫描和连接，F1 Query 还有投影算子、聚合算子（基于排序和磁盘溢出）、排序、联合和分析窗口函数。所有的执行算子，包括扫描和连接，都支持对输出行应用过滤谓词 和 LIMIT 以及 OFFSET 算子。</p>
 <h3 id="32">3.2 分布式执行</h3>
 <p>优化器会生成一个分布式执行计划，当检测到这样的计划最适合使用分区读取以高并行度扫描输入表时。在这种场景下，查询执行计划被分割成查询段，如图4所示。每个段被调度到 F1 工作节点的一个组上。段并发执行，具有流水线和密集并行性。工作节点是多线程的，一些 worker 可以执行同一查询的多个独立部分。</p>
@@ -70,16 +1174,16 @@
 <p>优化器使用了自底向上的策略来计算计划段，其基于在查询计划中的每个算子的输入分布要求。每个算子可以在工作者之间对输入的数据有分布的要求。如果存在，则通常会在某些字段集上进行散列。典型的示例包括聚集分组键或者散列连接的键。当此要求与输入算子的元组分布兼容时，优化器将所有算子规划到相同的段内。否则，会在两个算子之间规划一个交换算子来生产一个段边界。</p>
 <p>下一步是给每个段选择并行 worker 的数量（如图4所示）。段以独立的并行度运行。底层数据组织的叶节点算子表内扫描决定初始并行度，并且有上限。然后，宽度计算器以递归方式将此信息传播到查询计划树中。例如，50个工作者和100个工作者段之间的散列连接使用100个工作程序执行，以适应两个输入中较大的一个。</p>
 <p>下面的查询是分布式执行的：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> Clicks.Region, <span style="color: #008800; font-weight: bold">COUNT</span>(*) ClickCount
-<span style="color: #008800; font-weight: bold">FROM</span> Ads <span style="color: #008800; font-weight: bold">JOIN</span> Clicks <span style="color: #008800; font-weight: bold">USING</span> (AdId)
-<span style="color: #008800; font-weight: bold">WHERE</span> Ads.StartDate &gt; <span style="color: #dd2200; background-color: #fff0f0">&#39;2018-05-14&#39;</span> <span style="color: #008800; font-weight: bold">AND</span>
-    Clicks.OS = <span style="color: #dd2200; background-color: #fff0f0">&#39;Chrome OS&#39;</span>
-<span style="color: #008800; font-weight: bold">GROUP</span> <span style="color: #008800; font-weight: bold">BY</span> Clicks.Region
-<span style="color: #008800; font-weight: bold">ORDER</span> <span style="color: #008800; font-weight: bold">BY</span> ClickCount <span style="color: #008800; font-weight: bold">DESC</span>;
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">Clicks</span>.<span style="color: #000000">Region</span>, <span style="color: #A90D91">COUNT</span>(<span style="color: #000000">*</span>) <span style="color: #000000">ClickCount</span>
+<span style="color: #A90D91">FROM</span> <span style="color: #000000">Ads</span> <span style="color: #A90D91">JOIN</span> <span style="color: #000000">Clicks</span> <span style="color: #A90D91">USING</span> (<span style="color: #000000">AdId</span>)
+<span style="color: #A90D91">WHERE</span> <span style="color: #000000">Ads</span>.<span style="color: #000000">StartDate</span> <span style="color: #000000">&gt;</span> <span style="color: #C41A16">&#39;2018-05-14&#39;</span> <span style="color: #A90D91">AND</span>
+    <span style="color: #000000">Clicks</span>.<span style="color: #000000">OS</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;Chrome OS&#39;</span>
+<span style="color: #A90D91">GROUP</span> <span style="color: #A90D91">BY</span> <span style="color: #000000">Clicks</span>.<span style="color: #000000">Region</span>
+<span style="color: #A90D91">ORDER</span> <span style="color: #A90D91">BY</span> <span style="color: #000000">ClickCount</span> <span style="color: #A90D91">DESC</span>;
+</code></pre></div>
 
 <p>这个查询涉及两张表：Ads 是一个 Spanner 表用来保存广告信息，Clicks 是一张用于存储广告点击的表，在 Mesa 中定义，Mesa 是一个 Google 的分析型数据仓库。这个查询用于查找所有发生在 <em>Chrome OS</em> 上的 <em>2018-05-14</em> 之后的所有广告点击量。然后元组来找到每个区域的点击量，然后以递减的顺序对点击量进行排序。</p>
-<p>一个可能的计划如下图5所示。在执行期间，数据流从底穿过每个算子直到到达聚集和排序算子。从 Clicks 表每个扫描数据有1000个工作者。查询规划器将过滤条件 <code class="codehilite">Clicks.OS = &#39;Chrome OS&#39;</code> 下推到 Mesa 扫描条件中，这样每个满足过滤条件的行才会被返回给 F1 工作者。两百个工作者处理 Ads 表扫描，使用了过滤条件 <code class="codehilite">Ads.StartDate &gt; &#39;2018-05-14&#39;</code> 。从两个扫描表中扫描的数据流向了散列连接算子，然后相同的 F1工作者执行连接结果的部分聚集。最后 F1服务器执行全部聚集，将排好序的结果返回给客户端。</p>
+<p>一个可能的计划如下图5所示。在执行期间，数据流从底穿过每个算子直到到达聚集和排序算子。从 Clicks 表每个扫描数据有1000个工作者。查询规划器将过滤条件 <code class="codehilite"><span style="color: #000000">Clicks.OS = &#39;Chrome OS&#39;</span></code> 下推到 Mesa 扫描条件中，这样每个满足过滤条件的行才会被返回给 F1 工作者。两百个工作者处理 Ads 表扫描，使用了过滤条件 <code class="codehilite"><span style="color: #000000">Ads.StartDate &gt; &#39;2018-05-14&#39;</span></code> 。从两个扫描表中扫描的数据流向了散列连接算子，然后相同的 F1工作者执行连接结果的部分聚集。最后 F1服务器执行全部聚集，将排好序的结果返回给客户端。</p>
 <p><img alt="分布式执行示例" src="../image/f1_query_05_distribute_query_example.png" /></p>
 <p><center>图5：分布式查询执行示例</center></p>
 <h3 id="33">3.3 分区策略</h3>
@@ -106,7 +1210,7 @@
 </ul>
 <h3 id="41">4.1 批量执行框架</h3>
 <p>批处理模式使用 MapReduce 框架作为其执行平台。在抽象级别，查询计划中的每个计划片段（参见图4）都可以映射到 MapReduce 阶段。处理管道中的每个阶段都将其输出存储到 Colossus 文件系统。该通信模型可实现不同 MapReduce 阶段的异步执行，同时提供必要的容错能力。当整个 MapReduce 阶段失败时，可以重新启动它们，因为它们的输入存储在 Colossus 上。 由于 MapReduce 框架提供了固有的容错功能，因此可以容忍 MapReduce 阶段的故障。</p>
-<p>在最简化的形式中，可以将 F1 Query 执行计划中的计划片段映射到 MapReduce 阶段。但是，F1 Query以类似于 FlumeJava 的 MSCR 融合优化的方式对其进行了优化 [19]。在此优化中，叶节点被抽象为 map 操作，而内部节点被抽象为 reduce 操作。但是，这种映射导致 map-reduce-reduce 类型的处理，它与 MapReduce 框架并不完全对应。F1 Query 批处理模式通过插入作为标识功能的特殊映射算子来解决此问题。这样，map-reduce-reduce处理可以分为两个MapReduce阶段：<code class="codehilite">map -reduce</code> 和 <code class="codehilite">map&lt;identity&gt; - reduce</code>。图6说明了从常规物理执行计划到批处理模式 MapReduce 计划的映射。如图所示，左侧的查询计划仅映射到三个 MapReduce 阶段而不是默认映射，这将导致六个 MapReduce 阶段。我们尚未实现的进一步改进是使用像 Cloud Dataflow [10] 这样的框架，它本身支持 map-reduce-reduce 类型的处理。</p>
+<p>在最简化的形式中，可以将 F1 Query 执行计划中的计划片段映射到 MapReduce 阶段。但是，F1 Query以类似于 FlumeJava 的 MSCR 融合优化的方式对其进行了优化 [19]。在此优化中，叶节点被抽象为 map 操作，而内部节点被抽象为 reduce 操作。但是，这种映射导致 map-reduce-reduce 类型的处理，它与 MapReduce 框架并不完全对应。F1 Query 批处理模式通过插入作为标识功能的特殊映射算子来解决此问题。这样，map-reduce-reduce处理可以分为两个MapReduce阶段：<code class="codehilite"><span style="color: #000000">map -reduce</span></code> 和 <code class="codehilite"><span style="color: #000000">map&lt;identity&gt; - reduce</span></code>。图6说明了从常规物理执行计划到批处理模式 MapReduce 计划的映射。如图所示，左侧的查询计划仅映射到三个 MapReduce 阶段而不是默认映射，这将导致六个 MapReduce 阶段。我们尚未实现的进一步改进是使用像 Cloud Dataflow [10] 这样的框架，它本身支持 map-reduce-reduce 类型的处理。</p>
 <p><img alt="image-20180924182456394" src="../image/f1_query_6_mapping.png" /></p>
 <p><center>图6 将物理计划映射为批量模式 MapReduce</center></p>
 <p>在片段之间，F1 Query 的分布式交互模式通过 RPC 在网络上发送数据。 相反，批处理模式将数据整合到暂存文件中，将其读回并输入到下一个计划片段中。 这是通过计划片段执行器的公共I/O接口实现的，该接口由两种模式实现。 此外，在分布式交互模式中，查询执行计划中的每个节点都是同时存在的，允许通过流水线进行并行处理。 相反，在批处理模式下没有流水线：MapReduce 阶段仅在所有输入完全可用后才开始。 批处理模式确实支持密集的并行性，即独立的 MR 阶段可以并行执行。</p>
@@ -140,11 +1244,11 @@
 <p>SQL 和 Lua 脚本函数不使用 UDF 服务器，并且没有单独的中央存储库来定义它们。 相反，客户端必须始终将其定义作为它们发送给 F1 Query 的 RPC 的一部分提供。 客户端工具（例如 F1 Query 命令行界面）从配置文件和显式加载的其他源以及即时命令收集函数定义。它们随后将所有相关的函数定义作为发送到 F1 Query 的每个 RPC 的一部分传递。F1 Query 确实提供了将多个 SQL UDF，UDA 和 TVF 组合到模块中的机制。客户团队使用模块构建其自定义业务逻辑，提高可维护性并促进重用。 通过发送到 F1 Query 的查询 RPC，模块以与单个 UDF 相同的方式呈现给 F1 Query。</p>
 <h3 id="61">6.1 标量函数</h3>
 <p>F1 Query 支持标量 UDF，可以使用 SQL、Lua 编写，以及通过 UDF 服务器编译的代码。SQL UDF 允许用户作为可重用的库封装复杂的表达式。他们在查询中被就地展开。对于脚本语言如 Lua，查询执行器维护一个沙箱解释器在运行时 计算脚本函数。例如，下面的 Lua UDF 将字符串日期转换为相应的无符号整数 Unix 时间。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">local</span> <span style="color: #008800; font-weight: bold">function</span> <span style="color: #0066bb; font-weight: bold">string2unixtime</span>(value)
-  <span style="color: #008800; font-weight: bold">local</span> y,m,d = match(<span style="color: #dd2200; background-color: #fff0f0">&quot;(%d+)%-(%d+)%-(%d+)&quot;</span>)
-  <span style="color: #008800; font-weight: bold">return</span> <span style="color: #003388">os.time</span>({year=y, month=m, day=d})
-<span style="color: #008800; font-weight: bold">end</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">local</span> <span style="color: #A90D91">function</span> <span style="color: #000000">string2unixtime</span>(<span style="color: #000000">value</span>)
+  <span style="color: #A90D91">local</span> <span style="color: #000000">y</span>,<span style="color: #000000">m</span>,<span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">match</span>(<span style="color: #C41A16">&quot;(%d+)%-(%d+)%-(%d+)&quot;</span>)
+  <span style="color: #A90D91">return</span> <span style="color: #A90D91">os.time</span>({<span style="color: #000000">year=y</span>, <span style="color: #000000">month=m</span>, <span style="color: #000000">day=d</span>})
+<span style="color: #A90D91">end</span>
+</code></pre></div>
 
 <p>UDF 服务器导出的函数智能在投影执行算子中进行计算。解析每个查询时，系统会为每个 UDF 生成一个函数表达式。优化器将所有这些表达式移动到投影中。在执行时，投影算子缓冲输入行并计算其关联的 UDF 参数值，直到达到大小上限。worker 通过 RPC 分发给关联的 UDF 服务器。通过管道化多个 RPC 来隐藏 UDF 服务器延迟，这允许相当高延迟的 UDF 实现，而不会影响查询延迟。</p>
 <h3 id="62">6.2 聚集函数</h3>
@@ -153,17 +1257,17 @@
 <h3 id="63">6.3 表值函数</h3>
 <p>最后，F1 Query 公开了表值函数（TVF），这是客户构建自己的用户定义数据库执行算子的框架。表值函数有多种用途，有助于扩展 F1 Query 的功能。突出的例子包括整合机器学习步骤，例如 SQL 查询执行期间的模型训练，它允许用户使用数据，然后在一个步骤中运行高级预测。整个公司的开发团队还可以根据需要添加新的TVF数据源，而无需与核心 F1 Query 开发人员交互或重新启动正在运行的数据库服务器。</p>
 <p>TVF 可以接受整个表以及常量标量值作为输入，并使用这些输入将新表作为输出返回。查询可以通过在 FROM 子句中调用它来调用 TVF，传入标量参数，数据库中的表或表子查询。例如，这会调用带有标量参数的 TVF 和数据库表来计算过去3天的广告点击活动：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> EventsFromPastDays(<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #008800; font-weight: bold">TABLE</span> Clicks);
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">EventsFromPastDays</span>(<span style="color: #1C01CE">3</span>, <span style="color: #A90D91">TABLE</span> <span style="color: #000000">Clicks</span>);
+</code></pre></div>
 
 <p>与 UDF 和 UDA 一样，可以使用 SQL 定义 TVF。 这样的 TVF 类似于参数化视图，其中参数可以是整个表格。 它们在查询优化之前展开到查询计划中，以便优化器可以完全优化 TVF。 上面调用的 UDF 可能使用 SQL 定义如下：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">CREATE</span> <span style="color: #008800; font-weight: bold">TABLE</span> <span style="color: #008800; font-weight: bold">FUNCTION</span> EventsFromPastDays(
-     num_days INT64, events <span style="color: #008800; font-weight: bold">ANY</span> <span style="color: #008800; font-weight: bold">TABLE</span>) <span style="color: #008800; font-weight: bold">AS</span>
-     <span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> events
-     <span style="color: #008800; font-weight: bold">WHERE</span> <span style="color: #003388">date</span> &gt;= DATE_SUB(
-         <span style="color: #008800; font-weight: bold">CURRENT_DATE</span>(),
-         <span style="color: #003388">INTERVAL</span> num_days <span style="color: #008800; font-weight: bold">DAY</span>);
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">CREATE</span> <span style="color: #A90D91">TABLE</span> <span style="color: #A90D91">FUNCTION</span> <span style="color: #000000">EventsFromPastDays</span>(
+     <span style="color: #000000">num_days</span> <span style="color: #000000">INT64</span>, <span style="color: #000000">events</span> <span style="color: #A90D91">ANY</span> <span style="color: #A90D91">TABLE</span>) <span style="color: #A90D91">AS</span>
+     <span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">events</span>
+     <span style="color: #A90D91">WHERE</span> <span style="color: #A90D91">date</span> <span style="color: #000000">&gt;=</span> <span style="color: #000000">DATE_SUB</span>(
+         <span style="color: #A90D91">CURRENT_DATE</span>(),
+         <span style="color: #A90D91">INTERVAL</span> <span style="color: #000000">num_days</span> <span style="color: #A90D91">DAY</span>);
+</code></pre></div>
 
 <p>请注意，此示例使用 ANY TABLE 指定该函数可以接受任何表作为参数。在这种情况下，TVF 会在分析时根据每个查询的实际输入表动态计算输出模式，之后输出模式在该查询执行期间保持不变。还可以指定输入表必须具有特定模式，在这种情况下，F1 Query 在查询分析时强制执行此不变量。</p>
 <p>可以使用 UDF 服务器定义更复杂的 TVF。 UDF 服务器使用函数签名公开 TVF 定义。此签名可能包括 SQL TVF 示例中的通用参数。 TVF 定义还提供了计算特定调用的输出表模式的功能。有趣的是，这个输出模式不仅可能依赖于输入表列类型，还可能依赖于标量常量参数的值。因此，即使签名不包含通用参数，TVF 也使用此函数来计算输出模式。 TVF 定义还公开了优化器的执行属性，例如输入表上的 TVF 是否可以通过按某些键对输入表进行分区然后分别调用每个分区上的 TVF 实现来并行化。</p>
@@ -178,7 +1282,7 @@
 <p><center>图10 内部和外部排序的断崖</center></p>
 <p>F1 Query 采用强大的算法来防止性能悬崖。主要思想是，不是在优化时或执行时使用二进制开关，而是执行算子在操作模式之间递增地转换。例如，它的排序算子只会根据需要从内存工作空间中溢出尽可能多的数据，以便为内存中的其他输入腾出空间。排序中的另一个例子发生在转换到多个合并步骤期间，其中一个额外的输入字节可以强制所有输入记录经历两个合并步骤而不是仅一个[36]。 F1 Query从排序和聚合的实现中消除了这些断崖。断崖避免或移除的成功示例包括 SmoothScan [16]和哈希连接中的动态降级 [52]。如果单行“太多”将停止执行并重新启动编译时优化器，则动态重新优化会引发巨大的断崖。</p>
 <h3 id="72-protocol-buffer">7.2 Protocol Buffer中的嵌套数据</h3>
-<p>在 Google，Protocol Buffer [9]作为数据交换和存储格式无处不在。协议缓冲区是一种结构化数据格式，其记录类型称为消息，支持数组值或重复字段。协议缓冲区具有人类可读的文本格式和紧凑，高效的二进制表示。它们是 F1 Query 数据模型中的第一类数据类型，其 SQL 方言具有查询和操作单个消息的扩展，例如， <code class="codehilite">msg.field</code> 用于访问字段，<code class="codehilite">NEW Point(3 AS x，5 AS y)</code> 创建一个新的消息。F1 Query还支持关联子查询表达式和重复字段的连接。</p>
+<p>在 Google，Protocol Buffer [9]作为数据交换和存储格式无处不在。协议缓冲区是一种结构化数据格式，其记录类型称为消息，支持数组值或重复字段。协议缓冲区具有人类可读的文本格式和紧凑，高效的二进制表示。它们是 F1 Query 数据模型中的第一类数据类型，其 SQL 方言具有查询和操作单个消息的扩展，例如， <code class="codehilite"><span style="color: #000000">msg.field</span></code> 用于访问字段，<code class="codehilite"><span style="color: #000000">NEW Point(3 AS x，5 AS y)</span></code> 创建一个新的消息。F1 Query还支持关联子查询表达式和重复字段的连接。</p>
 <p>查询 Protocol Buffer 提出了许多与XML [18]和JSON [21]等半结构化数据格式相同的挑战，其中有大量研究。然而，一些关键的差异存在。在 JSON 完全动态类型并且以人类可读格式存储的情况下，Protocol Buffer 是静态类型的，并且通常以紧凑的二进制格式存储，从而实现更高效的解码。Protocol Buffer 的二进制编码有点类似于MongoDB [2]中使用的 JSON 对象的二进制编码，但它更有效，因为字段是静态类型的，并且由整数而不是字符串标识。此外，一些数据源将消息垂直分解为柱状格式 [51]，其方式类似于 XML 数据库中文档的垂直分解[29]。</p>
 <p>查询中引用的所有 protos 的确切结构和类型在查询计划时已知，并且优化程序会从数据源扫描中删除所有未使用的字段。在柱状数据源中，这可以减少 I/O 并实现有效的逐列计算过滤。对于使用行式二进制格式的面向记录的数据源，F1 Query 使用高效的流式解码器，该解码器对编码数据进行单次传递，并仅提取必要的字段，跳过不相关的数据。这只能通过每个 Protocol Buffer 类型的固定定义以及快速识别和跳过的整数字段标识符来启用。</p>
 <h2 id="8">8. 生产环境指标</h2>
@@ -196,4 +1300,104 @@
 <p>向量化执行引擎</p>
 <p>本地缓存</p>
 <p>基于代价的优化</p>
-<p>scale-in</p></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">后退</span>数据库笔记</span></div></a><a href="../../articles/boltdb/" title="Bolt 数据库" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前进</span>Bolt 数据库</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.d5a09f94.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p>scale-in</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                数据库笔记
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Bolt 数据库
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

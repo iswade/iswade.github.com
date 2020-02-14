@@ -1,4 +1,889 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch2/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Ch2 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Ch2</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_2" title="关系模型与文档模型" class="md-nav__link">关系模型与文档模型</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#nosql" title="NoSQL的诞生" class="md-nav__link">NoSQL的诞生</a></li><li class="md-nav__item"><a href="#_3" title="对象关系不匹配" class="md-nav__link">对象关系不匹配</a></li><li class="md-nav__item"><a href="#_4" title="多对一和多对多的关系" class="md-nav__link">多对一和多对多的关系</a></li><li class="md-nav__item"><a href="#_5" title="文档数据库是否在重蹈覆辙？" class="md-nav__link">文档数据库是否在重蹈覆辙？</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_6" title="网络模型" class="md-nav__link">网络模型</a></li><li class="md-nav__item"><a href="#_7" title="关系模型" class="md-nav__link">关系模型</a></li><li class="md-nav__item"><a href="#_8" title="与文档数据库相比" class="md-nav__link">与文档数据库相比</a></li></ul></nav></li><li class="md-nav__item"><a href="#_9" title="关系型数据库与文档数据库在今日的对比" class="md-nav__link">关系型数据库与文档数据库在今日的对比</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_10" title="哪个数据模型更方便写代码？" class="md-nav__link">哪个数据模型更方便写代码？</a></li><li class="md-nav__item"><a href="#_11" title="文档模型中的架构灵活性" class="md-nav__link">文档模型中的架构灵活性</a></li><li class="md-nav__item"><a href="#_12" title="查询的数据局部性" class="md-nav__link">查询的数据局部性</a></li><li class="md-nav__item"><a href="#_13" title="文档和关系数据库的融合" class="md-nav__link">文档和关系数据库的融合</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_14" title="数据查询语言" class="md-nav__link">数据查询语言</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#web" title="Web上的声明式查询" class="md-nav__link">Web上的声明式查询</a></li><li class="md-nav__item"><a href="#mapreduce" title="MapReduce查询" class="md-nav__link">MapReduce查询</a></li></ul></nav></li><li class="md-nav__item"><a href="#_15" title="图数据模型" class="md-nav__link">图数据模型</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_16" title="属性图" class="md-nav__link">属性图</a></li><li class="md-nav__item"><a href="#cypher" title="Cypher查询语言" class="md-nav__link">Cypher查询语言</a></li><li class="md-nav__item"><a href="#sql" title="SQL中的图查询" class="md-nav__link">SQL中的图查询</a></li><li class="md-nav__item"><a href="#sparql" title="三元组存储和SPARQL" class="md-nav__link">三元组存储和SPARQL</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_17" title="语义网络" class="md-nav__link">语义网络</a></li><li class="md-nav__item"><a href="#rdf" title="RDF数据模型" class="md-nav__link">RDF数据模型</a></li></ul></nav></li><li class="md-nav__item"><a href="#sparql_1" title="SPARQL查询语言" class="md-nav__link">SPARQL查询语言</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_18" title="图形数据库与网络模型相比较" class="md-nav__link">图形数据库与网络模型相比较</a></li></ul></nav></li><li class="md-nav__item"><a href="#datalog" title="基础：Datalog" class="md-nav__link">基础：Datalog</a></li></ul></nav></li><li class="md-nav__item"><a href="#_19" title="本章小结" class="md-nav__link">本章小结</a></li><li class="md-nav__item"><a href="#_20" title="参考文献" class="md-nav__link">参考文献</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><p><img alt="" src="../img/ch2.png" /></p>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch2/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Ch2 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Ch2
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    关系模型与文档模型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nosql" class="md-nav__link">
+    NoSQL的诞生
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    对象关系不匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    多对一和多对多的关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    文档数据库是否在重蹈覆辙？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    网络模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    关系模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    与文档数据库相比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    关系型数据库与文档数据库在今日的对比
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    哪个数据模型更方便写代码？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    文档模型中的架构灵活性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    查询的数据局部性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    文档和关系数据库的融合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    数据查询语言
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web上的声明式查询
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    MapReduce查询
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    图数据模型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    属性图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cypher" class="md-nav__link">
+    Cypher查询语言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    SQL中的图查询
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparql" class="md-nav__link">
+    三元组存储和SPARQL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    语义网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdf" class="md-nav__link">
+    RDF数据模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparql_1" class="md-nav__link">
+    SPARQL查询语言
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    图形数据库与网络模型相比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datalog" class="md-nav__link">
+    基础：Datalog
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    本章小结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p><img alt="" src="../img/ch2.png" /></p>
 <h1 id="_1">第二章 数据模型与查询语言</h1>
 <blockquote>
 <p>语言的边界就是思想的边界。</p>
@@ -25,7 +910,7 @@
 <p>多年来，在数据存储和查询上，存在相互竞争。在20世纪70年代和80年代初，网络模型和分层模型曾是主要的选择，但关系模型随后占据了主导地位。对象数据库在20世纪80年代末和90年代初出现后又消失。XML数据库在二十一世纪初出现，但只有小众采用过。关系模型的每个竞争者都进行了大量的宣传，但都没有持续很久【2】。</p>
 <p>随着电脑越来越强大和互联，它们开始被用于日益多样化的用途。值得一提的是，关系数据库非常成功地被推广到业务数据处理的原始范围之外更为广泛的使用场景上。你今天在网上看到的大部分内容依旧是由关系数据库来提供支持，无论是在线出版，讨论，社交网络，电子商务，游戏，软件即服务应用等等，还有更多。</p>
 <h3 id="nosql">NoSQL的诞生</h3>
-<p>现在 - 2010年代，NoSQL开始了最新一轮尝试，试图推翻关系模型的统治地位。“NoSQL”这个名字让人遗憾，因为实际上它并没有涉及到任何特定的技术。最初它只是作为一个醒目的Twitter标签，用在2009年一个关于分布式，非关系数据库上的开源聚会上。无论如何，这个术语触动了某些神经，并迅速在网络创业社区内外传播开来。好些有趣的数据库系统现在都与<code class="codehilite">#NoSQL</code>标签相关联，并且NoSQL后来被重新解释为<strong>不仅是SQL（Not Only SQL）</strong> 【4】。</p>
+<p>现在 - 2010年代，NoSQL开始了最新一轮尝试，试图推翻关系模型的统治地位。“NoSQL”这个名字让人遗憾，因为实际上它并没有涉及到任何特定的技术。最初它只是作为一个醒目的Twitter标签，用在2009年一个关于分布式，非关系数据库上的开源聚会上。无论如何，这个术语触动了某些神经，并迅速在网络创业社区内外传播开来。好些有趣的数据库系统现在都与<code class="codehilite"><span style="color: #000000">#NoSQL</span></code>标签相关联，并且NoSQL后来被重新解释为<strong>不仅是SQL（Not Only SQL）</strong> 【4】。</p>
 <p>采用NoSQL数据库的背后有几个驱动因素，其中包括：</p>
 <ul>
 <li>需要比关系数据库更好的扩展性，包括非常大的数据集或非常高的写入吞吐量</li>
@@ -42,7 +927,7 @@
 <p>像ActiveRecord和Hibernate这样的<strong>对象关系映射（object-relational mapping, ORM）</strong>框架可以减少这个转换层所需的样板代码的数量，但是它们不能完全隐藏这两个模型之间的差异。</p>
 <p><img alt="" src="../img/fig2-1.png" /></p>
 <p><strong>图2-1 使用关系型模式来表示领英的个人资料</strong></p>
-<p>例如，<a href="../img/fig2-1.png">图2-1</a>展示了如何在关系模式中表示简历（领英的个人资料）。整个简介可以通过一个唯一的标识符<code class="codehilite">user_id</code>来标识。像<code class="codehilite">first_name</code>和<code class="codehilite">last_name</code>这样的字段每个用户只出现一次，所以可以在User表上将其建模为列。但是，大多数人在职业生涯中拥有多于一份的工作，人们可能有不同样的教育阶段和任意数量的联系信息。从用户到这些项目之间存在一对多的关系，可以用多种方式来表示：</p>
+<p>例如，<a href="../img/fig2-1.png">图2-1</a>展示了如何在关系模式中表示简历（领英的个人资料）。整个简介可以通过一个唯一的标识符<code class="codehilite"><span style="color: #000000">user_id</span></code>来标识。像<code class="codehilite"><span style="color: #000000">first_name</span></code>和<code class="codehilite"><span style="color: #000000">last_name</span></code>这样的字段每个用户只出现一次，所以可以在User表上将其建模为列。但是，大多数人在职业生涯中拥有多于一份的工作，人们可能有不同样的教育阶段和任意数量的联系信息。从用户到这些项目之间存在一对多的关系，可以用多种方式来表示：</p>
 <ul>
 <li>传统SQL模型（SQL：1999之前）中，最常见的规范化表示形式是将职位，教育和联系信息放在单独的表中，对User表提供外键引用，如<a href="../img/fig2-1.png">图2-1</a>所示。</li>
 <li>后续的SQL标准增加了对结构化数据类型和XML数据的支持；这允许将多值数据存储在单行内，并支持在这些文档内查询和索引。这些功能在Oracle，IBM DB2，MS SQL Server和PostgreSQL中都有不同程度的支持【6,7】。JSON数据类型也得到多个数据库的支持，包括IBM DB2，MySQL和PostgreSQL 【8】。</li>
@@ -55,50 +940,50 @@
 </blockquote>
 <p>对于一个像简历这样自包含文档的数据结构而言，JSON表示是非常合适的：参见<a href="">例2-1</a>。JSON比XML更简单。面向文档的数据库（如MongoDB 【9】，RethinkDB 【10】，CouchDB 【11】和Espresso【12】）支持这种数据模型。
 <strong>例2-1. 用JSON文档表示一个LinkedIn个人资料</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>{
-  <span style="color: #bb0066; font-weight: bold">&quot;user_id&quot;</span>: <span style="color: #0000DD; font-weight: bold">251</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;first_name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Bill&quot;</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;last_name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Gates&quot;</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;summary&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Co-chair of the Bill &amp; Melinda Gates... Active blogger.&quot;</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;region_id&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;us:91&quot;</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;industry_id&quot;</span>: <span style="color: #0000DD; font-weight: bold">131</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;photo_url&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;/p/7/000/253/05b/308dd6e.jpg&quot;</span>,
-  <span style="color: #bb0066; font-weight: bold">&quot;positions&quot;</span>: [
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>{
+  <span style="color: #000000">&quot;user_id&quot;</span>: <span style="color: #1C01CE">251</span>,
+  <span style="color: #000000">&quot;first_name&quot;</span>: <span style="color: #C41A16">&quot;Bill&quot;</span>,
+  <span style="color: #000000">&quot;last_name&quot;</span>: <span style="color: #C41A16">&quot;Gates&quot;</span>,
+  <span style="color: #000000">&quot;summary&quot;</span>: <span style="color: #C41A16">&quot;Co-chair of the Bill &amp; Melinda Gates... Active blogger.&quot;</span>,
+  <span style="color: #000000">&quot;region_id&quot;</span>: <span style="color: #C41A16">&quot;us:91&quot;</span>,
+  <span style="color: #000000">&quot;industry_id&quot;</span>: <span style="color: #1C01CE">131</span>,
+  <span style="color: #000000">&quot;photo_url&quot;</span>: <span style="color: #C41A16">&quot;/p/7/000/253/05b/308dd6e.jpg&quot;</span>,
+  <span style="color: #000000">&quot;positions&quot;</span>: [
     {
-      <span style="color: #bb0066; font-weight: bold">&quot;job_title&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Co-chair&quot;</span>,
-      <span style="color: #bb0066; font-weight: bold">&quot;organization&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Bill &amp; Melinda Gates Foundation&quot;</span>
+      <span style="color: #000000">&quot;job_title&quot;</span>: <span style="color: #C41A16">&quot;Co-chair&quot;</span>,
+      <span style="color: #000000">&quot;organization&quot;</span>: <span style="color: #C41A16">&quot;Bill &amp; Melinda Gates Foundation&quot;</span>
     },
     {
-      <span style="color: #bb0066; font-weight: bold">&quot;job_title&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Co-founder, Chairman&quot;</span>,
-      <span style="color: #bb0066; font-weight: bold">&quot;organization&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Microsoft&quot;</span>
+      <span style="color: #000000">&quot;job_title&quot;</span>: <span style="color: #C41A16">&quot;Co-founder, Chairman&quot;</span>,
+      <span style="color: #000000">&quot;organization&quot;</span>: <span style="color: #C41A16">&quot;Microsoft&quot;</span>
     }
   ],
-  <span style="color: #bb0066; font-weight: bold">&quot;education&quot;</span>: [
+  <span style="color: #000000">&quot;education&quot;</span>: [
     {
-      <span style="color: #bb0066; font-weight: bold">&quot;school_name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Harvard University&quot;</span>,
-      <span style="color: #bb0066; font-weight: bold">&quot;start&quot;</span>: <span style="color: #0000DD; font-weight: bold">1973</span>,
-      <span style="color: #bb0066; font-weight: bold">&quot;end&quot;</span>: <span style="color: #0000DD; font-weight: bold">1975</span>
+      <span style="color: #000000">&quot;school_name&quot;</span>: <span style="color: #C41A16">&quot;Harvard University&quot;</span>,
+      <span style="color: #000000">&quot;start&quot;</span>: <span style="color: #1C01CE">1973</span>,
+      <span style="color: #000000">&quot;end&quot;</span>: <span style="color: #1C01CE">1975</span>
     },
     {
-      <span style="color: #bb0066; font-weight: bold">&quot;school_name&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;Lakeside School, Seattle&quot;</span>,
-      <span style="color: #bb0066; font-weight: bold">&quot;start&quot;</span>: <span style="color: #008800; font-weight: bold">null</span>,
-      <span style="color: #bb0066; font-weight: bold">&quot;end&quot;</span>: <span style="color: #008800; font-weight: bold">null</span>
+      <span style="color: #000000">&quot;school_name&quot;</span>: <span style="color: #C41A16">&quot;Lakeside School, Seattle&quot;</span>,
+      <span style="color: #000000">&quot;start&quot;</span>: <span style="color: #A90D91">null</span>,
+      <span style="color: #000000">&quot;end&quot;</span>: <span style="color: #A90D91">null</span>
     }
   ],
-  <span style="color: #bb0066; font-weight: bold">&quot;contact_info&quot;</span>: {
-    <span style="color: #bb0066; font-weight: bold">&quot;blog&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;http://thegatesnotes.com&quot;</span>,
-    <span style="color: #bb0066; font-weight: bold">&quot;twitter&quot;</span>: <span style="color: #dd2200; background-color: #fff0f0">&quot;http://twitter.com/BillGates&quot;</span>
+  <span style="color: #000000">&quot;contact_info&quot;</span>: {
+    <span style="color: #000000">&quot;blog&quot;</span>: <span style="color: #C41A16">&quot;http://thegatesnotes.com&quot;</span>,
+    <span style="color: #000000">&quot;twitter&quot;</span>: <span style="color: #C41A16">&quot;http://twitter.com/BillGates&quot;</span>
   }
 }
-</pre></div>
+</code></pre></div>
 
 <p>有一些开发人员认为JSON模型减少了应用程序代码和存储层之间的阻抗不匹配。不过，我们将在<a href="../ch4/">第4章</a>中看到，JSON作为数据编码格式也存在问题。缺乏一个模式往往被认为是一个优势，我们将在“<a href="#文档模型中的模式灵活性">文档模型中的模式灵活性</a>”中讨论这个问题。</p>
-<p>JSON表示比<a href="../img/fig2-1.png">图2-1</a>中的多表模式具有更好的<strong>局部性（locality）</strong>。如果使用关系型示例来获取一份个人资料，需要执行多个查询（通过<code class="codehilite">user_id</code>查询每个表），或者在User表与其附属表之间地杂乱地执行多路连接。而在JSON表示中，所有相关信息都在同一个地方，一个查询就足够了。</p>
+<p>JSON表示比<a href="../img/fig2-1.png">图2-1</a>中的多表模式具有更好的<strong>局部性（locality）</strong>。如果使用关系型示例来获取一份个人资料，需要执行多个查询（通过<code class="codehilite"><span style="color: #000000">user_id</span></code>查询每个表），或者在User表与其附属表之间地杂乱地执行多路连接。而在JSON表示中，所有相关信息都在同一个地方，一个查询就足够了。</p>
 <p>从用户简历到用户职位，教育历史和联系信息，这种一对多关系隐含了数据中的一个树状结构，而JSON表示使得这个树状结构变得明确（见<a href="../img/fig2-2.png">图2-2</a>）。</p>
 <p><img alt="" src="../img/fig2-2.png" /></p>
 <p><strong>图2-2 一对多关系构建了一个树结构</strong></p>
 <h3 id="_4">多对一和多对多的关系</h3>
-<p>在上一节的<a href="">例2-1</a>中，<code class="codehilite">region_id</code>和<code class="codehilite">industry_id</code>是以ID，而不是纯字符串“Greater Seattle Area”和“Philanthropy”的形式给出的。为什么？</p>
+<p>在上一节的<a href="">例2-1</a>中，<code class="codehilite"><span style="color: #000000">region_id</span></code>和<code class="codehilite"><span style="color: #000000">industry_id</span></code>是以ID，而不是纯字符串“Greater Seattle Area”和“Philanthropy”的形式给出的。为什么？</p>
 <p>如果用户界面用一个自由文本字段来输入区域和行业，那么将他们存储为纯文本字符串是合理的。另一方式是给出地理区域和行业的标准化的列表，并让用户从下拉列表或自动填充器中进行选择，其优势如下：</p>
 <ul>
 <li>各个简历之间样式和拼写统一</li>
@@ -120,7 +1005,7 @@
 <p>如果数据库本身不支持连接，则必须在应用程序代码中通过对数据库进行多个查询来模拟连接。（在这种情况中，地区和行业的列表可能很小，改动很少，应用程序可以简单地将其保存在内存中。不过，执行连接的工作从数据库被转移到应用程序代码上。</p>
 <p>此外，即便应用程序的最初版本适合不支持连接的文档模型，随着功能被添加到应用中，数据会变得越来越相互关联。例如，考虑一下对简历例子进行的一些修改：</p>
 <p><strong><em>组织和学校作为实体</em></strong></p>
-<p>在前面的描述中，<code class="codehilite">organization</code>（用户工作的公司）和<code class="codehilite">school_name</code>（他们学习的地方）只是字符串。也许他们应该是对实体的引用呢？然后，每个组织，学校或大学都可以拥有自己的网页（标识，新闻提要等）。每个简历可以链接到它所提到的组织和学校，并且包括他们的图标和其他信息（参见<a href="../img/fig2-3.png">图2-3</a>，来自LinkedIn的一个例子）。</p>
+<p>在前面的描述中，<code class="codehilite"><span style="color: #000000">organization</span></code>（用户工作的公司）和<code class="codehilite"><span style="color: #000000">school_name</span></code>（他们学习的地方）只是字符串。也许他们应该是对实体的引用呢？然后，每个组织，学校或大学都可以拥有自己的网页（标识，新闻提要等）。每个简历可以链接到它所提到的组织和学校，并且包括他们的图标和其他信息（参见<a href="../img/fig2-3.png">图2-3</a>，来自LinkedIn的一个例子）。</p>
 <p><strong><em>推荐</em></strong></p>
 <p>假设你想添加一个新的功能：一个用户可以为另一个用户写一个推荐。在用户的简历上显示推荐，并附上推荐用户的姓名和照片。如果推荐人更新他们的照片，那他们写的任何建议都需要显示新的照片。因此，推荐应该拥有作者个人简历的引用。
 <img alt="" src="../img/fig2-3.png" /></p>
@@ -151,13 +1036,13 @@
 <p>如果想按新的方式查询数据，你可以声明一个新的索引，查询会自动使用最合适的那些索引。无需更改查询来利用新的索引。（请参阅“<a href="#用于数据的查询语言">用于数据的查询语言</a>”。）关系模型因此使添加应用程序新功能变得更加容易。</p>
 <p>关系数据库的查询优化器是复杂的，已耗费了多年的研究和开发精力【18】。关系模型的一个关键洞察是：只需构建一次查询优化器，随后使用该数据库的所有应用程序都可以从中受益。如果你没有查询优化器的话，那么为特定查询手动编写访问路径比编写通用优化器更容易——不过从长期看通用解决方案更好。</p>
 <h4 id="_8">与文档数据库相比</h4>
-<p>在一个方面，文档数据库还原为层次模型：在其父记录中存储嵌套记录（<a href="">图2-1</a>中的一对多关系，如<code class="codehilite">positions</code>，<code class="codehilite">education</code>和<code class="codehilite">contact_info</code>），而不是在单独的表中。</p>
+<p>在一个方面，文档数据库还原为层次模型：在其父记录中存储嵌套记录（<a href="">图2-1</a>中的一对多关系，如<code class="codehilite"><span style="color: #000000">positions</span></code>，<code class="codehilite"><span style="color: #000000">education</span></code>和<code class="codehilite"><span style="color: #000000">contact_info</span></code>），而不是在单独的表中。</p>
 <p>但是，在表示多对一和多对多的关系时，关系数据库和文档数据库并没有根本的不同：在这两种情况下，相关项目都被一个唯一的标识符引用，这个标识符在关系模型中被称为<strong>外键</strong>，在文档模型中称为<strong>文档引用</strong>【9】。该标识符在读取时通过连接或后续查询来解析。迄今为止，文档数据库没有走CODASYL的老路。</p>
 <h3 id="_9">关系型数据库与文档数据库在今日的对比</h3>
 <p>将关系数据库与文档数据库进行比较时，可以考虑许多方面的差异，包括它们的容错属性（参阅<a href="../ch5/">第5章</a>）和处理并发性（参阅<a href="../ch7/">第7章</a>）。本章将只关注数据模型中的差异。</p>
 <p>支持文档数据模型的主要论据是架构灵活性，因局部性而拥有更好的性能，以及对于某些应用程序而言更接近于应用程序使用的数据结构。关系模型通过为连接提供更好的支持以及支持多对一和多对多的关系来反击。</p>
 <h4 id="_10">哪个数据模型更方便写代码？</h4>
-<p>如果应用程序中的数据具有类似文档的结构（即，一对多关系树，通常一次性加载整个树），那么使用文档模型可能是一个好主意。将类似文档的结构分解成多个表（如<a href="../img/fig2-1.png">图2-1</a>中的<code class="codehilite">positions</code>，<code class="codehilite">education</code>和<code class="codehilite">contact_info</code>）的关系技术可能导致繁琐的模式和不必要的复杂的应用程序代码。</p>
+<p>如果应用程序中的数据具有类似文档的结构（即，一对多关系树，通常一次性加载整个树），那么使用文档模型可能是一个好主意。将类似文档的结构分解成多个表（如<a href="../img/fig2-1.png">图2-1</a>中的<code class="codehilite"><span style="color: #000000">positions</span></code>，<code class="codehilite"><span style="color: #000000">education</span></code>和<code class="codehilite"><span style="color: #000000">contact_info</span></code>）的关系技术可能导致繁琐的模式和不必要的复杂的应用程序代码。</p>
 <p>文档模型有一定的局限性：例如，不能直接引用文档中的嵌套的项目，而是需要说“用户251的位置列表中的第二项”（很像分层模型中的访问路径）。但是，只要文件嵌套不太深，这通常不是问题。</p>
 <p>文档数据库对连接的糟糕支持可能是问题，也可能不是问题，这取决于应用程序。例如，分析应用程可能永远不需要多对多的关系，如果它使用文档数据库来记录何事发生于何时【19】。</p>
 <p>但是，如果你的应用程序确实使用多对多关系，那么文档模型就没有那么吸引人了。通过反规范化可以减少对连接的需求，但是应用程序代码需要做额外的工作来保持数据的一致性。通过向数据库发出多个请求，可以在应用程序代码中模拟连接，但是这也将复杂性转移到应用程序中，并且通常比由数据库内的专用代码执行的连接慢。在这种情况下，使用文档模型会导致更复杂的应用程序代码和更差的性能【15】。</p>
@@ -167,24 +1052,24 @@
 <p>文档数据库有时称为<strong>无模式（schemaless）</strong>，但这具有误导性，因为读取数据的代码通常假定某种结构——即存在隐式模式，但不由数据库强制执行【20】。一个更精确的术语是<strong>读时模式（schema-on-read）</strong>（数据的结构是隐含的，只有在数据被读取时才被解释），相应的是<strong>写时模式（schema-on-write）</strong>（传统的关系数据库方法中，模式明确，且数据库确保所有的数据都符合其模式）【21】。</p>
 <p>读时模式类似于编程语言中的动态（运行时）类型检查，而写时模式类似于静态（编译时）类型检查。就像静态和动态类型检查的相对优点具有很大的争议性一样【22】，数据库中模式的强制性是一个具有争议的话题，一般来说没有正确或错误的答案。</p>
 <p>在应用程序想要改变其数据格式的情况下，这些方法之间的区别尤其明显。例如，假设你把每个用户的全名存储在一个字段中，而现在想分别存储名字和姓氏【23】。在文档数据库中，只需开始写入具有新字段的新文档，并在应用程序中使用代码来处理读取旧文档的情况。例如：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">if</span> (user &amp;&amp; user.name &amp;&amp; !user.first_name) {
-    <span style="color: #888888">// Documents written before Dec 8, 2013 don&#39;t have first_name</span>
-    user.first_name = user.name.split(<span style="color: #dd2200; background-color: #fff0f0">&quot; &quot;</span>)[<span style="color: #0000DD; font-weight: bold">0</span>];
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">if</span> (<span style="color: #000000">user</span> <span style="color: #000000">&amp;&amp;</span> <span style="color: #000000">user</span>.<span style="color: #000000">name</span> <span style="color: #000000">&amp;&amp;</span> !<span style="color: #000000">user</span>.<span style="color: #000000">first_name</span>) {
+    <span style="color: #177500">// Documents written before Dec 8, 2013 don&#39;t have first_name</span>
+    <span style="color: #000000">user</span>.<span style="color: #000000">first_name</span> = <span style="color: #000000">user</span>.<span style="color: #000000">name</span>.<span style="color: #000000">split</span>(<span style="color: #C41A16">&quot; &quot;</span>)[<span style="color: #1C01CE">0</span>];
 }
-</pre></div>
+</code></pre></div>
 
 <p>另一方面，在“静态类型”数据库模式中，通常会执行以下<strong>迁移（migration）</strong>操作：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">ALTER</span> <span style="color: #008800; font-weight: bold">TABLE</span> users <span style="color: #008800; font-weight: bold">ADD</span> <span style="color: #008800; font-weight: bold">COLUMN</span> first_name <span style="color: #003388">text</span>;
-<span style="color: #008800; font-weight: bold">UPDATE</span> users <span style="color: #008800; font-weight: bold">SET</span> first_name = split_part(name, <span style="color: #dd2200; background-color: #fff0f0">&#39; &#39;</span>, <span style="color: #0000DD; font-weight: bold">1</span>);         <span style="color: #888888">-- PostgreSQL</span>
-<span style="color: #008800; font-weight: bold">UPDATE</span> users <span style="color: #008800; font-weight: bold">SET</span> first_name = substring_index(name, <span style="color: #dd2200; background-color: #fff0f0">&#39; &#39;</span>, <span style="color: #0000DD; font-weight: bold">1</span>);    <span style="color: #888888">-- MySQL</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">ALTER</span> <span style="color: #A90D91">TABLE</span> <span style="color: #000000">users</span> <span style="color: #A90D91">ADD</span> <span style="color: #A90D91">COLUMN</span> <span style="color: #000000">first_name</span> <span style="color: #A90D91">text</span>;
+<span style="color: #A90D91">UPDATE</span> <span style="color: #000000">users</span> <span style="color: #A90D91">SET</span> <span style="color: #000000">first_name</span> <span style="color: #000000">=</span> <span style="color: #000000">split_part</span>(<span style="color: #000000">name</span>, <span style="color: #C41A16">&#39; &#39;</span>, <span style="color: #1C01CE">1</span>);         <span style="color: #177500">-- PostgreSQL</span>
+<span style="color: #A90D91">UPDATE</span> <span style="color: #000000">users</span> <span style="color: #A90D91">SET</span> <span style="color: #000000">first_name</span> <span style="color: #000000">=</span> <span style="color: #000000">substring_index</span>(<span style="color: #000000">name</span>, <span style="color: #C41A16">&#39; &#39;</span>, <span style="color: #1C01CE">1</span>);    <span style="color: #177500">-- MySQL</span>
+</code></pre></div>
 
-<p>模式变更的速度很慢，而且要求停运。它的这种坏名誉并不是完全应得的：大多数关系数据库系统可在几毫秒内执行<code class="codehilite">ALTER TABLE</code>语句。MySQL是一个值得注意的例外，它执行<code class="codehilite">ALTER TABLE</code>时会复制整个表，这可能意味着在更改一个大型表时会花费几分钟甚至几个小时的停机时间，尽管存在各种工具来解决这个限制【24,25,26】。</p>
+<p>模式变更的速度很慢，而且要求停运。它的这种坏名誉并不是完全应得的：大多数关系数据库系统可在几毫秒内执行<code class="codehilite"><span style="color: #000000">ALTER TABLE</span></code>语句。MySQL是一个值得注意的例外，它执行<code class="codehilite"><span style="color: #000000">ALTER TABLE</span></code>时会复制整个表，这可能意味着在更改一个大型表时会花费几分钟甚至几个小时的停机时间，尽管存在各种工具来解决这个限制【24,25,26】。</p>
 <blockquote>
 <p>My Notes</p>
 <p>当前有一些NewSQL 数据库系统为了满足数据的持续可用，对性能的影响较小，在尝试实现在线模式变更，在线增加索引这样的一些特性。例如：Google F1， TiDB</p>
 </blockquote>
-<p>大型表上运行<code class="codehilite">UPDATE</code>语句在任何数据库上都可能会很慢，因为每一行都需要重写。要是不可接受的话，应用程序可以将<code class="codehilite">first_name</code>设置为默认值<code class="codehilite">NULL</code>，并在读取时再填充，就像使用文档数据库一样。</p>
+<p>大型表上运行<code class="codehilite"><span style="color: #000000">UPDATE</span></code>语句在任何数据库上都可能会很慢，因为每一行都需要重写。要是不可接受的话，应用程序可以将<code class="codehilite"><span style="color: #000000">first_name</span></code>设置为默认值<code class="codehilite"><span style="color: #000000">NULL</span></code>，并在读取时再填充，就像使用文档数据库一样。</p>
 <p>读时模式更具优势，当由于某种原因（例如，数据是异构的）集合中的项目并不都具有相同的结构时。例如，因为：</p>
 <ul>
 <li>存在许多不同类型的对象，将每种类型的对象放在自己的表中是不现实的。</li>
@@ -211,25 +1096,25 @@
 <h2 id="_14">数据查询语言</h2>
 <p>当引入关系模型时，关系模型包含了一种查询数据的新方法：SQL是一种<strong>声明式</strong>查询语言，而IMS和CODASYL使用<strong>命令式</strong>代码来查询数据库。那是什么意思？</p>
 <p>许多常用的编程语言是命令式的。例如，给定一个动物物种的列表，返回列表中的鲨鱼可以这样写：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">function</span> getSharks() {
-    <span style="color: #008800; font-weight: bold">var</span> sharks = [];
-    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">var</span> i = <span style="color: #0000DD; font-weight: bold">0</span>; i &lt; animals.length; i++) {
-        <span style="color: #008800; font-weight: bold">if</span> (animals[i].family === <span style="color: #dd2200; background-color: #fff0f0">&quot;Sharks&quot;</span>) {
-            sharks.push(animals[i]);
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">function</span> <span style="color: #000000">getSharks</span>() {
+    <span style="color: #A90D91">var</span> <span style="color: #000000">sharks</span> <span style="color: #000000">=</span> [];
+    <span style="color: #A90D91">for</span> (<span style="color: #A90D91">var</span> <span style="color: #000000">i</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>; <span style="color: #000000">i</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">animals</span>.<span style="color: #000000">length</span>; <span style="color: #000000">i++</span>) {
+        <span style="color: #A90D91">if</span> (<span style="color: #000000">animals</span>[<span style="color: #000000">i</span>].<span style="color: #000000">family</span> <span style="color: #000000">===</span> <span style="color: #C41A16">&quot;Sharks&quot;</span>) {
+            <span style="color: #000000">sharks</span>.<span style="color: #000000">push</span>(<span style="color: #000000">animals</span>[<span style="color: #000000">i</span>]);
         }
     }
-    <span style="color: #008800; font-weight: bold">return</span> sharks;
+    <span style="color: #A90D91">return</span> <span style="color: #000000">sharks</span>;
 }
-</pre></div>
+</code></pre></div>
 
 <p>在关系代数中：
 $$
 sharks = σ_{family = "sharks"}(animals)
 $$
-σ（希腊字母西格玛）是选择操作符，只返回符合条件的动物，<code class="codehilite">family=&quot;shark&quot;</code>。</p>
+σ（希腊字母西格玛）是选择操作符，只返回符合条件的动物，<code class="codehilite"><span style="color: #000000">family=&quot;shark&quot;</span></code>。</p>
 <p>定义SQL时，它紧密地遵循关系代数的结构：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> animals <span style="color: #008800; font-weight: bold">WHERE</span> family =<span style="color: #dd2200; background-color: #fff0f0">&#39;Sharks&#39;</span>;
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">animals</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">family</span> <span style="color: #000000">=</span><span style="color: #C41A16">&#39;Sharks&#39;</span>;
+</code></pre></div>
 
 <p>命令式语言告诉计算机以特定顺序执行某些操作。可以想象一下，逐行地遍历代码，评估条件，更新变量，并决定是否再循环一遍。</p>
 <p>在声明式查询语言（如SQL或关系代数）中，你只需指定所需数据的模式 —— 结果必须符合哪些条件，以及如何将数据转换（例如，排序，分组和集合） —— 但不是如何实现这一目标。数据库系统的查询优化器决定使用哪些索引和哪些连接方法，以及以何种顺序执行查询的各个部分。</p>
@@ -240,63 +1125,63 @@ $$
 <h3 id="web">Web上的声明式查询</h3>
 <p>声明式查询语言的优势不仅限于数据库。为了说明这一点，让我们在一个完全不同的环境中比较声明式和命令式方法：一个Web浏览器。</p>
 <p>假设你有一个关于海洋动物的网站。用户当前正在查看鲨鱼页面，因此你将当前所选的导航项目“鲨鱼”标记为当前选中项目。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #bb0066; font-weight: bold">ul</span>&gt;
-    &lt;<span style="color: #bb0066; font-weight: bold">li</span> <span style="color: #336699">class</span>=<span style="color: #dd2200; background-color: #fff0f0">&quot;selected&quot;</span>&gt;
-        &lt;<span style="color: #bb0066; font-weight: bold">p</span>&gt;Sharks&lt;/<span style="color: #bb0066; font-weight: bold">p</span>&gt;
-        &lt;<span style="color: #bb0066; font-weight: bold">ul</span>&gt;
-            &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;Great White Shark&lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-            &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;Tiger Shark&lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-            &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;Hammerhead Shark&lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-        &lt;/<span style="color: #bb0066; font-weight: bold">ul</span>&gt;
-    &lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-    &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;&lt;<span style="color: #bb0066; font-weight: bold">p</span>&gt;Whales&lt;/<span style="color: #bb0066; font-weight: bold">p</span>&gt;
-        &lt;<span style="color: #bb0066; font-weight: bold">ul</span>&gt;
-            &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;Blue Whale&lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-            &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;Humpback Whale&lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-            &lt;<span style="color: #bb0066; font-weight: bold">li</span>&gt;Fin Whale&lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-        &lt;/<span style="color: #bb0066; font-weight: bold">ul</span>&gt;
-    &lt;/<span style="color: #bb0066; font-weight: bold">li</span>&gt;
-&lt;/<span style="color: #bb0066; font-weight: bold">ul</span>&gt;
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>&lt;<span style="color: #000000">ul</span>&gt;
+    &lt;<span style="color: #000000">li</span> <span style="color: #836C28">class</span><span style="color: #000000">=</span><span style="color: #C41A16">&quot;selected&quot;</span>&gt;
+        &lt;<span style="color: #000000">p</span>&gt;Sharks&lt;/<span style="color: #000000">p</span>&gt;
+        &lt;<span style="color: #000000">ul</span>&gt;
+            &lt;<span style="color: #000000">li</span>&gt;Great White Shark&lt;/<span style="color: #000000">li</span>&gt;
+            &lt;<span style="color: #000000">li</span>&gt;Tiger Shark&lt;/<span style="color: #000000">li</span>&gt;
+            &lt;<span style="color: #000000">li</span>&gt;Hammerhead Shark&lt;/<span style="color: #000000">li</span>&gt;
+        &lt;/<span style="color: #000000">ul</span>&gt;
+    &lt;/<span style="color: #000000">li</span>&gt;
+    &lt;<span style="color: #000000">li</span>&gt;&lt;<span style="color: #000000">p</span>&gt;Whales&lt;/<span style="color: #000000">p</span>&gt;
+        &lt;<span style="color: #000000">ul</span>&gt;
+            &lt;<span style="color: #000000">li</span>&gt;Blue Whale&lt;/<span style="color: #000000">li</span>&gt;
+            &lt;<span style="color: #000000">li</span>&gt;Humpback Whale&lt;/<span style="color: #000000">li</span>&gt;
+            &lt;<span style="color: #000000">li</span>&gt;Fin Whale&lt;/<span style="color: #000000">li</span>&gt;
+        &lt;/<span style="color: #000000">ul</span>&gt;
+    &lt;/<span style="color: #000000">li</span>&gt;
+&lt;/<span style="color: #000000">ul</span>&gt;
+</code></pre></div>
 
 <p>现在想让当前所选页面的标题具有一个蓝色的背景，以便在视觉上突出显示。使用CSS实现起来非常简单：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #bb0066; font-weight: bold">li</span>.<span style="color: #bb0066; font-weight: bold">selected</span> &gt; <span style="color: #bb0066; font-weight: bold">p</span> {
-    <span style="color: #008800; font-weight: bold">background-color</span>: <span style="color: #008800; font-weight: bold">blue</span>;
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">li</span>.<span style="color: #3F6E75">selected</span> <span style="color: #000000">&gt;</span> <span style="color: #000000">p</span> {
+    <span style="color: #A90D91">background-color</span>: <span style="color: #A90D91">blue</span>;
 }
-</pre></div>
+</code></pre></div>
 
-<p>这里的CSS选择器<code class="codehilite">li.selected &gt; p</code>声明了我们想要应用蓝色样式的元素的模式：即其直接父元素是具有<code class="codehilite">selected</code> CSS类的<code class="codehilite">&lt;li&gt;</code>元素的所有<code class="codehilite">&lt;p&gt;</code>元素。示例中的元素<code class="codehilite"><span style="color: #bb0066; font-weight: bold">&lt;p&gt;</span>Sharks<span style="color: #bb0066; font-weight: bold">&lt;/p&gt;</span></code>匹配此模式，但<code class="codehilite"><span style="color: #bb0066; font-weight: bold">&lt;p&gt;</span>Whales<span style="color: #bb0066; font-weight: bold">&lt;/p&gt;</span></code>不匹配，因为其<code class="codehilite">&lt;li&gt;</code>父元素缺少<code class="codehilite"><span style="color: #008800; font-weight: bold">class</span>=<span style="color: #dd2200; background-color: #fff0f0">&quot;selected&quot;</span></code>。</p>
+<p>这里的CSS选择器<code class="codehilite"><span style="color: #000000">li.selected &gt; p</span></code>声明了我们想要应用蓝色样式的元素的模式：即其直接父元素是具有<code class="codehilite"><span style="color: #000000">selected</span></code> CSS类的<code class="codehilite"><span style="color: #000000">&lt;li&gt;</span></code>元素的所有<code class="codehilite"><span style="color: #000000">&lt;p&gt;</span></code>元素。示例中的元素<code class="codehilite"><span style="color: #000000">&lt;p&gt;</span>Sharks<span style="color: #000000">&lt;/p&gt;</span></code>匹配此模式，但<code class="codehilite"><span style="color: #000000">&lt;p&gt;</span>Whales<span style="color: #000000">&lt;/p&gt;</span></code>不匹配，因为其<code class="codehilite"><span style="color: #000000">&lt;li&gt;</span></code>父元素缺少<code class="codehilite"><span style="color: #000000">class=&quot;selected&quot;</span></code>。</p>
 <p>如果使用XSL而不是CSS，你可以做类似的事情：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #bb0066; font-weight: bold">&lt;xsl:template</span> <span style="color: #336699">match=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;li[@class=&#39;selected&#39;]/p&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-    <span style="color: #bb0066; font-weight: bold">&lt;fo:block</span> <span style="color: #336699">background-color=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;blue&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;xsl:apply-templates/&gt;</span>
-    <span style="color: #bb0066; font-weight: bold">&lt;/fo:block&gt;</span>
-<span style="color: #bb0066; font-weight: bold">&lt;/xsl:template&gt;</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">&lt;xsl:template</span> <span style="color: #836C28">match=</span><span style="color: #C41A16">&quot;li[@class=&#39;selected&#39;]/p&quot;</span><span style="color: #000000">&gt;</span>
+    <span style="color: #000000">&lt;fo:block</span> <span style="color: #836C28">background-color=</span><span style="color: #C41A16">&quot;blue&quot;</span><span style="color: #000000">&gt;</span>
+        <span style="color: #000000">&lt;xsl:apply-templates/&gt;</span>
+    <span style="color: #000000">&lt;/fo:block&gt;</span>
+<span style="color: #000000">&lt;/xsl:template&gt;</span>
+</code></pre></div>
 
-<p>这里的XPath表达式<code class="codehilite">li[@class=&#39;selected&#39;]/p</code>相当于上例中的CSS选择器<code class="codehilite">li.selected&gt; p</code>。CSS和XSL的共同之处在于，它们都是用于指定文档样式的声明式语言。</p>
+<p>这里的XPath表达式<code class="codehilite"><span style="color: #000000">li[@class=&#39;selected&#39;]/p</span></code>相当于上例中的CSS选择器<code class="codehilite"><span style="color: #000000">li.selected&gt; p</span></code>。CSS和XSL的共同之处在于，它们都是用于指定文档样式的声明式语言。</p>
 <p>想象一下，必须使用命令式方法的情况会是如何。在Javascript中，使用<strong>文档对象模型（DOM）</strong>API，其结果可能如下所示：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">var</span> liElements = <span style="color: #003388">document</span>.getElementsByTagName(<span style="color: #dd2200; background-color: #fff0f0">&quot;li&quot;</span>);
-<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">var</span> i = <span style="color: #0000DD; font-weight: bold">0</span>; i &lt; liElements.length; i++) {
-    <span style="color: #008800; font-weight: bold">if</span> (liElements[i].className === <span style="color: #dd2200; background-color: #fff0f0">&quot;selected&quot;</span>) {
-        <span style="color: #008800; font-weight: bold">var</span> children = liElements[i].childNodes;
-        <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">var</span> j = <span style="color: #0000DD; font-weight: bold">0</span>; j &lt; children.length; j++) {
-            <span style="color: #008800; font-weight: bold">var</span> child = children[j];
-            <span style="color: #008800; font-weight: bold">if</span> (child.nodeType === Node.ELEMENT_NODE &amp;&amp; child.tagName === <span style="color: #dd2200; background-color: #fff0f0">&quot;P&quot;</span>) {
-                child.setAttribute(<span style="color: #dd2200; background-color: #fff0f0">&quot;style&quot;</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;background-color: blue&quot;</span>);
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">var</span> <span style="color: #000000">liElements</span> <span style="color: #000000">=</span> <span style="color: #A90D91">document</span>.<span style="color: #000000">getElementsByTagName</span>(<span style="color: #C41A16">&quot;li&quot;</span>);
+<span style="color: #A90D91">for</span> (<span style="color: #A90D91">var</span> <span style="color: #000000">i</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>; <span style="color: #000000">i</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">liElements</span>.<span style="color: #000000">length</span>; <span style="color: #000000">i++</span>) {
+    <span style="color: #A90D91">if</span> (<span style="color: #000000">liElements</span>[<span style="color: #000000">i</span>].<span style="color: #000000">className</span> <span style="color: #000000">===</span> <span style="color: #C41A16">&quot;selected&quot;</span>) {
+        <span style="color: #A90D91">var</span> <span style="color: #000000">children</span> <span style="color: #000000">=</span> <span style="color: #000000">liElements</span>[<span style="color: #000000">i</span>].<span style="color: #000000">childNodes</span>;
+        <span style="color: #A90D91">for</span> (<span style="color: #A90D91">var</span> <span style="color: #000000">j</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>; <span style="color: #000000">j</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">children</span>.<span style="color: #000000">length</span>; <span style="color: #000000">j++</span>) {
+            <span style="color: #A90D91">var</span> <span style="color: #000000">child</span> <span style="color: #000000">=</span> <span style="color: #000000">children</span>[<span style="color: #000000">j</span>];
+            <span style="color: #A90D91">if</span> (<span style="color: #000000">child</span>.<span style="color: #000000">nodeType</span> <span style="color: #000000">===</span> <span style="color: #000000">Node</span>.<span style="color: #000000">ELEMENT_NODE</span> <span style="color: #000000">&amp;&amp;</span> <span style="color: #000000">child</span>.<span style="color: #000000">tagName</span> <span style="color: #000000">===</span> <span style="color: #C41A16">&quot;P&quot;</span>) {
+                <span style="color: #000000">child</span>.<span style="color: #000000">setAttribute</span>(<span style="color: #C41A16">&quot;style&quot;</span>, <span style="color: #C41A16">&quot;background-color: blue&quot;</span>);
             }
         }
     }
 }
-</pre></div>
+</code></pre></div>
 
-<p>这段JavaScript代码命令式地将元素<code class="codehilite"><span style="color: #bb0066; font-weight: bold">&lt;p&gt;</span>Sharks<span style="color: #bb0066; font-weight: bold">&lt;/p&gt;</span></code>设置为蓝色背景，但是代码看起来很糟糕。不仅比同样功能的CSS和XSL更长，更难理解，而且还有一些严重的问题：</p>
+<p>这段JavaScript代码命令式地将元素<code class="codehilite"><span style="color: #000000">&lt;p&gt;</span>Sharks<span style="color: #000000">&lt;/p&gt;</span></code>设置为蓝色背景，但是代码看起来很糟糕。不仅比同样功能的CSS和XSL更长，更难理解，而且还有一些严重的问题：</p>
 <ul>
 <li>
-<p>如果选定的类被移除（例如，因为用户点击了不同的页面），即使代码重新运行，蓝色背景也不会被移除 - 因此该项目将保持突出显示，直到整个页面被重新加载。使用CSS，浏览器会自动检测<code class="codehilite">li.selected&gt; p</code>规则何时不再适用，并在选定的类被移除后立即移除蓝色背景。</p>
+<p>如果选定的类被移除（例如，因为用户点击了不同的页面），即使代码重新运行，蓝色背景也不会被移除 - 因此该项目将保持突出显示，直到整个页面被重新加载。使用CSS，浏览器会自动检测<code class="codehilite"><span style="color: #000000">li.selected&gt; p</span></code>规则何时不再适用，并在选定的类被移除后立即移除蓝色背景。</p>
 </li>
 <li>
-<p>如果你想要利用新的API，例如<code class="codehilite">document.getElementsBy ClassName(&quot;selected&quot;)</code>甚至<code class="codehilite">document.evaluate()</code>来提高性能，则必须重写代码。另一方面，浏览器供应商可以在不破坏兼容性的情况下提高CSS和XPath的性能。</p>
+<p>如果你想要利用新的API，例如<code class="codehilite"><span style="color: #000000">document.getElementsBy ClassName(&quot;selected&quot;)</span></code>甚至<code class="codehilite"><span style="color: #000000">document.evaluate()</span></code>来提高性能，则必须重写代码。另一方面，浏览器供应商可以在不破坏兼容性的情况下提高CSS和XPath的性能。</p>
 </li>
 </ul>
 <p>在Web浏览器中，使用声明式CSS样式比使用JavaScript命令式操作样式要好得多。类似地，在数据库中，使用像SQL这样的声明式查询语言比使用命令式查询API要好得多。</p>
@@ -306,74 +1191,74 @@ $$
 <h3 id="mapreduce">MapReduce查询</h3>
 <p><em>MapReduce</em>是一个由Google推广的编程模型，用于在多台机器上批量处理大规模的数据【33】。一些NoSQL数据存储（包括MongoDB和CouchDB）支持有限形式的MapReduce，作为在多个文档中执行只读查询的机制。</p>
 <p>MapReduce将<a href="../ch10/">第10章</a>中有更详细的描述。现在我们将简要讨论一下MongoDB使用的模型。</p>
-<p>MapReduce既不是一个声明式的查询语言，也不是一个完全命令式的查询API，而是处于两者之间：查询的逻辑用代码片断来表示，这些代码片段会被处理框架重复性调用。它基于<code class="codehilite">map</code>（也称为<code class="codehilite">collect</code>）和<code class="codehilite">reduce</code>（也称为<code class="codehilite">fold</code>或<code class="codehilite">inject</code>）函数，两个函数存在于许多函数式编程语言中。</p>
+<p>MapReduce既不是一个声明式的查询语言，也不是一个完全命令式的查询API，而是处于两者之间：查询的逻辑用代码片断来表示，这些代码片段会被处理框架重复性调用。它基于<code class="codehilite"><span style="color: #000000">map</span></code>（也称为<code class="codehilite"><span style="color: #000000">collect</span></code>）和<code class="codehilite"><span style="color: #000000">reduce</span></code>（也称为<code class="codehilite"><span style="color: #000000">fold</span></code>或<code class="codehilite"><span style="color: #000000">inject</span></code>）函数，两个函数存在于许多函数式编程语言中。</p>
 <p>例如，假设你是一名海洋生物学家，每当你看到海洋中的动物时，你都会在数据库中添加一条观察记录。现在你想生成一个报告，说明你每月看到多少鲨鱼。</p>
 <p>在PostgreSQL中，你可以像这样表述这个查询：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span>
-    date_trunc(<span style="color: #dd2200; background-color: #fff0f0">&#39;month&#39;</span>, observation_timestamp) <span style="color: #008800; font-weight: bold">AS</span> observation_month,
-    <span style="color: #008800; font-weight: bold">sum</span>(num_animals)                           <span style="color: #008800; font-weight: bold">AS</span> total_animals
-<span style="color: #008800; font-weight: bold">FROM</span> observations
-<span style="color: #008800; font-weight: bold">WHERE</span> family = <span style="color: #dd2200; background-color: #fff0f0">&#39;Sharks&#39;</span>
-<span style="color: #008800; font-weight: bold">GROUP</span> <span style="color: #008800; font-weight: bold">BY</span> observation_month;
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span>
+    <span style="color: #000000">date_trunc</span>(<span style="color: #C41A16">&#39;month&#39;</span>, <span style="color: #000000">observation_timestamp</span>) <span style="color: #A90D91">AS</span> <span style="color: #000000">observation_month</span>,
+    <span style="color: #A90D91">sum</span>(<span style="color: #000000">num_animals</span>)                           <span style="color: #A90D91">AS</span> <span style="color: #000000">total_animals</span>
+<span style="color: #A90D91">FROM</span> <span style="color: #000000">observations</span>
+<span style="color: #A90D91">WHERE</span> <span style="color: #000000">family</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;Sharks&#39;</span>
+<span style="color: #A90D91">GROUP</span> <span style="color: #A90D91">BY</span> <span style="color: #000000">observation_month</span>;
+</code></pre></div>
 
-<p><code class="codehilite">date_trunc(&#39;month&#39;，timestamp)</code>函数用于确定包含<code class="codehilite">timestamp</code>的日历月份，并返回代表该月份开始的另一个时间戳。换句话说，它将时间戳舍入成最近的月份。</p>
+<p><code class="codehilite"><span style="color: #000000">date_trunc(&#39;month&#39;，timestamp)</span></code>函数用于确定包含<code class="codehilite"><span style="color: #000000">timestamp</span></code>的日历月份，并返回代表该月份开始的另一个时间戳。换句话说，它将时间戳舍入成最近的月份。</p>
 <p>这个查询首先过滤观察记录，以只显示鲨鱼家族的物种，然后根据它们发生的日历月份对观察记录果进行分组，最后将在该月的所有观察记录中看到的动物数目加起来。</p>
 <p>同样的查询用MongoDB的MapReduce功能可以按如下来表述：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>db.observations.mapReduce(<span style="color: #008800; font-weight: bold">function</span> map() {
-        <span style="color: #008800; font-weight: bold">var</span> year = <span style="color: #008800; font-weight: bold">this</span>.observationTimestamp.getFullYear();
-        <span style="color: #008800; font-weight: bold">var</span> month = <span style="color: #008800; font-weight: bold">this</span>.observationTimestamp.getMonth() + <span style="color: #0000DD; font-weight: bold">1</span>;
-        emit(year + <span style="color: #dd2200; background-color: #fff0f0">&quot;-&quot;</span> + month, <span style="color: #008800; font-weight: bold">this</span>.numAnimals);
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">db</span>.<span style="color: #000000">observations</span>.<span style="color: #000000">mapReduce</span>(<span style="color: #A90D91">function</span> <span style="color: #000000">map</span>() {
+        <span style="color: #A90D91">var</span> <span style="color: #000000">year</span> <span style="color: #000000">=</span> <span style="color: #A90D91">this</span>.<span style="color: #000000">observationTimestamp</span>.<span style="color: #000000">getFullYear</span>();
+        <span style="color: #A90D91">var</span> <span style="color: #000000">month</span> <span style="color: #000000">=</span> <span style="color: #A90D91">this</span>.<span style="color: #000000">observationTimestamp</span>.<span style="color: #000000">getMonth</span>() <span style="color: #000000">+</span> <span style="color: #1C01CE">1</span>;
+        <span style="color: #000000">emit</span>(<span style="color: #000000">year</span> <span style="color: #000000">+</span> <span style="color: #C41A16">&quot;-&quot;</span> <span style="color: #000000">+</span> <span style="color: #000000">month</span>, <span style="color: #A90D91">this</span>.<span style="color: #000000">numAnimals</span>);
     },
-    <span style="color: #008800; font-weight: bold">function</span> reduce(key, values) {
-        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #003388">Array</span>.sum(values);
+    <span style="color: #A90D91">function</span> <span style="color: #000000">reduce</span>(<span style="color: #000000">key</span>, <span style="color: #000000">values</span>) {
+        <span style="color: #A90D91">return</span> <span style="color: #A90D91">Array</span>.<span style="color: #000000">sum</span>(<span style="color: #000000">values</span>);
     },
     {
-        query: {
-          family: <span style="color: #dd2200; background-color: #fff0f0">&quot;Sharks&quot;</span>
+        <span style="color: #000000">query:</span> {
+          <span style="color: #000000">family:</span> <span style="color: #C41A16">&quot;Sharks&quot;</span>
         },
-        out: <span style="color: #dd2200; background-color: #fff0f0">&quot;monthlySharkReport&quot;</span>
+        <span style="color: #000000">out:</span> <span style="color: #C41A16">&quot;monthlySharkReport&quot;</span>
     });
-</pre></div>
+</code></pre></div>
 
 <ul>
 <li>可以声明式地指定只考虑鲨鱼种类的过滤器（这是一个针对MapReduce的特定于MongoDB的扩展）。</li>
-<li>每个匹配查询的文档都会调用一次JavaScript函数<code class="codehilite">map</code>，将<code class="codehilite">this</code>设置为文档对象。</li>
-<li><code class="codehilite">map</code>函数发出一个键（包括年份和月份的字符串，如<code class="codehilite">&quot;2013-12&quot;</code>或<code class="codehilite">&quot;2014-1&quot;</code>）和一个值（该观察记录中的动物数量）。</li>
-<li><code class="codehilite">map</code>发出的键值对按键来分组。对于具有相同键（即，相同的月份和年份）的所有键值对，调用一次<code class="codehilite">reduce</code>函数。</li>
-<li><code class="codehilite">reduce</code>函数将特定月份内所有观测记录中的动物数量相加。</li>
-<li>将最终的输出写入到<code class="codehilite">monthlySharkReport</code>集合中。</li>
+<li>每个匹配查询的文档都会调用一次JavaScript函数<code class="codehilite"><span style="color: #000000">map</span></code>，将<code class="codehilite"><span style="color: #000000">this</span></code>设置为文档对象。</li>
+<li><code class="codehilite"><span style="color: #000000">map</span></code>函数发出一个键（包括年份和月份的字符串，如<code class="codehilite"><span style="color: #000000">&quot;2013-12&quot;</span></code>或<code class="codehilite"><span style="color: #000000">&quot;2014-1&quot;</span></code>）和一个值（该观察记录中的动物数量）。</li>
+<li><code class="codehilite"><span style="color: #000000">map</span></code>发出的键值对按键来分组。对于具有相同键（即，相同的月份和年份）的所有键值对，调用一次<code class="codehilite"><span style="color: #000000">reduce</span></code>函数。</li>
+<li><code class="codehilite"><span style="color: #000000">reduce</span></code>函数将特定月份内所有观测记录中的动物数量相加。</li>
+<li>将最终的输出写入到<code class="codehilite"><span style="color: #000000">monthlySharkReport</span></code>集合中。</li>
 </ul>
-<p>例如，假设<code class="codehilite">observations</code>集合包含这两个文档：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>{
-  <span style="color: #a61717; background-color: #e3d2d2">observationTimestamp:</span> <span style="color: #a61717; background-color: #e3d2d2">Date.parse(</span>  <span style="color: #bb0066; font-weight: bold">&quot;Mon, 25 Dec 1995 12:34:56 GMT&quot;</span><span style="color: #a61717; background-color: #e3d2d2">)</span>,
-  <span style="color: #a61717; background-color: #e3d2d2">family:</span> <span style="color: #bb0066; font-weight: bold">&quot;Sharks&quot;</span>,
-  <span style="color: #a61717; background-color: #e3d2d2">species:</span> <span style="color: #bb0066; font-weight: bold">&quot;Carcharodon carcharias&quot;</span>,
-  <span style="color: #a61717; background-color: #e3d2d2">numAnimals:</span> <span style="color: #a61717; background-color: #e3d2d2">3</span>
-<span style="color: #a61717; background-color: #e3d2d2">{</span>
+<p>例如，假设<code class="codehilite"><span style="color: #000000">observations</span></code>集合包含这两个文档：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>{
+  <span style="color: #000000">observationTimestamp:</span> <span style="color: #000000">Date.parse(</span>  <span style="color: #000000">&quot;Mon, 25 Dec 1995 12:34:56 GMT&quot;)</span>,
+  <span style="color: #000000">family:</span> <span style="color: #000000">&quot;Sharks&quot;</span>,
+  <span style="color: #000000">species:</span> <span style="color: #000000">&quot;Carcharodon carcharias&quot;</span>,
+  <span style="color: #000000">numAnimals:</span> <span style="color: #000000">3</span>
+<span style="color: #000000">{</span>
 }
-  <span style="color: #a61717; background-color: #e3d2d2">observationTimestamp:</span> <span style="color: #a61717; background-color: #e3d2d2">Date.parse(</span><span style="color: #dd2200; background-color: #fff0f0">&quot;Tue, 12 Dec 1995 16:17:18 GMT&quot;</span><span style="color: #a61717; background-color: #e3d2d2">),</span>
-  <span style="color: #a61717; background-color: #e3d2d2">family:</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;Sharks&quot;</span><span style="color: #a61717; background-color: #e3d2d2">,</span>
-  <span style="color: #a61717; background-color: #e3d2d2">species:</span>    <span style="color: #dd2200; background-color: #fff0f0">&quot;Carcharias taurus&quot;</span><span style="color: #a61717; background-color: #e3d2d2">,</span>
-  <span style="color: #a61717; background-color: #e3d2d2">numAnimals:</span> <span style="color: #0000DD; font-weight: bold">4</span>
-<span style="color: #a61717; background-color: #e3d2d2">}</span>
-</pre></div>
+  <span style="color: #000000">observationTimestamp:</span> <span style="color: #000000">Date.parse(</span><span style="color: #C41A16">&quot;Tue, 12 Dec 1995 16:17:18 GMT&quot;</span><span style="color: #000000">),</span>
+  <span style="color: #000000">family:</span> <span style="color: #C41A16">&quot;Sharks&quot;</span><span style="color: #000000">,</span>
+  <span style="color: #000000">species:</span>    <span style="color: #C41A16">&quot;Carcharias taurus&quot;</span><span style="color: #000000">,</span>
+  <span style="color: #000000">numAnimals:</span> <span style="color: #1C01CE">4</span>
+<span style="color: #000000">}</span>
+</code></pre></div>
 
-<p>对每个文档都会调用一次<code class="codehilite">map</code>函数，结果将是<code class="codehilite">emit(&quot;1995-12&quot;,3)</code>和<code class="codehilite">emit(&quot;1995-12&quot;,4)</code>。随后，以<code class="codehilite">reduce(&quot;1995-12&quot;,[3,4])</code>调用<code class="codehilite">reduce</code>函数，将返回<code class="codehilite">7</code>。</p>
+<p>对每个文档都会调用一次<code class="codehilite"><span style="color: #000000">map</span></code>函数，结果将是<code class="codehilite"><span style="color: #000000">emit(&quot;1995-12&quot;,3)</span></code>和<code class="codehilite"><span style="color: #000000">emit(&quot;1995-12&quot;,4)</span></code>。随后，以<code class="codehilite"><span style="color: #000000">reduce(&quot;1995-12&quot;,[3,4])</span></code>调用<code class="codehilite"><span style="color: #000000">reduce</span></code>函数，将返回<code class="codehilite"><span style="color: #000000">7</span></code>。</p>
 <p>map和reduce函数在功能上有所限制：它们必须是<strong>纯</strong>函数，这意味着它们只使用传递给它们的数据作为输入，它们不能执行额外的数据库查询，也不能有任何副作用。这些限制允许数据库以任何顺序运行任何功能，并在失败时重新运行它们。然而，map和reduce函数仍然是强大的：它们可以解析字符串，调用库函数，执行计算等等。</p>
 <p>MapReduce是一个相当底层的编程模型，用于计算机集群上的分布式执行。像SQL这样的更高级的查询语言可以用一系列的MapReduce操作来实现（见<a href="../ch10/">第10章</a>），但是也有很多不使用MapReduce的分布式SQL实现。请注意，SQL中没有任何内容限制它在单个机器上运行，而MapReduce在分布式查询执行上没有垄断权。</p>
 <p>能够在查询中使用JavaScript代码是高级查询的一个重要特性，但这不限于MapReduce，一些SQL数据库也可以用JavaScript函数进行扩展【34】。</p>
 <p>MapReduce的一个可用性问题是，必须编写两个密切合作的JavaScript函数，这通常比编写单个查询更困难。此外，声明式查询语言为查询优化器提供了更多机会来提高查询的性能。基于这些原因，MongoDB 2.2添加了一种叫做<strong>聚合管道</strong>的声明式查询语言的支持【9】。用这种语言表述鲨鱼计数查询如下所示：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>db.observations.aggregate([
-  { $match: { family: <span style="color: #dd2200; background-color: #fff0f0">&quot;Sharks&quot;</span> } },
-  { $group: {
-    _id: {
-      year:  { $year:  <span style="color: #dd2200; background-color: #fff0f0">&quot;$observationTimestamp&quot;</span> },
-      month: { $month: <span style="color: #dd2200; background-color: #fff0f0">&quot;$observationTimestamp&quot;</span> }
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">db</span>.<span style="color: #000000">observations</span>.<span style="color: #000000">aggregate</span>([
+  { <span style="color: #000000">$match:</span> { <span style="color: #000000">family:</span> <span style="color: #C41A16">&quot;Sharks&quot;</span> } },
+  { <span style="color: #000000">$group:</span> {
+    <span style="color: #000000">_id:</span> {
+      <span style="color: #000000">year:</span>  { <span style="color: #000000">$year:</span>  <span style="color: #C41A16">&quot;$observationTimestamp&quot;</span> },
+      <span style="color: #000000">month:</span> { <span style="color: #000000">$month:</span> <span style="color: #C41A16">&quot;$observationTimestamp&quot;</span> }
     },
-    totalAnimals: { $sum: <span style="color: #dd2200; background-color: #fff0f0">&quot;$numAnimals&quot;</span> } }}
+    <span style="color: #000000">totalAnimals:</span> { <span style="color: #000000">$sum:</span> <span style="color: #C41A16">&quot;$numAnimals&quot;</span> } }}
 ]);
-</pre></div>
+</code></pre></div>
 
 <p>聚合管道语言与SQL的子集具有类似表现力，但是它使用基于JSON的语法而不是SQL的英语句子式语法；这种差异也许仅仅是品味不同而已。这个故事的寓意是NoSQL系统可能会发现自己意外地重新发明了SQL，尽管带着伪装。</p>
 <h2 id="_15">图数据模型</h2>
@@ -408,115 +1293,115 @@ $$
 <li>描述两个顶点之间关系类型的标签</li>
 <li>一组属性（键值对）</li>
 </ul>
-<p>可以将图存储看作由两个关系表组成：一个存储顶点，另一个存储边，如<a href="">例2-2</a>所示（该模式使用PostgreSQL json数据类型来存储每个顶点或每条边的属性）。头部和尾部顶点用来存储每条边；如果你想要一组顶点的输入或输出边，你可以分别通过<code class="codehilite">head_vertex</code>或<code class="codehilite">tail_vertex</code>来查询<code class="codehilite">edges</code>表。</p>
+<p>可以将图存储看作由两个关系表组成：一个存储顶点，另一个存储边，如<a href="">例2-2</a>所示（该模式使用PostgreSQL json数据类型来存储每个顶点或每条边的属性）。头部和尾部顶点用来存储每条边；如果你想要一组顶点的输入或输出边，你可以分别通过<code class="codehilite"><span style="color: #000000">head_vertex</span></code>或<code class="codehilite"><span style="color: #000000">tail_vertex</span></code>来查询<code class="codehilite"><span style="color: #000000">edges</span></code>表。</p>
 <p><strong>例2-2 使用关系模式来表示属性图</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">CREATE</span> <span style="color: #008800; font-weight: bold">TABLE</span> vertices (
-  vertex_id  <span style="color: #003388">INTEGER</span> <span style="color: #008800; font-weight: bold">PRIMARY</span> <span style="color: #008800; font-weight: bold">KEY</span>,
-  properties JSON
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">CREATE</span> <span style="color: #A90D91">TABLE</span> <span style="color: #000000">vertices</span> (
+  <span style="color: #000000">vertex_id</span>  <span style="color: #A90D91">INTEGER</span> <span style="color: #A90D91">PRIMARY</span> <span style="color: #A90D91">KEY</span>,
+  <span style="color: #000000">properties</span> <span style="color: #000000">JSON</span>
 );
 
-<span style="color: #008800; font-weight: bold">CREATE</span> <span style="color: #008800; font-weight: bold">TABLE</span> edges (
-  edge_id     <span style="color: #003388">INTEGER</span> <span style="color: #008800; font-weight: bold">PRIMARY</span> <span style="color: #008800; font-weight: bold">KEY</span>,
-  tail_vertex <span style="color: #003388">INTEGER</span> <span style="color: #008800; font-weight: bold">REFERENCES</span> vertices (vertex_id),
-  head_vertex <span style="color: #003388">INTEGER</span> <span style="color: #008800; font-weight: bold">REFERENCES</span> vertices (vertex_id),
-  label       <span style="color: #003388">TEXT</span>,
-  properties  JSON
+<span style="color: #A90D91">CREATE</span> <span style="color: #A90D91">TABLE</span> <span style="color: #000000">edges</span> (
+  <span style="color: #000000">edge_id</span>     <span style="color: #A90D91">INTEGER</span> <span style="color: #A90D91">PRIMARY</span> <span style="color: #A90D91">KEY</span>,
+  <span style="color: #000000">tail_vertex</span> <span style="color: #A90D91">INTEGER</span> <span style="color: #A90D91">REFERENCES</span> <span style="color: #000000">vertices</span> (<span style="color: #000000">vertex_id</span>),
+  <span style="color: #000000">head_vertex</span> <span style="color: #A90D91">INTEGER</span> <span style="color: #A90D91">REFERENCES</span> <span style="color: #000000">vertices</span> (<span style="color: #000000">vertex_id</span>),
+  <span style="color: #000000">label</span>       <span style="color: #A90D91">TEXT</span>,
+  <span style="color: #000000">properties</span>  <span style="color: #000000">JSON</span>
 );
 
-<span style="color: #008800; font-weight: bold">CREATE</span> <span style="color: #008800; font-weight: bold">INDEX</span> edges_tails <span style="color: #008800; font-weight: bold">ON</span> edges (tail_vertex);
-<span style="color: #008800; font-weight: bold">CREATE</span> <span style="color: #008800; font-weight: bold">INDEX</span> edges_heads <span style="color: #008800; font-weight: bold">ON</span> edges (head_vertex);
-</pre></div>
+<span style="color: #A90D91">CREATE</span> <span style="color: #A90D91">INDEX</span> <span style="color: #000000">edges_tails</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">edges</span> (<span style="color: #000000">tail_vertex</span>);
+<span style="color: #A90D91">CREATE</span> <span style="color: #A90D91">INDEX</span> <span style="color: #000000">edges_heads</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">edges</span> (<span style="color: #000000">head_vertex</span>);
+</code></pre></div>
 
 <p>关于这个模型的一些重要方面是：</p>
 <ol>
 <li>任何顶点都可以有一条边连接到任何其他顶点。没有模式限制哪种事物可不可以关联。</li>
-<li>给定任何顶点，可以高效地找到它的入边和出边，从而遍历图，即沿着一系列顶点的路径前后移动。（这就是为什么<a href="">例2-2</a>在<code class="codehilite">tail_vertex</code>和<code class="codehilite">head_vertex</code>列上都有索引的原因。）</li>
+<li>给定任何顶点，可以高效地找到它的入边和出边，从而遍历图，即沿着一系列顶点的路径前后移动。（这就是为什么<a href="">例2-2</a>在<code class="codehilite"><span style="color: #000000">tail_vertex</span></code>和<code class="codehilite"><span style="color: #000000">head_vertex</span></code>列上都有索引的原因。）</li>
 <li>通过对不同类型的关系使用不同的标签，可以在一个图中存储几种不同的信息，同时仍然保持一个清晰的数据模型。</li>
 </ol>
 <p>这些特性为数据建模提供了很大的灵活性，如<a href="../img/fig2-5.png">图2-5</a>所示。图中显示了一些传统关系模式难以表达的事情，例如不同国家的不同地区结构（法国有省和州，美国有不同的州和州），国中国的怪事（先忽略主权国家和国家错综复杂的烂摊子），不同的数据粒度（Lucy现在的住所被指定为一个城市，而她的出生地点只是在一个州的级别）。</p>
 <p>你可以想象延伸图还能包括许多关于Lucy和Alain，或其他人的其他更多的事实。例如，你可以用它来表示食物过敏（为每个过敏源增加一个顶点，并增加人与过敏源之间的一条边来指示一种过敏情况），并链接到过敏源，每个过敏源具有一组顶点用来显示哪些食物含有哪些物质。然后，你可以写一个查询，找出每个人吃什么是安全的。图表在可演化性是富有优势的：当向应用程序添加功能时，可以轻松扩展图以适应应用程序数据结构的变化。</p>
 <h3 id="cypher">Cypher查询语言</h3>
 <p>Cypher是属性图的声明式查询语言，为Neo4j图形数据库而发明【37】。（它是以电影“黑客帝国”中的一个角色开命名的，而与密码术中的密码无关【38】。）</p>
-<p><a href="">例2-3</a>显示了将<a href="../img/fig2-5.png">图2-5</a>的左边部分插入图形数据库的Cypher查询。可以类似地添加图的其余部分，为了便于阅读而省略。每个顶点都有一个像<code class="codehilite">USA</code>或<code class="codehilite">Idaho</code>这样的符号名称，查询的其他部分可以使用这些名称在顶点之间创建边，使用箭头符号：<code class="codehilite">（Idaho） - [：WITHIN] -&gt;（USA）</code>创建一条标记为<code class="codehilite">WITHIN</code>的边，<code class="codehilite">Idaho</code>为尾节点，<code class="codehilite">USA</code>为头节点。</p>
+<p><a href="">例2-3</a>显示了将<a href="../img/fig2-5.png">图2-5</a>的左边部分插入图形数据库的Cypher查询。可以类似地添加图的其余部分，为了便于阅读而省略。每个顶点都有一个像<code class="codehilite"><span style="color: #000000">USA</span></code>或<code class="codehilite"><span style="color: #000000">Idaho</span></code>这样的符号名称，查询的其他部分可以使用这些名称在顶点之间创建边，使用箭头符号：<code class="codehilite"><span style="color: #000000">（Idaho） - [：WITHIN] -&gt;（USA）</span></code>创建一条标记为<code class="codehilite"><span style="color: #000000">WITHIN</span></code>的边，<code class="codehilite"><span style="color: #000000">Idaho</span></code>为尾节点，<code class="codehilite"><span style="color: #000000">USA</span></code>为头节点。</p>
 <p><strong>例2-3 将图2-5中的数据子集表示为Cypher查询</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">CREATE</span><span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(NAmerica:Location<span style="color: #bbbbbb"> </span>{name:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>North<span style="color: #bbbbbb"> </span>America<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>,<span style="color: #bbbbbb"> </span>type:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>continent<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>}),<span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(USA:Location<span style="color: #bbbbbb">      </span>{name:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>United<span style="color: #bbbbbb"> </span>States<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>,<span style="color: #bbbbbb"> </span>type:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>country<span style="color: #a61717; background-color: #e3d2d2">&#39;</span><span style="color: #bbbbbb">  </span>}),<span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(Idaho:Location<span style="color: #bbbbbb">    </span>{name:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>Idaho<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>,<span style="color: #bbbbbb">         </span>type:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>state<span style="color: #a61717; background-color: #e3d2d2">&#39;</span><span style="color: #bbbbbb">    </span>}),<span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(Lucy:Person<span style="color: #bbbbbb">       </span>{name:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>Lucy<span style="color: #a61717; background-color: #e3d2d2">&#39;</span><span style="color: #bbbbbb"> </span>}),<span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(Idaho)<span style="color: #bbbbbb"> </span>-[:WITHIN]-&gt;<span style="color: #bbbbbb">  </span>(USA)<span style="color: #bbbbbb">  </span>-[:WITHIN]-&gt;<span style="color: #bbbbbb"> </span>(NAmerica),<span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(Lucy)<span style="color: #bbbbbb">  </span>-[:BORN_IN]-&gt;<span style="color: #bbbbbb"> </span>(Idaho)<span style="color: #bbbbbb"></span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">CREATE</span>
+    (<span style="color: #000000">NAmerica</span>:<span style="color: #000000">Location</span> {<span style="color: #000000">name</span>:<span style="color: #000000">&#39;North</span> <span style="color: #000000">America&#39;</span>, <span style="color: #000000">type</span>:<span style="color: #000000">&#39;continent&#39;</span>}),
+    (<span style="color: #000000">USA</span>:<span style="color: #000000">Location</span>      {<span style="color: #000000">name</span>:<span style="color: #000000">&#39;United</span> <span style="color: #000000">States&#39;</span>, <span style="color: #000000">type</span>:<span style="color: #000000">&#39;country&#39;</span>  }),
+    (<span style="color: #000000">Idaho</span>:<span style="color: #000000">Location</span>    {<span style="color: #000000">name</span>:<span style="color: #000000">&#39;Idaho&#39;</span>,         <span style="color: #000000">type</span>:<span style="color: #000000">&#39;state&#39;</span>    }),
+    (<span style="color: #000000">Lucy</span>:<span style="color: #000000">Person</span>       {<span style="color: #000000">name</span>:<span style="color: #000000">&#39;Lucy&#39;</span> }),
+    (<span style="color: #000000">Idaho</span>) <span style="color: #000000">-[</span>:<span style="color: #000000">WITHIN]-&gt;</span>  (<span style="color: #000000">USA</span>)  <span style="color: #000000">-[</span>:<span style="color: #000000">WITHIN]-&gt;</span> (<span style="color: #000000">NAmerica</span>),
+    (<span style="color: #000000">Lucy</span>)  <span style="color: #000000">-[</span>:<span style="color: #000000">BORN_IN]-&gt;</span> (<span style="color: #000000">Idaho</span>)
+</code></pre></div>
 
-<p>当<a href="../img/fig2-5.png">图2-5</a>的所有顶点和边被添加到数据库后，让我们提些有趣的问题：例如，找到所有从美国移民到欧洲的人的名字。更确切地说，这里我们想要找到符合下面条件的所有顶点，并且返回这些顶点的<code class="codehilite">name</code>属性：该顶点拥有一条连到美国任一位置的<code class="codehilite">BORN_IN</code>边，和一条连到欧洲的任一位置的<code class="codehilite">LIVING_IN</code>边。</p>
-<p><a href="">例2-4</a>展示了如何在Cypher中表达这个查询。在MATCH子句中使用相同的箭头符号来查找图中的模式：<code class="codehilite">(person) -[:BORN_IN]-&gt; ()</code> 可以匹配<code class="codehilite">BORN_IN</code>边的任意两个顶点。该边的尾节点被绑定了变量<code class="codehilite">person</code>，头节点则未被绑定。</p>
+<p>当<a href="../img/fig2-5.png">图2-5</a>的所有顶点和边被添加到数据库后，让我们提些有趣的问题：例如，找到所有从美国移民到欧洲的人的名字。更确切地说，这里我们想要找到符合下面条件的所有顶点，并且返回这些顶点的<code class="codehilite"><span style="color: #000000">name</span></code>属性：该顶点拥有一条连到美国任一位置的<code class="codehilite"><span style="color: #000000">BORN_IN</span></code>边，和一条连到欧洲的任一位置的<code class="codehilite"><span style="color: #000000">LIVING_IN</span></code>边。</p>
+<p><a href="">例2-4</a>展示了如何在Cypher中表达这个查询。在MATCH子句中使用相同的箭头符号来查找图中的模式：<code class="codehilite"><span style="color: #000000">(person) -[:BORN_IN]-&gt; ()</span></code> 可以匹配<code class="codehilite"><span style="color: #000000">BORN_IN</span></code>边的任意两个顶点。该边的尾节点被绑定了变量<code class="codehilite"><span style="color: #000000">person</span></code>，头节点则未被绑定。</p>
 <p><strong>例2-4 查找所有从美国移民到欧洲的人的Cypher查询：</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">MATCH</span><span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(person)<span style="color: #bbbbbb"> </span>-[:BORN_IN]-&gt;<span style="color: #bbbbbb">  </span>()<span style="color: #bbbbbb"> </span>-[:WITHIN*<span style="color: #0000DD; font-weight: bold">0</span>..]-&gt;<span style="color: #bbbbbb"> </span>(us:Location<span style="color: #bbbbbb"> </span>{name:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>United<span style="color: #bbbbbb"> </span>States<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>}),<span style="color: #bbbbbb"></span>
-<span style="color: #bbbbbb">    </span>(person)<span style="color: #bbbbbb"> </span>-[:LIVES_IN]-&gt;<span style="color: #bbbbbb"> </span>()<span style="color: #bbbbbb"> </span>-[:WITHIN*<span style="color: #0000DD; font-weight: bold">0</span>..]-&gt;<span style="color: #bbbbbb"> </span>(eu:Location<span style="color: #bbbbbb"> </span>{name:<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>Europe<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>})<span style="color: #bbbbbb"></span>
-<span style="color: #008800; font-weight: bold">RETURN</span><span style="color: #bbbbbb"> </span>person.name<span style="color: #bbbbbb"></span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">MATCH</span>
+    (<span style="color: #000000">person</span>) <span style="color: #000000">-[</span>:<span style="color: #000000">BORN_IN]-&gt;</span>  () <span style="color: #000000">-[</span>:<span style="color: #000000">WITHIN</span>*<span style="color: #1C01CE">0</span>..<span style="color: #000000">]-&gt;</span> (<span style="color: #000000">us</span>:<span style="color: #000000">Location</span> {<span style="color: #000000">name</span>:<span style="color: #000000">&#39;United</span> <span style="color: #000000">States&#39;</span>}),
+    (<span style="color: #000000">person</span>) <span style="color: #000000">-[</span>:<span style="color: #000000">LIVES_IN]-&gt;</span> () <span style="color: #000000">-[</span>:<span style="color: #000000">WITHIN</span>*<span style="color: #1C01CE">0</span>..<span style="color: #000000">]-&gt;</span> (<span style="color: #000000">eu</span>:<span style="color: #000000">Location</span> {<span style="color: #000000">name</span>:<span style="color: #000000">&#39;Europe&#39;</span>})
+<span style="color: #A90D91">RETURN</span> <span style="color: #000000">person</span>.<span style="color: #000000">name</span>
+</code></pre></div>
 
 <p>查询按如下来解读：</p>
 <blockquote>
 <p>找到满足以下两个条件的所有顶点（称之为person顶点）：
-1.  <code class="codehilite">person</code>顶点拥有一条到某个顶点的<code class="codehilite">BORN_IN</code>出边。从那个顶点开始，沿着一系列<code class="codehilite">WITHIN</code>出边最终到达一个类型为<code class="codehilite">Location</code>，<code class="codehilite">name</code>属性为<code class="codehilite">United States</code>的顶点。</p>
+1.  <code class="codehilite"><span style="color: #000000">person</span></code>顶点拥有一条到某个顶点的<code class="codehilite"><span style="color: #000000">BORN_IN</span></code>出边。从那个顶点开始，沿着一系列<code class="codehilite"><span style="color: #000000">WITHIN</span></code>出边最终到达一个类型为<code class="codehilite"><span style="color: #000000">Location</span></code>，<code class="codehilite"><span style="color: #000000">name</span></code>属性为<code class="codehilite"><span style="color: #000000">United States</span></code>的顶点。</p>
 <ol start="2">
-<li><code class="codehilite">person</code>顶点还拥有一条<code class="codehilite">LIVES_IN</code>出边。沿着这条边，可以通过一系列<code class="codehilite">WITHIN</code>出边最终到达一个类型为<code class="codehilite">Location</code>，<code class="codehilite">name</code>属性为<code class="codehilite">Europe</code>的顶点。</li>
+<li><code class="codehilite"><span style="color: #000000">person</span></code>顶点还拥有一条<code class="codehilite"><span style="color: #000000">LIVES_IN</span></code>出边。沿着这条边，可以通过一系列<code class="codehilite"><span style="color: #000000">WITHIN</span></code>出边最终到达一个类型为<code class="codehilite"><span style="color: #000000">Location</span></code>，<code class="codehilite"><span style="color: #000000">name</span></code>属性为<code class="codehilite"><span style="color: #000000">Europe</span></code>的顶点。</li>
 </ol>
-<p>对于这样的<code class="codehilite">Person</code>顶点，返回其<code class="codehilite">name</code>属性。</p>
+<p>对于这样的<code class="codehilite"><span style="color: #000000">Person</span></code>顶点，返回其<code class="codehilite"><span style="color: #000000">name</span></code>属性。</p>
 </blockquote>
 <p>执行这条查询可能会有几种可行的查询路径。这里给出的描述建议首先扫描数据库中的所有人，检查每个人的出生地和居住地，然后只返回符合条件的那些人。</p>
-<p>等价地，也可以从两个<code class="codehilite">Location</code>顶点开始反向地查找。假如<code class="codehilite">name</code>属性上有索引，则可以高效地找到代表美国和欧洲的两个顶点。然后，沿着所有<code class="codehilite">WITHIN</code>入边，可以继续查找出所有在美国和欧洲的位置（州，地区，城市等）。最后，查找出那些可以由<code class="codehilite">BORN_IN</code>或<code class="codehilite">LIVES_IN</code>入边到那些位置顶点的人。</p>
+<p>等价地，也可以从两个<code class="codehilite"><span style="color: #000000">Location</span></code>顶点开始反向地查找。假如<code class="codehilite"><span style="color: #000000">name</span></code>属性上有索引，则可以高效地找到代表美国和欧洲的两个顶点。然后，沿着所有<code class="codehilite"><span style="color: #000000">WITHIN</span></code>入边，可以继续查找出所有在美国和欧洲的位置（州，地区，城市等）。最后，查找出那些可以由<code class="codehilite"><span style="color: #000000">BORN_IN</span></code>或<code class="codehilite"><span style="color: #000000">LIVES_IN</span></code>入边到那些位置顶点的人。</p>
 <p>通常对于声明式查询语言来说，在编写查询语句时，不需要指定执行细节：查询优化程序会自动选择预测效率最高的策略，因此你可以继续编写应用程序的其他部分。</p>
 <h3 id="sql">SQL中的图查询</h3>
 <p><a href="">例2-2</a>建议在关系数据库中表示图数据。但是，如果把图数据放入关系结构中，我们是否也可以使用SQL查询它？</p>
 <p>答案是肯定的，但有些困难。在关系数据库中，你通常会事先知道在查询中需要哪些连接。在图查询中，你可能需要在找到待查找的顶点之前，遍历可变数量的边。也就是说，连接的数量事先并不确定。</p>
-<p>在我们的例子中，这发生在Cypher查询中的<code class="codehilite">() -[:WITHIN*0..]-&gt; ()</code>规则中。一个人的<code class="codehilite">LIVES_IN</code>边可以指向任何类型的位置：街道，城市，地区，地区，国家等。城市可以在一个地区，在一个州内的一个地区，在一个国家内的一个州等等。<code class="codehilite">LIVES_IN</code>边可以直接指向正在查找的位置，或者一个在位置层次结构中隔了数层的位置。</p>
-<p>在Cypher中，用<code class="codehilite">WITHIN * 0</code>非常简洁地表述了上述事实：“沿着<code class="codehilite">WITHIN</code>边，零次或多次”。它很像正则表达式中的<code class="codehilite">*</code>运算符。</p>
-<p>自SQL:1999，查询可变长度遍历路径的思想可以使用称为<strong>递归公用表表达式</strong>（<code class="codehilite">WITH RECURSIVE</code>语法）的东西来表示。<a href="">例2-5</a>显示了同样的查询 - 查找从美国移民到欧洲的人的姓名 - 在SQL使用这种技术（PostgreSQL，IBM DB2，Oracle和SQL Server均支持）来表述。但是，与Cypher相比，其语法非常笨拙。</p>
+<p>在我们的例子中，这发生在Cypher查询中的<code class="codehilite"><span style="color: #000000">() -[:WITHIN*0..]-&gt; ()</span></code>规则中。一个人的<code class="codehilite"><span style="color: #000000">LIVES_IN</span></code>边可以指向任何类型的位置：街道，城市，地区，地区，国家等。城市可以在一个地区，在一个州内的一个地区，在一个国家内的一个州等等。<code class="codehilite"><span style="color: #000000">LIVES_IN</span></code>边可以直接指向正在查找的位置，或者一个在位置层次结构中隔了数层的位置。</p>
+<p>在Cypher中，用<code class="codehilite"><span style="color: #000000">WITHIN * 0</span></code>非常简洁地表述了上述事实：“沿着<code class="codehilite"><span style="color: #000000">WITHIN</span></code>边，零次或多次”。它很像正则表达式中的<code class="codehilite"><span style="color: #000000">*</span></code>运算符。</p>
+<p>自SQL:1999，查询可变长度遍历路径的思想可以使用称为<strong>递归公用表表达式</strong>（<code class="codehilite"><span style="color: #000000">WITH RECURSIVE</span></code>语法）的东西来表示。<a href="">例2-5</a>显示了同样的查询 - 查找从美国移民到欧洲的人的姓名 - 在SQL使用这种技术（PostgreSQL，IBM DB2，Oracle和SQL Server均支持）来表述。但是，与Cypher相比，其语法非常笨拙。</p>
 <p><strong>例2-5  与示例2-4同样的查询，在SQL中使用递归公用表表达式表示</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">WITH</span> <span style="color: #008800; font-weight: bold">RECURSIVE</span>
-    <span style="color: #888888">-- in_usa 包含所有的美国境内的位置ID</span>
-    in_usa(vertex_id) <span style="color: #008800; font-weight: bold">AS</span> (
-    <span style="color: #008800; font-weight: bold">SELECT</span> vertex_id <span style="color: #008800; font-weight: bold">FROM</span> vertices <span style="color: #008800; font-weight: bold">WHERE</span> properties -&gt;&gt; <span style="color: #dd2200; background-color: #fff0f0">&#39;name&#39;</span> = <span style="color: #dd2200; background-color: #fff0f0">&#39;United States&#39;</span>
-    <span style="color: #008800; font-weight: bold">UNION</span>
-    <span style="color: #008800; font-weight: bold">SELECT</span> edges.tail_vertex <span style="color: #008800; font-weight: bold">FROM</span> edges
-      <span style="color: #008800; font-weight: bold">JOIN</span> in_usa <span style="color: #008800; font-weight: bold">ON</span> edges.head_vertex = in_usa.vertex_id
-      <span style="color: #008800; font-weight: bold">WHERE</span> edges.label = <span style="color: #dd2200; background-color: #fff0f0">&#39;within&#39;</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">WITH</span> <span style="color: #A90D91">RECURSIVE</span>
+    <span style="color: #177500">-- in_usa 包含所有的美国境内的位置ID</span>
+    <span style="color: #000000">in_usa</span>(<span style="color: #000000">vertex_id</span>) <span style="color: #A90D91">AS</span> (
+    <span style="color: #A90D91">SELECT</span> <span style="color: #000000">vertex_id</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">vertices</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">properties</span> <span style="color: #000000">-&gt;&gt;</span> <span style="color: #C41A16">&#39;name&#39;</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;United States&#39;</span>
+    <span style="color: #A90D91">UNION</span>
+    <span style="color: #A90D91">SELECT</span> <span style="color: #000000">edges</span>.<span style="color: #000000">tail_vertex</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">edges</span>
+      <span style="color: #A90D91">JOIN</span> <span style="color: #000000">in_usa</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">edges</span>.<span style="color: #000000">head_vertex</span> <span style="color: #000000">=</span> <span style="color: #000000">in_usa</span>.<span style="color: #000000">vertex_id</span>
+      <span style="color: #A90D91">WHERE</span> <span style="color: #000000">edges</span>.<span style="color: #000000">label</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;within&#39;</span>
     ),
-    <span style="color: #888888">-- in_europe 包含所有的欧洲境内的位置ID</span>
-    in_europe(vertex_id) <span style="color: #008800; font-weight: bold">AS</span> (
-    <span style="color: #008800; font-weight: bold">SELECT</span> vertex_id <span style="color: #008800; font-weight: bold">FROM</span> vertices <span style="color: #008800; font-weight: bold">WHERE</span> properties -&gt;&gt; <span style="color: #dd2200; background-color: #fff0f0">&#39;name&#39;</span> = <span style="color: #dd2200; background-color: #fff0f0">&#39;Europe&#39;</span>
-    <span style="color: #008800; font-weight: bold">UNION</span>
-    <span style="color: #008800; font-weight: bold">SELECT</span> edges.tail_vertex <span style="color: #008800; font-weight: bold">FROM</span> edges
-      <span style="color: #008800; font-weight: bold">JOIN</span> in_europe <span style="color: #008800; font-weight: bold">ON</span> edges.head_vertex = in_europe.vertex_id
-      <span style="color: #008800; font-weight: bold">WHERE</span> edges.label = <span style="color: #dd2200; background-color: #fff0f0">&#39;within&#39;</span> ),
+    <span style="color: #177500">-- in_europe 包含所有的欧洲境内的位置ID</span>
+    <span style="color: #000000">in_europe</span>(<span style="color: #000000">vertex_id</span>) <span style="color: #A90D91">AS</span> (
+    <span style="color: #A90D91">SELECT</span> <span style="color: #000000">vertex_id</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">vertices</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">properties</span> <span style="color: #000000">-&gt;&gt;</span> <span style="color: #C41A16">&#39;name&#39;</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;Europe&#39;</span>
+    <span style="color: #A90D91">UNION</span>
+    <span style="color: #A90D91">SELECT</span> <span style="color: #000000">edges</span>.<span style="color: #000000">tail_vertex</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">edges</span>
+      <span style="color: #A90D91">JOIN</span> <span style="color: #000000">in_europe</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">edges</span>.<span style="color: #000000">head_vertex</span> <span style="color: #000000">=</span> <span style="color: #000000">in_europe</span>.<span style="color: #000000">vertex_id</span>
+      <span style="color: #A90D91">WHERE</span> <span style="color: #000000">edges</span>.<span style="color: #000000">label</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;within&#39;</span> ),
 
-    <span style="color: #888888">-- born_in_usa 包含了所有类型为Person，且出生在美国的顶点</span>
-    born_in_usa(vertex_id) <span style="color: #008800; font-weight: bold">AS</span> (
-      <span style="color: #008800; font-weight: bold">SELECT</span> edges.tail_vertex <span style="color: #008800; font-weight: bold">FROM</span> edges
-        <span style="color: #008800; font-weight: bold">JOIN</span> in_usa <span style="color: #008800; font-weight: bold">ON</span> edges.head_vertex = in_usa.vertex_id
-        <span style="color: #008800; font-weight: bold">WHERE</span> edges.label = <span style="color: #dd2200; background-color: #fff0f0">&#39;born_in&#39;</span> ),
+    <span style="color: #177500">-- born_in_usa 包含了所有类型为Person，且出生在美国的顶点</span>
+    <span style="color: #000000">born_in_usa</span>(<span style="color: #000000">vertex_id</span>) <span style="color: #A90D91">AS</span> (
+      <span style="color: #A90D91">SELECT</span> <span style="color: #000000">edges</span>.<span style="color: #000000">tail_vertex</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">edges</span>
+        <span style="color: #A90D91">JOIN</span> <span style="color: #000000">in_usa</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">edges</span>.<span style="color: #000000">head_vertex</span> <span style="color: #000000">=</span> <span style="color: #000000">in_usa</span>.<span style="color: #000000">vertex_id</span>
+        <span style="color: #A90D91">WHERE</span> <span style="color: #000000">edges</span>.<span style="color: #000000">label</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;born_in&#39;</span> ),
 
-    <span style="color: #888888">-- lives_in_europe 包含了所有类型为Person，且居住在欧洲的顶点。</span>
-    lives_in_europe(vertex_id) <span style="color: #008800; font-weight: bold">AS</span> (
-      <span style="color: #008800; font-weight: bold">SELECT</span> edges.tail_vertex <span style="color: #008800; font-weight: bold">FROM</span> edges
-        <span style="color: #008800; font-weight: bold">JOIN</span> in_europe <span style="color: #008800; font-weight: bold">ON</span> edges.head_vertex = in_europe.vertex_id
-        <span style="color: #008800; font-weight: bold">WHERE</span> edges.label = <span style="color: #dd2200; background-color: #fff0f0">&#39;lives_in&#39;</span>)
+    <span style="color: #177500">-- lives_in_europe 包含了所有类型为Person，且居住在欧洲的顶点。</span>
+    <span style="color: #000000">lives_in_europe</span>(<span style="color: #000000">vertex_id</span>) <span style="color: #A90D91">AS</span> (
+      <span style="color: #A90D91">SELECT</span> <span style="color: #000000">edges</span>.<span style="color: #000000">tail_vertex</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">edges</span>
+        <span style="color: #A90D91">JOIN</span> <span style="color: #000000">in_europe</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">edges</span>.<span style="color: #000000">head_vertex</span> <span style="color: #000000">=</span> <span style="color: #000000">in_europe</span>.<span style="color: #000000">vertex_id</span>
+        <span style="color: #A90D91">WHERE</span> <span style="color: #000000">edges</span>.<span style="color: #000000">label</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;lives_in&#39;</span>)
 
-<span style="color: #008800; font-weight: bold">SELECT</span> vertices.properties -&gt;&gt; <span style="color: #dd2200; background-color: #fff0f0">&#39;name&#39;</span>
-<span style="color: #008800; font-weight: bold">FROM</span> vertices
-<span style="color: #008800; font-weight: bold">JOIN</span> born_in_usa <span style="color: #008800; font-weight: bold">ON</span> vertices.vertex_id = born_in_usa.vertex_id
-<span style="color: #008800; font-weight: bold">JOIN</span> lives_in_europe <span style="color: #008800; font-weight: bold">ON</span> vertices.vertex_id = lives_in_europe.vertex_id;
-</pre></div>
+<span style="color: #A90D91">SELECT</span> <span style="color: #000000">vertices</span>.<span style="color: #000000">properties</span> <span style="color: #000000">-&gt;&gt;</span> <span style="color: #C41A16">&#39;name&#39;</span>
+<span style="color: #A90D91">FROM</span> <span style="color: #000000">vertices</span>
+<span style="color: #A90D91">JOIN</span> <span style="color: #000000">born_in_usa</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">vertices</span>.<span style="color: #000000">vertex_id</span> <span style="color: #000000">=</span> <span style="color: #000000">born_in_usa</span>.<span style="color: #000000">vertex_id</span>
+<span style="color: #A90D91">JOIN</span> <span style="color: #000000">lives_in_europe</span> <span style="color: #A90D91">ON</span> <span style="color: #000000">vertices</span>.<span style="color: #000000">vertex_id</span> <span style="color: #000000">=</span> <span style="color: #000000">lives_in_europe</span>.<span style="color: #000000">vertex_id</span>;
+</code></pre></div>
 
 <ul>
-<li>首先，查找<code class="codehilite">name</code>属性为<code class="codehilite">United States</code>的顶点，将其作为<code class="codehilite">in_use</code>顶点的集合的第一个元素。</li>
-<li>从<code class="codehilite">in_use</code>集合的顶点出发，沿着所有的<code class="codehilite">with_in</code>入边，将其尾顶点加入同一集合，不断递归直到所有<code class="codehilite">with_in</code>入边都被访问完毕。</li>
-<li>同理，从<code class="codehilite">name</code>属性为<code class="codehilite">Europe</code>的顶点出发，建立<code class="codehilite">in_europe</code>顶点的集合。</li>
-<li>对于<code class="codehilite">in_usa</code>集合中的每个顶点，根据<code class="codehilite">born_in</code>入边来查找出生在美国某个地方的人。</li>
-<li>同样，对于<code class="codehilite">in_europe</code>集合中的每个顶点，根据<code class="codehilite">lives_in</code>入边来查找居住在欧洲的人。</li>
+<li>首先，查找<code class="codehilite"><span style="color: #000000">name</span></code>属性为<code class="codehilite"><span style="color: #000000">United States</span></code>的顶点，将其作为<code class="codehilite"><span style="color: #000000">in_use</span></code>顶点的集合的第一个元素。</li>
+<li>从<code class="codehilite"><span style="color: #000000">in_use</span></code>集合的顶点出发，沿着所有的<code class="codehilite"><span style="color: #000000">with_in</span></code>入边，将其尾顶点加入同一集合，不断递归直到所有<code class="codehilite"><span style="color: #000000">with_in</span></code>入边都被访问完毕。</li>
+<li>同理，从<code class="codehilite"><span style="color: #000000">name</span></code>属性为<code class="codehilite"><span style="color: #000000">Europe</span></code>的顶点出发，建立<code class="codehilite"><span style="color: #000000">in_europe</span></code>顶点的集合。</li>
+<li>对于<code class="codehilite"><span style="color: #000000">in_usa</span></code>集合中的每个顶点，根据<code class="codehilite"><span style="color: #000000">born_in</span></code>入边来查找出生在美国某个地方的人。</li>
+<li>同样，对于<code class="codehilite"><span style="color: #000000">in_europe</span></code>集合中的每个顶点，根据<code class="codehilite"><span style="color: #000000">lives_in</span></code>入边来查找居住在欧洲的人。</li>
 <li>最后，把在美国出生的人的集合与在欧洲居住的人的集合相交。</li>
 </ul>
 <p>同一个查询，用某一个查询语言可以写成4行，而用另一个查询语言需要29行，这恰恰说明了不同的数据模型是为不同的应用场景而设计的。选择适合应用程序的数据模型非常重要。</p>
@@ -525,12 +1410,12 @@ $$
 <p>在三元组存储中，所有信息都以非常简单的三部分表示形式存储（<strong>主语</strong>，<strong>谓语</strong>，<strong>宾语</strong>）。例如，三元组<strong>(吉姆, 喜欢 ,香蕉)</strong>中，<strong>吉姆</strong>是主语，<strong>喜欢</strong>是谓语（动词），<strong>香蕉</strong>是对象。</p>
 <p>三元组的主语相当于图中的一个顶点。而宾语是下面两者之一：</p>
 <ol>
-<li>原始数据类型中的值，例如字符串或数字。在这种情况下，三元组的谓语和宾语相当于主语顶点上的属性的键和值。例如，<code class="codehilite">(lucy, age, 33)</code>就像属性<code class="codehilite">{“age”：33}</code>的顶点lucy。</li>
-<li>图中的另一个顶点。在这种情况下，谓语是图中的一条边，主语是其尾部顶点，而宾语是其头部顶点。例如，在<code class="codehilite">(lucy, marriedTo, alain)</code>中主语和宾语<code class="codehilite">lucy</code>和<code class="codehilite">alain</code>都是顶点，并且谓语<code class="codehilite">marriedTo</code>是连接他们的边的标签。</li>
+<li>原始数据类型中的值，例如字符串或数字。在这种情况下，三元组的谓语和宾语相当于主语顶点上的属性的键和值。例如，<code class="codehilite"><span style="color: #000000">(lucy, age, 33)</span></code>就像属性<code class="codehilite"><span style="color: #000000">{“age”：33}</span></code>的顶点lucy。</li>
+<li>图中的另一个顶点。在这种情况下，谓语是图中的一条边，主语是其尾部顶点，而宾语是其头部顶点。例如，在<code class="codehilite"><span style="color: #000000">(lucy, marriedTo, alain)</span></code>中主语和宾语<code class="codehilite"><span style="color: #000000">lucy</span></code>和<code class="codehilite"><span style="color: #000000">alain</span></code>都是顶点，并且谓语<code class="codehilite"><span style="color: #000000">marriedTo</span></code>是连接他们的边的标签。</li>
 </ol>
 <p><a href="">例2-6</a>显示了与<a href="">例2-3</a>相同的数据，以称为Turtle的格式（Notation3（N3）【39】）的一个子集形式写成三元组。</p>
 <p><strong>例2-6 图2-5中的数据子集，表示为Turtle三元组</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>@prefix : &lt;urn:example:&gt;.
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>@prefix : &lt;urn:example:&gt;.
 _:lucy     a       :Person.
 _:lucy     :name   &quot;Lucy&quot;.
 _:lucy     :bornIn _:idaho.
@@ -545,17 +1430,17 @@ _:usa      :within _:namerica.
 _:namerica a       :Location
 _:namerica :name   &quot;North America&quot;
 _:namerica :type   :&quot;continent&quot;
-</pre></div>
+</code></pre></div>
 
-<p>在这个例子中，图的顶点被写为：<code class="codehilite">_：someName</code>。这个名字并不意味着这个文件以外的任何东西。它的存在只是帮助我们明确哪些三元组引用了同一顶点。当谓语表示边时，该宾语是一个顶点，如<code class="codehilite">_:idaho :within _:usa.</code>。当谓语是一个属性时，该宾语是一个字符串，如<code class="codehilite">_:usa :name <span style="color: #dd2200; background-color: #fff0f0">&quot;United States&quot;</span></code></p>
+<p>在这个例子中，图的顶点被写为：<code class="codehilite"><span style="color: #000000">_：someName</span></code>。这个名字并不意味着这个文件以外的任何东西。它的存在只是帮助我们明确哪些三元组引用了同一顶点。当谓语表示边时，该宾语是一个顶点，如<code class="codehilite"><span style="color: #000000">_:idaho</span> <span style="color: #000000">:within</span> <span style="color: #000000">_:usa.</span></code>。当谓语是一个属性时，该宾语是一个字符串，如<code class="codehilite"><span style="color: #000000">_:usa</span> <span style="color: #000000">:name</span> <span style="color: #C41A16">&quot;United States&quot;</span></code></p>
 <p>一遍又一遍地重复相同的主语看起来相当重复，但幸运的是，可以使用分号来说明关于同一主语的多个事情。这使得Turtle格式相当不错，可读性强：参见<a href="">例2-7</a>。</p>
 <p><strong>例2-7 一种相对例2-6写入数据的更为简洁的方法。</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>@<span style="color: #008800; font-weight: bold">prefix</span> : &lt;<span style="color: #bb0066; font-weight: bold">urn</span>:<span style="color: #555555">example</span>:&gt;.
-<span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">lucy</span>      <span style="color: #bb0066; font-weight: bold">a</span> :<span style="color: #555555">Person</span>;   :<span style="color: #555555">name</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;Lucy&quot;</span>;          :<span style="color: #555555">bornIn</span> <span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">idaho</span>.
-<span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">idaho</span>     <span style="color: #bb0066; font-weight: bold">a</span> :<span style="color: #555555">Location</span>; :<span style="color: #555555">name</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;Idaho&quot;</span>;         :<span style="color: #555555">type</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;state&quot;</span>;   :<span style="color: #555555">within</span> <span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">usa</span>
-<span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">usa</span>       <span style="color: #bb0066; font-weight: bold">a</span> :<span style="color: #555555">Loaction</span>; :<span style="color: #555555">name</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;United States&quot;</span>; :<span style="color: #555555">type</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;country&quot;</span>; :<span style="color: #555555">within</span> <span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">namerica</span>.
-<span style="color: #bb0066; font-weight: bold">_</span>:<span style="color: #555555">namerica</span>  <span style="color: #bb0066; font-weight: bold">a</span> :<span style="color: #555555">Location</span>; :<span style="color: #555555">name</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;North America&quot;</span>; :<span style="color: #555555">type</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;continent&quot;</span>.
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">@prefix</span> <span style="color: #000000">:</span> <span style="color: #000000">&lt;urn:example:&gt;</span>.
+<span style="color: #000000">_:lucy</span>      <span style="color: #A90D91">a</span> <span style="color: #000000">:Person</span>;   <span style="color: #000000">:name</span> <span style="color: #C41A16">&quot;Lucy&quot;</span>;          <span style="color: #000000">:bornIn</span> <span style="color: #000000">_:idaho</span>.
+<span style="color: #000000">_:idaho</span>     <span style="color: #A90D91">a</span> <span style="color: #000000">:Location</span>; <span style="color: #000000">:name</span> <span style="color: #C41A16">&quot;Idaho&quot;</span>;         <span style="color: #000000">:type</span> <span style="color: #C41A16">&quot;state&quot;</span>;   <span style="color: #000000">:within</span> <span style="color: #000000">_:usa</span>
+<span style="color: #000000">_:usa</span>       <span style="color: #A90D91">a</span> <span style="color: #000000">:Loaction</span>; <span style="color: #000000">:name</span> <span style="color: #C41A16">&quot;United States&quot;</span>; <span style="color: #000000">:type</span> <span style="color: #C41A16">&quot;country&quot;</span>; <span style="color: #000000">:within</span> <span style="color: #000000">_:namerica</span>.
+<span style="color: #000000">_:namerica</span>  <span style="color: #A90D91">a</span> <span style="color: #000000">:Location</span>; <span style="color: #000000">:name</span> <span style="color: #C41A16">&quot;North America&quot;</span>; <span style="color: #000000">:type</span> <span style="color: #C41A16">&quot;continent&quot;</span>.
+</code></pre></div>
 
 <h4 id="_17">语义网络</h4>
 <p>如果你阅读更多关于三元组存储的信息，你可能会被卷入关于语义网络的文章漩涡中。三元组存储数据模型完全独立于语义网络，例如，Datomic【40】是三元组存储，并没有声称与它有任何关系。但是，由于在很多人眼中这两者紧密相连，我们应该简要地讨论一下。</p>
@@ -568,54 +1453,54 @@ _:namerica :type   :&quot;continent&quot;
 <h4 id="rdf">RDF数据模型</h4>
 <p><a href="">例2-7</a>中使用的Turtle语言是一种用于RDF数据的人可读格式。有时候，RDF也可以以XML格式编写，不过完成同样的事情会相对啰嗦，参见<a href="">例2-8</a>。Turtle/N3是更可取的，因为它更容易阅读，像Apache Jena 【42】这样的工具可以根据需要在不同的RDF格式之间进行自动转换。</p>
 <p><strong>例2-8 用RDF/XML语法表示例2-7的数据</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #bb0066; font-weight: bold">&lt;rdf:RDF</span> <span style="color: #336699">xmlns=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;urn:example:&quot;</span>
-         <span style="color: #336699">xmlns:rdf=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-    <span style="color: #bb0066; font-weight: bold">&lt;Location</span> <span style="color: #336699">rdf:nodeID=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;idaho&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;name&gt;</span>Idaho<span style="color: #bb0066; font-weight: bold">&lt;/name&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;type&gt;</span>state<span style="color: #bb0066; font-weight: bold">&lt;/type&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;within&gt;</span>
-            <span style="color: #bb0066; font-weight: bold">&lt;Location</span> <span style="color: #336699">rdf:nodeID=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;usa&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-                <span style="color: #bb0066; font-weight: bold">&lt;name&gt;</span>United States<span style="color: #bb0066; font-weight: bold">&lt;/name&gt;</span>
-                <span style="color: #bb0066; font-weight: bold">&lt;type&gt;</span>country<span style="color: #bb0066; font-weight: bold">&lt;/type&gt;</span>
-                <span style="color: #bb0066; font-weight: bold">&lt;within&gt;</span>
-                    <span style="color: #bb0066; font-weight: bold">&lt;Location</span> <span style="color: #336699">rdf:nodeID=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;namerica&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-                        <span style="color: #bb0066; font-weight: bold">&lt;name&gt;</span>North America<span style="color: #bb0066; font-weight: bold">&lt;/name&gt;</span>
-                        <span style="color: #bb0066; font-weight: bold">&lt;type&gt;</span>continent<span style="color: #bb0066; font-weight: bold">&lt;/type&gt;</span>
-                    <span style="color: #bb0066; font-weight: bold">&lt;/Location&gt;</span>
-                <span style="color: #bb0066; font-weight: bold">&lt;/within&gt;</span>
-            <span style="color: #bb0066; font-weight: bold">&lt;/Location&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;/within&gt;</span>
-    <span style="color: #bb0066; font-weight: bold">&lt;/Location&gt;</span>
-    <span style="color: #bb0066; font-weight: bold">&lt;Person</span> <span style="color: #336699">rdf:nodeID=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;lucy&quot;</span><span style="color: #bb0066; font-weight: bold">&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;name&gt;</span>Lucy<span style="color: #bb0066; font-weight: bold">&lt;/name&gt;</span>
-        <span style="color: #bb0066; font-weight: bold">&lt;bornIn</span> <span style="color: #336699">rdf:nodeID=</span><span style="color: #dd2200; background-color: #fff0f0">&quot;idaho&quot;</span><span style="color: #bb0066; font-weight: bold">/&gt;</span>
-    <span style="color: #bb0066; font-weight: bold">&lt;/Person&gt;</span>
-<span style="color: #bb0066; font-weight: bold">&lt;/rdf:RDF&gt;</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">&lt;rdf:RDF</span> <span style="color: #836C28">xmlns=</span><span style="color: #C41A16">&quot;urn:example:&quot;</span>
+         <span style="color: #836C28">xmlns:rdf=</span><span style="color: #C41A16">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span style="color: #000000">&gt;</span>
+    <span style="color: #000000">&lt;Location</span> <span style="color: #836C28">rdf:nodeID=</span><span style="color: #C41A16">&quot;idaho&quot;</span><span style="color: #000000">&gt;</span>
+        <span style="color: #000000">&lt;name&gt;</span>Idaho<span style="color: #000000">&lt;/name&gt;</span>
+        <span style="color: #000000">&lt;type&gt;</span>state<span style="color: #000000">&lt;/type&gt;</span>
+        <span style="color: #000000">&lt;within&gt;</span>
+            <span style="color: #000000">&lt;Location</span> <span style="color: #836C28">rdf:nodeID=</span><span style="color: #C41A16">&quot;usa&quot;</span><span style="color: #000000">&gt;</span>
+                <span style="color: #000000">&lt;name&gt;</span>United States<span style="color: #000000">&lt;/name&gt;</span>
+                <span style="color: #000000">&lt;type&gt;</span>country<span style="color: #000000">&lt;/type&gt;</span>
+                <span style="color: #000000">&lt;within&gt;</span>
+                    <span style="color: #000000">&lt;Location</span> <span style="color: #836C28">rdf:nodeID=</span><span style="color: #C41A16">&quot;namerica&quot;</span><span style="color: #000000">&gt;</span>
+                        <span style="color: #000000">&lt;name&gt;</span>North America<span style="color: #000000">&lt;/name&gt;</span>
+                        <span style="color: #000000">&lt;type&gt;</span>continent<span style="color: #000000">&lt;/type&gt;</span>
+                    <span style="color: #000000">&lt;/Location&gt;</span>
+                <span style="color: #000000">&lt;/within&gt;</span>
+            <span style="color: #000000">&lt;/Location&gt;</span>
+        <span style="color: #000000">&lt;/within&gt;</span>
+    <span style="color: #000000">&lt;/Location&gt;</span>
+    <span style="color: #000000">&lt;Person</span> <span style="color: #836C28">rdf:nodeID=</span><span style="color: #C41A16">&quot;lucy&quot;</span><span style="color: #000000">&gt;</span>
+        <span style="color: #000000">&lt;name&gt;</span>Lucy<span style="color: #000000">&lt;/name&gt;</span>
+        <span style="color: #000000">&lt;bornIn</span> <span style="color: #836C28">rdf:nodeID=</span><span style="color: #C41A16">&quot;idaho&quot;</span><span style="color: #000000">/&gt;</span>
+    <span style="color: #000000">&lt;/Person&gt;</span>
+<span style="color: #000000">&lt;/rdf:RDF&gt;</span>
+</code></pre></div>
 
-<p>RDF有一些奇怪之处，因为它是为了在互联网上交换数据而设计的。三元组的主语，谓语和宾语通常是URI。例如，谓语可能是一个URI，如 <code class="codehilite">&lt;http://my-company.com/namespace#within&gt;</code>或<code class="codehilite">&lt;http://my-company.com/namespace#lives_in&gt;</code>，而不仅仅是<code class="codehilite">WITHIN</code>或<code class="codehilite">LIVES_IN</code>。这个设计背后的原因为了让你能够把你的数据和其他人的数据结合起来，如果他们赋予单词<code class="codehilite">within</code>或者<code class="codehilite">lives_in</code>不同的含义，两者也不会冲突，因为它们的谓语实际上是<code class="codehilite">&lt;http://other.org/foo#within&gt;</code>和<code class="codehilite">&lt;http://other.org/foo#lives_in&gt;</code>。</p>
-<p>从RDF的角度来看，URL <code class="codehilite">&lt;http://my-company.com/namespace&gt;</code> 不一定需要能解析成什么东西，它只是一个命名空间。为避免与<code class="codehilite">http://URL</code>混淆，本节中的示例使用不可解析的URI，如<code class="codehilite">urn：example：within</code>。幸运的是，你只需在文件顶部指定一个前缀，然后就不用再管了。</p>
+<p>RDF有一些奇怪之处，因为它是为了在互联网上交换数据而设计的。三元组的主语，谓语和宾语通常是URI。例如，谓语可能是一个URI，如 <code class="codehilite"><span style="color: #000000">&lt;http://my-company.com/namespace#within&gt;</span></code>或<code class="codehilite"><span style="color: #000000">&lt;http://my-company.com/namespace#lives_in&gt;</span></code>，而不仅仅是<code class="codehilite"><span style="color: #000000">WITHIN</span></code>或<code class="codehilite"><span style="color: #000000">LIVES_IN</span></code>。这个设计背后的原因为了让你能够把你的数据和其他人的数据结合起来，如果他们赋予单词<code class="codehilite"><span style="color: #000000">within</span></code>或者<code class="codehilite"><span style="color: #000000">lives_in</span></code>不同的含义，两者也不会冲突，因为它们的谓语实际上是<code class="codehilite"><span style="color: #000000">&lt;http://other.org/foo#within&gt;</span></code>和<code class="codehilite"><span style="color: #000000">&lt;http://other.org/foo#lives_in&gt;</span></code>。</p>
+<p>从RDF的角度来看，URL <code class="codehilite"><span style="color: #000000">&lt;http://my-company.com/namespace&gt;</span></code> 不一定需要能解析成什么东西，它只是一个命名空间。为避免与<code class="codehilite"><span style="color: #177500">http://URL</span></code>混淆，本节中的示例使用不可解析的URI，如<code class="codehilite"><span style="color: #000000">urn：example：within</span></code>。幸运的是，你只需在文件顶部指定一个前缀，然后就不用再管了。</p>
 <h3 id="sparql_1">SPARQL查询语言</h3>
 <p><strong>SPARQL</strong>是一种用于三元组存储的面向RDF数据模型的查询语言，【43】。（它是SPARQL协议和RDF查询语言的缩写，发音为“sparkle”。）SPARQL早于Cypher，并且由于Cypher的模式匹配借鉴于SPARQL，这使得它们看起来非常相似【37】。</p>
 <p>与之前相同的查询 - 查找从美国转移到欧洲的人 - 使用SPARQL比使用Cypher甚至更为简洁（参见<a href="">例2-9</a>）。</p>
 <p><strong>例2-9 与示例2-4相同的查询，用SPARQL表示</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">PREFIX</span> : <span style="color: #336699; font-style: italic">&lt;urn:example:&gt;</span>
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #336699">?personName</span> <span style="color: #008800; font-weight: bold">WHERE</span> {
-  <span style="color: #336699">?person</span> :<span style="color: #bb0066; font-weight: bold">name</span> <span style="color: #336699">?personName</span>.
-  <span style="color: #336699">?person</span> :<span style="color: #bb0066; font-weight: bold">bornIn</span>  / :<span style="color: #bb0066; font-weight: bold">within</span>* / :<span style="color: #bb0066; font-weight: bold">name</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;United States&quot;</span>.
-  <span style="color: #336699">?person</span> :<span style="color: #bb0066; font-weight: bold">livesIn</span> / :<span style="color: #bb0066; font-weight: bold">within</span>* / :<span style="color: #bb0066; font-weight: bold">name</span> <span style="color: #dd2200; background-color: #fff0f0">&quot;Europe&quot;</span>.
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">PREFIX</span> : <span style="color: #000000">&lt;urn:example:&gt;</span>
+<span style="color: #A90D91">SELECT</span> <span style="color: #000000">?personName</span> <span style="color: #A90D91">WHERE</span> {
+  <span style="color: #000000">?person</span> :<span style="color: #000000">name</span> <span style="color: #000000">?personName</span>.
+  <span style="color: #000000">?person</span> :<span style="color: #000000">bornIn</span>  <span style="color: #000000">/</span> :<span style="color: #000000">within*</span> <span style="color: #000000">/</span> :<span style="color: #000000">name</span> <span style="color: #C41A16">&quot;United States&quot;</span>.
+  <span style="color: #000000">?person</span> :<span style="color: #000000">livesIn</span> <span style="color: #000000">/</span> :<span style="color: #000000">within*</span> <span style="color: #000000">/</span> :<span style="color: #000000">name</span> <span style="color: #C41A16">&quot;Europe&quot;</span>.
 }
-</pre></div>
+</code></pre></div>
 
 <p>结构非常相似。以下两个表达式是等价的（SPARQL中的变量以问号开头）：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>(person) -[:BORN_IN]-&gt; () -[:WITHIN*0..]-&gt; (location)   # Cypher
-?person :bornIn / :within* ?location.                   # SPARQL
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">(person) -[:BORN_IN]-&gt; () -[:WITHIN*0..]-&gt; (location)   # Cypher</span>
+<span style="color: #000000">?person :bornIn / :within* ?location.                   # SPARQL</span>
+</code></pre></div>
 
-<p>因为RDF不区分属性和边，而只是将它们作为谓语，所以可以使用相同的语法来匹配属性。在下面的表达式中，变量<code class="codehilite">usa</code>被绑定到任意具有值为字符串<code class="codehilite">&quot;United States&quot;</code>的<code class="codehilite">name</code>属性的顶点：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>(usa {name:&#39;United States&#39;})   # Cypher
-?usa :name &quot;United States&quot;.    # SPARQL
-</pre></div>
+<p>因为RDF不区分属性和边，而只是将它们作为谓语，所以可以使用相同的语法来匹配属性。在下面的表达式中，变量<code class="codehilite"><span style="color: #000000">usa</span></code>被绑定到任意具有值为字符串<code class="codehilite"><span style="color: #000000">&quot;United States&quot;</span></code>的<code class="codehilite"><span style="color: #000000">name</span></code>属性的顶点：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">(usa {name:&#39;United States&#39;})   # Cypher</span>
+<span style="color: #000000">?usa :name &quot;United States&quot;.    # SPARQL</span>
+</code></pre></div>
 
 <p>SPARQL是一种很好的查询语言——哪怕语义网从未实现，它仍然可以成为一种应用程序内部使用的强大工具。</p>
 <blockquote>
@@ -637,51 +1522,51 @@ _:namerica :type   :&quot;continent&quot;
 </blockquote>
 <p>Datalog的数据模型类似于三元组模式，但进行了一点泛化。把三元组写成<strong>谓语</strong>（<strong>主语，宾语</strong>），而不是写三元语（<strong>主语，宾语，宾语</strong>）。<a href="">例2-10</a>显示了如何用Datalog写入我们的例子中的数据。</p>
 <p><strong>例2-10 用Datalog来表示图2-5中的数据子集</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #0066bb; font-weight: bold">name</span>(<span style="color: #dd2200; background-color: #fff0f0">namerica</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;North America&#39;</span>).
-<span style="color: #0066bb; font-weight: bold">type</span>(<span style="color: #dd2200; background-color: #fff0f0">namerica</span>, <span style="color: #dd2200; background-color: #fff0f0">continent</span>).
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">name</span>(<span style="color: #C41A16">namerica</span>, <span style="color: #C41A16">&#39;North America&#39;</span>).
+<span style="color: #000000">type</span>(<span style="color: #C41A16">namerica</span>, <span style="color: #C41A16">continent</span>).
 
-<span style="color: #0066bb; font-weight: bold">name</span>(<span style="color: #dd2200; background-color: #fff0f0">usa</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;United States&#39;</span>).
-<span style="color: #0066bb; font-weight: bold">type</span>(<span style="color: #dd2200; background-color: #fff0f0">usa</span>, <span style="color: #dd2200; background-color: #fff0f0">country</span>).
-<span style="color: #0066bb; font-weight: bold">within</span>(<span style="color: #dd2200; background-color: #fff0f0">usa</span>, <span style="color: #dd2200; background-color: #fff0f0">namerica</span>).
+<span style="color: #000000">name</span>(<span style="color: #C41A16">usa</span>, <span style="color: #C41A16">&#39;United States&#39;</span>).
+<span style="color: #000000">type</span>(<span style="color: #C41A16">usa</span>, <span style="color: #C41A16">country</span>).
+<span style="color: #000000">within</span>(<span style="color: #C41A16">usa</span>, <span style="color: #C41A16">namerica</span>).
 
-<span style="color: #0066bb; font-weight: bold">name</span>(<span style="color: #dd2200; background-color: #fff0f0">idaho</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;Idaho&#39;</span>).
-<span style="color: #0066bb; font-weight: bold">type</span>(<span style="color: #dd2200; background-color: #fff0f0">idaho</span>, <span style="color: #dd2200; background-color: #fff0f0">state</span>).
-<span style="color: #0066bb; font-weight: bold">within</span>(<span style="color: #dd2200; background-color: #fff0f0">idaho</span>, <span style="color: #dd2200; background-color: #fff0f0">usa</span>).
+<span style="color: #000000">name</span>(<span style="color: #C41A16">idaho</span>, <span style="color: #C41A16">&#39;Idaho&#39;</span>).
+<span style="color: #000000">type</span>(<span style="color: #C41A16">idaho</span>, <span style="color: #C41A16">state</span>).
+<span style="color: #000000">within</span>(<span style="color: #C41A16">idaho</span>, <span style="color: #C41A16">usa</span>).
 
-<span style="color: #0066bb; font-weight: bold">name</span>(<span style="color: #dd2200; background-color: #fff0f0">lucy</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;Lucy&#39;</span>).
-<span style="color: #0066bb; font-weight: bold">born_in</span>(<span style="color: #dd2200; background-color: #fff0f0">lucy</span>, <span style="color: #dd2200; background-color: #fff0f0">idaho</span>).
-</pre></div>
+<span style="color: #000000">name</span>(<span style="color: #C41A16">lucy</span>, <span style="color: #C41A16">&#39;Lucy&#39;</span>).
+<span style="color: #000000">born_in</span>(<span style="color: #C41A16">lucy</span>, <span style="color: #C41A16">idaho</span>).
+</code></pre></div>
 
 <p>既然已经定义了数据，我们可以像之前一样编写相同的查询，如<a href="">例2-11</a>所示。它看起来有点不同于Cypher或SPARQL的等价物，但是请不要放弃它。Datalog是Prolog的一个子集，如果你学过计算机科学，你可能已经见过。</p>
 <p><strong>例2-11 与示例2-4相同的查询，用Datalog表示</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #0066bb; font-weight: bold">within_recursive</span>(<span style="color: #336699">Location</span>, <span style="color: #336699">Name</span>) :- <span style="color: #0066bb; font-weight: bold">name</span>(<span style="color: #336699">Location</span>, <span style="color: #336699">Name</span>). <span style="color: #888888">/* Rule 1 */</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">within_recursive</span>(<span style="color: #000000">Location</span>, <span style="color: #000000">Name</span>) :- <span style="color: #000000">name</span>(<span style="color: #000000">Location</span>, <span style="color: #000000">Name</span>). <span style="color: #177500">/* Rule 1 */</span>
 
-<span style="color: #0066bb; font-weight: bold">within_recursive</span>(<span style="color: #336699">Location</span>, <span style="color: #336699">Name</span>) :- <span style="color: #0066bb; font-weight: bold">within</span>(<span style="color: #336699">Location</span>, <span style="color: #336699">Via</span>), <span style="color: #888888">/* Rule 2 */</span>
-                                    <span style="color: #0066bb; font-weight: bold">within_recursive</span>(<span style="color: #336699">Via</span>, <span style="color: #336699">Name</span>).
+<span style="color: #000000">within_recursive</span>(<span style="color: #000000">Location</span>, <span style="color: #000000">Name</span>) :- <span style="color: #000000">within</span>(<span style="color: #000000">Location</span>, <span style="color: #000000">Via</span>), <span style="color: #177500">/* Rule 2 */</span>
+                                    <span style="color: #000000">within_recursive</span>(<span style="color: #000000">Via</span>, <span style="color: #000000">Name</span>).
 
-<span style="color: #0066bb; font-weight: bold">migrated</span>(<span style="color: #336699">Name</span>, <span style="color: #336699">BornIn</span>, <span style="color: #336699">LivingIn</span>) :- <span style="color: #0066bb; font-weight: bold">name</span>(<span style="color: #336699">Person</span>, <span style="color: #336699">Name</span>), <span style="color: #888888">/* Rule 3 */</span>
-                                    <span style="color: #0066bb; font-weight: bold">born_in</span>(<span style="color: #336699">Person</span>, <span style="color: #336699">BornLoc</span>),
-                                    <span style="color: #0066bb; font-weight: bold">within_recursive</span>(<span style="color: #336699">BornLoc</span>, <span style="color: #336699">BornIn</span>),
-                                    <span style="color: #0066bb; font-weight: bold">lives_in</span>(<span style="color: #336699">Person</span>, <span style="color: #336699">LivingLoc</span>),
-                                    <span style="color: #0066bb; font-weight: bold">within_recursive</span>(<span style="color: #336699">LivingLoc</span>, <span style="color: #336699">LivingIn</span>).
+<span style="color: #000000">migrated</span>(<span style="color: #000000">Name</span>, <span style="color: #000000">BornIn</span>, <span style="color: #000000">LivingIn</span>) :- <span style="color: #000000">name</span>(<span style="color: #000000">Person</span>, <span style="color: #000000">Name</span>), <span style="color: #177500">/* Rule 3 */</span>
+                                    <span style="color: #000000">born_in</span>(<span style="color: #000000">Person</span>, <span style="color: #000000">BornLoc</span>),
+                                    <span style="color: #000000">within_recursive</span>(<span style="color: #000000">BornLoc</span>, <span style="color: #000000">BornIn</span>),
+                                    <span style="color: #000000">lives_in</span>(<span style="color: #000000">Person</span>, <span style="color: #000000">LivingLoc</span>),
+                                    <span style="color: #000000">within_recursive</span>(<span style="color: #000000">LivingLoc</span>, <span style="color: #000000">LivingIn</span>).
 
-<span style="color: #dd2200; background-color: #fff0f0">?-</span> <span style="color: #0066bb; font-weight: bold">migrated</span>(<span style="color: #336699">Who</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;United States&#39;</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;Europe&#39;</span>). 
-<span style="color: #888888">/* Who = &#39;Lucy&#39;. */</span>
-</pre></div>
+<span style="color: #C41A16">?-</span> <span style="color: #000000">migrated</span>(<span style="color: #000000">Who</span>, <span style="color: #C41A16">&#39;United States&#39;</span>, <span style="color: #C41A16">&#39;Europe&#39;</span>). 
+<span style="color: #177500">/* Who = &#39;Lucy&#39;. */</span>
+</code></pre></div>
 
-<p>Cypher和SPARQL使用SELECT立即跳转，但是Datalog一次只进行一小步。我们定义<strong>规则</strong>，以将新谓语告诉数据库：在这里，我们定义了两个新的谓语，<code class="codehilite">_recursive</code>和<code class="codehilite">migrated</code>。这些谓语不是存储在数据库中的三元组中，而是它们是从数据或其他规则派生而来的。规则可以引用其他规则，就像函数可以调用其他函数或者递归地调用自己一样。像这样，复杂的查询可以一次构建其中的一小块。</p>
-<p>在规则中，以大写字母开头的单词是变量，谓语则用Cypher和SPARQL的方式一样来匹配。例如，<code class="codehilite">name(Location, Name)</code>通过变量绑定<code class="codehilite">Location = namerica</code>和<code class="codehilite">Name =&#39;North America&#39;</code>可以匹配三元组<code class="codehilite">name(namerica, &#39;North America&#39;)</code>。</p>
+<p>Cypher和SPARQL使用SELECT立即跳转，但是Datalog一次只进行一小步。我们定义<strong>规则</strong>，以将新谓语告诉数据库：在这里，我们定义了两个新的谓语，<code class="codehilite"><span style="color: #000000">_recursive</span></code>和<code class="codehilite"><span style="color: #000000">migrated</span></code>。这些谓语不是存储在数据库中的三元组中，而是它们是从数据或其他规则派生而来的。规则可以引用其他规则，就像函数可以调用其他函数或者递归地调用自己一样。像这样，复杂的查询可以一次构建其中的一小块。</p>
+<p>在规则中，以大写字母开头的单词是变量，谓语则用Cypher和SPARQL的方式一样来匹配。例如，<code class="codehilite"><span style="color: #000000">name(Location, Name)</span></code>通过变量绑定<code class="codehilite"><span style="color: #000000">Location = namerica</span></code>和<code class="codehilite"><span style="color: #000000">Name =&#39;North America&#39;</span></code>可以匹配三元组<code class="codehilite"><span style="color: #000000">name(namerica, &#39;North America&#39;)</span></code>。</p>
 <p>要是系统可以在<code class="codehilite">:-</code> 操作符的右侧找到与所有谓语的一个匹配，就运用该规则。当规则运用时，就好像通过<code class="codehilite">:-</code>的左侧将其添加到数据库（将变量替换成它们匹配的值）。</p>
 <p>因此，一种可能的应用规则的方式是：</p>
 <ol>
-<li>数据库存在<code class="codehilite">name(namerica, &#39;North America&#39;)</code>，故运用规则1。它生成<code class="codehilite">within_recursive(namerica, &#39;North America&#39;)</code>。</li>
-<li>数据库存在<code class="codehilite">within(usa, namerica)</code>，在上一步骤中生成<code class="codehilite">within_recursive(namerica, &#39;North America&#39;)</code>，故运用规则2。它会产生<code class="codehilite">within_recursive(usa, &#39;North America&#39;)</code>。</li>
-<li>数据库存在<code class="codehilite">within(idaho, usa)</code>，在上一步生成<code class="codehilite">within_recursive(usa, &#39;North America&#39;)</code>，故运用规则2。它产生<code class="codehilite">within_recursive(idaho, &#39;North America&#39;)</code>。</li>
+<li>数据库存在<code class="codehilite"><span style="color: #000000">name(namerica, &#39;North America&#39;)</span></code>，故运用规则1。它生成<code class="codehilite"><span style="color: #000000">within_recursive(namerica, &#39;North America&#39;)</span></code>。</li>
+<li>数据库存在<code class="codehilite"><span style="color: #000000">within(usa, namerica)</span></code>，在上一步骤中生成<code class="codehilite"><span style="color: #000000">within_recursive(namerica, &#39;North America&#39;)</span></code>，故运用规则2。它会产生<code class="codehilite"><span style="color: #000000">within_recursive(usa, &#39;North America&#39;)</span></code>。</li>
+<li>数据库存在<code class="codehilite"><span style="color: #000000">within(idaho, usa)</span></code>，在上一步生成<code class="codehilite"><span style="color: #000000">within_recursive(usa, &#39;North America&#39;)</span></code>，故运用规则2。它产生<code class="codehilite"><span style="color: #000000">within_recursive(idaho, &#39;North America&#39;)</span></code>。</li>
 </ol>
-<p>通过重复应用规则1和2，<code class="codehilite">within_recursive</code>谓语可以告诉我们在数据库中包含北美（或任何其他位置名称）的所有位置。这个过程如<a href="../img/fig2-6.png">图2-6</a>所示。</p>
+<p>通过重复应用规则1和2，<code class="codehilite"><span style="color: #000000">within_recursive</span></code>谓语可以告诉我们在数据库中包含北美（或任何其他位置名称）的所有位置。这个过程如<a href="../img/fig2-6.png">图2-6</a>所示。</p>
 <p><img alt="" src="../img/fig2-6.png" /></p>
 <p><strong>图2-6 使用示例2-11中的Datalog规则来确定爱达荷州在北美。</strong></p>
-<p>现在规则3可以找到出生在某个地方<code class="codehilite">BornIn</code>的人，并住在某个地方<code class="codehilite">LivingIn</code>。通过查询<code class="codehilite">BornIn =&#39;United States&#39;</code>和<code class="codehilite">LivingIn =&#39;Europe&#39;</code>，并将此人作为变量<code class="codehilite">Who</code>，让Datalog系统找出变量<code class="codehilite">Who</code>会出现哪些值。因此，最后得到了与早先的Cypher和SPARQL查询相同的答案。</p>
+<p>现在规则3可以找到出生在某个地方<code class="codehilite"><span style="color: #000000">BornIn</span></code>的人，并住在某个地方<code class="codehilite"><span style="color: #000000">LivingIn</span></code>。通过查询<code class="codehilite"><span style="color: #000000">BornIn =&#39;United States&#39;</span></code>和<code class="codehilite"><span style="color: #000000">LivingIn =&#39;Europe&#39;</span></code>，并将此人作为变量<code class="codehilite"><span style="color: #000000">Who</span></code>，让Datalog系统找出变量<code class="codehilite"><span style="color: #000000">Who</span></code>会出现哪些值。因此，最后得到了与早先的Cypher和SPARQL查询相同的答案。</p>
 <p>相对于本章讨论的其他查询语言，我们需要采取不同的思维方式来思考Datalog方法，但这是一种非常强大的方法，因为规则可以在不同的查询中进行组合和重用。虽然对于简单的一次性查询，显得不太方便，但是它可以更好地处理数据很复杂的情况。</p>
 <h2 id="_19">本章小结</h2>
 <p>数据模型是一个巨大的课题，在本章中，我们快速浏览了各种不同的模型。我们没有足够的篇幅来详细介绍每个模型的细节，但是希望这个概述足以激起你的兴趣，以更多地了解最适合你的应用需求的模型。</p>
@@ -860,4 +1745,69 @@ _:namerica :type   :&quot;continent&quot;
 <p>Fons Rademakers:   “<a href="http://indico.cern.ch/getFile.py/access?contribId=13&amp;resId=0&amp;materialId=slides&amp;confId=246453">ROOT for Big Data Analysis</a>,” at <em>Workshop on the Future of Big Data Management</em>,</p>
 </li>
 </ol>
-<p>London, UK, June 2013.</p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p>London, UK, June 2013.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

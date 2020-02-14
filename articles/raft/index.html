@@ -1,13 +1,819 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/articles/raft/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Raft博士论文 - Blog</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#raft" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Raft博士论文</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../translate/Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../translate/zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="raft">Raft博士论文</h1>
-<p>Raft支持日志条目的批处理和流水线化，两者对于实现最佳性能都很重要。当将多个请求收集到批处理中时，将分摊许多请求处理成本。例如，通过网络在一个数据包中发送两个条目比在两个单独的数据包中发送两个条目，或者一次将两个条目写入磁盘要快得多。因此，大批量可优化吞吐量，并且在系统承受重负载时非常有用。另一方面，流水线通过允许在处理另一个条目时开始处理一个条目来优化中等负载下的延迟。例如，当跟随者将前一个条目写入磁盘时，流水线操作允许领导者将网络上的下一个条目复制到该跟随者。即使在高负载下，流水数量也可以通过更有效地利用资源来提高吞吐量。例如，跟随者需要先通过网络接收条目，然后才能将其写入磁盘。批量处理不能一次使用这两种资源，但流水线可以。流水线在某种程度上也不利于批处理。例如，整体上延迟请求并向跟踪者发送一大批，而不是通过管道处理多个小请求，整体上可能更快。批处理在Raft中很自然地实现，因为AppendEntries支持在一个RPC中发送多个连续的条目。 LogCabin的领导者会在追随者的下一个索引和日志结尾之间发送尽可能多的条目，最大大小为1兆字节。一个1 MB的限制是任意的，但足以有效地使用网络和磁盘，同时仍向追随者提供频繁的心跳（如果一个RPC太大，追随者可能会怀疑失败的领导者并开始选举）。然后，跟随者将来自单个AppendEntries请求的所有新条目立即写入其磁盘，从而有效利用其磁盘。 Raft也对流水线提供了很好的支持。 AppendEntries一致性检查可确保流水线操作安全；实际上，领导者可以安全地以任何顺序发送条目。为了支持流水线，领导者乐观地对待每个关注者的下一个索引；它会更新下一个索引，以在发送上一个条目之后立即发送，而不是等待上一个条目的确认。这允许另一个RPC在下一个条目之后传递下一个条目。如果RPC失败，簿记将涉及更多。</p>
-<p>如果RPC超时，则领导者必须将其下一个索引递减回其原始值以重试。如果AppendEntries一致性检查失败，则领导者可以进一步降低下一个索引，以重试发送先前的条目，或者可以等待该先前的条目被确认然后再试一次。即使进行了此更改，LogCabin的原始线程体系结构仍然阻止了流水线操作，因为每个追随者只能支持一个RPC。因此，我们对其进行了更改，以使每个对等点产生多个线程而不是一个。如果希望在正常情况下按顺序传递消息，则这种流水线方法最有效，因为重新排序可能会导致重传效率低下。幸运的是，大多数环境不会经常重新排序消息。例如，LogCabin中的领导者使用与每个跟随者的单个TCP连接，并且仅在怀疑失败时才切换到新连接。由于单个TCP连接会屏蔽应用程序中的网络级重新排序，因此LogCabin关注者很少会乱序接收AppendEntries请求。如果网络通常对请求进行重新排序，则应用程序可能会从临时缓存乱序请求中受益，直到可以将它们按顺序追加到日志中为止。筏系统的整体性能在很大程度上取决于如何安排批生产和管道。如果在高负载下无法在一批中累积足够的请求，则整个处理将效率低下，从而导致低吞吐量和高延迟。另一方面，如果在一个批次中累积了太多请求，则延迟将不必要地增加，因为较早的请求会等待较晚的请求到达。尽管我们仍在研究最佳策略，但我们的目标是最大程度地减少动态工作负载下请求的平均延迟。在LogCabin中实现流水线操作之前，它使用了一种简单的双缓冲技术。领导者将为每个关注者保留一个出色的RPC。当该RPC返回时，它将发送另一个带有同时已累积的日志条目的RPC，如果没有更多的可用条目，则在添加下一个RPC之后将立即发送下一个RPC。这种方法很有吸引力，因为它可以动态调整以适应负载。一旦负载增加，条目就会累积，下一批将更大，从而提高了效率。一旦负载减少，批次将缩小大小，从而降低了延迟。我们希望保留此行为以进行流水线处理。直观地讲，在两级流水线中，我们希望第二批在第一批处理时间的中途开始，从而将平均延迟减半。但是，猜测批处理何时完成需要估计往返时间。我们仍在研究在LogCabin中使用的最佳策略。</p>
-<h1 id="raft_1">Raft</h1>
-<p>单节点</p>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/raft/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Raft 算法实现 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#raft" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Raft 算法实现
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="raft">Raft 算法实现</h1>
+<p>Raft 协议用于在集群节点之间维护一个复制状态机。状态机通过将复制日志进行同步来保持。</p>
+<p>Raft 库是稳定的，并且特性完整。被很多项目使用：etcd，Docker Swarm，CockroachDB，TiDB 等。</p>
+<p>大多数 Raft 实现是单体设计：包括了存储处理，消息序列化和网络传输。相反，这个库遵循了极简设计哲学：仅实现 raft 算法的核心功能。这个极简设计带来了灵活性，确定性和更好的性能。</p>
+<p>为了更容易的测试 raft 库，其行为必须是确定的。为了实现确定性，这个库将 Raft 作为一个状态机。状态机接受一个消息作为输入。一个消息可以是本地定时器更新或者网络发送的消息。状态机的输出是 3元组： <code class="codehilite"><span style="color: #000000">{[]Messages, []LogEntries, NextStat}</span></code> ，对于相同状态的状态机，相同的输入状态总是能够生成相同的状态机输出。</p>
+<p>主要结构说明：</p>
+<p>区分 node 和 RawNode 的原因是用于 multi-Raft 支持，在 CockroachDB 中，RawNode 代表的是一个 raftGroup</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">type</span> <span style="color: #000000">Node</span> <span style="color: #A90D91">interface</span> {
+    <span style="color: #000000">Tick</span>()
+    <span style="color: #000000">Campaign</span>(<span style="color: #000000">ctx</span> <span style="color: #000000">context</span>.<span style="color: #000000">Context</span>) <span style="color: #A90D91">error</span>
+    <span style="color: #000000">Propose</span>(<span style="color: #000000">ctx</span> <span style="color: #000000">context</span>.<span style="color: #000000">Context</span>, <span style="color: #000000">data</span> []<span style="color: #A90D91">byte</span>) <span style="color: #A90D91">error</span>
+    <span style="color: #000000">ProposeConfChange</span>(<span style="color: #000000">ctx</span> <span style="color: #000000">context</span>.<span style="color: #000000">Context</span>, <span style="color: #000000">cc</span> <span style="color: #000000">pb</span>.<span style="color: #000000">ConfChangeI</span>) <span style="color: #A90D91">error</span>
+    <span style="color: #000000">Step</span>(<span style="color: #000000">ctx</span> <span style="color: #000000">context</span>.<span style="color: #000000">Context</span>, <span style="color: #000000">msg</span> <span style="color: #000000">pb</span>.<span style="color: #000000">Message</span>) <span style="color: #A90D91">error</span>
+    <span style="color: #000000">Ready</span>() <span style="color: #000000">&lt;-</span><span style="color: #A90D91">chan</span> <span style="color: #000000">Ready</span>
+    <span style="color: #000000">Advance</span>()
+    <span style="color: #000000">ApplyConfChange</span>(<span style="color: #000000">cc</span> <span style="color: #000000">pb</span>.<span style="color: #000000">ConfChangeI</span>) <span style="color: #000000">*pb</span>.<span style="color: #000000">ConfState</span>
+    <span style="color: #000000">TransferLeadership</span>(<span style="color: #000000">ctx</span> <span style="color: #000000">context</span>.<span style="color: #000000">Context</span>, <span style="color: #000000">lead</span>, <span style="color: #000000">transferee</span> <span style="color: #A90D91">uint64</span>)
+    <span style="color: #000000">ReadIndex</span>(<span style="color: #000000">ctx</span> <span style="color: #000000">context</span>.<span style="color: #000000">Context</span>, <span style="color: #000000">rctx</span> []<span style="color: #A90D91">byte</span>) <span style="color: #A90D91">error</span>
+    <span style="color: #000000">Status</span>() <span style="color: #000000">Status</span>
+    <span style="color: #000000">ReportUnreachable</span>(<span style="color: #000000">id</span> <span style="color: #A90D91">uint64</span>)
+    <span style="color: #000000">ReportSnapshot</span>(<span style="color: #000000">id</span> <span style="color: #A90D91">uint64</span>, <span style="color: #000000">status</span> <span style="color: #000000">SnapshotStatus</span>)
+    <span style="color: #000000">Stop</span>()
+}
+
+<span style="color: #177500">// node 实现了 Node 接口，node 引用了 RawNode</span>
+<span style="color: #A90D91">type</span> <span style="color: #000000">node</span> <span style="color: #A90D91">struct</span> {
+    <span style="color: #000000">propc</span>      <span style="color: #A90D91">chan</span> <span style="color: #000000">msgWithResult</span>
+    <span style="color: #000000">recvc</span>      <span style="color: #A90D91">chan</span> <span style="color: #000000">pb</span>.<span style="color: #000000">Message</span>
+    <span style="color: #000000">confc</span>      <span style="color: #A90D91">chan</span> <span style="color: #000000">pb</span>.<span style="color: #000000">ConfChangeV2</span>
+    <span style="color: #000000">confstatec</span> <span style="color: #A90D91">chan</span> <span style="color: #000000">pb</span>.<span style="color: #000000">ConfState</span>
+    <span style="color: #000000">readyc</span>     <span style="color: #A90D91">chan</span> <span style="color: #000000">Ready</span>
+    <span style="color: #000000">advancec</span>   <span style="color: #A90D91">chan</span> <span style="color: #A90D91">struct</span>{}
+    <span style="color: #000000">tickc</span>      <span style="color: #A90D91">chan</span> <span style="color: #A90D91">struct</span>{}
+    <span style="color: #000000">done</span>       <span style="color: #A90D91">chan</span> <span style="color: #A90D91">struct</span>{}
+    <span style="color: #000000">stop</span>       <span style="color: #A90D91">chan</span> <span style="color: #A90D91">struct</span>{}
+    <span style="color: #000000">status</span>     <span style="color: #A90D91">chan</span> <span style="color: #A90D91">chan</span> <span style="color: #000000">Status</span>
+
+    <span style="color: #000000">rn</span> <span style="color: #000000">*RawNode</span>
+}
+
+<span style="color: #177500">// RawNode 包含 raft</span>
+<span style="color: #A90D91">type</span> <span style="color: #000000">RawNode</span> <span style="color: #A90D91">struct</span> {
+    <span style="color: #000000">raft</span>       <span style="color: #000000">*raft</span>
+    <span style="color: #000000">prevSoftSt</span> <span style="color: #000000">*SoftState</span>
+    <span style="color: #000000">prevHardSt</span> <span style="color: #000000">pb</span>.<span style="color: #000000">HardState</span>
+}
+
+<span style="color: #000000">RawNode</span>
+    <span style="color: #000000">Tick</span>
+    <span style="color: #000000">TickQuiesced</span>
+    <span style="color: #000000">Campaign</span>
+    <span style="color: #000000">Propose</span>
+    <span style="color: #000000">ProposeConfChange</span>
+    <span style="color: #000000">ApplyConfChange</span>
+    <span style="color: #000000">Step</span>
+    <span style="color: #000000">Ready</span>
+    <span style="color: #000000">HasReady</span>
+    <span style="color: #000000">Advance</span>
+    <span style="color: #000000">Status</span>
+    <span style="color: #000000">BasicStatus</span>
+    <span style="color: #000000">WithProgress</span>
+    <span style="color: #000000">ReportUnreachable</span>
+    <span style="color: #000000">ReportSnapshot</span>
+    <span style="color: #000000">TransferLeader</span>
+    <span style="color: #000000">ReadIndex</span>
+    <span style="color: #000000">Bootstrap</span>
+</code></pre></div>
+
+<h1 id="raft_1">Raft 使用实例</h1>
+<h2 id="raftexample">raftexample</h2>
+<h2 id="cockroachdb-raft">CockroachDB Raft</h2>
+<p><code class="codehilite"><span style="color: #000000">TxnCoordSender -&gt;</span><span style="color: #000000">DistSender -&gt; Node -&gt; Stores -&gt; Store -&gt; Replica</span></code></p>
+<p>RPC 服务器：Node 和 Stores；Node 不做什么事情，而是委托给 Stores。</p>
+<p>Replica：执行读操作，提议 Raft 命令。</p>
+<p>写入操作流程如下：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">Replica</span>
+    <span style="color: #000000">executeWriteBatch</span>  <span style="color: #177500">// 执行写入消息 replica 入口</span>
+        <span style="color: #000000">evalAndPropose</span>
+            <span style="color: #000000">propose</span>
+                <span style="color: #000000">r</span>.<span style="color: #000000">mu</span>.<span style="color: #000000">proposalBuf</span>.<span style="color: #000000">Insert</span>(<span style="color: #000000">p</span>, <span style="color: #000000">data</span>)  <span style="color: #177500">// 将消息发送到 buf 中</span>
+
+
+<span style="color: #000000">raftScheduler</span>                             <span style="color: #177500">// 调度器作为入口</span>
+    <span style="color: #000000">EnqueueRaftRequest</span>
+    (<span style="color: #000000">s</span> <span style="color: #000000">*raftScheduler</span>) <span style="color: #000000">worker</span>
+    <span style="color: #000000">processReady</span>                                                    <span style="color: #177500">// 开始处理 propose 消息</span>
+            <span style="color: #000000">replica</span>.<span style="color: #000000">handleRaftReady</span>
+                    <span style="color: #000000">proposalBuf</span>.<span style="color: #000000">FlushLockedWithRaftGroup</span>(<span style="color: #000000">raftGroup</span>)
+                        <span style="color: #000000">proposeBatch</span>(<span style="color: #000000">raftGroup</span>, <span style="color: #000000">b</span>.<span style="color: #000000">p</span>.<span style="color: #000000">replicaID</span>(), <span style="color: #000000">ents</span>)
+               <span style="color: #000000">raftGroup</span>.<span style="color: #000000">Step</span>(<span style="color: #000000">raftpb</span>.<span style="color: #000000">Message</span>{      <span style="color: #177500">// raft 模块开始处理</span>
+                  <span style="color: #000000">Type</span>:    <span style="color: #000000">raftpb</span>.<span style="color: #000000">MsgProp</span>,         
+                  <span style="color: #000000">Entries</span>: <span style="color: #000000">ents</span>})
+                        <span style="color: #000000">sending</span> <span style="color: #000000">all</span> <span style="color: #000000">MsgApps</span>
+                        <span style="color: #000000">syncing</span> <span style="color: #000000">all</span> <span style="color: #000000">entries</span> <span style="color: #000000">and</span> <span style="color: #000000">Raft</span> <span style="color: #000000">state</span> <span style="color: #000000">to</span> <span style="color: #000000">disk</span>
+                        <span style="color: #000000">sending</span> <span style="color: #000000">all</span> <span style="color: #000000">other</span> <span style="color: #000000">messages</span>.
+                        <span style="color: #000000">r</span>.<span style="color: #000000">sendRaftMessages</span>(<span style="color: #000000">ctx</span>, <span style="color: #000000">msgApps</span>)
+                        <span style="color: #000000">batch</span>.<span style="color: #000000">Commit</span>
+            <span style="color: #000000">ApplyCommittedEntries</span>
+                <span style="color: #000000">ApplyToStateMachine</span>
+                <span style="color: #000000">batch</span>.<span style="color: #000000">Commit</span>(<span style="color: #000000">sync</span>)
+            <span style="color: #000000">raftGroup</span>.<span style="color: #000000">Advance</span>(<span style="color: #000000">rd</span>)
+    <span style="color: #000000">processRequestQueue</span>
+</code></pre></div>
+
+<p>Leaseholder: 在多地域的部署下，地理分区 leaseholder 拓扑对下面的需求很有用：</p>
+<ul>
+<li>读延迟必须很低，但是写延迟可以相对较高</li>
+<li>读必须是最新的数据，因为表被外键引用</li>
+<li>表中的行以及所有对延迟敏感的查询都可以绑定到特定的地理位置，例如城市，州，地区。</li>
+<li>在区域故障期间，表数据必须保持可用。</li>
+</ul>
+<h1 id="raft_2">Raft博士论文</h1>
+<h2 id="_1">第十章 实现和性能</h2>
+<p>本质讨论 Raft 的实现和日志复制的性能</p>
+<h3 id="101">10.1 实现</h3>
+<p>我们已经将 Raft 实现为 LogCabin 的部分组件，一个复制的状态机作为一个网络服务器。我们最初开发 LogCabin 用于存储 RAMCloud 的配置信息，并用于辅助 RAMCloud 协调者的故障转移。我们计划在 LogCabin 中实现 Paxos，但是我们遇到的困难激发我们开发了 Raft。
+然后，LogCabin 充当了 Raft 中新想法的测试平台，并且成为验证我们了解构建完整而实用的系统问题的一种方式。 LogCabin中的Raft实现包含大约2000行C++代码，不包括测试，注释或空白行。 源代码是免费提供的。下一节将讨论其架构。</p>
+<p>除了LogCabin之外，在开发的各个阶段还有数十个Raft的第三方开源实现[92]。 其中许多使用与LogCabin不同的体系结构，例如ACTOR模型[106，73，68]或基于事件的编程[75，99，107]。 多家公司也在部署基于Raft的系统[92]。 例如，Facebook当前正在测试HydraBase，它是Apache HBase的分支[3]，它使用Raft进行复制[29]。</p>
+<h4 id="1011">10.1.1 线程架构</h4>
+<p>Raft适合使用线程的简单实现架构，如图10.1所示。这不是唯一可能的体系结构，但这是我们在LogCabin中采用的方法。</p>
+<p><img alt="image-20200201173451296" src="../images/raft_phd_10_01.png" /></p>
+<p><center>图10.1：在 LogCabin 中，每个服务器的共识状态保存在一个监视器中由一个锁来保护，多个线程可以来访问。线程与其他服务器通信（peer threads），处理来自客户端和服务器（service threads）的请求，在状态机中执行命令，实现了超时，写日志到磁盘。</center>
+每个服务器都包含一个共享状态变量的集合，这些状态变量以单个锁的监视器风格进行管理。五组线程调用监视器以操纵状态：</p>
+<ul>
+<li>对端线程：对端线程与集群中的其他服务器一样多。每个对端线程管理到其他一个服务器的RPC。每个线程使用条件变量进入共识状态监视器，以等待需要与给定服务器通信的事件。然后，它离开监视器（释放锁定）并发出RPC。RPC完成（或失败）后，对端线程将重新进入共识状态监视器，基于RPC更新状态变量，并等待下一个需要通信的事件。</li>
+<li>服务线程：多个线程处理来自客户端和其他服务器的传入请求。这些线程在共识状态监视器外部等待传入的请求，然后进入监视器以执行每个请求。</li>
+<li>状态机线程：一个线程执行状态机。它进入共识状态监视器以等待下一个提交的日志条目。当有可用条目时，它将离开监视器，执行命令，然后返回监视器以等待下一个命令。</li>
+<li>计时器线程：一个线程为跟随者和候选者管理选举计时器。一旦随机的选举超时时间过去，它将开始新的选举。如果作为领导者，第二个线程导致服务器无法与大多数集群通信，则服务器将返回到跟随者状态。然后，客户端可以通过另一台服务器重试其请求（请参见第6.2节）。</li>
+<li>日志同步线程：当服务器为领导者时，一个线程将日志条目持久地写入磁盘。无需在共识状态上保持锁定即可完成此操作，因此可以并行进行复制到跟随者。参见10.2.1节。为简单起见，跟随者和候选者在保持共识锁的同时直接从其服务线程写入磁盘。他们不使用日志同步线程。</li>
+</ul>
+<h3 id="102">10.2 性能方面的思考</h3>
+<p>Raft的性能类似于其他共识算法，例如Multi-Paxos。对于性能而言，最重要的情况是已建立的领导者正在复制新的日志条目。 Raft使用最少的消息（从领导者到集群的一半的单程往返）来实现此目的。还可以进一步提高Raft的性能。例如，Raft可以轻松支持批处理和流水线请求，以实现更高的吞吐量和更低的延迟，如下所述。第11章讨论了文献中针对其他算法提出的各种其他优化方法。其中许多可以应用于Raft，但我们将其留待以后的工作。
+图10.2（a）显示了Raft处理客户请求所必须采取的步骤。通常，最耗时的步骤是将新日志条目写入磁盘并在网络上复制它。写入磁盘的时间可能从快速固态磁盘的100μs到慢速磁盘的10 ms，而当今的网络延迟则可能从高度优化的数据中心网络中的5μs往返时间到400 ms的往返时间不等。遍布全球的网络。在局域网上的实验中，磁盘还是网络占主导地位，这取决于我们使用的固态磁盘的型号。</p>
+<h4 id="1021">10.2.1 并行写入领导者的磁盘</h4>
+<p>一种有用的性能优化可以从Raft的关键路径中移除磁盘写入。在简单的实现中，领导者将新日志条目写入磁盘，然后再将该条目复制到其后继对象。然后，跟随者将条目写入其磁盘。这将导致在处理请求的路径上两次连续的磁盘写入，从而对磁盘写入为主要因素的部署造成了显着的延迟。</p>
+<p><img alt="image-20200201212405053" src="../images/raft_phd_10_02.png" /></p>
+<p><center>图10.2：要在未经优化的Raft实现中处理客户的请求，领导者应采取以下步骤，如（a）所示：它接收客户的请求，将其追加到其本地日志，将日志条目刷新到磁盘，然后发送发出AppendEntries请求。然后，跟随者将该条目追加到其日志中，并将其刷新到其磁盘中。领导者从其一半的跟随者那里收到肯定的AppendEntries响应后，它将标记该条目已提交，将该条目应用于其状态机，并回复给客户端。在（b）中，领导者将日志条目写入磁盘，同时将其复制到跟随者，这可以显着减少延迟。</center></p>
+<p>幸运的是，领导者可以与复制到跟随者并将它们写入磁盘的同时并行地写入磁盘。参见图10.2（b）。为了简单地处理此问题，领导者使用其自己的匹配索引来指示已持久地写入其磁盘的最新条目。一旦领导者当前词条中的条目被大多数匹配索引覆盖，领导者就可以提升其提交索引。</p>
+<p>如果大多数跟随者已将条目写入磁盘，则领导者甚至可以在将条目写入其自己的磁盘之前提交该条目。这还是安全的。 LogCabin实现了此优化。</p>
+<h4 id="1022">10.2.2 批量和流水线</h4>
+<p>Raft支持日志条目的批处理和流水线化，两者对于实现最佳性能都很重要。当将多个请求收集到批处理中时，将分摊许多请求处理成本。例如，通过网络在一个数据包中发送两个条目比在两个单独的数据包中发送两个条目，或者一次将两个条目写入磁盘要快得多。因此，大批量可优化吞吐量，并且在系统承受重负载时非常有用。另一方面，流水线通过允许在处理另一个条目时开始处理一个条目来优化中等负载下的延迟。例如，当跟随者将前一个条目写入磁盘时，流水线操作允许领导者将网络上的下一个条目复制到该跟随者。即使在高负载下，流水数量也可以通过更有效地利用资源来提高吞吐量。例如，跟随者需要先通过网络接收条目，然后才能将其写入磁盘。批量处理不能一次使用这两种资源，但流水线可以。流水线在某种程度上也不利于批处理。例如，整体上延迟请求并向跟踪者发送一大批，而不是通过管道处理多个小请求，整体上可能更快。</p>
+<p>批处理在Raft中很自然地实现，因为AppendEntries支持在一个RPC中发送多个连续的条目。 LogCabin的领导者会在跟随者的下一个索引和日志结尾之间发送尽可能多的条目，最大大小为1兆字节。一个1 MB的限制是任意的，但足以有效地使用网络和磁盘，同时仍向跟随者发送频繁的心跳（如果一个RPC太大，跟随者可能会怀疑失败的领导者并开始选举）。然后，跟随者将来自单个AppendEntries请求的所有新条目立即写入其磁盘，从而有效利用其磁盘。 </p>
+<p>Raft也对流水线提供了很好的支持。 AppendEntries一致性检查可确保流水线操作安全；实际上，领导者可以安全地以任何顺序发送条目。为了支持流水线，领导者乐观地对待每个跟随者的下一个索引；它会更新下一个索引，以在发送上一个条目之后立即发送，而不是等待上一个条目的确认。这允许另一个RPC在下一个条目之后传递下一个条目。如果RPC失败，记录将涉及更多。如果RPC超时，则领导者必须将其下一个索引递减回其原始值以重试。如果AppendEntries一致性检查失败，则领导者可以进一步降低下一个索引，以重试发送先前的条目，或者可以等待该先前的条目被确认然后再试一次。即使进行了此更改，LogCabin的原始线程体系结构仍然阻止了流水线操作，因为每个跟随者只能支持一个RPC。因此，我们对其进行了更改，以使每个对端产生<strong>多个线程</strong>而不是一个。</p>
+<p>如果希望在正常情况下按顺序传递消息，则这种流水线方法最有效，因为重新排序可能会导致重传效率低下。幸运的是，大多数环境不会经常重新排序消息。例如，LogCabin中的领导者使用与每个跟随者的单个TCP连接，并且仅在怀疑失败时才切换到新连接。由于单个TCP连接会屏蔽应用程序中的网络级重新排序，因此LogCabin跟随者很少会乱序接收AppendEntries请求。如果网络通常对请求进行重新排序，则应用程序可能会从临时缓存乱序请求中受益，直到可以将它们按顺序追加到日志中为止。Raft系统的整体性能在很大程度上取决于如何安排批生产和流水线。如果在高负载下无法在一批中累积足够的请求，则整个处理将效率低下，从而导致低吞吐量和高延迟。另一方面，如果在一个批次中累积了太多请求，则延迟将不必要地增加，因为较早的请求会等待较晚的请求到达。尽管我们仍在研究最佳策略，但我们的目标是最大程度地减少动态工作负载下请求的平均延迟。在LogCabin中实现流水线操作之前，它使用了一种简单的双缓冲技术。领导者将为每个跟随者保留一个出色的RPC。当该RPC返回时，它将发送另一个带有同时已累积的日志条目的RPC，如果没有更多的可用条目，则在添加下一个RPC之后将立即发送下一个RPC。这种方法很有吸引力，因为它可以动态调整以适应负载。一旦负载增加，条目就会累积，下一批将更大，从而提高了效率。一旦负载减少，批次将缩小大小，从而降低了延迟。我们希望保留此行为以进行流水线处理。直观地讲，在两级流水线中，我们希望第二批在第一批处理时间的中途开始，从而将平均延迟减半。但是，猜测批处理何时完成需要估计往返时间。我们仍在研究在LogCabin中使用的最佳策略。</p>
+<p>Raft系统的整体性能在很大程度上取决于如何安排批生产和流水线。如果在高负载下无法在一批中累积足够的请求，则整个处理将效率低下，从而导致低吞吐量和高延迟。另一方面，如果在一个批次中累积了太多请求，则延迟将不必要地增加，因为较早的请求会等待较晚的请求到达。</p>
+<p>尽管我们仍在研究最佳策略，但我们的目标是<strong>最大程度地减少动态工作负载下请求的平均延迟</strong>。在LogCabin中实现流水线操作之前，它使用了一种简单的<strong>双缓冲技术</strong>。领导者将为每个跟随者保留一个出色的RPC。当该RPC返回时，它将发送另一个带有同时已累积的日志条目的RPC，如果没有更多的可用条目，则在添加下一个RPC之后将立即发送下一个RPC。这种方法很有吸引力，因为它可以动态调整以适应负载。一旦负载增加，条目就会累积，下一批将更大，从而提高了效率。一旦负载减少，批次将缩小大小，从而降低了延迟。我们希望保留此行为以进行流水线处理。直观地讲，在两级流水线中，我们希望第二批在第一批处理时间的中途开始，从而将平均延迟减半。但是，猜测批处理何时完成需要估计往返时间。我们仍在研究在LogCabin中使用的最佳策略。</p>
+<h3 id="103">10.3 初步性能结果</h3>
+<p>...</p>
+<h3 id="104">10.4 结论</h3>
+<p>我们希望在将来分析Raft的许多性能方面。对于正常操作而言，最重要的是，我们想分析在负载变化的情况下写入操作和只读操作的延迟和吞吐量。在特殊情况下，我们还会分析各种性能问题：</p>
+<ul>
+<li>客户多快找到领导者？</li>
+<li>新领导者多快完成一次首次进入，包括领导者多快发现其追随者的日志在何处发散？</li>
+<li>跟随者故障对正常运行有什么影响？</li>
+<li>重新配置集群需要多长时间，它对正常运行有什么影响？</li>
+<li>压缩日志需要多长时间，并且对正常操作有什么影响？</li>
+<li>服务器/群集重新启动需要多长时间？</li>
+</ul>
+<p>我们使用Raft的性能目标是匹配当前算法，例如Multi-Paxos，而提高可理解性。我们不是想构建最快的系统，而是想让其他人构建在性能上具有竞争力的基于共识的系统。尽管LogCabin尚未进行优化，但初步结果表明，它可以实现合理的<strong>延迟和吞吐量</strong>：使用单个客户端线程，将千字节大小的对象写入三台服务器的群集每次操作大约需要1.0毫秒，并且当使用100个客户端线程时，系统每个时每秒可处理19500次操作。</p>
+<h2 id="_2">第十一章 相关工作</h2>
+<h3 id="111">11.1 共识算法概览</h3>
+<h4 id="1111-paxos">11.1.1 Paxos</h4>
+<h4 id="1112">11.1.2 基于领导的算法</h4>
+<h3 id="112">11.2 领导选举</h3>
+<h3 id="113">11.3 日志复制和提交</h3>
+<h3 id="114">11.4 集群成员变更</h3>
+<h3 id="115">11.5 日志压缩</h3>
+<h3 id="116-vs">11.6 复制状态机 vs. 主节点拷贝</h3>
+<h3 id="117">11.7 性能</h3>
+<h3 id="118">11.8 正确性</h3>
+<h3 id="119">11.9 可理解性</h3>
+<h1 id="raft-tikv">Raft 讲解笔记(TiKV作者)</h1>
+<h2 id="_3">单节点</h2>
 <ol>
 <li>单节点故障</li>
 <li>业务数据无法存放</li>
 </ol>
-<p>复制</p>
+<h2 id="_4">复制</h2>
 <ol>
 <li>Master-Standby</li>
 <li>异步复制：丢数据</li>
@@ -15,15 +821,15 @@
 <li>Quorum：2N+1，允许一台宕机，升主问题，脑裂问题（读到旧的数据，不一致，线性一致性）</li>
 <li>线性一致性</li>
 </ol>
-<p>共识算法</p>
+<h2 id="_5">共识算法</h2>
 <ul>
 <li>共享状态达成一致</li>
 <li>自动故障恢复</li>
 <li>强一致性（线性化）</li>
 </ul>
-<p>Raft</p>
+<h2 id="raft_3">Raft</h2>
 <p>（说明 paxos，raft 历史以及相关信息）</p>
-<p>keypoints</p>
+<h2 id="keypoints">keypoints</h2>
 <ul>
 <li>对复制状态机复制日志</li>
 <li>Leader、Follower，Candidate</li>
@@ -31,14 +837,14 @@
 <li>日志复制</li>
 <li>成员变更</li>
 </ul>
-<p>复制状态机</p>
+<h2 id="_6">复制状态机</h2>
 <ul>
 <li>客户端、服务器</li>
 <li>共识模块</li>
 <li>状态机</li>
 <li>日志</li>
 </ul>
-<p>角色</p>
+<h2 id="_7">角色</h2>
 <ul>
 <li>领导者</li>
 <li>仅一个领导者</li>
@@ -49,33 +855,33 @@
 <li>候选者</li>
 <li>选举</li>
 </ul>
-<p>任期</p>
+<h2 id="_8">任期</h2>
 <ul>
 <li>时间问题，raft 不依赖时间，将时间分割为不同的term</li>
 </ul>
-<p>选举</p>
+<h2 id="_9">选举</h2>
 <ul>
 <li>状态机转换图</li>
 </ul>
-<p>日志复制</p>
+<h2 id="_10">日志复制</h2>
 <ul>
 <li>多数派复制</li>
 <li>日志提交</li>
 <li>异步将已经提交 index 发送给跟随者</li>
 </ul>
-<p>快照</p>
+<h2 id="_11">快照</h2>
 <ul>
 <li>Leader 生成快照</li>
 <li>截断日志</li>
 <li>发送日志</li>
 </ul>
-<p>成员变更</p>
+<h2 id="_12">成员变更</h2>
 <ul>
 <li>增加节点，在线</li>
 <li>一次增加多个节点会违反 Raft 协议，一次增加一个节点</li>
 <li><a href="https://www.jianshu.com/p/99562bfec5c2">joint consensus</a></li>
 </ul>
-<p>优化</p>
+<h2 id="_13">优化</h2>
 <ul>
 <li>Pre-Vote：由于网络抖动一个 follower 发起选举，但是其它人都是 OK 的</li>
 <li>Pipeline：</li>
@@ -84,13 +890,155 @@
 <li>Non-Voter: 追日志过程中，不投票状态，不干扰已有集群</li>
 <li>参考：<a href="https://www.jianshu.com/p/1bbd7162727d">博文</a></li>
 </ul>
-<p>Multi-Raft</p>
+<h2 id="multi-raft">Multi-Raft</h2>
 <ul>
 <li>Range: 分割</li>
 <li>Raft Group</li>
 <li>Scale-Out：平衡</li>
 </ul>
-<h1 id="_1">其它</h1>
+<h1 id="raft-raft">raft 讲座笔记(Raft作者)</h1>
+<h2 id="_14">目标：复制日志</h2>
+<p>多个客户端，多个服务器
+1. 复制的日志=&gt;复制状态机：所有服务器按相同的顺序执行相同的指令
+2. 共识模块保证正确的日志复制
+3. 只要多数个节点运行，则系统可以继续
+4. 故障模型：故障-停止（不是拜占庭，故障就停止），延迟/丢失消息</p>
+<h2 id="_15">达成共识的方法</h2>
+<p>两个可能的方法：
+1. 对称的，无主节点
+    - 所有服务器有相同的角色
+    - 客户端可以访问任何一个服务器
+2. 非对称的，基于领导者的
+3. Raft使用领导者
+    - 解耦问题（正常操作，领导者变更）
+    - 简化正常操作（没有冲突）
+    - 比无主的方法更有效</p>
+<h2 id="raft_4">Raft和概览</h2>
+<ol>
+<li>领导者选举</li>
+<li>正常操作（基本的日志复制）</li>
+<li>安全性和一致性（在领导者变更之后）</li>
+<li>废止老的领导者</li>
+<li>客户端操作：实现线性化语义</li>
+<li>配置变更：增删节点</li>
+</ol>
+<h2 id="_16">服务器状态</h2>
+<ol>
+<li>在任何时间点，每个服务器可以是：<ol>
+<li>leader</li>
+<li>follower</li>
+<li>candidate</li>
+</ol>
+</li>
+<li>正常操作过程中，1个领导者，N-1个跟随者</li>
+<li>状态转换图</li>
+</ol>
+<h2 id="terms">Terms</h2>
+<ol>
+<li>时间被分割为terms<ul>
+<li>选举</li>
+<li>在单个领导者下的正常操作</li>
+</ul>
+</li>
+<li>每个term最多只有一个领导者，或者没有领导者</li>
+<li>每个服务器维护当前的term值</li>
+<li>terms的主要目的：区分过时的信息</li>
+</ol>
+<h2 id="raft_5">raft协议总结</h2>
+<p>Followers
+Candidates
+Leaders
+持久化状态
+Log Entry
+RequestVote RPC
+AppendEntities RPC</p>
+<h2 id="_17">心跳和超时</h2>
+<ol>
+<li>服务器以跟随者角色启动</li>
+<li>跟随者期望收到领导者和候选者的RPC</li>
+<li>领导者必须发送心跳（空的AppendEntires RPCs）来维护权威性</li>
+<li>如果选举超时，没有收到RPCs：<ul>
+<li>跟随者假设领导者已经宕机</li>
+<li>跟随者开始新的选举</li>
+<li>超时tong
+通常是：100-500ms</li>
+</ul>
+</li>
+</ol>
+<h2 id="_18">选举基础</h2>
+<ol>
+<li>增加当前的term值</li>
+<li>角色变更为候选者</li>
+<li>给自己投票</li>
+<li>发送 RequestVote RPCs给所有其他的服务器，尝试直到：<ol>
+<li>收到多数派的投票应答：变为领导者，发送AppendEntries心跳给所有其他服务器</li>
+<li>接受到有效领导者的RPC消息：返回到跟随者状态</li>
+<li>没有任何一个赢得选举（选举超时时间过去了）：增加term，开始新的选举</li>
+</ol>
+</li>
+</ol>
+<h2 id="_19">选举（接上面）</h2>
+<ol>
+<li>安全性：只允许每个term最多一个获胜者</li>
+<li>活性：一些候选者肯定最终会赢得多数票投票<ul>
+<li>选举超时时间随机： [T, 2T]</li>
+<li>每个服务器通常会超时，在其他人醒来之前会赢得选举</li>
+<li>如果 T &gt;&gt; 广播时间，则工作得很好</li>
+</ul>
+</li>
+</ol>
+<h2 id="_20">日志结构</h2>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">log index  | 1  | 2  | 3  | 4  | 5  |</span>
+<span style="color: #000000">           |----|----|----|----|----|</span>
+<span style="color: #000000">term       | 1  | 1  | 1  | 2  |</span>
+<span style="color: #000000">command    |add |cmp |ret |mov |</span>
+<span style="color: #000000">           |----|----|----|----|</span>
+</code></pre></div>
+
+<p>日志存储在持久化存储上，故障后可以恢复
+如果多数服务器上存储了一条日志，日志认为是已经提交的</p>
+<h2 id="_21">正常操作</h2>
+<ol>
+<li>客户端发送命令给领导者</li>
+<li>领导将日志写入其日志</li>
+<li>领导者发送 AppendEntries RPCs给跟随者</li>
+<li>一旦一个日志被提交<ul>
+<li>Leader将命令传给其状态机，返回结果给客户端</li>
+<li>领导者在后续的AppendEntries RPCs中，通知跟随者提交信息</li>
+<li>跟随者发送已经提交的命令给其状态机</li>
+</ul>
+</li>
+<li>故障/慢 跟随者<ul>
+<li>领导者尝试发送RPCs，直到成功</li>
+</ul>
+</li>
+<li>性能在通常情况下是最优的<ul>
+<li>一个成功的RPC到任意多数票服务器</li>
+</ul>
+</li>
+</ol>
+<h2 id="_22">日志的一致性</h2>
+<p>日志是连贯的
+- 如果不同的服务器上相同的index和term，则日志必然相同
+- 如果一条日志被提交，所有前面的日志必须被提交</p>
+<h2 id="appendentries">AppendEntries一致性检查</h2>
+<p>reject
+induction step(归纳步骤)</p>
+<h2 id="_23">领导者变更</h2>
+<h2 id="_24">安全性要求</h2>
+<h2 id="_25">选择最好的领导者</h2>
+<h2 id="_26">提交当前任期的日志</h2>
+<h2 id="_27">新的提交规则</h2>
+<h2 id="_28">日志不一致性</h2>
+<h2 id="_29">修复跟随者日志</h2>
+<h2 id="_30">废除老的领导者</h2>
+<h2 id="_31">客户端协议</h2>
+<p>重试机制，客户端需要对每个命令嵌入唯一的ID
+保证恰好一次的语义</p>
+<h2 id="_32">配置变更</h2>
+<p>使用2阶段
+joint consensus</p>
+<h1 id="_33">其它</h1>
 <p>coordinator 如何使用 raft 或者 paxos 来保证高可用？解决2PC残留问题。</p>
 <ul>
 <li>多CN写入，多节点互相备份，挂掉一个不影响其它CN，2PC信息不回丢失</li>
@@ -104,4 +1052,69 @@
 <ol start="2">
 <li>如果少数节点写入了日志，这一条日志一定会被丢弃吗？如果多数节点写入日志，但是客户端还没有收到应答，服务器就宕机了。客户端如何处理？仅写入一次的语义如何保证？</li>
 </ol>
-<p><a href="https://zhuanlan.zhihu.com/p/98102934">各类Consistency对比小结</a></p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.d5a09f94.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p><a href="https://zhuanlan.zhihu.com/p/98102934">各类Consistency对比小结</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -1,4 +1,726 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/misc/datastore/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>DBDB: Dog Bed Database - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#dbdb-dog-bed-database" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">DBDB: Dog Bed Database</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="简介" class="md-nav__link">简介</a></li><li class="md-nav__item"><a href="#_2" title="回忆" class="md-nav__link">回忆</a></li><li class="md-nav__item"><a href="#_3" title="为什么很有意义" class="md-nav__link">为什么很有意义</a></li><li class="md-nav__item"><a href="#_4" title="描述故障" class="md-nav__link">描述故障</a></li><li class="md-nav__item"><a href="#dbdb" title="DBDB的架构" class="md-nav__link">DBDB的架构</a></li><li class="md-nav__item"><a href="#_5" title="探索设计" class="md-nav__link">探索设计</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_6" title="组织单元" class="md-nav__link">组织单元</a></li><li class="md-nav__item"><a href="#_7" title="读一个值" class="md-nav__link">读一个值</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_8" title="插入和更新" class="md-nav__link">插入和更新</a></li></ul></nav></li></ul></nav></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="dbdb-dog-bed-database">DBDB: Dog Bed Database</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/misc/datastore/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>DBDB: Dog Bed Database - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#dbdb-dog-bed-database" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                DBDB: Dog Bed Database
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    回忆
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    为什么很有意义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    描述故障
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbdb" class="md-nav__link">
+    DBDB的架构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    探索设计
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    组织单元
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    读一个值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    插入和更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="dbdb-dog-bed-database">DBDB: Dog Bed Database</h1>
 <h2 id="_1">简介</h2>
 <p>DBDB (Dog Bed Database) 是一个用python实现的简单的键值数据库。可以将键值关联起来，并且可以将关联关系保存到磁盘上，用于后续的检索。</p>
 <p>DBDB的目标在计算机宕机或者异常时，实现数据保存。并且避免将所有数据一次保存到内存中，这样就可以保存比RAM更多的数据。</p>
@@ -42,120 +764,185 @@
 <h3 id="_6">组织单元</h3>
 <p>这里列出的内容与使用者的距离排序得到，第一个模块是用户需要最先了解的，最后一个是交互最少的一个。</p>
 <ol>
-<li><code class="codehilite">tool.py</code>： 定义了一个命令行工具来研究数据库。
-<em> <code class="codehilite">interface.py</code>： 定义了一个类<code class="codehilite">DBDB</code>，其使用<code class="codehilite">二叉树</code>实现了python字典API，这是在python程序中使用DBDB的方式。
-</em> <code class="codehilite">logical.py</code>： 定义了逻辑层，键值存储的抽象接口。<ul>
-<li><code class="codehilite">LogicalBase</code>：提供了逻辑更新的API（像get，set和commit），具体的类实现自身的更新，并且管理存储锁定和去引用内部节点。</li>
-<li><code class="codehilite">ValueRef</code>：是一个python对象用于引用数据库中保存的二进制blob，这种方式可以避免将所有数据一次全部存储到内存中。</li>
-<li><code class="codehilite">binary_tree.py</code>： 定义一个逻辑接口下具体的二叉树算法。</li>
-<li><code class="codehilite">BinaryTree</code>： 给出二叉树具体的实现，并且有查找、插入、删除键值对的方法。<code class="codehilite">BinaryTree</code>代表不可变树；更新操作通过返回一个与旧树共享相同结构的新树实现。</li>
-<li><code class="codehilite">BinaryNode</code>： 实现了二叉树的节点。</li>
-<li><code class="codehilite">BinaryNodeRef</code>： 是一个具体的<code class="codehilite">ValueRef</code>，其实现了序列化和反序列化一个<code class="codehilite">BinaryNode</code>。</li>
-<li><code class="codehilite">physical.py</code>： 定义了一个物理层，<code class="codehilite">Storage</code>类提供了持久性，（大部分情况）append-only记录存储。</li>
+<li><code class="codehilite"><span style="color: #000000">tool.py</span></code>： 定义了一个命令行工具来研究数据库。
+<em> <code class="codehilite"><span style="color: #000000">interface.py</span></code>： 定义了一个类<code class="codehilite"><span style="color: #000000">DBDB</span></code>，其使用<code class="codehilite"><span style="color: #000000">二叉树</span></code>实现了python字典API，这是在python程序中使用DBDB的方式。
+</em> <code class="codehilite"><span style="color: #000000">logical.py</span></code>： 定义了逻辑层，键值存储的抽象接口。<ul>
+<li><code class="codehilite"><span style="color: #000000">LogicalBase</span></code>：提供了逻辑更新的API（像get，set和commit），具体的类实现自身的更新，并且管理存储锁定和去引用内部节点。</li>
+<li><code class="codehilite"><span style="color: #000000">ValueRef</span></code>：是一个python对象用于引用数据库中保存的二进制blob，这种方式可以避免将所有数据一次全部存储到内存中。</li>
+<li><code class="codehilite"><span style="color: #000000">binary_tree.py</span></code>： 定义一个逻辑接口下具体的二叉树算法。</li>
+<li><code class="codehilite"><span style="color: #000000">BinaryTree</span></code>： 给出二叉树具体的实现，并且有查找、插入、删除键值对的方法。<code class="codehilite"><span style="color: #000000">BinaryTree</span></code>代表不可变树；更新操作通过返回一个与旧树共享相同结构的新树实现。</li>
+<li><code class="codehilite"><span style="color: #000000">BinaryNode</span></code>： 实现了二叉树的节点。</li>
+<li><code class="codehilite"><span style="color: #000000">BinaryNodeRef</span></code>： 是一个具体的<code class="codehilite"><span style="color: #000000">ValueRef</span></code>，其实现了序列化和反序列化一个<code class="codehilite"><span style="color: #000000">BinaryNode</span></code>。</li>
+<li><code class="codehilite"><span style="color: #000000">physical.py</span></code>： 定义了一个物理层，<code class="codehilite"><span style="color: #000000">Storage</span></code>类提供了持久性，（大部分情况）append-only记录存储。</li>
 </ul>
 </li>
 </ol>
 <p>这些模块都是一个类仅完成一个功能。换句话说，每个类应该仅有个原因来改变。</p>
 <h3 id="_7">读一个值</h3>
 <p>这里我们以最简单的例子开始：从数据库中读取一个值。</p>
-<p>当尝试从<code class="codehilite">example.db</code>中关联的键<code class="codehilite">foo</code>获取值的时候会发生什么呢？
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>$ python -m dbdb.tool example.db get foo
-</pre></div></p>
-<p>这会运行模块<code class="codehilite">dbdb.tool</code>中的<code class="codehilite">main()</code>函数：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># dbdb/tool.py</span>
-<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">main</span>(argv):
-    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #008800">not</span> (<span style="color: #0000DD; font-weight: bold">4</span> &lt;= <span style="color: #003388">len</span>(argv) &lt;= <span style="color: #0000DD; font-weight: bold">5</span>):
-        usage()
-        <span style="color: #008800; font-weight: bold">return</span> BAD_ARGS
-    dbname, verb, key, value = (argv[<span style="color: #0000DD; font-weight: bold">1</span>:] + [<span style="color: #003388">None</span>])[:<span style="color: #0000DD; font-weight: bold">4</span>]
-    <span style="color: #008800; font-weight: bold">if</span> verb <span style="color: #008800">not</span> <span style="color: #008800">in</span> {<span style="color: #dd2200; background-color: #fff0f0">&#39;get&#39;</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;set&#39;</span>, <span style="color: #dd2200; background-color: #fff0f0">&#39;delete&#39;</span>}:
-        usage()
-        <span style="color: #008800; font-weight: bold">return</span> BAD_VERB
-    db = dbdb.connect(dbname)          <span style="color: #888888"># CONNECT</span>
-    <span style="color: #008800; font-weight: bold">try</span>:
-        <span style="color: #008800; font-weight: bold">if</span> verb == <span style="color: #dd2200; background-color: #fff0f0">&#39;get&#39;</span>:
-            sys.stdout.write(db[key])  <span style="color: #888888"># GET VALUE</span>
-        <span style="color: #008800; font-weight: bold">elif</span> verb == <span style="color: #dd2200; background-color: #fff0f0">&#39;set&#39;</span>:
-            db[key] = value
-            db.commit()
-        <span style="color: #008800; font-weight: bold">else</span>:
-            <span style="color: #008800; font-weight: bold">del</span> db[key]
-            db.commit()
-    <span style="color: #008800; font-weight: bold">except</span> <span style="color: #bb0066; font-weight: bold">KeyError</span>:
-        <span style="color: #008800; font-weight: bold">print</span>(<span style="color: #dd2200; background-color: #fff0f0">&quot;Key not found&quot;</span>, <span style="color: #003388">file</span>=sys.stderr)
-        <span style="color: #008800; font-weight: bold">return</span> BAD_KEY
-    <span style="color: #008800; font-weight: bold">return</span> OK
-</pre></div></p>
-<p><code class="codehilite">connect()</code>函数打开数据文件（也可能是创建，但永远不会覆盖）返回<code class="codehilite">DBDB</code>的实例：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># dbdb/__init__.py</span>
-<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">connect</span>(dbname):
-    <span style="color: #008800; font-weight: bold">try</span>:
-        f = <span style="color: #003388">open</span>(dbname, <span style="color: #dd2200; background-color: #fff0f0">&#39;r+b&#39;</span>)
-    <span style="color: #008800; font-weight: bold">except</span> <span style="color: #bb0066; font-weight: bold">IOError</span>:
-        fd = os.open(dbname, os.O_RDWR | os.O_CREAT)
-        f = os.fdopen(fd, <span style="color: #dd2200; background-color: #fff0f0">&#39;r+b&#39;</span>)
-    <span style="color: #008800; font-weight: bold">return</span> DBDB(f)
-</pre></div></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># dbdb/interface.py</span>
-<span style="color: #008800; font-weight: bold">class</span> <span style="color: #bb0066; font-weight: bold">DBDB</span>(<span style="color: #003388">object</span>):
+<p>当尝试从<code class="codehilite"><span style="color: #000000">example.db</span></code>中关联的键<code class="codehilite"><span style="color: #000000">foo</span></code>获取值的时候会发生什么呢？
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ python -m dbdb.tool example.db get foo
+</code></pre></div></p>
+<p>这会运行模块<code class="codehilite"><span style="color: #000000">dbdb.tool</span></code>中的<code class="codehilite"><span style="color: #000000">main()</span></code>函数：
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># dbdb/tool.py</span>
+<span style="color: #A90D91">def</span> <span style="color: #000000">main</span>(<span style="color: #000000">argv</span>):
+    <span style="color: #A90D91">if</span> <span style="color: #000000">not</span> (<span style="color: #1C01CE">4</span> <span style="color: #000000">&lt;=</span> <span style="color: #A90D91">len</span>(<span style="color: #000000">argv</span>) <span style="color: #000000">&lt;=</span> <span style="color: #1C01CE">5</span>):
+        <span style="color: #000000">usage</span>()
+        <span style="color: #A90D91">return</span> <span style="color: #000000">BAD_ARGS</span>
+    <span style="color: #000000">dbname</span>, <span style="color: #000000">verb</span>, <span style="color: #000000">key</span>, <span style="color: #000000">value</span> <span style="color: #000000">=</span> (<span style="color: #000000">argv</span>[<span style="color: #1C01CE">1</span>:] <span style="color: #000000">+</span> [<span style="color: #A90D91">None</span>])[:<span style="color: #1C01CE">4</span>]
+    <span style="color: #A90D91">if</span> <span style="color: #000000">verb</span> <span style="color: #000000">not</span> <span style="color: #000000">in</span> {<span style="color: #C41A16">&#39;get&#39;</span>, <span style="color: #C41A16">&#39;set&#39;</span>, <span style="color: #C41A16">&#39;delete&#39;</span>}:
+        <span style="color: #000000">usage</span>()
+        <span style="color: #A90D91">return</span> <span style="color: #000000">BAD_VERB</span>
+    <span style="color: #000000">db</span> <span style="color: #000000">=</span> <span style="color: #000000">dbdb.connect</span>(<span style="color: #000000">dbname</span>)          <span style="color: #177500"># CONNECT</span>
+    <span style="color: #A90D91">try</span>:
+        <span style="color: #A90D91">if</span> <span style="color: #000000">verb</span> <span style="color: #000000">==</span> <span style="color: #C41A16">&#39;get&#39;</span>:
+            <span style="color: #000000">sys.stdout.write</span>(<span style="color: #000000">db</span>[<span style="color: #000000">key</span>])  <span style="color: #177500"># GET VALUE</span>
+        <span style="color: #A90D91">elif</span> <span style="color: #000000">verb</span> <span style="color: #000000">==</span> <span style="color: #C41A16">&#39;set&#39;</span>:
+            <span style="color: #000000">db</span>[<span style="color: #000000">key</span>] <span style="color: #000000">=</span> <span style="color: #000000">value</span>
+            <span style="color: #000000">db.commit</span>()
+        <span style="color: #A90D91">else</span>:
+            <span style="color: #A90D91">del</span> <span style="color: #000000">db</span>[<span style="color: #000000">key</span>]
+            <span style="color: #000000">db.commit</span>()
+    <span style="color: #A90D91">except</span> <span style="color: #000000">KeyError</span>:
+        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&quot;Key not found&quot;</span>, <span style="color: #000000">file=sys.stderr</span>)
+        <span style="color: #A90D91">return</span> <span style="color: #000000">BAD_KEY</span>
+    <span style="color: #A90D91">return</span> <span style="color: #000000">OK</span>
+</code></pre></div></p>
+<p><code class="codehilite"><span style="color: #000000">connect()</span></code>函数打开数据文件（也可能是创建，但永远不会覆盖）返回<code class="codehilite"><span style="color: #000000">DBDB</span></code>的实例：
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># dbdb/__init__.py</span>
+<span style="color: #A90D91">def</span> <span style="color: #000000">connect</span>(<span style="color: #000000">dbname</span>):
+    <span style="color: #A90D91">try</span>:
+        <span style="color: #000000">f</span> <span style="color: #000000">=</span> <span style="color: #A90D91">open</span>(<span style="color: #000000">dbname</span>, <span style="color: #C41A16">&#39;r+b&#39;</span>)
+    <span style="color: #A90D91">except</span> <span style="color: #000000">IOError</span>:
+        <span style="color: #000000">fd</span> <span style="color: #000000">=</span> <span style="color: #000000">os.open</span>(<span style="color: #000000">dbname</span>, <span style="color: #000000">os.O_RDWR</span> <span style="color: #000000">|</span> <span style="color: #000000">os.O_CREAT</span>)
+        <span style="color: #000000">f</span> <span style="color: #000000">=</span> <span style="color: #000000">os.fdopen</span>(<span style="color: #000000">fd</span>, <span style="color: #C41A16">&#39;r+b&#39;</span>)
+    <span style="color: #A90D91">return</span> <span style="color: #000000">DBDB</span>(<span style="color: #000000">f</span>)
+</code></pre></div></p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># dbdb/interface.py</span>
+<span style="color: #A90D91">class</span> <span style="color: #3F6E75">DBDB</span>(<span style="color: #A90D91">object</span>):
 
-    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">__init__</span>(<span style="color: #003388">self</span>, f):
-        <span style="color: #003388">self</span>._storage = Storage(f)
-        <span style="color: #003388">self</span>._tree = BinaryTree(<span style="color: #003388">self</span>._storage)
-</pre></div>
+    <span style="color: #A90D91">def</span> <span style="color: #000000">__init__</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">f</span>):
+        <span style="color: #5B269A">self</span><span style="color: #000000">._storage</span> <span style="color: #000000">=</span> <span style="color: #000000">Storage</span>(<span style="color: #000000">f</span>)
+        <span style="color: #5B269A">self</span><span style="color: #000000">._tree</span> <span style="color: #000000">=</span> <span style="color: #000000">BinaryTree</span>(<span style="color: #5B269A">self</span><span style="color: #000000">._storage</span>)
+</code></pre></div>
 
-<p>可以看到<code class="codehilite">DBDB</code>有一个<code class="codehilite">Storage</code>的实例引用，但其还共享了一个<code class="codehilite">self._tree</code>的引用。为什么呢？<code class="codehilite">self._tree</code>不能够完全管理访问自己的存储吗？</p>
+<p>可以看到<code class="codehilite"><span style="color: #000000">DBDB</span></code>有一个<code class="codehilite"><span style="color: #000000">Storage</span></code>的实例引用，但其还共享了一个<code class="codehilite"><span style="color: #000000">self._tree</span></code>的引用。为什么呢？<code class="codehilite"><span style="color: #000000">self._tree</span></code>不能够完全管理访问自己的存储吗？</p>
 <p>那个对象"拥有"一个资源通常是一个非常重要的设计考虑点，因为其会给出提示：对于什么类型的变化会不安全。我们急着这个问题，然后继续。</p>
-<p>一旦有了一个DBDB实例，可以通过字典(<code class="codehilite">db[key]</code>)查找<code class="codehilite">key</code>的值，python解释器调用<code class="codehilite">DBDB.__getitem__()</code>。
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">class</span> <span style="color: #bb0066; font-weight: bold">DBDB</span>(<span style="color: #003388">object</span>):
-<span style="color: #888888"># ...</span>
-    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">__getitem__</span>(<span style="color: #003388">self</span>, key):
-        <span style="color: #003388">self</span>._assert_not_closed()
-        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #003388">self</span>._tree.get(key)
+<p>一旦有了一个DBDB实例，可以通过字典(<code class="codehilite"><span style="color: #000000">db[key]</span></code>)查找<code class="codehilite"><span style="color: #000000">key</span></code>的值，python解释器调用<code class="codehilite"><span style="color: #000000">DBDB.__getitem__()</span></code>。
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">class</span> <span style="color: #3F6E75">DBDB</span>(<span style="color: #A90D91">object</span>):
+<span style="color: #177500"># ...</span>
+    <span style="color: #A90D91">def</span> <span style="color: #000000">__getitem__</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">key</span>):
+        <span style="color: #5B269A">self</span><span style="color: #000000">._assert_not_closed</span>()
+        <span style="color: #A90D91">return</span> <span style="color: #5B269A">self</span><span style="color: #000000">._tree.get</span>(<span style="color: #000000">key</span>)
 
-    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">_assert_not_closed</span>(<span style="color: #003388">self</span>):
-        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #003388">self</span>._storage.closed:
-            <span style="color: #008800; font-weight: bold">raise</span> <span style="color: #bb0066; font-weight: bold">ValueError</span>(<span style="color: #dd2200; background-color: #fff0f0">&#39;Database closed.&#39;</span>)
-</pre></div></p>
-<p><code class="codehilite">__getitem__()</code>通过调用<code class="codehilite">_assert_not_closed_</code>来保证数据库仍然是打开的。啊哈！这里我们看到了至少一个原因为什么<code class="codehilite">DBDB</code>需要直接访问我们的<code class="codehilite">Storage</code>实例：它可以实现预置条件。（你是否赞成这个设计呢？你可以想到其它的方式来实现吗？）</p>
-<p>DBDB通过<code class="codehilite">key</code>在内部<code class="codehilite">_tree</code>检索值通过调用<code class="codehilite">_tree.get()</code>，其提供了<code class="codehilite">LogicalBase</code>：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># dbdb/logical.py</span>
-<span style="color: #008800; font-weight: bold">class</span> <span style="color: #bb0066; font-weight: bold">LogicalBase</span>(<span style="color: #003388">object</span>):
-<span style="color: #888888"># ...</span>
-    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">get</span>(<span style="color: #003388">self</span>, key):
-        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #008800">not</span> <span style="color: #003388">self</span>._storage.locked:
-            <span style="color: #003388">self</span>._refresh_tree_ref()
-        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #003388">self</span>._get(<span style="color: #003388">self</span>._follow(<span style="color: #003388">self</span>._tree_ref), key)
-</pre></div></p>
-<p><code class="codehilite">get()</code>检查是否将存储锁定了，我们不是100%确定为什么这里需要锁，但可以猜测这里是为了允许写者来序列化访问数据。如果存储没有被锁定，会发生什么呢？</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># dbdb/logical.py</span>
-<span style="color: #008800; font-weight: bold">class</span> <span style="color: #bb0066; font-weight: bold">LogicalBase</span>(<span style="color: #003388">object</span>):
-<span style="color: #888888"># ...</span>
-<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">_refresh_tree_ref</span>(<span style="color: #003388">self</span>):
-        <span style="color: #003388">self</span>._tree_ref = <span style="color: #003388">self</span>.node_ref_class(
-            address=<span style="color: #003388">self</span>._storage.get_root_address())
-</pre></div>
+    <span style="color: #A90D91">def</span> <span style="color: #000000">_assert_not_closed</span>(<span style="color: #5B269A">self</span>):
+        <span style="color: #A90D91">if</span> <span style="color: #5B269A">self</span><span style="color: #000000">._storage.closed</span>:
+            <span style="color: #A90D91">raise</span> <span style="color: #000000">ValueError</span>(<span style="color: #C41A16">&#39;Database closed.&#39;</span>)
+</code></pre></div></p>
+<p><code class="codehilite"><span style="color: #000000">__getitem__()</span></code>通过调用<code class="codehilite"><span style="color: #000000">_assert_not_closed_</span></code>来保证数据库仍然是打开的。啊哈！这里我们看到了至少一个原因为什么<code class="codehilite"><span style="color: #000000">DBDB</span></code>需要直接访问我们的<code class="codehilite"><span style="color: #000000">Storage</span></code>实例：它可以实现预置条件。（你是否赞成这个设计呢？你可以想到其它的方式来实现吗？）</p>
+<p>DBDB通过<code class="codehilite"><span style="color: #000000">key</span></code>在内部<code class="codehilite"><span style="color: #000000">_tree</span></code>检索值通过调用<code class="codehilite"><span style="color: #000000">_tree.get()</span></code>，其提供了<code class="codehilite"><span style="color: #000000">LogicalBase</span></code>：
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># dbdb/logical.py</span>
+<span style="color: #A90D91">class</span> <span style="color: #3F6E75">LogicalBase</span>(<span style="color: #A90D91">object</span>):
+<span style="color: #177500"># ...</span>
+    <span style="color: #A90D91">def</span> <span style="color: #000000">get</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">key</span>):
+        <span style="color: #A90D91">if</span> <span style="color: #000000">not</span> <span style="color: #5B269A">self</span><span style="color: #000000">._storage.locked</span>:
+            <span style="color: #5B269A">self</span><span style="color: #000000">._refresh_tree_ref</span>()
+        <span style="color: #A90D91">return</span> <span style="color: #5B269A">self</span><span style="color: #000000">._get</span>(<span style="color: #5B269A">self</span><span style="color: #000000">._follow</span>(<span style="color: #5B269A">self</span><span style="color: #000000">._tree_ref</span>), <span style="color: #000000">key</span>)
+</code></pre></div></p>
+<p><code class="codehilite"><span style="color: #000000">get()</span></code>检查是否将存储锁定了，我们不是100%确定为什么这里需要锁，但可以猜测这里是为了允许写者来序列化访问数据。如果存储没有被锁定，会发生什么呢？</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># dbdb/logical.py</span>
+<span style="color: #A90D91">class</span> <span style="color: #3F6E75">LogicalBase</span>(<span style="color: #A90D91">object</span>):
+<span style="color: #177500"># ...</span>
+<span style="color: #A90D91">def</span> <span style="color: #000000">_refresh_tree_ref</span>(<span style="color: #5B269A">self</span>):
+        <span style="color: #5B269A">self</span><span style="color: #000000">._tree_ref</span> <span style="color: #000000">=</span> <span style="color: #5B269A">self</span><span style="color: #000000">.node_ref_class</span>(
+            <span style="color: #000000">address=</span><span style="color: #5B269A">self</span><span style="color: #000000">._storage.get_root_address</span>())
+</code></pre></div>
 
-<p><code class="codehilite">_refresh_tree_ref</code>重置当前在磁盘上的树数据视图，允许执行完全更新的读请求。</p>
+<p><code class="codehilite"><span style="color: #000000">_refresh_tree_ref</span></code>重置当前在磁盘上的树数据视图，允许执行完全更新的读请求。</p>
 <p>当存储是锁定的时候，执行读操作，会发生什么呢？这意味着其它进程正在更改请求的数据，我们读到的数据可能不是最新的，这通常称之为“脏数据”，这种模式允许读者访问数据，但不用担心阻塞问题，但代价是可能读到过期的数据。</p>
 <p>到这里，我们看下实际上如何检索数据：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888"># dbdb/binary_tree.py</span>
-<span style="color: #008800; font-weight: bold">class</span> <span style="color: #bb0066; font-weight: bold">BinaryTree</span>(LogicalBase):
-<span style="color: #888888"># ...</span>
-    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066bb; font-weight: bold">_get</span>(<span style="color: #003388">self</span>, node, key):
-        <span style="color: #008800; font-weight: bold">while</span> node <span style="color: #008800">is</span> <span style="color: #008800">not</span> <span style="color: #003388">None</span>:
-            <span style="color: #008800; font-weight: bold">if</span> key &lt; node.key:
-                node = <span style="color: #003388">self</span>._follow(node.left_ref)
-            <span style="color: #008800; font-weight: bold">elif</span> node.key &lt; key:
-                node = <span style="color: #003388">self</span>._follow(node.right_ref)
-            <span style="color: #008800; font-weight: bold">else</span>:
-                <span style="color: #008800; font-weight: bold">return</span> <span style="color: #003388">self</span>._follow(node.value_ref)
-        <span style="color: #008800; font-weight: bold">raise</span> <span style="color: #bb0066; font-weight: bold">KeyError</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># dbdb/binary_tree.py</span>
+<span style="color: #A90D91">class</span> <span style="color: #3F6E75">BinaryTree</span>(<span style="color: #000000">LogicalBase</span>):
+<span style="color: #177500"># ...</span>
+    <span style="color: #A90D91">def</span> <span style="color: #000000">_get</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">node</span>, <span style="color: #000000">key</span>):
+        <span style="color: #A90D91">while</span> <span style="color: #000000">node</span> <span style="color: #000000">is</span> <span style="color: #000000">not</span> <span style="color: #A90D91">None</span>:
+            <span style="color: #A90D91">if</span> <span style="color: #000000">key</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">node.key</span>:
+                <span style="color: #000000">node</span> <span style="color: #000000">=</span> <span style="color: #5B269A">self</span><span style="color: #000000">._follow</span>(<span style="color: #000000">node.left_ref</span>)
+            <span style="color: #A90D91">elif</span> <span style="color: #000000">node.key</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">key</span>:
+                <span style="color: #000000">node</span> <span style="color: #000000">=</span> <span style="color: #5B269A">self</span><span style="color: #000000">._follow</span>(<span style="color: #000000">node.right_ref</span>)
+            <span style="color: #A90D91">else</span>:
+                <span style="color: #A90D91">return</span> <span style="color: #5B269A">self</span><span style="color: #000000">._follow</span>(<span style="color: #000000">node.value_ref</span>)
+        <span style="color: #A90D91">raise</span> <span style="color: #000000">KeyError</span>
+</code></pre></div>
 
-<p>这是一个标准二叉树查找，后面引用其节点，阅读<code class="codehilite">BinaryTree</code>文档可以知道<code class="codehilite">Node</code>和<code class="codehilite">NodeRef</code>都是值对象：都是不可变的，其内容永远不会变化。</p>
-<p><code class="codehilite">Node</code>用一个关联的键值对来创建，这种关联也永远不会改变。整个<code class="codehilite">BinaryTree</code>的内容只有在根节点被替换的时候才是可见的，这意味着，当我们进行检索的时候，不用担心树的内容变化。</p>
-<p>一旦关联的值被找到，会被<code class="codehilite">main()</code>函数写入到标准输出流中。</p>
+<p>这是一个标准二叉树查找，后面引用其节点，阅读<code class="codehilite"><span style="color: #000000">BinaryTree</span></code>文档可以知道<code class="codehilite"><span style="color: #000000">Node</span></code>和<code class="codehilite"><span style="color: #000000">NodeRef</span></code>都是值对象：都是不可变的，其内容永远不会变化。</p>
+<p><code class="codehilite"><span style="color: #000000">Node</span></code>用一个关联的键值对来创建，这种关联也永远不会改变。整个<code class="codehilite"><span style="color: #000000">BinaryTree</span></code>的内容只有在根节点被替换的时候才是可见的，这意味着，当我们进行检索的时候，不用担心树的内容变化。</p>
+<p>一旦关联的值被找到，会被<code class="codehilite"><span style="color: #000000">main()</span></code>函数写入到标准输出流中。</p>
 <h4 id="_8">插入和更新</h4>
 <p>作者：Taavi Burns</p>
-<p>翻译：王世德</p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p>翻译：王世德</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

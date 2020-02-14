@@ -1,4 +1,642 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_query_planning/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>SQL 查询计划 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#sql" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">SQL 查询计划</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="sql">SQL 查询计划</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/crdb/crdb_query_planning/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>SQL 查询计划 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#sql" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                SQL 查询计划
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="sql">SQL 查询计划</h1>
 <h1 id="_1">概要</h1>
 <p>此RFC描绘了SQL查询计划的高级模块的概要，包括功能齐全的优化器。</p>
 <h1 id="_2">动机</h1>
@@ -18,36 +656,36 @@
 <li><a href="#transformations">Transformations</a></li>
 </ol>
 <p>Stats、Cost Model、Memo、Properties 和 Transformations 可以被认为是模块，Prep、Rewrite 和 Search 可以被认为是阶段，虽然为了统一期间在这个文档中都称之为模块。Memo（备忘录）是一种紧凑地表示搜索期间生成的树木的森林的技术。Stats、Properties、Cost Model 和 Transformations 是用于支撑 Prep、Rewrite 和 Search 的模块。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>                   SQL query text
-                         |
-                   +-----v-----+
-                   |   Parse   |
-                   +-----+-----+
-                         |
-                       (ast)
-                         |
-     +-------+     +-----v-----+    - 常量折叠, 类型检查, 名称解析
-     | Stats +-----&gt;   Prep    |    - 计算初始的属性
-     +-------+     +-----+-----+    - 检索并附加统计(Stats)数据
-                         |          - 每个 PREPARE 做一次
-                      (expr)  
-                         |  
-                   +-----v-----+    - 获取占位符值 / 时间戳
-                +--&gt;  Rewrite  |    - 代价无关的转换, 例如、谓词下推
-+------------+  |  +-----+-----+    - 每个 EXECUTE 做一次
-| Transforms +--+        |  
-+------------+  |     (expr)  
-                |        |  
-                +--&gt;-----v-----+    - 基于代价的转换
-+------------+     |  Search   |    - 找到最小代价的物理计划
-| Cost Model +-----&gt;-----+-----+    - 包括 DistSQL 物理计划
-+------------+           |
-                  (physical plan)
-                         |
-                   +-----v-----+
-                   | Execution |
-                   +-----------+
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">                   SQL query text</span>
+<span style="color: #000000">                         |</span>
+<span style="color: #000000">                   +-----v-----+</span>
+<span style="color: #000000">                   |   Parse   |</span>
+<span style="color: #000000">                   +-----+-----+</span>
+<span style="color: #000000">                         |</span>
+<span style="color: #000000">                       (ast)</span>
+<span style="color: #000000">                         |</span>
+<span style="color: #000000">     +-------+     +-----v-----+    - 常量折叠, 类型检查, 名称解析</span>
+<span style="color: #000000">     | Stats +-----&gt;   Prep    |    - 计算初始的属性</span>
+<span style="color: #000000">     +-------+     +-----+-----+    - 检索并附加统计(Stats)数据</span>
+<span style="color: #000000">                         |          - 每个 PREPARE 做一次</span>
+<span style="color: #000000">                      (expr)  </span>
+<span style="color: #000000">                         |  </span>
+<span style="color: #000000">                   +-----v-----+    - 获取占位符值 / 时间戳</span>
+<span style="color: #000000">                +--&gt;  Rewrite  |    - 代价无关的转换, 例如、谓词下推</span>
+<span style="color: #000000">+------------+  |  +-----+-----+    - 每个 EXECUTE 做一次</span>
+<span style="color: #000000">| Transforms +--+        |  </span>
+<span style="color: #000000">+------------+  |     (expr)  </span>
+<span style="color: #000000">                |        |  </span>
+<span style="color: #000000">                +--&gt;-----v-----+    - 基于代价的转换</span>
+<span style="color: #000000">+------------+     |  Search   |    - 找到最小代价的物理计划</span>
+<span style="color: #000000">| Cost Model +-----&gt;-----+-----+    - 包括 DistSQL 物理计划</span>
+<span style="color: #000000">+------------+           |</span>
+<span style="color: #000000">                  (physical plan)</span>
+<span style="color: #000000">                         |</span>
+<span style="color: #000000">                   +-----v-----+</span>
+<span style="color: #000000">                   | Execution |</span>
+<span style="color: #000000">                   +-----------+</span>
+</code></pre></div>
 
 <p>除了 Stats 和 Memo 之外，CockroachDB 已经实现了这些模块的一部分。 例如，ockroachDB 执行名称解析和类型检查，它是Prep 的一部分，并在连接时执行谓词下推，在传统数据库中通常在重写阶段。 CockroachDB在索引选择期间（搜索的一部分）使用原始成本模型来根据过滤器和所需顺序选择要使用的索引。</p>
 <p>除了8个模块，优化器的其它方面需要讨论的就是测试和测试基础设施。</p>
@@ -57,18 +695,18 @@
 <h3 id="prep">Prep</h3>
 <p><em>Prep</em> （是 prepare 的缩写）是查询优化的第一个阶段，将 AST 转换为更加适合优化的形式，注释信息等后面阶段会被使用。Prep 包括解析表和列的应用（例如，名称解析）和类型检查，这些都已经在 CockroachDB 中做了。</p>
 <p>在 Prep 中，将解析阶段的原始输出 AST 转换成表达式“树”。</p>
-<p><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">type</span> operator <span style="color: #888888; font-weight: bold">int16</span>
-<span style="color: #008800; font-weight: bold">type</span> expr <span style="color: #008800; font-weight: bold">struct</span> {
-  op              operator
-  children        []*expr
-  relationalProps *relationalProps 
-  scalarProps     *scalarProps    
-  physicalProps   *physicalProps   
-  private         <span style="color: #008800; font-weight: bold">interface</span>{}
+<p><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">type</span> <span style="color: #000000">operator</span> <span style="color: #A90D91">int16</span>
+<span style="color: #A90D91">type</span> <span style="color: #000000">expr</span> <span style="color: #A90D91">struct</span> {
+  <span style="color: #000000">op</span>              <span style="color: #000000">operator</span>
+  <span style="color: #000000">children</span>        []<span style="color: #000000">*expr</span>
+  <span style="color: #000000">relationalProps</span> <span style="color: #000000">*relationalProps</span> 
+  <span style="color: #000000">scalarProps</span>     <span style="color: #000000">*scalarProps</span>    
+  <span style="color: #000000">physicalProps</span>   <span style="color: #000000">*physicalProps</span>   
+  <span style="color: #000000">private</span>         <span style="color: #A90D91">interface</span>{}
 }
-</pre></div>
+</code></pre></div>
 这里的术语 <em>“表达式”</em> 基于文献中的用法，但由于当前的SQL代码使用“表达式”来引用标量表达式，因此它有点令人困惑。 在本文档中，“表达式”指的是关系表达式或标量表达式。 对表达式使用统一节点类型有助于在优化的重写和搜索阶段使用的变换。</p>
-<p>每个表达式有操作符和零个或者更多操作数（<code class="codehilite">expr.children</code>）。操作符可以是 <em>关系的</em> （例如 join）或者 <em>标量</em> （例如 &lt;）。关系操作符可以是逻辑（仅指定结果）或者物理（指定结果和特殊的实现）。</p>
+<p>每个表达式有操作符和零个或者更多操作数（<code class="codehilite"><span style="color: #000000">expr.children</span></code>）。操作符可以是 <em>关系的</em> （例如 join）或者 <em>标量</em> （例如 &lt;）。关系操作符可以是逻辑（仅指定结果）或者物理（指定结果和特殊的实现）。</p>
 <p>在 Prep 所有的列都有一个唯一的索引（数字）。列编号涉及为查询中的每个基本列和非平凡投影分配唯一的查询特定索引。</p>
 <p>为每列提供唯一索引允许上面提到的表达式节点使用位图跟踪输入和输出列，或实际上在准备阶段和后续阶段中的任何列集。位图表示允许快速确定表达式节点之间的兼容性，并且在重写和变换期间利用位图表示来确定这种操作的合法性。</p>
 <p>Prep 阶段还计算 <em>逻辑属性</em>，例如每个表达式，子表达式的输入和输出列，等价列，非空列和功能依赖。</p>
@@ -79,53 +717,53 @@
 <p>在重写期间，一个表达式的前一个版本被丢弃。在 Search 阶段，原始和新表达式都是并排保存的作为可选。</p>
 <p>需要注意的是，转换中的一些在重写阶段执行的不需要再 Search 阶段重新执行。搜索的绝大部分转换都不是重写需要的。</p>
 <p>重写阶段中，相关子查询“去相关”（同义词：“消除嵌套”），推断出其他谓词，谓词下推，各种对关系代数树的转换（例如，投影和连接消除）。例如谓词下推，考虑下面的查询：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a, b <span style="color: #008800; font-weight: bold">USING</span> (x) <span style="color: #008800; font-weight: bold">WHERE</span> a.x &lt; <span style="color: #0000DD; font-weight: bold">10</span>
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span>, <span style="color: #000000">b</span> <span style="color: #A90D91">USING</span> (<span style="color: #000000">x</span>) <span style="color: #A90D91">WHERE</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span> <span style="color: #000000">&lt;</span> <span style="color: #1C01CE">10</span>
+</code></pre></div>
 
-<p>朴素的对这个查询的执行时获取所有的 a 和 b 的行，在 x 上连接（过滤）它们，然后再次执行过滤 <code class="codehilite">a.x &lt; 10</code> 。谓词下推尝试下推谓词 <code class="codehilite">a.x &lt; 10</code> 在连接下面。这显然可以做到对 a 的扫描：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> (<span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a <span style="color: #008800; font-weight: bold">WHERE</span> a.x &lt; <span style="color: #0000DD; font-weight: bold">10</span>), b <span style="color: #008800; font-weight: bold">USING</span> (x)
-</pre></div>
+<p>朴素的对这个查询的执行时获取所有的 a 和 b 的行，在 x 上连接（过滤）它们，然后再次执行过滤 <code class="codehilite"><span style="color: #000000">a.x &lt; 10</span></code> 。谓词下推尝试下推谓词 <code class="codehilite"><span style="color: #000000">a.x &lt; 10</span></code> 在连接下面。这显然可以做到对 a 的扫描：</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> (<span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span> <span style="color: #000000">&lt;</span> <span style="color: #1C01CE">10</span>), <span style="color: #000000">b</span> <span style="color: #A90D91">USING</span> (<span style="color: #000000">x</span>)
+</code></pre></div>
 
-<p>稍微复杂一点，我们也可以生成一个新的谓词使用功能依赖 <code class="codehilite">a.x = b.x</code> :</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span>
-  (<span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a <span style="color: #008800; font-weight: bold">WHERE</span> a.x &lt; <span style="color: #0000DD; font-weight: bold">10</span>),
-  (<span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> b <span style="color: #008800; font-weight: bold">WHERE</span> b.x &lt; <span style="color: #0000DD; font-weight: bold">10</span>) <span style="color: #008800; font-weight: bold">USING</span> (x)
-</pre></div>
+<p>稍微复杂一点，我们也可以生成一个新的谓词使用功能依赖 <code class="codehilite"><span style="color: #000000">a.x = b.x</span></code> :</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span>
+  (<span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span> <span style="color: #000000">&lt;</span> <span style="color: #1C01CE">10</span>),
+  (<span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">b</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">b</span>.<span style="color: #000000">x</span> <span style="color: #000000">&lt;</span> <span style="color: #1C01CE">10</span>) <span style="color: #A90D91">USING</span> (<span style="color: #000000">x</span>)
+</code></pre></div>
 
 <p>谓词推断有助于谓词下推。考虑下面的查询：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a, b <span style="color: #008800; font-weight: bold">USING</span> (x)
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span>, <span style="color: #000000">b</span> <span style="color: #A90D91">USING</span> (<span style="color: #000000">x</span>)
+</code></pre></div>
 
-<p>根据连接条件，我们可以推断出 <code class="codehilite">a.x IS NOT NULL</code> 并且 <code class="codehilite">b.x IS NOT NULL</code>:</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a, b <span style="color: #008800; font-weight: bold">USING</span> (x)
-  <span style="color: #008800; font-weight: bold">WHERE</span> a.x <span style="color: #008800; font-weight: bold">IS</span> <span style="color: #008800; font-weight: bold">NOT</span> <span style="color: #008800; font-weight: bold">NULL</span> <span style="color: #008800; font-weight: bold">AND</span> b.x <span style="color: #008800; font-weight: bold">IS</span> <span style="color: #008800; font-weight: bold">NOT</span> <span style="color: #008800; font-weight: bold">NULL</span>
-</pre></div>
+<p>根据连接条件，我们可以推断出 <code class="codehilite"><span style="color: #000000">a.x IS NOT NULL</span></code> 并且 <code class="codehilite"><span style="color: #000000">b.x IS NOT NULL</span></code>:</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span>, <span style="color: #000000">b</span> <span style="color: #A90D91">USING</span> (<span style="color: #000000">x</span>)
+  <span style="color: #A90D91">WHERE</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span> <span style="color: #A90D91">IS</span> <span style="color: #A90D91">NOT</span> <span style="color: #A90D91">NULL</span> <span style="color: #A90D91">AND</span> <span style="color: #000000">b</span>.<span style="color: #000000">x</span> <span style="color: #A90D91">IS</span> <span style="color: #A90D91">NOT</span> <span style="color: #A90D91">NULL</span>
+</code></pre></div>
 
 <p>并且谓词下推可以将这些谓词下推：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span>
-  (<span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a <span style="color: #008800; font-weight: bold">WHERE</span> a.x <span style="color: #008800; font-weight: bold">IS</span> <span style="color: #008800; font-weight: bold">NOT</span> <span style="color: #008800; font-weight: bold">NULL</span>),
-  (<span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> b <span style="color: #008800; font-weight: bold">WHERE</span> b.x <span style="color: #008800; font-weight: bold">IS</span> <span style="color: #008800; font-weight: bold">NOT</span> <span style="color: #008800; font-weight: bold">NULL</span>) <span style="color: #008800; font-weight: bold">USING</span> (x)
-</pre></div></p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span>
+  (<span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span> <span style="color: #A90D91">IS</span> <span style="color: #A90D91">NOT</span> <span style="color: #A90D91">NULL</span>),
+  (<span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">b</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">b</span>.<span style="color: #000000">x</span> <span style="color: #A90D91">IS</span> <span style="color: #A90D91">NOT</span> <span style="color: #A90D91">NULL</span>) <span style="color: #A90D91">USING</span> (<span style="color: #000000">x</span>)
+</code></pre></div></p>
 <h3 id="stats">Stats</h3>
 <h3 id="memo">Memo</h3>
 <p>Memo 是用于有效存储查询计划森林的数据结构。概念上讲，memo 是一个有标识的等价类（称之为 <strong>groups</strong>）组成的集合，每个组包含了逻辑等价的表达式集合。虽然备忘录之外的表达式节点包含子表达式列表，但 memo表达式包含子组列表。</p>
 <p>根据定义，一个组内的所有的 memo 表达式共享相同的 <em>逻辑属性</em>，一个在后面的章节中更加深入探讨的概念。memo 表达式结构映射了表达式结果：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">type</span> exprID <span style="color: #888888; font-weight: bold">int32</span>
-<span style="color: #008800; font-weight: bold">type</span> groupID <span style="color: #888888; font-weight: bold">int32</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">type</span> <span style="color: #000000">exprID</span> <span style="color: #A90D91">int32</span>
+<span style="color: #A90D91">type</span> <span style="color: #000000">groupID</span> <span style="color: #A90D91">int32</span>
 
-<span style="color: #008800; font-weight: bold">type</span> memoExpr <span style="color: #008800; font-weight: bold">struct</span> {
-  op            operator
-  children      []groupID
-  physicalProps *physicalProps
-  private       <span style="color: #008800; font-weight: bold">interface</span>{}
+<span style="color: #A90D91">type</span> <span style="color: #000000">memoExpr</span> <span style="color: #A90D91">struct</span> {
+  <span style="color: #000000">op</span>            <span style="color: #000000">operator</span>
+  <span style="color: #000000">children</span>      []<span style="color: #000000">groupID</span>
+  <span style="color: #000000">physicalProps</span> <span style="color: #000000">*physicalProps</span>
+  <span style="color: #000000">private</span>       <span style="color: #A90D91">interface</span>{}
 }
 
-<span style="color: #008800; font-weight: bold">type</span> memoGroup <span style="color: #008800; font-weight: bold">struct</span> {
-  exprs           []memoExpr
-  relationalProps *relationalProps
-  scalarProps     *scalarProps
+<span style="color: #A90D91">type</span> <span style="color: #000000">memoGroup</span> <span style="color: #A90D91">struct</span> {
+  <span style="color: #000000">exprs</span>           []<span style="color: #000000">memoExpr</span>
+  <span style="color: #000000">relationalProps</span> <span style="color: #000000">*relationalProps</span>
+  <span style="color: #000000">scalarProps</span>     <span style="color: #000000">*scalarProps</span>
 }
-</pre></div>
+</code></pre></div>
 
 <p>在 memo 上的转换不是直接进行，因为转换操作在树上，而备忘录模拟森林。相反，表达式段从备忘录中提取，转换被重新插入备忘录中。乍一看这似乎是繁重且低效的，但是它允许更自然地重写转换，并且可以有效地执行表达式片段的提取。</p>
 <p>通过称为 <em>binding</em> 的过程来执行用于转换的表达片段的提取。绑定允许迭代匹配以特定memo-expression为根的模式的所有表达式。使用要提取的相同表达式结构指定模式，并添加充当通配符的“pattern-leaf”和“pattern-tree”占位符：</p>
@@ -134,66 +772,66 @@
 <p><strong>模式叶</strong> 匹配任何一个表达式树，只有树的根保留在绑定表达式中。当变换使用表达式不透明时使用它。 换句话说，转换并不关心子树内的帽子。 从某种意义上说，它是一个“叶子”，它是任何与模式匹配的绑定中的叶子。</p>
 </li>
 <li>
-<p><strong>模式树</strong> 匹配任何表达式树，并指示需要递归提取完整子树。 当转换需要对该表达式进行某些操作时，它通常用于标量表达式。 请注意，模式树会导致枚举所有可能的子树，但标量表达式通常没有多个子树（如果没有子查询，则只有一个子树）。 [TODO（彼得）：在标量上下文中如何处理子查询？ 迭代所有子查询表达式似乎不正确。 <code class="codehilite">opttoy</code>中有一个TODO来缓存<code class="codehilite">memoGroup</code>中的标量表达式。 需要进一步调查。]</p>
+<p><strong>模式树</strong> 匹配任何表达式树，并指示需要递归提取完整子树。 当转换需要对该表达式进行某些操作时，它通常用于标量表达式。 请注意，模式树会导致枚举所有可能的子树，但标量表达式通常没有多个子树（如果没有子查询，则只有一个子树）。 [TODO（彼得）：在标量上下文中如何处理子查询？ 迭代所有子查询表达式似乎不正确。 <code class="codehilite"><span style="color: #000000">opttoy</span></code>中有一个TODO来缓存<code class="codehilite"><span style="color: #000000">memoGroup</span></code>中的标量表达式。 需要进一步调查。]</p>
 </li>
 </ul>
 <p>为了更好地理解 memo 的结构：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">SELECT</span> * <span style="color: #008800; font-weight: bold">FROM</span> a, b <span style="color: #008800; font-weight: bold">WHERE</span> a.x = b.x
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">SELECT</span> <span style="color: #000000">*</span> <span style="color: #A90D91">FROM</span> <span style="color: #000000">a</span>, <span style="color: #000000">b</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span> <span style="color: #000000">=</span> <span style="color: #000000">b</span>.<span style="color: #000000">x</span>
+</code></pre></div>
 
 <p>转换为表达式结构，该结构模拟查询的扩展关系代数：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>inner-join [columns: a.x a.y b.x b.z]
-  filters:
-    eq
-      inputs:
-        variable (a.x)
-        variable (b.x)
-  inputs:
-    scan [columns: a.x a.y]
-    scan [columns: b.x b.z]
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">inner-join [columns: a.x a.y b.x b.z]</span>
+<span style="color: #000000">  filters:</span>
+<span style="color: #000000">    eq</span>
+<span style="color: #000000">      inputs:</span>
+<span style="color: #000000">        variable (a.x)</span>
+<span style="color: #000000">        variable (b.x)</span>
+<span style="color: #000000">  inputs:</span>
+<span style="color: #000000">    scan [columns: a.x a.y]</span>
+<span style="color: #000000">    scan [columns: b.x b.z]</span>
+</code></pre></div>
 
 <p>将表达式树插入到 memo 中结果如下：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #0000DD; font-weight: bold">6</span>: [inner-join [<span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #0000DD; font-weight: bold">5</span>]]
-<span style="color: #0000DD; font-weight: bold">5</span>: [eq [<span style="color: #0000DD; font-weight: bold">3</span> <span style="color: #0000DD; font-weight: bold">4</span>]]
-<span style="color: #0000DD; font-weight: bold">4</span>: [variable b.x]
-<span style="color: #0000DD; font-weight: bold">3</span>: [variable a.x]
-<span style="color: #0000DD; font-weight: bold">2</span>: [scan b]
-<span style="color: #0000DD; font-weight: bold">1</span>: [scan a]
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #1C01CE">6</span><span style="color: #000000">:</span> [<span style="color: #000000">inner-join</span> [<span style="color: #1C01CE">1</span> <span style="color: #1C01CE">2</span> <span style="color: #1C01CE">5</span>]]
+<span style="color: #1C01CE">5</span><span style="color: #000000">:</span> [<span style="color: #000000">eq</span> [<span style="color: #1C01CE">3</span> <span style="color: #1C01CE">4</span>]]
+<span style="color: #1C01CE">4</span><span style="color: #000000">:</span> [<span style="color: #000000">variable</span> <span style="color: #000000">b</span>.<span style="color: #000000">x</span>]
+<span style="color: #1C01CE">3</span><span style="color: #000000">:</span> [<span style="color: #000000">variable</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span>]
+<span style="color: #1C01CE">2</span><span style="color: #000000">:</span> [<span style="color: #000000">scan</span> <span style="color: #000000">b</span>]
+<span style="color: #1C01CE">1</span><span style="color: #000000">:</span> [<span style="color: #000000">scan</span> <span style="color: #000000">a</span>]
+</code></pre></div>
 
 <p>Memo 组在创建时标号，并对这些组进行拓扑排序以进行显示（这是一个实现细节，不是为了规定）。 在上面的示例中，每个组只包含一个memo-expression。 在执行连接交换变换之后，备忘录将扩展：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #0000DD; font-weight: bold">6</span>: [inner-join [<span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #0000DD; font-weight: bold">5</span>]] [inner-join [<span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #0000DD; font-weight: bold">5</span>]]
-<span style="color: #0000DD; font-weight: bold">5</span>: [eq [<span style="color: #0000DD; font-weight: bold">3</span> <span style="color: #0000DD; font-weight: bold">4</span>]]
-<span style="color: #0000DD; font-weight: bold">4</span>: [variable b.x]
-<span style="color: #0000DD; font-weight: bold">3</span>: [variable a.x]
-<span style="color: #0000DD; font-weight: bold">2</span>: [scan b]
-<span style="color: #0000DD; font-weight: bold">1</span>: [scan a]
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #1C01CE">6</span><span style="color: #000000">:</span> [<span style="color: #000000">inner-join</span> [<span style="color: #1C01CE">1</span> <span style="color: #1C01CE">2</span> <span style="color: #1C01CE">5</span>]] [<span style="color: #000000">inner-join</span> [<span style="color: #1C01CE">2</span> <span style="color: #1C01CE">1</span> <span style="color: #1C01CE">5</span>]]
+<span style="color: #1C01CE">5</span><span style="color: #000000">:</span> [<span style="color: #000000">eq</span> [<span style="color: #1C01CE">3</span> <span style="color: #1C01CE">4</span>]]
+<span style="color: #1C01CE">4</span><span style="color: #000000">:</span> [<span style="color: #000000">variable</span> <span style="color: #000000">b</span>.<span style="color: #000000">x</span>]
+<span style="color: #1C01CE">3</span><span style="color: #000000">:</span> [<span style="color: #000000">variable</span> <span style="color: #000000">a</span>.<span style="color: #000000">x</span>]
+<span style="color: #1C01CE">2</span><span style="color: #000000">:</span> [<span style="color: #000000">scan</span> <span style="color: #000000">b</span>]
+<span style="color: #1C01CE">1</span><span style="color: #000000">:</span> [<span style="color: #000000">scan</span> <span style="color: #000000">a</span>]
+</code></pre></div>
 
 <p>Memo 组包含逻辑等价的表达式，但是两个逻辑等价的表达式可能不会放到同一个 memo 组中。发生这种情况的原因是因为确定两个关系表达式逻辑等价100%正确很困难。正确性无法保证（即，当它们不是时，考虑两个逻辑等效的表达式）导致无效转换和无效计划。将两个逻辑上等效的表达式放在不同的组中有一个更温和的失败模式：备忘录和搜索效率较低。</p>
 <p>一个表达式插入 memo 通过递归插入所有子表达式到 memo 中实现，然后对 memo 表达式计算一个 <strong>指纹</strong>。一个表达式的指纹是一个就是简单的表达式</p>
-<p>通过将所有子表达式递归地插入到备忘录中然后计算用于备忘录表达式的<strong>指纹</strong>来执行将表达式插入到备忘录中。 memo-expression的指纹只是表达式运算符和子组列表。 例如，在上面的备忘录示例中，第一个内连接表达式的指纹是<code class="codehilite">[inner-join [1 2 5]]</code>。 备忘录维护从表达式指纹到备忘录组的映射，可以快速确定备忘录中是否已存在表达式片段。在计算备忘录表达式的组指纹时，执行少量特定于运算符的标准化。 例如，内连接的左输入和右输入按排序顺序输出，这导致表达式<code class="codehilite">[inner-join [1 2 5]]</code>和<code class="codehilite">[inner-join [2 1 5]]</code>具有同组指纹。 特定于运算符的规范化是保守的。 将逻辑等效表达式放在同一组中的常见情况是遵守变换表达式在逻辑上等效于其输入的不变量。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">type</span> memo <span style="color: #008800; font-weight: bold">struct</span> {
-  <span style="color: #888888">// Map from memo-expression &quot;group&quot; fingerprint to group ID.</span>
-  groupMap <span style="color: #008800; font-weight: bold">map</span>[<span style="color: #888888; font-weight: bold">string</span>]groupID
-  groups   []memoGroup
+<p>通过将所有子表达式递归地插入到备忘录中然后计算用于备忘录表达式的<strong>指纹</strong>来执行将表达式插入到备忘录中。 memo-expression的指纹只是表达式运算符和子组列表。 例如，在上面的备忘录示例中，第一个内连接表达式的指纹是<code class="codehilite"><span style="color: #000000">[inner-join [1 2 5]]</span></code>。 备忘录维护从表达式指纹到备忘录组的映射，可以快速确定备忘录中是否已存在表达式片段。在计算备忘录表达式的组指纹时，执行少量特定于运算符的标准化。 例如，内连接的左输入和右输入按排序顺序输出，这导致表达式<code class="codehilite"><span style="color: #000000">[inner-join [1 2 5]]</span></code>和<code class="codehilite"><span style="color: #000000">[inner-join [2 1 5]]</span></code>具有同组指纹。 特定于运算符的规范化是保守的。 将逻辑等效表达式放在同一组中的常见情况是遵守变换表达式在逻辑上等效于其输入的不变量。</p>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">type</span> <span style="color: #000000">memo</span> <span style="color: #A90D91">struct</span> {
+  <span style="color: #177500">// Map from memo-expression &quot;group&quot; fingerprint to group ID.</span>
+  <span style="color: #000000">groupMap</span> <span style="color: #A90D91">map</span>[<span style="color: #A90D91">string</span>]<span style="color: #000000">groupID</span>
+  <span style="color: #000000">groups</span>   []<span style="color: #000000">memoGroup</span>
 }
-</pre></div>
+</code></pre></div>
 
 <p>除了 memo 表达式，memo 组还包含期望的物理数学到组的优化状态的那些属性的映射。在 <a href="#search-aka-enumeration-or-transformation">Search</a> 中更详细讨论了这种状态。</p>
 <p>通过组和表达式序号，在 memo 内的 <strong>location</strong> 标识了一个特定的 memo 表达式。当从备忘录中提取表达式片段时，每个“expr”都标记有它来自备忘录中的位置。这允许随后将转换的表达式重新插入到备忘录中以快速确定应该将表达式节点添加到哪些组。</p>
-<p><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">type</span> memoLoc <span style="color: #008800; font-weight: bold">struct</span> {
-  group groupID
-  expr  exprID
+<p><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">type</span> <span style="color: #000000">memoLoc</span> <span style="color: #A90D91">struct</span> {
+  <span style="color: #000000">group</span> <span style="color: #000000">groupID</span>
+  <span style="color: #000000">expr</span>  <span style="color: #000000">exprID</span>
 }
-...
-<span style="color: #008800; font-weight: bold">type</span> expr <span style="color: #008800; font-weight: bold">struct</span> {
-  op  operator
-  loc memoLoc
-  ...
+<span style="color: #000000">...</span>
+<span style="color: #A90D91">type</span> <span style="color: #000000">expr</span> <span style="color: #A90D91">struct</span> {
+  <span style="color: #000000">op</span>  <span style="color: #000000">operator</span>
+  <span style="color: #000000">loc</span> <span style="color: #000000">memoLoc</span>
+  <span style="color: #000000">...</span>
 }
-</pre></div>
+</code></pre></div>
 为了解释的目的，简化了备忘录结构的上述描述。 实际结构类似，但经过优化以减少分配。</p>
 <h3 id="properties">Properties</h3>
 <h3 id="computed-properties">Computed properties</h3>
@@ -205,4 +843,69 @@
 <h2 id="_7">未解决的问题</h2>
 <h2 id="_8">附录</h2>
 <h3 id="exprmemo">Expr/Memo 例子</h3>
-<h3 id="_9"></h3></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<h3 id="_9"></h3>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

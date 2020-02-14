@@ -1,83 +1,786 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/misc/gobyexample/Errors/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Errors - Blog</title><link rel="stylesheet" href="../../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#errors" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">Errors</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="errors">Errors</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/misc/gobyexample/Errors/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Errors - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#errors" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Errors
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="errors">Errors</h1>
 <p>在 Go 语言中，通常都是通过显式分离返回值得方式处理错误码。
 这与 Java 和 Ruby 等语言使用的异常，以及 C 语言中有时使用的重载单个结果/错误码不同。
 Go 中以更简单的形式来查看哪个函数返回错误，然后用相同的语言结构处理。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">package</span> main
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">package</span> <span style="color: #000000">main</span>
 
-<span style="color: #008800; font-weight: bold">import</span> (
-    <span style="color: #dd2200; background-color: #fff0f0">&quot;errors&quot;</span>
-    <span style="color: #dd2200; background-color: #fff0f0">&quot;fmt&quot;</span>
+<span style="color: #A90D91">import</span> (
+    <span style="color: #C41A16">&quot;errors&quot;</span>
+    <span style="color: #C41A16">&quot;fmt&quot;</span>
 )
 
-<span style="color: #888888">// 按照惯例，错误码是最后一个返回值，并且有类型为内置接口 error</span>
-<span style="color: #008800; font-weight: bold">func</span> f1(arg <span style="color: #888888; font-weight: bold">int</span>) (<span style="color: #888888; font-weight: bold">int</span>, <span style="color: #888888; font-weight: bold">error</span>) {
-    <span style="color: #008800; font-weight: bold">if</span> arg == <span style="color: #0000DD; font-weight: bold">42</span> {
-      <span style="color: #888888">// errors.New 根据给定的错误信息构造一个基本的 error 值</span>
-        <span style="color: #008800; font-weight: bold">return</span> -<span style="color: #0000DD; font-weight: bold">1</span>, errors.New(<span style="color: #dd2200; background-color: #fff0f0">&quot;can&#39;t work with 42&quot;</span>)
+<span style="color: #177500">// 按照惯例，错误码是最后一个返回值，并且有类型为内置接口 error</span>
+<span style="color: #A90D91">func</span> <span style="color: #000000">f1</span>(<span style="color: #000000">arg</span> <span style="color: #A90D91">int</span>) (<span style="color: #A90D91">int</span>, <span style="color: #A90D91">error</span>) {
+    <span style="color: #A90D91">if</span> <span style="color: #000000">arg</span> <span style="color: #000000">==</span> <span style="color: #1C01CE">42</span> {
+      <span style="color: #177500">// errors.New 根据给定的错误信息构造一个基本的 error 值</span>
+        <span style="color: #A90D91">return</span> <span style="color: #000000">-</span><span style="color: #1C01CE">1</span>, <span style="color: #000000">errors</span>.<span style="color: #000000">New</span>(<span style="color: #C41A16">&quot;can&#39;t work with 42&quot;</span>)
     }
 
-   <span style="color: #888888">// nil 值表示没有错误</span>
-    <span style="color: #008800; font-weight: bold">return</span> arg + <span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #008800; font-weight: bold">nil</span>
+   <span style="color: #177500">// nil 值表示没有错误</span>
+    <span style="color: #A90D91">return</span> <span style="color: #000000">arg</span> <span style="color: #000000">+</span> <span style="color: #1C01CE">3</span>, <span style="color: #A90D91">nil</span>
 }
 
-<span style="color: #888888">// 通过实现 Error() 方法，可以将定制类型作为 errors</span>
-<span style="color: #888888">// 这是上面例子的变体，使用定制类型来显示表示参数错误</span>
-<span style="color: #008800; font-weight: bold">type</span> argError <span style="color: #008800; font-weight: bold">struct</span> {
-    arg  <span style="color: #888888; font-weight: bold">int</span>
-    prob <span style="color: #888888; font-weight: bold">string</span>
+<span style="color: #177500">// 通过实现 Error() 方法，可以将定制类型作为 errors</span>
+<span style="color: #177500">// 这是上面例子的变体，使用定制类型来显示表示参数错误</span>
+<span style="color: #A90D91">type</span> <span style="color: #000000">argError</span> <span style="color: #A90D91">struct</span> {
+    <span style="color: #000000">arg</span>  <span style="color: #A90D91">int</span>
+    <span style="color: #000000">prob</span> <span style="color: #A90D91">string</span>
 }
 
-<span style="color: #008800; font-weight: bold">func</span> (e *argError) Error() <span style="color: #888888; font-weight: bold">string</span> {
-    <span style="color: #008800; font-weight: bold">return</span> fmt.Sprintf(<span style="color: #dd2200; background-color: #fff0f0">&quot;%d - %s&quot;</span>, e.arg, e.prob)
+<span style="color: #A90D91">func</span> (<span style="color: #000000">e</span> <span style="color: #000000">*argError</span>) <span style="color: #000000">Error</span>() <span style="color: #A90D91">string</span> {
+    <span style="color: #A90D91">return</span> <span style="color: #000000">fmt</span>.<span style="color: #000000">Sprintf</span>(<span style="color: #C41A16">&quot;%d - %s&quot;</span>, <span style="color: #000000">e</span>.<span style="color: #000000">arg</span>, <span style="color: #000000">e</span>.<span style="color: #000000">prob</span>)
 }
 
-<span style="color: #008800; font-weight: bold">func</span> f2(arg <span style="color: #888888; font-weight: bold">int</span>) (<span style="color: #888888; font-weight: bold">int</span>, <span style="color: #888888; font-weight: bold">error</span>) {
-    <span style="color: #008800; font-weight: bold">if</span> arg == <span style="color: #0000DD; font-weight: bold">42</span> {
-      <span style="color: #888888">// 这种情况下，使用 &amp;argError 语法构建一个新的结构</span>
-      <span style="color: #888888">// 提供两个字段 arg 和 prob 作为取值</span>
-        <span style="color: #008800; font-weight: bold">return</span> -<span style="color: #0000DD; font-weight: bold">1</span>, &amp;argError{arg, <span style="color: #dd2200; background-color: #fff0f0">&quot;can&#39;t work with it&quot;</span>}
+<span style="color: #A90D91">func</span> <span style="color: #000000">f2</span>(<span style="color: #000000">arg</span> <span style="color: #A90D91">int</span>) (<span style="color: #A90D91">int</span>, <span style="color: #A90D91">error</span>) {
+    <span style="color: #A90D91">if</span> <span style="color: #000000">arg</span> <span style="color: #000000">==</span> <span style="color: #1C01CE">42</span> {
+      <span style="color: #177500">// 这种情况下，使用 &amp;argError 语法构建一个新的结构</span>
+      <span style="color: #177500">// 提供两个字段 arg 和 prob 作为取值</span>
+        <span style="color: #A90D91">return</span> <span style="color: #000000">-</span><span style="color: #1C01CE">1</span>, <span style="color: #000000">&amp;argError</span>{<span style="color: #000000">arg</span>, <span style="color: #C41A16">&quot;can&#39;t work with it&quot;</span>}
     }
 
-    <span style="color: #008800; font-weight: bold">return</span> arg + <span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #008800; font-weight: bold">nil</span>
+    <span style="color: #A90D91">return</span> <span style="color: #000000">arg</span> <span style="color: #000000">+</span> <span style="color: #1C01CE">3</span>, <span style="color: #A90D91">nil</span>
 }
 
-<span style="color: #008800; font-weight: bold">func</span> main() {
-   <span style="color: #888888">// 下面两个循环，测试了每个错误返回函数</span>
-   <span style="color: #888888">// if 行内检查错误码在 Go 中是比较常见的做法</span>
-    <span style="color: #008800; font-weight: bold">for</span> _, i := <span style="color: #008800; font-weight: bold">range</span> []<span style="color: #888888; font-weight: bold">int</span>{<span style="color: #0000DD; font-weight: bold">7</span>, <span style="color: #0000DD; font-weight: bold">42</span>} {
-        <span style="color: #008800; font-weight: bold">if</span> r, e := f1(i); e != <span style="color: #008800; font-weight: bold">nil</span> {
-            fmt.Println(<span style="color: #dd2200; background-color: #fff0f0">&quot;f1 failed:&quot;</span>, e)
-        } <span style="color: #008800; font-weight: bold">else</span> {
-            fmt.Println(<span style="color: #dd2200; background-color: #fff0f0">&quot;f1 worked:&quot;</span>, r)
+<span style="color: #A90D91">func</span> <span style="color: #000000">main</span>() {
+   <span style="color: #177500">// 下面两个循环，测试了每个错误返回函数</span>
+   <span style="color: #177500">// if 行内检查错误码在 Go 中是比较常见的做法</span>
+    <span style="color: #A90D91">for</span> <span style="color: #000000">_</span>, <span style="color: #000000">i</span> <span style="color: #000000">:=</span> <span style="color: #A90D91">range</span> []<span style="color: #A90D91">int</span>{<span style="color: #1C01CE">7</span>, <span style="color: #1C01CE">42</span>} {
+        <span style="color: #A90D91">if</span> <span style="color: #000000">r</span>, <span style="color: #000000">e</span> <span style="color: #000000">:=</span> <span style="color: #000000">f1</span>(<span style="color: #000000">i</span>); <span style="color: #000000">e</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
+            <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot;f1 failed:&quot;</span>, <span style="color: #000000">e</span>)
+        } <span style="color: #A90D91">else</span> {
+            <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot;f1 worked:&quot;</span>, <span style="color: #000000">r</span>)
         }
     }
 
-    <span style="color: #008800; font-weight: bold">for</span> _, i := <span style="color: #008800; font-weight: bold">range</span> []<span style="color: #888888; font-weight: bold">int</span>{<span style="color: #0000DD; font-weight: bold">7</span>, <span style="color: #0000DD; font-weight: bold">42</span>} {
-        <span style="color: #008800; font-weight: bold">if</span> r, e := f2(i); e != <span style="color: #008800; font-weight: bold">nil</span> {
-            fmt.Println(<span style="color: #dd2200; background-color: #fff0f0">&quot;f2 failed:&quot;</span>, e)
-        } <span style="color: #008800; font-weight: bold">else</span> {
-            fmt.Println(<span style="color: #dd2200; background-color: #fff0f0">&quot;f2 workded:&quot;</span>, r)
+    <span style="color: #A90D91">for</span> <span style="color: #000000">_</span>, <span style="color: #000000">i</span> <span style="color: #000000">:=</span> <span style="color: #A90D91">range</span> []<span style="color: #A90D91">int</span>{<span style="color: #1C01CE">7</span>, <span style="color: #1C01CE">42</span>} {
+        <span style="color: #A90D91">if</span> <span style="color: #000000">r</span>, <span style="color: #000000">e</span> <span style="color: #000000">:=</span> <span style="color: #000000">f2</span>(<span style="color: #000000">i</span>); <span style="color: #000000">e</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
+            <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot;f2 failed:&quot;</span>, <span style="color: #000000">e</span>)
+        } <span style="color: #A90D91">else</span> {
+            <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot;f2 workded:&quot;</span>, <span style="color: #000000">r</span>)
         }
     }
 
-   <span style="color: #888888">// 如果想使用定制错误的数据，需要通过类型断言作为定制错误类型的实例来获得错误。</span>
-    _, e := f2(<span style="color: #0000DD; font-weight: bold">42</span>)
-    <span style="color: #008800; font-weight: bold">if</span> ae, ok := e.(*argError); ok {
-        fmt.Println(ae.arg)
-        fmt.Println(ae.prob)
+   <span style="color: #177500">// 如果想使用定制错误的数据，需要通过类型断言作为定制错误类型的实例来获得错误。</span>
+    <span style="color: #000000">_</span>, <span style="color: #000000">e</span> <span style="color: #000000">:=</span> <span style="color: #000000">f2</span>(<span style="color: #1C01CE">42</span>)
+    <span style="color: #A90D91">if</span> <span style="color: #000000">ae</span>, <span style="color: #000000">ok</span> <span style="color: #000000">:=</span> <span style="color: #000000">e</span>.(<span style="color: #000000">*argError</span>); <span style="color: #000000">ok</span> {
+        <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #000000">ae</span>.<span style="color: #000000">arg</span>)
+        <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #000000">ae</span>.<span style="color: #000000">prob</span>)
     }
 }
-</pre></div>
+</code></pre></div>
 
 <p>运行结果：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span>$ go run errors.go
-f1 worked: <span style="color: #0000DD; font-weight: bold">10</span>
-f1 failed: can<span style="color: #dd2200; background-color: #fff0f0">&#39;t work with 42</span>
-<span style="color: #dd2200; background-color: #fff0f0">f2 worked: 10</span>
-<span style="color: #dd2200; background-color: #fff0f0">f2 failed: 42 - can&#39;</span>t work with it
-<span style="color: #0000DD; font-weight: bold">42</span>
-can<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>t work with it
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ go run errors.go
+f1 worked: <span style="color: #1C01CE">10</span>
+f1 failed: can<span style="color: #C41A16">&#39;t work with 42</span>
+<span style="color: #C41A16">f2 worked: 10</span>
+<span style="color: #C41A16">f2 failed: 42 - can&#39;</span>t work with it
+<span style="color: #1C01CE">42</span>
+can<span style="color: #000000">&#39;</span>t work with it
+</code></pre></div>
 
 <p>在 Go 的博客上阅读<a href="http://blog.golang.org/2011/07/error-handling-and-go.html">这篇文章</a>获得更多关于错误处理的内容。</p>
-<p>下一个：<a href="../Goroutines/">Goroutines</a></p></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<p>下一个：<a href="../Goroutines/">Goroutines</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

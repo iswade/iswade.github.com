@@ -1,4 +1,1203 @@
-<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch12/"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../../../themes/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>第十二章 数据系统的未来 - Blog</title><link rel="stylesheet" href="../../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content=""><script src="../../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../../themes/extra.css"></head><body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue"><svg class="md-svg"><defs></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo"><img src="../../../themes/me.jpg" width="24" height="24"></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Blog</span><span class="md-header-nav__topic">第十二章 数据系统的未来</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo"><img src="../../../themes/me.jpg" width="48" height="48"></a>Blog</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../.." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Databases</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Databases</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">Pebble KV存储引擎</a></li><li class="md-nav__item"><a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">FaunaDB的分布式事务协议</a></li><li class="md-nav__item"><a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">Aurora云原生关系数据库</a></li><li class="md-nav__item"><a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">现代存储系统背后的算法</a></li><li class="md-nav__item"><a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">数据库笔记</a></li><li class="md-nav__item"><a href="../../F1_query/" title="F1 Query" class="md-nav__link">F1 Query</a></li><li class="md-nav__item"><a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">Bolt 数据库</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Distributed</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Distributed</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">分布式系统大纲</a></li><li class="md-nav__item"><a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">分布式系统之复制</a></li><li class="md-nav__item"><a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">分布式系统之数据分区</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">分布式系统之故障检测</a></li><li class="md-nav__item"><a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">分布式系统之共识</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6"><label class="md-nav__link" for="nav-3-6">分布式系统算法方法</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-3-6">分布式系统算法方法</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">前 言</a></li><li class="md-nav__item"><a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">第一章 概述</a></li><li class="md-nav__item"><a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">第二章 进程间通信</a></li><li class="md-nav__item"><a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">第三章 通信模型</a></li></ul></nav></li><li class="md-nav__item"><a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">强一致性模型</a></li><li class="md-nav__item"><a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">Zookeeper论文翻译</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Language</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Language</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">Go 并发编程</a></li><li class="md-nav__item"><a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">如何使用 Go 接口</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Engineering</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Engineering</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">高级markdown</a></li><li class="md-nav__item"><a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">linux 系统管理</a></li><li class="md-nav__item"><a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">git 入门教程</a></li><li class="md-nav__item"><a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">How to be a manager</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_2" title="数据集成" class="md-nav__link">数据集成</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_3" title="组合使用衍生数据的工具" class="md-nav__link">组合使用衍生数据的工具</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_4" title="推理数据流" class="md-nav__link">推理数据流</a></li><li class="md-nav__item"><a href="#_5" title="衍生数据与分布式事务" class="md-nav__link">衍生数据与分布式事务</a></li><li class="md-nav__item"><a href="#_6" title="全局有序的限制" class="md-nav__link">全局有序的限制</a></li><li class="md-nav__item"><a href="#_7" title="订购事件以捕捉因果关系" class="md-nav__link">订购事件以捕捉因果关系</a></li></ul></nav></li><li class="md-nav__item"><a href="#_8" title="批量处理与流处理" class="md-nav__link">批量处理与流处理</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_9" title="保持衍生状态" class="md-nav__link">保持衍生状态</a></li><li class="md-nav__item"><a href="#_10" title="为应用程序演变重新处理数据" class="md-nav__link">为应用程序演变重新处理数据</a></li></ul></nav></li><li class="md-nav__item"><a href="#_11" title="在铁路上的模式迁移" class="md-nav__link">在铁路上的模式迁移</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#lambda" title="Lambda架构" class="md-nav__link">Lambda架构</a></li><li class="md-nav__item"><a href="#_12" title="统一批处理和流处理" class="md-nav__link">统一批处理和流处理</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_13" title="拆分数据库" class="md-nav__link">拆分数据库</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_14" title="组合使用数据存储技术" class="md-nav__link">组合使用数据存储技术</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_15" title="创建一个索引" class="md-nav__link">创建一个索引</a></li><li class="md-nav__item"><a href="#_16" title="一切的元数据库" class="md-nav__link">一切的元数据库</a></li><li class="md-nav__item"><a href="#_17" title="开展分拆工作" class="md-nav__link">开展分拆工作</a></li><li class="md-nav__item"><a href="#_18" title="非捆绑与集成系统" class="md-nav__link">非捆绑与集成系统</a></li><li class="md-nav__item"><a href="#_19" title="少了什么东西？" class="md-nav__link">少了什么东西？</a></li></ul></nav></li><li class="md-nav__item"><a href="#_20" title="围绕数据流设计应用" class="md-nav__link">围绕数据流设计应用</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_21" title="应用程序代码作为衍生函数" class="md-nav__link">应用程序代码作为衍生函数</a></li><li class="md-nav__item"><a href="#_22" title="应用程序代码和状态的分离" class="md-nav__link">应用程序代码和状态的分离</a></li><li class="md-nav__item"><a href="#_23" title="数据流：状态变化和应用程序代码之间的相互影响" class="md-nav__link">数据流：状态变化和应用程序代码之间的相互影响</a></li><li class="md-nav__item"><a href="#_24" title="流处理器和服务" class="md-nav__link">流处理器和服务</a></li></ul></nav></li><li class="md-nav__item"><a href="#_25" title="观察衍生数据状态" class="md-nav__link">观察衍生数据状态</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_26" title="物化视图和缓存" class="md-nav__link">物化视图和缓存</a></li><li class="md-nav__item"><a href="#_27" title="有状态，可离线的客户端" class="md-nav__link">有状态，可离线的客户端</a></li><li class="md-nav__item"><a href="#_28" title="将状态更改推送给客户端" class="md-nav__link">将状态更改推送给客户端</a></li><li class="md-nav__item"><a href="#_29" title="端到端的事件流" class="md-nav__link">端到端的事件流</a></li><li class="md-nav__item"><a href="#_30" title="读也是事件" class="md-nav__link">读也是事件</a></li><li class="md-nav__item"><a href="#_31" title="多分区数据处理" class="md-nav__link">多分区数据处理</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_32" title="目标是正确性" class="md-nav__link">目标是正确性</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_33" title="数据库端到端的争论" class="md-nav__link">数据库端到端的争论</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_34" title="正好执行一次操作" class="md-nav__link">正好执行一次操作</a></li><li class="md-nav__item"><a href="#_35" title="重复抑制" class="md-nav__link">重复抑制</a></li><li class="md-nav__item"><a href="#_36" title="操作标识符" class="md-nav__link">操作标识符</a></li><li class="md-nav__item"><a href="#_37" title="在数据系统中应用端到端思考" class="md-nav__link">在数据系统中应用端到端思考</a></li></ul></nav></li><li class="md-nav__item"><a href="#_38" title="强制实施约束" class="md-nav__link">强制实施约束</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_39" title="唯一性约束需要达成共识" class="md-nav__link">唯一性约束需要达成共识</a></li><li class="md-nav__item"><a href="#_40" title="基于日志的消息传递的唯一性" class="md-nav__link">基于日志的消息传递的唯一性</a></li><li class="md-nav__item"><a href="#_41" title="多分区请求处理" class="md-nav__link">多分区请求处理</a></li></ul></nav></li><li class="md-nav__item"><a href="#_42" title="及时性与完整性" class="md-nav__link">及时性与完整性</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_43" title="数据流系统的正确性" class="md-nav__link">数据流系统的正确性</a></li><li class="md-nav__item"><a href="#_44" title="松散的解释约束" class="md-nav__link">松散的解释约束</a></li><li class="md-nav__item"><a href="#_45" title="协调避免数据系统" class="md-nav__link">协调避免数据系统</a></li></ul></nav></li><li class="md-nav__item"><a href="#_46" title="信任，但需要验证" class="md-nav__link">信任，但需要验证</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_47" title="在软件缺陷面前保持完整性" class="md-nav__link">在软件缺陷面前保持完整性</a></li><li class="md-nav__item"><a href="#_48" title="不要盲目信任他们的承诺" class="md-nav__link">不要盲目信任他们的承诺</a></li><li class="md-nav__item"><a href="#_49" title="验证的文化" class="md-nav__link">验证的文化</a></li><li class="md-nav__item"><a href="#_50" title="设计可审计性" class="md-nav__link">设计可审计性</a></li><li class="md-nav__item"><a href="#_51" title="再次是端到端的论点" class="md-nav__link">再次是端到端的论点</a></li><li class="md-nav__item"><a href="#_52" title="审计数据系统的工具" class="md-nav__link">审计数据系统的工具</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_53" title="做正确的事情" class="md-nav__link">做正确的事情</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_54" title="预测分析" class="md-nav__link">预测分析</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#_55" title="偏见和歧视" class="md-nav__link">偏见和歧视</a></li><li class="md-nav__item"><a href="#_56" title="责任和问责" class="md-nav__link">责任和问责</a></li><li class="md-nav__item"><a href="#_57" title="反馈回路" class="md-nav__link">反馈回路</a></li><li class="md-nav__item"><a href="#_58" title="隐私和跟踪" class="md-nav__link">隐私和跟踪</a></li><li class="md-nav__item"><a href="#_59" title="监控" class="md-nav__link">监控</a></li><li class="md-nav__item"><a href="#_60" title="同意和选择的自由" class="md-nav__link">同意和选择的自由</a></li><li class="md-nav__item"><a href="#_61" title="数据的隐私和使用" class="md-nav__link">数据的隐私和使用</a></li><li class="md-nav__item"><a href="#_62" title="数据作为资产和权力" class="md-nav__link">数据作为资产和权力</a></li><li class="md-nav__item"><a href="#_63" title="记住工业革命" class="md-nav__link">记住工业革命</a></li><li class="md-nav__item"><a href="#_64" title="立法和自律" class="md-nav__link">立法和自律</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#_65" title="本章小结" class="md-nav__link">本章小结</a></li><li class="md-nav__item"><a href="#_66" title="参考文献" class="md-nav__link">参考文献</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="_1">第十二章 数据系统的未来</h1>
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/ddia-cn/ch12/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>第十二章 数据系统的未来 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../../themes/me.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Blog
+            </span>
+            <span class="md-header-nav__topic">
+              
+                第十二章 数据系统的未来
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../../themes/me.jpg" width="48" height="48">
+      
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据集成
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    组合使用衍生数据的工具
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    推理数据流
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    衍生数据与分布式事务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    全局有序的限制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    订购事件以捕捉因果关系
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    批量处理与流处理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    保持衍生状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    为应用程序演变重新处理数据
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    在铁路上的模式迁移
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    Lambda架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    统一批处理和流处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    拆分数据库
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    组合使用数据存储技术
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    创建一个索引
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    一切的元数据库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    开展分拆工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    非捆绑与集成系统
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    少了什么东西？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    围绕数据流设计应用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    应用程序代码作为衍生函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    应用程序代码和状态的分离
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    数据流：状态变化和应用程序代码之间的相互影响
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    流处理器和服务
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    观察衍生数据状态
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    物化视图和缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    有状态，可离线的客户端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    将状态更改推送给客户端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    端到端的事件流
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    读也是事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    多分区数据处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    目标是正确性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    数据库端到端的争论
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    正好执行一次操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    重复抑制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    操作标识符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    在数据系统中应用端到端思考
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    强制实施约束
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    唯一性约束需要达成共识
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    基于日志的消息传递的唯一性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    多分区请求处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    及时性与完整性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    数据流系统的正确性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    松散的解释约束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    协调避免数据系统
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    信任，但需要验证
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    在软件缺陷面前保持完整性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    不要盲目信任他们的承诺
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    验证的文化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    设计可审计性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    再次是端到端的论点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    审计数据系统的工具
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    做正确的事情
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    预测分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    偏见和歧视
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    责任和问责
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    反馈回路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    隐私和跟踪
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    监控
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    同意和选择的自由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    数据的隐私和使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    数据作为资产和权力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    记住工业革命
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    立法和自律
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    本章小结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">第十二章 数据系统的未来</h1>
 <p><img alt="" src="../img/ch12.png" /></p>
 <blockquote>
 <p>如果船长的终极目标是保护船只，他应该永远待在港口。</p>
@@ -217,7 +1416,7 @@
 <p>在第十章和第十一章中，出现了类似的主题。我们讨论了如何构建全文搜索索引（请参阅第357页上的“<a href="">批处理工作流的输出</a>”），了解有关实例化视图维护（请参阅“<a href="">维护实例化视图</a>”一节第437页）以及有关将更改从数据库复制到衍生数据系统（请参阅第454页的“<a href="">更改数据捕获</a>”）。</p>
 <p>数据库中内置的功能与人们用批处理和流处理器构建的衍生数据系统似乎有相似之处。</p>
 <h4 id="_15">创建一个索引</h4>
-<p>想想当你运行<code class="codehilite">CREATE INDEX</code>在关系数据库中创建一个新的索引时会发生什么。数据库必须扫描表的一致性快照，挑选出所有被索引的字段值，对它们进行排序，然后写出索引。然后它必须处理自一致快照以来所做的写入操作（假设表在创建索引时未被锁定，所以写操作可能会继续）。一旦完成，只要事务写入表中，数据库就必须继续保持索引最新。</p>
+<p>想想当你运行<code class="codehilite"><span style="color: #000000">CREATE INDEX</span></code>在关系数据库中创建一个新的索引时会发生什么。数据库必须扫描表的一致性快照，挑选出所有被索引的字段值，对它们进行排序，然后写出索引。然后它必须处理自一致快照以来所做的写入操作（假设表在创建索引时未被锁定，所以写操作可能会继续）。一旦完成，只要事务写入表中，数据库就必须继续保持索引最新。</p>
 <p>此过程非常类似于设置新的追随者副本（请参阅第155页的“<a href="">设置新的追随者</a>”），也非常类似于流系统中的引导更改数据捕获（请参阅第455页的“<a href="">初始快照</a>”）。</p>
 <p>无论何时运行CREATE INDEX，数据库都会重新处理现有数据集（如第494页的“<a href="">重新处理应用程序数据的演变数据</a>”中所述），并将该索引作为新视图导出到现有数据上。现有数据可能是状态的快照，而不是所有发生变化的日志，但两者密切相关（请参阅“<a href="">状态，数据流和不变性</a>”第459页）。</p>
 <h4 id="_16">一切的元数据库</h4>
@@ -246,7 +1445,7 @@
 <p>因此，如果有一项技术可以满足您的所有需求，那么您最好使用该产品，而不是试图用低级组件重新实现它。只有当没有单一软件满足您的所有需求时，才会出现拆分和合成的优势。</p>
 <h4 id="_19">少了什么东西？</h4>
 <p>用于组成数据系统的工具正在变得越来越好，但我认为缺少一个主要部分：我们还没有Unix shell的非捆绑式数据库（即，用于组成存储和处理系统的高级语言简单和陈述的方式）。</p>
-<p>例如，如果我们可以简单地声明<code class="codehilite">mysql |elasticsearch</code>，类似于Unix管道【22】，这将成为<code class="codehilite">CREATE INDEX</code>的非捆绑等价物：它将MySQL数据库中的所有文档并将其索引到Elasticsearch集群中。然后它会不断捕获对数据库所做的所有更改，并自动将它们应用于搜索索引，而无需编写自定义应用程序代码。几乎任何类型的存储或索引系统都可以实现这种集成。</p>
+<p>例如，如果我们可以简单地声明<code class="codehilite"><span style="color: #000000">mysql |elasticsearch</span></code>，类似于Unix管道【22】，这将成为<code class="codehilite"><span style="color: #000000">CREATE INDEX</span></code>的非捆绑等价物：它将MySQL数据库中的所有文档并将其索引到Elasticsearch集群中。然后它会不断捕获对数据库所做的所有更改，并自动将它们应用于搜索索引，而无需编写自定义应用程序代码。几乎任何类型的存储或索引系统都可以实现这种集成。</p>
 <p>同样，能够更容易地预先计算和更新缓存将是一件好事。回想一下，物化视图本质上是一个预先计算的缓存，所以您可以通过为复杂查询声明指定物化视图来创建缓存，包括图上的递归查询（请参阅第49页上的“<a href="">图数据模型</a>”）和应用逻辑。在这方面有一些有趣的早期研究，如差异数据流【24,25】，我希望这些想法能够在生产系统中找到自己的方法。</p>
 <h3 id="_20">围绕数据流设计应用</h3>
 <p>通过使用应用程序代码组成专门的存储和处理系统来分离数据库的方法也被称为“数据库内外”方法【26】，在2014年的一次会议演讲标题之后【27】。然而，称它为“新架构”太宏大。我把它看作是一个设计模式，一个讨论的起点，我们只是简单地给它起一个名字，以便我们可以更好地谈论它。</p>
@@ -262,7 +1461,7 @@
 <li>在机器学习系统中，我们可以将模型视为通过应用各种特征提取和统计分析功能从训练数据中导出。当模型应用于新的输入数据时，模型的输出是从输入和模型（因此间接地从训练数据）中导出的。</li>
 <li>缓存通常包含将以用户界面（UI）显示的形式的数据聚合。因此填充缓存需要知道UI中引用的字段；UI中的更改可能需要更新缓存填充方式的定义以及重建缓存。</li>
 </ul>
-<p>辅助索引的衍生函数通常是必需的，因此它作为核心特性被构建到许多数据库中，您可以仅通过说<code class="codehilite">CREATE INDEX</code>来调用它。对于全文索引，常见语言的基本语言特征可能内置到数据库中，但更复杂的特征通常需要特定于域的调整。在机器学习中，特征工程是众所周知的特定于应用程序的特征，并且通常必须包含关于应用程序的用户交互和部署的详细知识【35】。</p>
+<p>辅助索引的衍生函数通常是必需的，因此它作为核心特性被构建到许多数据库中，您可以仅通过说<code class="codehilite"><span style="color: #000000">CREATE INDEX</span></code>来调用它。对于全文索引，常见语言的基本语言特征可能内置到数据库中，但更复杂的特征通常需要特定于域的调整。在机器学习中，特征工程是众所周知的特定于应用程序的特征，并且通常必须包含关于应用程序的用户交互和部署的详细知识【35】。</p>
 <p>当创建衍生数据集的函数不是像创建二级索引那样的标准Cookie切割函数时，需要自定义代码来处理特定于应用程序的方面。而这个自定义代码是许多数据库难以抗争虽然关系数据库通常支持触发器，存储过程和用户定义的函数，它们可以用来在数据库中执行应用程序代码，但它们在数据库设计中已经有所反应了（请参阅“<a href="">传输事件流</a>”（第447页））。</p>
 <h4 id="_22">应用程序代码和状态的分离</h4>
 <p>理论上，数据库可以是任意应用程序代码的部署环境，如操作系统。但是，实际上他们已经变得不适合这个目的。它们不适合现代应用程序开发的要求，例如依赖性和软件包管理，版本控制，滚动升级，可演化性，监控，指标，对网络服务的调用以及与外部系统的集成。</p>
@@ -356,11 +1555,11 @@
 <p>除了流处理之外，还需要抑制重复的相同模式出现在许多其他位置。例如，TCP使用数据包上的序列号将它们按正确的顺序排列在收件人处，并确定网络上是否有数据包丢失或重复。任何丢失的数据包都会被重新传输，并且在将数据交给应用程序之前，TCP堆栈会删除任何重复数据包。</p>
 <p>但是，此重复抑制仅适用于单个TCP连接的上下文中。假设TCP连接是一个客户端与数据库的连接，并且它正在执行<a href="">例12-1</a>中的事务。在许多数据库中，事务与客户端连接有关（如果客户端发送了多个查询，数据库就知道它们属于同一个事务，因为它们是在同一个TCP连接上发送的）。如果客户端在发送COMMIT之后但在从数据库服务器回听之前遇到网络中断和连接超时，则不知道事务是否已被提交或中止（<a href="../img/fig8-1.png">图8-1</a>）。</p>
 <p><strong>例12-1 将资金从一个账户转移到另一个账户的非赦免</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">BEGIN</span> TRANSACTION;
-    <span style="color: #008800; font-weight: bold">UPDATE</span> accounts <span style="color: #008800; font-weight: bold">SET</span> balance = balance + <span style="color: #0000DD; font-weight: bold">11</span>.<span style="color: #0000DD; font-weight: bold">00</span> <span style="color: #008800; font-weight: bold">WHERE</span> account_id = <span style="color: #0000DD; font-weight: bold">1234</span>;
-    <span style="color: #008800; font-weight: bold">UPDATE</span> accounts <span style="color: #008800; font-weight: bold">SET</span> balance = balance - <span style="color: #0000DD; font-weight: bold">11</span>.<span style="color: #0000DD; font-weight: bold">00</span> <span style="color: #008800; font-weight: bold">WHERE</span> account_id = <span style="color: #0000DD; font-weight: bold">4321</span>;
-<span style="color: #008800; font-weight: bold">COMMIT</span>;
-</pre></div>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">BEGIN</span> <span style="color: #000000">TRANSACTION</span>;
+    <span style="color: #A90D91">UPDATE</span> <span style="color: #000000">accounts</span> <span style="color: #A90D91">SET</span> <span style="color: #000000">balance</span> <span style="color: #000000">=</span> <span style="color: #000000">balance</span> <span style="color: #000000">+</span> <span style="color: #1C01CE">11</span>.<span style="color: #1C01CE">00</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">account_id</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">1234</span>;
+    <span style="color: #A90D91">UPDATE</span> <span style="color: #000000">accounts</span> <span style="color: #A90D91">SET</span> <span style="color: #000000">balance</span> <span style="color: #000000">=</span> <span style="color: #000000">balance</span> <span style="color: #000000">-</span> <span style="color: #1C01CE">11</span>.<span style="color: #1C01CE">00</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">account_id</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">4321</span>;
+<span style="color: #A90D91">COMMIT</span>;
+</code></pre></div>
 
 <p>客户端可以重新连接到数据库并重试事务，但现在它在TCP重复抑制的范围之外。由于<a href="">例12-1</a>中的交易不是幂等的，可能会发生$22而不是所需的$11。因此，尽管<a href="">例12-1</a>是一个交易原子性的标准例子，但它实际上并不正确，而真正的银行并不像这样工作【3】。</p>
 <p>两阶段提交（请参阅第354页上的“<a href="">原子提交和两阶段提交（2PC）</a>”）协议会破坏TCP连接和事务之间的1:1映射，因为它们必须允许事务协调器在数据库之后重新连接到数据库一个网络故障，并告诉它是否提交或中止有疑问的交易。这足以确保交易只能执行一次吗？不幸的是，即使我们可以抑制数据库客户端和服务器之间的重复事务，我们仍然需要担心最终用户设备和应用程序服务器之间的网络。例如，如果最终用户客户端是Web浏览器，则可能使用HTTP POST请求向服务器提交指令。也许用户处于一个微弱的蜂窝数据连接，他们成功地发送POST，但是信号在他们能够从服务器接收响应之前变得太弱。</p>
@@ -369,17 +1568,17 @@
 <p>要通过几次网络通信使操作具有幂等性，仅仅依赖数据库提供的事务机制是不够的—— 您需要考虑请求的端到端流。
 例如，您可以为操作（例如UUID）生成唯一的标识符，并将其作为隐藏的表单字段包含在客户机应用程序中，或计算所有相关表单字段的散列以衍生操作ID 【3】。如果Web浏览器提交两次POST请求，这两个请求将具有相同的操作ID。然后，您可以将该操作ID传递到数据库，并检查您是否只使用给定的ID执行一个操作，如<a href="">例12-2</a>中所示。
 <strong>例12-2 使用唯一的ID来抑制重复的请求</strong></p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-weight: bold">ALTER</span> <span style="color: #008800; font-weight: bold">TABLE</span> requests <span style="color: #008800; font-weight: bold">ADD</span> <span style="color: #008800; font-weight: bold">UNIQUE</span> (request_id);
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">ALTER</span> <span style="color: #A90D91">TABLE</span> <span style="color: #000000">requests</span> <span style="color: #A90D91">ADD</span> <span style="color: #A90D91">UNIQUE</span> (<span style="color: #000000">request_id</span>);
 
-<span style="color: #008800; font-weight: bold">BEGIN</span> TRANSACTION;
-    <span style="color: #008800; font-weight: bold">INSERT</span> <span style="color: #008800; font-weight: bold">INTO</span> requests(request_id, from_account, to_account, amount) 
-    <span style="color: #008800; font-weight: bold">VALUES</span>(<span style="color: #dd2200; background-color: #fff0f0">&#39;0286FDB8-D7E1-423F-B40B-792B3608036C&#39;</span>, <span style="color: #0000DD; font-weight: bold">4321</span>, <span style="color: #0000DD; font-weight: bold">1234</span>, <span style="color: #0000DD; font-weight: bold">11</span>.<span style="color: #0000DD; font-weight: bold">00</span>);
-    <span style="color: #008800; font-weight: bold">UPDATE</span> accounts <span style="color: #008800; font-weight: bold">SET</span> balance = balance + <span style="color: #0000DD; font-weight: bold">11</span>.<span style="color: #0000DD; font-weight: bold">00</span> <span style="color: #008800; font-weight: bold">WHERE</span> account_id = <span style="color: #0000DD; font-weight: bold">1234</span>;
-    <span style="color: #008800; font-weight: bold">UPDATE</span> accounts <span style="color: #008800; font-weight: bold">SET</span> balance = balance - <span style="color: #0000DD; font-weight: bold">11</span>.<span style="color: #0000DD; font-weight: bold">00</span> <span style="color: #008800; font-weight: bold">WHERE</span> account_id = <span style="color: #0000DD; font-weight: bold">4321</span>;
-<span style="color: #008800; font-weight: bold">COMMIT</span>;
-</pre></div>
+<span style="color: #A90D91">BEGIN</span> <span style="color: #000000">TRANSACTION</span>;
+    <span style="color: #A90D91">INSERT</span> <span style="color: #A90D91">INTO</span> <span style="color: #000000">requests</span>(<span style="color: #000000">request_id</span>, <span style="color: #000000">from_account</span>, <span style="color: #000000">to_account</span>, <span style="color: #000000">amount</span>) 
+    <span style="color: #A90D91">VALUES</span>(<span style="color: #C41A16">&#39;0286FDB8-D7E1-423F-B40B-792B3608036C&#39;</span>, <span style="color: #1C01CE">4321</span>, <span style="color: #1C01CE">1234</span>, <span style="color: #1C01CE">11</span>.<span style="color: #1C01CE">00</span>);
+    <span style="color: #A90D91">UPDATE</span> <span style="color: #000000">accounts</span> <span style="color: #A90D91">SET</span> <span style="color: #000000">balance</span> <span style="color: #000000">=</span> <span style="color: #000000">balance</span> <span style="color: #000000">+</span> <span style="color: #1C01CE">11</span>.<span style="color: #1C01CE">00</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">account_id</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">1234</span>;
+    <span style="color: #A90D91">UPDATE</span> <span style="color: #000000">accounts</span> <span style="color: #A90D91">SET</span> <span style="color: #000000">balance</span> <span style="color: #000000">=</span> <span style="color: #000000">balance</span> <span style="color: #000000">-</span> <span style="color: #1C01CE">11</span>.<span style="color: #1C01CE">00</span> <span style="color: #A90D91">WHERE</span> <span style="color: #000000">account_id</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">4321</span>;
+<span style="color: #A90D91">COMMIT</span>;
+</code></pre></div>
 
-<p><a href="">例12-2</a>依赖于<code class="codehilite">request_id</code>列上的唯一性约束。如果一个事务尝试插入一个已经存在的ID，那么<code class="codehilite">INSERT</code>失败，事务被中止，使其无法生效两次。即使在较弱的隔离级别下，关系数据库也能正确地维护唯一性约束（而在第248页上的“<a href="">写入偏差和幻读</a>”中讨论过，应用程序级别的check-then-insert可能会在不可序列化的隔离下失败）。</p>
+<p><a href="">例12-2</a>依赖于<code class="codehilite"><span style="color: #000000">request_id</span></code>列上的唯一性约束。如果一个事务尝试插入一个已经存在的ID，那么<code class="codehilite"><span style="color: #000000">INSERT</span></code>失败，事务被中止，使其无法生效两次。即使在较弱的隔离级别下，关系数据库也能正确地维护唯一性约束（而在第248页上的“<a href="">写入偏差和幻读</a>”中讨论过，应用程序级别的check-then-insert可能会在不可序列化的隔离下失败）。</p>
 <p>除了抑制重复的请求之外，示<a href="">例12-2</a>中的请求表充当事件日志的一种，暗示着事件源的方向（请参阅第457页的“<a href="">事件源</a>”）。账户余额的更新事实上不必与插入事件相同的事务发生，因为它们是多余的，并且可以从下游消费者中的请求事件衍生出来 —— 只要该事件只处理一次，这可以再次使用请求ID来执行。</p>
 <p><strong>端到端的论点</strong></p>
 <p>抑制重复交易的这种情况只是一个更普遍的原则的一个例子，这个原则被称为端对端的论点，它在1984年由Saltzer，Reed和Clark阐述【55】：</p>
@@ -474,7 +1673,7 @@
 <p>在这种情况下，序列化事务作为维护衍生状态的一部分仍然是有用的，但它们可以在小范围内运行，在那里它们工作得很好【8】。异构分布式事务（如XA事务）（请参阅“<a href="">实践中的分布式事务</a>”（第367页））不是必需的。同步协调仍然可以在需要的地方引入（例如，在无法恢复的操作之前执行严格的限制），但是如果只有一个小的协议，则不需要任何东西来支付协调费用应用程序的一部分需要它【43】。</p>
 <p>查看协调和约束的另一种方法是：它们减少了由于不一致而必须做出的道歉数量，但也可能会降低系统的性能和可用性，从而可能会增加必须制定的道歉数量中断。您不能将道歉数量减少到零，但您可以根据自己的需求寻找最佳平衡点 —— 这是既不存在太多不一致性又不存在太多可用性问题的最佳选择。</p>
 <h3 id="_46">信任，但需要验证</h3>
-<p>我们所有关于正确性，完整性和容错性的讨论都假设某些事情可能会出错，但其他事情则不会。我们将这些假设称为我们的系统模型（请参阅“<a href="">将系统模型映射到现实世界</a>”一节第309页）：例如，我们应该假设进程可能会崩溃，机器可能突然断电，网络可能会任意延迟或丢弃消息。但是我们也可以假设写入磁盘的数据在<code class="codehilite">fsync</code>之后不会丢失，内存中的数据没有损坏，并且CPU的乘法指令总是返回正确的结果。</p>
+<p>我们所有关于正确性，完整性和容错性的讨论都假设某些事情可能会出错，但其他事情则不会。我们将这些假设称为我们的系统模型（请参阅“<a href="">将系统模型映射到现实世界</a>”一节第309页）：例如，我们应该假设进程可能会崩溃，机器可能突然断电，网络可能会任意延迟或丢弃消息。但是我们也可以假设写入磁盘的数据在<code class="codehilite"><span style="color: #000000">fsync</span></code>之后不会丢失，内存中的数据没有损坏，并且CPU的乘法指令总是返回正确的结果。</p>
 <p>这些假设是非常合理的，因为大多数时候它们都是真实的，如果我们不得不经常担心计算机出错，那么很难完成任何事情。传统上，系统模型采用二元方法处理故障：我们假设有些事情会发生，而其他事情永远不会发生。实际上，这更像是一个概率问题：有些事情更可能，其他事情不太可能。问题是违反我们的假设是否经常发生，以至于我们可能在实践中遇到它们。</p>
 <p>我们已经看到，数据可能会在磁盘未触及时破损（请参阅第227页的“<a href="">复制和耐久性</a>”），并且网络上的数据损坏有时可能会妨碍TCP校验和（请参阅第293页的“<a href="">虚弱形式的说谎</a>” ）。也许这是我们应该更加关注的事情？</p>
 <p>我过去曾经使用过的一个应用程序收集了来自客户端的崩溃报告，我们收到的一些报告只能通过在这些设备的内存中随机位翻转来解释。这看起来不太可能，但是如果你有足够的设备来运行你的软件，那么即使发生的事情也不会发生。除了由于硬件故障或辐射导致的随机存储器损坏之外，某些病态存储器访问模式甚至可以在没有故障的存储器中翻转位【62】 —— 可用于破坏操作系统中安全机制的效应【63】技术被称为rowhammer）。一旦你仔细观察，硬件并不是完美的抽象。</p>
@@ -1152,4 +2351,69 @@
 <p>假设一个有限的语料库，那么非空洞的搜索结果的非空搜索结果是有限的。然而，它在语料库中的术语数量是指数级的，这仍然是一个坏消息。&#160;<a class="footnote-backref" href="#fnref:iii" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
-</div></article></div></div></main><footer class="md-footer"><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2016 - 2019 iswade</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../../assets/javascripts/application.d5a09f94.js"></script><script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+</div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
