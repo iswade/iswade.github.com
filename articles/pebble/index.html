@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/articles/pebble/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#pebble" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pebble" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Pebble KV存储引擎
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Pebble KV存储引擎
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -197,13 +175,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -218,13 +202,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Pebble KV存储引擎
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="Pebble KV存储引擎" class="md-nav__link md-nav__link--active">
@@ -232,47 +219,59 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装
+  <a href="#1-pebble" class="md-nav__link">
+    1. Pebble详解：入门介绍
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    使用
-  </a>
-  
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="1. Pebble详解：入门介绍">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#lsm" class="md-nav__link">
+    LSM树
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    整体架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安装使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    写流程
+    磁盘文件
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    读流程
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    其它
+    代码目录
   </a>
   
 </li>
@@ -283,44 +282,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    原理
+  <a href="#pebble_1" class="md-nav__link">
+    Pebble详解：读写
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Pebble详解：读写">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    写入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    读取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_2" class="md-nav__link">
+    Pebble详解：内存表
+  </a>
+  
+    <nav class="md-nav" aria-label="Pebble详解：内存表">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    内存表
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
     跳跃表
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     插入
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     无锁
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     查找
   </a>
   
@@ -330,31 +348,74 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#pebblesst" class="md-nav__link">
+    Pebble详解：SST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_3" class="md-nav__link">
+    Pebble详解：预写日志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_4" class="md-nav__link">
+    Pebble详解：压缩合并
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_5" class="md-nav__link">
+    Pebble详解：缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebblemanifest" class="md-nav__link">
+    Pebble详解：Manifest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebblebloom" class="md-nav__link">
+    Pebble详解：Bloom
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_6" class="md-nav__link">
+    Pebble详解：其它
+  </a>
+  
+    <nav class="md-nav" aria-label="Pebble详解：其它">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    预写日志
+  <a href="#_11" class="md-nav__link">
+    为什么不支持事务？
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     提交管道
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    合并
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    快照
+  <a href="#_13" class="md-nav__link">
+    测试
   </a>
   
 </li>
@@ -365,29 +426,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    测试
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    代码
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     参考
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -480,13 +523,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -559,13 +608,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -672,13 +727,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -720,13 +781,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -738,8 +805,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -780,6 +847,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -796,47 +875,59 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装
+  <a href="#1-pebble" class="md-nav__link">
+    1. Pebble详解：入门介绍
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    使用
-  </a>
-  
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="1. Pebble详解：入门介绍">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#lsm" class="md-nav__link">
+    LSM树
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    整体架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安装使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    写流程
+    磁盘文件
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    读流程
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    其它
+    代码目录
   </a>
   
 </li>
@@ -847,44 +938,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    原理
+  <a href="#pebble_1" class="md-nav__link">
+    Pebble详解：读写
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Pebble详解：读写">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    写入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    读取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_2" class="md-nav__link">
+    Pebble详解：内存表
+  </a>
+  
+    <nav class="md-nav" aria-label="Pebble详解：内存表">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    内存表
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
     跳跃表
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     插入
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     无锁
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     查找
   </a>
   
@@ -894,31 +1004,74 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#pebblesst" class="md-nav__link">
+    Pebble详解：SST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_3" class="md-nav__link">
+    Pebble详解：预写日志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_4" class="md-nav__link">
+    Pebble详解：压缩合并
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_5" class="md-nav__link">
+    Pebble详解：缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebblemanifest" class="md-nav__link">
+    Pebble详解：Manifest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebblebloom" class="md-nav__link">
+    Pebble详解：Bloom
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pebble_6" class="md-nav__link">
+    Pebble详解：其它
+  </a>
+  
+    <nav class="md-nav" aria-label="Pebble详解：其它">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    预写日志
+  <a href="#_11" class="md-nav__link">
+    为什么不支持事务？
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     提交管道
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    合并
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    快照
+  <a href="#_13" class="md-nav__link">
+    测试
   </a>
   
 </li>
@@ -929,29 +1082,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    测试
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    代码
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     参考
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -966,142 +1101,233 @@
               
                 
                 
+                  
+                
+                
                 <h1 id="pebble">Pebble</h1>
-<p>Pebble是一个基于Go语言开发的KV存储引擎，支持事务。底层数据模型是LSM树（日志结构合并树），所以与LSM树方式实现的其它存储引擎有类似的特性，是一个不可变的磁盘写优化数据结构，它适用于写入比查找更频繁的系统。LSM树得到了越来越多的关注，因为它们可以消除随机插入、更新和删除。</p>
-<p>为了实现顺序写，LSM树在内存中批量写入和更新（通常使用允许对数时间查找的数据结构实现，例如二分搜索树或跳跃表），直到其大小达到阈值，然后写出到磁盘。检索数据需要搜索树中所有驻留磁盘的部分，检查内存中的表，并在返回结果之前合并它们的内容。</p>
-<p>Pebble代码基于goLevelDB开发，扩展了RocksDB的一些功能，但是并没有完全支持RocksDB的所有功能。目前还在开发中。</p>
-<h2 id="_1">安装</h2>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># download source</span>
-go get -d https://github.com/petermattis/pebble
+<h2 id="1-pebble">1. Pebble详解：入门介绍</h2>
+<p>Pebble是一个使用Go语言开发的KV单机存储引擎。底层数据模型是LSM树，与LSM树方式实现的其它存储引擎如LevelDB，RocksDB等有类似的特性，是一个不可变的磁盘写优化数据结构，它适用于写入比查找更频繁的系统。</p>
+<p>Pebble基于goLevelDB开发，扩展了RocksDB的一些功能，但是并没有完全支持RocksDB的所有功能。目前还在开发中。其主要目的是替换CockroachDB数据库的存储引擎。</p>
+<h3 id="lsm">LSM树</h3>
+<p>日志结构合并树（或LSM树）， 是一种分层、有序、面向磁盘的数据组织方式，其核心思想是充分了利用了磁盘顺序写比随机写性能高的特点。</p>
+<p><img src="./image_pebble/lsmtree.png" alt="" style="zoom:80%;" /></p>
+<p>LSM树消除了随机插入、更新和删除，LSM树在内存中写入和更新，直到其大小达到阈值，然后再写出到磁盘。查询数据时需要查找内存部分，如果内存中存在待查找的key则返回，如果不存在，则需要从磁盘文件中查找。虽然LSM树的写入简单高效，但是很明显的缺点是对读取操作，特别是随机读并不友好，对于读取操作，通常需要进行缓存、索引、磁盘文件组织方面的优化。LSM树适合写多读少的场景。</p>
+<p>传统关系型数据库通常底层使用的是B+树，B+树和LSM树有什么异同呢？让我们比较一下B+树和LSM树的特性。</p>
+<p>LSM树具有以下特性：</p>
+<ul>
+<li>Append-Only，SST只写在磁盘上一次，从不更新。</li>
+<li>读取可能需要从多个SST读取数据，同一个key可能会落在不同的数据文件中，返回给客户端之前，数据必须经过合并。</li>
+<li>因为写入和删除都被顺序写入到磁盘中，通常需要压缩操作来合并数据记录和垃圾收集。</li>
+<li>写<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，读取<span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>，经过索引和缓存优化后可以达到<span><span class="MathJax_Preview">O(logN)</span><script type="math/tex">O(logN)</script></span> 。</li>
+</ul>
+<p>B+树具有以下特性：</p>
+<ul>
+<li>就地更新和删除。更新操作可能会触发节点分裂和合并，随机读写概率会变大。</li>
+<li>是经过读取优化的，这意味着不需要从多个文件读取，读取效率较高。</li>
+<li>并发访问需要读写隔离，涉及lock和latch。</li>
+<li>更新导致的碎片化可能需要额外的维护和块重写。与LSM树存储相比，B树通常需要较少的维护操作。</li>
+<li>写<span><span class="MathJax_Preview">O(logN)</span><script type="math/tex">O(logN)</script></span>，读取<span><span class="MathJax_Preview">O(logN)</span><script type="math/tex">O(logN)</script></span> 。</li>
+</ul>
+<p>从上面的对比可以看出，LSM树对写入友好，但是对读取并不友好，并且频繁触发压缩合并会消耗较多的资源，针对压缩合并也需要大量优化避免对业务造成影响，有些数据库如阿里Polar X-Engine，将压缩卸载到FPGA，以加速压缩来消减CPU瓶颈，避免对计算资源的侵占。</p>
+<h3 id="_1">整体架构</h3>
+<p>整体架构如下图所示：</p>
+<p><img alt="" src="../image_pebble/architecture.png" /></p>
+<p>在Pebble中三个主要的结构是：内存表（memtable）、SST（sstable） 以及预写日志（WAL）。内存表是内存中的结构，新的写入被插入内存表中，并且被写入到预写日志中，预写日志是在存储系统上的顺序写入文件，用于保证数据库系统中提供原子性和持久性 。在SST中的数据是排好序的，以方便查找。读取必须先查找内存表，再查询SST文件。一旦内存表达到阈值，就会被修改为不可变的，并创建一个新的内存表用于后续的写入。后台线程将内存表的内容刷新为SST文件，之后可以销毁内存表，然后预写日志就可以被安全地删除了。</p>
+<h3 id="_2">安装使用</h3>
+<div class="highlight"><pre><span></span><code>go get -d github.com/cockroachdb/pebble
+</code></pre></div>
 
-<span style="color: #177500"># compile</span>
-<span style="color: #A90D91">cd</span> <span style="color: #000000">$GOPATH</span>/src/github.com/petermattis/pebble/cmd/pebble/
+<p>Pebble以库的方式提供，提供了一个简单的命令用于测试，在 <code>cmd/pebble/</code> 目录下。如果希望使用所有接口，可以使用单元测试目录下的测试文件进行调试研究具体接口的使用方式。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/cockroachdb/pebble/cmd/pebble/
 go build
-
-<span style="color: #177500"># test</span>
-./pebble scan ./data/
+./pebble bench sync ./data/ -d 60s
 </code></pre></div>
 
-<h2 id="_2">使用</h2>
-<p>在这一部分，主要介绍主要的使用流程。包括读、写流程以及两类合并。</p>
-<h3 id="_3">写流程</h3>
+<p>进入<code>./data</code> 目录，即可看到磁盘上相关的数据库文件。</p>
+<p>当前版本依赖cgo，cgo依赖gcc。windows上编译时，可以安装mingw64。</p>
+<h3 id="_3">磁盘文件</h3>
+<p>pebble数据库的磁盘目录组织结构如下所示，后面会详细介绍具体的内容。</p>
+<div class="highlight"><pre><span></span><code>000017.sst              // SST
+000018.log              // 预写日志文件 
+CURRENT                 // 记录当前的MANIFEST
+LOCK                    // 锁文件，避免多个进程同时访问这个目录
+MANIFEST-000011         // 元数据，SST的层级信息等，合并过程添加新文件并从数据库中删除现有文件
+                        // 并通过将它们记录在MANIFEST文件中使这些操作持久化。
+OPTIONS-000012          // 配置参数
+</code></pre></div>
+
+<h3 id="_4">代码目录</h3>
+<p>pebble主要模块和文件如下所示：</p>
+<div class="highlight"><pre><span></span><code>├── bloom              // 查询时用到的布隆过滤器
+├── cmd                // 可执行文件，当前可以用于测试 scan/sync/ycsb 等
+├── docs               // 文档
+├── sstable            // sstable 模块实现
+├── tool               // 用于解析 lsm/sstable/manifest 的工具集
+├── vfs                // 虚拟文件系统，用于适配不同平台的文件操作接口
+├── batch.go           // 用于支持原子Set/Merge/Delete/DeleteRange的批量操作
+├── cache.go           // 用于支持可配置大小的缓存，实际调用内部Cache模块
+├── checkpoint.go      // Checkpoint在指定目录中构造数据库实例的快照(磁盘文件)
+├── commit.go          // 操作提交，支持pipeline
+├── compaction.go      // compaction 相关的逻辑
+├── db.go              // DB结构，相关方法实现
+├── event.go           // 事件监听模块
+├── get_iter.go        // 查询get接口的迭代器，内部使用
+├── go.mod             // go module文件
+├── ingest.go          // 将指定路径中的所有sstable摄取到当前数据库中
+├── iterator.go        // 迭代器在kv对上进行遍历
+├── mem_table.go       // memTable实现了LSM在内存中的层
+├── merging_iter.go    // 提供LSM不同层多个迭代器的合并视图 
+├── metrics.go         // 统计信息
+├── open.go            // DB open入口，及相关方法
+├── options.go         // 配置选项，各层配置参数
+├── snapshot.go        // 快照相关操作，快照是某个时间段的只读视图
+├── version_set.go     // 版本集管理不可变多个版本，管理新版本的创建
+├── internal           // 内部模块
+    ├── ackseq         
+    ├── arenaskl       // 跳表，无锁
+    ├── base
+    ├── batchskl
+    ├── bytealloc
+    ├── cache          // 基于CLOCK-Pro算法的缓存实现
+    ├── crc 
+    ├── datadriven
+    ├── humanize
+    ├── intern
+    ├── invariants
+    ├── lint
+    ├── manifest
+    ├── manual
+    ├── metamorphic
+    ├── pacertoy
+    ├── private
+    ├── randvar
+    ├── rangedel
+    ├── rate           // 流控模块
+    ├── rawalloc
+    └── record
+</code></pre></div>
+
+<h2 id="pebble_1">Pebble详解：读写</h2>
 <p>Pebble中的写操作首先写日志文件，然后再去写内存中的内存表，写日志是为了保证数据的持久性，一旦宕机，内存表中的数据还没有持久化，系统启动时可以从日志文件中读取，进行数据恢复。</p>
-<h3 id="_4">读流程</h3>
-<h3 id="_5">其它</h3>
-<ul>
-<li>Delete</li>
-<li>Batch: Get/Set/Delete/Commit/Apply</li>
-<li>Flush: Flush the memtable to stable storage</li>
-<li>Metrics</li>
-<li>NewIter</li>
-<li>NewSnapshot</li>
-</ul>
-<p>Pebble以库的方式提供，提供了一个简单的命令用于测试，在 <code class="codehilite"><span style="color: #000000">cmd/pebble/</span></code> 目录下。如果希望使用所有接口，可以使用单元测试目录下的测试文件进行调试研究具体接口的使用方式。</p>
-<h2 id="_6">原理</h2>
-<p>在Pebble中三个主要的结构是：memtable、sstable 以及logfile。内存表是内存中的结构，新的写入被插入内存表中，并且被写入到日志文件中。日志文件是在存储系统上的一个顺序写入的文件。在sstable中的数据是排好序的，以方便查找。读取必须在从sstable文件读取之前查询内存表，因为内存表中的数据更新。一旦内存表满了，它就会变为不可变的，并被一个新的内存表取代。后台线程将memtable的内容刷新为SST文件，之后可以销毁内存表，然后logfile就可以被安全地删除了。</p>
-<ul>
-<li>memtable       pebble/mem_table.go</li>
-<li>skiplist            pebble/internal/arenaskl</li>
-<li>sstable             pebble/sstable</li>
-<li>compact</li>
-<li>logfile</li>
-<li>bloom              pebble/bloom</li>
-<li>快照</li>
-<li>检查点</li>
-<li>pipeline</li>
-<li>MANIFEST：数据库中的MANIFEST文件记录数据库状态。合并过程添加新文件并从数据库中删除现有文件，并通过将它们记录在MANIFEST文件中使这些操作持久化。</li>
-</ul>
-<h3 id="_7">内存表</h3>
-<p>内存表（memtable）的写出到磁盘的流程的调用栈如下所示（调试时，可以将MemTableSize大小设置为 4MB，在函数<code class="codehilite"><span style="color: #000000">func (m *memTable) unref()</span></code>中 v == 0的分支设置断点，然后调试跟踪写出流程）：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>(<span style="color: #000000">d</span> <span style="color: #000000">*DB</span>) <span style="color: #000000">runCompaction</span>  <span style="color: #177500">// 新建文件，然后将 memtable 内容写出到磁盘</span>
-(<span style="color: #000000">d</span> <span style="color: #000000">*DB</span>) <span style="color: #000000">compact1</span>()
-(<span style="color: #000000">d</span> <span style="color: #000000">*DB</span>) <span style="color: #000000">compact</span>()
-<span style="color: #A90D91">go</span> <span style="color: #000000">d</span>.<span style="color: #000000">compact</span>()
+<p>Pebble 只允许一个进程打开。操作系统将使用文件锁定来防止多个进程的并发访问。在一个进程中，Pebble 可以由多个线程访问，如果多个线程打开同一个数据库，它将仅允许第一个写线程写入数据库，而其他写线程将被阻塞。对于读写冲突，读取可以从与写入分开的不可变数据中检索数据，更新的版本将在压缩过程中生效。 </p>
+<h3 id="_5">写入</h3>
+<p>我们总结下在在LSM-Tree里面如何写数据的？</p>
+<ol>
+<li>
+<p>当收到一个写请求时，会先把该条数据记录在WAL Log里面，用作故障恢复。</p>
+</li>
+<li>
+<p>当写完WAL Log后，会把该条数据写入内存的SSTable里面（删除是通过记录删除标记完成，更新是新生成一条数据），也称memtable。为了维持有序性在内存里面采用跳跃表相关的数据结构。</p>
+</li>
+<li>
+<p>当Memtable超过一定的大小后，会在内存里面冻结，变成不可变的memtable，同时为了不阻塞写操作需要生成一个新的memtable继续提供服务。</p>
+</li>
+<li>
+<p>把内存中不可变的memtable给dump到到硬盘上的SSTable层中，此步骤也称为Minor Compaction，这里需要注意在L0层的SSTable是没有进行合并的，所以这里的key range在多个SSTable中可能会出现重叠，在层数大于0层之后的SSTable，不存在重叠key。</p>
+</li>
+<li>
+<p>当磁盘上每层的的SSTable超过一定的大小或者个数，也会周期性进行合并。此步骤也称为Major Compaction，这个阶段会真正清除掉被标记删除掉的数据以及多版本数据的合并，避免浪费空间，注意由于SSTable都是有序的，我们可以直接采用归并排序进行高效合并。</p>
+</li>
+</ol>
+<h3 id="_6">读取</h3>
+<p>1，当收到一个读请求的时候，会直接先在内存里面查询，如果查询到就返回。</p>
+<p>2，如果没有查询到就会依次下沉，知道把所有的Level层查询一遍得到最终结果。</p>
+<p>思考查询步骤，我们会发现如果SSTable的分层越多，那么最坏的情况下要把所有的分层扫描一遍，对于这种情况肯定是需要优化的，如何优化？在 Bigtable 论文中提出了几种方式：</p>
+<h2 id="pebble_2">Pebble详解：内存表</h2>
+<p>内存表（memtable）的写出到磁盘的流程的调用栈如下所示（调试时，可以将MemTableSize大小设置为 4MB，在函数<code>func (m *memTable) unref()</code>中 v == 0的分支设置断点，然后调试跟踪写出流程）：</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">DB</span><span class="p">)</span> <span class="nx">runCompaction</span>  <span class="c1">// 新建文件，然后将 memtable 内容写出到磁盘</span>
+<span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">DB</span><span class="p">)</span> <span class="nx">compact1</span><span class="p">()</span>
+<span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">DB</span><span class="p">)</span> <span class="nx">compact</span><span class="p">()</span>
+<span class="k">go</span> <span class="nx">d</span><span class="p">.</span><span class="nx">compact</span><span class="p">()</span>
 
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*DB</span>) <span style="color: #000000">maybeScheduleFlush</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*memTable</span>).<span style="color: #000000">unref</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*DB</span>).<span style="color: #000000">makeRoomForWrite</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*DB</span>).<span style="color: #000000">commitWrite</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*DB</span>).<span style="color: #000000">commitWrite-fm</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*commitPipeline</span>).<span style="color: #000000">prepare</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*commitPipeline</span>).<span style="color: #000000">Commit</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*DB</span>).<span style="color: #000000">Apply</span>
-<span style="color: #000000">pebble</span>.(<span style="color: #000000">*Batch</span>).<span style="color: #000000">Commit</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">DB</span><span class="p">)</span> <span class="nx">maybeScheduleFlush</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">memTable</span><span class="p">).</span><span class="nx">unref</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">DB</span><span class="p">).</span><span class="nx">makeRoomForWrite</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">DB</span><span class="p">).</span><span class="nx">commitWrite</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">DB</span><span class="p">).</span><span class="nx">commitWrite</span><span class="o">-</span><span class="nx">fm</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">commitPipeline</span><span class="p">).</span><span class="nx">prepare</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">commitPipeline</span><span class="p">).</span><span class="nx">Commit</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">DB</span><span class="p">).</span><span class="nx">Apply</span>
+<span class="nx">pebble</span><span class="p">.(</span><span class="o">*</span><span class="nx">Batch</span><span class="p">).</span><span class="nx">Commit</span>
 </code></pre></div>
 
-<h4 id="_8">跳跃表</h4>
+<h3 id="_7">跳跃表</h3>
 <p>内存表的默认实现是跳跃表。跳跃表是一个有序集合，当工作负载既有范围扫描，又有写入操作时，这是一个必要的结构。简而言之，跳跃表是一种类似链表的结构，同时允许快速查找。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">  | 2 |  |  -------------------------------------&gt;  |</span>
-<span style="color: #000000">L |   |  |  &lt;-------------------------------------  |</span>
-<span style="color: #000000">E |   |  |                                          | </span>
-<span style="color: #000000">V | 1 |  |  ---------&gt; |  ---------&gt; |  ---------&gt;  |</span>
-<span style="color: #000000">E |   |  |  &lt;--------- |  &lt;--------- |  &lt;---------  |</span>
-<span style="color: #000000">L |   |  |             |             |              | </span>
-<span style="color: #000000">S | 0 |  |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; NIL</span>
-<span style="color: #000000">  |   |  30 &lt;-- 40 &lt;-- 50 &lt;-- 60 &lt;-- 70 &lt;-- 90 &lt;-- NIL</span>
+<div class="highlight"><pre><span></span><code>  | 2 |  |  -------------------------------------&gt;  |
+L |   |  |  &lt;-------------------------------------  |
+E |   |  |                                          | 
+V | 1 |  |  ---------&gt; |  ---------&gt; |  ---------&gt;  |
+E |   |  |  &lt;--------- |  &lt;--------- |  &lt;---------  |
+L |   |  |             |             |              | 
+S | 0 |  |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; |  --&gt; NIL
+  |   |  30 &lt;-- 40 &lt;-- 50 &lt;-- 60 &lt;-- 70 &lt;-- 90 &lt;-- NIL
 </code></pre></div>
 
 <p>如上图所示，跳跃表基于层构建。最底层是一个普通的有序链表，高层是底层的快车道。</p>
-<p>pebble当前使用的一个跳跃表实现所在路径：<code class="codehilite"><span style="color: #000000">pebble/internal/arenaskl</span></code>。是一个高速、无锁、基于区域的跳跃表，用Go实现。支持双向遍历：
-- 高性能：可以随着核数量增加而线性扩展，通过从固定大小的区域分配内存，避免锁来实现。
-- 可以在堆栈上分配并且可以值克隆的迭代器。
-- 简单易用且低开销的模型，用于检测和处理其他线程的竞争条件。
-- 支持反向遍历（例如：向前的链接）</p>
-<p>其主要优势来自于专用性，无法提供通用跳跃表的实现：
-- 区域的大小设置了跳跃表节点，键和值的组合大小的上限。 此限制包括已删除节点，键和值的大小。
-- 不支持删除。相反，更高级别的代码会添加kv值和删除类型的新条目，并需要适当地处理这些条目的删除。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500">// 跳跃表的节点信息</span>
-<span style="color: #A90D91">type</span> <span style="color: #000000">node</span> <span style="color: #A90D91">struct</span> {
-    <span style="color: #177500">// 不可变字段，所以不需要对其加锁访问</span>
-    <span style="color: #000000">keyOffset</span> <span style="color: #A90D91">uint32</span>
-    <span style="color: #000000">keySize</span>   <span style="color: #A90D91">uint32</span>
-    <span style="color: #000000">valueSize</span> <span style="color: #A90D91">int32</span>
+<p>pebble当前使用的一个跳跃表实现所在路径：<code>pebble/internal/arenaskl</code>。是一个高速、无锁、基于区域的跳跃表，用Go实现。支持双向遍历：</p>
+<ul>
+<li>高性能：可以随着核数量增加而线性扩展，通过从固定大小的区域分配内存，避免锁来实现。</li>
+<li>可以在堆栈上分配并且可以值克隆的迭代器。</li>
+<li>简单易用且低开销的模型，用于检测和处理其他线程的竞争条件。</li>
+<li>支持反向遍历（例如：向前的链接）</li>
+</ul>
+<p>其主要优势来自于专用性，无法提供通用跳跃表的实现：</p>
+<ul>
+<li>区域的大小设置了跳跃表节点，键和值的组合大小的上限。 此限制包括已删除节点，键和值的大小。</li>
+<li>不支持删除。相反，更高级别的代码会添加kv值和删除类型的新条目，并需要适当地处理这些条目的删除。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 跳跃表的节点信息</span>
+<span class="kd">type</span> <span class="nx">node</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="c1">// 不可变字段，所以不需要对其加锁访问</span>
+    <span class="nx">keyOffset</span> <span class="kt">uint32</span>
+    <span class="nx">keySize</span>   <span class="kt">uint32</span>
+    <span class="nx">valueSize</span> <span class="kt">int32</span>
 
-    <span style="color: #177500">// 每个节点都有 maxHeight 高度个链表，用于指向每层的下一个或者上一个节点，用于加速查找</span>
-    <span style="color: #177500">// 大部分节点不需要塔的全部高度，因为每个连续层的概率指数下降。</span>
-    <span style="color: #177500">// 因为这些元素永远不会被访问，不需要被分配。</span>
-    <span style="color: #177500">// 因此，当在区域中分配节点时，其内存占用被截断，不包括不需要的塔元素。</span>
-    <span style="color: #177500">// 所有元素的访问都应该使用 CAS 操作，而不需要锁定。</span>
-    <span style="color: #000000">tower</span> [<span style="color: #000000">maxHeight</span>]<span style="color: #000000">links</span>
-}
+    <span class="c1">// 每个节点都有 maxHeight 高度个链表，用于指向每层的下一个或者上一个节点，用于加速查找</span>
+    <span class="c1">// 大部分节点不需要塔的全部高度，因为每个连续层的概率指数下降。</span>
+    <span class="c1">// 因为这些元素永远不会被访问，不需要被分配。</span>
+    <span class="c1">// 因此，当在区域中分配节点时，其内存占用被截断，不包括不需要的塔元素。</span>
+    <span class="c1">// 所有元素的访问都应该使用 CAS 操作，而不需要锁定。</span>
+    <span class="nx">tower</span> <span class="p">[</span><span class="nx">maxHeight</span><span class="p">]</span><span class="nx">links</span>
+<span class="p">}</span>
 
-<span style="color: #177500">// 链接信息</span>
-<span style="color: #A90D91">type</span> <span style="color: #000000">links</span> <span style="color: #A90D91">struct</span> {
-    <span style="color: #000000">nextOffset</span> <span style="color: #A90D91">uint32</span>
-    <span style="color: #000000">prevOffset</span> <span style="color: #A90D91">uint32</span>
-}
+<span class="c1">// 链接信息</span>
+<span class="kd">type</span> <span class="nx">links</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">nextOffset</span> <span class="kt">uint32</span>
+    <span class="nx">prevOffset</span> <span class="kt">uint32</span>
+<span class="p">}</span>
 
-<span style="color: #177500">// 跳跃表是一个快速，并发的实现支持向前，向后遍历。</span>
-<span style="color: #177500">// 键值一旦被加入到跳跃表中，就是不可变的，不支持删除。</span>
-<span style="color: #A90D91">type</span> <span style="color: #000000">Skiplist</span> <span style="color: #A90D91">struct</span> {
-    <span style="color: #000000">arena</span>  <span style="color: #000000">*Arena</span>
-    <span style="color: #000000">cmp</span>    <span style="color: #000000">db</span>.<span style="color: #000000">Compare</span>
-    <span style="color: #000000">head</span>   <span style="color: #000000">*node</span>
-    <span style="color: #000000">tail</span>   <span style="color: #000000">*node</span>
-    <span style="color: #000000">height</span> <span style="color: #A90D91">uint32</span> <span style="color: #177500">// 当前高度 1 &lt;= height &lt;= maxHeight. CAS.</span>
-}
+<span class="c1">// 跳跃表是一个快速，并发的实现支持向前，向后遍历。</span>
+<span class="c1">// 键值一旦被加入到跳跃表中，就是不可变的，不支持删除。</span>
+<span class="kd">type</span> <span class="nx">Skiplist</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">arena</span>  <span class="o">*</span><span class="nx">Arena</span>
+    <span class="nx">cmp</span>    <span class="nx">db</span><span class="p">.</span><span class="nx">Compare</span>
+    <span class="nx">head</span>   <span class="o">*</span><span class="nx">node</span>
+    <span class="nx">tail</span>   <span class="o">*</span><span class="nx">node</span>
+    <span class="nx">height</span> <span class="kt">uint32</span> <span class="c1">// 当前高度 1 &lt;= height &lt;= maxHeight. CAS.</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>值得注意的是，节点分配内存，前后指针等，都是在固定区域的内存中分配，指针都是通过偏移来实现。</p>
-<h4 id="_9">插入</h4>
+<h3 id="_8">插入</h3>
 <ol>
 <li>随机选择一个新插入节点的高度：h层的概率：<span><span class="MathJax_Preview">rand\_uint64()  &lt; max\_uint32 * 1.0/e^{h-1}</span><script type="math/tex">rand\_uint64()  < max\_uint32 * 1.0/e^{h-1}</script></span>，层数越高，概率约小，指数下降。</li>
 <li>找出每层需要插入的位置，第0层到第h层的位置都找到需要找到。</li>
 <li>然后生成新的节点，根据已经找到的插入位置，修改新节点中每层的前后指针，指向正确的位置。</li>
 <li>然后通过无锁方法，将每层的链表中的前后指针指向新节点。处理完成。</li>
 </ol>
-<h4 id="_10">无锁</h4>
+<h3 id="_9">无锁</h3>
 <p>从第0层到第h层，每一层通过双向链表的无锁CAS实现：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">+----------------+     +------------+     +----------------+</span>
-<span style="color: #000000">|      prev      |     |     nd     |     |      next      |</span>
-<span style="color: #000000">| prevNextOffset |----&gt;|            |     |                |</span>
-<span style="color: #000000">|                |&lt;----| prevOffset |     |                |</span>
-<span style="color: #000000">|                |     | nextOffset |----&gt;|                |</span>
-<span style="color: #000000">|                |     |            |&lt;----| nextPrevOffset |</span>
-<span style="color: #000000">+----------------+     +------------+     +----------------+</span>
-<span style="color: #000000">1. 初始化 prevOffset 和 nextOffset 指向 prev 和 next.</span>
-<span style="color: #000000">2. 通过 CAS 操作将 prevNextOffset 从 next 重新指向 nd.</span>
-<span style="color: #000000">3. 通过 CAS 操作将 nextPrevOffset 从 prev 重新指向 nd.</span>
+<div class="highlight"><pre><span></span><code>+----------------+     +------------+     +----------------+
+|      prev      |     |     nd     |     |      next      |
+| prevNextOffset |----&gt;|            |     |                |
+|                |&lt;----| prevOffset |     |                |
+|                |     | nextOffset |----&gt;|                |
+|                |     |            |&lt;----| nextPrevOffset |
++----------------+     +------------+     +----------------+
+1. 初始化 prevOffset 和 nextOffset 指向 prev 和 next.
+2. 通过 CAS 操作将 prevNextOffset 从 next 重新指向 nd.
+3. 通过 CAS 操作将 nextPrevOffset 从 prev 重新指向 nd.
 </code></pre></div>
 
 <p>检查next是否有了一个更新后的连接指向prev。如果没有，意味着下面的两种情况：</p>
@@ -1111,33 +1337,31 @@ go build
 </ol>
 <p>操作过程出现冲突的情况，需要重新定位插入位置，前后指针信息，然后再次插入，如果有一个新的相同key插入了，则报错已存在，然后退出。</p>
 <p>详细参考：文件 skl.go 的函数 addInternal 。</p>
-<h4 id="_11">查找</h4>
+<h3 id="_10">查找</h3>
 <p>当前的arenaskl实现，通过迭代器的方式提供：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500">// memTable的get方法用于查找对应的key</span>
-<span style="color: #A90D91">func</span> (<span style="color: #000000">m</span> <span style="color: #000000">*memTable</span>) <span style="color: #000000">get</span>(<span style="color: #000000">key</span> []<span style="color: #A90D91">byte</span>) (<span style="color: #000000">value</span> []<span style="color: #A90D91">byte</span>, <span style="color: #000000">err</span> <span style="color: #A90D91">error</span>) {
-    <span style="color: #000000">it</span> <span style="color: #000000">:=</span> <span style="color: #000000">m</span>.<span style="color: #000000">skl</span>.<span style="color: #000000">NewIter</span>(<span style="color: #A90D91">nil</span>, <span style="color: #A90D91">nil</span>)
-    <span style="color: #000000">ikey</span>, <span style="color: #000000">val</span> <span style="color: #000000">:=</span> <span style="color: #000000">it</span>.<span style="color: #000000">SeekGE</span>(<span style="color: #000000">key</span>)
-    <span style="color: #A90D91">if</span> <span style="color: #000000">ikey</span> <span style="color: #000000">==</span> <span style="color: #A90D91">nil</span> {
-        <span style="color: #A90D91">return</span> <span style="color: #A90D91">nil</span>, <span style="color: #000000">db</span>.<span style="color: #000000">ErrNotFound</span>
-    }
-    <span style="color: #A90D91">return</span> <span style="color: #000000">val</span>, <span style="color: #A90D91">nil</span>
-}
+<div class="highlight"><pre><span></span><code><span class="c1">// memTable的get方法用于查找对应的key</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">memTable</span><span class="p">)</span> <span class="nx">get</span><span class="p">(</span><span class="nx">key</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">it</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">skl</span><span class="p">.</span><span class="nx">NewIter</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="nx">ikey</span><span class="p">,</span> <span class="nx">val</span> <span class="o">:=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">SeekGE</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">ikey</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">ErrNotFound</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">val</span><span class="p">,</span> <span class="kc">nil</span>
+<span class="p">}</span>
 
-<span style="color: #177500">// 迭代器</span>
-<span style="color: #A90D91">func</span> (<span style="color: #000000">s</span> <span style="color: #000000">*Skiplist</span>) <span style="color: #000000">NewIter</span>(<span style="color: #000000">lower</span>, <span style="color: #000000">upper</span> []<span style="color: #A90D91">byte</span>) <span style="color: #000000">*Iterator</span> 
+<span class="c1">// 迭代器</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Skiplist</span><span class="p">)</span> <span class="nx">NewIter</span><span class="p">(</span><span class="nx">lower</span><span class="p">,</span> <span class="nx">upper</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="o">*</span><span class="nx">Iterator</span> 
 
-<span style="color: #177500">// 大于或者等于查找key的kv值</span>
-<span style="color: #A90D91">func</span> (<span style="color: #000000">it</span> <span style="color: #000000">*Iterator</span>) <span style="color: #000000">SeekGE</span>(<span style="color: #000000">key</span> []<span style="color: #A90D91">byte</span>) (<span style="color: #000000">*db</span>.<span style="color: #000000">InternalKey</span>, []<span style="color: #A90D91">byte</span>) 
+<span class="c1">// 大于或者等于查找key的kv值</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">it</span> <span class="o">*</span><span class="nx">Iterator</span><span class="p">)</span> <span class="nx">SeekGE</span><span class="p">(</span><span class="nx">key</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">db</span><span class="p">.</span><span class="nx">InternalKey</span><span class="p">,</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> 
 </code></pre></div>
 
 <p>查找算法：</p>
 <ol>
 <li>从跳跃表的最大高度开始，对每层进行查找</li>
-<li>如果找到，判断是否层数为0<ol>
+<li>如果找到，判断是否层数为0</li>
 <li>如果层数为0，则查找结束</li>
 <li>如果层数不为0，则找到第0层对应节点的prev节点，结束</li>
-</ol>
-</li>
 </ol>
 <p>参考：</p>
 <ol>
@@ -1147,14 +1371,39 @@ go build
 <li><a href="https://homepage.cs.uiowa.edu/~ghosh/skip.pdf">https://homepage.cs.uiowa.edu/~ghosh/skip.pdf</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</a></li>
 </ol>
-<h3 id="_12">预写日志</h3>
-<p>WAL 相关的内容在 <code class="codehilite"><span style="color: #000000">pebble/internal/record</span></code> 目录中。</p>
+<h2 id="pebblesst">Pebble详解：SST</h2>
+<h2 id="pebble_3">Pebble详解：预写日志</h2>
+<p>WAL 相关的内容在 <code>pebble/internal/record</code> 目录中。</p>
 <p>WAL 日志写出流程：</p>
 <ol>
 <li>在提交写入时(commitWrite)，将 wal日志写到队列中</li>
 <li>在一个 goroutine 中循环flushLoop接受数据，然后刷新到磁盘中</li>
 </ol>
-<h3 id="_13">提交管道</h3>
+<h2 id="pebble_4">Pebble详解：压缩合并</h2>
+<p>SSTable 是可以启用压缩功能的，并且这种压缩不是将整个 SSTable 一起压缩，而是根据 locality 将数据分组，每个组分别压缩，这样的好处当读取数据的时候，我们不需要解压缩整个文件而是解压缩部分组就可以读取。</p>
+<p>这个在前面的写入流程中已经介绍过，通过定期合并瘦身， 可以有效的清除无效数据，缩短读取路径，提高磁盘利用空间。但Compaction操作是非常消耗CPU和磁盘IO的，尤其是在业务高峰期，如果发生了Major Compaction，则会降低整个系统的吞吐量，这也是一些NoSQL数据库，比如Hbase里面常常会禁用Major Compaction，并在凌晨业务低峰期进行合并的原因。</p>
+<h2 id="pebble_5">Pebble详解：缓存</h2>
+<p>因为SSTable在写入磁盘后，除了Compaction之外，是不会变化的，所以我可以将Scan的Block进行缓存，从而提高检索的效率</p>
+<h2 id="pebblemanifest">Pebble详解：Manifest</h2>
+<h2 id="pebblebloom">Pebble详解：Bloom</h2>
+<p>索引。正常情况下，一个读操作是需要读取所有的 SSTable 将结果合并后返回的，但是对于某些 key 而言，有些 SSTable 是根本不包含对应数据的，因此，我们可以对每一个 SSTable 添加 Bloom Filter，因为布隆过滤器在判断一个SSTable不存在某个key的时候，那么就一定不会存在，利用这个特性可以减少不必要的磁盘扫描。</p>
+<h2 id="pebble_6">Pebble详解：其它</h2>
+<p>并发控制/MVCC/数据恢复</p>
+<p>snapshot/checkpoint/commit_pipeline/backup/Recovery/GC/ingest/</p>
+<ul>
+<li>Delete</li>
+<li>Batch: Get/Set/Delete/Commit/Apply</li>
+<li>Flush: Flush the memtable to stable storage</li>
+<li>Metrics</li>
+<li>NewIter</li>
+<li>NewSnapshot</li>
+</ul>
+<h3 id="_11">为什么不支持事务？</h3>
+<p>没有冒犯。这是一个有意思的问题：您如何在非事务基础上构建事务？显然可以做到。文件系统不是事务性的，但是事务性数据库经常建立在文件系统之上。关键是寻找要建立的基础属性。对于文件系统，基本属性是fsync提供的持久性。对于Pebble/RocksDB，属性是<strong>Batch原语提供的原子性和持久性</strong>。</p>
+<p>请注意，尽管RocksDB具有“事务”，但CockroachDB并未使用它们。可以在非分布式RocksDB事务的基础上构建分布式事务，但这不是必需的。而是如上所述，CockroachDB依赖于批处理的原子性和持久性，并结合了<strong>许多自定义算法来实现复制和分布式事务</strong>。</p>
+<p>在Pebble/RocksDB层提供事务有不利之处吗？是。<strong>完整的事务意味着一致性和隔离性。提供一致性和隔离的机制可能很复杂，并且会导致大量开销</strong>。例如，“一致性和隔离”机制可能必须提供锁机制，锁机制意味着必须处理死锁等问题。这些单节点事务机制可能无法满足CockroachDB提供的分布式事务的需求。</p>
+<p><a href="https://github.com/cockroachdb/pebble/issues/581">https://github.com/cockroachdb/pebble/issues/581</a></p>
+<h3 id="_12">提交管道</h3>
 <p>提交管道用于管理一系列原子提交变更（在单批中包含）到DB的阶段。主要包括</p>
 <ol>
 <li>将批写入到WAL，并且可选是否将WAL刷新到磁盘。</li>
@@ -1170,14 +1419,14 @@ go build
 请注意，在棘轮显示可见序列号后等待WAL同步，允许另一个goroutine在WAL同步之前读取已提交的数据。这与RocksDB的手动WAL刷新功能类似。
 如有必要，应用程序代码需要对此进行保护。</p>
 <p>提交管道操作的完整操作如下：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">加锁：</span>
-<span style="color: #000000">    分配批操作序列号</span>
-<span style="color: #000000">    将批写到WAL</span>
-<span style="color: #000000">将批刷新到WAL同步列表中（可选）</span>
-<span style="color: #000000">将批操作应用到memtable中（并发地）</span>
-<span style="color: #000000">等待更早的批应用完成</span>
-<span style="color: #000000">棘轮读序列号</span>
-<span style="color: #000000">等待WAL刷新（可选）</span>
+<div class="highlight"><pre><span></span><code>加锁：
+    分配批操作序列号
+    将批写到WAL
+将批刷新到WAL同步列表中（可选）
+将批操作应用到memtable中（并发地）
+等待更早的批应用完成
+棘轮读序列号
+等待WAL刷新（可选）
 </code></pre></div>
 
 <p>一旦批处理被写入WAL，就会释放提交管道的互斥锁，允许另一个批处理写入WAL。
@@ -1191,52 +1440,170 @@ commitQueue（单生产者，多消费者队列）包含提交批次的有序列
 通过commitPipeline.publish完成可见序列号的棘轮操作，该循环使“应用”批次出队列并使棘轮显示可见序列号。
 如果我们在队列的头部遇到未应用的批处理，我们可以阻塞，因为我们知道提交该未应用的批处理最终将在队列中找到我们的（应用的）批。
 请参阅commitPipeline.publish以获取其他评论。</p>
-<p>上面的内容主要<a href="https://github.com/petermattis/pebble/blob/ac24a9f2af5377ec9f62e878bbe9bee6c56e4389/commit.go#L143">参考这个文件commit.go中的注释</a>。</p>
-<h3 id="_14">合并</h3>
-<h3 id="_15">快照</h3>
-<h2 id="_16">测试</h2>
+<h3 id="_13">测试</h3>
 <p>如何细粒度分析Pebble的瓶颈？考虑CPU(cache miss)、内存、磁盘IO、线程切换、锁竞争等瓶颈？</p>
 <p>单元测试：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">cd</span> <span style="color: #000000">$GOPATH</span>/src/github.com/petermattis/pebble/
-go <span style="color: #A90D91">test</span>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/cockroachdb/pebble/
+go <span class="nb">test</span>
 </code></pre></div>
 
 <p>性能测试：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">cd</span> <span style="color: #000000">$GOPATH</span>/src/github.com/petermattis/pebble/cmd/pebble/
-./pebble scan ./scan_data/
-./pebble ycsb ./ycsb_data/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/cockroachdb/pebble/cmd/pebble/
+./pebble bench scan ./scan_data/
+./pebble bench ycsb ./ycsb_data/
 </code></pre></div>
 
-<p>TODO: 给出ycsb不同组合的测试结果</p>
+<table>
+<thead>
+<tr>
+<th>ycsb</th>
+<th>read_95</th>
+<th>update_5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-threads</td>
+<td>1702</td>
+<td>91</td>
+</tr>
+<tr>
+<td>8-threads</td>
+<td>8017</td>
+<td>418</td>
+</tr>
+<tr>
+<td>16-threads</td>
+<td>15088</td>
+<td>781</td>
+</tr>
+<tr>
+<td>32-threads</td>
+<td>28922</td>
+<td>1531</td>
+</tr>
+<tr>
+<td>64-threads</td>
+<td>56284</td>
+<td>2984</td>
+</tr>
+<tr>
+<td>128-threads</td>
+<td>110219</td>
+<td>5822</td>
+</tr>
+<tr>
+<td>256-threads</td>
+<td>199014</td>
+<td>10467</td>
+</tr>
+<tr>
+<td>512-threads</td>
+<td>391956</td>
+<td>20574</td>
+</tr>
+<tr>
+<td>1024-threads</td>
+<td>636707</td>
+<td>33525</td>
+</tr>
+<tr>
+<td>2048-threads</td>
+<td>798184</td>
+<td>41921</td>
+</tr>
+<tr>
+<td>4096-threads</td>
+<td>800901</td>
+<td>41878</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>ycsb</th>
+<th>read_50</th>
+<th>update_50</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-threads</td>
+<td>542</td>
+<td>548</td>
+</tr>
+<tr>
+<td>8-threads</td>
+<td>2424</td>
+<td>2424</td>
+</tr>
+<tr>
+<td>16-threads</td>
+<td>4488</td>
+<td>4525</td>
+</tr>
+<tr>
+<td>32-threads</td>
+<td>8466</td>
+<td>8549</td>
+</tr>
+<tr>
+<td>64-threads</td>
+<td>16556</td>
+<td>16625</td>
+</tr>
+<tr>
+<td>128-threads</td>
+<td>31148</td>
+<td>31006</td>
+</tr>
+<tr>
+<td>256-threads</td>
+<td>54158</td>
+<td>54216</td>
+</tr>
+<tr>
+<td>512-threads</td>
+<td>57913</td>
+<td>57940</td>
+</tr>
+<tr>
+<td>1024-threads</td>
+<td>58179</td>
+<td>57969</td>
+</tr>
+</tbody>
+</table>
 <p>性能工具：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">import</span> <span style="color: #C41A16">&quot;runtime/pprof&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s">&quot;runtime/pprof&quot;</span>
 
-<span style="color: #A90D91">func</span> <span style="color: #000000">startCPUProfile</span>() <span style="color: #A90D91">func</span>() {
-    <span style="color: #000000">f</span>, <span style="color: #000000">err</span> <span style="color: #000000">:=</span> <span style="color: #000000">os</span>.<span style="color: #000000">Create</span>(<span style="color: #C41A16">&quot;cpu.prof&quot;</span>) 
-    <span style="color: #A90D91">if</span> <span style="color: #000000">err</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
-        <span style="color: #000000">log</span>.<span style="color: #000000">Fatal</span>(<span style="color: #000000">err</span>)
-    }
-    <span style="color: #A90D91">if</span> <span style="color: #000000">err</span> <span style="color: #000000">:=</span> <span style="color: #000000">pprof</span>.<span style="color: #000000">StartCPUProfile</span>(<span style="color: #000000">f</span>); <span style="color: #000000">err</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
-        <span style="color: #000000">log</span>.<span style="color: #000000">Fatal</span>(<span style="color: #000000">err</span>)
-    }
-    <span style="color: #A90D91">return</span> <span style="color: #A90D91">func</span>() {
-        <span style="color: #000000">pprof</span>.<span style="color: #000000">StopCPUProfile</span>()
-        <span style="color: #000000">f</span>.<span style="color: #000000">Close</span>()
-    }
-}
+<span class="kd">func</span> <span class="nx">startCPUProfile</span><span class="p">()</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;cpu.prof&quot;</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">pprof</span><span class="p">.</span><span class="nx">StartCPUProfile</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">pprof</span><span class="p">.</span><span class="nx">StopCPUProfile</span><span class="p">()</span>
+        <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span style="color: #177500">// go tool pprof cpu.prof</span>
+<span class="c1">// go tool pprof cpu.prof</span>
 </code></pre></div>
 
-<h2 id="_17">代码</h2>
-<h2 id="_18">参考</h2>
+<h2 id="_14">参考</h2>
 <ol>
-<li><a href="https://github.com/petermattis/pebble">https://github.com/petermattis/pebble</a></li>
+<li><a href="https://github.com/cockroachdb/pebble">https://github.com/cockroachdb/pebble</a></li>
 <li><a href="https://github.com/facebook/rocksdb/wiki/rocksdb-basics">https://github.com/facebook/rocksdb/wiki/rocksdb-basics</a></li>
+<li><a href="https://github.com/google/leveldb/blob/master/doc/impl.md">https://github.com/google/leveldb/blob/master/doc/impl.md</a> </li>
+<li>Bigtable: A Distributed Storage System for Structured Data</li>
+<li>The Log-Structured Merge-Tree (LSM-Tree) </li>
+<li>FPGA-Accelerated Compactions for LSM-based Key-Value Store </li>
 </ol>
-                
-                  
-                
                 
               
               
@@ -1253,34 +1620,34 @@ go <span style="color: #A90D91">test</span>
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../.." title="Home" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
                 Home
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
                 FaunaDB的分布式事务协议
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -1295,11 +1662,10 @@ go <span style="color: #A90D91">test</span>
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1308,26 +1674,18 @@ go <span style="color: #A90D91">test</span>
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

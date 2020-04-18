@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/01_database_notes/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#database-notes" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-notes" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Database Notes
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Database Notes
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../themes/me.jpg" width="48" height="48">
-      
+  <img src="../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -303,13 +287,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -382,13 +372,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -495,13 +491,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -543,13 +545,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -561,8 +569,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -603,6 +611,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -619,13 +639,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -654,7 +679,7 @@
     专项
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="专项">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -744,7 +769,7 @@
     文章
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="文章">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -785,7 +810,35 @@
     实例汇总
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="实例汇总">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cockroachdb" class="md-nav__link">
+    CockroachDB
+  </a>
+  
+    <nav class="md-nav" aria-label="CockroachDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cockroachdb_1" class="md-nav__link">
+    迁移到CockroachDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    阿里巴巴
+  </a>
+  
+    <nav class="md-nav" aria-label="阿里巴巴">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -802,12 +855,17 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#mysql" class="md-nav__link">
     MySQL
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="MySQL">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -827,7 +885,7 @@
     TiKV
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="TiKV">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -875,7 +933,7 @@
     Microsoft
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Microsoft">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -883,7 +941,7 @@
     The New SQL Server in the Cloud
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="The New SQL Server in the Cloud">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -922,7 +980,7 @@
     FaunaDB
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="FaunaDB">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -946,7 +1004,7 @@
         
           <li class="md-nav__item">
   <a href="#voltdb" class="md-nav__link">
-    voltDB
+    VoltDB
   </a>
   
 </li>
@@ -973,14 +1031,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     分布式数据库
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     数据仓库
   </a>
   
@@ -994,18 +1052,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     多模数据库
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     未来技术方向
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="未来技术方向">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1026,15 +1084,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     数据结构与算法
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="数据结构与算法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     无锁
   </a>
   
@@ -1048,19 +1106,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     并行原理
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="并行原理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     并行方式
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="并行方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1085,29 +1143,29 @@
     JOIN
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="JOIN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     连接顺序
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     连接方式
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     连接算法
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="连接算法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1154,29 +1212,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     未来方向
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     术语
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#misc_1" class="md-nav__link">
-    misc
-  </a>
-  
-</li>
-      
-      
-      
-      
       
     </ul>
   
@@ -1189,6 +1236,9 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
+                
+                
+                  
                 
                 
                 <h1 id="database-notes">Database Notes</h1>
@@ -1251,17 +1301,11 @@ Large-scale Machine Learning</a></p>
 <li>VLDB: Very Large Data Bases</li>
 <li>OSDI：系统领域</li>
 <li>SOSP：系统领域</li>
+<li>FAST2020</li>
 </ul>
 <h3 id="_3">分布式系统</h3>
 <ol>
-<li><a href="http://nil.csail.mit.edu/6.824/2018/">MIT 6.824</a>
-  - Lab 1: MapReduce
-  - Lab 2: Raft
-  - Lab 3: Fault-tolerant Key/Value Service
-  - Lab 4: Sharded Key/Value Service</li>
-<li>
-<p><a href="https://www.cs.vu.nl/~tcs/da/daslides.pdf">Distributed Algorithms: An Intuitive Approach </a></p>
-</li>
+<li><a href="https://www.cs.vu.nl/~tcs/da/daslides.pdf">Distributed Algorithms: An Intuitive Approach </a></li>
 <li><a href="https://www.distributed-systems.net/index.php/books/distributed-systems-3rd-edition-2017/">Distributed Systems Third edition Maarten van Steen</a></li>
 <li>Distributed.Systems.An.Algorithmic.Approach.2<sup>nd</sup>.Edition</li>
 <li>2010 Scalability patterns(slides).pdf</li>
@@ -1352,7 +1396,7 @@ Large-scale Machine Learning</a></p>
 <li><a href="https://15721.courses.cs.cmu.edu/spring2018/papers/03-compilation/shaikhha-sigmod2016.pdf">How to Architect a Query Compiler</a></li>
 </ul>
 <h3 id="_7">扩容</h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #000000">MPPDB公开论文中的算法</span>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">MPPDB公开论文中的算法</span>
 <span style="color: #000000">Algorithm 1 Algorithm Redistribution DML</span>
 <span style="color: #000000"> 1: 建立一个shadow表S，与原始表T的模式一样</span>
 <span style="color: #000000"> 2: 将表T作为append-only模式</span>
@@ -1366,7 +1410,7 @@ Large-scale Machine Learning</a></p>
 <span style="color: #177500">10: 将表T在系统表中转换为S</span>
 <span style="color: #177500">11: 提交变更</span>
 <span style="color: #177500">12: 重建索引</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="turing-award">Turing Award</h3>
@@ -1602,25 +1646,60 @@ Large-scale Machine Learning</a></p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 大数据管理：概念、技术与挑战 1000+引用</li>
 </ul>
 <h2 id="_14">实例汇总</h2>
-<h3 id="oceanbase">OceanBase</h3>
+<h3 id="cockroachdb">CockroachDB</h3>
+<h4 id="cockroachdb_1">迁移到CockroachDB</h4>
+<ol>
+<li>总体感到满意</li>
+<li>兼容性：使用PG协议</li>
+<li>备份：仅能使用全量备份，付费的增量备份与PG相比也较弱，有HA能力，但是备份是灾备的基本能力</li>
+<li>安全连接：insecure、TLS加密，没有用户密码能力</li>
+<li>部分索引：没有，例如 CREATE INDEX foo ON t1(c1) WHERE c2 &gt; 1;</li>
+<li>数据类型：range数据类型，枚举</li>
+<li>触发器：不支持</li>
+<li>自定义函数：不支持</li>
+<li>存储过程：不支持</li>
+<li>冲突处理：on conflict do nothing，不支持</li>
+<li>外键：不能推迟外键检查</li>
+<li>全文检索：没有全文搜索，也没有地理空间功能。</li>
+<li>UPSERT：无法检查是插入还是更新</li>
+<li>CLI：功能很基础</li>
+<li>扩展：单PG到3节点，性能差了，需要几毫秒延迟（可用性代价）</li>
+<li>复杂查询：需要进行性能测试</li>
+<li>监视：监视诊断工具较少</li>
+<li>遥测功能：默认情况下处于启用状态。可以通过将 <code>COCKROACH_SKIP_ENABLING_DIAGNOSTIC_REPORTING</code> 环境变量设置为true来禁用它。</li>
+<li>最后，迁移过程几乎没有痛苦。每个限制和差异都可以很快解决。未参与迁移的开发人员几乎可以继续进行开发，好像没有什么改变一样（他们一次又一次地遇到局限性，例如没有部分索引，并问“蟑螂不支持...。”）。CockroachDB有一个有用的页面，该页面记录了他们的工作和不支持的工作以及更详细的列表。如果您正在考虑使用它，那是一个很好的开始。尽管如此，基本原理还是有很大的不同，您需要花一些时间在他们的网站上以熟悉底层的体系结构和实现。值得庆幸的是，它们的<strong>内容详尽</strong>，写得很好并且组织得很好。我们<strong>没有使用很多CockrorachDB功能</strong>，例如分区表，内容本地性，复制区域，更改数据捕获等。相反，有许多我们没有使用的PostgreSQL功能，可能很难迁移掉。我确实担心我们最终会遇到一个复杂的要求，即PG（或其众多扩展之一）可以帮助我们解决。但是，对于PostgreSQL，我更加担心如何检测故障并将<strong>故障转移</strong>到备用状态。</li>
+<li>我忘了提到一些重要的事情。迁移的系统具有<strong>可靠的测试</strong>和良好的覆盖范围。尽管我们遇到的许多差异是显而易见的（例如缺少范围类型和触发器），但其他差异则更为微妙（尤其是冲突行为方面的奇怪之处）。<strong>测试覆盖率</strong>对迁移速度和我们对推广的信心产生了重大影响。</li>
+</ol>
+<h3 id="_15">阿里巴巴</h3>
+<p>阿里云的PolarDB组: PolarDB
+阿里巴巴集团的数据库部门: X-DB(Polar-X)/X-Engine/X-Paxos
+X-Engine类似于MySQL on RocksDB MyRocks，基于LSM-Tree做了大量优化。
+蚂蚁金服：OceanBase</p>
+<h4 id="oceanbase">OceanBase</h4>
 <p>OceanBase 一致性：
-<strong>单机</strong>
-- 如何同时读写同一条数据？经典模式：通过锁来互斥，实现隔离级别
-- 快照隔离和 MVCC：并发读写问题。与加锁的方式实现还是不一样的，但是对用户来说行为是一样的，对数据库的隔离性几乎没有影响</p>
-<p><strong>分布式架构面临的挑战</strong>
-- 多机协同工作带来的新问题</p>
-<p>OceanBase 性能优化：
-- OceanBase存储引擎，类似 LSM-Tree
-- 性能目标：延迟和吞吐量，两个指标的关系？吞吐量与延迟定量分析
-- 性能优化工作：优化语句执行消耗的指令数，优化执行指令的效率
-- 系统的性能是每一行代码决定的：两阶段提交重构，Commit 异步化，列类型转换下压，事务状态机转换函数优化，SQL Trace ID 存储与序列化优化，分区裁剪分区选择优化，迭代器初始化优化，内存分配器优化，资源 Free List 优化，线程局部存储优化，Plan Cache 选择优化，Schema 缓存优化
-- 两阶段提交优化：结合事务与日志，事务 Prepare 成功后内侧不用持久保存状态，按需从日志中查询，commit 状态持久化转换成后台批量完成
-- Commit 异步化：上下文切换开销问题，异步化后work er 不等待继续执行队列中的下一个请求，日志持久化后会异步回调
-- 扩展性问题：64 核CPU 是否可以扩展？64 线程加锁解锁方式同时做计数器+1（16328），原子操作`__sync_and_and_fetch*，仅1 个线程做+1（349162011）
-- 内存分配器优化
-- 性能优化无止境</p>
+<strong>单机</strong></p>
+<ul>
+<li>如何同时读写同一条数据？经典模式：通过锁来互斥，实现隔离级别</li>
+<li>快照隔离和 MVCC：并发读写问题。与加锁的方式实现还是不一样的，但是对用户来说行为是一样的，对数据库的隔离性几乎没有影响</li>
+</ul>
+<p><strong>分布式架构面临的挑战</strong></p>
+<ul>
+<li>多机协同工作带来的新问题</li>
+</ul>
+<p>OceanBase 性能优化：</p>
+<ul>
+<li>OceanBase存储引擎，类似 LSM-Tree</li>
+<li>性能目标：延迟和吞吐量，两个指标的关系？吞吐量与延迟定量分析</li>
+<li>性能优化工作：优化语句执行消耗的指令数，优化执行指令的效率</li>
+<li>系统的性能是每一行代码决定的：两阶段提交重构，Commit 异步化，列类型转换下压，事务状态机转换函数优化，SQL Trace ID 存储与序列化优化，分区裁剪分区选择优化，迭代器初始化优化，内存分配器优化，资源 Free List 优化，线程局部存储优化，Plan Cache 选择优化，Schema 缓存优化</li>
+<li>两阶段提交优化：结合事务与日志，事务 Prepare 成功后内侧不用持久保存状态，按需从日志中查询，commit 状态持久化转换成后台批量完成</li>
+<li>Commit 异步化：上下文切换开销问题，异步化后work er 不等待继续执行队列中的下一个请求，日志持久化后会异步回调</li>
+<li>扩展性问题：64 核CPU 是否可以扩展？64 线程加锁解锁方式同时做计数器+1（16328），原子操作`__sync_and_and_fetch*，仅1 个线程做+1（349162011）</li>
+<li>内存分配器优化</li>
+<li>性能优化无止境</li>
+</ul>
 <p>参考：<a href="http://www.itdks.com/Course/detail?id=16895">http://www.itdks.com/Course/detail?id=16895</a></p>
-<h3 id="x-paxos">X-Paxos: 复制库</h3>
+<h4 id="x-paxos">X-Paxos: 复制库</h4>
 <ol>
 <li>工业级，独立，基础库</li>
 <li>Google，Facebook没有公开过</li>
@@ -1810,7 +1889,7 @@ Google Spanner vs. Calvin: Is There a Clear Winner in the Battle for Global Cons
 <p>摘要：最近关于确定性数据库系统设计的提议认为确定性数据库系统便于复制，因为相同的输入可以独立地发送到两个不同的副本而不用考虑副本分歧。此外，他们认为确定性会产生性能优势，这是由于（1）引入了死锁避免技术，（2）减少（或消除）分布式提交协议，以及（3）轻量级锁定。但是，这些性能优势并非普遍适用，并且确定性存在若干缺点，包括（1）处理事务的额外开销，事先不知道将访问哪些数据，（2）无法中止事务任意地（例如，在数据库或分区过载的情况下），以及（3）预处理层所需的增加的延迟，其确保将相同的输入发送到每个副本。本文提供了一个全面的实验研究，仔细研究了确定性的优缺点，以便让数据库用户更全面地了解用于给定数据库工作负载和群集配置的数据库。
 结论：在本文中，我们提出了一个深入的研究，比较确定性和非确定性系统。</p>
 <p>很明显，对于某些工作负载，确定性数据库系统是合适的，而对于某些工作负载则不是。对于对延迟敏感的应用程序，确定性系统中“预处理”事务所需的额外延迟可能会有问题，而非确定性系统可能更适合。此外，当没有其他方法来减少节点上的负载时，确定性数据库系统不能任意中止事务以处理节点过载也会限制吞吐量。但是，确定性数据库系统显然能够扩展到分布式事务的更高吞吐量，这主要是由于它们能够避免分布式死锁。因此，对于需要极高事务可伸缩性且不介意支付额外延迟成本的工作负载，确定性数据库系统可能非常适合。</p>
-<h3 id="voltdb">voltDB</h3>
+<h3 id="voltdb">VoltDB</h3>
 <p>OLTP Through the Looking Glass, and What We Found There
 HStore:A HighPerformance,Distributed Main MemoryTransaction Processing System</p>
 <h3 id="aurora">Aurora</h3>
@@ -1842,7 +1921,7 @@ One subtle thing about Spanner is that it gets serializability from locks, but i
 <li>EnterpriseDB, DB2, Greenplum, Teradata, </li>
 <li>PostgreSQL</li>
 </ul>
-<h3 id="_15">分布式数据库</h3>
+<h3 id="_16">分布式数据库</h3>
 <ul>
 <li>spanner</li>
 <li>TIDB</li>
@@ -1853,7 +1932,7 @@ One subtle thing about Spanner is that it gets serializability from locks, but i
 <li><a href="http://delivery.acm.org/10.1145/3060000/3056101/p1041-verbitski.pdf?ip=103.218.216.127&amp;id=3056101&amp;acc=OPENTOC&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E9F04A3A78F7D3B8D&amp;CFID=993534440&amp;CFTOKEN=82234434&amp;__acm__=1507628397_0845ec0b8c3dfe760d260281e2ebb9ef">Aurora</a>: AWS paper</li>
 <li>Oracle Sharding: 性能随 sharding 数线性增长(完美sharding)</li>
 </ul>
-<h3 id="_16">数据仓库</h3>
+<h3 id="_17">数据仓库</h3>
 <ul>
 <li>AWS redshift</li>
 <li>阿里 HybridDB</li>
@@ -1876,8 +1955,8 @@ One subtle thing about Spanner is that it gets serializability from locks, but i
 <li>Dynamo</li>
 <li>bigtable</li>
 </ul>
-<h3 id="_17">多模数据库</h3>
-<h3 id="_18">未来技术方向</h3>
+<h3 id="_18">多模数据库</h3>
+<h3 id="_19">未来技术方向</h3>
 <ul>
 <li>native分布式关系数据库</li>
 <li>newSQL</li>
@@ -1896,7 +1975,7 @@ scale out
 <li>同时支持OLTP和OLAP处理（行列混合存储，大规模并行处理能力）</li>
 </ol>
 <p>NewSQL既有NoSQL的特点，又有传统关系型数据库的特点。向数据发送查询，而不是将数据带给查询，更少的网络开销。对于MPP OLAP系统，还不能称之为NewSQL。</p>
-<h2 id="_19">数据结构与算法</h2>
+<h2 id="_20">数据结构与算法</h2>
 <ul class="task-list">
 <li>B+-tree</li>
 <li>LSM-tree</li>
@@ -1919,7 +1998,7 @@ scale out
 <p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://queue.acm.org/detail.cfm?id=3220266">Algorithms Behind Modern Storage Systems</a></p>
 </li>
 </ul>
-<h3 id="_20">无锁</h3>
+<h3 id="_21">无锁</h3>
 <p>无锁数据结构实现起来比较复杂，正确性证明也比较困难。如果已经证明了算法的正确性，还需要保证实现是正确的，可以通过大量并发测试来减少风险。</p>
 <p>A non-blocking algorithm is lock-free if there is guaranteed system-wide progress, and wait-free if there is also guaranteed per-thread progress.
 如果系统范围内进程可以有保证，则不阻塞的算法是无锁的。
@@ -1935,8 +2014,8 @@ scale out
 <li><a href="https://blog.codingnow.com/2019/04/concurrent_hash_map.html">并发 Hash Map 的实现</a></li>
 <li>哈希树：叶子节点是数据，中间节点是 hash 值，不断向上计算 hash，通过比较 hash 节点的不同一层层往下找到对应的叶子的不同。也称之为Merkle_tree。写入时要生成整个树的代价还是比较高。</li>
 </ul>
-<h3 id="_21">并行原理</h3>
-<h4 id="_22">并行方式</h4>
+<h3 id="_22">并行原理</h3>
+<h4 id="_23">并行方式</h4>
 <ol>
 <li>
 <p>节点间并行。MPP</p>
@@ -1963,58 +2042,58 @@ scale out
 </ol>
 <p>通过将部分数据哈希到对应的节点，然后各个节点并行做 JOIN 。</p>
 <p>例如：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>(<span style="color: #1C01CE">0</span>) <span style="color: #000000">定义</span>
-<span style="color: #000000">T1</span>(<span style="color: #000000">id</span>, <span style="color: #000000">v</span>) <span style="color: #000000">hash</span>(<span style="color: #000000">id</span>)   
-<span style="color: #000000">T2</span>(<span style="color: #000000">id</span>, <span style="color: #000000">v</span>) <span style="color: #000000">hash</span>(<span style="color: #000000">id</span>)
+<div class="highlight"><pre><span></span><code>(0) 定义
+T1(id, v) hash(id)   
+T2(id, v) hash(id)
 
-<span style="color: #000000">DN1</span>              <span style="color: #000000">DN2</span>
-<span style="color: #000000">T1</span> (<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">1</span>)        <span style="color: #000000">T1</span> (<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">2</span>)
-<span style="color: #000000">T1</span> (<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)        <span style="color: #000000">T1</span> (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">4</span>)
-<span style="color: #000000">T2</span> (<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">3</span>)        <span style="color: #000000">T2</span> (<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">1</span>)
-<span style="color: #000000">T2</span> (<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)        <span style="color: #000000">T2</span> (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">2</span>)
+DN1              DN2
+T1 (1, 1)        T1 (2, 2)
+T1 (3, 4)        T1 (4, 4)
+T2 (1, 3)        T2 (2, 1)
+T2 (3, 4)        T2 (4, 2)
 
-<span style="color: #000000">T1</span> <span style="color: #A90D91">JOIN</span> <span style="color: #000000">T2</span> <span style="color: #A90D91">on</span> <span style="color: #000000">T1</span>.<span style="color: #000000">id</span> <span style="color: #000000">=</span> <span style="color: #000000">T2</span>.<span style="color: #000000">v</span>
+T1 JOIN T2 on T1.id = T2.v
 
-(<span style="color: #1C01CE">1</span>) <span style="color: #000000">基于</span> <span style="color: #000000">hash</span>(<span style="color: #000000">T2</span>.<span style="color: #000000">v</span>) <span style="color: #000000">分发</span> <span style="color: #000000">T2</span> <span style="color: #000000">的数据</span>
+(1) 基于 hash(T2.v) 分发 T2 的数据
 
-<span style="color: #000000">DN1</span>              <span style="color: #000000">DN2</span>
-<span style="color: #000000">T1</span> (<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">1</span>)        <span style="color: #000000">T1</span> (<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">2</span>)
-<span style="color: #000000">T1</span> (<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)        <span style="color: #000000">T1</span> (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">4</span>)
-<span style="color: #000000">T2</span> (<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">3</span>)<span style="color: #000000">-&gt;DN1</span>   <span style="color: #000000">T2</span> (<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">1</span>)<span style="color: #000000">-&gt;DN1</span>
-<span style="color: #000000">T2</span> (<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)<span style="color: #000000">-&gt;DN2</span>   <span style="color: #000000">T2</span> (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">2</span>)<span style="color: #000000">-&gt;DN2</span>
+DN1              DN2
+T1 (1, 1)        T1 (2, 2)
+T1 (3, 4)        T1 (4, 4)
+T2 (1, 3)-&gt;DN1   T2 (2, 1)-&gt;DN1
+T2 (3, 4)-&gt;DN2   T2 (4, 2)-&gt;DN2
 
-<span style="color: #000000">DN1</span>              <span style="color: #000000">DN2</span>
-<span style="color: #000000">T1</span> (<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">1</span>)        <span style="color: #000000">T1</span> (<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">2</span>)
-<span style="color: #000000">T1</span> (<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">3</span>)        <span style="color: #000000">T1</span> (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">4</span>)
-<span style="color: #000000">T2</span><span style="color: #C41A16">&#39; (1, 3)       T2&#39;</span> (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">2</span>)
-<span style="color: #000000">T2</span><span style="color: #C41A16">&#39; (2, 1)       T2&#39;</span> (<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)
+DN1              DN2
+T1 (1, 1)        T1 (2, 2)
+T1 (3, 3)        T1 (4, 4)
+T2&#39; (1, 3)       T2&#39; (4, 2)
+T2&#39; (2, 1)       T2&#39; (3, 4)
 
-(<span style="color: #1C01CE">2</span>) <span style="color: #000000">各个</span> <span style="color: #000000">DN</span> <span style="color: #000000">分别做</span> <span style="color: #A90D91">JOIN</span>
+(2) 各个 DN 分别做 JOIN
 
-<span style="color: #000000">DN1</span>              <span style="color: #000000">DN2</span>
-(<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">1</span>)     (<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">2</span>)
-(<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">3</span>)     (<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)
+DN1              DN2
+(1, 1, 2, 1)     (2, 2, 4, 2)
+(3, 3, 1, 3)     (4, 4, 3, 4)
 
-(<span style="color: #1C01CE">3</span>) <span style="color: #000000">汇总</span>
+(3) 汇总
 
-(<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">1</span>)
-(<span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">2</span>, <span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">2</span>)
-(<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">3</span>)
-(<span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">4</span>, <span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">4</span>)
+(1, 1, 2, 1)
+(2, 2, 4, 2)
+(3, 3, 1, 3)
+(4, 4, 3, 4)
 </code></pre></div>
 
 <h3 id="join">JOIN</h3>
-<h4 id="_23">连接顺序</h4>
+<h4 id="_24">连接顺序</h4>
 <p>结论1：JOIN的顺序影响中间结果的数据量，决定了JOIN的执行效率</p>
 <p>结论2：JOIN的顺序影响具体JOIN算法的效率，决定了JOIN的执行效率</p>
-<h4 id="_24">连接方式</h4>
+<h4 id="_25">连接方式</h4>
 <ol>
 <li>内连接（相等连接，自然连接，交叉连接）</li>
 <li>外连接（左连接，右连接，全连接）</li>
 <li>自连接</li>
 <li>连接算法（嵌套循环、合并连接、哈希连接）</li>
 </ol>
-<h4 id="_25">连接算法</h4>
+<h4 id="_26">连接算法</h4>
 <ol>
 <li>nested loop：获取一条左表（outer）的记录循环匹配右表（inner）所有记录，外表驱动内表，外表也称之为驱动表。</li>
 <li>Indexed nested loop：右边有索引，获取左表的一套记录，索引查找右表</li>
@@ -2022,74 +2101,74 @@ scale out
 <li>hash join: 对同一个字段</li>
 </ol>
 <h5 id="nested-loop">nested loop</h5>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">for ri in R1:         -- outer table</span>
-<span style="color: #000000">   for rj in R2:      -- inner table</span>
-<span style="color: #000000">      if ri.id = rj.id:</span>
-<span style="color: #000000">         print(ri,rj)</span>
+<div class="highlight"><pre><span></span><code>for ri in R1:         -- outer table
+   for rj in R2:      -- inner table
+      if ri.id = rj.id:
+         print(ri,rj)
 </code></pre></div>
 
 <p>小表做驱动表（外表），大表做被驱动表（外表）。<br />
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">t1</span>: <span style="color: #1C01CE">100</span>
-<span style="color: #000000">t2</span>: <span style="color: #1C01CE">50000</span>
-<span style="color: #000000">t2上有索引</span>
-<span style="color: #A90D91">select</span> <span style="color: #177500">/*+use_nl(t2,t1) leading(t2,t1)*/</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>)  <span style="color: #A90D91">from</span> <span style="color: #000000">t2</span>,<span style="color: #000000">t1</span> <span style="color: #A90D91">where</span> <span style="color: #000000">t1</span>.<span style="color: #000000">id</span> <span style="color: #000000">=</span> <span style="color: #000000">t2</span>.<span style="color: #000000">id</span>;  <span style="color: #177500">-- 2.697s 大表做驱动表</span>
-<span style="color: #A90D91">select</span> <span style="color: #177500">/*+use_nl(t1,t2) leading(t1,t2)*/</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>)  <span style="color: #A90D91">from</span> <span style="color: #000000">t1</span>,<span style="color: #000000">t2</span> <span style="color: #A90D91">where</span> <span style="color: #000000">t1</span>.<span style="color: #000000">id</span> <span style="color: #000000">=</span> <span style="color: #000000">t2</span>.<span style="color: #000000">id</span>;  <span style="color: #177500">-- 0.004s 小表做驱动表</span>
+<div class="highlight"><pre><span></span><code><span class="n">t1</span><span class="p">:</span> <span class="mi">100</span>
+<span class="n">t2</span><span class="p">:</span> <span class="mi">50000</span>
+<span class="n">t2上有索引</span>
+<span class="k">select</span> <span class="cm">/*+use_nl(t2,t1) leading(t2,t1)*/</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  <span class="k">from</span> <span class="n">t2</span><span class="p">,</span><span class="n">t1</span> <span class="k">where</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>  <span class="c1">-- 2.697s 大表做驱动表</span>
+<span class="k">select</span> <span class="cm">/*+use_nl(t1,t2) leading(t1,t2)*/</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  <span class="k">from</span> <span class="n">t1</span><span class="p">,</span><span class="n">t2</span> <span class="k">where</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>  <span class="c1">-- 0.004s 小表做驱动表</span>
 </code></pre></div></p>
 <h5 id="hash-join">hash join</h5>
 <p>被驱动表（右表，小表）先建立 hash 表，然后对另一个表中的元素散列到已经生成的桶中
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">for</span> <span style="color: #000000">ri</span> <span style="color: #A90D91">in</span> <span style="color: #000000">R2</span>:
-    <span style="color: #000000">build_hash_table</span>(<span style="color: #000000">HT</span>, <span style="color: #000000">ri</span>)
+<div class="highlight"><pre><span></span><code>for ri in R2:
+    build_hash_table(HT, ri)
 
-<span style="color: #A90D91">for</span> <span style="color: #000000">rj</span> <span style="color: #A90D91">in</span> <span style="color: #000000">R1</span>:
-    <span style="color: #000000">probe</span>(<span style="color: #000000">HT</span>, <span style="color: #000000">rj</span>)
+for rj in R1:
+    probe(HT, rj)
 </code></pre></div></p>
 <p>并行hash算法：
 1. 并行外表：外表分片，然后扫描内表（哈希表）；每个分片对应内表的一个哈希表，哈希表有多个拷贝，内表比较小的时候可用。
 2. 并行哈希连接：并行扫描内表，多个线程并行建立一个共享的哈希表，多个线程并行扫描外表</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">insert</span> <span style="color: #A90D91">into</span> <span style="color: #A90D91">simple</span> <span style="color: #A90D91">select</span> <span style="color: #000000">generate_series</span>(<span style="color: #1C01CE">1</span>, <span style="color: #1C01CE">100000</span>);
-<span style="color: #A90D91">analyze</span> <span style="color: #A90D91">simple</span>;
-<span style="color: #A90D91">explain</span> (<span style="color: #A90D91">verbose</span>,<span style="color: #000000">costs</span> <span style="color: #A90D91">off</span>)  <span style="color: #A90D91">select</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>) <span style="color: #A90D91">from</span> <span style="color: #A90D91">simple</span> <span style="color: #000000">r</span> <span style="color: #A90D91">join</span> <span style="color: #A90D91">simple</span> <span style="color: #000000">s</span> <span style="color: #A90D91">using</span> (<span style="color: #000000">id</span>);
-                             <span style="color: #000000">QUERY</span> <span style="color: #000000">PLAN</span>                             
-<span style="color: #177500">--------------------------------------------------------------------</span>
- <span style="color: #000000">Finalize</span> <span style="color: #A90D91">Aggregate</span>
-   <span style="color: #A90D91">Output</span>: <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>)
-   <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Gather</span>
-         <span style="color: #A90D91">Output</span>: (<span style="color: #A90D91">PARTIAL</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>))
-         <span style="color: #000000">Workers</span> <span style="color: #000000">Planned</span>: <span style="color: #1C01CE">2</span>
-         <span style="color: #000000">-&gt;</span>  <span style="color: #A90D91">Partial</span> <span style="color: #A90D91">Aggregate</span>
-               <span style="color: #A90D91">Output</span>: <span style="color: #A90D91">PARTIAL</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>)
-               <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Parallel</span> <span style="color: #000000">Hash</span> <span style="color: #A90D91">Join</span>
-                     <span style="color: #000000">Hash</span> <span style="color: #000000">Cond</span>: (<span style="color: #000000">r</span>.<span style="color: #000000">id</span> <span style="color: #000000">=</span> <span style="color: #000000">s</span>.<span style="color: #000000">id</span>)
-                     <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Parallel</span> <span style="color: #000000">Seq</span> <span style="color: #000000">Scan</span> <span style="color: #A90D91">on</span> <span style="color: #A90D91">public</span>.<span style="color: #A90D91">simple</span> <span style="color: #000000">r</span>
-                           <span style="color: #A90D91">Output</span>: <span style="color: #000000">r</span>.<span style="color: #000000">id</span>, <span style="color: #000000">r</span>.<span style="color: #C41A16">&quot;?column?&quot;</span>
-                     <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Parallel</span> <span style="color: #000000">Hash</span>
-                           <span style="color: #A90D91">Output</span>: <span style="color: #000000">s</span>.<span style="color: #000000">id</span>
-                           <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Parallel</span> <span style="color: #000000">Seq</span> <span style="color: #000000">Scan</span> <span style="color: #A90D91">on</span> <span style="color: #A90D91">public</span>.<span style="color: #A90D91">simple</span> <span style="color: #000000">s</span>
-                                 <span style="color: #A90D91">Output</span>: <span style="color: #000000">s</span>.<span style="color: #000000">id</span>
-(<span style="color: #1C01CE">15</span> <span style="color: #A90D91">rows</span>)
+<div class="highlight"><pre><span></span><code><span class="k">insert</span> <span class="k">into</span> <span class="k">simple</span> <span class="k">select</span> <span class="n">generate_series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">);</span>
+<span class="k">analyze</span> <span class="k">simple</span><span class="p">;</span>
+<span class="k">explain</span> <span class="p">(</span><span class="k">verbose</span><span class="p">,</span><span class="n">costs</span> <span class="k">off</span><span class="p">)</span>  <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="k">simple</span> <span class="n">r</span> <span class="k">join</span> <span class="k">simple</span> <span class="n">s</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
+                             <span class="n">QUERY</span> <span class="n">PLAN</span>                             
+<span class="c1">--------------------------------------------------------------------</span>
+ <span class="n">Finalize</span> <span class="k">Aggregate</span>
+   <span class="k">Output</span><span class="p">:</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Gather</span>
+         <span class="k">Output</span><span class="p">:</span> <span class="p">(</span><span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">))</span>
+         <span class="n">Workers</span> <span class="n">Planned</span><span class="p">:</span> <span class="mi">2</span>
+         <span class="o">-&gt;</span>  <span class="k">Partial</span> <span class="k">Aggregate</span>
+               <span class="k">Output</span><span class="p">:</span> <span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+               <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Hash</span> <span class="k">Join</span>
+                     <span class="n">Hash</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+                     <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">r</span>
+                           <span class="k">Output</span><span class="p">:</span> <span class="n">r</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="ss">&quot;?column?&quot;</span>
+                     <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Hash</span>
+                           <span class="k">Output</span><span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span>
+                           <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">s</span>
+                                 <span class="k">Output</span><span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span>
+<span class="p">(</span><span class="mi">15</span> <span class="k">rows</span><span class="p">)</span>
 
-<span style="color: #A90D91">set</span> <span style="color: #000000">enable_hashjoin=</span><span style="color: #A90D91">off</span>;
-<span style="color: #A90D91">set</span> <span style="color: #000000">enable_mergejoin=</span><span style="color: #A90D91">off</span>;
-<span style="color: #A90D91">explain</span> (<span style="color: #A90D91">verbose</span>,<span style="color: #000000">costs</span> <span style="color: #A90D91">off</span>)  <span style="color: #A90D91">select</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>) <span style="color: #A90D91">from</span> <span style="color: #A90D91">simple</span> <span style="color: #000000">r</span> <span style="color: #A90D91">join</span> <span style="color: #A90D91">simple</span> <span style="color: #000000">s</span> <span style="color: #A90D91">using</span> (<span style="color: #000000">id</span>);
-                          <span style="color: #000000">QUERY</span> <span style="color: #000000">PLAN</span>                          
-<span style="color: #177500">--------------------------------------------------------------</span>
- <span style="color: #000000">Finalize</span> <span style="color: #A90D91">Aggregate</span>
-   <span style="color: #A90D91">Output</span>: <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>)
-   <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Gather</span>
-         <span style="color: #A90D91">Output</span>: (<span style="color: #A90D91">PARTIAL</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>))
-         <span style="color: #000000">Workers</span> <span style="color: #000000">Planned</span>: <span style="color: #1C01CE">2</span>
-         <span style="color: #000000">-&gt;</span>  <span style="color: #A90D91">Partial</span> <span style="color: #A90D91">Aggregate</span>
-               <span style="color: #A90D91">Output</span>: <span style="color: #A90D91">PARTIAL</span> <span style="color: #A90D91">count</span>(<span style="color: #000000">*</span>)
-               <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Nested</span> <span style="color: #000000">Loop</span>
-                     <span style="color: #A90D91">Join</span> <span style="color: #000000">Filter</span>: (<span style="color: #000000">r</span>.<span style="color: #000000">id</span> <span style="color: #000000">=</span> <span style="color: #000000">s</span>.<span style="color: #000000">id</span>)
-                     <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Parallel</span> <span style="color: #000000">Seq</span> <span style="color: #000000">Scan</span> <span style="color: #A90D91">on</span> <span style="color: #A90D91">public</span>.<span style="color: #A90D91">simple</span> <span style="color: #000000">r</span>
-                           <span style="color: #A90D91">Output</span>: <span style="color: #000000">r</span>.<span style="color: #000000">id</span>, <span style="color: #000000">r</span>.<span style="color: #C41A16">&quot;?column?&quot;</span>
-                     <span style="color: #000000">-&gt;</span>  <span style="color: #000000">Seq</span> <span style="color: #000000">Scan</span> <span style="color: #A90D91">on</span> <span style="color: #A90D91">public</span>.<span style="color: #A90D91">simple</span> <span style="color: #000000">s</span>
-                           <span style="color: #A90D91">Output</span>: <span style="color: #000000">s</span>.<span style="color: #000000">id</span>, <span style="color: #000000">s</span>.<span style="color: #C41A16">&quot;?column?&quot;</span>
-(<span style="color: #1C01CE">13</span> <span style="color: #A90D91">rows</span>)
-<span style="color: #177500">-- Gather节点后面的部分计划都是在子线程上处理</span>
-<span style="color: #177500">-- Parallel Seq Scan： 多个线程并行扫描，每个扫一部分</span>
-<span style="color: #177500">-- Seq Scan: 多个线程每个都是扫描全表</span>
+<span class="k">set</span> <span class="n">enable_hashjoin</span><span class="o">=</span><span class="k">off</span><span class="p">;</span>
+<span class="k">set</span> <span class="n">enable_mergejoin</span><span class="o">=</span><span class="k">off</span><span class="p">;</span>
+<span class="k">explain</span> <span class="p">(</span><span class="k">verbose</span><span class="p">,</span><span class="n">costs</span> <span class="k">off</span><span class="p">)</span>  <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="k">simple</span> <span class="n">r</span> <span class="k">join</span> <span class="k">simple</span> <span class="n">s</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
+                          <span class="n">QUERY</span> <span class="n">PLAN</span>                          
+<span class="c1">--------------------------------------------------------------</span>
+ <span class="n">Finalize</span> <span class="k">Aggregate</span>
+   <span class="k">Output</span><span class="p">:</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Gather</span>
+         <span class="k">Output</span><span class="p">:</span> <span class="p">(</span><span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">))</span>
+         <span class="n">Workers</span> <span class="n">Planned</span><span class="p">:</span> <span class="mi">2</span>
+         <span class="o">-&gt;</span>  <span class="k">Partial</span> <span class="k">Aggregate</span>
+               <span class="k">Output</span><span class="p">:</span> <span class="k">PARTIAL</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+               <span class="o">-&gt;</span>  <span class="n">Nested</span> <span class="n">Loop</span>
+                     <span class="k">Join</span> <span class="n">Filter</span><span class="p">:</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+                     <span class="o">-&gt;</span>  <span class="n">Parallel</span> <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">r</span>
+                           <span class="k">Output</span><span class="p">:</span> <span class="n">r</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="ss">&quot;?column?&quot;</span>
+                     <span class="o">-&gt;</span>  <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="k">public</span><span class="p">.</span><span class="k">simple</span> <span class="n">s</span>
+                           <span class="k">Output</span><span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="ss">&quot;?column?&quot;</span>
+<span class="p">(</span><span class="mi">13</span> <span class="k">rows</span><span class="p">)</span>
+<span class="c1">-- Gather节点后面的部分计划都是在子线程上处理</span>
+<span class="c1">-- Parallel Seq Scan： 多个线程并行扫描，每个扫一部分</span>
+<span class="c1">-- Seq Scan: 多个线程每个都是扫描全表</span>
 </code></pre></div>
 
 <p>参考PG的sql/join.sql测试文件</p>
@@ -2104,25 +2183,18 @@ scale out
 <li>pipeline/stream: 基于排序，计算下一个分组时对前一个分组可以输出</li>
 <li>sort group: 基于排序，但是先把所有数据插入到btree中；group by c1 order by c1 优化成 sort group by c1取消sort plan</li>
 </ol>
-<h2 id="_26">未来方向</h2>
+<h2 id="_27">未来方向</h2>
 <p>数据库会随着业务<strong>云化</strong>，未来一切的业务都会跑在云端，不管是私有云或者公有云，运维团队接触的可能再也不是真实的物理机，而是一个个隔离的容器或者「计算资源」。这对数据库也是一个挑战，因为数据库天生就是有状态的，数据总是要存储在物理的磁盘上，而数据的移动的代价比移动容器的代价可能大很多。</p>
 <p><strong>多租户</strong>技术会成为标配，一个大数据库承载一切的业务，数据在底层打通，上层通过权限，容器等技术进行隔离；但是数据的打通和扩展会变得异常简单，结合第一点提到的云化，业务层可以再也不用关心物理机的容量和拓扑，只需要认为底层是一个无穷大的数据库平台即可，不用再担心单机容量和负载均衡等问题。</p>
 <p><strong>OLAP 和 OLTP</strong> 会进一步细分，底层存储也许会共享一套，但是SQL优化器这层的实现一定是千差万别的。对于用户而言，如果能使用同一套标准的语法和规则来进行数据的读写和分析，会有更好的体验。</p>
 <p>在未来分布式数据库系统上，主从日志同步这样落后的备份方式会被 Multi-Paxos / <strong>Raft</strong> 这样更强的分布式一致性算法替代，人工的数据库运维在管理大规模数据库集群时是不可能的，所有的故障恢复和高可用都会是高度自动化的。</p>
 <p>数据库应用程序的下一个趋势是能够对新获取的数据执行分析查询和机器学习算法。这种通常也称为“实时分析”或者“混合事务分析处理（hybrid transaction-analytical processing，HTAP）”的应用通过分析新数据和历史数据的组合来进行知识推断，获得洞察力。</p>
-<h2 id="_27">术语</h2>
+<h2 id="_28">术语</h2>
 <ul>
 <li>TPS 每秒事务数</li>
 <li>TPM 每分钟事务数</li>
 <li>QPS 每秒查询率</li>
 </ul>
-<h2 id="misc_1">misc</h2>
-<ol>
-<li>八卦一下，memcached的作者Brad Fitzpatrick，现在在 Google，大家如果用 Golang 的话，Go 的官方 HTTP 包就是这哥们写的，是个很高产的工程师</li>
-</ol>
-                
-                  
-                
                 
               
               
@@ -2146,11 +2218,10 @@ scale out
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -2159,26 +2230,18 @@ scale out
       
     </div>
     
-      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

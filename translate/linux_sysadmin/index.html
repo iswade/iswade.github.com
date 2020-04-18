@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/translate/linux_sysadmin/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#table-of-contents" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#table-of-contents" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                linux 系统管理
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              linux 系统管理
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -303,13 +287,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -382,13 +372,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -495,13 +491,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -545,13 +547,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -563,26 +571,15 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         linux 系统管理
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="linux 系统管理" class="md-nav__link md-nav__link--active">
@@ -590,11 +587,16 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -609,7 +611,7 @@
     Introduction
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Introduction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -629,7 +631,7 @@
     General Knowledge
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="General Knowledge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -637,7 +639,7 @@
     Junior Sysadmin
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Junior Sysadmin">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -678,7 +680,7 @@
     Regular Sysadmin
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Regular Sysadmin">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -719,7 +721,7 @@
     Senior Sysadmin
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Senior Sysadmin">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -772,7 +774,7 @@
     Secret Knowledge
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Secret Knowledge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -787,9 +789,238 @@
   
 </li>
       
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        linux 系统管理
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="linux 系统管理" class="md-nav__link md-nav__link--active">
+      linux 系统管理
+    </a>
+    
       
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
       
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-questions" class="md-nav__link">
+    Simple Questions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-knowledge" class="md-nav__link">
+    General Knowledge
+  </a>
+  
+    <nav class="md-nav" aria-label="General Knowledge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junior-sysadmin" class="md-nav__link">
+    Junior Sysadmin
+  </a>
+  
+    <nav class="md-nav" aria-label="Junior Sysadmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-questions" class="md-nav__link">
+    System Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-questions" class="md-nav__link">
+    Network Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devops-questions" class="md-nav__link">
+    Devops Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyber-security-questions" class="md-nav__link">
+    Cyber Security Questions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-sysadmin" class="md-nav__link">
+    Regular Sysadmin
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Sysadmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-questions_1" class="md-nav__link">
+    System Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-questions_1" class="md-nav__link">
+    Network Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devops-questions_1" class="md-nav__link">
+    Devops Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyber-security-questions_1" class="md-nav__link">
+    Cyber Security Questions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#senior-sysadmin" class="md-nav__link">
+    Senior Sysadmin
+  </a>
+  
+    <nav class="md-nav" aria-label="Senior Sysadmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-questions" class="md-nav__link">
+    Introduction Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-questions_2" class="md-nav__link">
+    System Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-questions_2" class="md-nav__link">
+    Network Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devops-questions_2" class="md-nav__link">
+    Devops Questions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyber-security-questions_2" class="md-nav__link">
+    Cyber Security Questions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secret-knowledge" class="md-nav__link">
+    Secret Knowledge
+  </a>
+  
+    <nav class="md-nav" aria-label="Secret Knowledge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guru-sysadmin" class="md-nav__link">
+    Guru Sysadmin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
@@ -822,6 +1053,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -838,11 +1081,16 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -857,7 +1105,7 @@
     Introduction
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Introduction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -877,7 +1125,7 @@
     General Knowledge
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="General Knowledge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -885,7 +1133,7 @@
     Junior Sysadmin
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Junior Sysadmin">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -926,7 +1174,7 @@
     Regular Sysadmin
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Regular Sysadmin">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -967,7 +1215,7 @@
     Senior Sysadmin
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Senior Sysadmin">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1020,7 +1268,7 @@
     Secret Knowledge
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Secret Knowledge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1035,10 +1283,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -1050,6 +1294,9 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
+                
+                
+                  
                 
                 
                   <h1>linux 系统管理</h1>
@@ -1143,7 +1390,6 @@ Useful resources:
 
 <details>
 <summary><b>What is a CLI?</b></summary><br>
-
 **CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
 In Linux, CLI is the interface by which a user can type commands for the system to execute. The CLI is very powerful, but is not very error-tolerant.
@@ -1172,15 +1418,21 @@ Useful resources:
 
 For a summary of logged-in users, including each login of a username, the terminal users are attached to, the date/time they logged in, and possibly the computer from which they are making the connection, enter:
 
-wzxhzdk:0
+<div class="highlight"><pre><span></span><code><span class="c1"># It uses /var/run/utmp and /var/log/wtmp files to get the details.</span>
+who
+</code></pre></div>
 
 For extensive information, including username, terminal, IP number of the source computer, the time the login began, any idle time, process CPU cycles, job CPU cycles, and the currently running command, enter:
 
-wzxhzdk:1
+<div class="highlight"><pre><span></span><code><span class="c1"># It uses /var/run/utmp, and their processes /proc.</span>
+w
+</code></pre></div>
 
 Also important for displays a list of last logged in users, enter:
 
-wzxhzdk:2
+<div class="highlight"><pre><span></span><code><span class="c1"># It uses /var/log/wtmp.</span>
+last
+</code></pre></div>
 
 Useful resources:
 
@@ -1193,30 +1445,36 @@ Useful resources:
 
 You can run command in background by appending ```&``` after the command you want to run. For example if you want to download something in background, you can:
 
-wzxhzdk:3
+<div class="highlight"><pre><span></span><code>wget https://url-to-download.com/download.tar.gz <span class="p">&amp;</span>
+</code></pre></div>
 
 When you run the above command you get the following output:
 
-wzxhzdk:4
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="m">2203</span>
+</code></pre></div>
 
 Here 1 is the serial number of job and 2203 is PID of the job.
 
 
 You can see the jobs running in background using the following command:
 
-wzxhzdk:5
+<div class="highlight"><pre><span></span><code><span class="nb">jobs</span>
+</code></pre></div>
 
 When you execute job in background it give you a PID of job, you can kill the job running in background using the following command:
 
-wzxhzdk:6
+<div class="highlight"><pre><span></span><code><span class="nb">kill</span> PID
+</code></pre></div>
 
 Replace the PID with the PID of the job. If you have only one job running you can bring it to foreground using:
 
-wzxhzdk:7
+<div class="highlight"><pre><span></span><code><span class="nb">fg</span>
+</code></pre></div>
 
 If you have multiple jobs running in background you can bring any job in foreground using:
 
-wzxhzdk:8
+<div class="highlight"><pre><span></span><code><span class="nb">fg</span> %#
+</code></pre></div>
 
 Replace the ```#``` with serial number of the job.
 
@@ -1240,7 +1498,8 @@ After executing setuid, it will have your real id (since you're the process owne
 
 Let's use the case of passwd:
 
-wzxhzdk:9
+<div class="highlight"><pre><span></span><code>-rwsr-xr-x <span class="m">1</span> root root <span class="m">45396</span> may <span class="m">25</span>  <span class="m">2012</span> /usr/bin/passwd
+</code></pre></div>
 
 When user2 wants to change their password, they execute `/usr/bin/passwd`.
 
@@ -1330,7 +1589,10 @@ For monitoring swap space usage:
 - `top`/`htop`- to check swap space usage
 - `atop` - to show is that your system is overcommitting memory
 - or use one-liner shell command to list all applications with how much swap space search is using in kilobytes:
-wzxhzdk:10
+<div class="highlight"><pre><span></span><code><span class="k">for</span> _fd in /proc/*/status <span class="p">;</span> <span class="k">do</span>
+  awk <span class="s1">&#39;/VmSwap|Name/{printf $2 &quot; &quot; $3}END{ print &quot;&quot;}&#39;</span> <span class="nv">$_fd</span>
+<span class="k">done</span> <span class="p">|</span> sort -k <span class="m">2</span> -n -r <span class="p">|</span> less
+</code></pre></div>
 
 Useful resources:
 
@@ -1408,11 +1670,13 @@ Linux passwords are stored in the **/etc/shadow** file. They are salted and the 
 
 To change all the directories e.g. to 755 (drwxr-xr-x):
 
-wzxhzdk:11
+<div class="highlight"><pre><span></span><code>find /opt/data -type d -exec chmod <span class="m">755</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div>
 
 To change all the files e.g. to 644 (-rw-r--r--):
 
-wzxhzdk:12
+<div class="highlight"><pre><span></span><code>find /opt/data -type f -exec chmod <span class="m">644</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div>
 
 </details>
 
@@ -1473,7 +1737,9 @@ Useful resources:
 <details>
 <summary><b>How do you list contents of archive.tgz and extract only one file?</b></summary><br>
 
-wzxhzdk:13
+<div class="highlight"><pre><span></span><code>tar tf archive.tgz
+tar xf archive.tgz filename
+</code></pre></div>
 
 </details>
 
@@ -1482,7 +1748,8 @@ Useful resources:
 
 To sync the contents of dir1 to dir2 on the same system, type:
 
-wzxhzdk:14
+<div class="highlight"><pre><span></span><code>rsync -av --progress --delete dir1/ dir2
+</code></pre></div>
 
 - `-a`, `--archive` - archive mode
 - `--delete` - delete extraneous files from dest dirs
@@ -1494,14 +1761,16 @@ To sync the contents of dir1 to dir2 on the same system, type:
 <details>
 <summary><b>How to quickly backup a file?</b></summary><br>
 
-wzxhzdk:15
+<div class="highlight"><pre><span></span><code>cp filename<span class="o">{</span>,.orig<span class="o">}</span>
+</code></pre></div>
 
 </details>
 
 <details>
 <summary><b>How to find all files larger than 20M?</b></summary><br>
 
-wzxhzdk:16
+<div class="highlight"><pre><span></span><code>find / -type f -size +20M
+</code></pre></div>
 
 </details>
 
@@ -1517,7 +1786,8 @@ To sync the contents of dir1 to dir2 on the same system, type:
 <details>
 <summary><b>How to find files that have been modified on your system in the past 60 minutes?</b></summary><br>
 
-wzxhzdk:17
+<div class="highlight"><pre><span></span><code>find / -mmin -60 -type f
+</code></pre></div>
 
 </details>
 
@@ -1578,7 +1848,8 @@ Useful resources:
 <details>
 <summary><b>How is a user’s default group determined? How would you change it? </b></summary><br>
 
-wzxhzdk:18
+<div class="highlight"><pre><span></span><code>useradd -m -g initial_group username
+</code></pre></div>
 
 `-g/--gid`: defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group. If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in **/etc/login.defs**. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
 
@@ -1683,14 +1954,24 @@ Useful resources:
 <details>
 <summary><b>How to resolves the domain name (using external dns server) with CLI commands?</b></summary><br>
 
-wzxhzdk:19
+<div class="highlight"><pre><span></span><code><span class="c1"># with host command:</span>
+host domain.com <span class="m">8</span>.8.8.8
+<span class="c1"># with dig command:</span>
+dig @9.9.9.9 google.com
+<span class="c1"># with nslookup command:</span>
+nslookup domain.com <span class="m">8</span>.8.8.8
+</code></pre></div>
 
 </details>
 
 <details>
 <summary><b>How to test port connectivity with <code>telnet</code> or <code>nc</code>?</b></summary><br>
 
-wzxhzdk:20
+<div class="highlight"><pre><span></span><code><span class="c1"># with telnet command:</span>
+telnet code42.example.com <span class="m">5432</span>
+<span class="c1"># with nc (netcat) command:</span>
+nc -vz code42.example.com <span class="m">5432</span>
+</code></pre></div>
 
 </details>
 
@@ -2073,21 +2354,25 @@ Use the <code>lvextend</code> command for resize LVM partition.<br>
 
 - extending the size by 500MB:
 
-wzxhzdk:21
+<div class="highlight"><pre><span></span><code>lvextend -L +500M /dev/vgroup/lvolume
+</code></pre></div>
 
 - extending all available free space:
 
-wzxhzdk:22
+<div class="highlight"><pre><span></span><code>lvextend -l +100%FREE /dev/vgroup/lvolume
+</code></pre></div>
 
 and `resize2fs` or `xfs_growfs` to resize filesystem:<br>
 
 - for ext filesystems:
 
-wzxhzdk:23
+<div class="highlight"><pre><span></span><code>resize2fs /dev/vgroup/lvolume
+</code></pre></div>
 
 - for xfs filesystem:
 
-wzxhzdk:24
+<div class="highlight"><pre><span></span><code>xfs_growfs mountpoint_for_/dev/vgroup/lvolume
+</code></pre></div>
 
 </details>
 
@@ -2096,15 +2381,20 @@ and `resize2fs` or `xfs_growfs` to resize filesystem:<br>
 
 1. Create partition
 
-wzxhzdk:25
+<div class="highlight"><pre><span></span><code>fdisk /dev/sdb
+</code></pre></div>
 
 2. Create LVM
 
-wzxhzdk:26
+<div class="highlight"><pre><span></span><code>pvcreate /dev/sdb1
+vgcreate vg0 /dev/sdb1
+lvcreate --name datastore --size 50G vg0
+</code></pre></div>
 
 3. Create filesystem
 
-wzxhzdk:27
+<div class="highlight"><pre><span></span><code>mkfs -t xfs /dev/mapper/vg0-datastore
+</code></pre></div>
 
 </details>
 
@@ -2247,7 +2537,8 @@ Hard limit is the maximum allowed to a user, set by the superuser or root. This 
 
 For example:
 
-wzxhzdk:28
+<div class="highlight"><pre><span></span><code>cat /dev/urandom <span class="p">|</span> tr -dc <span class="s1">&#39;a-zA-Z0-9&#39;</span> <span class="p">|</span> fold -w <span class="m">32</span> <span class="p">|</span> head -n <span class="m">100</span> &gt; /path/to/file
+</code></pre></div>
 
 </details>
 
@@ -2256,7 +2547,8 @@ For example:
 
 For example (with <code>visudo</code> command):
 
-wzxhzdk:29
+<div class="highlight"><pre><span></span><code>user1 <span class="nv">ALL</span><span class="o">=(</span>user2<span class="o">)</span> NOPASSWD: /opt/scripts/bin/generate.sh
+</code></pre></div>
 
 The command paths must be absolute! Then call <code>sudo -u user2 /opt/scripts/bin/generate.sh</code> from a user1 shell.
 
@@ -2271,7 +2563,11 @@ As a warning, do not check if a user is root by using the root username. Nothing
 
 I think the best way when using bash is to use $EUID because $UID could be changed and not reflect the real user running the script.
 
-wzxhzdk:30
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="o">((</span> <span class="nv">$EUID</span> !<span class="o">=</span> <span class="m">0</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Please run as root&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+</code></pre></div>
 </details>
 
 <details>
@@ -2325,15 +2621,19 @@ If the client does not have the root in their trust store, then it won't trust t
 
 Solution 1:
 
-wzxhzdk:31
+<div class="highlight"><pre><span></span><code>systemctl reload postgresql
+</code></pre></div>
 
 Solution 2:
 
-wzxhzdk:32
+<div class="highlight"><pre><span></span><code>su - postgres
+/usr/bin/pg_ctl reload
+</code></pre></div>
 
 Solution 3:
 
-wzxhzdk:33
+<div class="highlight"><pre><span></span><code>SELECT pg_reload_conf();
+</code></pre></div>
 
 </details>
 
@@ -2342,7 +2642,8 @@ Solution 3:
 
 Will recreate any missing configuration files, e.g. <code>/etc/mysql/my.cnf</code> in your case:
 
-wzxhzdk:34
+<div class="highlight"><pre><span></span><code>dpkg -i --force-confmiss mysql-common.deb
+</code></pre></div>
 
 </details>
 
@@ -2356,7 +2657,9 @@ The best way is: `exec $SHELL -l`
 <details>
 <summary><b>How to exit without saving shell history?</b></summary><br>
 
-wzxhzdk:35
+<div class="highlight"><pre><span></span><code><span class="nb">kill</span> -9 <span class="nv">$$</span>
+<span class="nb">unset</span> HISTFILE <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</code></pre></div>
 
 </details>
 
@@ -2365,11 +2668,13 @@ The best way is: `exec $SHELL -l`
 
 For example use <code>fgrep</code>:
 
-wzxhzdk:36
+<div class="highlight"><pre><span></span><code>fgrep * -R <span class="s2">&quot;string&quot;</span>
+</code></pre></div>
 
 or:
 
-wzxhzdk:37
+<div class="highlight"><pre><span></span><code>grep -insr <span class="s2">&quot;pattern&quot;</span> *
+</code></pre></div>
 
 - <code>-i</code> ignore case distinctions in both the PATTERN and the input files
 - <code>-n</code>  prefix each line of output with the 1-based line number within its input file
@@ -2383,7 +2688,8 @@ or:
 
 You can do this with <code>ldd</code> command:
 
-wzxhzdk:38
+<div class="highlight"><pre><span></span><code>ldd /bin/ls
+</code></pre></div>
 
 </details>
 
@@ -2475,7 +2781,8 @@ Use the:
 <details>
 <summary><b>How to get fingerprint from SSH key?</b></summary><br>
 
-wzxhzdk:39
+<div class="highlight"><pre><span></span><code>ssh-keygen -lf ~/.ssh/id_rsa.pub
+</code></pre></div>
 
 </details>
 
@@ -2484,7 +2791,17 @@ Use the:
 
 For example:
 
-wzxhzdk:40
+<div class="highlight"><pre><span></span><code>telnet example.com <span class="m">80</span>
+Trying <span class="m">192</span>.168.252.10...
+Connected to example.com.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+GET /questions HTTP/1.0
+Host: example.com
+
+HTTP/1.1 <span class="m">200</span> OK
+Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+...
+</code></pre></div>
 
 </details>
 
@@ -2493,7 +2810,9 @@ For example:
 
 For example:
 
-wzxhzdk:41
+<div class="highlight"><pre><span></span><code>/sbin/iptables -A INPUT -p tcp -s XXX.XXX.XXX.XXX -j ACCEPT
+/sbin/iptables -A OUTPUT -p tcp -d  XXX.XXX.XXX.XXX -j ACCEPT
+</code></pre></div>
 
 </details>
 
@@ -2502,11 +2821,15 @@ For example:
 
 The best way to do this is to define a table and create a rule to block the hosts, in <code>pf.conf</code>:
 
-wzxhzdk:42
+<div class="highlight"><pre><span></span><code>table &lt;badhosts&gt; persist
+block on fxp0 from &lt;badhosts&gt; to any
+</code></pre></div>
 
 And then dynamically add/delete IP addresses from it:
 
-wzxhzdk:43
+<div class="highlight"><pre><span></span><code>pfctl -t badhosts -T add <span class="m">1</span>.2.3.4
+pfctl -t badhosts -T delete <span class="m">1</span>.2.3.4
+</code></pre></div>
 
 </details>
 
@@ -2515,18 +2838,35 @@ And then dynamically add/delete IP addresses from it:
 
 For example:
 
-wzxhzdk:44
+<div class="highlight"><pre><span></span><code>sub vcl_recv {
+   # dont cache foo.com or bar.com - optional www
+   if (req.host ~ &quot;(www)?(foo|bar).com&quot;) {
+     return(pass);
+   }
+}
+</code></pre></div>
 
 or:
 
-wzxhzdk:45
+<div class="highlight"><pre><span></span><code>sub vcl_recv {
+  # dont cache foo.com or bar.com - optional www
+   if (req.http.host ~ &quot;(www\.)?(foo|bar)\.com&quot;) {
+     return(pass);
+   }
+  # cache foobar.com - optional www
+   if (req.http.host ~ &quot;(www\.)?foobar\.com&quot;) {
+     return(hash);
+   }
+}
+</code></pre></div>
 
 </details>
 
 <details>
 <summary><b>Analyse web server log and show only 5xx http codes.</b></summary><br>
 
-wzxhzdk:46
+<div class="highlight"><pre><span></span><code>tail -n <span class="m">100</span> -f /path/to/logfile <span class="p">|</span> grep <span class="s2">&quot;HTTP/[1-2].[0-1]\&quot; [5]&quot;</span>
+</code></pre></div>
 
 </details>
 
@@ -2539,7 +2879,12 @@ The whole point with private keys is that they are private, meaning only you hav
 
 A better solutions is the use of ssh key forwarding. An essence, you need to create a `~/.ssh/config` file, if it doesn't exist. Then, add the hosts (either domain name or IP address in the file and set `ForwardAgent yes`). Example:
 
-wzxhzdk:47
+<div class="highlight"><pre><span></span><code>Host git.example.com
+    User john
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.git.example.com
+    ForwardAgent yes
+</code></pre></div>
 
 Your remote server must allow SSH agent forwarding on inbound connections and your local `ssh-agent` must be running.
 
@@ -2655,7 +3000,14 @@ The main features of Actives checks are as follows:
 
 For example:
 
-wzxhzdk:48
+<div class="highlight"><pre><span></span><code><span class="c1"># With -j8 - performance optimization</span>
+git clone --recurse-submodules -j8 git://github.com/foo/bar.git
+
+<span class="c1"># For already cloned repos or older Git versions</span>
+git clone git://github.com/foo/bar.git
+<span class="nb">cd</span> bar
+git submodule update --init --recursive
+</code></pre></div>
 
 </details>
 
@@ -2818,7 +3170,12 @@ Interrupt handler is the function that the kernel runs for a specific interrupt.
 
 For example:<br>
 
-wzxhzdk:49
+<div class="highlight"><pre><span></span><code><span class="c1"># cat  &gt;filename ... - overwrite file</span>
+<span class="c1"># cat &gt;&gt;filename ... - append to file</span>
+cat &gt; filename <span class="s">&lt;&lt; __EOF__</span>
+<span class="s">data data data</span>
+<span class="s">__EOF__</span>
+</code></pre></div>
 
 </details>
 
@@ -2853,7 +3210,12 @@ It provides a layer between applications and actual authentication mechanism. It
 
 For example:<br>
 
-wzxhzdk:50
+<div class="highlight"><pre><span></span><code><span class="k">while</span> inotifywait -e close_write filename <span class="p">;</span> <span class="k">do</span>
+
+  <span class="nb">echo</span> <span class="s2">&quot;changed&quot;</span> &gt;&gt; /var/log/changed
+
+<span class="k">done</span>
+</code></pre></div>
 
 </details>
 
@@ -2954,7 +3316,10 @@ If the machine is lightly loaded but running a very large number of processes, a
 
 For example:
 
-wzxhzdk:51
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="nb">read</span> -r line <span class="o">||</span> <span class="o">[[</span> -n <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">do</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Text read from file: </span><span class="nv">$line</span><span class="s2">&quot;</span>
+<span class="k">done</span> &lt; <span class="s2">&quot;/path/to/filename&quot;</span>
+</code></pre></div>
 
 Explanation:
 
@@ -2969,11 +3334,15 @@ Explanation:
 
 Debian GNU/Linux:
 
-wzxhzdk:52
+<div class="highlight"><pre><span></span><code>update-initramfs -m -k all
+update-grub
+</code></pre></div>
 
 CentOS Linux:
 
-wzxhzdk:53
+<div class="highlight"><pre><span></span><code>dracut -f
+grub2-mkconfig -o /boot/grub/grub.cfg
+</code></pre></div>
 
 </details>
 
@@ -3012,11 +3381,14 @@ Other such examples
 
 Solution 1 - with <b>extglob</b>:
 
-wzxhzdk:54
+<div class="highlight"><pre><span></span><code>shopt -s extglob
+rm !(textfile.txt|backup.tar.gz|script.php|database.sql|info.txt)
+</code></pre></div>
 
 Solution 2 - with <b>find</b>:
 
-wzxhzdk:55
+<div class="highlight"><pre><span></span><code>find . -type f -not -name &#39;*txt&#39; -print0 | xargs -0 rm --
+</code></pre></div>
 
 </details>
 
@@ -3025,7 +3397,11 @@ Solution 2 - with <b>find</b>:
 
 You can use * (wildcards) outside a case statement, too, if you use double brackets:
 
-wzxhzdk:56
+<div class="highlight"><pre><span></span><code><span class="nv">string</span><span class="o">=</span><span class="s1">&#39;some text&#39;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$string</span> <span class="o">=</span> *<span class="s2">&quot;My long&quot;</span>* <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
+  <span class="nb">true</span>
+<span class="k">fi</span>
+</code></pre></div>
 
 </details>
 
@@ -3049,11 +3425,13 @@ So, <code>command 2> error 1> output</code> becomes, <code>command 2> error > ou
 
 Warning: this will overwrite the original file:
 
-wzxhzdk:57
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s/^[ \t]*//&quot;</span> filename
+</code></pre></div>
 
 or:
 
-wzxhzdk:58
+<div class="highlight"><pre><span></span><code>sed <span class="s1">&#39;s/^[ \t]+//g&#39;</span> &lt; input &gt; output
+</code></pre></div>
 
 </details>
 
@@ -3062,11 +3440,13 @@ or:
 
 Force login with a password:
 
-wzxhzdk:59
+<div class="highlight"><pre><span></span><code>ssh -o <span class="nv">PreferredAuthentications</span><span class="o">=</span>password -o <span class="nv">PubkeyAuthentication</span><span class="o">=</span>no user@remote_host
+</code></pre></div>
 
 Force login using the key:
 
-wzxhzdk:60
+<div class="highlight"><pre><span></span><code>ssh -o <span class="nv">PreferredAuthentications</span><span class="o">=</span>publickey -o <span class="nv">PubkeyAuthentication</span><span class="o">=</span>yes -i id_rsa user@remote_host
+</code></pre></div>
 
 </details>
 
@@ -3096,7 +3476,8 @@ This was tracked down by running <code>lsof | grep "/var" | grep deleted</code> 
 
 The output showed lines like this:
 
-wzxhzdk:61
+<div class="highlight"><pre><span></span><code>httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/log/apache/awstats_log (deleted)
+</code></pre></div>
 
 The situation was then resolved by restarting apache (<code>service httpd restart</code>) and cleared of disk space, by allowing the locks on deleted files to be cleared.
 
@@ -3116,7 +3497,9 @@ The situation was then resolved by restarting apache (<code>service httpd restar
 
 1. Add these 2 lines to <code>/etc/audit/audit.rules</code>:
 
-wzxhzdk:62
+<div class="highlight"><pre><span></span><code>-a exit,always -F <span class="nv">arch</span><span class="o">=</span>b64 -F <span class="nv">euid</span><span class="o">=</span><span class="m">0</span> -S execve
+-a exit,always -F <span class="nv">arch</span><span class="o">=</span>b32 -F <span class="nv">euid</span><span class="o">=</span><span class="m">0</span> -S execve
+</code></pre></div>
 
 These will track all commands run by root (euid=0). Why two rules? The execve syscall must be tracked in both 32 and 64 bit code.
 
@@ -3124,7 +3507,8 @@ These will track all commands run by root (euid=0). Why two rules? The execve sy
 
 3. Place the line
 
-wzxhzdk:63
+<div class="highlight"><pre><span></span><code>session  required                pam_loginuid.so
+</code></pre></div>
 
 in all PAM config files that are relevant to login (<code>/etc/pam.d/{login,kdm,sshd}</code>), but not in the files that are relevant to su or sudo. This will allow auditd to get the calling user's uid correctly when calling sudo or su.
 
@@ -3132,7 +3516,14 @@ Restart your system now.
 
 Let's login and run some commands:
 
-wzxhzdk:64
+<div class="highlight"><pre><span></span><code>$ id -u
+<span class="m">1000</span>
+$ sudo ls /
+bin  boot  data  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  scratch  seLinux  srv  sys  tmp  usr  var  vmlinuz  vmlinuz.old
+$ sudo su -
+<span class="c1"># ls /etc</span>
+<span class="o">[</span>...<span class="o">]</span>
+</code></pre></div>
 
 Now read <code>/var/log/audit/auditd.log</code> for show what has been logged in.
 
@@ -3143,7 +3534,8 @@ Now read <code>/var/log/audit/auditd.log</code> for show what has been logged in
 
 Try using ionice:
 
-wzxhzdk:65
+<div class="highlight"><pre><span></span><code>ionice -c3 dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>z
+</code></pre></div>
 
 This start the <code>dd</code> process with the "idle" IO priority: it only gets disk time when no other process is using disk IO for a certain amount of time.
 
@@ -3170,28 +3562,50 @@ cpulimit if you need to run a CPU intensive job and having free CPU time is esse
 
 cgroups apply limits to a set of processes, rather than to just one:
 
-wzxhzdk:66
+<div class="highlight"><pre><span></span><code>cgcreate -g cpu:/cpulimited
+cgset -r cpu.shares=512 cpulimited
+cgexec -g cpu:cpulimited COMMAND_1
+cgexec -g cpu:cpulimited COMMAND_2
+cgexec -g cpu:cpulimited COMMAND_3
+</code></pre></div>
 
 </details>
 
 <details>
 <summary><b>How mount a temporary ram partition?</b></summary><br>
 
-wzxhzdk:67
+<div class="highlight"><pre><span></span><code><span class="c1"># -t - filesystem type</span>
+<span class="c1"># -o - mount options</span>
+mount -t tmpfs tmpfs /mnt -o <span class="nv">size</span><span class="o">=</span>64M
+</code></pre></div>
 
 </details>
 
 <details>
 <summary><b>How to kills a process that is locking a file?</b></summary><br>
 
-wzxhzdk:68
+<div class="highlight"><pre><span></span><code>fuser -k filename
+</code></pre></div>
 
 </details>
 
 <details>
 <summary><b>How to restore permission for <code>/bin/chmod</code>?</b></summary><br>
 
-wzxhzdk:69
+<div class="highlight"><pre><span></span><code><span class="c1"># 1:</span>
+cp /bin/ls chmod.01
+cp /bin/chmod chmod.01
+./chmod.01 <span class="m">700</span> file
+
+<span class="c1"># 2:</span>
+/bin/busybox chmod <span class="m">0700</span> /bin/chmod
+
+<span class="c1"># 3:</span>
+setfacl --set u::rwx,g::---,o::--- /bin/chmod
+
+<span class="c1"># 4:</span>
+/usr/lib/ld*.so /bin/chmod <span class="m">0700</span> /bin/chmod
+</code></pre></div>
 
 </details>
 
@@ -3206,7 +3620,8 @@ cgroups apply limits to a set of processes, rather than to just one:
 <details>
 <summary><b>How to check whether the private key and the certificate match?</b></summary><br>
 
-wzxhzdk:70
+<div class="highlight"><pre><span></span><code><span class="o">(</span>openssl rsa -noout -modulus -in private.key <span class="p">|</span> openssl md5 <span class="p">;</span> openssl x509 -noout -modulus -in certificate.crt <span class="p">|</span> openssl md5<span class="o">)</span> <span class="p">|</span> uniq
+</code></pre></div>
 
 </details>
 
@@ -3215,15 +3630,19 @@ cgroups apply limits to a set of processes, rather than to just one:
 
 1. Add an entry of user details in <code>/etc/passwd</code>
 
-wzxhzdk:71
+<div class="highlight"><pre><span></span><code><span class="c1"># username:password:UID:GID:Comments:Home_Directory:Login Shell</span>
+user:x:501:501:test user:/home/user:/bin/bash
+</code></pre></div>
 
 2. You will have to create a group with same name in <code>/etc/group</code>
 
-wzxhzdk:72
+<div class="highlight"><pre><span></span><code>user:x:501:
+</code></pre></div>
 
 3. Assign a password to the user
 
-wzxhzdk:73
+<div class="highlight"><pre><span></span><code>passwd user
+</code></pre></div>
 
 </details>
 
@@ -3234,55 +3653,120 @@ cgroups apply limits to a set of processes, rather than to just one:
 
 1. You can use <code>top</code> in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
 
-wzxhzdk:74
+<div class="highlight"><pre><span></span><code>top -b -p <span class="sb">`</span>pidof a.out<span class="sb">`</span>
+</code></pre></div>
 
 or
 
-wzxhzdk:75
+<div class="highlight"><pre><span></span><code>top -b -p <span class="sb">`</span>pidof a.out<span class="sb">`</span> -n <span class="m">100</span>
+</code></pre></div>
 
 2. You can use ps (for instance in a shell script):
 
-wzxhzdk:76
+<div class="highlight"><pre><span></span><code>ps --format pid,pcpu,cputime,etime,size,vsz,cmd -p <span class="sb">`</span>pidof a.out<span class="sb">`</span>
+</code></pre></div>
 
 > I need some means of recording the performance of an application on a Linux machine.
 
 1. To record performance data:
 
-wzxhzdk:77
+<div class="highlight"><pre><span></span><code>perf record -p <span class="sb">`</span>pidof a.out<span class="sb">`</span>
+</code></pre></div>
 
 or to record for 10 secs:
 
-wzxhzdk:78
+<div class="highlight"><pre><span></span><code>perf record -p <span class="sb">`</span>pidof a.out<span class="sb">`</span> sleep <span class="m">10</span>
+</code></pre></div>
 
 or to record with call graph ():
 
-wzxhzdk:79
+<div class="highlight"><pre><span></span><code>perf record -g -p <span class="sb">`</span>pidof a.out<span class="sb">`</span>
+</code></pre></div>
 
 2) To analyze the recorded data
 
-wzxhzdk:80
+<div class="highlight"><pre><span></span><code>perf report --stdio
+perf report --stdio --sort<span class="o">=</span>dso -g none
+perf report --stdio -g none
+perf report --stdio -g
+</code></pre></div>
 
 <b>This is an example of profiling a test program</b>
 
 1. I run my test program (c++):
 
-wzxhzdk:81
+<div class="highlight"><pre><span></span><code>./my_test <span class="m">100000000</span>
+</code></pre></div>
 
 2. Then I record performance data of a running process:
 
-wzxhzdk:82
+<div class="highlight"><pre><span></span><code>perf record -g  -p <span class="sb">`</span>pidof my_test<span class="sb">`</span> -o ./my_test.perf.data sleep <span class="m">30</span>
+</code></pre></div>
 
 3. Then I analyze load per module:
 
-wzxhzdk:83
+<div class="highlight"><pre><span></span><code>perf report --stdio -g none --sort comm,dso -i ./my_test.perf.data
+
+<span class="c1"># Overhead  Command                 Shared Object</span>
+<span class="c1"># ........  .......  ............................</span>
+<span class="c1">#</span>
+    <span class="m">70</span>.06%  my_test  my_test
+    <span class="m">28</span>.33%  my_test  libtcmalloc_minimal.so.0.1.0
+     <span class="m">1</span>.61%  my_test  <span class="o">[</span>kernel.kallsyms<span class="o">]</span>
+</code></pre></div>
 
 4. Then load per function is analyzed:
 
-wzxhzdk:84
+<div class="highlight"><pre><span></span><code>perf report --stdio -g none -i ./my_test.perf.data <span class="p">|</span> c++filt
+
+<span class="c1"># Overhead  Command                 Shared Object                       Symbol</span>
+<span class="c1"># ........  .......  ............................  ...........................</span>
+<span class="c1">#</span>
+    <span class="m">29</span>.30%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> f2<span class="o">(</span>long<span class="o">)</span>
+    <span class="m">29</span>.14%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> f1<span class="o">(</span>long<span class="o">)</span>
+    <span class="m">15</span>.17%  my_test  libtcmalloc_minimal.so.0.1.0  <span class="o">[</span>.<span class="o">]</span> operator new<span class="o">(</span>unsigned long<span class="o">)</span>
+    <span class="m">13</span>.16%  my_test  libtcmalloc_minimal.so.0.1.0  <span class="o">[</span>.<span class="o">]</span> operator delete<span class="o">(</span>void*<span class="o">)</span>
+     <span class="m">9</span>.44%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> process_request<span class="o">(</span>long<span class="o">)</span>
+     <span class="m">1</span>.01%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> operator delete<span class="o">(</span>void*<span class="o">)</span>@plt
+     <span class="m">0</span>.97%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> operator new<span class="o">(</span>unsigned long<span class="o">)</span>@plt
+     <span class="m">0</span>.20%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> main
+     <span class="m">0</span>.19%  my_test  <span class="o">[</span>kernel.kallsyms<span class="o">]</span>             <span class="o">[</span>k<span class="o">]</span> apic_timer_interrupt
+     <span class="m">0</span>.16%  my_test  <span class="o">[</span>kernel.kallsyms<span class="o">]</span>             <span class="o">[</span>k<span class="o">]</span> _spin_lock
+     <span class="m">0</span>.13%  my_test  <span class="o">[</span>kernel.kallsyms<span class="o">]</span>             <span class="o">[</span>k<span class="o">]</span> native_write_msr_safe
+
+  ...
+</code></pre></div>
 
 5. Then call chains are analyzed:
 
-wzxhzdk:85
+<div class="highlight"><pre><span></span><code>perf report --stdio -g graph -i ./my_test.perf.data <span class="p">|</span> c++filt
+
+<span class="c1"># Overhead  Command                 Shared Object                       Symbol</span>
+<span class="c1"># ........  .......  ............................  ...........................</span>
+<span class="c1">#</span>
+    <span class="m">29</span>.30%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> f2<span class="o">(</span>long<span class="o">)</span>
+            <span class="p">|</span>
+            --- f2<span class="o">(</span>long<span class="o">)</span>
+               <span class="p">|</span>
+                --29.01%-- process_request<span class="o">(</span>long<span class="o">)</span>
+                          main
+                          __libc_start_main
+
+    <span class="m">29</span>.14%  my_test  my_test                       <span class="o">[</span>.<span class="o">]</span> f1<span class="o">(</span>long<span class="o">)</span>
+            <span class="p">|</span>
+            --- f1<span class="o">(</span>long<span class="o">)</span>
+               <span class="p">|</span>
+               <span class="p">|</span>--15.05%-- process_request<span class="o">(</span>long<span class="o">)</span>
+               <span class="p">|</span>          main
+               <span class="p">|</span>          __libc_start_main
+               <span class="p">|</span>
+                --13.79%-- f2<span class="o">(</span>long<span class="o">)</span>
+                          process_request<span class="o">(</span>long<span class="o">)</span>
+                          main
+                          __libc_start_main
+
+  ...
+</code></pre></div>
 
 So at this point you know where your program spends time.
 
@@ -3290,19 +3774,23 @@ Also the simple way to do app profile is to use the <code>pstack</code> utility 
 
 Other tool is Valgrind. So this is what I recommend. Run program first:
 
-wzxhzdk:86
+<div class="highlight"><pre><span></span><code>valgrind --tool<span class="o">=</span>callgrind --dump-instr<span class="o">=</span>yes -v --instr-atstart<span class="o">=</span>no ./binary &gt; tmp
+</code></pre></div>
 
 Now when it works and we want to start profiling we should run in another window:
 
-wzxhzdk:87
+<div class="highlight"><pre><span></span><code>callgrind_control -i on
+</code></pre></div>
 
 This turns profiling on. To turn it off and stop whole task we might use:
 
-wzxhzdk:88
+<div class="highlight"><pre><span></span><code>callgrind_control -k
+</code></pre></div>
 
 Now we have some files named callgrind.out.* in current directory. To see profiling results use:
 
-wzxhzdk:89
+<div class="highlight"><pre><span></span><code>kcachegrind callgrind.out.*
+</code></pre></div>
 
 I recommend in next window to click on "Self" column header, otherwise it shows that "main()" is most time consuming task.
 
@@ -3320,7 +3808,8 @@ People who go on about shell command line quoting and character escaping are alm
 
 The most portable solution:
 
-wzxhzdk:90
+<div class="highlight"><pre><span></span><code>rm ./-fr
+</code></pre></div>
 
 </details>
 
@@ -3357,7 +3846,8 @@ To be completed.
 <summary><b>Use tcpdump to capture FTP traffic for both active and passive FTP
 sessions.</b></summary><br>
 
-wzxhzdk:91
+<div class="highlight"><pre><span></span><code>tcpdump <span class="s1">&#39;(port ftp or ftp-data)&#39;</span>
+</code></pre></div>
 
 
 </details>
@@ -3414,11 +3904,19 @@ or more violently:<br>
 
 With <b>OpenSSL</b>:
 
-wzxhzdk:92
+<div class="highlight"><pre><span></span><code><span class="c1"># Testing connection to remote host (with SNI support)</span>
+<span class="nb">echo</span> <span class="p">|</span> openssl s_client -showcerts -servername google.com -connect google.com:443
+<span class="c1"># Testing connection to remote host (without SNI support)</span>
+<span class="nb">echo</span> <span class="p">|</span> openssl s_client -connect google.com:443 -showcerts
+</code></pre></div>
 
 With <b>GnuTLS</b>:
 
-wzxhzdk:93
+<div class="highlight"><pre><span></span><code><span class="c1"># Testing connection to remote host (with SNI support)</span>
+gnutls-cli -p <span class="m">443</span> google.com
+<span class="c1"># Testing connection to remote host (without SNI support)</span>
+gnutls-cli --disable-sni -p <span class="m">443</span> google.com
+</code></pre></div>
 
 </details>
 
@@ -3454,15 +3952,21 @@ But we have some good tools for testing this.
 
 With <b>ssh</b>:
 
-wzxhzdk:94
+<div class="highlight"><pre><span></span><code>ssh user1@remote1 <span class="s1">&#39;ssh user2@remote2 &quot;cat file&quot;&#39;</span> &gt; file
+</code></pre></div>
 
 With <b>tar</b> (with compression):
 
-wzxhzdk:95
+<div class="highlight"><pre><span></span><code>ssh user1@remote1 <span class="s1">&#39;ssh user2@remote2 &quot;cd path2; tar cj file&quot;&#39;</span> <span class="p">|</span> tar xj
+</code></pre></div>
 
 With <b>ssh</b> and port forwarding tunnel:
 
-wzxhzdk:96
+<div class="highlight"><pre><span></span><code><span class="c1"># First, open the tunnel</span>
+ssh -L <span class="m">1234</span>:remote2:22 -p <span class="m">45678</span> user1@remote1
+<span class="c1"># Then, use the tunnel to copy the file directly from remote2</span>
+scp -P <span class="m">1234</span> user2@localhost:file .
+</code></pre></div>
 
 </details>
 
@@ -3521,7 +4025,18 @@ So any site can make a request to your site on behalf of their visitors and proc
 <details>
 <summary><b>Create a single-use TCP or UDP proxy with Netcat.</b></summary><br>
 
-wzxhzdk:97
+<div class="highlight"><pre><span></span><code><span class="c1">### TCP -&gt; TCP</span>
+nc -l -p <span class="m">2000</span> -c <span class="s2">&quot;nc [ip|hostname] 3000&quot;</span>
+
+<span class="c1">### TCP -&gt; UDP</span>
+nc -l -p <span class="m">2000</span> -c <span class="s2">&quot;nc -u [ip|hostname] 3000&quot;</span>
+
+<span class="c1">### UDP -&gt; UDP</span>
+nc -l -u -p <span class="m">2000</span> -c <span class="s2">&quot;nc -u [ip|hostname] 3000&quot;</span>
+
+<span class="c1">### UDP -&gt; TCP</span>
+nc -l -u -p <span class="m">2000</span> -c <span class="s2">&quot;nc [ip|hostname] 3000&quot;</span>
+</code></pre></div>
 
 </details>
 
@@ -3530,25 +4045,32 @@ So any site can make a request to your site on behalf of their visitors and proc
 
 1. Use Decoy addresses
 
-wzxhzdk:98
+<div class="highlight"><pre><span></span><code><span class="c1"># Generates a random number of decoys.</span>
+nmap -D RND:10 <span class="o">[</span>target<span class="o">]</span>
+<span class="c1"># Manually specify the IP addresses of the decoys.</span>
+nmap -D decoy1,decoy2,decoy3
+</code></pre></div>
 
 In this type of scan you can instruct Nmap to spoof packets from other hosts.In the firewall logs it will be not only our IP address but also and the IP addresses of the decoys so it will be much harder to determine from which system the scan started.
 
 2. Source port number specification
 
-wzxhzdk:99
+<div class="highlight"><pre><span></span><code>nmap --source-port <span class="m">53</span> <span class="o">[</span>target<span class="o">]</span>
+</code></pre></div>
 
 A common error that many administrators are doing when configuring firewalls is to set up a rule to allow all incoming traffic that comes from a specific port number.The <code>--source-port</code> option of Nmap can be used to exploit this misconfiguration.Common ports that you can use for this type of scan are: 20, 53 and 67.
 
 3. Append Random Data
 
-wzxhzdk:100
+<div class="highlight"><pre><span></span><code>nmap --data-length <span class="m">25</span> <span class="o">[</span>target<span class="o">]</span>
+</code></pre></div>
 
 Many firewalls are inspecting packets by looking at their size in order to identify a potential port scan.This is because many scanners are sending packets that have specific size.In order to avoid that kind of detection you can use the command <code>--data-length</code> to add additional data and to send packets with different size than the default.
 
 4. TCP ACK Scan
 
-wzxhzdk:101
+<div class="highlight"><pre><span></span><code>nmap -sA <span class="o">[</span>target<span class="o">]</span>
+</code></pre></div>
 
 It is always good to send the ACK packets rather than the SYN packets because if there is any active firewall working on the remote computer then because of the ACK packets the firewall cannot create the log, since firewalls treat ACK packet as the response of the SYN packet.
 
@@ -3568,7 +4090,8 @@ If you want to view only packets that come to your interface you should:
 
 Both params set send/receive direction direction for which packets should be captured.
 
-wzxhzdk:102
+<div class="highlight"><pre><span></span><code>tcpdump -nei eth0 -Q in host <span class="m">192</span>.168.252.125 and port <span class="m">8080</span>
+</code></pre></div>
 
 </details>
 
@@ -3663,15 +4186,19 @@ Example:
 
 Just imagine that you do something like:
 
-wzxhzdk:103
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;random_string&quot;</span> &gt; /tmp/temp-file
+</code></pre></div>
 
 in your root-running script. And someone (who has read your script) does
 
-wzxhzdk:104
+<div class="highlight"><pre><span></span><code>ln -s /etc/passwd /tmp/temp-file
+</code></pre></div>
 
 The <code>mktemp</code> command could help you in this situation:
 
-wzxhzdk:105
+<div class="highlight"><pre><span></span><code><span class="nv">TEMP</span><span class="o">=</span><span class="k">$(</span>mktemp /tmp/temp-file.XXXXXXXX<span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&quot;random_string&quot;</span> &gt; <span class="si">${</span><span class="nv">TEMP</span><span class="si">}</span>
+</code></pre></div>
 
 Now this <code>ln /etc/passwd</code> attack will not work.
 
@@ -3682,7 +4209,16 @@ Now this <code>ln /etc/passwd</code> attack will not work.
 
 For example:
 
-wzxhzdk:106
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/bash</span>
+
+<span class="k">for</span> iface in <span class="k">$(</span>ls /sys/class/net/ <span class="p">|</span> grep -v lo<span class="k">)</span> <span class="p">;</span> <span class="k">do</span>
+
+  <span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>cat /sys/class/net/<span class="nv">$iface</span>/carrier<span class="k">)</span> <span class="o">=</span> <span class="m">1</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span> <span class="nv">state</span><span class="o">=</span><span class="m">1</span> <span class="p">;</span> <span class="k">fi</span>
+
+<span class="k">done</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$state</span> -ne <span class="m">0</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;not connection&quot;</span> &gt; /dev/stderr <span class="p">;</span> <span class="nb">exit</span> <span class="p">;</span> <span class="k">fi</span>
+</code></pre></div>
 
 </details>
 
@@ -3691,7 +4227,8 @@ For example:
 
 Every poll is recorded in the shared memory log as follows:
 
-wzxhzdk:107
+<div class="highlight"><pre><span></span><code><span class="m">0</span> Backend_health - b0 Still healthy <span class="m">4</span>--X-S-RH <span class="m">9</span> <span class="m">8</span> <span class="m">10</span> <span class="m">0</span>.029291 <span class="m">0</span>.030875 HTTP/1.1 <span class="m">200</span> Ok
+</code></pre></div>
 
 The fields are:
 
@@ -3731,7 +4268,23 @@ Notice that the second word indicates present state, and the first word == "Stil
 
 You just need to write a Nginx rewrite rule with HTTP status code <b>307</b> or <b>308</b>:
 
-wzxhzdk:108
+<div class="highlight"><pre><span></span><code>location / <span class="o">{</span>
+    proxy_pass              http://localhost:80<span class="p">;</span>
+    client_max_body_size    10m<span class="p">;</span>
+<span class="o">}</span>
+
+location /api <span class="o">{</span>
+    <span class="c1"># HTTP 307 only for POST method.</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$request_method</span> <span class="o">=</span> POST<span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="m">307</span> https://api.example.com?request_uri<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1"># You can keep this for non-POST requests.</span>
+    rewrite ^ https://api.example.com?request_uri permanent<span class="p">;</span>
+
+    client_max_body_size    10m<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div>
 
 HTTP Status code 307 or 308 should be used instead of 301 because it changes the request method from POST to GET.
 
@@ -3740,7 +4293,18 @@ HTTP Status code 307 or 308 should be used instead of 301 because it changes the
 <details>
 <summary><b>Developer reports a problem with connectivity to the remote service. Use <code>/dev</code> for troubleshooting.</b></summary><br>
 
-wzxhzdk:109
+<div class="highlight"><pre><span></span><code><span class="c1"># &lt;host&gt; - set remote host</span>
+<span class="c1"># &lt;port&gt; - set destination port</span>
+
+<span class="c1"># 1</span>
+timeout <span class="m">1</span> bash -c <span class="s2">&quot;&lt;/dev/tcp/&lt;host&gt;/&lt;port&gt;&quot;</span> &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+
+<span class="c1"># 2</span>
+timeout <span class="m">1</span> bash -c <span class="s1">&#39;cat &lt; /dev/null &gt; &lt;/dev/tcp/&lt;host&gt;/&lt;port&gt;&#39;</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+
+<span class="c1"># 2</span>
+<span class="p">&amp;</span>&gt; <span class="nb">echo</span> &gt; <span class="s2">&quot;&lt;/dev/tcp/&lt;host&gt;/&lt;port&gt;&quot;</span>
+</code></pre></div>
 
 Useful resources:
 
@@ -3757,11 +4321,20 @@ cURL supports formatted output for the details of the request (see the cURL manp
 
 1. Create a new file, curl-format.txt, and paste in:
 
-wzxhzdk:110
+<div class="highlight"><pre><span></span><code>    time_namelookup:  %<span class="o">{</span>time_namelookup<span class="o">}</span><span class="se">\n</span>
+       time_connect:  %<span class="o">{</span>time_connect<span class="o">}</span><span class="se">\n</span>
+    time_appconnect:  %<span class="o">{</span>time_appconnect<span class="o">}</span><span class="se">\n</span>
+   time_pretransfer:  %<span class="o">{</span>time_pretransfer<span class="o">}</span><span class="se">\n</span>
+      time_redirect:  %<span class="o">{</span>time_redirect<span class="o">}</span><span class="se">\n</span>
+ time_starttransfer:  %<span class="o">{</span>time_starttransfer<span class="o">}</span><span class="se">\n</span>
+                    ----------<span class="se">\n</span>
+         time_total:  %<span class="o">{</span>time_total<span class="o">}</span><span class="se">\n</span>
+</code></pre></div>
 
 2. Make a request:
 
-wzxhzdk:111
+<div class="highlight"><pre><span></span><code>curl -w <span class="s2">&quot;@curl-format.txt&quot;</span> -o /dev/null -s <span class="s2">&quot;http://example.com/&quot;</span>
+</code></pre></div>
 
 What this does:
 
@@ -3777,11 +4350,51 @@ What this does:
 
 To match a list of domain and subdomain this regex make it ease to work with fonts:
 
-wzxhzdk:112
+<div class="highlight"><pre><span></span><code>location ~* <span class="se">\.</span><span class="o">(</span>?:ttf<span class="p">|</span>ttc<span class="p">|</span>otf<span class="p">|</span>eot<span class="p">|</span>woff<span class="p">|</span>woff2<span class="o">)</span>$ <span class="o">{</span>
+   <span class="k">if</span> <span class="o">(</span> <span class="nv">$http_origin</span> ~* <span class="o">(</span>https?://<span class="o">(</span>.+<span class="se">\.</span><span class="o">)</span>?<span class="o">(</span>domain1<span class="p">|</span>domain2<span class="p">|</span>domain3<span class="o">)</span><span class="se">\.</span><span class="o">(</span>?:me<span class="p">|</span>co<span class="p">|</span>com<span class="o">)</span>$<span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+      add_header <span class="s2">&quot;Access-Control-Allow-Origin&quot;</span> <span class="s2">&quot;</span><span class="nv">$http_origin</span><span class="s2">&quot;</span><span class="p">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 
 More sligtly configuration:
 
-wzxhzdk:113
+<div class="highlight"><pre><span></span><code>location / <span class="o">{</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$http_origin</span> ~* <span class="o">(</span>^https?://<span class="o">([</span>^/<span class="o">]</span>+<span class="se">\.</span><span class="o">)</span>*<span class="o">(</span>domainone<span class="p">|</span>domaintwo<span class="o">)</span><span class="se">\.</span>com$<span class="o">))</span> <span class="o">{</span>
+        <span class="nb">set</span> <span class="nv">$cors</span> <span class="s2">&quot;true&quot;</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1"># Nginx doesn&#39;t support nested If statements. This is where things get slightly nasty.</span>
+    <span class="c1"># Determine the HTTP request method used</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$request_method</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nb">set</span> <span class="nv">$cors</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">cors</span><span class="si">}</span><span class="s2">get&quot;</span><span class="p">;</span>
+    <span class="o">}</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$request_method</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nb">set</span> <span class="nv">$cors</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">cors</span><span class="si">}</span><span class="s2">post&quot;</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$cors</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1"># Catch all incase there&#39;s a request method we&#39;re not dealing with properly</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span> <span class="s2">&quot;</span><span class="nv">$http_origin</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$cors</span> <span class="o">=</span> <span class="s2">&quot;trueget&quot;</span><span class="o">)</span> <span class="o">{</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span> <span class="s2">&quot;</span><span class="nv">$http_origin</span><span class="s2">&quot;</span><span class="p">;</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Credentials&#39;</span> <span class="s1">&#39;true&#39;</span><span class="p">;</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Methods&#39;</span> <span class="s1">&#39;GET, POST, OPTIONS&#39;</span><span class="p">;</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Headers&#39;</span> <span class="s1">&#39;DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type&#39;</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$cors</span> <span class="o">=</span> <span class="s2">&quot;truepost&quot;</span><span class="o">)</span> <span class="o">{</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span> <span class="s2">&quot;</span><span class="nv">$http_origin</span><span class="s2">&quot;</span><span class="p">;</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Credentials&#39;</span> <span class="s1">&#39;true&#39;</span><span class="p">;</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Methods&#39;</span> <span class="s1">&#39;GET, POST, OPTIONS&#39;</span><span class="p">;</span>
+        add_header <span class="s1">&#39;Access-Control-Allow-Headers&#39;</span> <span class="s1">&#39;DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type&#39;</span><span class="p">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div>
 
 </details>
 
@@ -3817,15 +4430,39 @@ The name under which the file was opened is still visible in the target of the s
 
 Thus you can recover the content of an open deleted file given the PID of a process that has it open and the descriptor that it's opened on like this:
 
-wzxhzdk:114
+<div class="highlight"><pre><span></span><code>recover_open_deleted_file <span class="o">()</span> <span class="o">{</span>
+  <span class="nv">old_name</span><span class="o">=</span><span class="k">$(</span>readlink <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="k">)</span>
+  <span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$old_name</span><span class="s2">&quot;</span> in
+    *<span class="s1">&#39; (deleted)&#39;</span><span class="o">)</span>
+      <span class="nv">old_name</span><span class="o">=</span><span class="si">${</span><span class="nv">old_name</span><span class="p">%</span><span class="s1">&#39; (deleted)&#39;</span><span class="si">}</span>
+      <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;</span><span class="nv">$old_name</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">new_name</span><span class="o">=</span><span class="k">$(</span><span class="nv">TMPDIR</span><span class="o">=</span><span class="si">${</span><span class="nv">old_name</span><span class="p">%/*</span><span class="si">}</span> mktemp<span class="k">)</span>
+        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$oldname</span><span class="s2"> has been replaced, recovering content to </span><span class="nv">$new_name</span><span class="s2">&quot;</span>
+      <span class="k">else</span>
+        <span class="nv">new_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$old_name</span><span class="s2">&quot;</span>
+      <span class="k">fi</span>
+      cat &lt;<span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> &gt;<span class="s2">&quot;</span><span class="nv">$new_name</span><span class="s2">&quot;</span><span class="p">;;</span>
+    *<span class="o">)</span> <span class="nb">echo</span> <span class="s2">&quot;File is not deleted, doing nothing&quot;</span><span class="p">;;</span>
+  <span class="k">esac</span>
+<span class="o">}</span>
+recover_open_deleted_file <span class="s2">&quot;/proc/</span><span class="nv">$pid</span><span class="s2">/fd/</span><span class="nv">$fd</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 If you only know the process ID but not the descriptor, you can recover all files with:
 
-wzxhzdk:115
+<div class="highlight"><pre><span></span><code><span class="k">for</span> x in /proc/<span class="nv">$pid</span>/fd/* <span class="p">;</span> <span class="k">do</span>
+  recover_open_deleted_file <span class="s2">&quot;</span><span class="nv">$x</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
 
 If you don't know the process ID either, you can search among all processes:
 
-wzxhzdk:116
+<div class="highlight"><pre><span></span><code><span class="k">for</span> x in /proc/<span class="o">[</span><span class="m">1</span>-9<span class="o">]</span>*/fd/* <span class="p">;</span> <span class="k">do</span>
+  <span class="k">case</span> <span class="k">$(</span>readlink <span class="s2">&quot;</span><span class="nv">$x</span><span class="s2">&quot;</span><span class="k">)</span> in
+    /var/log/apache/*<span class="o">)</span> recover_open_deleted_file <span class="s2">&quot;</span><span class="nv">$x</span><span class="s2">&quot;</span><span class="p">;;</span>
+  <span class="k">esac</span>
+<span class="k">done</span>
+</code></pre></div>
 
 You can also obtain this list by parsing the output of lsof, but it isn't simpler nor more reliable nor more portable (this is Linux-specific anyhow).
 
@@ -3840,59 +4477,81 @@ On the example of the Debian GNU/Linux distribution.
 
 1. Creating a working directory and downloading the system using the debootstrap tool.
 
-wzxhzdk:117
+<div class="highlight"><pre><span></span><code><span class="nv">_working_directory</span><span class="o">=</span><span class="s2">&quot;/mnt/system&quot;</span>
+mkdir <span class="nv">$_working_directory</span>
+debootstrap --verbose --arch amd64 <span class="o">{</span>wheezy<span class="p">|</span>jessie<span class="o">}</span> . http://ftp.en.debian.org/debian
+</code></pre></div>
 
 2. Mounting sub-systems: <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code>.
 
-wzxhzdk:118
+<div class="highlight"><pre><span></span><code><span class="k">for</span> i in proc sys dev dev/pts <span class="p">;</span> <span class="k">do</span> mount -o <span class="nb">bind</span> <span class="nv">$i</span> <span class="nv">$_working_directory</span>/<span class="nv">$i</span> <span class="p">;</span> <span class="k">done</span>
+</code></pre></div>
 
 3. Copy system backup for restore.
 
-wzxhzdk:119
+<div class="highlight"><pre><span></span><code>cp system_backup_22012015.tgz <span class="nv">$_working_directory</span>/mnt
+</code></pre></div>
 
 However, it is better not to waste space and do it in a different way (assuming that the copy is in <code>/mnt/backup</code>):
 
-wzxhzdk:120
+<div class="highlight"><pre><span></span><code><span class="nv">_backup_directory</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">_working_directory</span><span class="si">}</span><span class="s2">/mnt/backup&quot;</span>
+mkdir <span class="nv">$_backup_directory</span> <span class="o">&amp;&amp;</span> mount --bind /mnt/backup <span class="nv">$_backup_directory</span>
+</code></pre></div>
 
 4. Chroot to "new" system.
 
-wzxhzdk:121
+<div class="highlight"><pre><span></span><code>chroot <span class="nv">$_working_directory</span> /bin/bash
+</code></pre></div>
 
 5. Updating information about mounted devices.
 
-wzxhzdk:122
+<div class="highlight"><pre><span></span><code>grep -v rootfs /proc/mounts &gt; /etc/mtab
+</code></pre></div>
 
 6. In the "new" system, the next thing to do is mount the disk on which the "old" system is located (e.g. <code>/dev/sda1</code>).
 
-wzxhzdk:123
+<div class="highlight"><pre><span></span><code><span class="nv">_working_directory</span><span class="o">=</span><span class="s2">&quot;/mnt/old_system&quot;</span>
+<span class="nv">_backup_directory</span><span class="o">=</span><span class="s2">&quot;/mnt/backup&quot;</span>
+mkdir <span class="nv">$_working_directory</span> <span class="o">&amp;&amp;</span> mount /dev/sda1 <span class="nv">$_working_directory</span>
+</code></pre></div>
 
 7. Remove all files of the old system.
 
-wzxhzdk:124
+<div class="highlight"><pre><span></span><code><span class="k">for</span> i in <span class="k">$(</span>ls <span class="p">|</span> awk <span class="s1">&#39;!(/proc/ || /dev/ || /sys/ || /mnt/)&#39;</span><span class="k">)</span> <span class="p">;</span> <span class="k">do</span> rm -fr <span class="nv">$i</span> <span class="p">;</span> <span class="k">done</span>
+</code></pre></div>
 
 8. The next step is to restore the system from a backup.
 
-wzxhzdk:125
+<div class="highlight"><pre><span></span><code>tar xzvfp <span class="nv">$_backup_directory</span>/system_backup_22012015.tgz -C <span class="nv">$_working_directory</span>
+</code></pre></div>
 
 9. And mount <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code> in a new working directory.
 
-wzxhzdk:126
+<div class="highlight"><pre><span></span><code><span class="k">for</span> i in proc sys dev dev/pts <span class="p">;</span> <span class="k">do</span> mount -o <span class="nb">bind</span> <span class="nv">$i</span> <span class="nv">$_working_directory</span>/<span class="nv">$i</span> <span class="p">;</span> <span class="k">done</span>
+</code></pre></div>
 
 10. Install and update grub configuration.
 
-wzxhzdk:127
+<div class="highlight"><pre><span></span><code>chroot <span class="nv">$_working_directory</span> /bin/bash -c <span class="s2">&quot;grub-install --no-floppy --root-directory=/ /dev/sda&quot;</span>
+chroot <span class="nv">$_working_directory</span> /bin/bash -c <span class="s2">&quot;update-grub&quot;</span>
+</code></pre></div>
 
 11. Unmount <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code> filesystems.
 
-wzxhzdk:128
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+grep <span class="nv">$_working_directory</span> /proc/mounts <span class="p">|</span> cut -f2 -d <span class="s2">&quot; &quot;</span> <span class="p">|</span> sort -r <span class="p">|</span> xargs umount -n
+</code></pre></div>
 
 None of the available commands, i.e. <code>halt</code>, <code>shutdown</code> or <code>reboot</code>, will work. You need to reload the system configuration - to do this, use the <b>kernel debugger</b> (without the 'b' option):
 
-wzxhzdk:129
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/kernel/sysrq
+<span class="nb">echo</span> reisu &gt; /proc/sysrq-trigger
+</code></pre></div>
 
 Of course, it is recommended to fully restart the machine in order to completely load the current system. To do this:
 
-wzxhzdk:130
+<div class="highlight"><pre><span></span><code>sync <span class="p">;</span> reboot -f
+</code></pre></div>
 
 </details>
 
@@ -3911,35 +4570,42 @@ The primary goal is to kill the least number of processes that minimizes the dam
 
 To facilitate this, the kernel maintains an <code>oom_score</code> for each of the processes. You can see the oom_score of each of the processes in the /proc filesystem under the pid directory.
 
-wzxhzdk:131
+<div class="highlight"><pre><span></span><code>cat /proc/10292/oom_score
+</code></pre></div>
 
 The higher the value of <code>oom_score</code> of any process, the higher is its likelihood of getting killed by the OOM Killer in an out-of-memory situation.
 
 If you want to create a special control group containing the list of processes which should be the first to receive the OOM killer's attention, create a directory under <code>/mnt/oom-killer</code> to represent it:
 
-wzxhzdk:132
+<div class="highlight"><pre><span></span><code>mkdir lambs
+</code></pre></div>
 
 Set <code>oom.priority</code> to a value high enough:
 
-wzxhzdk:133
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="m">256</span> &gt; /mnt/oom-killer/lambs/oom.priority
+</code></pre></div>
 
 <code>oom.priority</code> is a 64-bit unsigned integer, and can have a maximum value an nsigned 64-bit number can hold. While scanning for the process to be killed, the OOM-killer selects a process from the list of tasks with the highest <code>oom.priority</code> value.
 
 Add the PID of the process to be added to the list of tasks:
 
-wzxhzdk:134
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> &lt;pid&gt; &gt; /mnt/oom-killer/lambs/tasks
+</code></pre></div>
 
 To create a list of processes, which will not be killed by the OOM-killer, make a directory to contain the processes:
 
-wzxhzdk:135
+<div class="highlight"><pre><span></span><code>mkdir invincibles
+</code></pre></div>
 
 Setting <code>oom.priority</code> to zero makes all the process in this cgroup to be excluded from the list of target processes to be killed.
 
-wzxhzdk:136
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="m">0</span> &gt; /mnt/oom-killer/invincibles/oom.priority
+</code></pre></div>
 
 To add more processes to this group, add the pid of the task to the list of tasks in the invincible group:
 
-wzxhzdk:137
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> &lt;pid&gt; &gt; /mnt/oom-killer/invincibles/tasks
+</code></pre></div>
 
 </details>
 
@@ -3952,7 +4618,8 @@ For example, if a user uses the same password on two different systems, if they 
 
 The encrypted passwords in <code>/etc/shadow</code> file are stored in the following format:
 
-wzxhzdk:138
+<div class="highlight"><pre><span></span><code><span class="nv">$ID$SALT$ENCRYPTED</span>
+</code></pre></div>
 
 The <code>$ID</code> indicates the type of encryption, the <code>$SALT</code> is a random (up to 16 characters) string and <code>$ENCRYPTED</code> is a password’s hash.
 
@@ -3983,20 +4650,20 @@ Use the below commands from the Linux shell to generate hashed password for <cod
 
 - Generate <b>MD5</b> password hash
 
-wzxhzdk:139
+<div class="highlight"><pre><span></span><code>python -c <span class="s2">&quot;import random,string,crypt; randomsalt = &#39;&#39;.join(random.sample(string.ascii_letters,8)); print crypt.crypt(&#39;MySecretPassword&#39;, &#39;\$1\$%s\$&#39; % randomsalt)&quot;</span>
+</code></pre></div>
 
 - Generate <b>SHA-256</b> password hash
 
-wzxhzdk:140
+<div class="highlight"><pre><span></span><code>python -c <span class="s2">&quot;import random,string,crypt; randomsalt = &#39;&#39;.join(random.sample(string.ascii_letters,8)); print crypt.crypt(&#39;MySecretPassword&#39;, &#39;\$5\$%s\$&#39; % randomsalt)&quot;</span>
+</code></pre></div>
 
 - Generate <b>SHA-512</b> password hash
 
-wzxhzdk:141
+<div class="highlight"><pre><span></span><code>python -c <span class="s2">&quot;import random,string,crypt; randomsalt = &#39;&#39;.join(random.sample(string.ascii_letters,8)); print crypt.crypt(&#39;MySecretPassword&#39;, &#39;\$6\$%s\$&#39; % randomsalt)&quot;</span>
+</code></pre></div>
 
 </details>
-                
-                  
-                
                 
               
               
@@ -4013,34 +4680,34 @@ Use the below commands from the Linux shell to generate hashed password for <cod
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../../advanced_markdown/" title="高级markdown" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="./" title="linux 系统管理" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                高级markdown
-              </span>
+                linux 系统管理
+              </div>
             </div>
           </a>
         
         
-          <a href="../../notes/git/" title="git 入门教程" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../../notes/git/" title="git 入门教程" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
                 git 入门教程
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -4055,11 +4722,10 @@ Use the below commands from the Linux shell to generate hashed password for <cod
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -4068,26 +4734,18 @@ Use the below commands from the Linux shell to generate hashed password for <cod
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

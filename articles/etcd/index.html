@@ -1,50 +1,29 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/articles/etcd/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
-        <title>Etcd - Blog</title>
+        <title>ETCD - Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#_1" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#etcd" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Etcd
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              ETCD
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -303,13 +287,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -382,13 +372,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -495,13 +491,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -543,13 +545,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -561,8 +569,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -603,6 +611,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -619,20 +639,34 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">目录</label>
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#etcd_1" class="md-nav__link">
+    etcd 功能点分析
+  </a>
+  
+    <nav class="md-nav" aria-label="etcd 功能点分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     读取
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
@@ -648,6 +682,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#wal" class="md-nav__link">
+    WAL
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -655,28 +696,35 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    调优
+    代码流程
   </a>
   
-    <nav class="md-nav">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    分析调优
+  </a>
+  
+    <nav class="md-nav" aria-label="分析调优">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     超时时间参数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     磁盘
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     网络
   </a>
   
@@ -687,9 +735,81 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#thinking" class="md-nav__link">
+    thinking
+  </a>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    基本命令
+  </a>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    编译运行
+  </a>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#etcd3" class="md-nav__link">
+    ETCD3
+  </a>
+  
+    <nav class="md-nav" aria-label="ETCD3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kv-api" class="md-nav__link">
+    KV-API 保证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apis" class="md-nav__link">
+    需要考虑的 APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd_2" class="md-nav__link">
+    ETCD 特殊的定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    提供的保证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    misc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcdv2v3" class="md-nav__link">
+    ETCD迁移应用程序v2到v3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
@@ -704,19 +824,23 @@
               
                 
                 
-                  <h1>Etcd</h1>
+                  
                 
-                <p>etcd 详细流程：
-1. 读取（Linearizable/Serializable）
-2. 写入
-3. 通信流程（授权）
-5. watch（lease）
-5. Snapshot
-6. WAL
-7. BoltDB
-8. Raft
-9. Leaner</p>
-<h2 id="_1">读取</h2>
+                
+                <h1 id="etcd">ETCD</h1>
+<h2 id="etcd_1">etcd 功能点分析</h2>
+<ol>
+<li>读取（Linearizable/Serializable）</li>
+<li>写入</li>
+<li>通信流程（授权）</li>
+<li>watch（lease）</li>
+<li>Snapshot</li>
+<li>WAL</li>
+<li>BoltDB</li>
+<li>Raft</li>
+<li>Leaner</li>
+</ol>
+<h3 id="_1">读取</h3>
 <h3 id="_2">客户端配置</h3>
 <ul>
 <li><strong>线性化读取</strong>：对于发送给任何一个节点（leader或者follower），则在这个节点上处理。linearizableReadNotify发送通知给协程linearizableReadLoop，然后在这个协程中处理读取请求，首先会读取最新的 index，然后等待这个节点apply到最新的index，然后返回。在 get(内部被转为Range）读取中，继续进行序列化读取。（默认值）</li>
@@ -755,8 +879,103 @@
 <li><a href="https://zhuanlan.zhihu.com/p/31118381">etcd-raft的线性一致读方法二：LeaseRead</a></li>
 <li>etcd/raft/readme.md</li>
 </ol>
-<h2 id="_4">调优</h2>
-<h3 id="_5">超时时间参数</h3>
+<h3 id="wal">WAL</h3>
+<p>ETCD: 简单的分页存储
+LogCabin: <a href="https://logcabin.github.io/talk/#/segmentedstorage">https://logcabin.github.io/talk/#/segmentedstorage</a>
+kudu: segmentLog
+TiKV: RocksDB
+CRDB: RocksDB</p>
+<h2 id="_4">代码流程</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">grpc接口</span><span class="err">：</span>
+<span class="nx">etcdserverpb</span><span class="p">.</span><span class="nx">KV</span>          <span class="nx">_KV_serviceDesc</span>         <span class="nx">Range</span><span class="p">,</span> <span class="nx">Put</span><span class="p">,</span> <span class="nx">DeleteRange</span><span class="p">,</span> <span class="nx">Txn</span><span class="p">,</span> <span class="nx">Compact</span>
+<span class="nx">etcdserverpb</span><span class="p">.</span><span class="nx">Cluster</span>     <span class="nx">_Cluster_serviceDesc</span>    <span class="nx">MemberAdd</span><span class="p">,</span> <span class="nx">MemberRemove</span><span class="p">,</span> <span class="nx">MemberUpdate</span><span class="p">,</span> <span class="nx">MemberList</span>
+<span class="nx">etcdserverpb</span><span class="p">.</span><span class="nx">Watch</span>       <span class="nx">_Watch_serviceDesc</span>      <span class="nx">Watch</span>
+<span class="o">......</span>
+
+
+<span class="nx">启动流程</span><span class="err">：</span>
+<span class="nx">startEtcd</span>
+  <span class="nx">cfg</span> <span class="p">=</span> <span class="nx">embed</span><span class="p">.</span><span class="nx">NewConfig</span><span class="p">()</span>
+  <span class="nx">embed</span><span class="p">.</span><span class="nx">StartEtcd</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+    <span class="nx">etcdserver</span><span class="p">.</span><span class="nx">NewServer</span> 
+      <span class="nx">openBackend</span>
+        <span class="nx">newBackend</span>
+           <span class="nx">bolt</span><span class="p">.</span><span class="nx">Open</span>
+      <span class="k">if</span> <span class="p">(!</span><span class="nx">haveWAL</span><span class="p">)</span>   
+        <span class="nx">startNode</span>
+      <span class="k">else</span>
+        <span class="nx">Recovery</span>
+        <span class="nx">restartNode</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">Server</span><span class="p">.</span><span class="nx">Start</span><span class="p">()</span>
+      <span class="k">go</span> <span class="nx">s</span><span class="p">.</span><span class="nx">run</span><span class="p">()</span>
+
+<span class="nx">写入流程</span><span class="err">：</span>
+<span class="nx">_KV_Put_Handler</span>
+  <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">quotaKVServer</span><span class="p">)</span> <span class="nx">Put</span>
+    <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">kvServer</span><span class="p">)</span> <span class="nx">Put</span>
+      <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">EtcdServer</span><span class="p">)</span> <span class="nx">Put</span>
+        <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">EtcdServer</span><span class="p">)</span> <span class="nx">raftRequest</span>
+          <span class="nx">processInternalRaftRequestOnce</span>
+            <span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">node</span><span class="p">)</span> <span class="nx">Propose</span>
+            <span class="nx">stepWithWaitOption</span>
+              <span class="nx">ch</span> <span class="o">:=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">propc</span>
+              <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">pm</span>
+
+    <span class="nx">raft处理</span><span class="err">：</span>
+    <span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">node</span><span class="p">)</span> <span class="nx">run</span>
+      <span class="nx">pm</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">propc</span>
+
+    <span class="nx">收到客户端的PUT消息后</span><span class="err">，</span><span class="nx">会生成一个</span> <span class="nx">MsgProp</span> <span class="nx">消息</span>
+    <span class="k">case</span> <span class="nx">pb</span><span class="p">.</span><span class="nx">MsgProp</span><span class="p">:</span>
+      <span class="nx">r</span><span class="p">.</span><span class="nx">appendEntry</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">Entries</span><span class="o">...</span><span class="p">)</span> <span class="c1">// 生成 entries</span>
+      <span class="nx">r</span><span class="p">.</span><span class="nx">bcastAppend</span><span class="p">()</span>  <span class="c1">// 生成待发送的 msgs</span>
+
+    <span class="nx">wal处理</span><span class="err">：</span>
+    <span class="k">case</span> <span class="nx">rd</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">rc</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">Ready</span><span class="p">():</span>
+      <span class="nx">rc</span><span class="p">.</span><span class="nx">wal</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">rd</span><span class="p">.</span><span class="nx">HardState</span><span class="p">,</span> <span class="nx">rd</span><span class="p">.</span><span class="nx">Entries</span><span class="p">)</span>
+      <span class="nx">rc</span><span class="p">.</span><span class="nx">raftStorage</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">rd</span><span class="p">.</span><span class="nx">Entries</span><span class="p">)</span>
+      <span class="nx">rc</span><span class="p">.</span><span class="nx">transport</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">rd</span><span class="p">.</span><span class="nx">Messages</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">rc</span><span class="p">.</span><span class="nx">publishEntries</span><span class="p">(</span><span class="nx">rc</span><span class="p">.</span><span class="nx">entriesToApply</span><span class="p">(</span><span class="nx">rd</span><span class="p">.</span><span class="nx">CommittedEntries</span><span class="p">));</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">rc</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
+        <span class="k">return</span>
+      <span class="p">}</span>
+      <span class="nx">rc</span><span class="p">.</span><span class="nx">maybeTriggerSnapshot</span><span class="p">()</span>
+      <span class="nx">rc</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">Advance</span><span class="p">()</span>
+
+    <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">raftNode</span><span class="p">)</span> <span class="nx">start</span>
+      <span class="nx">rd</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">r</span><span class="p">.</span><span class="nx">Ready</span><span class="p">()</span>
+        <span class="nx">r</span><span class="p">.</span><span class="nx">applyc</span> <span class="o">&lt;-</span> <span class="nx">ap</span>
+        <span class="nx">r</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">Save</span>
+
+    <span class="nx">数据保存</span>
+    <span class="nx">ap</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">s</span><span class="p">.</span><span class="nx">r</span><span class="p">.</span><span class="nx">apply</span><span class="p">()</span>
+      <span class="nx">applyAll</span>
+        <span class="nx">applyEntries</span>
+          <span class="nx">apply</span>
+            <span class="nx">applyEntryNormal</span>
+              <span class="o">...</span>
+              <span class="p">(</span><span class="nx">tw</span> <span class="o">*</span><span class="nx">storeTxnWrite</span><span class="p">)</span> <span class="nx">put</span>
+                <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">batchTx</span><span class="p">)</span> <span class="nx">UnsafeSeqPut</span>
+                  <span class="nx">unsafePut</span>
+
+<span class="nx">读取流程</span><span class="err">：</span>
+<span class="nx">_KV_Range_Handler</span>
+  <span class="nx">srv</span><span class="p">.(</span><span class="nx">KVServer</span><span class="p">).</span><span class="nx">Range</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">.(</span><span class="o">*</span><span class="nx">RangeRequest</span><span class="p">))</span>
+    <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">kvServer</span><span class="p">)</span> <span class="nx">Range</span>
+      <span class="nx">s</span><span class="p">.</span><span class="nx">kv</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+        <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">EtcdServer</span><span class="p">)</span> <span class="nx">Range</span>
+          <span class="nx">linearizableReadNotify</span>
+          <span class="nx">doSerialize</span>
+            <span class="p">(</span><span class="nx">a</span> <span class="o">*</span><span class="nx">applierV3backend</span><span class="p">)</span> <span class="nx">Range</span>
+              <span class="p">(</span><span class="nx">tr</span> <span class="o">*</span><span class="nx">storeTxnRead</span><span class="p">)</span> <span class="nx">Range</span>
+                <span class="nx">tr</span><span class="p">.</span><span class="nx">tx</span><span class="p">.</span><span class="nx">UnsafeRange</span>
+                  <span class="p">(</span><span class="nx">rt</span> <span class="o">*</span><span class="nx">readTx</span><span class="p">)</span> <span class="nx">UnsafeRange</span>
+                    <span class="nx">unsafeRange</span>
+                      <span class="nx">c</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="_5">分析调优</h2>
+<h3 id="_6">超时时间参数</h3>
 <p>基本的分布式共识协议依赖于两个单独的时间参数，以确保节点在一个停滞或脱机时可以移交领导权。 </p>
 <ul>
 <li>第一个参数称为<strong>心跳间隔</strong>，领导者以此频率通知跟随者它仍然是领导者。 为了获得最佳实践，应围绕成员之间的往返时间设置参数。 默认情况下，etcd使用100毫秒的心跳间隔。</li>
@@ -766,32 +985,143 @@
 <p>应该根据心跳间隔和成员之间的平均往返时间来设置选举超时。 选举超时时间必须至少是往返时间的10倍，这样才能解决网络中的差异。 例如，如果成员之间的往返时间为10毫秒，则选举超时应至少为100毫秒。</p>
 <p>选举超时的上限为50000ms（50s），仅在部署全局分布的etcd集群时才应使用。 美国大陆的合理往返时间为130毫秒，美日之间的时间约为350-400毫秒。 如果网络性能不均匀或有规则的数据包延迟/丢失，则可能需要重试几次才能成功发送数据包。 因此5s是全球往返时间的安全上限。 由于选举超时应该比广播时间大一个数量级，因此对于全球分布的集群而言，在约5秒的情况下，则50秒成为合理的最大值。</p>
 <p>一个群集中所有成员的心跳间隔和选举超时值应相同。为etcd成员设置不同的值可能会破坏群集的稳定性。</p>
-<h3 id="_6">磁盘</h3>
+<h3 id="_7">磁盘</h3>
 <p>调整</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># best effort, highest priority</span>
-$ sudo ionice -c2 -n0 -p <span style="color: #C41A16">`</span>pgrep etcd<span style="color: #C41A16">`</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># best effort, highest priority</span>
+$ sudo ionice -c2 -n0 -p <span class="sb">`</span>pgrep etcd<span class="sb">`</span>
 </code></pre></div>
 
-<h3 id="_7">网络</h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">dropped MsgProp to 247ae21ff9436b2d since streamMsg&#39;s sending buffer is full</span>
-<span style="color: #000000">dropped MsgAppResp to 247ae21ff9436b2d since streamMsg&#39;s sending buffer is full</span>
+<h3 id="_8">网络</h3>
+<div class="highlight"><pre><span></span><code>dropped MsgProp to 247ae21ff9436b2d since streamMsg&#39;s sending buffer is full
+dropped MsgAppResp to 247ae21ff9436b2d since streamMsg&#39;s sending buffer is full
 </code></pre></div>
 
 <p>通过将etcd的对等流量优先于其客户端流量，可以解决这些错误。在Linux上，可以使用流量控制机制来确定对等流量的优先级： </p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">tc qdisc add dev eth0 root handle 1: prio bands 3</span>
-<span style="color: #000000">tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 2380 0xffff flowid 1:1</span>
-<span style="color: #000000">tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip dport 2380 0xffff flowid 1:1</span>
-<span style="color: #000000">tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 2379 0xffff flowid 1:1</span>
-<span style="color: #000000">tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 2379 0xffff flowid 1:1</span>
+<div class="highlight"><pre><span></span><code>tc qdisc add dev eth0 root handle 1: prio bands 3
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 2380 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip dport 2380 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 2379 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 2379 0xffff flowid 1:1
 </code></pre></div>
 
 <p>参考：</p>
 <ol>
 <li><a href="https://github.com/etcd-io/etcd/blob/master/Documentation/tuning.md#time-parameters">Tuning Time parameters</a></li>
 </ol>
-                
-                  
-                
+<h2 id="thinking">thinking</h2>
+<p>etcd in memory
+group raft etcd
+etcd with trueTime</p>
+<h2 id="_9">基本命令</h2>
+<div class="highlight"><pre><span></span><code>etcdctl put hello world
+etcdctl get hello
+etcdctl <span class="nb">set</span> service1 <span class="s2">&quot;service 1&quot;</span>
+etcdctl get service1
+etcdctl member list
+
+<span class="c1"># 调试时不超时</span>
+etcdctl get name --keepalive-time<span class="o">=</span>200s --keepalive-timeout<span class="o">=</span>300s --command-timeout<span class="o">=</span>300s
+
+<span class="c1"># 获取是否leader信息</span>
+etcdctl -w table --endpoints<span class="o">=</span><span class="m">127</span>.0.0.1:2379,127.0.0.1:22379,127.0.0.1:32379 endpoint status
+
+<span class="c1"># 转移leader节点</span>
+etcdctl --endpoints<span class="o">=</span><span class="m">127</span>.0.0.1:2379,127.0.0.1:22379,127.0.0.1:32379 move-leader fd422379fda50e48
+
+<span class="c1"># goreman 停止节点</span>
+goreman run stop etcd2
+
+etcdctl --write-out<span class="o">=</span>table --endpoints<span class="o">=</span>localhost:2379 member list
+etcdctl endpoint status --endpoints<span class="o">=</span>http://127.0.0.1:2379,http://127.0.0.1:22379,http://127.0.0.1:32379 -w table
+<span class="c1"># </span>
+</code></pre></div>
+
+<h2 id="_10">编译运行</h2>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">go get -d go.etcd.io/etcd</span>
+<span style="color: #000000">./build</span>
+<span style="color: #000000">cd $GOPATH/bin</span>
+<span style="color: #000000">etcd</span>
+</code></pre></div>
+
+
+<p>支持windows/linux编译，调试
+可以通过修改 go build -gcflags="all=-N -l" 取消优化和内联方便调试
+在调试时可以通过修改函数 processInternalRaftRequestOnce 中的context超时时间避免超时失败
+同时修改 etcdctl --command-timeout=3000s --keepalive-timeout=3000s 参数时间，避免超时失败</p>
+<p>（单个机器上启动集群）</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/go.etcd.io/etcd
+./build
+<span class="c1"># 下载 goreman https://github.com/mattn/goreman</span>
+go get github.com/mattn/goreman
+<span class="c1"># 运行集群</span>
+goreman -f Procfile start
+</code></pre></div>
+
+<h2 id="etcd3">ETCD3</h2>
+<p>etcd 被设计用来可靠保存非经常表更的数据，并且提供了可靠的监控查询。
+多版本数据，压缩数据。
+逻辑视图：扁平的 k-v 存储。
+物理视图：b+tree</p>
+<h3 id="kv-api">KV-API 保证</h3>
+<p>etcd 是一个一致性持久 kv 存储系统，支持简单事务。KV 存储通过 KV API 接口暴露。对分布式系统而言，etcd 尽可能保证强一致性和持久性。这篇规范枚举了 etcd 所做的 KV API 保证。</p>
+<h3 id="apis">需要考虑的 APIs</h3>
+<ul>
+<li>读 API</li>
+<li>range</li>
+<li>watch</li>
+<li>写 API</li>
+<li>put</li>
+<li>delete</li>
+<li>组合 API（读-修改-写）</li>
+<li>txn</li>
+</ul>
+<h3 id="etcd_2">ETCD 特殊的定义</h3>
+<p><strong>操作完成</strong></p>
+<p>当通过一致性提交之后，etcd 操作完成，所以被 etcd 存储引擎“执行“意味着永久保存。当客户端收到 etcd 服务器的响应时才获得操作完成的消息。请注意，如果客户端超时，或者客户端和 etcd 成员之间出现网络中断，客户端可能不确定其状态。有选主的时候也可能会中止操作。在此事件中，etcd不会发送<code>abord</code>响应给客户端的未决请求。</p>
+<p><strong>Revision</strong></p>
+<p>修改 KV 存储的操作会被分片一个单调递增的版本号。一个事务操作可能会修改 KV 多次，但是仅会分配一个版本号。被修改键值对的版本号属性和操作的版本号属性的值相同。版本号可以被作为一个逻辑时钟。有较大版本号的被修改的键值对必然在较小版本号之后。两个有相同键值对的版本被同一个操作同时修改。</p>
+<h3 id="_11">提供的保证</h3>
+<p><strong>原子性</strong> Atomicity</p>
+<p><strong>一致性</strong> Consistency</p>
+<p>所有的 API 保证是顺序一致的，分布式系统中最强可用的一致性保证。不管客户端跟哪个 etcd 服务交互，客户端以相同的顺序读取到消息。如果两个成员完成相同数量的操作，两个成员的状态是一致的。</p>
+<p>对于 watch 操作，对于相同版本 etcd 保证在所有成员之间对于相同的 key 返回相同的值。对于 range 操作，etcd 有类似于线性化访问的保证，顺序访问可能在合法状态之后，所以以后的版本还不可用。</p>
+<p>与所有的分布式系统一样，etcd 也不能保证<a href="https://en.wikipedia.org/wiki/Consistency_model#Strict_consistency">严格一致性</a>。在任何集群成员中 etcd 不保证返回最近写入的值（通过时钟衡量一个请求完成）。</p>
+<p><strong>隔离性</strong> Isolation</p>
+<p><strong>持久性</strong> Durability</p>
+<p><strong>可线性化</strong> Linearizability</p>
+<p>可线性化（也称之为原子一致性或者外部一致性）是严格一致性和顺序一致性之间的一种一致性级别。</p>
+<p>对于线性一致性，假设每个操作获取到一个松散同步的全球时钟的时间戳。当且仅当它们总是按顺序执行，并且每个操作都是按程序指定的顺序完成时，操作才是可以被线性化的。同样，如果操作的时间戳在另一个之前，那么该操作也必须在该序列中的另一个操作之前。</p>
+<p>etcd 对于 watch 操作不保证可线性化。用户需要检查 watch 应答的版本号保证正确的顺序。</p>
+<p>etcd 默认保证其他所有操作的可线性化，可线性化是有代价的，因为线性化请求必须走一遍 Raft 状态机处理。为了保证读取操作的低延迟和高吞吐，客户端可以配置请求的一致性模式为<code>可序列化</code>，根据quorum 协议，可能会访问到过时的数据，但是消除线性化访问对一致性依赖的性能损失。</p>
+<h3 id="misc">misc</h3>
+<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">etcdctl get --help</span>
+<span style="color: #000000">--consistency=&quot;l&quot;           Linearizable(l) or Serializable(s)</span>
+<span style="color: #000000"># 用于不同的一致性级别的参数</span>
+</code></pre></div>
+
+
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://coreos.com/blog/etcd3-a-new-etcd.html">https://coreos.com/blog/etcd3-a-new-etcd.html</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://coreos.com/etcd/docs/latest/learning/api_guarantees.html">https://coreos.com/etcd/docs/latest/learning/api_guarantees.html</a></li>
+</ul>
+<h3 id="etcdv2v3">ETCD迁移应用程序v2到v3</h3>
+<p>存储服务器升级到 etcd3 之后，v2的接口仍然可以使用。不需要应用变更。etcd3使用了新的 grpc API v3 来访问 mvcc 存储，提供了更多的特性，并且提升了性能。mvcc 存储和老的 v2 存储是隔离的。</p>
+<p>从 v2 迁移到 v3 主要有两步：</p>
+<ol>
+<li>迁移客户端</li>
+<li>迁移数据</li>
+</ol>
+<p>如果引用可以重建数据，迁移数据没有必要。</p>
+<p>迁移客户端</p>
+<ul>
+<li>事务：v3 提供了多 key 条件有条件的事务，应用应该使用事务来替代 CAS(Compare-And-Swap)操作。</li>
+<li>扁平 key 空间：在 v3 中，没有目录，仅仅存在 key，例如，"/a/b/c/"是一个 key，区间查询支持通过前缀来获取所有的 key。</li>
+<li>压缩响应：操作Delete不再提供前一个值，要获得删除的值，可以使用事务来 爱自动获取 key 然后删除值。</li>
+<li>租约：v2 TTLs 机制的替换，TTL 绑定到一个租约，key 附加到租约上，当 TTL 过期，租约会被收回，所有附加到这个租约上的 key 被移除。</li>
+</ul>
+<p>迁移数据</p>
+<p>离线数据迁移</p>
+<p>在线数据迁移</p>
                 
               
               
@@ -815,11 +1145,10 @@ $ sudo ionice -c2 -n0 -p <span style="color: #C41A16">`</span>pgrep etcd<span st
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -828,26 +1157,18 @@ $ sudo ionice -c2 -n0 -p <span style="color: #C41A16">`</span>pgrep etcd<span st
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

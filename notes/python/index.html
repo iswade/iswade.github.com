@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/notes/python/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#python" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                python基础
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              python基础
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -303,13 +287,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -382,13 +372,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -495,13 +491,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -543,13 +545,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -561,8 +569,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -603,6 +611,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -619,13 +639,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -640,7 +665,7 @@
     简单介绍下python
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="简单介绍下python">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -667,7 +692,7 @@
     流程控制
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="流程控制">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -717,7 +742,7 @@
     更多关于函数定义的内容
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="更多关于函数定义的内容">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -765,10 +790,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -782,11 +803,14 @@
               
                 
                 
+                  
+                
+                
                 <h1 id="python">python基础</h1>
 <h2 id="python_1">使用python解释器</h2>
 <p>python -m module
 python -c command</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000"># -*- coding: encoding -*-</span>
+<div class="highlight"><pre><span></span><code># -*- coding: encoding -*-
 </code></pre></div>
 
 <h2 id="python_2">简单介绍下python</h2>
@@ -808,92 +832,106 @@ python -c command</p>
 <h4 id="_5">默认参数值</h4>
 <p>重要：默认值仅会被执行一次，对于可变对象如列表，字典或者大多数类实例会有区别。</p>
 <p>对于可变对象，可以用下面的思路：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">f</span>(<span style="color: #000000">a</span>, <span style="color: #000000">L=</span><span style="color: #A90D91">None</span>):
-    <span style="color: #A90D91">if</span> <span style="color: #000000">L</span> <span style="color: #000000">is</span> <span style="color: #A90D91">None</span>:
-        <span style="color: #000000">L</span> <span style="color: #000000">=</span> []
-    <span style="color: #000000">L.append</span>(<span style="color: #000000">a</span>)
-    <span style="color: #A90D91">return</span> <span style="color: #000000">L</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">L</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">L</span>
 </code></pre></div>
 
 <h4 id="_6">关键词参数</h4>
-<p>使用<code class="codehilite"><span style="color: #000000">kwarg=value</span></code>形式的参数。</p>
+<p>使用<code>kwarg=value</code>形式的参数。</p>
 <h4 id="_7">任意参数列表</h4>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">f1</span>(<span style="color: #000000">*args</span>, <span style="color: #000000">**keywords</span>):
-    <span style="color: #A90D91">for</span> <span style="color: #000000">item</span> <span style="color: #000000">in</span> <span style="color: #000000">args</span>:
-       <span style="color: #A90D91">print</span>(<span style="color: #000000">item</span>, <span style="color: #000000">end=</span><span style="color: #C41A16">&#39; &#39;</span>)
-    <span style="color: #000000">keys</span> <span style="color: #000000">=</span> <span style="color: #A90D91">sorted</span>(<span style="color: #000000">keywords.keys</span>()):
-    <span style="color: #A90D91">for</span> <span style="color: #000000">kw</span> <span style="color: #000000">in</span> <span style="color: #000000">keys</span>:
-        <span style="color: #A90D91">print</span>(<span style="color: #000000">kw</span>, <span style="color: #C41A16">&quot;:&quot;</span>, <span style="color: #000000">keywords</span>[<span style="color: #000000">kw</span>])
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keywords</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">kw</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">keywords</span><span class="p">[</span><span class="n">kw</span><span class="p">])</span>
 </code></pre></div>
 
 <h4 id="_8">解开参数列表</h4>
-<p><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">args</span> <span style="color: #000000">=</span> [<span style="color: #1C01CE">3</span>, <span style="color: #1C01CE">6</span>]
-<span style="color: #A90D91">list</span>(<span style="color: #A90D91">range</span>(<span style="color: #000000">*args</span>))
+<p><div class="highlight"><pre><span></span><code><span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">f</span>(<span style="color: #000000">name=</span><span style="color: #C41A16">&quot;wsd&quot;</span>, <span style="color: #000000">age=</span><span style="color: #1C01CE">18</span>):
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">f&quot;My name is {name}.&quot;</span>, <span style="color: #000000">end=</span><span style="color: #C41A16">&#39; &#39;</span>)
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">f&quot;My age is {age}.&quot;</span>)
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;wsd&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">18</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My age is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
-<span style="color: #000000">d</span> <span style="color: #000000">=</span> {<span style="color: #C41A16">&quot;name&quot;</span>:<span style="color: #C41A16">&quot;wangshide&quot;</span>, <span style="color: #C41A16">&quot;age&quot;</span>:<span style="color: #1C01CE">28</span>}
-<span style="color: #000000">f</span>()
-<span style="color: #000000">f</span>(<span style="color: #000000">d</span>)
-<span style="color: #000000">f</span>(<span style="color: #000000">**d</span>)
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;wangshide&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">28</span><span class="p">}</span>
+<span class="n">f</span><span class="p">()</span>
+<span class="n">f</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">f</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
 </code></pre></div>
-<code class="codehilite"><span style="color: #000000">OUTPUT:</span><span style="color: #000000">My</span> <span style="color: #000000">name</span> <span style="color: #A90D91">is</span> <span style="color: #000000">wsd.</span> <span style="color: #000000">My</span> <span style="color: #000000">age</span> <span style="color: #A90D91">is</span> <span style="color: #1C01CE">18</span><span style="color: #000000">.</span><span style="color: #000000">My</span> <span style="color: #000000">name</span> <span style="color: #A90D91">is</span> <span style="color: #000000">{</span><span style="color: #C41A16">&#39;name&#39;</span><span style="color: #000000">:</span> <span style="color: #C41A16">&#39;wangshide&#39;</span><span style="color: #000000">,</span> <span style="color: #C41A16">&#39;age&#39;</span><span style="color: #000000">:</span> <span style="color: #1C01CE">28</span><span style="color: #000000">}.</span> <span style="color: #000000">My</span> <span style="color: #000000">age</span> <span style="color: #A90D91">is</span> <span style="color: #1C01CE">18</span><span style="color: #000000">.</span><span style="color: #000000">My</span> <span style="color: #000000">name</span> <span style="color: #A90D91">is</span> <span style="color: #000000">wangshide.</span> <span style="color: #000000">My</span> <span style="color: #000000">age</span> <span style="color: #A90D91">is</span> <span style="color: #1C01CE">28</span><span style="color: #000000">.</span><span style="color: #000000">wzxhzdk:</span><span style="color: #1C01CE">4</span><span style="color: #000000"></span></code>OUTPUT:
+<code>OUTPUT:
+My name is wsd. My age is 18.
+My name is {'name': 'wangshide', 'age': 28}. My age is 18.
+My name is wangshide. My age is 28.
+<div class="highlight"><pre><span></span><code>#### Lambda表达式
+#### 文档说明
+#### 函数注释
+```python
+def f(ham: str, eggs: str = &#39;eggs&#39;) -&gt; str:
+    print(&quot;Annotations:&quot;, f.__annotations__)
+    print(&quot;Arguments:&quot;, ham, eggs)
+    return ham + &#39; and &#39; + eggs
+
+f(&#39;spam&#39;)
+</code></pre></div></code>OUTPUT:
 Annotations: {'ham': <class 'str'>, 'eggs': <class 'str'>, 'return': <class 'str'>}
 Arguments: spam eggs
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">###</span> <span style="color: #000000">插曲：编码风格</span>
-<span style="color: #000000">介绍pep8的主要内容</span>
+<div class="highlight"><pre><span></span><code>### 插曲：编码风格
+介绍pep8的主要内容
 
 
 
 
-<span style="color: #000000">##</span> <span style="color: #000000">数据结构</span>
-<span style="color: #000000">###</span> <span style="color: #000000">列表关于list的内容</span>
-<span style="color: #000000">####</span> <span style="color: #000000">用列表作为栈</span>
-<span style="color: #000000">####</span> <span style="color: #000000">用列表作为队列</span>
-<span style="color: #000000">####</span> <span style="color: #000000">列表推导</span>
-<span style="color: #000000">####</span> <span style="color: #000000">嵌套列表推导</span>
-<span style="color: #000000">###</span> <span style="color: #000000">del语句</span>
-<span style="color: #000000">###</span> <span style="color: #000000">元组和序列</span>
-<span style="color: #000000">###</span> <span style="color: #000000">集合</span>
-<span style="color: #000000">###</span> <span style="color: #000000">字典</span>
-<span style="color: #000000">###</span> <span style="color: #000000">关于更多条件</span>
-<span style="color: #000000">###</span> <span style="color: #000000">比较序列和其它类型</span>
+## 数据结构
+### 列表关于list的内容
+#### 用列表作为栈
+#### 用列表作为队列
+#### 列表推导
+#### 嵌套列表推导
+### del语句
+### 元组和序列
+### 集合
+### 字典
+### 关于更多条件
+### 比较序列和其它类型
 
-<span style="color: #000000">##</span> <span style="color: #000000">模块</span>
-<span style="color: #000000">###</span> <span style="color: #000000">跟多关于模块的内容</span>
-<span style="color: #000000">####</span> <span style="color: #000000">把模块当做脚本执行</span>
-<span style="color: #000000">####</span> <span style="color: #000000">模块查找路径</span>
-<span style="color: #000000">####</span> <span style="color: #000000">编译python文件</span>
-<span style="color: #000000">###</span> <span style="color: #000000">标准模块</span>
-<span style="color: #000000">###</span> <span style="color: #000000">dir</span>()<span style="color: #000000">函数</span>
-<span style="color: #000000">###</span> <span style="color: #000000">包</span>
-<span style="color: #000000">####</span> <span style="color: #000000">从包中导入所有</span>
-<span style="color: #000000">####</span> <span style="color: #000000">内部包引用</span>
-<span style="color: #000000">####</span> <span style="color: #000000">多个路径中的包</span>
-<span style="color: #000000">##</span> <span style="color: #000000">输入和输出</span>
-<span style="color: #000000">###</span> <span style="color: #000000">多样格式化输出</span>
-<span style="color: #000000">###</span> <span style="color: #000000">旧的的格式化输出</span>
-<span style="color: #000000">##</span> <span style="color: #000000">读写文件</span>
-<span style="color: #000000">###</span> <span style="color: #000000">文件对象的读写方法</span>
-<span style="color: #000000">###</span> <span style="color: #000000">使用json保存结构化数据</span>
-<span style="color: #000000">##</span> <span style="color: #000000">错误和异常</span>
-<span style="color: #000000">###</span> <span style="color: #000000">语法错误</span>
-<span style="color: #000000">###</span> <span style="color: #000000">异常</span>
-<span style="color: #000000">###</span> <span style="color: #000000">处理异常</span>
-<span style="color: #000000">###</span> <span style="color: #000000">抛出异常</span>
-<span style="color: #000000">###</span> <span style="color: #000000">定义清理动作</span>
-<span style="color: #000000">```python</span>
-<span style="color: #000000">try</span>:
-    <span style="color: #000000">pass</span>
-<span style="color: #000000">fanally</span>:
-    <span style="color: #000000">print</span>(<span style="color: #C41A16">&quot;fanal clause&quot;</span>)
+## 模块
+### 跟多关于模块的内容
+#### 把模块当做脚本执行
+#### 模块查找路径
+#### 编译python文件
+### 标准模块
+### dir()函数
+### 包
+#### 从包中导入所有
+#### 内部包引用
+#### 多个路径中的包
+## 输入和输出
+### 多样格式化输出
+### 旧的的格式化输出
+## 读写文件
+### 文件对象的读写方法
+### 使用json保存结构化数据
+## 错误和异常
+### 语法错误
+### 异常
+### 处理异常
+### 抛出异常
+### 定义清理动作
+```python
+try:
+    pass
+fanally:
+    print(&quot;fanal clause&quot;)
 </code></pre></div></p>
 <h3 id="_9">预定义的清理动作</h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">with</span> <span style="color: #A90D91">open</span>(<span style="color: #C41A16">&quot;file.txt&quot;</span>) <span style="color: #A90D91">as</span> <span style="color: #000000">f</span>:
-    <span style="color: #A90D91">for</span> <span style="color: #000000">line</span> <span style="color: #000000">in</span> <span style="color: #000000">f</span>:
-        <span style="color: #A90D91">print</span>(<span style="color: #000000">line</span>, <span style="color: #000000">end=</span><span style="color: #C41A16">&#39;&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h1 id="python_4">python库</h1>
@@ -903,68 +941,68 @@ Arguments: spam eggs
 <h2 id="_11">文件操作</h2>
 <h3 id="glob">glob: 查找文件</h3>
 <ul>
-<li><code class="codehilite"><span style="color: #000000">glob.glob(&quot;/usr/lib/*.so&quot;)</span></code>: 查找所有的/usr/lib路径下的所有以.so结尾的文件</li>
+<li><code>glob.glob("/usr/lib/*.so")</code>: 查找所有的/usr/lib路径下的所有以.so结尾的文件</li>
 </ul>
 <h3 id="ospath">os.path: 路径操作</h3>
 <ul>
-<li><code class="codehilite"><span style="color: #000000">os.path.abspath(&quot;./&quot;)</span></code>: 获取绝对路径 /root/github/blog</li>
-<li><code class="codehilite"><span style="color: #000000">os.path.basename(&quot;./readme.md&quot;)</span></code>: 获得文件名 readme.md</li>
-<li><code class="codehilite"><span style="color: #000000">os.path.exists(path)</span></code>: 判断是否文件或路径是否存在</li>
-<li><code class="codehilite"><span style="color: #000000">os.path.dirname(&quot;/root/readme.md&quot;)</span></code>: 获取路径名 /root</li>
-<li><code class="codehilite"><span style="color: #000000">os.path.splitext(&quot;/root/readme.md&quot;)</span></code>: 获得('/root/readme', '.md')格式</li>
+<li><code>os.path.abspath("./")</code>: 获取绝对路径 /root/github/blog</li>
+<li><code>os.path.basename("./readme.md")</code>: 获得文件名 readme.md</li>
+<li><code>os.path.exists(path)</code>: 判断是否文件或路径是否存在</li>
+<li><code>os.path.dirname("/root/readme.md")</code>: 获取路径名 /root</li>
+<li><code>os.path.splitext("/root/readme.md")</code>: 获得('/root/readme', '.md')格式</li>
 </ul>
 <h3 id="codecs">codecs: 编码</h3>
 <ul>
-<li><code class="codehilite"><span style="color: #000000">codecs.open(file, &quot;r&quot;, &quot;utf-8&quot;)</span></code>: 以utf-8格式打开文件</li>
+<li><code>codecs.open(file, "r", "utf-8")</code>: 以utf-8格式打开文件</li>
 </ul>
 <h3 id="_12">遍历所有目录/文件</h3>
-<p>自己写了两个小函数 <a href="https://github.com/iswade/programs/blob/master/os_walk.py"><code class="codehilite"><span style="color: #000000">os_walk.py</span></code></a>。</p>
+<p>自己写了两个小函数 <a href="https://github.com/iswade/programs/blob/master/os_walk.py"><code>os_walk.py</code></a>。</p>
 <ul>
-<li><code class="codehilite"><span style="color: #000000">file_list(path, [&quot;.py&quot;, &quot;.c&quot;])</span></code></li>
-<li><code class="codehilite"><span style="color: #000000">dir_list(path)</span></code></li>
+<li><code>file_list(path, [".py", ".c"])</code></li>
+<li><code>dir_list(path)</code></li>
 </ul>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500"># 遍历目录下的所有文件</span>
-<span style="color: #A90D91">for</span> <span style="color: #000000">path</span> <span style="color: #000000">in</span> <span style="color: #000000">file_list</span>(<span style="color: #000000">path</span>):
-    <span style="color: #A90D91">print</span>(<span style="color: #000000">path</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># 遍历目录下的所有文件</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<span style="color: #177500"># 遍历目录下的所有目录</span>
-<span style="color: #A90D91">for</span> <span style="color: #000000">path</span> <span style="color: #000000">in</span> <span style="color: #000000">dir_list</span>(<span style="color: #000000">path</span>):
-    <span style="color: #A90D91">print</span>(<span style="color: #000000">path</span>)
+<span class="c1"># 遍历目录下的所有目录</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">dir_list</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="_13">网络</h2>
 <h3 id="web">web服务</h3>
-<p><code class="codehilite"><span style="color: #000000">python -m SimpleHTTPServer 80</span></code> ： python启动最简单的web服务器</p>
+<p><code>python -m SimpleHTTPServer 80</code> ： python启动最简单的web服务器</p>
 <h3 id="web_1">web框架</h3>
 <ul>
-<li>tornado: 是一个使用<code class="codehilite"><span style="color: #000000">epoll</span></code>多路复用web框架，由facebook开发，知乎使用该框架做基础。</li>
+<li>tornado: 是一个使用<code>epoll</code>多路复用web框架，由facebook开发，知乎使用该框架做基础。</li>
 <li>django: 是一个大而全的开箱即用的库。</li>
 <li>flask: 是一个微框架，提供了核心，然后可以极大扩展。</li>
 <li>web.py: 轻量级的框架。</li>
 </ul>
 <h2 id="_14">其它</h2>
 <h3 id="logging">logging: 日志打印</h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">import</span> <span style="color: #000000">logging</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 
-<span style="color: #177500"># 打印级别为INFO</span>
-<span style="color: #000000">logging.basicConfig</span>(<span style="color: #000000">level=logging.INFO</span>)
+<span class="c1"># 打印级别为INFO</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
-<span style="color: #177500"># 打印日志</span>
-<span style="color: #000000">logging.error</span>(<span style="color: #C41A16">&quot;msg&quot;</span>)
-<span style="color: #000000">logging.warn</span>(<span style="color: #C41A16">&quot;msg&quot;</span>)
+<span class="c1"># 打印日志</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;msg&quot;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;msg&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="pil">PIL: 图像处理标准库</h3>
 <ul>
-<li><code class="codehilite"><span style="color: #000000">pip install pillow</span></code>: python3下安装方法</li>
+<li><code>pip install pillow</code>: python3下安装方法</li>
 <li>缩放图像
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">from</span> <span style="color: #000000">PIL</span> <span style="color: #A90D91">import</span> <span style="color: #000000">Image</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span style="color: #000000">im</span> <span style="color: #000000">=</span> <span style="color: #000000">Image.open</span>(<span style="color: #C41A16">&#39;image.jpg&#39;</span>)
-<span style="color: #000000">w</span>, <span style="color: #000000">h</span> <span style="color: #000000">=</span> <span style="color: #000000">im.size</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;image.jpg&#39;</span><span class="p">)</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span>
 
-<span style="color: #000000">im.thumbnail</span>((<span style="color: #000000">w//</span><span style="color: #1C01CE">2</span>, <span style="color: #000000">h//</span><span style="color: #1C01CE">2</span>))  <span style="color: #177500"># 缩放到50%</span>
-<span style="color: #000000">im.save</span>(<span style="color: #C41A16">&#39;image.jpg&#39;</span>, <span style="color: #C41A16">&#39;jpeg&#39;</span>)
+<span class="n">im</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">((</span><span class="n">w</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 缩放到50%</span>
+<span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;image.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;jpeg&#39;</span><span class="p">)</span>
 </code></pre></div></li>
 </ul>
 <h1 id="_15">错误、调试和测试</h1>
@@ -972,252 +1010,252 @@ Arguments: spam eggs
 <h2 id="_16">错误处理</h2>
 <p>在程序运行的过程中，如果发生了错误，可以事先约定返回一个错误代码，这样，就可以知道是否有错，以及出错的原因。在操作系统提供的调用中，返回错误码非常常见。比如打开文件的函数open()，成功时返回文件描述符（就是一个整数），出错时返回-1。</p>
 <p>用错误码来表示是否出错十分不便，因为函数本身应该返回的正常结果和错误码混在一起，造成调用者必须用大量的代码来判断是否出错：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>():
-    <span style="color: #000000">r</span> <span style="color: #000000">=</span> <span style="color: #000000">some_function</span>()
-    <span style="color: #A90D91">if</span> <span style="color: #000000">r==</span>(<span style="color: #000000">-</span><span style="color: #1C01CE">1</span>):
-        <span style="color: #A90D91">return</span> (<span style="color: #000000">-</span><span style="color: #1C01CE">1</span>)
-    <span style="color: #177500"># do something</span>
-    <span style="color: #A90D91">return</span> <span style="color: #000000">r</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">some_function</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">==</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># do something</span>
+    <span class="k">return</span> <span class="n">r</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">bar</span>():
-    <span style="color: #000000">r</span> <span style="color: #000000">=</span> <span style="color: #000000">foo</span>()
-    <span style="color: #A90D91">if</span> <span style="color: #000000">r==</span>(<span style="color: #000000">-</span><span style="color: #1C01CE">1</span>):
-        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;Error&#39;</span>)
-    <span style="color: #A90D91">else</span>:
-        <span style="color: #A90D91">pass</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">foo</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">==</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
 </code></pre></div>
 一旦出错，还要一级一级上报，直到某个函数可以处理该错误（比如，给用户输出一个错误信息）。</p>
 <p>所以高级语言通常都内置了一套try...except...finally...的错误处理机制，Python也不例外。</p>
 <h3 id="try">try</h3>
 <p>让我们用一个例子来看看try的机制：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">try</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;try...&#39;</span>)
-    <span style="color: #000000">r</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #1C01CE">0</span>
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;result:&#39;</span>, <span style="color: #000000">r</span>)
-<span style="color: #A90D91">except</span> <span style="color: #000000">ZeroDivisionError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;except:&#39;</span>, <span style="color: #000000">e</span>)
-<span style="color: #A90D91">finally</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;finally...&#39;</span>)
-<span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;END&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;try...&#39;</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;result:&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;except:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finally...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;END&#39;</span><span class="p">)</span>
 </code></pre></div>
 当我们认为某些代码可能会出错时，就可以用try来运行这段代码，如果执行出错，则后续代码不会继续执行，而是直接跳转至错误处理代码，即except语句块，执行完except后，如果有finally语句块，则执行finally语句块，至此，执行完毕。</p>
 <p>上面的代码在计算10 / 0时会产生一个除法运算错误：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">try...</span>
-<span style="color: #177500">except: division by zero</span>
-<span style="color: #000000">finally...</span>
-<span style="color: #000000">END</span>
+<div class="highlight"><pre><span></span><code>try...
+except: division by zero
+finally...
+END
 </code></pre></div>
 从输出可以看到，当错误发生时，后续语句print('result:', r)不会被执行，except由于捕获到ZeroDivisionError，因此被执行。最后，finally语句被执行。然后，程序继续按照流程往下走。</p>
 <p>如果把除数0改成2，则执行结果如下：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">try...</span>
-<span style="color: #177500">result: 5</span>
-<span style="color: #000000">finally...</span>
-<span style="color: #000000">END</span>
+<div class="highlight"><pre><span></span><code>try...
+result: 5
+finally...
+END
 </code></pre></div>
 由于没有错误发生，所以except语句块不会被执行，但是finally如果有，则一定会被执行（可以没有finally语句）。</p>
 <p>你还可以猜测，错误应该有很多种类，如果发生了不同类型的错误，应该由不同的except语句块处理。没错，可以有多个except来捕获不同类型的错误：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">try</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;try...&#39;</span>)
-    <span style="color: #000000">r</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #A90D91">int</span>(<span style="color: #C41A16">&#39;a&#39;</span>)
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;result:&#39;</span>, <span style="color: #000000">r</span>)
-<span style="color: #A90D91">except</span> <span style="color: #000000">ValueError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;ValueError:&#39;</span>, <span style="color: #000000">e</span>)
-<span style="color: #A90D91">except</span> <span style="color: #000000">ZeroDivisionError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;ZeroDivisionError:&#39;</span>, <span style="color: #000000">e</span>)
-<span style="color: #A90D91">finally</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;finally...&#39;</span>)
-<span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;END&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;try...&#39;</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;result:&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ValueError:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ZeroDivisionError:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finally...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;END&#39;</span><span class="p">)</span>
 </code></pre></div>
 int()函数可能会抛出ValueError，所以我们用一个except捕获ValueError，用另一个except捕获ZeroDivisionError。</p>
 <p>此外，如果没有错误发生，可以在except语句块后面加一个else，当没有错误发生时，会自动执行else语句：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">try</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;try...&#39;</span>)
-    <span style="color: #000000">r</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #A90D91">int</span>(<span style="color: #C41A16">&#39;2&#39;</span>)
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;result:&#39;</span>, <span style="color: #000000">r</span>)
-<span style="color: #A90D91">except</span> <span style="color: #000000">ValueError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;ValueError:&#39;</span>, <span style="color: #000000">e</span>)
-<span style="color: #A90D91">except</span> <span style="color: #000000">ZeroDivisionError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;ZeroDivisionError:&#39;</span>, <span style="color: #000000">e</span>)
-<span style="color: #A90D91">else</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;no error!&#39;</span>)
-<span style="color: #A90D91">finally</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;finally...&#39;</span>)
-<span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;END&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;try...&#39;</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;result:&#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ValueError:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ZeroDivisionError:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no error!&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finally...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;END&#39;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Python的错误其实也是class，所有的错误类型都继承自BaseException，所以在使用except时需要注意的是，它不但捕获该类型的错误，还把其子类也“一网打尽”。比如：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">try</span>:
-    <span style="color: #000000">foo</span>()
-<span style="color: #A90D91">except</span> <span style="color: #000000">ValueError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;ValueError&#39;</span>)
-<span style="color: #A90D91">except</span> <span style="color: #000000">UnicodeError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;UnicodeError&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">foo</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ValueError&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">UnicodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;UnicodeError&#39;</span><span class="p">)</span>
 </code></pre></div>
 第二个except永远也捕获不到UnicodeError，因为UnicodeError是ValueError的子类，如果有，也被第一个except给捕获了。</p>
 <p>Python所有的错误都是从BaseException类派生的，常见的错误类型和继承关系看这里：
-<a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy"><code class="codehilite"><span style="color: #000000">exception-hierarchy</span></code></a></p>
+<a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy"><code>exception-hierarchy</code></a></p>
 <p>使用try...except捕获错误还有一个巨大的好处，就是可以跨越多层调用，比如函数main()调用foo()，foo()调用bar()，结果bar()出错了，这时，只要main()捕获到了，就可以处理：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>):
-    <span style="color: #A90D91">return</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">bar</span>(<span style="color: #000000">s</span>):
-    <span style="color: #A90D91">return</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>) <span style="color: #000000">*</span> <span style="color: #1C01CE">2</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">main</span>():
-    <span style="color: #A90D91">try</span>:
-        <span style="color: #000000">bar</span>(<span style="color: #C41A16">&#39;0&#39;</span>)
-    <span style="color: #A90D91">except</span> <span style="color: #000000">Exception</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;Error:&#39;</span>, <span style="color: #000000">e</span>)
-    <span style="color: #A90D91">finally</span>:
-        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;finally...&#39;</span>)
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">bar</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finally...&#39;</span><span class="p">)</span>
 </code></pre></div>
 也就是说，不需要在每个可能出错的地方去捕获错误，只要在合适的层次去捕获错误就可以了。这样一来，就大大减少了写try...except...finally的麻烦。</p>
 <h3 id="_17">调用堆栈</h3>
 <p>如果错误没有被捕获，它就会一直往上抛，最后被Python解释器捕获，打印一个错误信息，然后程序退出。来看看err.py：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>):
-    <span style="color: #A90D91">return</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">bar</span>(<span style="color: #000000">s</span>):
-    <span style="color: #A90D91">return</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>) <span style="color: #000000">*</span> <span style="color: #1C01CE">2</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">main</span>():
-    <span style="color: #000000">bar</span>(<span style="color: #C41A16">&#39;0&#39;</span>)
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">bar</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 
-<span style="color: #000000">main</span>()
+<span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 打印信息如下：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">Traceback (most recent call last):</span>
-<span style="color: #000000">  File &quot;err.py&quot;, line 11, in &lt;module&gt;</span>
-<span style="color: #000000">    main()</span>
-<span style="color: #000000">  File &quot;err.py&quot;, line 9, in main</span>
-<span style="color: #000000">    bar(&#39;0&#39;)</span>
-<span style="color: #000000">  File &quot;err.py&quot;, line 6, in bar</span>
-<span style="color: #000000">    return foo(s) * 2</span>
-<span style="color: #000000">  File &quot;err.py&quot;, line 3, in foo</span>
-<span style="color: #000000">    return 10 / int(s)</span>
-<span style="color: #177500">ZeroDivisionError: division by zero</span>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;err.py&quot;, line 11, in &lt;module&gt;
+    main()
+  File &quot;err.py&quot;, line 9, in main
+    bar(&#39;0&#39;)
+  File &quot;err.py&quot;, line 6, in bar
+    return foo(s) * 2
+  File &quot;err.py&quot;, line 3, in foo
+    return 10 / int(s)
+ZeroDivisionError: division by zero
 </code></pre></div></p>
 <h3 id="_18">记录错误</h3>
-<p>捕获异常，然后把错误堆栈打印出来，同时让程序继续。使用<code class="codehilite"><span style="color: #000000">logging</span></code>模块可以非常容易地记录错误信息：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">import</span> <span style="color: #000000">logging</span>
+<p>捕获异常，然后把错误堆栈打印出来，同时让程序继续。使用<code>logging</code>模块可以非常容易地记录错误信息：
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>):
-    <span style="color: #A90D91">return</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">bar</span>(<span style="color: #000000">s</span>):
-    <span style="color: #A90D91">return</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>) <span style="color: #000000">*</span> <span style="color: #1C01CE">2</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">main</span>():
-    <span style="color: #A90D91">try</span>:
-        <span style="color: #000000">bar</span>(<span style="color: #C41A16">&#39;0&#39;</span>)
-    <span style="color: #A90D91">except</span> <span style="color: #000000">Exception</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-        <span style="color: #000000">logging.exception</span>(<span style="color: #000000">e</span>)
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">bar</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
-<span style="color: #000000">main</span>()
-<span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;END&#39;</span>)
+<span class="n">main</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;END&#39;</span><span class="p">)</span>
 </code></pre></div>
 通过配置，logging还可以把错误记录到日志文件里，方便事后排查。</p>
 <h3 id="_19">抛出错误</h3>
 <p>因为错误是class，捕获一个错误就是捕获到该class的一个实例。因此，错误并不是凭空产生的，而是有意创建并抛出的。Python的内置函数会抛出很多类型的错误，我们自己编写的函数也可以抛出错误。</p>
 <p>如果要抛出错误，首先根据需要，可以定义一个错误的class，选择好继承关系，然后，用raise语句抛出一个错误的实例：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>):
-    <span style="color: #000000">n</span> <span style="color: #000000">=</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
-    <span style="color: #A90D91">if</span> <span style="color: #000000">n==</span><span style="color: #1C01CE">0</span>:
-        <span style="color: #A90D91">raise</span> <span style="color: #000000">ValueError</span>(<span style="color: #C41A16">&#39;invalid value: %s&#39;</span> <span style="color: #000000">%</span> <span style="color: #000000">s</span>)
-    <span style="color: #A90D91">return</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #000000">n</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;invalid value: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">n</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">bar</span>():
-    <span style="color: #A90D91">try</span>:
-        <span style="color: #000000">foo</span>(<span style="color: #C41A16">&#39;0&#39;</span>)
-    <span style="color: #A90D91">except</span> <span style="color: #000000">ValueError</span> <span style="color: #A90D91">as</span> <span style="color: #000000">e</span>:
-        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;ValueError!&#39;</span>)
-        <span style="color: #A90D91">raise</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">foo</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ValueError!&#39;</span><span class="p">)</span>
+        <span class="k">raise</span>
 
-<span style="color: #000000">bar</span>()
+<span class="n">bar</span><span class="p">()</span>
 </code></pre></div>
 在bar()函数中，我们明明已经捕获了错误，但是，打印一个ValueError!后，又把错误通过raise语句抛出去了，这不有病么？</p>
 <p>其实这种错误处理方式不但没病，而且相当常见。捕获错误目的只是记录一下，便于后续追踪。但是，由于当前函数不知道应该怎么处理该错误，所以，最恰当的方式是继续往上抛，让顶层调用者去处理。好比一个员工处理不了一个问题时，就把问题抛给他的老板，如果他的老板也处理不了，就一直往上抛，最终会抛给CEO去处理。</p>
 <p>raise语句如果不带参数，就会把当前错误原样抛出。此外，在except中raise一个Error，还可以把一种类型的错误转化成另一种类型：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">try</span>:
-    <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #1C01CE">0</span>
-<span style="color: #A90D91">except</span> <span style="color: #000000">ZeroDivisionError</span>:
-    <span style="color: #A90D91">raise</span> <span style="color: #000000">ValueError</span>(<span style="color: #C41A16">&#39;input error!&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;input error!&#39;</span><span class="p">)</span>
 </code></pre></div>
 只要是合理的转换逻辑就可以，但是，决不应该把一个IOError转换成毫不相干的ValueError。</p>
 <h3 id="_20">小结</h3>
-<p>Python内置的<code class="codehilite"><span style="color: #000000">try...except...finally</span></code>用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。</p>
+<p>Python内置的<code>try...except...finally</code>用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。</p>
 <p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
 <h2 id="_21">调试</h2>
 <p>程序能一次写完并正常运行的概率很小，基本不超过1%。总会有各种各样的bug需要修正。有的bug很简单，看看错误信息就知道，有的bug很复杂，我们需要知道出错时，哪些变量的值是正确的，哪些变量的值是错误的，因此，需要一整套调试程序的手段来修复bug。</p>
 <p>第一种方法简单直接粗暴有效，就是用print()把可能有问题的变量打印出来看看：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>):
-    <span style="color: #000000">n</span> <span style="color: #000000">=</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
-    <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;&gt;&gt;&gt; n = %d&#39;</span> <span style="color: #000000">%</span> <span style="color: #000000">n</span>)
-    <span style="color: #A90D91">return</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #000000">n</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; n = </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">n</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">main</span>():
-    <span style="color: #000000">foo</span>(<span style="color: #C41A16">&#39;0&#39;</span>)
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">foo</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 
-<span style="color: #000000">main</span>()
+<span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 执行后在输出中查找打印的变量值：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ python3 err.py
-&gt;&gt;&gt; <span style="color: #000000">n</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>
-Traceback <span style="color: #000000">(</span>most recent call last<span style="color: #000000">)</span>:
+<div class="highlight"><pre><span></span><code>$ python3 err.py
+&gt;&gt;&gt; n = 0
+Traceback (most recent call last):
   ...
 ZeroDivisionError: integer division or modulo by zero
 </code></pre></div>
 用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。所以，我们又有第二种方法。</p>
 <h3 id="_22">断言</h3>
 <p>凡是用print()来辅助查看的地方，都可以用断言（assert）来替代：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">def</span> <span style="color: #000000">foo</span>(<span style="color: #000000">s</span>):
-    <span style="color: #000000">n</span> <span style="color: #000000">=</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
-    <span style="color: #A90D91">assert</span> <span style="color: #000000">n</span> <span style="color: #000000">!=</span> <span style="color: #1C01CE">0</span>, <span style="color: #C41A16">&#39;n is zero!&#39;</span>
-    <span style="color: #A90D91">return</span> <span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #000000">n</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;n is zero!&#39;</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">n</span>
 
-<span style="color: #A90D91">def</span> <span style="color: #000000">main</span>():
-    <span style="color: #000000">foo</span>(<span style="color: #C41A16">&#39;0&#39;</span>)
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">foo</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 </code></pre></div>
 assert的意思是，表达式n != 0应该是True，否则，根据程序运行的逻辑，后面的代码肯定会出错。</p>
 <p>如果断言失败，assert语句本身就会抛出AssertionError：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ python3 err.py
-Traceback <span style="color: #000000">(</span>most recent call last<span style="color: #000000">)</span>:
+<div class="highlight"><pre><span></span><code>$ python3 err.py
+Traceback (most recent call last):
   ...
 AssertionError: n is zero!
 </code></pre></div>
-程序中如果到处充斥着assert，和print()相比也好不到哪去。不过，启动Python解释器时可以用<code class="codehilite"><span style="color: #000000">-O</span></code>参数来关闭assert：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ python3 -O err.py
-Traceback <span style="color: #000000">(</span>most recent call last<span style="color: #000000">)</span>:
+程序中如果到处充斥着assert，和print()相比也好不到哪去。不过，启动Python解释器时可以用<code>-O</code>参数来关闭assert：
+<div class="highlight"><pre><span></span><code>$ python3 -O err.py
+Traceback (most recent call last):
   ...
 ZeroDivisionError: division by zero
 </code></pre></div></p>
 <p>关闭后，你可以把所有的assert语句当成pass来看。
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ python3 -O err.py
-Traceback <span style="color: #000000">(</span>most recent call last<span style="color: #000000">)</span>:
+<div class="highlight"><pre><span></span><code>$ python3 -O err.py
+Traceback (most recent call last):
   ...
 ZeroDivisionError: division by zero
 </code></pre></div></p>
 <h3 id="logging_1">logging</h3>
 <p>把print()替换为logging是第3种方式，和assert比，logging不会抛出错误，而且可以输出到文件：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">import</span> <span style="color: #000000">logging</span>
-<span style="color: #000000">logging.basicConfig</span>(<span style="color: #000000">level=logging.INFO</span>)
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
-<span style="color: #000000">n</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>
-<span style="color: #000000">logging.info</span>(<span style="color: #C41A16">&#39;n = %d&#39;</span> <span style="color: #000000">%</span> <span style="color: #000000">n</span>)
-<span style="color: #A90D91">print</span>(<span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #000000">n</span>)
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;n = </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
 </code></pre></div>
 这就是logging的好处，它允许你指定记录信息的级别，有debug，info，warning，error等几个级别，当我们指定level=INFO时，logging.debug就不起作用了。同理，指定level=WARNING后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。</p>
 <p>logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。</p>
 <h3 id="pdb">pdb</h3>
-<p><code class="codehilite"><span style="color: #000000">python -m pdb err.py</span></code></p>
+<p><code>python -m pdb err.py</code></p>
 <p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。我们先准备好程序：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">s</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;0&#39;</span>
-<span style="color: #000000">n</span> <span style="color: #000000">=</span> <span style="color: #A90D91">int</span>(<span style="color: #000000">s</span>)
-<span style="color: #A90D91">print</span>(<span style="color: #1C01CE">10</span> <span style="color: #000000">/</span> <span style="color: #000000">n</span>)
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
 </code></pre></div>
 然后启动：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>$ python3 -m pdb err.py
-&gt; /Users/michael/Github/learn-python3/samples/debug/err.py<span style="color: #000000">(</span><span style="color: #1C01CE">2</span><span style="color: #000000">)</span>&lt;module&gt;<span style="color: #000000">()</span>
--&gt; <span style="color: #000000">s</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;0&#39;</span>
+<div class="highlight"><pre><span></span><code>$ python3 -m pdb err.py
+&gt; /Users/michael/Github/learn-python3/samples/debug/err.py(2)&lt;module&gt;()
+-&gt; s = &#39;0&#39;
 </code></pre></div></p>
 <h3 id="ide">IDE</h3>
 <p>如果要比较爽地设置断点、单步执行，就需要一个支持调试功能的IDE。目前比较好的Python IDE有<a href="http://www.jetbrains.com/pycharm/">PyCharm</a>，Eclipse插件Pydev。</p>
@@ -1234,82 +1272,82 @@ ZeroDivisionError: division by zero
 <li>输入非数值类型，比如None、[]、{}，期待抛出TypeError。</li>
 </ol>
 <p>把上面的测试用例放到一个测试模块里，就是一个完整的单元测试。如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。 单元测试通过后有什么意义呢？如果我们对abs()函数代码做了修改，只需要再跑一遍单元测试，如果通过，说明我们的修改不会对abs()函数原有的行为造成影响，如果测试不通过，说明我们的修改与原有行为不一致，要么修改代码，要么修改测试。 这种以测试为驱动的开发模式最大的好处就是确保一个程序模块的行为符合我们设计的测试用例。在将来修改的时候，可以极大程度地保证该模块行为仍然是正确的。 我们来编写一个Dict类，这个类的行为和dict一致，但是可以通过属性来访问，用起来就像下面这样：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">&gt;&gt;&gt;</span> <span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">Dict</span>(<span style="color: #000000">a=</span><span style="color: #1C01CE">1</span>, <span style="color: #000000">b=</span><span style="color: #1C01CE">2</span>)
-<span style="color: #000000">&gt;&gt;&gt;</span> <span style="color: #000000">d</span>[<span style="color: #C41A16">&#39;a&#39;</span>]
-<span style="color: #1C01CE">1</span>
-<span style="color: #000000">&gt;&gt;&gt;</span> <span style="color: #000000">d.a</span>
-<span style="color: #1C01CE">1</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">a</span>
+<span class="mi">1</span>
 </code></pre></div>
 mydict.py代码如下：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">class</span> <span style="color: #3F6E75">Dict</span>(<span style="color: #A90D91">dict</span>):
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Dict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">__init__</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">**kw</span>):
-        <span style="color: #A90D91">super</span>()<span style="color: #000000">.__init__</span>(<span style="color: #000000">**kw</span>)
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">__getattr__</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">key</span>):
-        <span style="color: #A90D91">try</span>:
-            <span style="color: #A90D91">return</span> <span style="color: #5B269A">self</span>[<span style="color: #000000">key</span>]
-        <span style="color: #A90D91">except</span> <span style="color: #000000">KeyError</span>:
-            <span style="color: #A90D91">raise</span> <span style="color: #000000">AttributeError</span>(<span style="color: #C41A16">r&quot;&#39;Dict&#39; object has no attribute &#39;%s&#39;&quot;</span> <span style="color: #000000">%</span> <span style="color: #000000">key</span>)
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&#39;Dict&#39; object has no attribute &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">__setattr__</span>(<span style="color: #5B269A">self</span>, <span style="color: #000000">key</span>, <span style="color: #000000">value</span>):
-        <span style="color: #5B269A">self</span>[<span style="color: #000000">key</span>] <span style="color: #000000">=</span> <span style="color: #000000">value</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </code></pre></div></p>
 <p>为了编写单元测试，我们需要引入Python自带的unittest模块，编写mydict_test.py如下：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">import</span> <span style="color: #000000">unittest</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
 
-<span style="color: #A90D91">from</span> <span style="color: #000000">mydict</span> <span style="color: #A90D91">import</span> <span style="color: #000000">Dict</span>
+<span class="kn">from</span> <span class="nn">mydict</span> <span class="kn">import</span> <span class="n">Dict</span>
 
-<span style="color: #A90D91">class</span> <span style="color: #3F6E75">TestDict</span>(<span style="color: #000000">unittest.TestCase</span>):
+<span class="k">class</span> <span class="nc">TestDict</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">test_init</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">Dict</span>(<span style="color: #000000">a=</span><span style="color: #1C01CE">1</span>, <span style="color: #000000">b=</span><span style="color: #C41A16">&#39;test&#39;</span>)
-        <span style="color: #5B269A">self</span><span style="color: #000000">.assertEqual</span>(<span style="color: #000000">d.a</span>, <span style="color: #1C01CE">1</span>)
-        <span style="color: #5B269A">self</span><span style="color: #000000">.assertEqual</span>(<span style="color: #000000">d.b</span>, <span style="color: #C41A16">&#39;test&#39;</span>)
-        <span style="color: #5B269A">self</span><span style="color: #000000">.assertTrue</span>(<span style="color: #A90D91">isinstance</span>(<span style="color: #000000">d</span>, <span style="color: #A90D91">dict</span>))
+    <span class="k">def</span> <span class="nf">test_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">dict</span><span class="p">))</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">test_key</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">Dict</span>()
-        <span style="color: #000000">d</span>[<span style="color: #C41A16">&#39;key&#39;</span>] <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;value&#39;</span>
-        <span style="color: #5B269A">self</span><span style="color: #000000">.assertEqual</span>(<span style="color: #000000">d.key</span>, <span style="color: #C41A16">&#39;value&#39;</span>)
+    <span class="k">def</span> <span class="nf">test_key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">()</span>
+        <span class="n">d</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">test_attr</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">Dict</span>()
-        <span style="color: #000000">d.key</span> <span style="color: #000000">=</span> <span style="color: #C41A16">&#39;value&#39;</span>
-        <span style="color: #5B269A">self</span><span style="color: #000000">.assertTrue</span>(<span style="color: #C41A16">&#39;key&#39;</span> <span style="color: #000000">in</span> <span style="color: #000000">d</span>)
-        <span style="color: #5B269A">self</span><span style="color: #000000">.assertEqual</span>(<span style="color: #000000">d</span>[<span style="color: #C41A16">&#39;key&#39;</span>], <span style="color: #C41A16">&#39;value&#39;</span>)
+    <span class="k">def</span> <span class="nf">test_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">()</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">test_keyerror</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">Dict</span>()
-        <span style="color: #A90D91">with</span> <span style="color: #5B269A">self</span><span style="color: #000000">.assertRaises</span>(<span style="color: #000000">KeyError</span>):
-            <span style="color: #000000">value</span> <span style="color: #000000">=</span> <span style="color: #000000">d</span>[<span style="color: #C41A16">&#39;empty&#39;</span>]
+    <span class="k">def</span> <span class="nf">test_keyerror</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">()</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;empty&#39;</span><span class="p">]</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">test_attrerror</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #000000">d</span> <span style="color: #000000">=</span> <span style="color: #000000">Dict</span>()
-        <span style="color: #A90D91">with</span> <span style="color: #5B269A">self</span><span style="color: #000000">.assertRaises</span>(<span style="color: #000000">AttributeError</span>):
-            <span style="color: #000000">value</span> <span style="color: #000000">=</span> <span style="color: #000000">d.empty</span>
+    <span class="k">def</span> <span class="nf">test_attrerror</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">()</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">empty</span>
 </code></pre></div></p>
 <p>编写单元测试时，我们需要编写一个测试类，从unittest.TestCase继承。 以test开头的方法就是测试方法，不以test开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
 <p>对每一类测试都需要编写一个test_xxx()方法。由于unittest.TestCase提供了很多内置的条件判断，我们只需要调用这些方法就可以断言输出是否是我们所期望的。最常用的断言就是assertEqual()。</p>
 <h3 id="_25">运行单元测试</h3>
 <p>使用函数运行
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">if</span> <span style="color: #000000">__name__</span> <span style="color: #000000">==</span> <span style="color: #C41A16">&#39;__main__&#39;</span>:
-    <span style="color: #000000">unittest.main</span>()
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </code></pre></div></p>
-<p>使用<code class="codehilite"><span style="color: #000000">-m</span></code>参数运行
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>python3 -m unittest mydict_test
+<p>使用<code>-m</code>参数运行
+<div class="highlight"><pre><span></span><code>python3 -m unittest mydict_test
 </code></pre></div>
 这是推荐的做法，因为这样可以一次批量运行很多单元测试，并且，有很多工具可以自动来运行这些单元测试。</p>
 <h3 id="setupteardown">setUp与tearDown</h3>
 <p>可以在单元测试中编写两个特殊的setUp()和tearDown()方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
 <p>setUp()和tearDown()方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在setUp()方法中连接数据库，在tearDown()方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码：
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">class</span> <span style="color: #3F6E75">TestDict</span>(<span style="color: #000000">unittest.TestCase</span>):
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestDict</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">setUp</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;setUp...&#39;</span>)
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setUp...&#39;</span><span class="p">)</span>
 
-    <span style="color: #A90D91">def</span> <span style="color: #000000">tearDown</span>(<span style="color: #5B269A">self</span>):
-        <span style="color: #A90D91">print</span>(<span style="color: #C41A16">&#39;tearDown...&#39;</span>)
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tearDown...&#39;</span><span class="p">)</span>
 </code></pre></div>
 可以再次运行测试看看每个测试方法调用前后是否会打印出setUp...和tearDown...。</p>
 <h3 id="_26">小结</h3>
@@ -1317,9 +1355,6 @@ mydict.py代码如下：
 <p>单元测试的测试用例要覆盖常用的输入组合、边界条件和异常。</p>
 <p>单元测试代码要非常简单，如果测试代码太复杂，那么测试代码本身就可能有bug。</p>
 <p>单元测试通过了并不意味着程序就没有bug了，但是不通过程序肯定有bug。</p>
-                
-                  
-                
                 
               
               
@@ -1343,11 +1378,10 @@ mydict.py代码如下：
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1356,26 +1390,18 @@ mydict.py代码如下：
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

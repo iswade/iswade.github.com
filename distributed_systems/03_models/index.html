@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/distributed_systems/03_models/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#_1" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                第三章 通信模型
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              第三章 通信模型
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -305,13 +289,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -386,13 +376,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" checked>
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -443,13 +439,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         第三章 通信模型
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="第三章 通信模型" class="md-nav__link md-nav__link--active">
@@ -457,13 +456,18 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -478,7 +482,7 @@
     3.2 进程间通信的消息传递模型
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.2 进程间通信的消息传递模型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -519,7 +523,7 @@
     3.3 共享变量
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.3 共享变量">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -546,7 +550,7 @@
     3.5 模型间的关系
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.5 模型间的关系">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -594,7 +598,7 @@
     3.6 基于特殊属性的分类
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.6 基于特殊属性的分类">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -636,10 +640,6 @@
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -701,13 +701,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -749,13 +755,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -767,8 +779,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -809,6 +821,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -825,13 +849,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -846,7 +875,7 @@
     3.2 进程间通信的消息传递模型
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.2 进程间通信的消息传递模型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -887,7 +916,7 @@
     3.3 共享变量
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.3 共享变量">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -914,7 +943,7 @@
     3.5 模型间的关系
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.5 模型间的关系">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -962,7 +991,7 @@
     3.6 基于特殊属性的分类
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3.6 基于特殊属性的分类">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1005,10 +1034,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -1020,6 +1045,9 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
+                
+                
+                  
                 
                 
                 <h1 id="_1">第三章 通信模型</h1>
@@ -1048,13 +1076,13 @@
 <p><img alt="image-20190702080052966" src="../image/03_01_channel.png" /></p>
 <p><center>图 3.1 进程 P 到进程 Q 之间的通道</center>
 前面提到的公理仅适用于我们的模型，但对于所有分布式系统而言可能并非如此。关于这些公理的一些澄清在下面给出。公理1排除了消息的丢失以及虚假消息的接收。当通道不可靠时，可能会在数据链路或传输层违反公理1。丢失消息的恢复是链路和传输层协议的重要方面。</p>
-<p>在公理2中，缺少传播延迟的预定上限是异步信道的重要特征。它还削弱了计算模型。实际上，根据信道的性质以及发送器和接收器之间的距离，有时可以指定传播延迟的上限。例如，考虑一个可以容纳在小房间内的系统，让信号直接沿着电线从一个过程传播到另一个过程。由于电信号的传播速度约为 <span><span class="MathJax_Preview">1ft/ns</span><script type="math/tex">1ft/ns</script></span>，因此房间内20英尺链路的传播延迟显然几乎不会超过 <span><span class="MathJax_Preview">20ns</span><script type="math/tex">20ns</script></span>。<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>但是，如果系统的正确操作取决于传播延迟的上限，当链路长度增加到300英尺时，同一系统的正确性可能会受到损害。弱化模型的优点是，为任意大但有限延迟的信道设计的系统继续正常运行，无论传播延迟的实际值是多少。<strong>因此，延迟不敏感性增加了系统的鲁棒性和普遍适用性。</strong></p>
+<p>在公理2中，缺少传播延迟的预定上限是异步信道的重要特征。它还削弱了计算模型。实际上，根据信道的性质以及发送器和接收器之间的距离，有时可以指定传播延迟的上限。例如，考虑一个可以容纳在小房间内的系统，让信号直接沿着电线从一个过程传播到另一个过程。由于电信号的传播速度约为 <span><span class="MathJax_Preview">1ft/ns</span><script type="math/tex">1ft/ns</script></span>，因此房间内20英尺链路的传播延迟显然几乎不会超过 <span><span class="MathJax_Preview">20ns</span><script type="math/tex">20ns</script></span>。<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>但是，如果系统的正确操作取决于传播延迟的上限，当链路长度增加到300英尺时，同一系统的正确性可能会受到损害。弱化模型的优点是，为任意大但有限延迟的信道设计的系统继续正常运行，无论传播延迟的实际值是多少。<strong>因此，延迟不敏感性增加了系统的鲁棒性和普遍适用性。</strong></p>
 <p>公理3不一定满足数据报服务 —— 数据包可能在接收端无序到达。为了使我们的模型适用，有必要假设存在一个服务层，在将这些数据包传递到接收者进程之前对其进行重新排序。我们希望仔细地将模型的内在属性与其在实际应用程序环境中的实现分开。</p>
 <p>通道可以容纳多少条消息？有两种可能的方法来抽象：<strong>信道的容量可以是无限的也可以是有限的</strong>。通过无限容量的通道，发送方进程可以根据需要频繁发送消息 —— 通道永远不会被阻塞（或者由于存储限制而永远不会丢弃消息），无论接收方进程是否缓慢。但是，对于有限容量的通道，通道有时可能已满，尝试发送消息可能会阻止发送方或返回错误消息或导致消息被丢弃。虽然任何实际信道都具有有限的容量，但这种容量通常可能很大，以至于发送方很少受到影响。从这个角度来看，任意大容量的通道是一种有用的简化，而不是一种不合理的抽象。</p>
 <p>通道是一种很有意思的共享数据对象。它在许多方面不同于存储器单元。例如，不可能将任何东西（在传统写入操作擦除存储器单元的旧内容的意义上）写入通道中 —— 只能将某些东西<strong>附加到通道</strong>的现有内容上。此限制的直接后果是无法撤销已沿通道发送的消息。类似地，人们无法读取通道中间的内容（传统读取是非破坏性的） —— 只能从通道读取和删除头部元素。除了追加和删除之外，很容易假设存在布尔函数 <span><span class="MathJax_Preview">empty(c)</span><script type="math/tex">empty(c)</script></span>，如果通道 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 为空，则返回 <span><span class="MathJax_Preview">true</span><script type="math/tex">true</script></span>。然而，确定某个通道在给定时刻是否为空是远非琐事。</p>
 <h3 id="323">3.2.3 同步与异步</h3>
 <p>分布式系统的另一个可变性维度是同步和异步。同步的广泛概念基于发送者和接收者保持同步时钟和以刚性时间关系执行动作。然而，更近的视图揭示了同步的许多方面，并且从完全异步到完全同步模型的过渡是渐进的。表征同步系统的一些行为如下：</p>
-<p><em>同步时钟</em>：在具有同步时钟的系统中，每个处理器的本地时钟显示相同的时间。一组独立时钟的读数会出现漂移，并且差异随着时间的推移而增加。即使使用原子钟，漂移也是可能的，尽管这种漂移的程度远小于使用普通电子元件设计的时钟之间的漂移程度。对于不太严格的应用，国内供电公司严格模仿这一标准，其中一秒等于交流电压60次振荡的时间（或根据欧洲标准以及澳大利亚和亚洲国家的50次振荡）<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>。由于时钟永远不能完美同步，因此同步时钟的较弱概念是本地时钟的实时漂移率具有已知的上限。</p>
+<p><em>同步时钟</em>：在具有同步时钟的系统中，每个处理器的本地时钟显示相同的时间。一组独立时钟的读数会出现漂移，并且差异随着时间的推移而增加。即使使用原子钟，漂移也是可能的，尽管这种漂移的程度远小于使用普通电子元件设计的时钟之间的漂移程度。对于不太严格的应用，国内供电公司严格模仿这一标准，其中一秒等于交流电压60次振荡的时间（或根据欧洲标准以及澳大利亚和亚洲国家的50次振荡）<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。由于时钟永远不能完美同步，因此同步时钟的较弱概念是本地时钟的实时漂移率具有已知的上限。</p>
 <p><em>同步进程</em>：同步进程系统在锁步同步中执行操作，即在每个步骤中，所有进程都执行符合条件的操作。然而，在现实生活中，由于中断，在处理器上运行的每个进程经常发生故障。结果，中断服务程序在两个连续指令的执行之间引入任意数量的延迟，使得它看起来像外部世界，好像指令执行速度是不可预测的，没有明显的下限。使用稍微不同的表征，<strong>当有一个已知的指令执行速度下限时，一个进程有时称为同步</strong>。</p>
 <p>即使进程是异步的，计算有时会在阶段或轮次中进行 —— 在每个阶段或每个轮次，每个进程执行预定义的工作，并且没有进程启动第 <span><span class="MathJax_Preview">(i + 1)</span><script type="math/tex">(i + 1)</script></span> 阶段，直到所有进程完成其第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个阶段。这种相位同步或轮次同步行为的实现需要使用适当的阶段同步协议。</p>
 <p><em>同步通道</em>：当沿着该通道的消息传播延迟存在已知上限时，通道被称为同步。这种通道也称为有界延迟通道。</p>
@@ -1070,7 +1098,7 @@
 <p>消息传递和共享内存计算模型之间存在重要且微妙的差异。一个区别是，在共享内存模型中，变量或程序代码的单个副本由多个进程共享，而要在消息传递模型中共享该变量，每个进程必须具有它的独占副本。因此，更新的一致序列化是一项非常重要的任务。</p>
 <p>由于共享变量的普及，许多计算集群都支持DSM，这是一种在不共享物理内存的计算机之间共享虚拟地址空间的抽象。底层硬件是多计算机，计算机使用消息传递相互通信。 DSM的主要功能是减轻用户对消息传递的复杂细节，并让他们使用更丰富的用于共享内存系统的并行编程工具。</p>
 <p>分布式算法中使用的共享存储器模型的两种变体是（1）<em>状态读取</em>模型（也称为本地共享变量模型）和（2）<em>链接寄存器</em>模型。在状态读取模型中，除了其自身状态之外，任何进程都可以从附加到其上的邻居的通道中读取内容。但是，这样的进程只能更新自己的状态。图3.2a说明了状态读取模型，其中进程1和3可以读取进程2的状态，进程0可以读取进程1的状态。</p>
-<p>在链接寄存器模型中，每个链接或通道都是单读单写寄存器（图3.2b）。发送方写入该寄存器，接收方从该寄存器读取。为避免其他复杂情况，链接寄存器模型还假定链接寄存器上的所有读写操作都是序列化的，即写操作永远不会与读操作重叠。<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup>双向链接（由无向边表示）由一对组成链接寄存器。</p>
+<p>在链接寄存器模型中，每个链接或通道都是单读单写寄存器（图3.2b）。发送方写入该寄存器，接收方从该寄存器读取。为避免其他复杂情况，链接寄存器模型还假定链接寄存器上的所有读写操作都是序列化的，即写操作永远不会与读操作重叠。<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>双向链接（由无向边表示）由一对组成链接寄存器。</p>
 <p><img alt="image-20190704072410222" src="../image/03_02_share_memory.png" /></p>
 <p><center>图 3.2 (a) 状态读取模型：一个有向的边 (2,3) 意味着 3 可以读取 2 的状态。(b) 链接寄存器模型：1 和 3 从链接寄存器 R21 和 R23 获得信息，由 2 更新。这些寄存器的内容受到 2 与它们共享多少的限制。</center>
 前两个模型之间的一个区别在于，在图3.2b中，邻居1和3分别从链接寄存器R21和R23访问信息，并且它们的内容受到进程2想要与它们共享多少的限制。 这些可能与进程1的状态不同。它还取决于何时更新这些寄存器值。</p>
@@ -1078,30 +1106,30 @@
 <p>耶鲁大学的David Gelernter于1985年开发了Linda [G85]。它是一个使用共享元组空间概念的并发编程模型，它本质上是一种共享的通信机制。一般原理类似于人工智能中使用的黑板系统。进程通过存入和撤销元组进行协作。进程可能彼此不了解，或者至少它们不直接相互通信。通信基于模式匹配，即，进程可以检查所需的元组，非常类似于数据库系统中的逐个查询范例，并检索满足该模式的一个或多个元组。存储元组是异步的，而查询过程可能会选择阻止自己，直到元组匹配为止。</p>
 <p>Linda元组是无序的，由六个原语访问。原语OUT和IN用于将元组存入元组空间并从元组空间中提取元组 —— 这些元组分别模拟发送和接收操作。原语RD也接收元组，但与IN不同，它不会从空间中删除元组。INP和RDP是IN和RD的非阻塞版本 —— 当存在匹配的元组时，它们像IN和RD一样工作，否则返回false。最后，EVAL创建了新的进程，可以与Unix fork命令进行比较。</p>
 <p>以下是作为C程序扩展编写的Linda程序的示例。主进程将任务委派给n个从进程。当所有从进程完成任务时，他们将“done”输出到元组空间。主设备从元组空间输入，然后打印一条消息，表明所有任务都已完成。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500">/** main program**/</span> 
-<span style="color: #000000">real_main</span>(<span style="color: #000000">argc</span>,<span style="color: #000000">argv</span>) 
-    <span style="color: #A90D91">int</span> <span style="color: #000000">argc</span>;
-    <span style="color: #A90D91">char</span> <span style="color: #000000">*argv</span>[];
-{
-    <span style="color: #A90D91">int</span> <span style="color: #000000">nslave</span>, <span style="color: #000000">j</span>, <span style="color: #000000">hello</span>();
-    <span style="color: #000000">nslave</span> <span style="color: #000000">=</span> <span style="color: #000000">atoi</span> (<span style="color: #000000">argv</span>[<span style="color: #1C01CE">1</span>]);
+<div class="highlight"><pre><span></span><code><span class="cm">/** main program**/</span> 
+<span class="n">real_main</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="n">argv</span><span class="p">)</span> 
+    <span class="kt">int</span> <span class="n">argc</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[];</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">nslave</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">hello</span><span class="p">();</span>
+    <span class="n">nslave</span> <span class="o">=</span> <span class="n">atoi</span> <span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 
-    <span style="color: #A90D91">for</span> (<span style="color: #000000">j</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>; <span style="color: #000000">j</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">nslave</span>; <span style="color: #000000">j++</span>) 
-        <span style="color: #000000">EVAL</span>(<span style="color: #C41A16">&quot;slave&quot;</span>, <span style="color: #000000">hello</span>(<span style="color: #000000">j</span>)); 
-    <span style="color: #A90D91">for</span> (<span style="color: #000000">j</span> <span style="color: #000000">=</span> <span style="color: #1C01CE">0</span>; <span style="color: #000000">j</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">nslave</span>; <span style="color: #000000">j++</span>) 
-        <span style="color: #000000">IN</span>(<span style="color: #C41A16">&quot;done&quot;</span>);
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nslave</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> 
+        <span class="n">EVAL</span><span class="p">(</span><span class="s">&quot;slave&quot;</span><span class="p">,</span> <span class="n">hello</span><span class="p">(</span><span class="n">j</span><span class="p">));</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nslave</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> 
+        <span class="n">IN</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">);</span>
 
-    <span style="color: #000000">printf</span>(<span style="color: #C41A16">&quot;Task completed.\n&quot;</span>);
-}
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task completed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span style="color: #177500">/** subroutine hello **/</span> 
-<span style="color: #A90D91">int</span> <span style="color: #000000">hello</span> (<span style="color: #000000">i</span>)
-    <span style="color: #A90D91">int</span> <span style="color: #000000">i</span>; 
-{
-    <span style="color: #000000">printf</span>(<span style="color: #C41A16">&quot;Task from number %d.\n&quot;</span>, <span style="color: #000000">i</span>);
-    <span style="color: #000000">OUT</span>(<span style="color: #C41A16">&quot;done&quot;</span>);
-    <span style="color: #A90D91">return</span>(<span style="color: #1C01CE">0</span>);
-}
+<span class="cm">/** subroutine hello **/</span> 
+<span class="kt">int</span> <span class="n">hello</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span> 
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task from number %d.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="n">OUT</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>JavaSpace是一个基于Linda的对象协调系统。 元组空间可以实现为分布式数据结构，并且空间的一部分可以物理地映射到网络中的不同进程的本地存储器上。 更多细节可以在[CG89]中找到。</p>
@@ -1109,7 +1137,7 @@
 <p>移动代理是从一个进程迁移到另一个进程的程序代码。与被动消息不同，移动代理是可以与消息发送者进行比较的活动实体。代理程序代码在主机上执行，其中代理程序可以与主机上运行的程序的变量交互，使用其资源并采取自主路由决策。在迁移期间，执行进程将其状态从一台机器传输到另一台机器，同时保持其数据完好无损。正在使用两大类移动代理：一些支持强大的移动性，而另一些则不支持。通过强大的移动性，代理能够将其控制状态从一台机器转移到另一台机器 —— 因此在机器A中执行指令k之后，移动代理可以在下一台机器B中执行指令 (k + 1)。控制状态不会被传输 —— 所以在每个主机上，代码在没有这些信息的情况下执行。</p>
 <p>移动代理补充了现有的进程间通信技术。在涉及超大型数据库的应用程序中，<strong>当客户端通过一些查询将移动代理程序发送到数据库服务器时，可以节省网络带宽，而不是将大量数据从服务器提取到客户端站点</strong>。移动代理还有助于断开操作模式。消息和移动代理可以共存：当某些任务使用消息传递时，移动代理可以执行协调整个网络或其中一小部分活动的任务。 Dartmouth的D'Agents和IBM的Aglets是两个着名的移动代理系统。</p>
 <p>移动性较弱的移动代理可以如下建模：将代理的发起者称为其 <em>home</em>。每个移动代理由（至少）三个组件 <span><span class="MathJax_Preview">(I, P, B)</span><script type="math/tex">(I, P, B)</script></span> 指定。第一个组件I是代理标识符，对于每个代理都是唯一的。第二个组件P指定在其访问的每个进程中执行的代理程序。第三个组件B是公文包，表示代理程序要使用的数据变量。另外两个变量 current 和 next 跟踪代理的当前位置和下一个要访问的进程。以下是使用移动代理进行计算的示例：考虑计算在n个不同商店中销售的商品的最低价格的任务。让价格（i）表示商店i中商品的价格，并且让公文包变量 best 表示到目前为止代理商访问的商店中商品的最低价格。将每个商店视为一个进程。为了计算 best，发起者进程将移动代理发送到相邻进程。此后，代理在返回 home 之前在每个站点执行以下程序P：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>initially  current = home; best = price(home),
+<div class="highlight"><pre><span></span><code>initially  current = home; best = price(home),
            visit next; {next depends on a traversal algorithm} 
            {after reaching a new host}
 while      current ≠ home do
@@ -1124,7 +1152,7 @@ end while
 <h2 id="35">3.5 模型间的关系</h2>
 <p>虽然到目前为止讨论的所有模型仅与进程间通信有关，但其他模型处理其他可变性维度。例如，故障模型抽象了故障过程的行为，并在第13章中讨论。模型对程序员和算法设计者很重要。在设计问题的解决方案之前，了解游戏规则很重要。 当A和B的对象和操作之间存在1-1对应时，两个模型A和B是等价的。</p>
 <h3 id="351">3.5.1 强和弱模型</h3>
-<p>非正式地，一个模型A被认为比另一个模型B更强，当在A中实现对象（或操作）时，在B中需要多个对象（或操作）。例如，支持多播的模型比支持点对点通信的模型更强，因为通常使用多个点对点通信实现单个多播。<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>更强的术语也归因于与另一个模型相比具有更多约束的模型（称为较弱的模型）。从这个意义上讲，具有有界延迟信道的消息传递模型比具有无界延迟信道的消息传递模型更强。使用此视图，同步模型比异步模型更强大。请记住，强弱不是绝对的，而是相对属性，没有措施来量化它们。同样有时两个模型不能客观地进行比较，因此不能将其标记为比另一个更强。</p>
+<p>非正式地，一个模型A被认为比另一个模型B更强，当在A中实现对象（或操作）时，在B中需要多个对象（或操作）。例如，支持多播的模型比支持点对点通信的模型更强，因为通常使用多个点对点通信实现单个多播。<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>更强的术语也归因于与另一个模型相比具有更多约束的模型（称为较弱的模型）。从这个意义上讲，具有有界延迟信道的消息传递模型比具有无界延迟信道的消息传递模型更强。使用此视图，同步模型比异步模型更强大。请记住，强弱不是绝对的，而是相对属性，没有措施来量化它们。同样有时两个模型不能客观地进行比较，因此不能将其标记为比另一个更强。</p>
 <p>您将采用哪种模型来设计分布式应用程序？这个问题没有独特的答案。一方面，强模型的选择简化了算法设计，因为与应用相关的许多约束都内置在模型中。这也简化了正确性证明。另一方面，当实现应用程序时，关键问题是底层硬件和操作系统提供的支持。有时，您可能希望将可用解决方案从备用模型移植到目标平台 —— 例如，在教科书中描述了在链接寄存器模型上运行的优雅领导者选举算法，并且您可能希望在消息上实现它 —— 通过具有有限进程延迟和有界通道容量的架构，因为这是目标平台的硬件架构所支持的。这可能会增加复杂性。</p>
 <p>这种实现是模拟练习，不仅对实践者而且对理论家都有兴趣。可以使用模型B模拟模型A吗？这种模拟的时间和空间复杂性是什么？像这样的问题具有极大的挑战性和刺激性，构建这样的抽象层是计算机科学家的主要活动之一。一般来说，从较强的模型实现较弱的模型更简单，但使用较弱的模型实现更强的模型可能需要相当大的努力。在本节的其余部分中，我们概述了一些此类实现。</p>
 <h3 id="352-fifo-fifo">3.5.2 通过非 FIFO 通道实现 FIFO 通道</h3>
@@ -1132,7 +1160,7 @@ end while
 <p>存储：每当 <span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span> 收到消息 <span><span class="MathJax_Preview">m[j]</span><script type="math/tex">m[j]</script></span> 时，它将其存储在本地缓冲区中。</p>
 <p>交付：仅在消息 <span><span class="MathJax_Preview">m[j-1]</span><script type="math/tex">m[j-1]</script></span> 之后将消息传递给应已经被交付，进程 <span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span> 将消息交付给引用。</p>
 <p>以下描述了被称为重新排序协议的实现。 它假定每条消息都有一个单调增长的序列号。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>{Sender process P}
+<div class="highlight"><pre><span></span><code>{Sender process P}
 var i : integer {initially 0}
 
 repeat
@@ -1165,7 +1193,7 @@ forever
 <h3 id="353">3.5.3 使用共享内存实现消息传递</h3>
 <p>一个相对容易的任务是在共享内存多处理器上实现消息传递。这种模拟必须满足通道公理。在一对进程之间实现容量通道 <span><span class="MathJax_Preview">(max  -  1)</span><script type="math/tex">(max  -  1)</script></span> 使用大小为 <span><span class="MathJax_Preview">max</span><script type="math/tex">max</script></span> 的循环消息缓冲区（图3.3）。</p>
 <p>令 <span><span class="MathJax_Preview">s[i]</span><script type="math/tex">s[i]</script></span> 表示发送方发送的第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个消息，<span><span class="MathJax_Preview">r[j]</span><script type="math/tex">r[j]</script></span> 表示接收方接收的第 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 个消息。以下描述了实现。 观察到当通道已满时发送器被阻塞，而当通道为空时接收器被阻塞。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>shared var p, q: integer {initially p = q}
+<div class="highlight"><pre><span></span><code>shared var p, q: integer {initially p = q}
 buffer: array [0..max-1] of message
 
 {Sender process P}
@@ -1191,7 +1219,7 @@ forever
 <p>我们看一下实现全部变量 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> ，在这个系统中 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 个进程 <span><span class="MathJax_Preview">0, 1, 2, …, n - 1</span><script type="math/tex">0, 1, 2, …, n - 1</script></span> 使用消息传递。每个进程 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 维护一个 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 的拷贝 <span><span class="MathJax_Preview">x[i]</span><script type="math/tex">x[i]</script></span> （如图 3.4）。这里有一个重要的约束，不管什么时候一个进程读取 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 的时候，本地的拷贝必须与 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 最新的值保持一致。实现读和写操作 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 的第一步描述如下：</p>
 <p><img alt="image-20190707150135485" src="../image/03_04_X.png" /></p>
 <p><center>图 3.4 (a) 共享内存位置 X; (b) 在消息传递模型中的等价表示。</center>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>{Implementing shared memory by message passing: first attempt} 
+<div class="highlight"><pre><span></span><code>{Implementing shared memory by message passing: first attempt} 
 
 {read X by process i}
 read x[i] x[i] := v
@@ -1202,7 +1230,7 @@ Multicast v to every other process j (j ≠ i) in the system;
 Process j (j ≠ i), after receiving the multicast, sets x[j] to v.
 </code></pre></div></p>
 <p>一个相对容易的任务是在共享内存多处理器上实现消息传递。这种模拟必须满足信道公理。在一对进程之间实现容量通道 <span><span class="MathJax_Preview">(max  -  1)</span><script type="math/tex">(max  -  1)</script></span> 使用大小为 <span><span class="MathJax_Preview">max</span><script type="math/tex">max</script></span> 的循环消息缓冲区（图3.3）。
-明显的目标是在每次更新操作之后使共享变量的每个本地副本彼此相同。但是，有问题。假设两个进程0和1正在尝试使用不同的值同时更新共享变量 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>。这些更新有可能以不同的顺序到达进程2和3，使 <span><span class="MathJax_Preview">x[2]≠x[3]</span><script type="math/tex">x[2]≠x[3]</script></span>。似乎可以通过使多播操作将 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 写入不可分割的操作（也称为原子操作）来解决问题，但实际上，它不能解决问题，因为它不能控制更新的到达顺序。在他们的目的地进程。因此，这里描述的解决方案是简单的，有缺陷的，不完整的。此外，实现原子操作远非微不足道，并且有自己的开销。<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup>所需要的是保证所有进程始终以相同的顺序接收更新。这称为<em>全序广播</em>。它的实现取决于如何执行多播以及消息是否丢失以及进程是否容易出现故障。我们将在第16章讨论这一点的可行性。</p>
+明显的目标是在每次更新操作之后使共享变量的每个本地副本彼此相同。但是，有问题。假设两个进程0和1正在尝试使用不同的值同时更新共享变量 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>。这些更新有可能以不同的顺序到达进程2和3，使 <span><span class="MathJax_Preview">x[2]≠x[3]</span><script type="math/tex">x[2]≠x[3]</script></span>。似乎可以通过使多播操作将 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 写入不可分割的操作（也称为原子操作）来解决问题，但实际上，它不能解决问题，因为它不能控制更新的到达顺序。在他们的目的地进程。因此，这里描述的解决方案是简单的，有缺陷的，不完整的。此外，实现原子操作远非微不足道，并且有自己的开销。<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>所需要的是保证所有进程始终以相同的顺序接收更新。这称为<em>全序广播</em>。它的实现取决于如何执行多播以及消息是否丢失以及进程是否容易出现故障。我们将在第16章讨论这一点的可行性。</p>
 <h3 id="355">3.5.5 使用通道的不可能性</h3>
 <p>让我们重新审视消息传递模型，并检查检测通道是否为空的问题。熟悉的场景如下：有两个进程 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 和 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 以及两个通道 <span><span class="MathJax_Preview">(i，j)</span><script type="math/tex">(i，j)</script></span> 和 <span><span class="MathJax_Preview">(j，i)</span><script type="math/tex">(j，i)</script></span> 。在冷启动期间，这些通道可能包含任意序列的消息。为了正确初始化通道，在开始执行程序之前，进程 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 想要确保通道 <span><span class="MathJax_Preview">(i，j)</span><script type="math/tex">(i，j)</script></span> 为空，以便它接收的任何消息实际上都是由进程 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 发送的。进程<span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 如何检测到这种情况？</p>
 <p>如果时钟是同步的并且沿着信道 <span><span class="MathJax_Preview">(i，j)</span><script type="math/tex">(i，j)</script></span> 在消息传播延迟上存在上限 <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>，那么问题很简单 —— 进程 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 和 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 都暂停至少 <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 秒 —— 这会刷新两个通道和每个进程拒绝在此期间到达的所有消息。在 <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 秒之后，进程 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 知道通道 <span><span class="MathJax_Preview">(i，j)</span><script type="math/tex">(i，j)</script></span> 为空。</p>
@@ -1229,7 +1257,7 @@ Process j (j ≠ i), after receiving the multicast, sets x[j] to v.
 <p><img alt="image-20190707155016865" src="../image/03_05_3_cube.png" /></p>
 <p><center>图 3.5 在 3 维立方体中的多播：进程 0 是发起者。</center>
 设 <span><span class="MathJax_Preview">N(i)</span><script type="math/tex">N(i)</script></span> 表示过程 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 的邻居集。进程0通过将值发送到 <span><span class="MathJax_Preview">N(0)</span><script type="math/tex">N(0)</script></span> 中的每个节点来启动多播。此后，每个进程都执行以下程序：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>{Program for process i &gt; 0}
+<div class="highlight"><pre><span></span><code>{Program for process i &gt; 0}
 receive message m {m contains the value}; 
 if m is received for the first time
     then x[i] := m.value;
@@ -1253,7 +1281,7 @@ end if
 <p>当谓词对所有进程都为假时，多播终止。在 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 立方体中，完成多播的所有进程所需的最大步数可以如下计算。我们关注的是距离源最远的进程所需的最大步骤数，以便从源获取值，因为很容易认为到那时多播将到达所有其他进程。在一步之后，距离过程0最远的过程（即距离 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> ）与其 distance-1 邻居的状态相关联；在额外的 <span><span class="MathJax_Preview">(k_{C_1} +1)</span><script type="math/tex">(k_{C_1} +1)</script></span> 步骤之后，它复制其 distance-2邻居的状态;在一个额外的 <span><span class="MathJax_Preview">(k_{C_2} + k_{C_1} + 1)</span><script type="math/tex">(k_{C_2} + k_{C_1} + 1)</script></span> 步之后，它会复制其 distance-3 邻居的状态；等等。完成多播的步骤总数是所有这些步骤的总和。由于从最远的过程复制值所需的步数是 <span><span class="MathJax_Preview">(k_{C_k} + k_{C_{k-1}} + … + k_{C_2} + k_{C_1} + 1) \le 2^k</span><script type="math/tex">(k_{C_k} + k_{C_{k-1}} + … + k_{C_2} + k_{C_1} + 1) \le 2^k</script></span>，并且从任何中间距离复制值的时间受此上限的限制，完成组播所需的最大步数 <span><span class="MathJax_Preview">≤k⋅2k</span><script type="math/tex">≤k⋅2k</script></span>，即 <span><span class="MathJax_Preview">O(n\ log\ n)</span><script type="math/tex">O(n\ log\ n)</script></span>。</p>
 <p>舍入复杂性：异步系统中时间复杂度的另一个衡量标准是基于轮次。从历史上看，一轮涉及以锁步同步执行其动作的同步进程，而轮次复杂度是每个过程作为输入大小的函数所采取的步骤数。在异步系统中，轮次是一个执行序列，其中最慢的进程执行一个步骤。当然，在此期间，更快的进程可能需要一个或多个步骤。从而，
 以下在四个进程 0,1,2,3 的系统中执行构成两轮：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>1 2 0 2 1 3   2 1 0 1 3
+<div class="highlight"><pre><span></span><code>1 2 0 2 1 3   2 1 0 1 3
 -----------   ---------
 </code></pre></div>
 
@@ -1270,25 +1298,22 @@ end if
 <hr />
 <ol>
 <li id="fn:1">
-<p>在大多数进程间通信的情况下，延迟的主要部分不是由于线路上的传播时间，而是由于网络协议的各个层对发送和接收操作的造成到的，也就是说延迟由路由器造成。&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>在大多数进程间通信的情况下，延迟的主要部分不是由于线路上的传播时间，而是由于网络协议的各个层对发送和接收操作的造成到的，也就是说延迟由路由器造成。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>这些时钟脉冲用于驱动我们的许多旧式台式和挂钟，但现在它已经过时了。&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>这些时钟脉冲用于驱动我们的许多旧式台式和挂钟，但现在它已经过时了。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>重叠读或写操作下寄存器的行为超出了本章的范围。&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>重叠读或写操作下寄存器的行为超出了本章的范围。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>对于物理系统支持广播的系统，声明变得有争议。&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>对于物理系统支持广播的系统，声明变得有争议。&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>我们在第 16 章重点介绍原子广播的实现。&#160;<a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>我们在第 16 章重点介绍原子广播的实现。&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
-                
-                  
-                
                 
               
               
@@ -1305,34 +1330,34 @@ end if
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../02_interprocess/" title="第二章 进程间通信" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../02_interprocess/" title="第二章 进程间通信" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
                 第二章 进程间通信
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
                 强一致性模型
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -1347,11 +1372,10 @@ end if
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1360,26 +1384,18 @@ end if
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/algorithms/algorithms/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#algorithms" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#algorithms" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Algorithms
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Algorithms
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -303,13 +287,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -382,13 +372,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -495,13 +491,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -543,13 +545,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -561,8 +569,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -603,6 +611,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -619,13 +639,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -640,7 +665,7 @@
     大纲
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="大纲">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -667,7 +692,7 @@
     常用算法
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="常用算法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -736,7 +761,7 @@
     常见题
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="常见题">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1150,7 +1175,7 @@
     最大间距
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="最大间距">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1191,10 +1216,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -1206,6 +1227,9 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
+                
+                
+                  
                 
                 
                 <h1 id="algorithms">Algorithms</h1>
@@ -1404,16 +1428,16 @@ f(n-2) + f(n-1)& n\geq 3 \\
 </div>
 <p>二维动态规划：字符串之间的编辑距离</p>
 <h3 id="_7">滑动窗口</h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500">// 算法框架</span>
-<span style="color: #A90D91">while</span> (<span style="color: #000000">right</span> <span style="color: #000000">&lt;</span> <span style="color: #000000">srcLen</span>) {
-    <span style="color: #000000">window</span>.<span style="color: #000000">add</span>(<span style="color: #000000">src</span>[<span style="color: #000000">right</span>]);
-    <span style="color: #000000">right++</span>;
+<div class="highlight"><pre><span></span><code><span class="c1">// 算法框架</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="n">srcLen</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">window</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="n">right</span><span class="p">]);</span>
+    <span class="n">right</span><span class="o">++</span><span class="p">;</span>
 
-    <span style="color: #A90D91">while</span> (<span style="color: #000000">valid</span>) {
-        <span style="color: #000000">window</span>.<span style="color: #000000">remove</span>(<span style="color: #000000">src</span>[<span style="color: #000000">left</span>]);
-        <span style="color: #000000">left--</span>;
-    }
-}
+    <span class="k">while</span> <span class="p">(</span><span class="n">valid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">window</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="n">left</span><span class="p">]);</span>
+        <span class="n">left</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <h3 id="_8">回溯算法</h3>
@@ -1434,11 +1458,11 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <p>汉诺塔问题，每个柱子是一个栈，但是带有条件，下面的比上面的大。</p>
 <p>LIFO</p>
 <p>栈相关的接口如下：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #000000">stack</span> = <span style="color: #000000">newStack</span>()
-<span style="color: #000000">stack</span>.<span style="color: #000000">push</span>(<span style="color: #000000">elem</span>)
-<span style="color: #000000">elem</span> = <span style="color: #000000">stack</span>.<span style="color: #000000">top</span>()
-<span style="color: #000000">elem</span> = <span style="color: #000000">stack</span>.<span style="color: #000000">pop</span>()
-<span style="color: #000000">stack</span>.<span style="color: #000000">empty</span>()
+<div class="highlight"><pre><span></span><code><span class="nx">stack</span> <span class="p">=</span> <span class="nx">newStack</span><span class="p">()</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
+<span class="nx">elem</span> <span class="p">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">top</span><span class="p">()</span>
+<span class="nx">elem</span> <span class="p">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">empty</span><span class="p">()</span>
 </code></pre></div>
 
 <p>括号匹配算法：</p>
@@ -1459,20 +1483,20 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <h3 id="_12">线段树</h3>
 <h2 id="_13">常见题</h2>
 <h3 id="_14"><a href="https://leetcode-cn.com/problems/longest-palindromic-substring">最长回文子串</a></h3>
-<p><strong>动态规划</strong>： <code class="codehilite"><span style="color: #000000">dp[i][j]</span></code> 表示子串s[i:j]是否为回文串</p>
+<p><strong>动态规划</strong>： <code>dp[i][j]</code> 表示子串s[i:j]是否为回文串</p>
 <h3 id="_15"><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/">最长上升子序列</a></h3>
 <p><strong>动态规划</strong>：dp[i]表示到i最长上升子序列，包含i元素</p>
 <h3 id="_16"><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">无重复字符的最长子串</a></h3>
 <p>使用<strong>双指针</strong>，右指针往后跑</p>
 <p>用<strong>哈希表</strong>记录部分字符，如果已经重复，则删除哈希表中的第一个元素（左指针++）</p>
 <h3 id="_17"><a href="https://leetcode-cn.com/problems/coin-change/">零钱兑换</a></h3>
-<p><strong>动态规划</strong>：<code class="codehilite"><span style="color: #000000">dp[i]</span></code> 表示兑换 i 数量的钱币最少的硬币个数。dp[amount]为最终的解。</p>
+<p><strong>动态规划</strong>：<code>dp[i]</code> 表示兑换 i 数量的钱币最少的硬币个数。dp[amount]为最终的解。</p>
 <h3 id="bst"><a href="https://leetcode-cn.com/problems/largest-bst-subtree/">最大 BST 子树</a></h3>
 <p><strong>二叉搜索树</strong>，判断是否有效BST，获取节点个数，记录最大值。递归左右子树。</p>
 <h3 id="_18"><a href="https://leetcode-cn.com/problems/3sum/">三数之和</a></h3>
 <p><strong>排序，循环（i），双指针</strong>[i+1,len(nums)-1]，注意重复元素跳过</p>
 <h3 id="_19"><a href="https://leetcode-cn.com/problems/decode-string/">字符串解码</a></h3>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #C41A16">&quot;2[abc]3[cd]ef&quot;</span>
+<div class="highlight"><pre><span></span><code>&quot;2[abc]3[cd]ef&quot;
 </code></pre></div>
 
 <p><strong>两个栈</strong>，一个记录数字（注意多个数字的情况），一个记录字符串</p>
@@ -1487,12 +1511,12 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <h3 id="_22"><a href="https://leetcode-cn.com/problems/container-with-most-water/">盛最多水的容器</a></h3>
 <p>双指针，左右计算当前值，那边小移动那边的指针，然后循环计算，记录最大值。</p>
 <h3 id="_23"><a href="https://leetcode-cn.com/problems/maximal-square/">最大正方形</a></h3>
-<p>动态规划：<code class="codehilite"><span style="color: #000000">dp[i][j]</span></code>表示当前正方形为右下角的最大边长</p>
+<p>动态规划：<code>dp[i][j]</code>表示当前正方形为右下角的最大边长</p>
 <p>初始化，0 行，0 列，根据输入如果 matrix对应的值为 0，则为 0，为 1 则为 1</p>
-<p><code class="codehilite"><span style="color: #000000">dp[i][j]=minAny</span>(<span style="color: #000000">dp[i-1][j-1]</span>, <span style="color: #000000">dp[i-1][j]</span>, <span style="color: #000000">dp[i][j-1]</span>) <span style="color: #000000">+</span><span style="color: #1C01CE">1</span></code></p>
+<p><code>dp[i][j]=minAny(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) +1</code></p>
 <p>并且记录最大边长，最终面积 max * max</p>
 <h3 id="_24"><a href="https://leetcode-cn.com/problems/number-of-islands/">岛屿数量</a></h3>
-<p>简单 DFS，如果 <code class="codehilite"><span style="color: #000000">grid[i][j]=</span><span style="color: #1C01CE">1</span></code> 则 count++，然后通过 dfs，将所有相邻的 1 全部置为 0，然后继续下一个。</p>
+<p>简单 DFS，如果 <code>grid[i][j]=1</code> 则 count++，然后通过 dfs，将所有相邻的 1 全部置为 0，然后继续下一个。</p>
 <h3 id="_25"><a href="https://leetcode-cn.com/problems/merge-intervals/">合并区间</a></h3>
 <p>排序根据起点排序所有区间。</p>
 <p>遍历所有区间，如果如果与前一个有交集，则合并，并更新前一个交集的终点值。</p>
@@ -1505,7 +1529,7 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <p>如果存在旋转点，则先在左边查找 target，如果存在，则返回，如果不存在，则在右边查找。</p>
 <p>如果最后没有找到返回 -1</p>
 <h3 id="_27"><a href="https://leetcode-cn.com/problems/perfect-squares/">完全平方数</a></h3>
-<p>动态规划，<code class="codehilite"><span style="color: #000000">dp[i]</span></code>表示 i 的最少表示有几个。</p>
+<p>动态规划，<code>dp[i]</code>表示 i 的最少表示有几个。</p>
 <h3 id="_28"><a href="https://leetcode-cn.com/problems/next-permutation/">下一个排列</a></h3>
 <p>下一个排列算法</p>
 <ol>
@@ -1535,9 +1559,9 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <p>暴力算法</p>
 <h3 id="_33"><a href="https://leetcode-cn.com/problems/minimum-path-sum/">最小路径和</a></h3>
 <p>矩阵从 (0,0)到(m,n)的最短路径，每次只能向下或者向右移动。</p>
-<p>动态规划，<code class="codehilite"><span style="color: #000000">dp[i][j]</span></code> 表示到 i，j 点的最小路径值。</p>
+<p>动态规划，<code>dp[i][j]</code> 表示到 i，j 点的最小路径值。</p>
 <h3 id="_34"><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/">二叉树的最近公共祖先</a></h3>
-<p>如果 root 为空，或者 <code class="codehilite"><span style="color: #000000">root==p 或者 root==q</span></code> 则返回 root</p>
+<p>如果 root 为空，或者 <code>root==p 或者 root==q</code> 则返回 root</p>
 <p>然后在左子树中查找，然后在右子树中查找。</p>
 <p>如果左右不为空，则返回 root</p>
 <p>如果左边不为空，则返回左</p>
@@ -1600,7 +1624,7 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <h3 id="_50"><a href="https://leetcode-cn.com/problems/candy/">分发糖果</a></h3>
 <p>从左往右，从右往左遍历两次</p>
 <h3 id="_51"><a href="https://leetcode-cn.com/problems/edit-distance/">编辑距离</a></h3>
-<p>动态规划，<code class="codehilite"><span style="color: #000000">dp[i][j]</span></code>表示word1的前i个字母和word2的前j个字母的编辑距离。</p>
+<p>动态规划，<code>dp[i][j]</code>表示word1的前i个字母和word2的前j个字母的编辑距离。</p>
 <h3 id="_52"><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/">寻找两个有序数组的中位数</a></h3>
 <p>二分查找，双指针扩展到四指针</p>
 <h3 id="_53"><a href="https://leetcode-cn.com/problems/maximal-rectangle/">最大矩形</a></h3>
@@ -1617,9 +1641,9 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <p>先计算完成一次交易的最大收益。</p>
 <p>然后分割子数组 [0:i] [i:] 分别计算各自的最大收益，然后计算两次收益是否更大。</p>
 <h3 id="_57"><a href="https://leetcode-cn.com/problems/burst-balloons/">戳气球</a></h3>
-<p><code class="codehilite"><span style="color: #000000">dp[i][j]</span></code> 表示戳破 <code class="codehilite"><span style="color: #000000">[i+1...j-1]</span></code> 号气球的最大收益。</p>
+<p><code>dp[i][j]</code> 表示戳破 <code>[i+1...j-1]</code> 号气球的最大收益。</p>
 <h3 id="_58"><a href="https://leetcode-cn.com/problems/regular-expression-matching/">正则表达式匹配</a></h3>
-<p>给你一个字符串 <code class="codehilite"><span style="color: #000000">s</span></code> 和一个字符规律 <code class="codehilite"><span style="color: #000000">p</span></code>，请你来实现一个支持 <code class="codehilite"><span style="color: #000000">&#39;.&#39;</span></code> 和 <code class="codehilite"><span style="color: #000000">&#39;*&#39;</span></code> 的正则表达式匹配。</p>
+<p>给你一个字符串 <code>s</code> 和一个字符规律 <code>p</code>，请你来实现一个支持 <code>'.'</code> 和 <code>'*'</code> 的正则表达式匹配。</p>
 <h3 id="_59"><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/">最长连续序列</a></h3>
 <p>先根据nums[i]建立哈希表，然后遍历所有nums[i]左右扩展，计算最大长度，删除哈希表中的内容。</p>
 <h3 id="_60"><a href="https://leetcode-cn.com/problems/swim-in-rising-water/">水位上升的泳池中游泳</a></h3>
@@ -1659,8 +1683,8 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <p>N 天后的牢房：打印结果，观察规律</p>
 <p>两数之和：用哈希表记录下标，下一次查找时，在哈希表中查找是否存在target-num[i]的值</p>
 <p>LRU缓存：list.List链表双端链表，哈希表记录[key:node]信息，先找到node，然后再刷新list</p>
-<p>编辑距离：动态规划，<code class="codehilite"><span style="color: #000000">dp[i][j]</span></code> 表示单词1到i位置转换成单词2到j位置需要的最少步数</p>
-<p>最长回文子串：动态规划，<code class="codehilite"><span style="color: #000000">dp[i][j]</span> <span style="color: #000000">=</span> <span style="color: #000000">s[i]</span> <span style="color: #000000">==</span> <span style="color: #000000">s[j]</span> <span style="color: #000000">&amp;&amp;</span> (<span style="color: #000000">j</span> <span style="color: #000000">-</span> <span style="color: #000000">i&lt;</span><span style="color: #1C01CE">2</span> <span style="color: #000000">||dp[i+1][j-1]</span>)</code></p>
+<p>编辑距离：动态规划，<code>dp[i][j]</code> 表示单词1到i位置转换成单词2到j位置需要的最少步数</p>
+<p>最长回文子串：动态规划，<code>dp[i][j] = s[i] == s[j] &amp;&amp; (j - i&lt;2 ||dp[i+1][j-1])</code></p>
 <p>接雨水：暴力算法，找出左右两边的最大值，如果较小的一个比当前的值大，则计算差值累加起来</p>
 <p>无重复字符的最长子串：双指针，哈希表判断右指针是否存在，如果存在则删除左指针所对应的的哈希表中的元素，左指针++，如果不存在，加入哈希表，右指针++，如果right-left&gt;max，则记录。</p>
 <p>会议室II：线段分类；排序然后找到不想交的会议，线程调度需要的线程池大小。</p>
@@ -1670,9 +1694,6 @@ f(n-2) + f(n-1)& n\geq 3 \\
 <p>设计日志存储系统：日期处理技巧，<strong>字符串</strong>日期比较，范围查找，不考虑异常情况</p>
 <p>迷宫 III：使用队列<strong>广度优先遍历</strong>，动态规划（记录步数）</p>
 <p>设计内存文件系统：设计问题，<strong>哈希表</strong>使用，遍历，边界</p>
-                
-                  
-                
                 
               
               
@@ -1696,11 +1717,10 @@ f(n-2) + f(n-1)& n\geq 3 \\
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1709,26 +1729,18 @@ f(n-2) + f(n-1)& n\geq 3 \\
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

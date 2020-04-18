@@ -1,40 +1,19 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://iswade.github.io/distributed_systems/02_interprocess/">
       
       
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
-      
       <link rel="shortcut icon" href="../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -42,9 +21,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -53,16 +32,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../themes/extra.css">
@@ -73,69 +49,71 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#_1" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://iswade.github.io/" title="Blog" aria-label="Blog" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../themes/me.jpg" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Blog
-            </span>
-            <span class="md-header-nav__topic">
-              
-                第二章 进程间通信
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              第二章 进程间通信
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -145,31 +123,31 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
       
-        <img alt="logo" src="../../themes/me.jpg" width="48" height="48">
-      
+  <img src="../../themes/me.jpg" alt="logo">
+
     </a>
     Blog
   </label>
@@ -195,13 +173,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Databases
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -305,13 +289,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distributed
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -386,13 +376,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" checked>
     
     <label class="md-nav__link" for="nav-3-6">
       分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         分布式系统算法方法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -431,13 +427,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         第二章 进程间通信
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="第二章 进程间通信" class="md-nav__link md-nav__link--active">
@@ -445,13 +444,18 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -459,7 +463,7 @@
     2.1 介绍
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.1 介绍">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -493,7 +497,7 @@
     2.2 网络协议
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.2 网络协议">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -548,7 +552,7 @@
     2.3 命名
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.3 命名">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -575,7 +579,7 @@
     2.4 远程过程调用
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.4 远程过程调用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -609,7 +613,7 @@
     2.6 消息
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.6 消息">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -650,7 +654,7 @@
     2.9 虚拟化：云计算
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.9 虚拟化：云计算">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -706,10 +710,6 @@
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -783,13 +783,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -831,13 +837,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -849,8 +861,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advanced_markdown/" title="高级markdown" class="md-nav__link">
-      高级markdown
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
     </a>
   </li>
 
@@ -891,6 +903,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced_markdown/" title="高级 markdown" class="md-nav__link">
+      高级 markdown
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -907,13 +931,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -921,7 +950,7 @@
     2.1 介绍
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.1 介绍">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -955,7 +984,7 @@
     2.2 网络协议
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.2 网络协议">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1010,7 +1039,7 @@
     2.3 命名
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.3 命名">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1037,7 +1066,7 @@
     2.4 远程过程调用
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.4 远程过程调用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1071,7 +1100,7 @@
     2.6 消息
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.6 消息">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1112,7 +1141,7 @@
     2.9 虚拟化：云计算
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2.9 虚拟化：云计算">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1169,10 +1198,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -1186,9 +1211,12 @@
               
                 
                 
+                  
+                
+                
                 <h1 id="_1">第二章 进程间通信：概述</h1>
 <h2 id="21">2.1 介绍</h2>
-<p>进程间通信是分布式计算的核心。用户进程在通过网络相互连接的主机上运行，网络承载从一个进程传播到另一个进程的信号。这些信号代表数据。<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> 我们将进程间通信分为两部分：</p>
+<p>进程间通信是分布式计算的核心。用户进程在通过网络相互连接的主机上运行，网络承载从一个进程传播到另一个进程的信号。这些信号代表数据。<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> 我们将进程间通信分为两部分：</p>
 <p><em>网络</em>：这涉及进程如何通过各种协议层相互通信。网络中的重要问题是路由，错误控制，流量控制，身份验证等。这是内部视图。</p>
 <p><em>用户视图</em>：用户进程具有进程间通信介质的抽象高级视图。这是外部视图。普通用户不关心通信是如何发生的。这些进程可以通过LAN，或通过因特网或这些的组合，或通过共享（虚拟）地址空间进行通信，该共享（虚拟）地址空间是在消息传递基础上创建的抽象，以便于编程。大多数工作分布式系统使用客户端 —— 服务器模型。一些系统也采用进程间通信的P2P模型，服务器和客户端之间没有区别。用户界面依赖于客户端可用的编程工具，用于与服务器或对等方通信以与另一对等方通信。有些工具是通用的，有些则是专有的。在本章中，我们将主要从用户的角度关注通信。</p>
 <h3 id="211">2.1.1 进程和线程</h3>
@@ -1213,7 +1241,7 @@
 <h3 id="221">2.2.1 以太网</h3>
 <p>Xerox PARC的Bob Metcalfe于1973年开发了以太网。该网络由许多通过公共高速总线相互连接的计算机组成。每台机器都会不断监听通过总线传播的信号。由于总线是公用的，因此最多允许一个发送者随时发送数据。但是，没有机器知道其他机器何时想要发送数据 —— 因此几个发送者可能会尝试同时发送并导致冲突。发送者检测到冲突，在随机的时间间隔内退回，并再次尝试传输数据。该协议被称为具有冲突检测的载波侦听多路访问（CSMA/CD）。该协议保证，最终，其中一个竞争过程成为总线主控，并能够使用总线发送数据。
 CSMA/CD协议非常类似于学生在课堂上与教练交谈时使用的非正式协议。在正常情况下，一个学生最多应该随时发言。但是，没有学生对其他学生想要说话的时间有先验知识，因此许多学生可能会同时尝试举手表达他们的发言意向。与此同时，每个举手的学生都会不断观察是否有其他手被抬起 —— 这就是碰撞检测。当检测到碰撞时，它们会退回并稍后尝试。最终，只有一只手被抬起，那个学生说话 —— 所有其他人都等到那个学生完成。</p>
-<p>为了检测以太网中的冲突，每个发送器需要在开始传输之后等待最小时间段 <span><span class="MathJax_Preview">2T</span><script type="math/tex">2T</script></span>，其中 <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 是信号从一个节点传播到另一个节点所需的最大时间。如果一对节点之间的最大距离是 <span><span class="MathJax_Preview">1KM</span><script type="math/tex">1KM</script></span>，则 <span><span class="MathJax_Preview">T\ge(10^3/(3×108))s  =3.33μs</span><script type="math/tex">T\ge(10^3/(3×108))s  =3.33μs</script></span> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>。因此，在尝试发送操作之后，节点必须等待至少6.66μs以确保没有其他人已经开始数据传输。在节点检测到冲突之后，它在尝试重传之前等待一段时间 <span><span class="MathJax_Preview">qT</span><script type="math/tex">qT</script></span>，其中 <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> 是随机数。可以在数学上证明该策略导致以概率1避免碰撞。</p>
+<p>为了检测以太网中的冲突，每个发送器需要在开始传输之后等待最小时间段 <span><span class="MathJax_Preview">2T</span><script type="math/tex">2T</script></span>，其中 <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 是信号从一个节点传播到另一个节点所需的最大时间。如果一对节点之间的最大距离是 <span><span class="MathJax_Preview">1KM</span><script type="math/tex">1KM</script></span>，则 <span><span class="MathJax_Preview">T\ge(10^3/(3×108))s  =3.33μs</span><script type="math/tex">T\ge(10^3/(3×108))s  =3.33μs</script></span> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。因此，在尝试发送操作之后，节点必须等待至少6.66μs以确保没有其他人已经开始数据传输。在节点检测到冲突之后，它在尝试重传之前等待一段时间 <span><span class="MathJax_Preview">qT</span><script type="math/tex">qT</script></span>，其中 <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> 是随机数。可以在数学上证明该策略导致以概率1避免碰撞。</p>
 <p>原始Xerox PARC以太网的数据传输速率仅为 <span><span class="MathJax_Preview">3Mb/s</span><script type="math/tex">3Mb/s</script></span>（每秒300万比特）。在广泛使用的以太网中，传输速率为 <span><span class="MathJax_Preview">10Mb/s</span><script type="math/tex">10Mb/s</script></span>。技术改进导致快速以太网（<span><span class="MathJax_Preview">100 Mb/s</span><script type="math/tex">100 Mb/s</script></span>）和千兆以太网（<span><span class="MathJax_Preview">1GB/s</span><script type="math/tex">1GB/s</script></span>）的出现。千兆以太网可以用作高速网络的主干网。</p>
 <p>以太网中消息传播的延迟取决于争用程度。术语信道效率用于指定成功发送的分组数量与可以无冲突地发送的理论最大分组数量的比率。典型的以太网最多可容纳1024台机器。</p>
 <h3 id="222">2.2.2 无线网络</h3>
@@ -1270,82 +1298,82 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 <p>套接字是一对进程之间通信的抽象端点。由Berkeley Software Distribution作为BSD UNIX的一部分开发，套接字集成到操作系统的I / O部分。套接字有两种类型：流套接字和数据报套接字。流套接字使用TCP / IP，数据报套接字使用UDP / IP。使用套接字进行客户端 —— 服务器通信所涉及的步骤如下：首先，客户端进程通过进行套接字系统调用来请求操作系统创建套接字，并将标识套接字的描述符返回给客户端。然后它使用连接系统调用连接到服务器的端口。建立连接后，客户端与服务器通信。
 与客户端一样，服务器进程也使用套接字系统调用来创建套接字。一旦创建，绑定系统调用将为套接字分配端口号。如果协议是UDP之类的无连接协议，则服务器已准备好接收数据包。对于像TCP这样的面向连接的协议，服务器首先等待通过调用listen过程来接收连接请求。服务器最终使用accept系统调用接受连接。在此之后，沟通开始了。通信结束后，连接将关闭。
 端口号是16位实体。在216个可能的端口中，一些（0-1023）保留用于标准服务。例如，服务器端口号21用于FTP，端口22用于安全Shell（SSH）远程登录，端口号23用于telnet。 Go 中的套接字程序示例如下所示：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #A90D91">package</span> <span style="color: #000000">main</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
 
-<span style="color: #A90D91">import</span> (
-    <span style="color: #C41A16">&quot;fmt&quot;</span>
-    <span style="color: #C41A16">&quot;io&quot;</span>
-    <span style="color: #C41A16">&quot;log&quot;</span>
-    <span style="color: #C41A16">&quot;net&quot;</span>
-    <span style="color: #C41A16">&quot;os&quot;</span>
-)
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;io&quot;</span>
+    <span class="s">&quot;log&quot;</span>
+    <span class="s">&quot;net&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+<span class="p">)</span>
 
-<span style="color: #A90D91">func</span> <span style="color: #000000">Server</span>() {
-    <span style="color: #177500">// Listen on TCP port 2000 on all available unicast and</span>
-    <span style="color: #177500">// anycast IP addresses of the local system.</span>
-    <span style="color: #000000">l</span>, <span style="color: #000000">err</span> <span style="color: #000000">:=</span> <span style="color: #000000">net</span>.<span style="color: #000000">Listen</span>(<span style="color: #C41A16">&quot;tcp&quot;</span>, <span style="color: #C41A16">&quot;:2000&quot;</span>)
-    <span style="color: #A90D91">if</span> <span style="color: #000000">err</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
-        <span style="color: #000000">log</span>.<span style="color: #000000">Fatal</span>(<span style="color: #000000">err</span>)
-    }
-    <span style="color: #A90D91">defer</span> <span style="color: #000000">l</span>.<span style="color: #000000">Close</span>()
-    <span style="color: #A90D91">for</span> {
-        <span style="color: #177500">// Wait for a connection.</span>
-        <span style="color: #000000">conn</span>, <span style="color: #000000">err</span> <span style="color: #000000">:=</span> <span style="color: #000000">l</span>.<span style="color: #000000">Accept</span>()
-        <span style="color: #A90D91">if</span> <span style="color: #000000">err</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
-            <span style="color: #000000">log</span>.<span style="color: #000000">Fatal</span>(<span style="color: #000000">err</span>)
-        }
-        <span style="color: #177500">// Handle the connection in a new goroutine.</span>
-        <span style="color: #177500">// The loop then returns to accepting, so that</span>
-        <span style="color: #177500">// multiple connections may be served concurrently.</span>
-        <span style="color: #A90D91">go</span> <span style="color: #A90D91">func</span>(<span style="color: #000000">c</span> <span style="color: #000000">net</span>.<span style="color: #000000">Conn</span>) {
-            <span style="color: #177500">// Echo all incoming data.</span>
-            <span style="color: #000000">io</span>.<span style="color: #000000">Copy</span>(<span style="color: #000000">c</span>, <span style="color: #000000">c</span>)
-            <span style="color: #177500">// Shut down the connection.</span>
-            <span style="color: #000000">c</span>.<span style="color: #000000">Close</span>()
-        }(<span style="color: #000000">conn</span>)
-    }
-}
+<span class="kd">func</span> <span class="nx">Server</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Listen on TCP port 2000 on all available unicast and</span>
+    <span class="c1">// anycast IP addresses of the local system.</span>
+    <span class="nx">l</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span> <span class="s">&quot;:2000&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">l</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="c1">// Wait for a connection.</span>
+        <span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">l</span><span class="p">.</span><span class="nx">Accept</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="c1">// Handle the connection in a new goroutine.</span>
+        <span class="c1">// The loop then returns to accepting, so that</span>
+        <span class="c1">// multiple connections may be served concurrently.</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Echo all incoming data.</span>
+            <span class="nx">io</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span>
+            <span class="c1">// Shut down the connection.</span>
+            <span class="nx">c</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+        <span class="p">}(</span><span class="nx">conn</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span style="color: #A90D91">func</span> <span style="color: #000000">Client</span>() {
-    <span style="color: #000000">conn</span>, <span style="color: #000000">err</span> <span style="color: #000000">:=</span> <span style="color: #000000">net</span>.<span style="color: #000000">Dial</span>(<span style="color: #C41A16">&quot;tcp&quot;</span>, <span style="color: #C41A16">&quot;127.0.0.1:2000&quot;</span>)
-    <span style="color: #A90D91">if</span> <span style="color: #000000">err</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
-        <span style="color: #000000">log</span>.<span style="color: #000000">Fatal</span>(<span style="color: #000000">err</span>)
-    }
-    <span style="color: #A90D91">defer</span> <span style="color: #000000">conn</span>.<span style="color: #000000">Close</span>()
-    <span style="color: #A90D91">go</span> <span style="color: #000000">mustCopy</span>(<span style="color: #000000">os</span>.<span style="color: #000000">Stdout</span>, <span style="color: #000000">conn</span>)
-    <span style="color: #000000">mustCopy</span>(<span style="color: #000000">conn</span>, <span style="color: #000000">os</span>.<span style="color: #000000">Stdin</span>)
-}
+<span class="kd">func</span> <span class="nx">Client</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span> <span class="s">&quot;127.0.0.1:2000&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+    <span class="k">go</span> <span class="nx">mustCopy</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">conn</span><span class="p">)</span>
+    <span class="nx">mustCopy</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span style="color: #A90D91">func</span> <span style="color: #000000">mustCopy</span>(<span style="color: #000000">dst</span> <span style="color: #000000">io</span>.<span style="color: #000000">Writer</span>, <span style="color: #000000">src</span> <span style="color: #000000">io</span>.<span style="color: #000000">Reader</span>) {
-    <span style="color: #A90D91">if</span> <span style="color: #000000">_</span>, <span style="color: #000000">err</span> <span style="color: #000000">:=</span> <span style="color: #000000">io</span>.<span style="color: #000000">Copy</span>(<span style="color: #000000">dst</span>, <span style="color: #000000">src</span>); <span style="color: #000000">err</span> <span style="color: #000000">!=</span> <span style="color: #A90D91">nil</span> {
-        <span style="color: #000000">log</span>.<span style="color: #000000">Fatal</span>(<span style="color: #000000">err</span>)
-    }
-}
+<span class="kd">func</span> <span class="nx">mustCopy</span><span class="p">(</span><span class="nx">dst</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Writer</span><span class="p">,</span> <span class="nx">src</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Reader</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">dst</span><span class="p">,</span> <span class="nx">src</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span style="color: #A90D91">func</span> <span style="color: #000000">help</span>() {
-    <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot;usage:&quot;</span>)
-    <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot; ./echo server    start server&quot;</span>)
-    <span style="color: #000000">fmt</span>.<span style="color: #000000">Println</span>(<span style="color: #C41A16">&quot; ./echo client    start client&quot;</span>)
-}
+<span class="kd">func</span> <span class="nx">help</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;usage:&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; ./echo server    start server&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; ./echo client    start client&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span style="color: #A90D91">func</span> <span style="color: #000000">main</span>()  {
-    <span style="color: #A90D91">if</span> <span style="color: #A90D91">len</span>(<span style="color: #000000">os</span>.<span style="color: #000000">Args</span>) <span style="color: #000000">==</span> <span style="color: #1C01CE">1</span> {
-        <span style="color: #000000">help</span>()
-    } <span style="color: #A90D91">else</span> <span style="color: #A90D91">if</span> <span style="color: #000000">os</span>.<span style="color: #000000">Args</span>[<span style="color: #1C01CE">1</span>] <span style="color: #000000">==</span> <span style="color: #C41A16">&quot;server&quot;</span> {
-        <span style="color: #000000">Server</span>()
-    } <span style="color: #A90D91">else</span> <span style="color: #A90D91">if</span> <span style="color: #000000">os</span>.<span style="color: #000000">Args</span>[<span style="color: #1C01CE">1</span>] <span style="color: #000000">==</span> <span style="color: #C41A16">&quot;client&quot;</span> {
-        <span style="color: #000000">Client</span>()
-    } <span style="color: #A90D91">else</span> {
-        <span style="color: #000000">help</span>()
-    }
-}
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span>  <span class="p">{</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+        <span class="nx">help</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;server&quot;</span> <span class="p">{</span>
+        <span class="nx">Server</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;client&quot;</span> <span class="p">{</span>
+        <span class="nx">Client</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">help</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <h2 id="23">2.3 命名</h2>
 <p>在本节中，我们将研究在TCP/IP或UDP/IP之上构建重要中间件服务：命名服务。 名称是字符或字节的字符串，它标识实体。实体可以是任何东西 —— 它可以是用户，机器，进程或文件。名称的示例是WWW上的网站的URL。命名是一种基本服务，使用该服务可以仅通过名称来识别和访问实体，无论它们位于何处。用户可以通过向文件管理器提供文件名来访问文件。要登录远程计算机，用户必须提供登录名。在WWW上，域名服务（DNS）将域名映射到IP地址。用户不能发送电子邮件，除非他们可以通过电子邮件地址相互命名。请注意，地址也可以视为名称。ARP使用IP地址查找接收机器的MAC地址。</p>
 <p>尽管给定实体可能具有不同的别名，但每个名称必须与唯一实体相关联。例如，考虑名称Alice。它可以与宇宙中的独特人物相关联吗？不可以。可以使用唯一的电话号码识别Alice，但Alice可能有多条电话线，因此她可能有几个电话号码。如果Alice转换工作，那么她可以搬到新的城市，她的电话号码也会改变。我们怎么知道我们是否与同一个Alice进行通信？</p>
 <p>这突出了命名中位置独立性的重要性。请注意，手机号码与位置无关。 Gmail或Hotmail帐户中的电子邮件地址也不依赖于任何物理计算机，因此与位置无关。<strong>一致的命名方案，位置独立性和可扩展的命名服务</strong>是分布式应用程序可行命名系统的三个基石。</p>
-<p>命名服务跟踪名称及其引用的对象的属性。给定名称，服务会查找相应的属性。这称为名称解析。对于像LAN这样的单个域，这非常简单。但是，在英特网上，有许多网络和多个域<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup>，因此名称服务的实现并非无足轻重。</p>
+<p>命名服务跟踪名称及其引用的对象的属性。给定名称，服务会查找相应的属性。这称为名称解析。对于像LAN这样的单个域，这非常简单。但是，在英特网上，有许多网络和多个域<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>，因此名称服务的实现并非无足轻重。</p>
 <p>名称遵循树结构，父项是其下的子树名称的通用后缀。因此，cs.uiowa.edu是属于域uiowa.edu的名称。只有获得域uiowa.edu管理员的许可，才能分配计算机科学部门的前缀cs。但是，对于名称hp.cs.uiowa.edu或linux.cs.uiowa.edu，它是计算机科学部门的系统管理员，它分配前缀hp或linux。通过将名称树作为子树附加到更高级别的公共父级，可以将两个不同的名称空间合并到单个名称空间中。图2.5显示了生成电子邮件ID的命名树。叶子反映了用户的名字。</p>
 <p><img alt="image-20190622215037536" src="../image/02_05_naming.png" /></p>
 <p><center>图 2.5 命名层次结构</center></p>
@@ -1402,12 +1430,12 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 <p>客户端和服务器之间的同步可以采用各种形式。虽然上面列出的流程阻塞客户端直到结果可用，但也存在非阻塞版本。在非阻塞RPC中，客户端在启动RPC后继续执行不相关的活动。当服务器发送结果时，会通知客户端，并接受结果。
 最后，网络故障为RPC的语义增加了新的变化。假设包含客户端RPC的消息在路由服务器时丢失。客户端在超时后等待并重新启动RPC几乎没有其他选择。但是，如果由于某种原因第一个RPC没有丢失但是卡在网络的某个地方，那么RPC有可能被执行两次。在某些情况下，它没什么区别。例如，如果RPC从远程服务器读取文件的块，则客户端可能不关心是否多次检索到相同的块。但是，如果RPC在远程银行中扣除您的帐户并且操作不止一次，那么这会导致您很不满意。一些应用程序需要<strong>至少一次语义，而另一些应用程序需要最多一次语义或完全一次语义</strong>。</p>
 <h3 id="242-sun-oncrpc">2.4.2 Sun 的 ONC/RPC</h3>
-<p>为了在网络文件服务中实现客户端 —— 服务器通信，Sun Microsystems <sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup>开发了开放式网络计算RPC（ONC / RPC）机制，该机制也与许多UNIX安装一起打包。可以通过UDP / IP或TCP / IP进行客户端 —— 服务器通信。接口定义语言（称为外部数据表示[XDR]）将一组过程定义为服务接口的一部分。每个接口都有一个唯一的程序号和版本号，这些都可以从中央机构获得。客户端和服务器必须验证它们使用的是相同的版本号。这些数字作为请求消息中的参数从客户端传递到服务器。 Sun ONC使用RPC编译器（rpcgen）自动生成客户端和服务器存根。Sun RPC允许将单个参数从客户端传递到服务器，并将单个结果从服务器传递到客户端。因此，如果存在多个参数，则必须将它们作为<strong>结构化变量传递</strong>。在服务器端，端口映射服务常驻进程接收RPC请求。客户端可以很容易找到端口映射器，因为它始终位于指定端口（端口111）上。 ONC通过三个参数识别每个过程：程序号，版本号和过程号。过程0是空过程。客户端查询端口映射器以找出程序的端口号及其版本号。端口映射器将RPC绑定到客户端和服务器计算机上的指定端口。许多不同类型的身份验证都可以包含在ONC / RPC中 —— 这些身份验证包括UNIX传统的（uid，gid）到Kerberos类型身份验证服务（请参阅第19章）。</p>
+<p>为了在网络文件服务中实现客户端 —— 服务器通信，Sun Microsystems <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>开发了开放式网络计算RPC（ONC / RPC）机制，该机制也与许多UNIX安装一起打包。可以通过UDP / IP或TCP / IP进行客户端 —— 服务器通信。接口定义语言（称为外部数据表示[XDR]）将一组过程定义为服务接口的一部分。每个接口都有一个唯一的程序号和版本号，这些都可以从中央机构获得。客户端和服务器必须验证它们使用的是相同的版本号。这些数字作为请求消息中的参数从客户端传递到服务器。 Sun ONC使用RPC编译器（rpcgen）自动生成客户端和服务器存根。Sun RPC允许将单个参数从客户端传递到服务器，并将单个结果从服务器传递到客户端。因此，如果存在多个参数，则必须将它们作为<strong>结构化变量传递</strong>。在服务器端，端口映射服务常驻进程接收RPC请求。客户端可以很容易找到端口映射器，因为它始终位于指定端口（端口111）上。 ONC通过三个参数识别每个过程：程序号，版本号和过程号。过程0是空过程。客户端查询端口映射器以找出程序的端口号及其版本号。端口映射器将RPC绑定到客户端和服务器计算机上的指定端口。许多不同类型的身份验证都可以包含在ONC / RPC中 —— 这些身份验证包括UNIX传统的（uid，gid）到Kerberos类型身份验证服务（请参阅第19章）。</p>
 <h2 id="25">2.5 远程方法调用</h2>
 <p>远程方法调用（RMI）是面向对象环境中RPC的概括。该对象驻留在与客户端计算机不同的服务器计算机上。这称为远程对象。与之关联的数据实例跨机器分布的对象称为分布式对象。分布式对象的示例是在两台或更多台机器上复制的对象。远程对象是分布式对象的特例，其中关联数据可在一台远程计算机上使用。</p>
 <p>要实现RMI的范围（相对于RPC），请回忆一下使用套接字来实现RPC。在RPC中，对象按值传递；因此，远程对象的当前状态被复制并从服务器传递到客户端，完成必要的更新，并且将对象的修改状态发送回服务器。如果多个客户端尝试通过以这种方式调用方法来同时访问/更新远程对象，则一个客户端所做的更新可能不会反映在另一个客户端所做的更新中，除非这些更新是串行化的。此外，在服务器和各种客户端之间传播远程对象的多个副本将消耗网络的大量带宽。</p>
 <p>RMI以透明的方式解决了这些问题。 java.rmi包的各种类允许客户端访问驻留在远程主机上的对象，就像通过引用而不是通过值一样。一旦客户端获得对远程对象的引用，它就可以调用这些远程对象上的方法，就好像它们存在于本地一样。通过远程对象引用对对象进行的所有修改都反映在服务器上，并可供其他客户端使用。客户端不需要知道包含远程对象的服务器位于何处 —— 它只通过称为代理的接口调用方法。代理是一个客户端存根，负责编组调用参数并解组服务器的结果（图2.7）。在服务器端，称为骨架的服务器存根解码客户端的调用，调用所需的方法，并将结果编组回客户端。对于每个客户端，都有一个单独的代理，它是客户端地址空间中的一个单独对象。</p>
-<p>当多个客户端同时访问远程对象时，方法的调用将被序列化，就像在监视器中一样。<sup id="fnref:6"><a class="footnote-ref" href="#fn:6" rel="footnote">6</a></sup>某些客户端在轮到他们之前被阻塞，而其他客户端则继续处理。串行化机制的实现对于本地对象来说是微不足道的，但对于远程对象来说，它是棘手的。例如，如果服务器处理阻塞并且访问远程对象的当前客户端崩溃，则将永久阻止所有客户端。另一方面，如果客户端处理阻塞，则客户端需要在其代理发出方法调用之前阻塞自身。客户端如何知道另一个客户端是否已经为远程对象调用了一个方法？显然，远程对象的可串行化的实现需要客户端之间的额外协调。</p>
+<p>当多个客户端同时访问远程对象时，方法的调用将被序列化，就像在监视器中一样。<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>某些客户端在轮到他们之前被阻塞，而其他客户端则继续处理。串行化机制的实现对于本地对象来说是微不足道的，但对于远程对象来说，它是棘手的。例如，如果服务器处理阻塞并且访问远程对象的当前客户端崩溃，则将永久阻止所有客户端。另一方面，如果客户端处理阻塞，则客户端需要在其代理发出方法调用之前阻塞自身。客户端如何知道另一个客户端是否已经为远程对象调用了一个方法？显然，远程对象的可串行化的实现需要客户端之间的额外协调。</p>
 <p>Java RMI以不同方式传递本地和远程对象。所有本地对象都按值传递，而远程对象则通过引用传递。在按值调用时，对象的状态将被显式复制并包含在方法调用的主体中。通过引用调用的示例如下：每个代理包含（1）服务器S1的网络地址包含远程对象X（2）该服务器中的对象X的名称。作为另一服务器S2中的RMI的一部分，客户端将代理（包含对X的引用）传递给服务器S2。现在S2可以在S1上访问X。由于每个进程都在相同的Java虚拟机上运行，因此尽管硬件平台存在异构性，但在解码参数后不需要进一步的工作。</p>
 <h2 id="26">2.6 消息</h2>
 <p>大多数分布式应用程序使用消息传递实现。消息传递层逻辑上位于TCP / IP或UDP / IP层之上，但位于应用层之下。TCP或UDP层上的套接字实现有助于进程使用特定的套接字地址相互寻址。</p>
@@ -1434,7 +1462,7 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 <h2 id="29">2.9 虚拟化：云计算</h2>
 <p>云计算是一种环境，您的数据和/或程序不会由您自己的计算机存储或管理，而是由第三方完成：云，即将其作为服务提供。您可以通过作为每个计算机系统一部分的浏览器访问您的数据或计算结果。云计算是几种技术的融合，如分布式计算，集群计算和Web服务。</p>
 <p>甚至在云计算这个术语被创造出来之前，这个概念在不同的名称下得到了发展。现在，所有网络应用程序都包含在云计算中。我们中的许多人使用Google邮件或Yahoo邮件来存储和访问电子邮件。这些电子邮件存储在各公司管理的服务器中。 Google文档允许用户将文档上传，编辑和检索到Google的数据服务器以进行共享。YouTube托管了数百万用户上传的视频，并允许我们无需任何费用即可与他人存储和分享我们的视频。我们中的许多人经常使用Flickr和Picasa上传和分享数百万张个人数码照片。像Facebook这样的社交网站允许会员发布存储在网站服务器中的图片和视频。</p>
-<p>亚马逊的弹性计算云（EC2）虚拟计算环境不仅适用于专门的云端爱好者，也适用于普通用户，可能是满足所有需求的最佳选择。用户不会购买服务器，软件，网络设备等，而是购买一套完全外包的在线服务。用户无需关心这些服务器在地理位置上的位置 —— 它们都是云的一部分，驻留在单个数据中心或分布在多个数据中心并由单个组织控制。<sup id="fnref:7"><a class="footnote-ref" href="#fn:7" rel="footnote">7</a></sup>这不仅仅订阅了虚拟化的概念，但也强化了“按使用付费”或“效用计算”的概念，用户以计费价格换取服务。没有前期投资，它允许灵活地扩展资源。最重要的是，这些服务的当前价格（截至2013年12月）是非常合理的 —— 对于一个小时左右的平均学生用户工作，它只花费几美分。</p>
+<p>亚马逊的弹性计算云（EC2）虚拟计算环境不仅适用于专门的云端爱好者，也适用于普通用户，可能是满足所有需求的最佳选择。用户不会购买服务器，软件，网络设备等，而是购买一套完全外包的在线服务。用户无需关心这些服务器在地理位置上的位置 —— 它们都是云的一部分，驻留在单个数据中心或分布在多个数据中心并由单个组织控制。<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>这不仅仅订阅了虚拟化的概念，但也强化了“按使用付费”或“效用计算”的概念，用户以计费价格换取服务。没有前期投资，它允许灵活地扩展资源。最重要的是，这些服务的当前价格（截至2013年12月）是非常合理的 —— 对于一个小时左右的平均学生用户工作，它只花费几美分。</p>
 <p>要使用Amazon的EC2等云服务，请注意Amazon Web服务（AWS）是Amazon提供的所有服务的保护伞，包括EC2。 因此，一旦用户注册AWS，她就可以转到EC2链接创建她的虚拟服务器并使用她的远程桌面连接访问它。</p>
 <h3 id="291">2.9.1 云计算的分类</h3>
 <p>一些云平台提供专有开发和应用程序包的混合，而其他云平台只是计量服务。为了区分各种形式，云服务分别被分为软件即服务（SaaS），平台即服务（PaaS）和基础架构即服务（IaaS）：</p>
@@ -1446,7 +1474,7 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 <p>现代分布式系统的一个重要特征是它们需要处理的大量数据。 照片和音频和视频录制不断创建并传递到社交网站。 亚马逊和eBay经常处理来自世界各地的大量数据。 搜索引擎Google，Yahoo和Bing经常处理大量数据以处理来自世界各地的用户查询。 大规模并行数据处理引擎已成为在这些场景中生成即时响应所不可或缺的。 为了攫取大量数据，谷歌于2004年发明了MapReduce，2007年，雅虎将其纳入了开源项目Hadoop，该项目本质上是一个操作系统，可以使MapReduce程序在计算集群上运行。</p>
 <p>MapReduce算法有效地利用了许多大规模或数据密集型问题所展示的内置并行性。 要设计这样的算法，必须从两个基本操作开始：map和reduce。 函数映射将特定函数应用于列表的所有元素，并且它们的执行意味着并行运行。 为每个进程或线程分配一个这样的任务。 函数reduce是一个聚合操作，它接受map操作的输出并聚合到最终结果。</p>
 <p>MapReduce中的基本数据结构是<key，value>对。 如果x = 5，则键是整数变量x，并且其值是5。对于图，键可以是节点的标识符，并且其值可以是其邻居的列表。 对于网页，键是其URL，值是该页面的HTML代码。在接下来的文本中，我们通过一个例子来说明MapReduce的典型应用：目录D有许多文本文件，每个文件都包含一些文本 —— 我们的目标是捕获和计算单词dog出现次数以及单词cat的出现次数，在两个文件中并为每个文件生成累积结果。</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code>{单词计数问题伪代码} 
+<div class="highlight"><pre><span></span><code>{单词计数问题伪代码} 
 
 1: Mapper (directory D; file f)
 2: for every term “dog” in file f do
@@ -1460,9 +1488,9 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 </code></pre></div>
 
 <p>Mapper的几个实例可以在不同的机器上运行，并且可以为键cat执行另一个映射任务。MapReduce的执行框架保证通过shuffle阶段将与同一个键相关联的所有值集中在reducer中。结果，字数统计算法添加了与每个key相关的所有计数，这也是一个键值对。 因此，MapReduce任务的基本框架可归纳如下：</p>
-<div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%"><span></span><code><span style="color: #177500">Map:    〈key, value〉→ list of 〈key, value〉</span>
-<span style="color: #177500">         {This is the intermediate 〈key, value〉 pair}</span>
-<span style="color: #177500">Reduce: 〈key, list of values〉 → list of 〈key, value〉</span>
+<div class="highlight"><pre><span></span><code>Map:    〈key, value〉→ list of 〈key, value〉
+         {This is the intermediate 〈key, value〉 pair}
+Reduce: 〈key, list of values〉 → list of 〈key, value〉
 </code></pre></div>
 
 <p>在前面的示例中，用于计算dog的出现次数的映射器的输出是列表，<dog，1>，<dog，1>，<dog，1> ...，以及用于计数的映射器的输出cat的出现是一个列表，<cat，1>，<cat，1>，<cat，1> ....程序将在目录中的所有文件中运行。在映射阶段完成之后，在机器之间交换中间<key，value>对，以将具有相同键的所有值发送到单个reducer（shuffling）。reducer产生输出<dog，524>，<cat，316>，<cow，23> ....图2.8说明了这种方案。</p>
@@ -1498,31 +1526,28 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 <hr />
 <ol>
 <li id="fn:1">
-<p>这里的<em>数据</em>表示任意能使用位串表示的内容。&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>这里的<em>数据</em>表示任意能使用位串表示的内容。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>信号传播速度是 <span><span class="MathJax_Preview">3 × 10^8 m/s</span><script type="math/tex">3 × 10^8 m/s</script></span>。&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>信号传播速度是 <span><span class="MathJax_Preview">3 × 10^8 m/s</span><script type="math/tex">3 × 10^8 m/s</script></span>。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>在单个域上，单个管理机构具有分配名称的权限。&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>在单个域上，单个管理机构具有分配名称的权限。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn: 4">
-<p>当然，RPC可以简单地用于与同一台机器上的服务器通信。&#160;<a class="footnote-backref" href="#fnref: 4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>当然，RPC可以简单地用于与同一台机器上的服务器通信。&#160;<a class="footnote-backref" href="#fnref: 4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>当前已经被 Oracle 收购。&#160;<a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>当前已经被 Oracle 收购。&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>同步机制最初由C.A.R. Hoare和Per Brinch Hansen发明。&#160;<a class="footnote-backref" href="#fnref:6" rev="footnote" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>同步机制最初由C.A.R. Hoare和Per Brinch Hansen发明。&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>这些与不同组织控制下的异构资源联合较少的网格不同。 因此，网格计算必须处理跨多个管理域的验证。&#160;<a class="footnote-backref" href="#fnref:7" rev="footnote" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>这些与不同组织控制下的异构资源联合较少的网格不同。 因此，网格计算必须处理跨多个管理域的验证。&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
-                
-                  
-                
                 
               
               
@@ -1539,34 +1564,34 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../01_introduction/" title="第一章 概述" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../01_introduction/" title="第一章 概述" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
                 第一章 概述
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../03_models/" title="第三章 通信模型" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../03_models/" title="第三章 通信模型" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
                 第三章 通信模型
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -1581,11 +1606,10 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
             Copyright &copy; 2016 - 2020 iswade
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1594,26 +1618,18 @@ TCP / IP提供了一个通用框架，可以在其上构建许多服务，并且
       
     </div>
     
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
