@@ -1,0 +1,1534 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/pragmatic_programmer/">
+      
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>程序员修炼之道笔记 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              程序员修炼之道笔记
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/faunadb_transaction/" title="FaunaDB的分布式事务协议" class="md-nav__link">
+      FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt 数据库" class="md-nav__link">
+      Bolt 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        程序员修炼之道笔记
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="程序员修炼之道笔记" class="md-nav__link md-nav__link--active">
+      程序员修炼之道笔记
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    编程智慧
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第一章 务实的哲学
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第二章 务实的方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    第三章 基础工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    第四章 务实的偏执
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第五章 宁弯不折
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    第六章 并发
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第七章 当你编码时
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第八章 项目启动之前
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    第九章 务实的项目
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    跋
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bash_turorial/" title="bash 教程" class="md-nav__link">
+      bash 教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" title="linux 系统管理" class="md-nav__link">
+      linux 系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../git/" title="git 入门教程" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    编程智慧
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第一章 务实的哲学
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第二章 务实的方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    第三章 基础工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    第四章 务实的偏执
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第五章 宁弯不折
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    第六章 并发
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第七章 当你编码时
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第八章 项目启动之前
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    第九章 务实的项目
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    跋
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="_1">程序员修炼之道读书笔记</h1>
+<p>标签：笔记</p>
+<h2 id="_2">编程智慧</h2>
+<ul>
+<li>"The best way to predict the future is to invent it." - Alan Kay</li>
+<li>"In programming the hard part isn’t solving problems, but deciding what problems to solve." - Paul Graham</li>
+<li>"Because of its vitality, the computing field is always in desperate need of new cliches: Banality soothes our nerves."</li>
+<li>"Documentation is a love letter that you write to your future self." - Damian Conway</li>
+<li>"Programming languages, like pizza, come in only two sizes: too big and too small." - Richard Pattis</li>
+<li>"Sometimes it's better to leave something alone, to pause, and that's very true of programming." - Joyce Wheeler</li>
+<li>"The most effective debugging tool is still careful thought, coupled with judiciously placed print statements." — Brian W. Kernighan</li>
+<li>"There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies and the other way is to make it so complicated that there are no obvious deficiencies." — C.A.R. Hoare</li>
+<li>"Programming is like pinball. The reward for doing it is the opportunity of doing it again." - Unknown</li>
+</ul>
+<h2 id="_3">第一章 务实的哲学</h2>
+<ol>
+<li><code>提示1</code>：关注你的技艺。经验与直觉，好奇心，批判性，现实主义，做一个多面手。</li>
+<li><code>提示2</code>：思考！思考你的工作。</li>
+<li>工程与个性，采集石头与大教堂。</li>
+<li>改善，不断做出许多小的改进。伟大的草坪需要每天的点滴护理。</li>
+<li>了解来龙去脉，容易把握软件必须做到多好。接近完美才是唯一的选项，通常需要做许多折中方案。</li>
+<li>人生是你的。</li>
+<li>我活着不是为了满足你的期望，正如你也不是因为满足我的期望而活着。李小龙</li>
+<li>人生是你的，是你在拥有，经营和创造。</li>
+<li>一团糟。改变。</li>
+<li><code>提示3</code>：你有权选择。</li>
+<li>你可以改变组织，或是让你换一个组织。马丁·福勒</li>
+<li>信任团队。</li>
+<li>承担责任。</li>
+<li><code>提示4</code>：提供选择，别找借口。</li>
+<li>给出选择，而不是借口。不要说搞不定，解释一下要做些什么才能挽回这个局面。</li>
+<li>重构/原型/测试/自动化。可以解决问题吗？</li>
+<li>资源/时间/技能/书/课程/帮助。</li>
+<li>当你意识到自己在说“我不知道”时，一定要接着说“——但是我会去搞清楚”。</li>
+<li>软件的熵。</li>
+<li>熵增，熵减，文化，破窗。</li>
+<li><code>提示5</code>：不要放任破窗。</li>
+<li>First, Do No Harm.</li>
+<li>一扇破窗：一段设计糟糕的代码，一个让团队在整个项目周期内都必须要遵守的糟糕的决定——就是一切衰退的开始。</li>
+<li>如果身处一个健康的团队，你们项目的代码是如此完美——编写清晰，设计优良，简洁优雅——你就会倾向于格外小心，不把它弄糟。</li>
+<li>一定告诉自己，“不要打破窗户”。</li>
+<li>石头汤，青蛙汤。</li>
+<li>石头汤 —— 一项协作成果。</li>
+<li>青蛙汤 —— 未意识到变坏。</li>
+<li>人们都觉着，加入一个推进中的成功项目更容易一些。因为只要一窥未来，大家就能团结在一起。</li>
+<li><code>提示6</code>：做推动变革的催化剂。</li>
+<li><code>提示7</code>：牢记全景。</li>
+<li>你在催生变化的时候，能判别是在做石头汤还是青蛙汤吗？这个决定是出于主观还是客观？</li>
+<li>违和感，情景感知。</li>
+<li>够好即可的软件。</li>
+<li>现实世界不会让我们生产出太多完美的产品，尤其是完全没有bug的软件。</li>
+<li>时间、技术、急躁合力对抗着我们。</li>
+<li>够好即可的软件就是最好的。</li>
+<li>你能训练自己写出够好即可的软件 —— 对用户、未来维护者来说够好即可，只要好的程度让你自己内心平静就可以。</li>
+<li>好到什么程度？</li>
+<li>让用户参与权衡。</li>
+<li><code>提示8</code>：将质量要求视为需求问题。</li>
+<li>单体软件和一个模块化设计的系统相比，满足质量要求所需的开发时间，是多还是少？</li>
+<li>投资知识，受益最佳。</li>
+<li>知识和经验是你最重要的专业资产。</li>
+<li>时效资产。</li>
+<li>当你的知识价值在下降时，你对公司或者客户的价值也在下降。</li>
+<li>学习新事物的能力是你最重要的战略资产。</li>
+<li>知识组合。</li>
+<li>内化。</li>
+<li><code>提示9</code>：对知识组合做定期投资。</li>
+<li>每年学习一门新的语言。</li>
+<li>每月读一本技术书。</li>
+<li>读非技术书。</li>
+<li>上课。</li>
+<li>加入本地的用户组和交流群。</li>
+<li>尝试不同的环境：windows, linux。</li>
+<li>与时俱进。</li>
+<li>是否在项目中使用过这些技术并不重要，甚至要不要把它们放到你的简历中也不重要。学习的过程将会拓展你的思维，为你打开全新可能性的大门，让你领悟新的做事方式。</li>
+<li>大众领域，学术领域。</li>
+<li>永远不要低估商业主义的力量。</li>
+<li><code>提示10</code>：批判性地分析你读到和听到的东西。</li>
+<li>批判性思维。</li>
+<li>问“五个为什么”，像小孩一样，但是要有礼貌。</li>
+<li>追踪钱的流动更容易理清脉络。</li>
+<li>有什么背景。</li>
+<li>什么时候在哪里可以工作起来。</li>
+<li>为什么这是个问题。</li>
+<li>Go， Python，Rust，Typescript，函数式语言。</li>
+<li>如果在做实现和编码，就去读一本设计和架构的书。如果正在较高层次做设计工作，就去读一本讲编码技术的书。</li>
+<li>我认为被人从头打量到脚总比被人视而不见要好。</li>
+<li><code>提示11</code>：英语就是另一门编程语言。</li>
+<li>了解听众。</li>
+<li>对每个小组进行适当的游说，你能让他们都为你的项目感到兴奋。</li>
+<li>明白自己想说什么。</li>
+<li>“这是否用正确的方式向我的听众传达了我要表达的东西？”精炼到不能更精炼为止。</li>
+<li>“现在是讨论的好时机吗？”</li>
+<li>挑选风格。</li>
+<li>如果只关注内容，糟糕的外观会毁掉你在厨房里埋头苦干几个小时的成果。</li>
+<li>丑陋的文档，一致性，拼写检查。</li>
+<li>让听众参与。</li>
+<li>做倾听者。</li>
+<li>把回忆变成一场对话，你将更有效地表达你的观点。</li>
+<li>回应别人。</li>
+<li><code>提示12</code>：说什么和怎么说同样重要。</li>
+<li><code>提示13</code>：把文档嵌进去，不要拴在表面。</li>
+<li>网上交流，邮件要重视。</li>
+</ol>
+<h2 id="_4">第二章 务实的方法</h2>
+<ol>
+<li><code>提示14</code>：优秀的设计比糟糕的设计更容易变更。</li>
+<li>无论什么设计原则，都是ETC（Easier To Change）的一个特例。</li>
+<li>解耦，单一职责，命名。</li>
+<li>ETC是一种价值观念，不是一条规则。</li>
+<li><code>提示15</code>：DRY（Don't Repeat Yourself） —— 不要重复自己。</li>
+<li>DRY不限于编码。（代码，文档，数据，接口和调用者之间隐含语义，开发人员之间）。</li>
+<li><code>提示16</code>：让复用变得更容易。</li>
+<li>正交性，在计算机科学中象征着独立性活着解耦性。对于两个活着多个事物，其中一个的改变不影响其他任何一个，则这些事物是正交的。</li>
+<li>直升机的控制绝对不是正交的。</li>
+<li><code>提示17</code>：消除不相关事物之间的影响。</li>
+<li>如果一个特别的功能背后的需求发生显著改变，有多少模块会受到影响？</li>
+<li>你的设计与现实世界的变化有多大程度的解耦。</li>
+<li>养成不断质疑你代码的习惯。只要有机会就重新组织，改善其结构和正交性。（重构）</li>
+<li>启用月度报告，去分析每个bug修复所影响的源文件的数量的趋势。</li>
+<li>面向对象语言和函数式语言在正交性方面有什么差异？</li>
+<li>关键的决定不易逆转。</li>
+<li>面向有弹性、适应性强的软件生产过程。</li>
+<li>与其认为决定是被刻在石头上的，不如把它们想象成写在沙滩上的。</li>
+<li><code>提示18</code>：不设最终的决定。</li>
+<li>很多人都会尽力保持代码的灵活性，但其实还要考虑在体系结构、部署和供应商集成方面的灵活性。</li>
+<li>大铁块：自己组装的服务器。</li>
+<li>大铁块的联合。</li>
+<li>带负载均衡的商用硬件集群。</li>
+<li>将程序运行在云虚拟机中。</li>
+<li>将服务运行在云虚拟机中。</li>
+<li>把虚拟机换成容器再来一遍。</li>
+<li>基于云的服务器架构。</li>
+<li>最后，无可避免的，有些任务又回到了大铁块。</li>
+<li><code>提示19</code>：放弃追逐时尚。</li>
+<li>要让你的代码具备“摇滚”精神：顺境时摇滚摆动，逆境时直面困难。</li>
+<li>可以把代码的演化路线想象成装满了薛定谔猫的盒子：每一个决定都会导致不同版本的未来。</li>
+<li>在一个复杂多变的世界里考虑如何命中目标，是很有趣的。</li>
+<li>务实的程序员更喜欢使用相当于曳光弹的软件。</li>
+<li><code>提示20</code>：使用曳光弹找到目标。</li>
+<li>使用曳光弹的好处：用户尽早获得可以工作的东西；开发者构造了一个可以在其中工作的框架；你有了一个集成平台；你有可以演示的东西；对进度有更好的感觉。</li>
+<li>使用原型时，你的目标是探索最终系统的特定方面。如果有了一个真正的原型，最终你将扔掉验证构思时捆绑在一起的所有东西，并总结经验教训，最后正确地重新编码。</li>
+<li>可以将原型看作是在发射一颗曳光弹之前进行的侦查和情报收集工作。</li>
+<li>可以为这些事物做原型：架构；新功能；数据结构或外部数据的内容；第三方工具或组件；性能问题；用户界面设计。</li>
+<li><code>提示21</code>：用原型学习。</li>
+<li>语言之界限，即是一个人世界之界限。</li>
+<li><code>提示22</code>：靠近问题域编程。</li>
+<li>收集需求、设计、编码、发布，这套传统的方法不再有效，原因之一是它离不开一个前提 —— 我们知道需求是什么。</li>
+<li>元编程和宏。</li>
+<li>内部语言：嵌入到运行时的代码中。</li>
+<li>外部语言：为这种语言编写一个解析器。</li>
+<li>DSL，文本解析，BNF语法，正则表达式，编译原理。</li>
+<li>在估算的过程中，你将会加深对程序所处世界的理解。</li>
+<li><code>提示23</code>：通过估算来避免意外。</li>
+<li>计划评审技术：乐观的、最有可能的和一个悲观的估算。</li>
+<li><code>提示24</code>：根据代码不断迭代进度表。</li>
+<li>开始给你的估算做一个记录。每次都跟踪一下估算的准确程度。如果误差超过了50%，试着找到估算错误的原因。</li>
+</ol>
+<h2 id="_5">第三章 基础工具</h2>
+<ol>
+<li>工具变成了手的延伸。</li>
+<li>纯文本的威力。</li>
+<li>作为务实的程序员，我们的基础材料不是木头或铁块，而是知识。</li>
+<li><code>提示25</code>：将知识用纯文本保存。</li>
+<li>纯文本不会过时。它能够让你的工作事半功倍，并能假话调试和测试。</li>
+<li>数据比所有创建它的工具更有生命力。</li>
+<li>在异构环境中使用纯文本，利远大于弊。</li>
+<li><code>提示26</code>：发挥shell命令的威力。</li>
+<li>专属shell：颜色主题，提示信息，别名和shell函数，命令补全。</li>
+<li><code>提示27</code>：游刃有余地使用编辑器。</li>
+<li>当你发掘出一个新的游泳特效，需要尽快把它内化为一种肌肉记忆。</li>
+<li>进步，远非寓于改变之中，而是依赖于保持。那些不能铭记过去的人，注定要重蹈覆辙。</li>
+<li>版本控制：一个巨大的UNDO键，一个项目的时间机器。</li>
+<li>版本控制，还是一个充满协作，部署流水线，问题跟踪，团队交流的完整世界。</li>
+<li><code>提示28</code>：永远使用版本控制。</li>
+<li>某种程度上，分支就像一个小型的克隆项目。</li>
+<li>调试心理学，调试是一个敏感的，情绪化的主题。</li>
+<li><code>提示29</code>：去解决问题，而不是责备。</li>
+<li><code>提示30</code>：不要恐慌。</li>
+<li><code>提示31</code>：修改代码前先让代码在测试中失败。</li>
+<li><code>提示32</code>：读一下那些该死的出错信息。</li>
+<li>版本回退，二分法。</li>
+<li>找个人，或者橡皮鸭，你一步步解释代码用来做什么，这一简单的做法能让问题跳出屏幕来暴露自己。</li>
+<li><code>提示33</code>：“select” 没出问题。</li>
+<li><code>提示34</code>：不要假设，要证明。</li>
+<li><code>提示35</code>：学习一门文本处理语言。</li>
+<li>工程日记，记录一些疯狂的想法，有时只是涂鸦。</li>
+</ol>
+<h2 id="_6">第四章 务实的偏执</h2>
+<ol>
+<li><code>提示36</code>：你无法写出完美的软件。</li>
+<li>防御性驾驶。</li>
+<li>防御式编程。</li>
+<li>当你的程序变得更加动态时，就会发现自己像在玩抛球杂耍一样。</li>
+<li>坚持走小步。</li>
+<li>没什么比常识和朴实无欺更让人吃惊。</li>
+<li>与计算机打交道很难，与人打交道更是难上加难。</li>
+<li>契约就是确保朴实无欺的最佳方案之一。</li>
+<li>契约规定了你的权利和责任，同时也规定了对方的权利和责任。</li>
+<li>双方履约，人人受益。</li>
+<li><code>提示37</code>：通过契约式进行设计。</li>
+<li><code>提示38</code>：尽早崩溃。</li>
+<li>“防御式编程是在浪费时间，让它崩溃”。</li>
+<li>一个死掉的程序，通常比一个瘫痪的程序，造成的损害要小得多。</li>
+<li>自责中往往有种奢侈。我们自责时，总觉得别人无权再责备我们。</li>
+<li><code>提示39</code>：使用断言去预防不可能的事情。</li>
+<li>不要使用断言来代替真正的错误处理。</li>
+<li>点亮一盏烛火，便投出一道阴影。</li>
+<li><code>提示40</code>：有始有终。</li>
+<li>分配资源的函数或对象，对释放资源应负有责任。</li>
+<li><code>提示41</code>：在局部行动。</li>
+<li>将易变得变量维持在一个小范围内，打开资源的过程要短暂且明显可见。</li>
+<li>做预测很难，关乎未来时尤其困难。</li>
+<li><code>提示42</code>：小步前进 —— 由始至终。</li>
+<li>永远小步前进，不断检查反馈，并且在推进前先做调整。</li>
+<li><code>提示43</code>：避免占卜。</li>
+<li>只能在你看到的范围内做计划。</li>
+</ol>
+<h2 id="_7">第五章 宁弯不折</h2>
+<ol>
+<li>生活不会裹足不前，我们写的代码也不会。为了跟上当今近乎疯狂的变化速度，我们需要尽一切努力编写尽可能宽松、灵活的代码。否则，就可能会发现，我们的代码很快便会过时，或者因太脆弱而无法在出错后修复，最终都可能在疯狂冲向未来的过程中被抛在后面。</li>
+<li>解耦。</li>
+<li>当我们试着单独挑出一个事物的时候，总会发现它与宇宙中的其他一切都有关联。（中美贸易战）</li>
+<li>当设计桥梁的时候，你想让其保持自己的形状，需要它们具备刚性，但当设计未来会变化的软件时，想要的恰恰相反；你希望它是灵活的。为了更灵活，单个组件应该与尽可能少的其他组件耦合。</li>
+<li><code>提示44</code>：解耦代码让改变更容易。</li>
+<li><code>提示45</code>：只管命令不要询问。不要从对象中取出值，在加以变更后再塞回去，让对象自己来完成这些工作。</li>
+<li><code>提示46</code>：不要链式调用方法。当访问某事物时，使用的点号不要超过一个。</li>
+<li>管道引入的耦合对修改代码所造成的障碍，远远小于链式调用引起的耦合。</li>
+<li><code>提示47</code>：避免全局数据。</li>
+<li><code>提示48</code>：如果全局唯一非常重要，那么将它包装到API中。</li>
+<li>让代码内敛一点：让它只处理直接知道的事情，这将有助于保持应用程序解耦，使其更容易变更。</li>
+<li>事情不会随随便便发生，它们注定是要发生的。</li>
+<li>有限状态机。</li>
+<li>状态机基本上就是怎样处理事件的一份规范。它由状态组成，其中一个是当前状态。对于每个状态，我们列出对该状态有意义的事件。对于每个事件，我们定义出系统新的当前状态。</li>
+<li>观察者模式：被观察对象，观察者。回调函数。</li>
+<li>发布订阅：推广了观察者模式，同时解决了耦合和性能问题。</li>
+<li>在发布订阅模式中，我们有发布者和订阅者。它们通常是通过信道连接在一起的。信道在单独的代码中实现：有时是库，有时是进程，有时是分布式基础设施。所有这些实现对代码来说都是隐藏的。</li>
+<li>发布订阅是一种很好的解耦异步事件处理过程的技术。</li>
+<li>响应式编程、流与事件。</li>
+<li>流让我们把事件当做数据集合来对待。</li>
+<li>无论事件源是什么，围绕事件编写的代码都比对应的线性代码更容易响应，解耦效果也更好。</li>
+<li>命令管道，几乎就像一条工业装配线：一端输入原始数据，另一端输出成品（信息）。</li>
+<li><code>提示49</code>：编程讲的是代码，而程序谈的是数据。</li>
+<li>如果你有面向对象编程的背景，那么就会条件反射似的要求隐藏数据，并将数据封装在对象中。结果这些对象来回折腾，改变彼此的状态。这就引入了更多耦合，因而也成为OO系统难于变更的一个重要原因。</li>
+<li><code>提示50</code>：不要囤积状态，传递下去。</li>
+<li>不要把数据看做是遍布整个系统的小数据池，而要把数据看做是一条浩浩荡荡的河流。</li>
+<li>继承：类型组合 or 动态的行为组织。</li>
+<li>继承就是耦合。</li>
+<li>继承很快就会为了表示类之间的细微差别而逐层添加，最终可怕地爬满墙壁。</li>
+<li>更糟糕的是多重继承问题。</li>
+<li><code>提示51</code>：不要付继承税。</li>
+<li>三种技术更好地解决继承的问题：接口与协议，委托，mixin与特征。</li>
+<li><code>提示52</code>：尽量用接口来表达多态。</li>
+<li>接口与协议给了我们一种不使用继承的多态性。</li>
+<li><code>提示53</code>：用委托提供服务："has a" 胜过 "is a"。</li>
+<li><code>提示54</code>：利用 mixin 共享功能。</li>
+<li>mixin 不必承担继承税就可以给类添加功能，而与接口结合可以让多态不再令人痛苦。</li>
+<li>物归其所，事定期限。</li>
+<li><code>提示55</code>：使用外部配置参数化应用程序。</li>
+<li>静态配置，Yaml，Json。配置信息包装在一个API后面。</li>
+<li>配置服务化，配置应该是动态的，这在我们转向高可用性应用程序时至关重要。</li>
+<li>不要因为懒，就放弃决策，而把分歧做成配置。</li>
+</ol>
+<h2 id="_8">第六章 并发</h2>
+<ol>
+<li>并发性是指两个或者更多的代码段在执行过程中表现得像是在同时运行一样。</li>
+<li>并行性是指它们的确是在同一时刻一起运行。</li>
+<li>并行和并发困难的原因在于共享状态。</li>
+<li>角色模型：不允许在独立的进程之间共享任何状态，只通过信道基于预定义好的简单语义进行通信。</li>
+<li>如果代码给几件事情强加一个顺序，而这个顺序对于解决手头问题而言并非必须，就会发生时域耦合。</li>
+<li>时间对我们来说有两个重要的方面：并发性（同一时刻发生的多件事情）以及次序（时间轴上的相对位置）。</li>
+<li><code>提示56</code>：通过分析工作流来提高并发性。</li>
+<li>使用类似活动图辅助理清工作流。</li>
+<li><code>提示57</code>：共享状态是不正确的状态。</li>
+<li>每个人都同意使用加锁机制时才有用。</li>
+<li>让资源具备事务，多个资源的事务。</li>
+<li>语言内置并发支持，Rust强化了数据所有权的概念。</li>
+<li><code>提示58</code>：随机故障通常是并发问题。</li>
+<li>在共享资源环境中实现并发非常难，尝试的过程将充满挑战。</li>
+<li>进程（角色） -- Mailbox -- 进程（角色）</li>
+<li><code>提示59</code>：用角色实现并发性时不必共享状态。</li>
+<li>Erlang语言及其运行时是一个角色模型实现的绝佳例子。</li>
+<li>Erlang还提供了热加载机制：你可以不停止运行正在运行的系统的情况下，替换该系统中的代码。</li>
+<li>Erlang系统运行着一些世界上最可靠的代码，号称有9个9的可用性。</li>
+<li><code>提示60</code>：使用黑板来协调工作流。</li>
+<li>消息传递系统（如Kafka和NATS）所做的远不止将数据从A发送到B。他们还提供持久化特性以及通过模式匹配的形式来检索消息的能力。</li>
+<li>消息系统可以像黑板一样工作。</li>
+<li>面向架构的角色、黑板和微服务解决方案，帮助应用程序消除了潜在的并发类型问题。但这种好处是有代价的。这些方法比较难推导出来，因为很多操作都是间接的。</li>
+<li>为消息格式和API保留一个中央仓库应该很有帮助，如果该中央仓库能生成代码和文档则尤甚。</li>
+<li>还需要开发出好的工具，以便在消息和事实在系统中穿行中去跟踪它们。</li>
+<li>这类系统部署和管理比较麻烦，因为有更多的组件。但这未必是坏事，在一定程度上系统力度也会变得更细，仅需单独替换一个角色就能完成系统更新，而不必触碰整个系统。</li>
+</ol>
+<h2 id="_9">第七章 当你编码时</h2>
+<ol>
+<li>传统观点认为，一旦项目到了编码阶段，就几乎只剩一些机械工作：只是把设计翻译成可运行的代码段而已。我们认为这种态度是软件项目失败的最重要的原因。这导致许多系统最终变得丑陋、低效、结构糟糕、不可维护，或者根本是错误的。</li>
+<li>编码不是机械工作。</li>
+<li>每一分钟都有需要作出的决定。</li>
+<li>只有人类能睁着眼说瞎话。</li>
+<li>害怕空白页。</li>
+<li><code>提示61</code>：倾听你内心的蜥蜴。</li>
+<li>当编程举步维艰时，其实是潜意识在告诉你有什么地方不对劲。</li>
+<li><code>提示62</code>：不要依赖巧合编程。</li>
+<li><code>提示63</code>：评估算法的复杂度。</li>
+<li><code>提示64</code>：对估算做测试。</li>
+<li>如果现在不进行重构，那么以后就需要投入更多的时间解决问题，因为需要处理更多的依赖关系。</li>
+<li><code>提示65</code>：尽早重构，经常重构。</li>
+<li><code>提示66</code>：测试与找 Bug 无关。</li>
+<li><code>提示67</code>：测试是代码的第一个用户。</li>
+<li><code>提示68</code>：既非自下而上，也不自上而下，基于端到端构建。</li>
+<li>构建软件的唯一方法是增量式的。</li>
+<li>首先测试模块的子组件，一旦验证了子组件，就可以继续测试模块本身。</li>
+<li><code>提示69</code>：为测试做设计。</li>
+<li><code>提示70</code>：要对软件做测试，否则只能留给用户去做。</li>
+<li><code>提示71</code>：使用基于特性的测试来校验假设。</li>
+<li>基于特性的测试让你从不变式和契约的角度来考虑代码；你会思考什么不能改变，什么必须是真实的。</li>
+<li>出门在外注意安全。</li>
+<li>好篱笆造出好邻家。</li>
+<li>行百里者半九十。</li>
+<li>分析代码中的那些可能出错的路径，并将其添加到测试套件中。你要考虑传入错误的参数、泄露的资源或资源不存在等此类事情。</li>
+<li><code>提示72</code>：保持代码简洁，让攻击面最小。</li>
+<li><code>提示73</code>：尽早打上安全补丁。</li>
+<li>历史上（到目前为止），最严重的数据泄露是由系统更新滞后造成的。</li>
+<li>经过良好审查、彻底检查、维护良好、经常更新、最好是开源的库和框架。</li>
+<li>名不正，则言不顺；言不顺，则事不成。</li>
+<li>应用程序、子系统、模块、函数和变量起名字很重要，因为它们透漏出你的很多意图和信念。</li>
+<li>“我这一创造的动机是什么？” 这是一个强有力的问题，因为它把你从立即解决问题的心态中拉出来，让你看到更大的图景。</li>
+<li>大脑很尊重书面文字。我们需要确保使用的名字不辜负这一点。</li>
+<li>在计算机科学中，只有两件难事：缓存失效和命名。</li>
+<li>一致性。</li>
+<li>愚蠢地使用一致性是无知的妖怪......。</li>
+<li><code>提示74</code>：好好取名；需要时更名。</li>
+</ol>
+<h2 id="_10">第八章 项目启动之前</h2>
+<ol>
+<li>所谓完美境界，并非加无可加，而是减无可减。</li>
+<li><code>提示75</code>：无人确切知道自己想要什么。</li>
+<li>尽量要在开始之前就理解整个问题。</li>
+<li><code>提示76</code>：程序员帮助人们理解他们想要什么。</li>
+<li>典型的客户会带着需求来找我们。这种需求可能是战略性的，但更可能是战术性的：对当下面临问题做的一个回应。</li>
+<li>最初对需求的申明，往往并非绝对化的要求。客户可能没有意识到这一点，但一定希望你能一起去探索。</li>
+<li>这既是一个演绎性过程，又是一个创造性的过程：你会灵机一动，为一个更好的解决方案添砖加瓦。</li>
+<li>需求是一个过程。</li>
+<li><code>提示77</code>：需求是从反馈循环中学到的。</li>
+<li><code>提示78</code>：和用户一起工作以便从用户角度思考。</li>
+<li><code>提示79</code>：策略即元数据。</li>
+<li>当我们需要把它们所说的东西，扩展为一份法律文件时，就好像是在流沙上建造一座难以置信的复杂城堡。</li>
+<li>需求不是架构；需求无关设计，也非用户界面；需求就是需要的东西。</li>
+<li>我们可以做些什么来防止需求蔓延开呢？</li>
+<li>答案（又一次）是反馈。</li>
+<li><code>提示80</code>：使用项目术语表。</li>
+<li><code>提示81</code>：不要挑出框框思考 —— 找到框框。</li>
+<li>在面对无法解决的难题时，识别出真正的约束。可以问自己：“必须这样做才能搞定吗？必须搞定它吗？”</li>
+<li>幸运眷顾有准备的人。</li>
+<li>在日常生活中，将什么行得通什么行不通反馈给大脑，是供养大脑的最好方法。我们描述过一个好方法，就是记录工程日记。</li>
+<li>一个不可能完成的项目，还有一个可笑的最后期限。</li>
+<li>但是这个项目获得了巨大的成功：我们可以不断地提问、澄清、决策和演示。</li>
+<li>康威定律：设计系统的架构受制于产生这些设计的组织的沟通结构。</li>
+<li>结对编程。群体编程。</li>
+<li><code>提示82</code>：不要一个人埋头钻进代码中。</li>
+<li>敏捷是一个形容词：它指向你做事情的方式。</li>
+<li><code>提示83</code>：敏捷不是一个名词；敏捷有关你如何做事。</li>
+<li>敏捷宣言：A. <strong>个体和互动</strong>高于流程和工具。B. <strong>工作的软件</strong>高于详尽的文档。C. <strong>客户合作</strong>高于合同谈判。D. <strong>响应变化</strong>高于遵循计划。</li>
+<li>这些价值观，是由不断发现更好软件生产方法的行为，所激发和显露出来的。这不是一份静态的文档，它是对生产过程的建议。</li>
+<li>永远不可能有一个叫敏捷的工艺流程。</li>
+<li>这些价值观，不会告诉你该做什么。当你自己决定要做点什么的时候，它们会告诉你要去追寻什么。</li>
+<li>简单的反馈循环并不仅仅适用于软件。回想一下最近做的软件之外的决定。如果事与愿违，那么假设一切可以回退，就此是否有什么能改进之处？</li>
+</ol>
+<h2 id="_11">第九章 务实的项目</h2>
+<ol>
+<li>随着项目的进行，我们需要从个人的哲学和编码问题，转移到更大的、项目规模的问题。</li>
+<li>一旦项目不只你一个人，就需要建立一些基本规则，并依次将项目的各部分分配出去。</li>
+<li>在务实的团队中，我们将展示如何在尊重务实哲学的基础上做到这一点。</li>
+<li>软件开发方法的目的是帮助人们一起工作。</li>
+<li>在L组里，斯托佛管理着六个一流的程序员，这在管理上的挑战与养猫差不多。</li>
+<li>这些方法是否也适用于团队，甚至是由一群意志坚强、独立个体构成的团队呢？这里可以响亮地回答“可以！”成为一个务实的人，有很多优势，但是如果这样的个体能在一个务实的团队中工作，优势会成倍增加。</li>
+<li>团队是一个小而稳定的实体。</li>
+<li>50个人就不算团队，算是部落。</li>
+<li>随着团队规模的增长，沟通路径以 <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> 的速度增长，其中 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 是团队成员的数量。在更大的团队中，沟通开始变得无效。</li>
+<li>务实的团队很小，充其量也就10~12人左右。成员很少进出。每个人都很了解彼此，相互信任，互相依赖。</li>
+<li><code>提示84</code>：维持小而稳定的团队。</li>
+<li>如果团队不鼓励开发者在这些修复工作上花费时间，那么问题就会进一步恶化。</li>
+<li>团队作为一个整体，不应该容忍破碎的窗户 —— 哪些没人去修的小问题。</li>
+<li>在一些团队方法中，团队会设一个“质量官” —— 有这个人对交付的产品的质量负责。这显然是荒谬的：质量只能来自团队每个成员的贡献。质量是内在的，无法由外在保证。</li>
+<li>即使是最用心的团队，也可能对项目中的重大变化浑然不觉。</li>
+<li>如果团队对改进和创新是认真的，那么就需要将其排入日程表。</li>
+<li><code>提示85</code>：排上日程以待其成。</li>
+<li>团队自身也在组织中；团队作为一个实体，需要与世界的其他部分进行清晰的沟通。</li>
+<li>在外人看来，最糟糕的项目团队就是那些看起来闷闷不乐、沉默寡言的团队。</li>
+<li>他们的会议组织混乱，没有人愿意发言。电子邮件和项目文档一团糟：每一个人使用着不同的术语，没有哪两样东西看起来是相同的。</li>
+<li>优秀的项目团队有独特的个性。人们期待与他们会面，因为知道他们准备的很充分，会让他们表现得每个人都心情愉悦  。</li>
+<li>他们生成的文档是清晰、准确和一致的、</li>
+<li>团队用同一个声音说话，甚至可能还不乏幽默感。</li>
+<li>有一个简单的营销技巧，可以帮助团队作为一个整体对外交流：创建一个品牌。当开始一个项目时，为它起一个名字，最好是一个稀奇古怪的名字。</li>
+<li>系统很少共享，而且有很多重复的功能。</li>
+<li><code>提示86</code>：组织全功能的团队。</li>
+<li>有一个确保一致性和准确性的好方法，那就是将团队所做的一切自动化。</li>
+<li>《人月神话》</li>
+<li>他们模仿的是形式，不是内容。</li>
+<li>人类学家称之为货物崇拜。</li>
+<li>在很多时候，我们就是这些岛民。</li>
+<li>有些团队，宣称在使用Scrum，但是他们每周只做一次站立会议。</li>
+<li>他们的投资仅仅浮于神器的表面 —— 甚至只限于名字，就好像“站立”或“迭代”这些词是某种邪教的咒语一样。</li>
+<li>不出所料，他们也没有吸引到真正的魔力。</li>
+<li>特定的神器，以及浮于表面的结构、策略、流程和方法是不够的。</li>
+<li><code>提示87</code>：做能起作用的事，别赶时髦。</li>
+<li>同一尺寸无法适应所有人。</li>
+<li>许多认证课程实际上更加糟糕：它们建立在学生能够记住并遵循规则的基础之上。</li>
+<li>你想要的并非如此，你需要有能力超越现有的规则，发掘有利的可能性。</li>
+<li>这与“但是Scrum/精益/看板/XP/敏捷是这样做的.....”的心态大为不同。</li>
+<li>真正的目的：和任何目标一样，最关键的是要保持瞄着正确的方向。</li>
+<li>如果交付周期是几年，试着把周期缩短到几个月。如果是几个月，就减少到几周。</li>
+<li>当这样做在业务上有意义时，才有必要在用户需要时及时交付。</li>
+<li><code>提示88</code>：在用户需要时交付。</li>
+<li>不要轻信我们的话，自己调查并尝试一下这些方法。</li>
+<li>不过务必小心，不要做过头。</li>
+<li>过度投资于任何一种特定的方法，会让你对其他方法视而不见。</li>
+<li>当你习惯于一种方法时，很快就看不到其他的出路了。</li>
+<li>你已经僵化，变得不再能快速适应。</li>
+<li>文明的进步是增加那些不需要思考就能完成的重要操作来实现的。</li>
+<li>务实的入门套件：版本控制，回归测试，完全自动化。</li>
+<li><code>提示89</code>：使用版本控制来驱动构建、测试和发布。</li>
+<li>寻找Bug有点像网捕鱼。我们使用精细的小渔网（单元测试）来捕捉小鱼，使用大的粗渔网（集成测试）来捕捉食人鱼。</li>
+<li><code>提示90</code>：尽早测试，经常测试，自动测试。</li>
+<li><code>提示91</code>：直到所有的测试都已运行，编码才算完成。</li>
+<li><code>提示92</code>：使用破坏者检测你的测试。</li>
+<li>在编写测试时，确保在应该发出警报时警报会响。</li>
+<li><code>提示93</code>：测试状态覆盖率，而非代码覆盖率。</li>
+<li><code>提示94</code>：每个Bug只找一次。</li>
+<li><code>提示95</code>：不要使用手动程序。</li>
+<li>你的夜间构建或者持续构建是自动化的，但是部署到生产环境中的过程却没有自动化，是这样吗？为什么？那台服务器有什么特别之处？</li>
+<li>对应用程序独立于GUI之外的逻辑进行测试，是否太难了？这说明了和GUI有关的什么问题？是耦合问题吗？</li>
+<li>真正有意义的是这些对业务价值的期望，而不仅仅是软件项目本身。软件只是达到这些目的的一种手段。</li>
+<li><code>提示96</code>：取悦用户，而不是只要交付代码。</li>
+<li>或许你的头衔只是“软件开发者”或“软件工程师”的某种变体，而事实上这个头衔应该是“解决问题的人”。这就是我们所做的，也是一个务实的程序员的本质。</li>
+<li>傲慢与偏见。</li>
+<li>务实的程序员不会逃避责任。</li>
+<li>相反，我们乐于接受挑战，并让自己的专长广为人知。如果我们正在负责一个设计，或一段代码，那么这是一份值得自豪的工作。</li>
+<li><code>提示97</code>：在作品上签名。</li>
+<li>一个务实的程序员。</li>
+</ol>
+<h2 id="_12">跋</h2>
+<ol>
+<li>长远来说，我们塑造生活，塑造自己。直至死亡为止，这过程永不会完结。最终我们总要为所做的抉择负上责任。</li>
+<li>从那以后的二十年间，软件加速发展，不仅突破了单纯上午机器的范畴，甚至可以说接管了世界。</li>
+<li>“程序员，就像诗人一样，几乎仅仅工作在单纯的思考中。他们运用自己的想象，来建造自己的城堡”。</li>
+<li>我们从一张白纸开始，几乎可以创造任何我们能想象到的东西。我们创造的东西可以改变世界。</li>
+<li>我们真正在建设未来，这是一股巨大的力量。</li>
+<li>我们隐约看到乌托邦未来的可能性。</li>
+<li>对于我们交付的每一段代码，我们有义务问自己两个问题：1) 我已经保护好用户了吗？2) 我自己会用它吗？</li>
+<li><code>提示98</code>：先勿伤害。</li>
+<li><code>提示99</code>：不要助纣为虐。</li>
+<li>这取决于你。正是你的想象力、你的希望、你的关注，为未来20年甚至更长时间的构建，提供了纯净的思想基础。</li>
+<li>你正在为自己和子孙后代建造未来 —— 这是你的职责所在，去创造一个让所有人心向往之的宜居未来。当你做的事情违背了这个理想时，要敢于承认，并有勇气说“不！”对可以拥有的未来充满憧憬，才有动力去创造它。即使是空中楼阁，也要每天为它舔砖加瓦。</li>
+<li>我们都有精彩的人生。</li>
+<li><code>提示100</code>：你要为自己的人生做主。精心营造，与人分享，为之喝彩。好好享受吧！</li>
+</ol>
+<h2 id="_13">总结</h2>
+<ul>
+<li><code>提示1</code>：关注你的技艺。经验与直觉，好奇心，批判性，现实主义，做一个多面手。</li>
+<li><code>提示2</code>：思考！思考你的工作。</li>
+<li><code>提示3</code>：你有权选择。</li>
+<li><code>提示4</code>：提供选择，别找借口。</li>
+<li><code>提示5</code>：不要放任破窗。</li>
+<li><code>提示6</code>：做推动变革的催化剂。</li>
+<li><code>提示7</code>：牢记全景。</li>
+<li><code>提示8</code>：将质量要求视为需求问题。</li>
+<li><code>提示9</code>：对知识组合做定期投资。</li>
+<li><code>提示10</code>：批判性地分析你读到和听到的东西。</li>
+<li><code>提示11</code>：英语就是另一门编程语言。</li>
+<li><code>提示12</code>：说什么和怎么说同样重要。</li>
+<li><code>提示13</code>：把文档嵌进去，不要拴在表面。</li>
+<li><code>提示14</code>：优秀的设计比糟糕的设计更容易变更。</li>
+<li><code>提示15</code>：DRY（Don</li>
+<li><code>提示16</code>：让复用变得更容易。</li>
+<li><code>提示17</code>：消除不相关事物之间的影响。</li>
+<li><code>提示18</code>：不设最终的决定。</li>
+<li><code>提示19</code>：放弃追逐时尚。</li>
+<li><code>提示20</code>：使用曳光弹找到目标。</li>
+<li><code>提示21</code>：用原型学习。</li>
+<li><code>提示22</code>：靠近问题域编程。</li>
+<li><code>提示23</code>：通过估算来避免意外。</li>
+<li><code>提示24</code>：根据代码不断迭代进度表。</li>
+<li><code>提示25</code>：将知识用纯文本保存。</li>
+<li><code>提示26</code>：发挥shell命令的威力。</li>
+<li><code>提示27</code>：游刃有余地使用编辑器。</li>
+<li><code>提示28</code>：永远使用版本控制。</li>
+<li><code>提示29</code>：去解决问题，而不是责备。</li>
+<li><code>提示30</code>：不要恐慌。</li>
+<li><code>提示31</code>：修改代码前先让代码在测试中失败。</li>
+<li><code>提示32</code>：读一下那些该死的出错信息。</li>
+<li><code>提示33</code>：“select”</li>
+<li><code>提示34</code>：不要假设，要证明。</li>
+<li><code>提示35</code>：学习一门文本处理语言。</li>
+<li><code>提示36</code>：你无法写出完美的软件。</li>
+<li><code>提示37</code>：通过契约式进行设计。</li>
+<li><code>提示38</code>：尽早崩溃。</li>
+<li><code>提示39</code>：使用断言去预防不可能的事情。</li>
+<li><code>提示40</code>：有始有终。</li>
+<li><code>提示41</code>：在局部行动。</li>
+<li><code>提示42</code>：小步前进</li>
+<li><code>提示43</code>：避免占卜。</li>
+<li><code>提示44</code>：解耦代码让改变更容易。</li>
+<li><code>提示45</code>：只管命令不要询问。不要从对象中取出值，在加以变更后再塞回去，让对象自己来完成这些工作。</li>
+<li><code>提示46</code>：不要链式调用方法。当访问某事物时，使用的点号不要超过一个。</li>
+<li><code>提示47</code>：避免全局数据。</li>
+<li><code>提示48</code>：如果全局唯一非常重要，那么将它包装到API中。</li>
+<li><code>提示49</code>：编程讲的是代码，而程序谈的是数据。</li>
+<li><code>提示50</code>：不要囤积状态，传递下去。</li>
+<li><code>提示51</code>：不要付继承税。</li>
+<li><code>提示52</code>：尽量用接口来表达多态。</li>
+<li><code>提示53</code>：用委托提供服务：</li>
+<li><code>提示54</code>：利用</li>
+<li><code>提示55</code>：使用外部配置参数化应用程序。</li>
+<li><code>提示56</code>：通过分析工作流来提高并发性。</li>
+<li><code>提示57</code>：共享状态是不正确的状态。</li>
+<li><code>提示58</code>：随机故障通常是并发问题。</li>
+<li><code>提示59</code>：用角色实现并发性时不必共享状态。</li>
+<li><code>提示60</code>：使用黑板来协调工作流。</li>
+<li><code>提示61</code>：倾听你内心的蜥蜴。</li>
+<li><code>提示62</code>：不要依赖巧合编程。</li>
+<li><code>提示63</code>：评估算法的复杂度。</li>
+<li><code>提示64</code>：对估算做测试。</li>
+<li><code>提示65</code>：尽早重构，经常重构。</li>
+<li><code>提示66</code>：测试与找</li>
+<li><code>提示67</code>：测试是代码的第一个用户。</li>
+<li><code>提示68</code>：既非自下而上，也不自上而下，基于端到端构建。</li>
+<li><code>提示69</code>：为测试做设计。</li>
+<li><code>提示70</code>：要对软件做测试，否则只能留给用户去做。</li>
+<li><code>提示71</code>：使用基于特性的测试来校验假设。</li>
+<li><code>提示72</code>：保持代码简洁，让攻击面最小。</li>
+<li><code>提示73</code>：尽早打上安全补丁。</li>
+<li><code>提示74</code>：好好取名；需要时更名。</li>
+<li><code>提示75</code>：无人确切知道自己想要什么。</li>
+<li><code>提示76</code>：程序员帮助人们理解他们想要什么。</li>
+<li><code>提示77</code>：需求是从反馈循环中学到的。</li>
+<li><code>提示78</code>：和用户一起工作以便从用户角度思考。</li>
+<li><code>提示79</code>：策略即元数据。</li>
+<li><code>提示80</code>：使用项目术语表。</li>
+<li><code>提示81</code>：不要挑出框框思考</li>
+<li><code>提示82</code>：不要一个人埋头钻进代码中。</li>
+<li><code>提示83</code>：敏捷不是一个名词；敏捷有关你如何做事。</li>
+<li><code>提示84</code>：维持小而稳定的团队。</li>
+<li><code>提示85</code>：排上日程以待其成。</li>
+<li><code>提示86</code>：组织全功能的团队。</li>
+<li><code>提示87</code>：做能起作用的事，别赶时髦。</li>
+<li><code>提示88</code>：在用户需要时交付。</li>
+<li><code>提示89</code>：使用版本控制来驱动构建、测试和发布。</li>
+<li><code>提示90</code>：尽早测试，经常测试，自动测试。</li>
+<li><code>提示91</code>：直到所有的测试都已运行，编码才算完成。</li>
+<li><code>提示92</code>：使用破坏者检测你的测试。</li>
+<li><code>提示93</code>：测试状态覆盖率，而非代码覆盖率。</li>
+<li><code>提示94</code>：每个Bug只找一次。</li>
+<li><code>提示95</code>：不要使用手动程序。</li>
+<li><code>提示96</code>：取悦用户，而不是只要交付代码。</li>
+<li><code>提示97</code>：在作品上签名。</li>
+<li><code>提示98</code>：先勿伤害。</li>
+<li><code>提示99</code>：不要助纣为虐。</li>
+<li><code>提示100</code>：你要为自己的人生做主。精心营造，与人分享，为之喝彩。好好享受吧！</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../../translate/go_interface/" title="如何使用 Go 接口" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                如何使用 Go 接口
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../bash_turorial/" title="bash 教程" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                bash 教程
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
