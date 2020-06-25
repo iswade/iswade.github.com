@@ -70,13 +70,13 @@ h1,
     margin-left: auto;
     margin-right: auto;
 }
-
+/*
 .md-typeset__table {
     margin-left: 5%;
     margin-right: 5%;
     width: 90%;
 }
-
+*/
 .md-typeset pre {
     background-color: hsla(0, 0%, 100%, 0);
 }

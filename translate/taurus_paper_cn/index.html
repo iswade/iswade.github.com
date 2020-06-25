@@ -1,0 +1,1474 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/taurus_paper_cn/">
+      
+      
+      <link rel="shortcut icon" href="../../themes/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Taurus数据库 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.b302131d.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#taurus" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Taurus数据库
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
+      
+  <img src="../../themes/me.jpg" alt="logo">
+
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Databases
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Databases" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../crdb/crdb_paper_cn/" title="CockroachDB翻译" class="md-nav__link">
+      CockroachDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../crdb/crdb_paper/" title="CockroachDB论文" class="md-nav__link">
+      CockroachDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Taurus数据库
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Taurus数据库" class="md-nav__link md-nav__link--active">
+      Taurus数据库
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 背景和相关工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 系统架构
+  </a>
+  
+    <nav class="md-nav" aria-label="3 系统架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 云的不同
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-taurus" class="md-nav__link">
+    3.2 Taurus 概览
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 日志存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 页面存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-sal" class="md-nav__link">
+    3.4 SAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 数据库前端
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 复制
+  </a>
+  
+    <nav class="md-nav" aria-label="4 复制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 写路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 读路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 日志截断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-quorum" class="md-nav__link">
+    4.3 与Quorum复制的比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 恢复
+  </a>
+  
+    <nav class="md-nav" aria-label="5 恢复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 日志存储的恢复
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 页面存储的恢复
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-sal" class="md-nav__link">
+    5.3 SAL和数据库的恢复
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 只读副本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7 页面存储设计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8 实验评估
+  </a>
+  
+    <nav class="md-nav" aria-label="8 实验评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-amazon-aurora" class="md-nav__link">
+    8.1 与Amazon Aurora的比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-microsoft-socrates" class="md-nav__link">
+    8.2 与Microsoft Socrates的比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 只读副本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9 结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    致谢
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faunadb_transaction/" title="FaunaDB分布式事务协议" class="md-nav__link">
+      FaunaDB分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Aurora_design_cloud_native_database/" title="Aurora云原生关系数据库" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" title="数据库笔记" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../F1_query/" title="F1 Query" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" title="Bolt数据库" class="md-nav__link">
+      Bolt数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Distributed
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Distributed" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Distributed
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../distsys/" title="分布式系统大纲" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" title="前 言" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" title="第二章 进程间通信" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" title="强一致性模型" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" title="Zookeeper论文翻译" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paxos_made_live/" title="Paxos Made Live翻译" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Language
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_interface/" title="如何使用 Go 接口" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Engineering
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/pragmatic_programmer/" title="程序员修炼之道笔记" class="md-nav__link">
+      程序员修炼之道笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/bash_turorial/" title="bash教程" class="md-nav__link">
+      bash教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" title="linux系统管理" class="md-nav__link">
+      linux系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" title="git入门教程" class="md-nav__link">
+      git入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" title="How to be a manager" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 背景和相关工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 系统架构
+  </a>
+  
+    <nav class="md-nav" aria-label="3 系统架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 云的不同
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-taurus" class="md-nav__link">
+    3.2 Taurus 概览
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 日志存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 页面存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-sal" class="md-nav__link">
+    3.4 SAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 数据库前端
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 复制
+  </a>
+  
+    <nav class="md-nav" aria-label="4 复制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 写路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 读路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 日志截断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-quorum" class="md-nav__link">
+    4.3 与Quorum复制的比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 恢复
+  </a>
+  
+    <nav class="md-nav" aria-label="5 恢复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 日志存储的恢复
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 页面存储的恢复
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-sal" class="md-nav__link">
+    5.3 SAL和数据库的恢复
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 只读副本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7 页面存储设计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8 实验评估
+  </a>
+  
+    <nav class="md-nav" aria-label="8 实验评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-amazon-aurora" class="md-nav__link">
+    8.1 与Amazon Aurora的比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-microsoft-socrates" class="md-nav__link">
+    8.2 与Microsoft Socrates的比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 只读副本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9 结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    致谢
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="taurus">Taurus：如何实现高性能、高可用和低成本云数据库</h1>
+<h2 id="_1">摘要</h2>
+<p>使用云数据库即服务（DBaaS）产品代替本地部署变得越来越普遍。主要优势包括比本地替代方案更低的成本提高了可用性和可伸缩性。在本文中，我们描述了新的多租户云数据库系统Taurus的设计。 Taurus类似于Amazon Aurora和Microsoft Socrates分离计算层和存储层，并提供了类似的优势，例如，支持只读副本，低网络使用率，硬件共享和可扩展性。但是，Taurus体系结构具有几个独特的优势。Taurus提供了新颖的复制和恢复算法，与使用相同或更少副本的现有方法相比，它们提供了更高的可用性。另外，Taurus在性能上进行了高度优化，在关键路径上不超过一个网络跳跃点，并且只使用了仅追加存储方式，从而提供了更快的写入速度，减少设备损耗以及特定时间点快照。本文介绍了Taurus，给出了对存储节点体系结构的详细描述和分析，而尚未从已发表的文献中获得这些信息。</p>
+<h2 id="1">1 介绍</h2>
+<p>随着公司将其应用程序迁移到云中，对基于云的关系数据库服务（DBaaS）的需求正在迅速增长。 亚马逊，微软，阿里巴巴和其他云提供商都提供此类服务。 大多数DBaaS产品最初都是基于传统的整体数据库软件，实质上是使用本地存储或云存储在云（虚拟）计算机上运行数据库。 尽管易于实施，但这种方法无法满足客户期望的，从云数据库服务中获得的承诺[12]。 从客户的角度来看，理想的数据库服务应具有高可用性，无需维护，并可以根据数据库的大小和负载自动进行伸缩。 还应提供高性能，降低成本，并且用户应仅为实际使用的资源付费（即用即付）。 通过在云中运行相同的传统数据库软件无法实现这些目标 —— 必须从头开始重新设计系统。</p>
+<p>好的DBaaS架构必须同时提供持久性，可伸缩性，性能，可用性，还要考虑成本。通常认为在不同主机上分布三个数据副本足以确保持久性[5]。 可通过在主机之间分配计算和存储资源来提供可伸缩性。 虽然跨多个主机分布数据库可以提高持久性和可伸缩性，但它可能会对可用性产生不利影响。 使用许多主机会增加某些主机不可用的可能性，从而有可能导致整个数据库不可用。 诸如基于Quorum复制和最终一致性之类的方法可以提高可用性，但是两者都有缺点。 基于Quorum的复制可能需要比纯数据持久性更高的复制因子，从而增加了成本。 最终一致性对于许多现有应用程序是不可接受的。</p>
+<p>在本文中，我们介绍了Taurus，这是专门为云环境设计的关系数据库。 Taurus建立在以前工作的基础上，并在几个方面进行了改进。 Taurus有类似于Aurora [24]的分离计算和存储层，并且像Socrates一样分开可用性和持久性的概念[2]。 Taurus具有类似的优势，例如，支持只读副本，快速故障转移和恢复，硬件共享以及可扩展至128TB。</p>
+<p>Taurus计算层由单个主数据库（主数据库）和多个只读副本（辅助数据库）组成。 数据分为多个页面，这些页面跨多个存储节点进行分区。 所有更新事务均由主机处理。 主机将日志记录通过网络发送到存储层。 存储层将它们写入可靠的存储中，存储数据库页面，回放接收到的日志记录以使页面得到更新，并响应页面读取请求。</p>
+<p>Taurus引入了多项创新，帮助其以低成本实现高可用性和高性能。 我们的第一项贡献是一种复制和恢复算法，该算法可实现高可用性，且复制因子不高于持久性所需的复制因子，并且不会牺牲性能或强大的一致性保证。 考虑不相关的存储故障时，该算法使Taurus可以实现近100％的写入可用性。 只需3次数据复制即可实现持久性，Taurus可获得与Aurora使用的6次Quorum复制相当的可用性，并且优于POLARDB使用的3次Quorum复制[4]。</p>
+<p>一个主要的观察结果是，数据库日志和数据库页面的数据访问模式有很大的不同。 数据库日志仅用于数据持久性，并被顺序写入和读取。 日志写入很频繁，并且性能很关键，但是仅在不常见的故障期间才需要进行日志读取，因此，读取性能不太重要。 由于日志是持久性所必需的，因此它们需要强一致性保证。</p>
+<p>与数据库日志不同，数据库页面是随机访问的。 页面读取性能至关重要，但是写入延迟则不那么重要，因为当需要写入修改的页面时，更改在日志中已经是持久的。 对数据库页面进行了版本控制，可以使用版本控制来提供强一致性。 由于存在这些差异，因此对日志和页面使用相同的存储效率很低。 Taurus将日志存储（Log Stores）与页面存储（页面存储）分开。 它对日志和页面数据使用不同的分发和复制算法。 每种算法都针对其特定要求进行了优化。</p>
+<p>日志读取很少，并且大多数日志记录都不会被丢弃而从未被读取。 日志记录不依赖于其他日志记录。 日志记录无需写入特定的日志存储服务器，而是可以写入大型池中的任何可用日志存储，只要可用日志存储的数量足以保证持久性即可。 实际上，DBaaS部署包含数百到数千个节点。 只要有三个可用的存储节点，数据库就可以对写入进行确认，实际情况应该始终只考虑不相关的故障。</p>
+<p>相反，通过应用日志记录来更新数据库页面，并且需要页面的先前版本来生成下一个页面。 这需要将页面分配给特定的页面存储服务器。 因此，页面的可用性取决于负责该页面的特定页面存储的可用性。 但是，与传统的基于Quorum的复制算法相比，Taurus不需要每次读取或写入操作都涉及大多数甚至多个页面存储。 在确定哪个页面存储副本是最新副本时，可以使用强一致的日志服务器和页面版本控制。 如果已知页面版本，则页面存储最终可以保持一致，这可以提高服务可用性[10]。 由于没有Quorum要求，Taurus可以将副本数减少到持久性所需的数量。</p>
+<p>成功的DBaaS的另一个关键因素是高性能。 在分布式系统中，性能很大程度上取决于跨网络边界的关键路径上的操作数量。 我们的第二个贡献是一系列新颖的架构选择，使Taurus能够获得更高的性能。 我们的测试表明，与使用本地存储的MySQL 8.0相比，Taurus可以实现高达200％的吞吐量提高。 Taurus支持多个只读副本，即使在高负载下也可以将副本滞后时间保持在20ms以内。 Taurus中大多数对性能至关重要的操作，例如写日志和读页面，仅需要在网络连接的主机之间进行一次交互。</p>
+<p>为了避免使存储层成为瓶颈，Taurus通过两种方式提高了存储层性能。 首先，将日志存储区与页面存储区分开可以减轻页面存储区的负载。 其次，页面存储的组织围绕“日志就是数据库”模型进行了优化，从不修改数据并执行仅追加写入。 这种方法具有多个优点，可以将写入性能提高2到5倍，同时可以减少设备磨损，从而降低服务成本。 此外，仅追加写入可简化一致性算法和快照生成。 最后，将存储层分为日志存储和页面存储，使Taurus只读副本可以直接从日志存储接收更新，从而绕开了主机并避免主机成为瓶颈。 Taurus在可伸缩存储层上分散分布资源消耗以支持只读副本。</p>
+<p>本文的第三部分是对存储层内部工作，性能优化和设计取舍的详细描述。 尽管可用的文献[2，24]描述了在计算层中完成的许多优化，但它缺少有关存储组织和设计决策依据的详细信息。</p>
+<p>本文的其余部分安排如下。 在第2节中，我们将Taurus与可用的最新DBaaS实现进行比较，并讨论相关工作。 第3节提供了Taurus体系结构的高级概述。 第4节详细介绍了Taurus恢复算法，并将其与替代方法进行了比较。 第5节讨论恢复，第6节介绍只读副本支持。 在第7节中，我们将深入探讨页面存储的组织。 性能评估在第8节中提供，我们在第9节中总结。</p>
+<h2 id="2">2 背景和相关工作</h2>
+<p>在过去的几年中，出现了为云环境设计的几种关系数据库架构：Amazon Aurora，阿里POLARDB和微软的Socrates。 [2，4，24]。部署在具有私有存储的云实例上的传统数据库也很流行[1，19]。</p>
+<p>在云中使用传统数据库的主要优势包括易于实施，无需更改以及与现有软件完全兼容。但是，这种方法也有缺点。对于传统数据库，数据库大小受本地连接的存储量限制。通过网络连接的存储可以增加数据库的最大大小，但是存储成本，网络负载和更新成本仍然很高，并且与副本数成正比。这是因为每个副本都需要维护自己的数据库副本[24]。添加新的只读副本需要复制整个数据库，这是一个昂贵且耗时的过程，与数据库的大小成比例，这极大地限制了可伸缩性。基于数据大小的操作，例如进行备份，也限制了数据库的大小。他们都是花了太长时间。</p>
+<p>为了解决上述局限性，曹伟等人，建议在共享的分布式文件系统PolarFS [4]之上运行主副本和只读副本。 PolarFS提供了一个类似于POSIX的文件接口，可以使数据库代码和体系结构保持完整。 PolarFS通过使用优化的Raft协议的三向复制来提供持久性。在数据库副本之间共享存储可减少存储成本和网络负载。使用分布式文件系统可实现存储横向扩展和大型数据库支持。但是，由于存储层不提供任何特定于数据库的处理，因此该体系结构仍然继承一些限制。其中包括写放大，由于页面刷新导致的高网络负载，以及由于主机执行所有处理而导致的性能和可伸缩性有限。</p>
+<p>将数据库系统分为计算和存储层，并使每一层都包含一些数据库功能可以解决许多问题。计算节点仅将日志记录发送到存储层，而不是整个页面，并且存储层知道如何从日志记录更新页面。由于不再需要刷新整个页面，因此由Aurora率先采用的这种方法可减少网络负载和计算层上的负载[24]。 Aurora将数据库页面分为10GB的分片，分布在共享存储节点上，并使用基于Quorum写入，每个分片有六个副本。使用Quorum会导致可用性问题，因为一个分片的多个副本需要在线才能确保读取和写入成功。对于具有三个节点的基于Quorum的系统，两个节点必须处于联机状态才能为读取和写入服务。但是，作者认为这不足以提供可用性，因此Aurora使用6节点Quorum，从而提高了可用性。</p>
+<p>Microsoft Socrates还依靠存储节点上的日志传送和页面重建[2]。但是，Socrates通过将数据库分为四个层来将持久性和可用性分开：一个与Aurora中的相应层具有相同目的的计算层，一个专门用于快速持久化日志的日志层，一个页面服务器层。将日志记录应用于页面并提供页面读取服务，并使用一个存储层来确保数据库数据的持久性。将日志记录与页面分开存储可以提高数据库性能，并使其可以对页面使用更慢和更便宜的存储，而对日志记录使用更快，更昂贵的存储。</p>
+<p>Taurus还接受将数据库分为不同功能层以及将可用性和持久性概念分开的想法。 Taurus通过对日志和页面使用不同的复制和一致性技术来进一步推进这些想法。这种方法使Taurus可以同时实现更高的可用性，更低的存储成本和更好的性能。与POLARDB和Aurora使用的Quorum复制相比，Taurus复制算法可提供更高的写入可用性，并且仅使用三个数据副本以最大程度地降低存储成本。与Socrates的四层体系结构相比，Taurus将数据库系统分为两个物理层。这样可以降低网络负载和延迟。为了减少读取延迟，Socrates将所有页面缓存在页面服务器层的本地存储中。相反，Taurus没有中间层。它不需要缓存，因为可以通过一个网络跃点从存储设备中快速检索数据。</p>
+<p>除了上述通用数据库体系结构之外，还有一些针对特定要求进行了优化的云数据库。 其中Spanner是一个部分符合SQL的数据库，旨在处理读取密集型工作负载的地理分布事务，并依赖于两阶段提交和准确的时钟[6]。 Snowflake是针对大量分析数据处理进行了优化的云数据库实例[7]。Vandiver等人，讨论将Vertica列存储引擎用于云部署的经验[23]。</p>
+<p>Taurus建立在多种先前开发的技术之上。日志结构化存储由LFS提出[21]，并已应用于多个数据库和键值存储[15、20、22、25]。Taurus页面存储使用此概念存储其持久性数据。 Dynamo DB [8]已使用最终的一致性和数据版本控制[13]来实现高可用性，但代价是一致性较弱。Taurus使用一致性方法的组合来实现可用性和一致性。用于数据复制的Gossip协议由Demers等人提出 [9]，并已被广泛使用。Taurus使用Gossip和中央复制的组合，以克服Gossip协议限制，例如高网络负载。</p>
+<h2 id="3">3 系统架构</h2>
+<p>云环境与传统的专用服务器环境明显不同。它们违反了隐式假设，这些假设是传统数据库体系结构的基础。本节的第一部分以MySQL为例，概述了为什么会出现这种情况。接下来是Taurus架构的高级概述，强调如何在云环境中对其进行优化。</p>
+<h3 id="31">3.1 云的不同</h3>
+<p>传统上，关系数据库系统假定数据存储在专用本地存储中的情况下设计的。如果要求数据库具有高可用性，通常会维护数据库的两个或三个副本，一个主副本和一个或两个辅助副本。主机同时处理读取和写入请求。每个副本都维护数据库的完整数据，并且还可以处理只读事务。如果主机发生故障或无法响应，则其中一个副本将接管新的主机。</p>
+<p>该体系结构非常适合本地部署，但是在云环境中，它浪费资源：网络带宽，CPU周期，内存空间，存储空间和I/O带宽。图1说明了数据如何流动并存储在典型的MySQL云部署中。每个MySQL实例都在单独的虚拟机上运行，并将其数据存储在虚拟磁盘（卷）上。客户以固定的容量配置虚拟机和虚拟磁盘，并支付固定的价格，而不管实际使用了多少容量。云中的虚拟磁盘通常存储三个数据副本，以确保高可靠性和可用性。由于这三个MySQL实例各自维护自己的数据库副本，因此这意味着将存储数据库的九个完整副本。这显然是过度和浪费的。</p>
+<p>图1中的箭头显示了数据如何流动。副本通过重新执行主机接收的所有更新事务来更新其数据库副本。这意味着每个更新事务执行三次，每个MySQL实例一次。考虑到通过存储完成的复制，这意味着每次写入都重复九次。</p>
+<p><img alt="" src="../image/taurus_fig01.png" /></p>
+<p><center>图 1: 在云环境中带有两个部署副本的MySQL</center>
+在云环境中，这种传统架构浪费资源，从而增加了服务成本。 通过添加只读副本来扩展计算速度缓慢且昂贵，因为需要为添加的每个副本创建数据库的全新副本。 由于备份和还原之类的操作花费的时间太长，因此无法支持大型的数TB的数据库。</p>
+<h3 id="32-taurus">3.2 Taurus 概览</h3>
+<p>Taurus由四个主要逻辑部分组成：日志存储，页面存储，存储抽象层（SAL）和数据库前端。 它们分布在两个物理层之间：计算层和存储层（图2）。 只有两个物理层可以最大程度地减少通过网络发送的数据量，并减少请求的等待时间，而这只需通过网络上的一次调用即可完成。</p>
+<p><img alt="" src="../image/taurus_fig02.png" /></p>
+<p><center>图 2: Taurus的组件和层</center>
+<strong>数据库前端</strong>是MySQL的略微修改版本，但将来可能会支持PostgreSQL和其他引擎。前端负责接受传入的连接，优化和执行查询，管理事务以及生成描述对数据库页面所做修改的日志记录。前端层由一个主副本可以提供读写查询，以及多个只提供读查询的多个读副本。为了持久化修改数据库页面，必须使日志记录具有持久性。</p>
+<p><strong>日志存储</strong>是在存储层中执行的服务，用于持久存储日志记录。一旦使属于事务的所有日志记录都已经持久化，就可以向客户端确认事务完成。日志存储有两个目的。首先，它们确保日志记录的持久性。其次，它们提供日志记录给只读副本，以便只读副本可以将日志记录应用于其缓冲池中的页面。主数据库会定期发送最新日志记录的位置，以便只读副本可以读取最新日志。主机还将日志记录分发到页面存储服务器。</p>
+<p><strong>页面存储</strong>服务器也位于存储层中。Taurus数据库分为称为切片(slice)的小型固定大小（10GB）页面集。每个页面存储服务器都处理来自不同数据库的多个切片，并且只接收属于它负责切片的页面日志。一个数据库可以有多个切片，每个切片都复制到三个页面存储中，以提高持久性和可用性。下一节将更详细地描述Taurus的四个主要部分。</p>
+<h3 id="33">3.3 日志存储</h3>
+<p>日志存储的主要功能是保存由主数据库生成的日志记录，并提供从任何副本对其的读取访问权限。基础存储提供的关键存储抽象称为PLog。 PLog是有限大小的仅追加存储对象，可以跨多个日志存储同步复制。复制因子由所需的持久性水平决定，在我们的实现中，该级别设置为3。</p>
+<p>日志存储服务器被组织到一个集群中。一个典型的云部署具有数百个日志存储服务器。当请求创建PLog时，集群管理器选择将PLog复制到的三个日志存储服务器。它分配一个24字节的标识符来唯一标识PLog。仅当所有三个日志存储副本均报告成功写入时，才会确认对PLog的写入。如果其中一个日志存储未能在预期的时间内确认写入，则认为该写入已失败，不会再对此PLog发出写操作，并且会在集群管理器选择的另外三个日志存储服务器之间创建新的PLog 。这意味着只要集群中至少有三个可用的正常主机，就始终会成功写入日志存储。写入速度很快，因为如果日志存储很慢或网络数据包丢失，则写入不会重试到旧位置，而是发送到其他负载较小或可靠性更高的日志存储。</p>
+<p>只要至少有一个PLog副本可用，从日志存储的读取就能成功。从PLog读取有两种情况。首先，数据库只读副本读取主副本最近写入的日志记录。为了加快读取速度，日志存储使用FIFO策略将最近写入的数据缓存在内存中以淘汰，因此在大多数情况下不需要磁盘访问。其次，在必须恢复已提交的日志记录并将其发送到页面存储时，在数据库恢复期间也会发生读取。</p>
+<p>数据库日志存储在有序的PLog集合中，称为数据PLog。这些PLog的列表记录在单独的元数据PLog中，并缓存在数据库节点上的内存中。初始化数据库后，将自动创建元数据PLog和存储数据库日志的PLog。写入元数据PLog的规则与数据PLog的规则相同。当创建或删除新数据PLog时，所有元数据都以原子写入方式写入元数据PLog。当元数据PLog达到其大小限制时，将创建一个新的元数据PLog，将最新的元数据写入，并删除旧的元数据PLog。</p>
+<h3 id="34">3.4 页面存储</h3>
+<p>页面存储的主要功能是处理来自数据库主机或只读副本的页面读取请求。页面存储区必须能够重新创建数据库前端可能请求的页面的任何版本，因此页面存储区必须有权访问其负责页面的所有日志记录。此要求使我们无法以切换日志存储相同的方式来切换页面存储，使得实现高可用性更具挑战性。</p>
+<p>当主机修改页面时，它将为该页面分配一个版本，即单调递增的逻辑序列号（LSN），该序列号唯一地标识并建立数据库所有更改之间的顺序。每个页面版本均由其页面ID和LSN标识。 SAL通过暴露四个主要API与页面存储进行通信：</p>
+<ol>
+<li>WriteLogs用于传输日志记录的缓冲区</li>
+<li>ReadPage用于读取页面的特定版本</li>
+<li>SetRecycleLSN用于指定属于前端可能请求同一页面的最早LSN（回收LSN）</li>
+<li>GetPersistentLSN返回页面存储可以提供的最高LSN</li>
+</ol>
+<p>页面存储负责来自不同数据库的多个切片，每个切片由传递给上述每种方法的唯一标识符标识。 从第一次写入页面开始，页面的每次更改都会作为传递给WriteLogs的日志记录接收。 页面存储在后台连续应用传入的日志记录以生成和存储新版本的页面。</p>
+<p>每当SQL前端需要读取页面时，SAL都会调用ReadPage来指定分片，页面ID和所需的页面版本。 页面存储必须能够提供页面的较早版本，因为只读副本在其数据库视图中可能落后于主节点。 为了获得数据库的一致物理视图，副本服务器指定页面存储必须具有的所有日志记录才能满足读取请求的LSN。 这样，页面存储可确保它返回的页面版本是最新的，并且不超出只读副本的预期。</p>
+<p>因为存储页面的多个版本需要资源（内存和磁盘空间），所以SQL层必须定期调用SetRecycleLSN才能与它可能请求的最早的LSN进行通信。 最后，由于使用最终一致的模型在页面存储副本之间复制数据，因此主机需要知道每个页面存储副本所了解的页面的最新版本。 使用GetPersistentLSN调用查找此信息。 稍后，我们将更详细地介绍页面存储内部和页面存储副本之间的数据复制。</p>
+<h3 id="34-sal">3.4 SAL</h3>
+<p>存储抽象层（SAL）是链接到数据库服务器的库，该库将现有数据库前端（例如MySQL或PostgreSQL）与远程存储，数据库切片，恢复和只读副本同步的潜在复杂性隔离开来。 SAL负责将日志记录写入“日志存储”和“页面存储”，并从“页面存储”读取页面。 SAL还负责在页面存储中创建，管理和销毁切片并将页面映射到切片。每当创建或扩展数据库时，SAL都会选择“页面存储”并在所选的“页面存储”上创建切片。只要主机决定刷新日志记录，日志记录就会发送到SAL。为避免少量写入，日志记录将作为称为数据库日志缓冲区的组进行累积并刷新到日志存储中。 SAL首先将数据库日志缓冲区写入当前活动的日志存储副本，以确保其持久性。一旦将日志记录成功写入所有日志存储副本，就将写入确认返回给主数据库，并将日志记录分发到每个切片缓冲区。切片缓冲区变满或超时后都将刷新。</p>
+<p>SAL维护的一个重要值称为群集可见（CV）LSN。 CV-LSN代表数据库全局的LSN，在该LSN上，数据库的所有页面在内部都是彼此一致的（例如B树的内部页面）。例如，如果B树包含页面B（它是页面A的子级），并且如果页面B分为页面B和C，则该操作必须是原子的。在这种情况下，数据库的CV-LSN将从先前的值跳转到A，B和C页的新LSN中最大的值。此外，CV-LSN始终设置为最新点所有切片（但不一定是所有切片副本）上要保留的重做日志记录没有任何间隙。因此，至少一个页面存储可以为LSN等于或大于CV-LSN的页面提供服务。使用CV-LSN，SAL可以在Taurus中的所有逻辑组件（主副本，只读副本和页面存储）中建立一致且向前移动的数据库状态。 CV-LSN以每个数据库日志缓冲区的最后一个LSN的增量为单位前进。数据库日志缓冲区可能包含针对一个或多个切片的记录。仅当同时满足以下两个条件时，SAL才会推进CV-LSN：</p>
+<ol>
+<li>数据库日志缓冲区已成功写入日志存储</li>
+<li>对于包含与组刷新的日志记录相匹配的页面的每个切片，所有包含此日志记录的每个切片缓冲区均已成功写入至少一个页面存储中</li>
+</ol>
+<p>【注：CV-LSN: cluster visible LSN】</p>
+<p>仅在将数据库日志缓冲区写入日志存储之后，才提交按切片的缓冲区以进行刷新。因此，页面存储永远不能包含尚未写入日志存储的日志记录。每个数据库切片缓冲区仅包含数据库日志缓冲区中记录的子集，因为数据库缓冲区具有所有切片的记录。因此，每切片缓冲区的刷新频率较低，并且可能包含对应于多个数据库日志缓冲区的日志记录。为了根据上述规则推进CV-LSN，SAL必须跟踪数据库日志缓冲区和每个切片缓冲区之间的多对多关系。</p>
+<h3 id="35">3.5 数据库前端</h3>
+<p>目前，Taurus使用MySQL 8.0的稍加修改版本作为数据库前端。 修改包括将日志写入和页面读取转发到SAL层，以及禁用主节点的缓冲池刷新和重做恢复。 只读副本的修改包括使用SAL从日志存储读取的记录来更新缓冲池中的页面，以及为事务分配读取视图的机制。</p>
+<h2 id="4">4 复制</h2>
+<p>数据持久性和服务可用性是数据库服务的关键特征。 在实践中，通常认为拥有三个数据副本足以保证持久性[5]。 但是，三份副本可能不足以达到所需的可用性级别。 维护三个一致的副本意味着所有副本都必须在线才能使系统可用。 当数据库跨多个节点分片时，某些节点不可用的概率会随着节点数量的增加而呈指数增长。 在Taurus中，我们使用一种对日志和数据具有不同复制策略的新颖方法以及新颖的恢复算法来解决此可用性问题。 我们首先描述写路径，然后描述读路径，最后给出理论上的可用性估计并将其与其他复制策略进行比较。</p>
+<h3 id="41">4.1 写路径</h3>
+<p>写流程总结在图3中。首先，用户事务导致对数据库页面的更改，从而生成描述更改的日志记录。 为了使日志记录持久，SAL将它们写入位于三个可用日志存储中的PLog（步骤2）。 为了避免碎片，但要平衡多个日志存储之间的负载，SAL将PLog大小限制为64MB，然后将其密封，并在群集中的某些日志存储上创建新的PLog，同时考虑不同日志存储上的可用空间和负载 。</p>
+<p><img alt="" src="../image/taurus_fig03.png" /></p>
+<p><center>图 3: Taurus写路径</center>
+一旦所有日志存储都确认了写入，便将获得三个持久的数据副本。然后，数据库认为数据是持久性的并且写入已完成。提交取决于写入的事务可以标记为已提交（步骤3）。重要的一点是，只要集群中有三个或更多日志存储可用，该数据库就可以进行写操作。对于成千上万个节点的群集，这实际上意味着100％的写入可用性（仅考虑不相关的故障）。</p>
+<p>将页面的日志记录写入日志存储后，SAL将其复制到负责该页面的切片的写缓冲区中。当切片写入缓冲区已满或超时后，该缓冲区将发送到托管分片的页面存储（步骤4）。每个缓冲区包含一个分片ID和序列号，以允许页面存储区检测丢失的缓冲区。 SAL等待页面存储之一的应答，然后释放缓冲区并重用（步骤5）。已发送给切片的最大LSN称为切片刷新LSN。托管同一切片的副本的页面存储使用Gossip协议定期相互交换消息，以检测和恢复丢失的缓冲区（步骤6）。步骤7和8在“日志截断”部分中进行了描述。</p>
+<p>【注：切片 flush LSN：已经发送给切片的最大的LSN】</p>
+<p>仅当所有三个副本都已答复时，对日志存储的写入才完成，而SAL仅等待单个页面存储来确认成功写入。这具有几个优点。首先，成功写入的可能性要高得多，因为它只需要三个节点中的一个即可使用。即使在涉及大量节点的常见故障或临时故障的情况下，这也可以确保高可用性。请注意，数据的持久性不会受到影响，因为日志记录已经保留在“日志存储”节点上。其次，将写延迟最小化，因为它仅依赖于最快的节点响应，而不是最慢的节点。第三，SAL不再负责确保每个日志记录到达所有相应的页面存储。因此，SAL将日志记录保留在内存中的时间更短，从而消耗更少的CPU和网络带宽重新发送日志记录。根据需要重新发送日志记录将卸载到页面存储本身。这对于可伸缩性很重要，因为只有一个主节点，但是许多页面存储节点可以共享负载。</p>
+<h3 id="42">4.2 读路径</h3>
+<p>数据库前端以页面级别的粒度读取数据。读取或修改数据时，缓冲池中必须存在相应的页面。当缓冲池已满时，我们需要引入一个页面，必须淘汰某个页面。我们修改了淘汰算法，以使脏页无法淘汰，除非其所有日志记录都已写入至少一个页面存储副本。因此，在最新的日志记录到达页面存储之前，保证相应的页面可从缓冲池中获得。之后，可以从页面存储中读取页面。</p>
+<p>对于每个切片，SAL维护发送到该切片的最后一个日志记录的LSN。每当主节点读取页面时，读取都会转到SAL，SAL会发出带有上述LSN的读取请求。读取路由到已知以最低延迟响应的页面存储。如果所选的页面存储不可用或没有收到提供的LSN之前的所有日志记录，则会返回错误，并且SAL尝试托管所需页面的下一个页面存储，对副本进行迭代，直到找到可以执行请求的副本为止。 </p>
+<h3 id="43">4.3 日志截断</h3>
+<p>日志存储接收连续的日志记录流。除非这些日志记录最终被删除，否则随着数据库的不断更新，Taurus将用完空间。除非已成功将记录写入所有切片副本，并且所有数据库只读副本都可以看到该记录，否则无法从日志存储中丢弃日志记录。独立地跟踪每个日志记录的持久性代价很高，因此我们基于LSN来跟踪持久性。页面存储对于它的每个切片，跟踪一个切片持久LSN，这是页面存储已接收到该切片的所有日志记录的LSN。该LSN可以通过调用GetPersistentLSN方法显式地传回SAL，也可以通过在WriteLogs或ReadPage调用的响应上捎带持久LSN的当前值来隐式地传回SAL。这减少了具有大量频繁更新的切片的数据库的流量 —— 见图3步骤7。</p>
+<p>对于每个切片的每个副本，SAL跟踪相应页面存储的持久LSN。具有未到达所有切片副本的日志记录的切片中的最小持久LSN称为数据库持久LSN。 SAL定期保存此值以用于恢复。 SAL还跟踪每个包含日志记录的PLog的LSN范围。如果PLog中的所有记录的LSN都小于数据库持久LSN，则可以删除该PLog（步骤8），从而截断日志。这样，我们保证每个日志记录始终在至少三个节点上复制。</p>
+<p>【注：Persistent LSN：所有切片副本的日志记录的切片中的最小持久LSN】</p>
+<h3 id="43-quorum">4.3 与Quorum复制的比较</h3>
+<p>最广泛使用的强一致性复制技术基于Quorum复制[11]。 在<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>节点之间复制项目时，每次读取或写入都必须从<span><span class="MathJax_Preview">N_R</span><script type="math/tex">N_R</script></span>节点接收读取的答复，而从<span><span class="MathJax_Preview">N_W</span><script type="math/tex">N_W</script></span>节点进行写入。 为了确保强一致性，必须满足条件<span><span class="MathJax_Preview">N_R + N_W&gt; N</span><script type="math/tex">N_R + N_W> N</script></span>。 许多现有系统使用Quorum复制的不同变体。 例如，在RAID 1磁盘阵列中使用的同步复制通常使用<span><span class="MathJax_Preview">N = 3</span><script type="math/tex">N = 3</script></span>，<span><span class="MathJax_Preview">N_R = 1</span><script type="math/tex">N_R = 1</script></span>，<span><span class="MathJax_Preview">N_W = 3</span><script type="math/tex">N_W = 3</script></span>，PolarDB使用<span><span class="MathJax_Preview">N = 3</span><script type="math/tex">N = 3</script></span>，<span><span class="MathJax_Preview">N_R = 2</span><script type="math/tex">N_R = 2</script></span>，<span><span class="MathJax_Preview">N_W = 2</span><script type="math/tex">N_W = 2</script></span>，而Aurora使用<span><span class="MathJax_Preview">N = 6</span><script type="math/tex">N = 6</script></span>，<span><span class="MathJax_Preview">N_R = 3</span><script type="math/tex">N_R = 3</script></span>，<span><span class="MathJax_Preview">N_W = 4</span><script type="math/tex">N_W = 4</script></span>。</p>
+<p>对于下面的讨论，我们认为每个副本的故障都是独立的，而忽略了同时影响多个副本的相关故障，例如全局电源中断。 假设单个节点不可用的概率为x。 当<span><span class="MathJax_Preview">N-N_W + 1</span><script type="math/tex">N-N_W + 1</script></span>和<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>节点同时不可用时，写入操作将失败。 如果我们总结所有不可用的节点组合，则无法完成写入的概率计算如下：</p>
+<div>
+<div class="MathJax_Preview">
+P_w = \sum_\limits{i = N-N_{W+1}}^{N} C_N^i ∗ x^i (1 − x)^{N −i} \quad \quad(1)
+</div>
+<script type="math/tex; mode=display">
+P_w = \sum_\limits{i = N-N_{W+1}}^{N} C_N^i ∗ x^i (1 − x)^{N −i} \quad \quad(1)
+</script>
+</div>
+<p>同样，对于读取，公式为：</p>
+<div>
+<div class="MathJax_Preview">
+P_r = \sum_\limits{i = N-N_{R+1}}^{N} C_N^i ∗ x^i (1 − x)^{N −i} \quad \quad (2)
+</div>
+<script type="math/tex; mode=display">
+P_r = \sum_\limits{i = N-N_{R+1}}^{N} C_N^i ∗ x^i (1 − x)^{N −i} \quad \quad (2)
+</script>
+</div>
+<p>与纯Quorum写入不同，Taurus日志写入不需要登陆特定的Log Store节点，因此公式1不适用。对于数百个节点的群集，由于独立的节点故障而导致存储层不可用于写操作的可能性接近于零，因为如果所选节点不可用，则可以选择其他任何节点来代替。单个节点故障会影响延迟，因为必须使用另一组日志存储节点重试写入失败的日志，但它们不会影响可用性。</p>
+<p>对于读取，每个页面存储节点都可以基于其持久LSN决定是否可以为读取提供服务，否则，它将返回错误，指示SAL尝试另一个节点。在极少数情况下，由于级联故障，没有节点可以提供读取服务，SAL会识别这种情况并使用日志存储来修复数据（请参阅“页面存储恢复”部分）。在这种情况下，会降低性能，但是存储层仍然可用。 SAL无法恢复的唯一情况是，包含切片副本的所有页面存储都不可用时。这样的概率是<span><span class="MathJax_Preview">x ^ 3</span><script type="math/tex">x ^ 3</script></span>。</p>
+<p>在表1中，我们假设<span><span class="MathJax_Preview">x≪ 1</span><script type="math/tex">x≪ 1</script></span>，仅考虑指数索引最低的项，并使用等式1和2获得近似的公式，以计算不可用的存储概率。我们还为<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>添加了三个示例值比较实际的存储概率不可用。如果出现不相关的故障，Taurus总是可以进行写操作。对于读取，对于<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>的所有配置和值，Taurus提供与Quorum复制相同或更好的可用性，除非<span><span class="MathJax_Preview">x = 0.01</span><script type="math/tex">x = 0.01</script></span>，并且Quorum中的节点数为6。但是，在这种情况下，Quorum必须使用两倍于与Taurus复制相比，它有许多节点，并且在两种情况下均无法读取数据的可能性很低（分别为<span><span class="MathJax_Preview">2 * 10^{-7}</span><script type="math/tex">2 * 10^{-7}</script></span>和<span><span class="MathJax_Preview">10^{-6}</span><script type="math/tex">10^{-6}</script></span>）。</p>
+<p><img alt="" src="../image/taurus_tab01.png" /></p>
+<p><center>表1：比较Taurus和常见Quorum复制变体存储不可用的概率</center></p>
+<h2 id="5">5 恢复</h2>
+<p>四种类型的节点包括一个数据库实例：运行主节点和只读副本前端的节点，运行日志存储的节点以及运行页面存储的节点。节点的任何组合都可能随时失败。对于分布在许多页面和日志存储中的大型数据库，单个节点故障应该是例行事件。故障有多种类型：硬件，软件和网络，仅举几例，但出于我们的目的，我们将节点故障定义为一个事件，在该事件期间，节点在指定的时限内不为传入的请求提供服务。</p>
+<p>恢复的重要设计目标是最大程度地使用户应用程序看不到故障和后续恢复。在我们的设计中，日志存储和页面存储的故障对于应用程序是不可见的；他们只会意识到前端故障。</p>
+<p>包含页面存储和日志存储的存储节点由恢复服务不断监视。如果检测到故障，则最初将其分类为短期故障，并继续监视相应的节点。如果节点在较长时间段（数十分钟）内保持不可用状态，则将该故障分类为长期故障。短期故障的最大长度（当前为15分钟）设置得足够短，以至于只有两个可用的数据副本不会违反持久性保证。</p>
+<h3 id="51">5.1 日志存储的恢复</h3>
+<p>日志存储故障易于处理和恢复。 如前所述，一旦日志存储不可用，位于日志存储上的所有PLog都将停止接受新的写入并变为只读。 因此，短期故障后无需恢复。 当诊断出长期故障时，会将故障节点从群集中删除，并在可用副本的其余群集节点上重新创建该故障节点的PLog副本。</p>
+<h3 id="52">5.2 页面存储的恢复</h3>
+<p>从页面存储故障中恢复更为复杂。 当页面存储在短期失败后恢复联机时，它将与其他页面存储一起启动Gossip协议，该协议维护该页面存储所托管的切片的副本。 Gossip协议可恢复页面存储错过的日志记录。 恢复过程的示例在图4（a）中说明。 为简单起见，我们使用LSN 1、2、3作为日志记录的LSN。 在第4步中，切片副本3重新联机后，通过Gossip协议从副本2复制日志记录2。</p>
+<p><img alt="" src="../image/taurus_fig04.png" /></p>
+<p><center>图 4: 页面存储恢复</center>
+当检测到长期故障时，集群管理器将从集群中删除故障节点，然后在其余页面存储节点中重新分配已存储在故障页面存储节点上的切片副本。正在恢复的切片副本最初是空的。它可以立即开始接受WriteLogs请求，但是由于它没有必需的较旧的日志记录，因此它无法处理读取请求。接下来，正在恢复的切片将从具有切片副本的页面存储之一中请求所有页面的最新版本。一旦收到所有页面，切片副本就可以同时进行读取和写入。</p>
+<p>以上两种情况是最常见的，但是在三个页面存储成功处理日志记录之前，有可能由于页面存储故障而丢失该记录。当多个切片副本在短时间内间歇性失败，并且收到日志记录的页面存储经历长期失败时，可能会发生这种情况。这种情况的一个例子在图4（b）中说明。在步骤2中，副本2和3短时间处于脱机状态。日志记录2由副本1确认，并由SAL取消。在步骤3中，由于Gossip协议将丢失的记录复制到副本2或3之前的长期故障，副本1永久脱机。在步骤4，副本1将恢复为丢失的副本2或3的副本。日志记录2。在这种情况下，任何页面存储都不会包含记录2，并且Gossip协议无法恢复该记录。但是，由于并非所有切片副本都已确认接收到日志记录2，因此其副本仍保留在日志存储中。如前所述，SAL定期从最近更新的切片的所有副本中请求持久LSN。在这种情况下，副本1报告的持久LSN将从2减少到1。当SAL检测到分片副本报告的<strong>持久LSN减少时，它将从日志存储中读取所有日志记录</strong>，这些日志记录是从日志报告的最小持久LSN开始的。切片副本并将其重新发送到相应的页面存储。</p>
+<p>通过检查持久LSN的减少来检测丢失的记录是快速的，但还不够。当页面存储接收到完整的日志记录序列（无空洞）时，它可以工作，因此它可以推进切片持久LSN。但是，如果存在空洞，即使新记录已被SAL确认并取消，即使有新记录到达，页面存储也无法推进切片持久LSN。为了解决此问题，SAL会定期从所有切片副本中检索持久LSN，并将其与切片刷新LSN进行比较。如果SAL检测到持久LSN没有向前推进并且小于刷新LSN，则SAL请求每个切片副本尚未接收到的LSN范围的列表。如果SAL检测到所有页面存储都缺少某些日志记录，它将从日志存储中读取缺少的记录，然后将其重新发送到页面存储。图4（c）给出了这种情况的示例。在步骤2，副本2和3掉线；在步骤3，副本1下降，副本3上升；在第4步和第5步，副本2出现长期故障，因此被替换。在第6步，所有副本均已启动，但是所有副本都丢失了记录3，并且Gossip协议无法恢复。与图4（b）场景不同，切片持久LSN不会减少。 SAL使用上述方法检测到它，并在步骤7重新发送记录3。</p>
+<p>Taurus设计为支持数千个页面存储，并且众所周知，Gossip协议在与大量主机频繁调用时代价很高[3]。因此，每个切片仅每30分钟自动调用Gossip。为了在这样长的时间内最大程度地降低对可用性的影响，我们依靠SAL。 SAL监视它已将日志记录发送到的所有切片。如果此类切片的副本未相应地推进其持久LSN，则意味着缺少某些切片。如果SAL在短时间后检测到丢失的日志片段尚未恢复，则会触发该特定切片的Gossip协议，以加快丢失切片的恢复。如果SAL检测到所有切片副本中缺少日志片段，它将从日志存储中重新读取日志记录，然后将它们重新发送到页面存储。</p>
+<h3 id="53-sal">5.3 SAL和数据库的恢复</h3>
+<p>因为SAL是一个库，所以SAL和数据库前端都会在数据库进程重新启动时发生故障并一起恢复。当发生不可恢复的软件故障，重新启动时，或者当集群管理器检测到该主机不可用并产生一个新的主机或提升只读副本来接管主机角色时，可能会发生这种情况（请参阅“只读副本”部分） 。</p>
+<p>数据库恢复过程涉及两个主要步骤：1）SAL恢复；2）数据库前端恢复。 SAL恢复首先发生，其主要目的是确保包含数据库中的切片的所有页面存储都具有崩溃前在日志存储中保留的所有日志记录。 SAL读取数据库持久LSN的最后保存的值，并将其用作开始读取日志的起点。只有所有切片副本中缺少的日志记录才再次发送到相应的切片。即使某些页面存储包含某些日志记录，也可能会重新发送它们，但这很安全，因为页面存储不理会它们已经收到的日志记录。此步骤等效于传统数据库恢复中的重做阶段。 SAL恢复完成后，数据库可以接受新请求。与接受新请求并行，数据库前端通过回滚崩溃时未提交的事务所做的更改来执行撤消阶段。在接受新事务之前，必须完成重做恢复，因为重做可确保页面存储可以读取最新版本的页面。撤消恢复依赖于存储在专用回滚页面中的撤消记录。因此，在SQL层中的撤消处理可以开始之前，SAL必须保证页面存储中的所有回滚页面都是最新的。</p>
+<h2 id="6">6 只读副本</h2>
+<p>只读副本可为读取工作负载提供快速的故障转移和横向扩展功能。单独的存储层和计算层允许每个只读副本直接访问与主副本相同的存储，并且在主副本上自动进行的更新对于只读副本是可见的。</p>
+<p>图5显示了如何保持只读副本的最新状态。当主机更新数据库时（步骤1），只读副本从主机获取消息，并在日志存储中添加日志记录的位置，更改为切片列表，最后更改最后一个数据库的LSN（步骤2）。接下来，副本服务器从日志存储中读取所有日志记录，以更新其缓冲池中的页面（步骤3）。日志存储区维护一个FIFO直写高速缓存，希望最近写入的日志记录很快会被只读副本读取。该缓存几乎消除了对日志存储的读取I/O。最后，只读副本还根据需要从页面存储中读取页面（步骤4）。</p>
+<p><img alt="" src="../image/taurus_fig05.png" /></p>
+<p><center>图5：只读副本流程</center></p>
+<p>另一种设计是将所有日志记录直接从主数据库流式传输到每个只读副本。但是，这种方法将导致主机成为瓶颈。主机不仅需要花费CPU和内存来传输日志记录，而且其网络接口可能会成为瓶颈。由于写入密集型工作负载生成100MB/s的日志记录和15个只读副本，因此主机仅发送只读副本就需要发送12Gbps的数据。</p>
+<p>我们的解决方案是使主数据库仅传输数据在日志存储中的位置，并将其留给每个读取的副本以读取数据。只读副本将需要接收来自主机的消息，以了解何时何地写入了新的日志记录，如何在页面存储中分配页面以及页面存储的持久LSN。主机传递的消息描述了上述信息的增量更改以只读副本。每个消息都包含一个序列号，以便可以检测到丢失的消息。在这种情况下，只读副本会在注册新副本时请求完整数据。</p>
+<p>数据是共享的，并且可以由主节点修改，而无需与只读副本同步。因此，一个重要的挑战是只读副本如何保持数据的一致视图。我们需要关注两种类型的一致性。首先，物理一致性是指数据库内部结构（例如b树页面）的一致性。例如，当线程在索引树中拆分页面时，更改涉及多个页面，并且遍历同一树的另一个线程必须观察对所涉及页面的更改，就好像它们是原子完成的一样。在主机上，通过在修改页面时锁定页面来实现页面一致性。但是，将锁与只读副本进行协调将非常昂贵。为了避免显式同步，主机将日志记录成组写入，始终将组边界设置在一致的点。只读副本按这些组边界自动读取和应用日志记录。只读副本处理的最后一条记录的LSN表示副本的数据库物理视图，称为副本可见LSN。副本可见LSN始终设置在组边界处，以使其数据库视图在物理上保持一致。</p>
+<p>只读副本从日志存储读取并解析日志，识别日志记录组边界，并不断推进其可见的LSN。读取的副本很小心地不要将其可见的LSN提前到从主机获取的切片持久LSN之前。这样可以避免页面存储可能无法满足只读副本的读取页面请求的情况。当读取的事务需要访问页面时，它通过记录当前的副本可见LSN（称为事务可见LSN（TV-LSN））来创建其自己的数据库物理视图。不同的事务可以具有不同的TV-LSN。在只读副本继续推进其可见LSN的同时，事务的可见LSN可能会落后。读取的副本会跟踪最小的TV-LSN，并将其发送给主机。主机收集LSN，选择最小值，然后将其作为新的回收LSN发送到页面存储。页面存储必须确保它们可以服务于回收LSN之后创建的任何页面版本。当读事务完成需要物理一致性（例如，索引查找）的操作时，它将释放其TV-LSN。由于此类操作通常很短，因此只读副本会相当快地推进其回收LSN，从而允许页面存储清除旧版本，从而减少存储空间。</p>
+<p>【注：TV-LSN：transaction visible LSN】</p>
+<p>许多数据库（包括MySQL）维护行的多个版本，以减少读取器和写入器之间的冲突。 逻辑一致性是指事务隔离级别要求的用户数据一致性。 当在主数据库上提交写事务时，会将提交记录写入日志。 解析日志后，只读副本可以更新其活动事务列表。 在只读副本上启动读取事务时，它将记录活动和已提交的事务列表。 此列表确定交易的逻辑数据视图，即交易可见的数据。</p>
+<p>只读副本上的缓冲池可以存储同一页面的多个版本。 当只读副本读取并解析日志时，它将日志记录应用于缓冲池页面并生成页面的较新版本。 这样，只读副本在其缓冲池中已经拥有大多数常用页面，从而减轻了页面存储的压力。</p>
+<h2 id="7">7 页面存储设计</h2>
+<p>页面存储的主要功能是处理来自主数据库和只读副本的页面读取请求。页面修改作为日志记录流到达。对于写密集型工作负载，日志记录可以达到每秒几百万个条目的速率。页面存储必须能够以这种速率应用日志记录，生成并保留新版本的页面，这一过程称为日志合并。为了提高可靠性，必须跨多个页面存储复制每个数据库切片。</p>
+<p>这些要求指导了Taurus中的一些设计决策。首先，每个页面存储区独立于其他页面存储区执行日志合并，因为在同一分片的副本之间同步合并非常昂贵。其次，磁盘写入是仅追加操作，因为仅追加操作的写入速度比随机写入速度快2-5倍，并且可以减少基于闪存的存储的设备损耗[14]。第三，合并所需的数据（即基本页和日志记录）必须缓存在内存中，因为磁盘上可能有成千上万的日志记录碎片化，并且存储无法以所需的速率维持读取日志记录的速度。页面存储基于“日志就是数据库”范例[25]。这就提出了一个问题，即如何快速定位所有必需的日志记录以生成请求的页面版本。对于每个切片，都有一个称为日志目录的数据结构。它跟踪所有日志记录的位置以及该切片托管的页面的版本，即产生页面所需的信息。日志目录被实现为无锁哈希表[17]，其中键是页面ID。因为热页由数据库前端缓存，并且日志存储将其持久保存后写操作就会得到应答，因此页面存储通常不在关键事务路径上。但是，如果合并在一段时间内无法跟上传入的日志流，则日志目录可能会变大。为了防止无限增长，SAL会限制主机上的日志写入。</p>
+<p>图6说明了页面存储的主要组件，下面介绍了它们的交互。如第3.5节所述，从SAL接收到的日志记录是有序的组，称为日志片段（步骤1）。日志片段将立即添加到切片的磁盘日志中（步骤2），缓存在日志缓存中的内存中，并将每个日志记录的位置添加到日志目录中（步骤3）。日志缓存非常重要，因为在合并期间一一读取日志记录会太慢。合并访问日志目录以找到现有页面和后续日志记录，并按LSN顺序应用它们以生成新的页面版本（步骤4），然后将其添加到页面存储缓冲池中以供将来访问（步骤5）。缓冲池用作回写缓存，将脏页异步刷新到切片日志（步骤6），从而允许它在将页写入磁盘之前应用多个日志记录，从而进一步减少了I/O量。刷新新页面版本后，日志目录将更新为指向新位置。可以安全地删除早于SAL报告的回收LSN的日志记录和页面版本。</p>
+<p><img alt="" src="../image/taurus_fig06.png" /></p>
+<p><center>图 6: 页面存储主要组件和流程</center>
+页面存储缓冲池用作数据库前端缓冲池的二级缓存。但是，其主要功能是减少合并期间的磁盘读取，而不是帮助进行前台读取。我们已经评估了页面存储缓冲池的LFU和LRU策略，发现LFU的命中率提高了25％。这与先前的研究一致，后者表明LFU策略更适合于二级缓存[16]。</p>
+<p>每个切片都有一个单独的日志目录。这样可以减少争用和键的大小。另一方面，日志高速缓存和缓冲池对于页面存储是全局的，以自动利用切片活动中的差异。大多数切片几乎没有更新活动，但是某些切片的写入密集型，并且需要较大的内存份额来接收日志记录。</p>
+<p>选择要合并的页面的算法对于页面存储的性能至关重要，因为它最终决定了所需的I/O以及日志目录和日志缓存所消耗的内存。我们最初的选择是“最长链优先”的方法。为了最大程度地减少页面写操作，我们循环扫描所有切片，并选择日志记录链最长的页面进行合并。但是，此策略优先考虑热页面，而忽略了相对冷的页面，几乎没有日志记录。对于许多未合并的冷页，日志记录的数量变得过多，并且它们以FIFO顺序从缓存中淘汰。随着时间的流逝，收回的未合并记录的数量变大，导致日志目录占用大量内存，并生成许多小的读取请求以将日志记录重新带回内存。这使合并速度变慢。</p>
+<p>为了避免大量的小型I/O操作，我们采用了“以日志缓存为中心”的合并策略。选择要合并的页面的顺序是它们的日志记录到达页面存储中并出现在日志缓存中。如果日志缓存已满，则将新的日志片段保存到磁盘，并添加到日志片段队列中，以便在空间可用时立即加载到日志缓存中。仅使用日志缓存中的日志记录来生成页面的新版本。合并日志记录后，便立即将其从日志缓存中删除。这样可以确保合并任务仅在内存日志记录上运行，并且永远不会从磁盘读取数据。这种“以日志缓存为中心”的方法可以降低缓冲池的命中率，但可以完全消除日志缓存未命中的情况。稳定和可预测的性能的好处超过了较低的缓冲池命中率。</p>
+<h2 id="8">8 实验评估</h2>
+<p>在本节中，我们评估Taurus的性能，并将其与竞争解决方案进行比较。作为比较的基准，我们选择了Amazon Aurora作为最受欢迎的DBaaS实现之一，最近推出的Microsoft Socrates，以及使用本地连接存储运行的MySQL 8.0社区版本。</p>
+<h3 id="81-amazon-aurora">8.1 与Amazon Aurora的比较</h3>
+<p>为了与Aurora进行比较，我们使用了与Verbitski等人所使用的相同的基准和硬件 [24]。我们在具有32个vCPU和256GB内存的计算机上运行MySQL前端，其中80％专用于数据库缓冲池。我们使用更新的Xeon 6161 CPU代替Aurora使用的E5-2670 CPU，但是我们以较低的时钟频率运行（2.2GHz与2.5GHz），以补偿可能的体系结构改进。 Aurora和Taurus都使用MySQL的修改版本作为前端。</p>
+<p>我们使用不同大小的数据库运行SysBench只读和只写工作负载以及Percona TPC-C变体[18]。结果如图7所示。纵轴表示SysBench只读的每秒读取次数，SysBench只读的每秒写入次数和TPC-C基准测试的每分钟事务数（tpmC）。Taurus在所有五个基准测试中均优于Aurora团队发布的结果。在只读测试中，差异很小（16％），但在只写基准测试中，Taurus的优势超过了50％-在TPC-C中达到了160％。在不了解Aurora内部信息的情况下，我们只能推测是什么原因导致性能提高。我们认为，用新颖的Taurus复制策略替换基于Quorum的复制是一个重要的因素。</p>
+<p><img alt="" src="../image/taurus_fig07.png" /></p>
+<p><center>图 7: Taurus在基准测试下的性能</center></p>
+<h3 id="82-microsoft-socrates">8.2 与Microsoft Socrates的比较</h3>
+<p>当Taurus和Aurora都使用MySQL作为数据库前端时，Socrates使用SQL Server。这种情况以及缺少硬件环境的详细信息使比较更加困难。 Socrates团队将其性能与在类似硬件配置上针对本地附加存储运行的SQL Server的性能进行了比较。我们将Socrates相对于[2]中报告的SQL Server的性能结果与Taurus相对于MySQL 8.0的性能进行比较，该结果也与Taurus存储层中使用的存储类型相同的本地存储一起运行。</p>
+<p>图8显示结果。前两个实验对应于已发表的Socrates结果[2]。 Socrates的性能比SQL Server稍差（5％）。相比之下，Taurus展示了相对于vanilla MySQL更高的性能，其本地存储范围从SysBench只读工作负载（第三实线列）的50％到SysBench只读工作负载和TPC-C（第四和第五位）的200％提高实心列）。我们相信，由于Taurus的快速网络硬件和仅追加写入操作，Taurus在本地存储方面的性能要优于MySQL，而MySQL依赖于就地写入，速度较慢。尽管Socrates还使用了最先进的网络硬件，但Taurus与本地存储配置相比要更好。我们认为这是因为Taurus只有两个网络，而Socrates则需要四个。</p>
+<p><img alt="" src="../image/taurus_fig08.png" /></p>
+<p><center>图 8: 相对于具有本地存储的整体数据库的性能</center>
+Aurora和Socrates都向数据库前端引入了增量优化。 在Taurus中，我们也做了类似的优化。 为了将Taurus架构创新的性能影响与前端优化的影响分开，我们将前端优化移植到MySQL的本地存储版本中。 结果在图8的最后三个实验中以斜线显示。在只读工作负载上，Taurus比具有本地连接存储的MySQL优化版本慢9％，这是因为远程存储的网络延迟较高。 在只写和TPC-C工作负载上，我们的体系结构更改使Taurus分别比优化的MySQL优越87％和101％。</p>
+<h3 id="83">8.3 只读副本</h3>
+<p>多副本解决方案的最重要特征之一是主副本和只读副本之间的延迟。为了测量此延迟，我们在主机上运行SysBench只写工作负载，更改连接数以达到所需的每秒写级别。副本未运行任何只读工作负载。我们测量主机上值更改时间与副本读取新值的时间之间的时间差。为了避免客户端--服务器通信的额外延迟，我们使用存储过程来更新和检查主机和副本服务器上的值。我们收集了多个测量结果并取平均值。结果显示在图9中。与Aurora团队[24]发布的相应可用Aurora结果进行了比较，以供参考。对于主机上的轻负载，Taurus副本显示出较低的滞后值，与Aurora展示的滞后值相似或更低。此外，即使主机执行繁重的工作负载（每秒最多200,000次写入），Taurus仍具有良好的工作负载可扩展性。在此利用率水平上，副本滞后时间低于11ms，对于许多应用程序来说足够小。 Aurora未提供每秒10,000次以上写入的数据。即使在主机非常繁忙时，只读副本滞后时间也很短，这是由于Taurus设计决定不直接发送日志以从主副本只读副本，而是让只读副本从日志存储中读取它们。主机的网络接口不再是瓶颈，并且网络流量分布在多个日志存储中。这也使我们能够支持大量的只读副本，而不会使主机成为瓶颈。</p>
+<p><img alt="" src="../image/taurus_fig09.png" /></p>
+<p><center>图 9: 对于SysBench只写负载副本的延迟</center></p>
+<h2 id="9">9 结论</h2>
+<p>本文介绍了Taurus，这是一个新的云原生关系数据库。 Taurus基于“日志就是数据库”范例，并将计算层和存储层分开。 本文描述了实现选择和优化，这些选择和优化使我们的实验中观察到的性能得以改善。</p>
+<p>Taurus体系结构和新的复制算法可在不牺牲性能或硬件成本的情况下，使可用性高于传统的基于Quorum的复制。 复制算法基于数据库日志和页面的单独持久性机制。 它结合了强一致性和最终的一致性模型，以优化性能和可用性。</p>
+<p>未来的工作包括将更多任务从计算层移至可扩展性更高的存储层，支持多主机功能，并使用包括存储类内存和RDMA在内的硬件的最新进展。</p>
+<h2 id="_2">致谢</h2>
+<p>许多人对Taurus数据库的初始设计提供了宝贵的反馈和建议，包括Hao Feng, Robin Grosman, Tianzheng Wang, Xun Xue, Lei Zhang, Qingqing Zhou。 如果没有为Taurus的发展做出贡献的人们，这项工作将是不可能的，这些人包括Zhaorong Chen, Gengyuan Dan, Ge Dang, Yu Du, Bo Gao, Kareem El Gebaly, Jianwei Li, Liyong Song, Hongbin Lu, Juncai Meng, Yuanyuan Nie, Samiao Ren, Weiyi Ruan, Calvin Sun, Guojun Wu, Lengdong Wu, Andrew Xiong, Peng Xu, Cheng Zhao, Rui Zhou，以及华为产品开发团队的所有成员。 我们还要感谢匿名审稿人和Gord Sissons提出的宝贵意见。</p>
+<h2 id="_3">参考文献</h2>
+<ul>
+<li>[1] Amazon. 2019. MySQL on Amazon RDS. Amazon. Retrieved October 1, 2019 from <a href="https://docs.aws.amazon.com/AmazonRDS/latest/">https://docs.aws.amazon.com/AmazonRDS/latest/</a> UserGuide/CHAP_MySQL.html </li>
+<li>[2] Panagiotis Antonopoulos, Alex Budovski, Cristian Diaconu, Alejandro Hernandez Saenz, Jack Hu, Hanuma Kodavalla, Donald Kossmann, Sandeep Lingam, Umar Farooq Minhas, Naveen Prakash, Vijendra Purohit, Hugh Qu, Chaitanya Sreenivas Ravella, Krystyna Reisteter, Sheetal Shrotri, Dixin Tang, and Vikram Wakade. 2019. Socrates: The New SQL Server in the Cloud. In Proceedings of the 2019 International Conference on Management of Data (SIGMOD ’19). ACM, New York, NY, USA, 1743–1756. <a href="https://doi.org/10.1145/3299869.3314047">https://doi.org/10.1145/3299869.3314047</a> </li>
+<li>[3] Ken Birman. 2007. The Promise, and Limitations, of Gossip Protocols. SIGOPS Oper. Syst. Rev. 41, 5 (Oct. 2007), 8–13. </li>
+<li>[4] Wei Cao, Zhenjun Liu, Peng Wang, Sen Chen, Caifeng Zhu, Song Zheng, Yuhui Wang, and Guoqing Ma. 2018. PolarFS: An Ultra-low Latency and Failure Resilient Distributed File System for Shared Storage Cloud Database. Proc. VLDB Endow. 11, 12 (Aug. 2018), 1849–1862. <a href="https://doi.org/10.14778/3229863.3229872">https://doi.org/10.14778/3229863.3229872</a> </li>
+<li>[5] Robert J. Chansler (Ed.). 2012. Data Availability and Durability with the Hadoop Distributed File System. Login 37, 1 (Feb. 2012). </li>
+<li>[6] James C Corbett, Jeffrey Dean, Michael Epstein, Andrew Fikes, Christopher Frost, Jeffrey John Furman, Sanjay Ghemawat, Andrey Gubarev, Christopher Heiser, Peter Hochschild, et al. 2013. Spanner: Google’s globally distributed database. ACM Transactions on Computer Systems (TOCS) 31, 3 (2013), 8. </li>
+<li>[7] Benoit Dageville, Thierry Cruanes, Marcin Zukowski, Vadim Antonov, Artin Avanes, Jon Bock, Jonathan Claybaugh, Daniel Engovatov, Martin Hentschel, Jiansheng Huang, Allison W. Lee, Ashish Motivala, Abdul Q. Munir, Steven Pelley, Peter Povinec, Greg Rahn, Spyridon Triantafyllis, and Philipp Unterbrunner. 2016. The Snowflake Elastic Data Warehouse. In Proceedings of the 2016 International Conference on Management of Data (SIGMOD ’16). ACM, New York, NY, USA, 215–226. <a href="https://doi.org/10.1145/2882903.2903741">https://doi.org/10.1145/2882903.2903741</a> </li>
+<li>[8] Giuseppe DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan Sivasubramanian, Peter Vosshall, and Werner Vogels. 2007. Dynamo: Amazon’s Highly Available Key-value Store. In Proceedings of Twenty-first ACM SIGOPS Symposium on Operating Systems Principles (SOSP ’07). ACM, New York, NY, USA, 205–220. </li>
+<li>[9] Alan Demers, D Greene, C Hauser, W Irish, J Larson, S Shenker, H Sturgis, D Swinehart, and D Terry. 1987. Epidemic algorithms for replicated database management. In Proceedings of the 6<sup>th</sup> Annual ACM Symposium on Principles of Distributed Computing (PODC’87). ACM, New York, NY, USA, 1–12. </li>
+<li>[10] Armando Fox, Steven D. Gribble, Yatin Chawathe, Eric A. Brewer, and Paul Gauthier. 1997. Cluster-based Scalable Network Services. In Proceedings of the Sixteenth ACM Symposium on Operating Systems Principles (SOSP ’97). ACM, New York, NY, USA, 78–91. </li>
+<li>[11] David K. Gifford. 1979. Weighted Voting for Replicated Data. In Proceedings of the Seventh ACM Symposium on Operating Systems Principles (SOSP ’79). ACM, New York, NY, USA, 150–162. </li>
+<li>[12] Donald Kossmann, Tim Kraska, and Simon Loesing. 2010. An Evaluation of Alternative Architectures for Transaction Processing in the Cloud. In Proceedings of the 2010 ACM SIGMOD International Conference on Management of Data (SIGMOD ’10). ACM, New York, NY, USA, 579–590. </li>
+<li>[13] Leslie Lamport. 1978. Time, Clocks, and the Ordering of Events in a Distributed System. Commun. ACM 21, 7 (July 1978), 558–565.</li>
+<li>[14] Changman Lee, Dongho Sim, Jooyoung Hwang, and Sangyeun Cho. 2015. F2FS: A New File System for Flash Storage. In 13<sup>th</sup> USENIX Conference on File and Storage Technologies (FAST 15). USENIX Association, Santa Clara, CA, 273–286. <a href="https://www.usenix.org/conference/fast15/">https://www.usenix.org/conference/fast15/</a> technical-sessions/presentation/lee </li>
+<li>[15] J. J. Levandoski, D. B. Lomet, and S. Sengupta. 2013. The Bw-Tree: A B-tree for new hardware platforms. In 2013 IEEE 29<sup>th</sup> International Conference on Data Engineering (ICDE). IEEE, New York, NY, USA, 302–313. </li>
+<li>[16] Xuhui Li, Ashraf Aboulnaga, Kenneth Salem, Aamer Sachedina, and Shaobo Gao. 2005. Second-tier cache management using write hints. In Proceedings of the 4<sup>th</sup> conference on USENIX Conference on File and Storage Technologies-Volume 4. USENIX Association, New York, NY, USA. </li>
+<li>[17] Maged M Michael. 2002. High performance dynamic lock-free hash tables and list-based sets. In Proceedings of the fourteenth annual ACM symposium on Parallel algorithms and architectures. ACM, ACM, New York, NY, USA, 73–82. </li>
+<li>[18] Microsoft. 2018. TPCC-Like Workload for Sysbench 1.0. Percona. Retrieved October 1, 2019 from <a href="https://www.percona.com/blog/2018/03/">https://www.percona.com/blog/2018/03/</a> 05/tpcc-like-workload-sysbench-1-0/ </li>
+<li>[19] Microsoft. 2019. Azure SQL Database. Microsoft. Retrieved October 1, 2019 from <a href="https://azure.microsoft.com/en-ca/services/sql-database/">https://azure.microsoft.com/en-ca/services/sql-database/</a> </li>
+<li>[20] John Ousterhout, Parag Agrawal, David Erickson, Christos Kozyrakis, Jacob Leverich, David Mazières, Subhasish Mitra, Aravind Narayanan, Guru Parulkar, Mendel Rosenblum, et al. 2010. The case for RAMClouds: scalable high-performance storage entirely in DRAM. ACM SIGOPS Operating Systems Review 43, 4 (2010), 92–105. </li>
+<li>[21] Mendel Rosenblum and John K Ousterhout. 1992. The design and implementation of a log-structured file system. ACM Transactions on Computer Systems (TOCS) 10, 1 (1992), 26–52. </li>
+<li>[22] Caetano Sauer, Goetz Graefe, and Theo Härder. 2018. FineLine: Logstructured Transactional Storage and Recovery. Proc. VLDB Endow. 11, 13 (Sept. 2018), 2249–2262. <a href="https://doi.org/10.14778/3275366.3284969">https://doi.org/10.14778/3275366.3284969</a> </li>
+<li>[23] Ben Vandiver, Shreya Prasad, Pratibha Rana, Eden Zik, Amin Saeidi, Pratyush Parimal, Styliani Pantela, and Jaimin Dave. 2018. Eon Mode: Bringing the Vertica Columnar Database to the Cloud. In Proceedings of the 2018 International Conference on Management of Data (SIGMOD ’18). ACM, New York, NY, USA, 797–809. </li>
+<li>[24] Alexandre Verbitski, Anurag Gupta, Debanjan Saha, Murali Brahmadesam, Kamal Gupta, Raman Mittal, Sailesh Krishnamurthy, Sandor Maurice, Tengiz Kharatishvili, and Xiaofeng Bao. 2017. Amazon Aurora: Design Considerations for High Throughput Cloud-Native Relational Databases. In Proceedings of the 2017 ACM International Conference on Management of Data (SIGMOD ’17). ACM, New York, NY, USA, 1041–1052. <a href="https://doi.org/10.1145/3035918.3056101">https://doi.org/10.1145/3035918.3056101</a> </li>
+<li>[25] Hoang Tam Vo, Sheng Wang, Divyakant Agrawal, Gang Chen, and Beng Chin Ooi. 2012. LogBase: A Scalable Log-structured Database System in the Cloud. Proc. VLDB Endow. 5, 10 (June 2012), 1004–1015. <a href="https://doi.org/10.14778/2336664.2336673">https://doi.org/10.14778/2336664.2336673</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../crdb/crdb_paper/" title="CockroachDB论文" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                CockroachDB论文
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Pebble KV存储引擎
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
