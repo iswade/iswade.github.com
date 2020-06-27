@@ -17,7 +17,7 @@
     
     
       
-        <title>Taurus Database: How to be Fast, Available, and Frugal in the Cloud - Blog</title>
+        <title>TaurusDB论文 - Blog</title>
       
     
     
@@ -87,7 +87,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Taurus Database: How to be Fast, Available, and Frugal in the Cloud
+              TaurusDB论文
             
           </span>
         </div>
@@ -170,10 +170,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Databases
@@ -221,9 +223,276 @@
 
 
   <li class="md-nav__item">
-    <a href="../taurus_paper_cn/" title="Taurus数据库" class="md-nav__link">
-      Taurus数据库
+    <a href="../taurus_paper_cn/" title="TaurusDB翻译" class="md-nav__link">
+      TaurusDB翻译
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        TaurusDB论文
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="TaurusDB论文" class="md-nav__link md-nav__link--active">
+      TaurusDB论文
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    ABSTRACT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    1 INTRODUCTION
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-background-and-related-work" class="md-nav__link">
+    2 BACKGROUND AND RELATED WORK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-system-architecture" class="md-nav__link">
+    3 SYSTEM ARCHITECTURE
+  </a>
+  
+    <nav class="md-nav" aria-label="3 SYSTEM ARCHITECTURE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-cloud-is-different" class="md-nav__link">
+    3.1 The cloud is different
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-taurus-overview" class="md-nav__link">
+    3.2 Taurus overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-log-store" class="md-nav__link">
+    3.3 Log Store
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-page-store" class="md-nav__link">
+    3.4 Page Store
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-storage-abstraction-layer" class="md-nav__link">
+    3.5 Storage Abstraction Layer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-database-front-end" class="md-nav__link">
+    3.6 Database front end
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-replication" class="md-nav__link">
+    4 REPLICATION
+  </a>
+  
+    <nav class="md-nav" aria-label="4 REPLICATION">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-write-path" class="md-nav__link">
+    4.1 Write path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-read-path" class="md-nav__link">
+    4.2 Read path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-log-truncation" class="md-nav__link">
+    4.3 Log truncation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-comparison-with-quorum-replication" class="md-nav__link">
+    4.4 Comparison with quorum replication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-recovery" class="md-nav__link">
+    5 RECOVERY
+  </a>
+  
+    <nav class="md-nav" aria-label="5 RECOVERY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-log-store-recovery" class="md-nav__link">
+    5.1 Log Store recovery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-page-store-recovery" class="md-nav__link">
+    5.2 Page Store recovery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-sal-and-database-recovery" class="md-nav__link">
+    5.3 SAL and database recovery
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-read-replicas" class="md-nav__link">
+    6 READ REPLICAS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-page-store-design" class="md-nav__link">
+    7 PAGE STORE DESIGN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-experimental-evaluation" class="md-nav__link">
+    8 EXPERIMENTAL EVALUATION
+  </a>
+  
+    <nav class="md-nav" aria-label="8 EXPERIMENTAL EVALUATION">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-comparison-with-amazon-aurora" class="md-nav__link">
+    8.1 Comparison with Amazon Aurora
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-comparison-with-microsoft-socrates" class="md-nav__link">
+    8.2 Comparison with Microsoft Socrates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-read-replicas" class="md-nav__link">
+    8.3 Read replicas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-conclusion" class="md-nav__link">
+    9 CONCLUSION
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgments" class="md-nav__link">
+    ACKNOWLEDGMENTS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    REFERENCES
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1123,6 +1392,41 @@ Both Aurora and Socrates introduced incremental optimizations to the database fr
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../taurus_paper_cn/" title="TaurusDB翻译" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                TaurusDB翻译
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../articles/pebble/" title="Pebble KV存储引擎" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Pebble KV存储引擎
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

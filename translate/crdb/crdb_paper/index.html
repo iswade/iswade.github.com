@@ -425,6 +425,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#333-write-write-conflicts" class="md-nav__link">
+    3.3.3 Write-write conflicts.
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -754,8 +761,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../taurus_paper_cn/" title="Taurus数据库" class="md-nav__link">
-      Taurus数据库
+    <a href="../../taurus_paper_cn/" title="TaurusDB翻译" class="md-nav__link">
+      TaurusDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../taurus_paper/" title="TaurusDB论文" class="md-nav__link">
+      TaurusDB论文
     </a>
   </li>
 
@@ -1402,6 +1421,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#333-write-write-conflicts" class="md-nav__link">
+    3.3.3 Write-write conflicts.
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1824,10 +1850,12 @@
 <h4 id="331-write-read-conflicts">3.3.1 Write-read conflicts.</h4>
 <p>A read running into an uncommitted intent with a lower timestamp will wait for the earlier transaction to finalize. Waiting is implemented using in-memory queue structures. A read running into an uncommitted intent with a higher timestamp ignores the intent and does not need to wait.</p>
 <h4 id="332-read-write-conflicts">3.3.2 Read-write conflicts.</h4>
-<p>A write to a key at timestamp ta cannot be performed if there’s already been a read on the same key at a higher timestamp tb &gt;= ta . CRDB forces the writing transaction to advance its commit timestamp past tb . 3.3.3 Write-write conflicts. A write running into an uncommitted intent with a lower timestamp will wait for the earlier transaction to finalize (similar to write-read conflicts). If it runs into a committed value at a higher timestamp, it advances its timestamp past it (similar to read-write conflicts). Write-write conflicts may also lead to deadlocks in cases where different transactions have written intents in different orders. CRDB employs a distributed deadlock-detection algorithm to abort one transaction from a cycle of waiters.</p>
+<p>A write to a key at timestamp ta cannot be performed if there’s already been a read on the same key at a higher timestamp tb &gt;= ta . CRDB forces the writing transaction to advance its commit timestamp past tb . </p>
+<h4 id="333-write-write-conflicts">3.3.3 Write-write conflicts.</h4>
+<p>A write running into an uncommitted intent with a lower timestamp will wait for the earlier transaction to finalize (similar to write-read conflicts). If it runs into a committed value at a higher timestamp, it advances its timestamp past it (similar to read-write conflicts). Write-write conflicts may also lead to deadlocks in cases where different transactions have written intents in different orders. CRDB employs a distributed deadlock-detection algorithm to abort one transaction from a cycle of waiters.</p>
 <h3 id="34-read-refreshes">3.4 Read Refreshes</h3>
 <p>Certain types of conflicts described above require advancing the commit timestamp of a transaction. To maintain serializability, the read timestamp must be advanced to match the commit timestamp.</p>
-<p>Advancing a transaction’s read timestamp from ta to <span><span class="MathJax_Preview">t_b &gt; t_a</span><script type="math/tex">t_b > t_a</script></span> is possible if we can prove that none of the data that the transaction read at <span><span class="MathJax_Preview">t_a</span><script type="math/tex">t_a</script></span> has been updated in the interval <span><span class="MathJax_Preview">(ta,tb]</span><script type="math/tex">(ta,tb]</script></span>. If the data has changed, the transaction needs to be restarted. If no results from the transaction have been delivered to the client, CRDB retries the transaction internally<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> . If results have been delivered, the client is informed to discard them and restart the transaction.</p>
+<p>Advancing a transaction’s read timestamp from ta to tb &gt; ta​ is possible if we can prove that none of the data that the transaction read at ta​ has been updated in the interval (ta,tb]. If the data has changed, the transaction needs to be restarted. If no results from the transaction have been delivered to the client, CRDB retries the transaction internally<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> . If results have been delivered, the client is informed to discard them and restart the transaction.</p>
 <p>To determine whether the read timestamp can be advanced, CRDB maintains the set of keys in the transaction’s read set (up to a memory budget). A "read refresh" request validates that the keys have not been updated in a given timestamp interval (Algorithm 1, Lines 11 to 14). This involves re-scanning the read set and checking whether any MVCC values fall in the given interval. This process is equivalent to detecting the rw-antidependencies that PostgreSQL tracks for its implementation of SSI [8, 49]. Similar to PostgreSQL, our implementation may allow false positives (forcing a transaction to abort when not strictly necessary) to avoid the overhead of maintaining a full dependency graph.</p>
 <p>Advancing the transaction’s read timestamp is also required when a scan encounters an uncertain value: a value whose timestamp makes it unclear if it falls in the reader’s past or future (see Section 4.2). In this case we also attempt to perform a refresh. Assuming it is successful, the value will now be returned by the read.</p>
 <h3 id="35-follower-reads">3.5 Follower Reads</h3>
@@ -1869,8 +1897,7 @@
 <li>Range leases contain a start and an end timestamp. A leaseholder cannot serve reads for MVCC timestamps above its lease interval or writes for MVCC timestamps outside its lease interval. The lease disjointness invariant discussed earlier ensures that within a Range, each lease interval is disjoint from every other lease interval.</li>
 <li>Each write to a Range’s Raft log includes the sequence number of the Range lease that it was proposed under. Upon successful replication, the sequence number is checked against the currently active lease. If they do not match, the write is rejected. Because lease changes for a Range are themselves written to the Range’s Raft log, only a single leaseholder is ever able to make changes to a Range at a time. This is true even if multiple nodes believe they hold a valid lease simultaneously.</li>
 </ol>
-<p>These two safeguards ensure that a pair of leaseholders that are active concurrently cannot serve requests that would violate serializable isolation. The first safeguard ensures that</p>
-<p>an incoming leaseholder cannot serve a write that invalidates a read served by an outgoing leaseholder. The second safeguard ensures that an outgoing leaseholder cannot serve a write that invalidates a read or a write served by an incoming leaseholder. Together, these safeguards ensure that even under severe clock skew that violates maximum clock offset bounds, CRDB provides serializable isolation.</p>
+<p>These two safeguards ensure that a pair of leaseholders that are active concurrently cannot serve requests that would violate serializable isolation. The first safeguard ensures that an incoming leaseholder cannot serve a write that invalidates a read served by an outgoing leaseholder. The second safeguard ensures that an outgoing leaseholder cannot serve a write that invalidates a read or a write served by an incoming leaseholder. Together, these safeguards ensure that even under severe clock skew that violates maximum clock offset bounds, CRDB provides serializable isolation.</p>
 <p>While isolation is maintained regardless of clock skew, clock skew outside of the configured clock offset bounds can result in violations of single-key linearizability between causally-dependent transactions. This is possible if the transactions are issued through different gateway nodes whose clocks are skewed by more than the clock offset bounds. If the gateway node for the second transaction is assigned a commit_ts more than max_offset below the timestamp of the first transaction, it is possible for values written by the first transaction to be outside of the uncertainty interval of the second. This would allow the second transaction to read keys overlapping the write set of the first without actually observing the writes. Stale reads represent a violation of single-key linearizability and are only prevented when clocks remain within offset bounds.</p>
 <p>To reduce the likelihood of stale reads, nodes periodically measure their clock’s offset from other nodes. If any node exceeds the configured maximum offset by more than 80% compared to a majority of other nodes, it self-terminates.</p>
 <h2 id="5-sql">5 SQL</h2>
@@ -1980,7 +2007,7 @@
 <p>CockroachDB is a source-available, scalable SQL database designed to "make data easy". Our novel transaction protocol achieves serializable isolation at scale without the use of specialized hardware. Consensus-based replication provides fault tolerance and high availability, as well as performance optimizations for local reads from both the leaseholder (leader) and follower replicas. Geo-partitioning and follow-the-workload features ensure that data is located closest to the users accessing it, minimizing latency due to WAN round trip requests. Finally, CockroachDB’s SQL layer provides users the flexibility and familiarity of SQL, while still taking advantage of the distributed nature of CockroachDB for scalability and performance.</p>
 <p>CockroachDB is already providing value to thousands of organizations, but we are continuing to iterate on the design and improve the software with each release. Our upcoming releases will include a completely redesigned storage layer, geo-aware query optimizations, and numerous improvements to other parts of the system. Looking further ahead, we plan to improve support for operational automation, paving the way for a future in which databases can be truly "serverless" from a user’s perspective. We have already released a fully managed service [11], but much work remains to insulate users from the operational details. Disaggregated storage, on-demand scaling, and usage-based pricing are just some of the areas we will need to develop. Making a geo-distributed database perform well in such an environment is a problem ripe for independent research. We look forward to supporting and participating in it, and furthering our mission to "make data easy".</p>
 <h2 id="references">REFERENCES</h2>
-<p><a href="https://www.cockroachlabs.com/blog/cockroachdb-sigmod-2020/">pdf paper link</a></p>
+<p><a href="https://www.cockroachlabs.com/blog/cockroachdb-sigmod-2020/">crdb blog about paper</a></p>
 <div class="footnote">
 <hr />
 <ol>
@@ -2028,13 +2055,13 @@
           </a>
         
         
-          <a href="../../taurus_paper_cn/" title="Taurus数据库" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../taurus_paper_cn/" title="TaurusDB翻译" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                Taurus数据库
+                TaurusDB翻译
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
