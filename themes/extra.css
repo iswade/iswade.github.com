@@ -8,19 +8,21 @@ h1,
     font-size: 30px;
     padding: 5px 0px 10px 0px;
     margin: 30px 0px 25px 0px;
-    text-align: center;
+    text-align: left;
     /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
 }
 
 .md-typeset h1, .md-typeset h2 {
     /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
     font-weight: 400;
+    color: #000000;
 }
 
 .md-header {
-    /*position: fixed;*/
-    font-size: 40%;
+    position: absolute;
+    font-size: 30%;
     /*height: 0;*/
+    display: none;
 }
 
 .md-footer {
@@ -51,12 +53,26 @@ h1,
 
 .md-main__inner {
     padding-top: 0rem;
+    margin-top: 0.2rem;
 }
 
+/*
 .md-content #home {
     display: none;
 }
+*/
 
+.md-sidebar--primary {
+    display: none;
+}
+
+.md-sidebar--secondary {
+    display: none;
+}
+
+.md-header-nav__button {
+    display: none;
+}
 
 @media print {
   a[href]:after {
