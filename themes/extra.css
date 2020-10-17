@@ -22,7 +22,7 @@ img {
 }
 
 .md-header {
-    position: absolute;
+    position: fixed;
     font-size: 30%;
     /*height: 0;*/
     display: none;
@@ -71,7 +71,8 @@ img {
 }
 
 .md-sidebar--secondary {
-    display: none;
+    width: 18rem;
+    padding: 1.2rem 0 0 1.5rem;
 }
 
 .md-header-nav__button {
