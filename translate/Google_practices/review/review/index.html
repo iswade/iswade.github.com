@@ -1,8 +1,6 @@
 
-
-
 <!doctype html>
-<html lang="zh" class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -12,28 +10,26 @@
         <link rel="canonical" href="https://iswade.github.io/translate/Google_practices/review/review/">
       
       
-      <link rel="shortcut icon" href="../../../../themes/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
     
     
       
-        <title>代码检视开发者指导 - Blog</title>
+        <title>代码检视开发者指导 - iswade</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a676eddb.min.css">
-      
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.b302131d.min.css">
-      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.38780c08.min.css">
       
         
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f72e892.min.css">
         
-        <meta name="theme-color" content="">
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -52,7 +48,13 @@
   
     
     
-    <body dir="" data-md-color-primary="white" data-md-color-accent="blue">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
   
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -61,7 +63,7 @@
       
         
         <a href="#_1" class="md-skip">
-          跳转至
+          Skip to content
         </a>
       
     </div>
@@ -70,20 +72,21 @@
     </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="">
-    <a href="https://iswade.github.io/" title="Blog" class="md-header-nav__button md-logo" aria-label="Blog">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo" aria-label="iswade">
       
-  <img src="../../../../themes/me.jpg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
     <label class="md-header-nav__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
       
         <div class="md-header-nav__ellipsis">
           <span class="md-header-nav__topic md-ellipsis">
-            Blog
+            iswade
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
@@ -95,27 +98,27 @@
     </div>
     
       <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            键入以开始搜索
+            Initializing search
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -130,8 +133,6 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
       
@@ -142,14 +143,15 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://iswade.github.io/" title="Blog" class="md-nav__button md-logo" aria-label="Blog">
+    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo" aria-label="iswade">
       
-  <img src="../../../../themes/me.jpg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Blog
+    iswade
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -160,8 +162,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../.." title="iswade's blog" class="md-nav__link">
-      iswade's blog
+    <a href="../../../.." class="md-nav__link">
+      my blog
     </a>
   </li>
 
@@ -172,7 +174,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../00_long_time_plan/" title="5 年计划" class="md-nav__link">
+    <a href="../../../../00_long_time_plan/" class="md-nav__link">
       5 年计划
     </a>
   </li>
@@ -184,7 +186,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../01_database_notes/" title="Database Notes" class="md-nav__link">
+    <a href="../../../../01_database_notes/" class="md-nav__link">
       Database Notes
     </a>
   </li>
@@ -196,7 +198,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../02_distributed_system_papers/" title="分布式系统领域经典论文翻译集" class="md-nav__link">
+    <a href="../../../../02_distributed_system_papers/" class="md-nav__link">
       分布式系统领域经典论文翻译集
     </a>
   </li>
@@ -208,7 +210,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../about/" title="About" class="md-nav__link">
+    <a href="../../../../about/" class="md-nav__link">
       About
     </a>
   </li>
@@ -220,7 +222,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../advanced_markdown/" title="高级markdown" class="md-nav__link">
+    <a href="../../../../advanced_markdown/" class="md-nav__link">
       高级markdown
     </a>
   </li>
@@ -237,15 +239,11 @@
     
     <label class="md-nav__link" for="nav-7">
       Algorithms
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Algorithms
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -257,7 +255,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../algorithms/algorithms/" title="Algorithms" class="md-nav__link">
+    <a href="../../../../algorithms/algorithms/" class="md-nav__link">
       Algorithms
     </a>
   </li>
@@ -279,15 +277,11 @@
     
     <label class="md-nav__link" for="nav-8">
       Articles
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Articles" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Articles
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -299,7 +293,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/boltdb/" title="BoltDB" class="md-nav__link">
+    <a href="../../../../articles/boltdb/" class="md-nav__link">
       BoltDB
     </a>
   </li>
@@ -311,7 +305,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/etcd/" title="ETCD" class="md-nav__link">
+    <a href="../../../../articles/etcd/" class="md-nav__link">
       ETCD
     </a>
   </li>
@@ -323,7 +317,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/go_concurrency/" title="Go 并发编程" class="md-nav__link">
+    <a href="../../../../articles/go_concurrency/" class="md-nav__link">
       Go 并发编程
     </a>
   </li>
@@ -335,7 +329,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/partition/" title="分布式系统之数据分区" class="md-nav__link">
+    <a href="../../../../articles/partition/" class="md-nav__link">
       分布式系统之数据分区
     </a>
   </li>
@@ -347,7 +341,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/pebble/" title="Pebble" class="md-nav__link">
+    <a href="../../../../articles/pebble/" class="md-nav__link">
       Pebble
     </a>
   </li>
@@ -359,7 +353,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/performance/" title="perf 工具使用" class="md-nav__link">
+    <a href="../../../../articles/performance/" class="md-nav__link">
       perf 工具使用
     </a>
   </li>
@@ -371,7 +365,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/raft/" title="Raft 算法实现" class="md-nav__link">
+    <a href="../../../../articles/raft/" class="md-nav__link">
       Raft 算法实现
     </a>
   </li>
@@ -383,7 +377,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/summary_2017/" title="2017 总结" class="md-nav__link">
+    <a href="../../../../articles/summary_2017/" class="md-nav__link">
       2017 总结
     </a>
   </li>
@@ -395,7 +389,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../articles/summary_2018/" title="2018 总结" class="md-nav__link">
+    <a href="../../../../articles/summary_2018/" class="md-nav__link">
       2018 总结
     </a>
   </li>
@@ -417,15 +411,11 @@
     
     <label class="md-nav__link" for="nav-9">
       Database
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Database" data-md-level="1">
       <label class="md-nav__title" for="nav-9">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Database
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -437,7 +427,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../database/db_internals/" title="读书笔记" class="md-nav__link">
+    <a href="../../../../database/db_internals/" class="md-nav__link">
       读书笔记
     </a>
   </li>
@@ -449,7 +439,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../database/db_internals_ch09_failure_detection/" title="分布式系统之故障检测" class="md-nav__link">
+    <a href="../../../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
       分布式系统之故障检测
     </a>
   </li>
@@ -461,7 +451,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../database/db_internals_ch13_dist_transactions/" title="分布式系统之分布式事务" class="md-nav__link">
+    <a href="../../../../database/db_internals_ch13_dist_transactions/" class="md-nav__link">
       分布式系统之分布式事务
     </a>
   </li>
@@ -473,7 +463,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../database/db_internals_ch14_consensus/" title="分布式系统之共识" class="md-nav__link">
+    <a href="../../../../database/db_internals_ch14_consensus/" class="md-nav__link">
       分布式系统之共识
     </a>
   </li>
@@ -485,7 +475,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../database/replication/" title="分布式系统之复制" class="md-nav__link">
+    <a href="../../../../database/replication/" class="md-nav__link">
       分布式系统之复制
     </a>
   </li>
@@ -507,15 +497,11 @@
     
     <label class="md-nav__link" for="nav-10">
       Distributed systems
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Distributed systems" data-md-level="1">
       <label class="md-nav__title" for="nav-10">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Distributed systems
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -527,7 +513,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../distributed_systems/00_preface/" title="前言" class="md-nav__link">
+    <a href="../../../../distributed_systems/00_preface/" class="md-nav__link">
       前言
     </a>
   </li>
@@ -539,7 +525,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../distributed_systems/01_introduction/" title="第一章 概述" class="md-nav__link">
+    <a href="../../../../distributed_systems/01_introduction/" class="md-nav__link">
       第一章 概述
     </a>
   </li>
@@ -551,7 +537,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../distributed_systems/02_interprocess/" title="第二章 进程间通信：概述" class="md-nav__link">
+    <a href="../../../../distributed_systems/02_interprocess/" class="md-nav__link">
       第二章 进程间通信：概述
     </a>
   </li>
@@ -563,7 +549,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../distributed_systems/03_models/" title="第三章 通信模型" class="md-nav__link">
+    <a href="../../../../distributed_systems/03_models/" class="md-nav__link">
       第三章 通信模型
     </a>
   </li>
@@ -575,7 +561,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../distributed_systems/04_representing/" title="第四章 表示分布式算法 _语法和语义_" class="md-nav__link">
+    <a href="../../../../distributed_systems/04_representing/" class="md-nav__link">
       第四章 表示分布式算法 _语法和语义_
     </a>
   </li>
@@ -587,7 +573,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../distributed_systems/06_time/" title="第六章 分布式系统中的时间" class="md-nav__link">
+    <a href="../../../../distributed_systems/06_time/" class="md-nav__link">
       第六章 分布式系统中的时间
     </a>
   </li>
@@ -609,15 +595,11 @@
     
     <label class="md-nav__link" for="nav-11">
       Go
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Go" data-md-level="1">
       <label class="md-nav__title" for="nav-11">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Go
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -629,7 +611,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/exam04/" title="Exam04" class="md-nav__link">
+    <a href="../../../../go/exam04/" class="md-nav__link">
       Exam04
     </a>
   </li>
@@ -641,7 +623,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/go_exercises/" title="Go exercises" class="md-nav__link">
+    <a href="../../../../go/go_exercises/" class="md-nav__link">
       Go exercises
     </a>
   </li>
@@ -653,7 +635,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/go_exercises100/" title="Go exercises100" class="md-nav__link">
+    <a href="../../../../go/go_exercises100/" class="md-nav__link">
       Go exercises100
     </a>
   </li>
@@ -665,7 +647,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/go_interview/" title="Go interview" class="md-nav__link">
+    <a href="../../../../go/go_interview/" class="md-nav__link">
       Go interview
     </a>
   </li>
@@ -677,7 +659,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/go_libs/" title="Go标准库" class="md-nav__link">
+    <a href="../../../../go/go_libs/" class="md-nav__link">
       Go标准库
     </a>
   </li>
@@ -689,7 +671,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/go_notes/" title="Go" class="md-nav__link">
+    <a href="../../../../go/go_notes/" class="md-nav__link">
       Go
     </a>
   </li>
@@ -701,7 +683,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../go/go_tools/" title="Go 语言工具" class="md-nav__link">
+    <a href="../../../../go/go_tools/" class="md-nav__link">
       Go 语言工具
     </a>
   </li>
@@ -723,15 +705,11 @@
     
     <label class="md-nav__link" for="nav-12">
       Notes
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Notes" data-md-level="1">
       <label class="md-nav__title" for="nav-12">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Notes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -743,7 +721,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/all/" title="笔记本" class="md-nav__link">
+    <a href="../../../../notes/all/" class="md-nav__link">
       笔记本
     </a>
   </li>
@@ -755,7 +733,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/bash/" title="Bash" class="md-nav__link">
+    <a href="../../../../notes/bash/" class="md-nav__link">
       Bash
     </a>
   </li>
@@ -767,7 +745,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/bash_turorial/" title="Bash 简介" class="md-nav__link">
+    <a href="../../../../notes/bash_turorial/" class="md-nav__link">
       Bash 简介
     </a>
   </li>
@@ -779,7 +757,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/git/" title="git 入门教程" class="md-nav__link">
+    <a href="../../../../notes/git/" class="md-nav__link">
       git 入门教程
     </a>
   </li>
@@ -791,7 +769,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/pragmatic_programmer/" title="程序员修炼之道读书笔记" class="md-nav__link">
+    <a href="../../../../notes/pragmatic_programmer/" class="md-nav__link">
       程序员修炼之道读书笔记
     </a>
   </li>
@@ -803,7 +781,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/python/" title="python基础" class="md-nav__link">
+    <a href="../../../../notes/python/" class="md-nav__link">
       python基础
     </a>
   </li>
@@ -815,7 +793,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/vmware/" title="Vmware" class="md-nav__link">
+    <a href="../../../../notes/vmware/" class="md-nav__link">
       Vmware
     </a>
   </li>
@@ -832,15 +810,11 @@
     
     <label class="md-nav__link" for="nav-12-8">
       Adb nodes
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Adb nodes" data-md-level="2">
       <label class="md-nav__title" for="nav-12-8">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Adb nodes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -852,7 +826,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/01_in_memory_database/" title="内存数据库" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/01_in_memory_database/" class="md-nav__link">
       内存数据库
     </a>
   </li>
@@ -864,7 +838,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/09_storage_models_data_layout/" title="存储模型和数据布局" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/09_storage_models_data_layout/" class="md-nav__link">
       存储模型和数据布局
     </a>
   </li>
@@ -876,7 +850,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/15_execution/" title="15 execution" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/15_execution/" class="md-nav__link">
       15 execution
     </a>
   </li>
@@ -888,7 +862,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/17_hashjoins/" title="并行 JOIN 算法（Hashing）" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/17_hashjoins/" class="md-nav__link">
       并行 JOIN 算法（Hashing）
     </a>
   </li>
@@ -900,7 +874,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/22_optimizer_implementation_I/" title="优化器实现 I" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/22_optimizer_implementation_I/" class="md-nav__link">
       优化器实现 I
     </a>
   </li>
@@ -912,7 +886,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/23_optimizer_implementation_II/" title="优化器实现 II" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/23_optimizer_implementation_II/" class="md-nav__link">
       优化器实现 II
     </a>
   </li>
@@ -924,7 +898,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/24_cost_models/" title="基于代价的优化" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/24_cost_models/" class="md-nav__link">
       基于代价的优化
     </a>
   </li>
@@ -936,7 +910,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/adb_nodes/25_self_driving/" title="自动驾驶数据库" class="md-nav__link">
+    <a href="../../../../notes/adb_nodes/25_self_driving/" class="md-nav__link">
       自动驾驶数据库
     </a>
   </li>
@@ -958,15 +932,11 @@
     
     <label class="md-nav__link" for="nav-12-9">
       Db nodes
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Db nodes" data-md-level="2">
       <label class="md-nav__title" for="nav-12-9">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Db nodes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -978,7 +948,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/00_database_systems_2018/" title="关系语言" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
       关系语言
     </a>
   </li>
@@ -990,7 +960,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/01_relational_model/" title="关系模型" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/01_relational_model/" class="md-nav__link">
       关系模型
     </a>
   </li>
@@ -1002,7 +972,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/02_advanced_SQL/" title="高级 SQL" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/02_advanced_SQL/" class="md-nav__link">
       高级 SQL
     </a>
   </li>
@@ -1014,7 +984,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/03_Database_Storage_I/" title="数据库存储（I）" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/03_Database_Storage_I/" class="md-nav__link">
       数据库存储（I）
     </a>
   </li>
@@ -1026,7 +996,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/04_Database_Storage_II/" title="数据库存储（II）" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/04_Database_Storage_II/" class="md-nav__link">
       数据库存储（II）
     </a>
   </li>
@@ -1038,7 +1008,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/05_Buffer_Pool/" title="缓存池" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/05_Buffer_Pool/" class="md-nav__link">
       缓存池
     </a>
   </li>
@@ -1050,7 +1020,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/06_Hash_Tables/" title="哈希表" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/06_Hash_Tables/" class="md-nav__link">
       哈希表
     </a>
   </li>
@@ -1062,7 +1032,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/07_Tree_Indexes_I/" title="树索引（I）" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/07_Tree_Indexes_I/" class="md-nav__link">
       树索引（I）
     </a>
   </li>
@@ -1074,7 +1044,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/08_Tree_Indexes_II/" title="树索引（II）" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/08_Tree_Indexes_II/" class="md-nav__link">
       树索引（II）
     </a>
   </li>
@@ -1086,7 +1056,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/09_Index_Concurrency/" title="索引并发控制" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/09_Index_Concurrency/" class="md-nav__link">
       索引并发控制
     </a>
   </li>
@@ -1098,7 +1068,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/10_Query_Processing/" title="查询处理" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/10_Query_Processing/" class="md-nav__link">
       查询处理
     </a>
   </li>
@@ -1110,7 +1080,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/11_Sorting_Aggregations/" title="排序和聚集" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/11_Sorting_Aggregations/" class="md-nav__link">
       排序和聚集
     </a>
   </li>
@@ -1122,7 +1092,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/12_joins/" title="JOIN 算法" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/12_joins/" class="md-nav__link">
       JOIN 算法
     </a>
   </li>
@@ -1134,7 +1104,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/13_Query_Optimization/" title="查询优化" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/13_Query_Optimization/" class="md-nav__link">
       查询优化
     </a>
   </li>
@@ -1146,7 +1116,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/14_parallel_execution/" title="并行执行" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/14_parallel_execution/" class="md-nav__link">
       并行执行
     </a>
   </li>
@@ -1158,7 +1128,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/15_embedded_logic/" title="嵌入数据库逻辑" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/15_embedded_logic/" class="md-nav__link">
       嵌入数据库逻辑
     </a>
   </li>
@@ -1170,7 +1140,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/16_concurrency_control/" title="并发控制理论" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/16_concurrency_control/" class="md-nav__link">
       并发控制理论
     </a>
   </li>
@@ -1182,7 +1152,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/18_timestamp_ordering/" title="时间顺序并发控制" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/18_timestamp_ordering/" class="md-nav__link">
       时间顺序并发控制
     </a>
   </li>
@@ -1194,7 +1164,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/19_MVCC/" title="多版本并发控制" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/19_MVCC/" class="md-nav__link">
       多版本并发控制
     </a>
   </li>
@@ -1206,7 +1176,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/20_logging/" title="日志" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/20_logging/" class="md-nav__link">
       日志
     </a>
   </li>
@@ -1218,7 +1188,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/21_recovery/" title="数据库恢复" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/21_recovery/" class="md-nav__link">
       数据库恢复
     </a>
   </li>
@@ -1230,7 +1200,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../notes/db_nodes/22_distribute_OLTP/" title="分布式 OLTP 数据库" class="md-nav__link">
+    <a href="../../../../notes/db_nodes/22_distribute_OLTP/" class="md-nav__link">
       分布式 OLTP 数据库
     </a>
   </li>
@@ -1259,15 +1229,11 @@
     
     <label class="md-nav__link" for="nav-13">
       Translate
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Translate" data-md-level="1">
       <label class="md-nav__title" for="nav-13">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Translate
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1279,7 +1245,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../An%20Overview%20of%20Query%20Optimization%20in%20Relational%20Systems/" title="关系系统中的查询优化" class="md-nav__link">
+    <a href="../../../An%20Overview%20of%20Query%20Optimization%20in%20Relational%20Systems/" class="md-nav__link">
       关系系统中的查询优化
     </a>
   </li>
@@ -1291,7 +1257,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Aurora_design_cloud_native_database/" title="Aurora：我们如何设计云原生关系数据库" class="md-nav__link">
+    <a href="../../../Aurora_design_cloud_native_database/" class="md-nav__link">
       Aurora：我们如何设计云原生关系数据库
     </a>
   </li>
@@ -1303,7 +1269,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Calvin%20Fast%20Distributed%20Transactions/" title="Calvin: 分区数据库的快速分布式事务" class="md-nav__link">
+    <a href="../../../Calvin%20Fast%20Distributed%20Transactions/" class="md-nav__link">
       Calvin: 分区数据库的快速分布式事务
     </a>
   </li>
@@ -1315,7 +1281,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../F1_query/" title="F1 Query：大规模数据的声明式查询" class="md-nav__link">
+    <a href="../../../F1_query/" class="md-nav__link">
       F1 Query：大规模数据的声明式查询
     </a>
   </li>
@@ -1327,7 +1293,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../The%20State%20of%20the%20Art%20in%20Distributed%20Query%20Processing/" title="分布式查询处理的最新进展" class="md-nav__link">
+    <a href="../../../The%20State%20of%20the%20Art%20in%20Distributed%20Query%20Processing/" class="md-nav__link">
       分布式查询处理的最新进展
     </a>
   </li>
@@ -1339,7 +1305,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../btree_vs_lsmtree/" title="现代存储系统背后的算法" class="md-nav__link">
+    <a href="../../../btree_vs_lsmtree/" class="md-nav__link">
       现代存储系统背后的算法
     </a>
   </li>
@@ -1351,7 +1317,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../comparison_of_database_isolation/" title="数据库隔离级别的比较" class="md-nav__link">
+    <a href="../../../comparison_of_database_isolation/" class="md-nav__link">
       数据库隔离级别的比较
     </a>
   </li>
@@ -1363,7 +1329,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../distsys/" title="分布式系统大纲" class="md-nav__link">
+    <a href="../../../distsys/" class="md-nav__link">
       分布式系统大纲
     </a>
   </li>
@@ -1375,7 +1341,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../faunadb_transaction/" title="无时钟的一致性：FaunaDB的分布式事务协议" class="md-nav__link">
+    <a href="../../../faunadb_transaction/" class="md-nav__link">
       无时钟的一致性：FaunaDB的分布式事务协议
     </a>
   </li>
@@ -1387,7 +1353,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../generalized_consensus/" title="广义分布式共识" class="md-nav__link">
+    <a href="../../../generalized_consensus/" class="md-nav__link">
       广义分布式共识
     </a>
   </li>
@@ -1399,7 +1365,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../go_interface/" title="如何使用 Go 接口？" class="md-nav__link">
+    <a href="../../../go_interface/" class="md-nav__link">
       如何使用 Go 接口？
     </a>
   </li>
@@ -1411,7 +1377,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_sysadmin/" title="Linux sysadmin" class="md-nav__link">
+    <a href="../../../linux_sysadmin/" class="md-nav__link">
       Linux sysadmin
     </a>
   </li>
@@ -1423,7 +1389,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../paxos_made_live/" title="Paxos Made Live(译)" class="md-nav__link">
+    <a href="../../../paxos_made_live/" class="md-nav__link">
       Paxos Made Live(译)
     </a>
   </li>
@@ -1435,7 +1401,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../raft/" title="raft详解" class="md-nav__link">
+    <a href="../../../raft/" class="md-nav__link">
       raft详解
     </a>
   </li>
@@ -1447,7 +1413,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../strong_consistency_models/" title="Strong consistency models" class="md-nav__link">
+    <a href="../../../strong_consistency_models/" class="md-nav__link">
       Strong consistency models
     </a>
   </li>
@@ -1459,7 +1425,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../taurus_paper/" title="Taurus Database: How to be Fast, Available, and Frugal in the Cloud" class="md-nav__link">
+    <a href="../../../taurus_paper/" class="md-nav__link">
       Taurus Database: How to be Fast, Available, and Frugal in the Cloud
     </a>
   </li>
@@ -1471,7 +1437,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../taurus_paper_cn/" title="TaurusDB: 高性能高可用低成本云数据库" class="md-nav__link">
+    <a href="../../../taurus_paper_cn/" class="md-nav__link">
       TaurusDB: 高性能高可用低成本云数据库
     </a>
   </li>
@@ -1483,7 +1449,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../to_be_manager/" title="How to be a manager" class="md-nav__link">
+    <a href="../../../to_be_manager/" class="md-nav__link">
       How to be a manager
     </a>
   </li>
@@ -1495,7 +1461,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../zookeeper/" title="ZooKeeper: 互联网系统无等待协调服务" class="md-nav__link">
+    <a href="../../../zookeeper/" class="md-nav__link">
       ZooKeeper: 互联网系统无等待协调服务
     </a>
   </li>
@@ -1514,15 +1480,11 @@
     
     <label class="md-nav__link" for="nav-13-20">
       Google practices
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Google practices" data-md-level="2">
       <label class="md-nav__title" for="nav-13-20">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Google practices
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1534,7 +1496,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../practices/" title="Goolge 工程实践文档" class="md-nav__link">
+    <a href="../../practices/" class="md-nav__link">
       Goolge 工程实践文档
     </a>
   </li>
@@ -1553,15 +1515,11 @@
     
     <label class="md-nav__link" for="nav-13-20-2">
       Review
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Review" data-md-level="3">
       <label class="md-nav__title" for="nav-13-20-2">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Review
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1573,7 +1531,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../developer/" title="Developer" class="md-nav__link">
+    <a href="../developer/" class="md-nav__link">
       Developer
     </a>
   </li>
@@ -1595,27 +1553,23 @@
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         代码检视开发者指导
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="代码检视开发者指导" class="md-nav__link md-nav__link--active">
+    <a href="./" class="md-nav__link md-nav__link--active">
       代码检视开发者指导
     </a>
     
       
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
-      目录
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
@@ -1673,7 +1627,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../reviewer/" title="Reviewer" class="md-nav__link">
+    <a href="../reviewer/" class="md-nav__link">
       Reviewer
     </a>
   </li>
@@ -1700,15 +1654,11 @@
     
     <label class="md-nav__link" for="nav-13-21">
       Crdb
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Crdb" data-md-level="2">
       <label class="md-nav__title" for="nav-13-21">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Crdb
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1720,7 +1670,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_distribution_layer/" title="分布层" class="md-nav__link">
+    <a href="../../../crdb/crdb_distribution_layer/" class="md-nav__link">
       分布层
     </a>
   </li>
@@ -1732,7 +1682,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_distsql/" title="分布式 SQL 查询" class="md-nav__link">
+    <a href="../../../crdb/crdb_distsql/" class="md-nav__link">
       分布式 SQL 查询
     </a>
   </li>
@@ -1744,7 +1694,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_join/" title="CockroachDB 中的 JOIN" class="md-nav__link">
+    <a href="../../../crdb/crdb_join/" class="md-nav__link">
       CockroachDB 中的 JOIN
     </a>
   </li>
@@ -1756,7 +1706,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_paper/" title="CockroachDB: The Resilient Geo-Distributed SQL Database" class="md-nav__link">
+    <a href="../../../crdb/crdb_paper/" class="md-nav__link">
       CockroachDB: The Resilient Geo-Distributed SQL Database
     </a>
   </li>
@@ -1768,7 +1718,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_paper_cn/" title="CockroachDB：弹性地理分布SQL数据库" class="md-nav__link">
+    <a href="../../../crdb/crdb_paper_cn/" class="md-nav__link">
       CockroachDB：弹性地理分布SQL数据库
     </a>
   </li>
@@ -1780,7 +1730,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_pipelining/" title="管道化共识写入加速分布式 SQL 事务" class="md-nav__link">
+    <a href="../../../crdb/crdb_pipelining/" class="md-nav__link">
       管道化共识写入加速分布式 SQL 事务
     </a>
   </li>
@@ -1792,7 +1742,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_query_planning/" title="SQL 查询计划" class="md-nav__link">
+    <a href="../../../crdb/crdb_query_planning/" class="md-nav__link">
       SQL 查询计划
     </a>
   </li>
@@ -1804,7 +1754,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_replication_layer/" title="复制层" class="md-nav__link">
+    <a href="../../../crdb/crdb_replication_layer/" class="md-nav__link">
       复制层
     </a>
   </li>
@@ -1816,7 +1766,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_sql_layer/" title="SQL 层" class="md-nav__link">
+    <a href="../../../crdb/crdb_sql_layer/" class="md-nav__link">
       SQL 层
     </a>
   </li>
@@ -1828,7 +1778,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../crdb/crdb_sql_life/" title="[译] SQL的一生（CRDB）" class="md-nav__link">
+    <a href="../../../crdb/crdb_sql_life/" class="md-nav__link">
       [译] SQL的一生（CRDB）
     </a>
   </li>
@@ -1850,15 +1800,11 @@
     
     <label class="md-nav__link" for="nav-13-22">
       Misc
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Misc" data-md-level="2">
       <label class="md-nav__title" for="nav-13-22">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Misc
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1870,7 +1816,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../misc/CI/" title="持续集成系统" class="md-nav__link">
+    <a href="../../../misc/CI/" class="md-nav__link">
       持续集成系统
     </a>
   </li>
@@ -1882,7 +1828,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../misc/datastore/" title="DBDB: Dog Bed Database" class="md-nav__link">
+    <a href="../../../misc/datastore/" class="md-nav__link">
       DBDB: Dog Bed Database
     </a>
   </li>
@@ -1909,17 +1855,15 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
-      目录
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
@@ -1975,9 +1919,6 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-                
-                
-                  
                 
                 
                 <h1 id="_1">代码检视开发者指导</h1>
@@ -2198,16 +2139,16 @@
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../developer/" title="Developer" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../developer/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
-                  上一页
+                  Previous
                 </span>
                 Developer
               </div>
@@ -2215,17 +2156,17 @@
           </a>
         
         
-          <a href="../reviewer/" title="Reviewer" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../reviewer/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
-                  下一页
+                  Next
                 </span>
                 Reviewer
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
             </div>
           </a>
         
@@ -2252,15 +2193,15 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/vendor.c51dfa35.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.58d22e8e.min.js"
+            worker: "../../../../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
