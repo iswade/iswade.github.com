@@ -1858,8 +1858,8 @@
 <p>新分配内存</p>
 </blockquote>
 </li>
-<li></li>
 </ol>
+<p><img alt="image-20201018231020554" src="../image/image-20201018231020554.png" /></p>
 <p>标签： 笔记</p>
 <ol>
 <li>开发速度：编译，工具</li>
@@ -3070,8 +3070,23 @@ goimport -w main.go
 <li><code>s = append(s, 4, 5, 6)</code> 多个元素加入切片</li>
 <li><code>s = append(s, s...)</code>  切片加入切片</li>
 </ol>
-<h2 id="_30">方法</h2>
-<h3 id="_31">指针与值</h3>
+<h3 id="_30">指针</h3>
+<p>一个指针指的是某个指针类型的一个值。</p>
+<ol>
+<li>注意内存地址与指针：可以对指针进行取地址操作(*int, &amp;i)</li>
+<li>指针的存在主要是为了高效传递数据修改数据（默认值拷贝）</li>
+<li>Go语言中，返回一个变量的地址是安全的</li>
+<li>Go语言中，指针有一些限制：<ul>
+<li>不支持算术运算</li>
+<li>一个指针类型不能被随意转换为另一个指针类型</li>
+<li>一个指针值不能和其它任一指针类型的值进行比较</li>
+<li>一个指针值不能被赋值给其它任意类型的指针值</li>
+<li>unsafe标准库包中提供的非类型安全指针机制可以被用来打破上述Go指针的安全限制。unsafe.Pointer类型类似于C语言中的void*。 但是，通常地，非类型安全指针机制不推荐在Go日常编程中使用</li>
+</ul>
+</li>
+</ol>
+<h2 id="_31">方法</h2>
+<h3 id="_32">指针与值</h3>
 <ol>
 <li>方法可以给任意有名的类型来定义（除了指针或者接口），非结构体也可以</li>
 </ol>
@@ -3199,7 +3214,7 @@ goimport -w main.go
 <ol start="7">
 <li>面向对象的三大特征“封装”、“继承”和”多态“，Go仅实现了部分特征，更倾向于使用”组合优于继承“这种思想。</li>
 </ol>
-<h3 id="_32">指针与值接收器总结</h3>
+<h3 id="_33">指针与值接收器总结</h3>
 <ol>
 <li>基本指导</li>
 <li>对于给定的类型，不要混合使用值和指针接收器</li>
@@ -3215,7 +3230,7 @@ goimport -w main.go
 <li>对于切片，不会触发重新切片或者重新分配</li>
 <li>可以将接收器，当做函数的一个参数来思考用哪种方式传递</li>
 </ol>
-<h3 id="_33">匿名字段</h3>
+<h3 id="_34">匿名字段</h3>
 <ol>
 <li>可以像访问匿名字段成员那样调用其方法，由编译器负责查找</li>
 <li>方法也有同名遮蔽问题，但是利用这个特性，可实现类似覆盖的操作</li>
@@ -3244,7 +3259,7 @@ goimport -w main.go
 <span class="p">}</span>
 </code></pre></div>
 
-<h2 id="_34">接口</h2>
+<h2 id="_35">接口</h2>
 <p>从内部的实现来看，接口自身也是一种结构类型，只是编译器会对其做出很多限制：（不能有字段；不能定义自己的方法；只能声明方法，不能实现；可以嵌入其他接口类型）</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span> <span class="nx">iface</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">tab</span>  <span class="o">*</span><span class="nx">itab</span>
@@ -3283,7 +3298,7 @@ goimport -w main.go
 <span class="cm">*/</span>
 </code></pre></div>
 
-<h3 id="_35">接口转换和类型断言</h3>
+<h3 id="_36">接口转换和类型断言</h3>
 <ol>
 <li><code>type switch</code>  也是一种转化：接受一个接口，对于每个分支，转化为一种类型。<code>switch str := value.(type)</code></li>
 <li>如果我们只关心一种类型，如果我们知道值保存的是 <code>string</code> ，我们希望提取出来，则可以使用类型断言。<code>value.(string)</code></li>
@@ -3292,12 +3307,12 @@ goimport -w main.go
 <li>可以使用 <code>str, ok := value.(string)</code> 来判断是否是指定的类型。</li>
 <li>如果转换失败，则str是一个空字符串。</li>
 </ol>
-<h3 id="_36">通用性</h3>
+<h3 id="_37">通用性</h3>
 <p>若某种现有的类型仅实现了一个接口，且除此之外并无可导出的方法，则该类型本身就无需导出。 <strong>仅导出该接口</strong>能让我们更专注于其行为而非实现，其它属性不同的实现则能镜像该原始类型的行为。 这也能够避免为每个通用接口的实例重复编写文档。</p>
 <p>构造函数应当返回一个接口值而非实现的类型。</p>
 <p>只需修改构造函数调用即可，其余代码则不受算法改变的影响。</p>
 <p>【GO设计思想】减少冗余，替换实现很简单，可以快速验证不同的实现。</p>
-<h3 id="_37">接口和方法</h3>
+<h3 id="_38">接口和方法</h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 1. 结构体附加接口</span>
 <span class="kd">type</span> <span class="nx">Counter</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">n</span> <span class="kt">int</span>
@@ -3350,8 +3365,8 @@ goimport -w main.go
 </code></pre></div>
 
 <p>从一个结构，一个整数，一个通道和一个函数来建立HTTP服务器，这是因为接口仅仅是方法的集合，而几乎任何类型都能定义方法。</p>
-<h2 id="_38">其它</h2>
-<h3 id="_39">转换</h3>
+<h2 id="_39">其它</h2>
+<h3 id="_40">转换</h3>
 <ol>
 <li><code>Sequence []int</code> 与 <code>[]int</code> 类型可以安全互转。</li>
 <li>上面的转换并没有创建新值，只是临时地像具有新类型一样工作。</li>
@@ -3359,14 +3374,14 @@ goimport -w main.go
 <li>在Go语言中转换表达式类型以访问一组不同方法是一种习惯用法。</li>
 <li>可以将序列类型转换为<code>type IntSlice []int</code>然后使用<code>IntSlice</code>类型的排序方法：<code>sort.IntSlice(s).Sort()</code></li>
 </ol>
-<h3 id="_40">空白标识符</h3>
+<h3 id="_41">空白标识符</h3>
 <ol>
 <li>多重赋值，<code>if _, err := os.Stat(path); os.IsNotExist(err)</code></li>
 <li>未使用的导入和变量 <code>var _ = fmt.Print</code>  <code>var _ io.Reader</code></li>
 <li>为辅助作用而导入 <code>import _ "net/http/pprof"</code></li>
 <li>接口检查 <code>if _, ok := val.(json.Marshaler); ok</code></li>
 </ol>
-<h3 id="_41">内嵌</h3>
+<h3 id="_42">内嵌</h3>
 <ol>
 <li>接口内嵌</li>
 </ol>
@@ -3414,7 +3429,7 @@ goimport -w main.go
 <p>相同的嵌套层级上出现相同的名字，通常会产生一个错误。</p>
 </li>
 </ol>
-<h3 id="_42">错误</h3>
+<h3 id="_43">错误</h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// error 是一个Go内置接口类型，nil表示没有错误</span>
 <span class="kd">type</span> <span class="kt">error</span> <span class="kd">interface</span> <span class="p">{</span>
     <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span>
@@ -3429,7 +3444,7 @@ goimport -w main.go
 <li>panic信息会被向上（调用者）传递，如果没有遇到recover，则继续传递直到main，然后抛出异常。</li>
 <li>defer在发生panic时也会被调用，先defer后panic。</li>
 </ul>
-<h2 id="_43">并发</h2>
+<h2 id="_44">并发</h2>
 <p>不要通过共享内存来通信，而应<strong>通过通信来共享内存</strong>。</p>
 <p>例如，引用计数通过为整数变量添加互斥锁可以很好地实现。但是通过通道来控制访问，能够写出更简洁，正确的程序。</p>
 <p>若将通信看做同步者， 那就完全不需要其它同步了。</p>
@@ -3521,7 +3536,7 @@ goimport -w main.go
 <span class="p">}</span>
 </code></pre></div>
 
-<h3 id="_44">并行</h3>
+<h3 id="_45">并行</h3>
 <p>并行向量相加</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span> <span class="nx">Vector</span> <span class="p">[]</span><span class="kt">float64</span>
 
@@ -3562,7 +3577,7 @@ goimport -w main.go
 </code></pre></div>
 
 <p>Go是一个支持并发的语言，并非所有并行问题都适合用Go来解决。</p>
-<h3 id="_45">多路选择</h3>
+<h3 id="_46">多路选择</h3>
 <p>select 语句提供了一种处理多通道的方法。跟 switch 语句很像，但是每个分支都是一个通道：</p>
 <ul>
 <li>所有通道都会被监听</li>
@@ -3612,8 +3627,8 @@ goimport -w main.go
 <span class="s">`</span>
 </code></pre></div>
 
-<h1 id="_46">编码规范</h1>
-<h2 id="_47">总体原则</h2>
+<h1 id="_47">编码规范</h1>
+<h2 id="_48">总体原则</h2>
 <ol>
 <li>清晰第一：清晰性是易于维护、易于重构的程序必需具备的特征。 </li>
 <li>简洁为美：简洁就是易于理解并且易于实现。 </li>
@@ -3688,7 +3703,7 @@ goimport -w main.go
 <li>建议7.5：为高并发的轻量级任务处理创建goroutine池</li>
 <li>建议7.6：将cgo调用限制在有限个数的goroutine中进行</li>
 </ol>
-<h1 id="_48">安全编码</h1>
+<h1 id="_49">安全编码</h1>
 <h2 id="1_1">1 整数安全</h2>
 <ol>
 <li>规则1.1：确保无符号整数运算时不会反转</li>
@@ -3789,12 +3804,12 @@ goimport -w main.go
 <li>建议10.1：确保发生异常时程序尝试恢复到合理状态并记录日志</li>
 <li>建议10.2：不使用goto语句</li>
 </ol>
-<h1 id="_49">底层知识</h1>
+<h1 id="_50">底层知识</h1>
 <ol>
 <li>底层编码相关知识，如：Plan9汇编，内存管理机制与GC，逃逸分析，协程调度机制，CGO</li>
 <li>了解多核并发，性能优化调优，CPU架构等</li>
 </ol>
-<h2 id="_50">汇编</h2>
+<h2 id="_51">汇编</h2>
 <p>plan9 中使用寄存器不需要带 r 或 e 的前缀，例如 rax，只要写 AX 就可以了。</p>
 <div class="highlight"><pre><span></span><code>eax-&gt;AX
 ebx-&gt;BX
@@ -3850,7 +3865,7 @@ func f(s []int) int {
         0x0046 00070 (D:\sync\go\main\main.go:9)        XCHGL   AX, AX
 </code></pre></div>
 
-<h2 id="_51">调度器</h2>
+<h2 id="_52">调度器</h2>
 <p>Go采用了用户层轻量级thread或者说是类coroutine的概念来解决这些问题，Go将之称为”goroutine“。goroutine占用的资源非常小(Go 1.4将每个goroutine stack的size默认设置为2k)，goroutine调度的切换也不用陷入(trap)操作系统内核层完成，代价很低。因此，一个Go程序中可以创建成千上万个并发的goroutine。所有的Go代码都在goroutine中执行，哪怕是go的runtime也不例外。将这些goroutines按照一定算法放到“CPU”上执行的程序就称为goroutine调度器或goroutine scheduler。</p>
 <p>不过，一个Go程序对于操作系统来说只是一个用户层程序，对于操作系统而言，它的眼中只有thread，它甚至不知道有什么叫Goroutine的东西的存在。goroutine的调度全要靠Go自己完成，实现Go程序内goroutine之间“公平”的竞争“CPU”资源，这个任务就落到了Go runtime头上，要知道在一个Go程序中，除了用户代码，剩下的就是go runtime了。</p>
 <p>于是Goroutine的调度问题就演变为go runtime如何将程序内的众多goroutine按照一定算法调度到“CPU”资源上运行了。</p>
@@ -3880,13 +3895,13 @@ func f(s []int) int {
 <p>非合作式抢占：非合作抢占在并发执行上下文之间切换，而无需显式抢占检查或这些上下文的帮助。所有现代桌面操作系统和服务器操作系统都使用它来切换线程。如果没有这个机制，一个表现不佳的应用程序就可以楔入整个系统，就像一个表现不佳的goroutine当前可以楔入go应用程序一样。这也是一个方便的抽象：它让我们在编程时就好像有无限数量的CPU可用，从而隐藏了操作系统在时间复用有限数量的CPU这一事实。</p>
 <p><a href="https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md">https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md</a></p>
 <p><a href="https://medium.com/@ankur_anand/illustrated-tales-of-go-runtime-scheduler-74809ef6d19b">https://medium.com/@ankur_anand/illustrated-tales-of-go-runtime-scheduler-74809ef6d19b</a></p>
-<h2 id="_52">堆栈信息</h2>
+<h2 id="_53">堆栈信息</h2>
 <p>可以获得当前堆栈信息，当前函数名，当前文件名等信息。</p>
-<h2 id="_53">内存分配</h2>
+<h2 id="_54">内存分配</h2>
 <p><a href="https://www.infoq.cn/article/IEhRLwmmIM7-11RYaLHR">图解 Go 内存分配器</a></p>
 <p>对于append操作，如果容量不足，则会扩展容量创建新的数组。
 旧的数组何时释放？由GC回收。</p>
-<h2 id="_54">逃逸分析</h2>
+<h2 id="_55">逃逸分析</h2>
 <p>Go 有逃逸分析，在编译期，它会分析你的变量是否在函数执行完毕那一刻，程序有没有可能有别的对象引用到它（所谓逃逸），如果没有，那这个变量就可以在栈上分配，完全不经过 gc。如果它已经逃逸了，那什么时候 gc 就由不得你了。</p>
 <div class="highlight"><pre><span></span><code>go build -gcflags<span class="o">=</span><span class="s1">&#39;-m&#39;</span> main.go
 </code></pre></div>
@@ -3907,9 +3922,9 @@ func f(s []int) int {
 <li>动态类型逃逸</li>
 <li>切片或map赋值</li>
 </ol>
-<h2 id="_55">垃圾收集</h2>
+<h2 id="_56">垃圾收集</h2>
 <p>GC 把 uintptr 当成普通整数对象，它⽆法阻⽌ "关联" 对象被回收。</p>
-<h3 id="_56"><strong>垃圾回收算法</strong></h3>
+<h3 id="_57"><strong>垃圾回收算法</strong></h3>
 <ol>
 <li>
 <p>引用计数：对每个对象维护一个引用计数，当引用该对象的对象被销毁时，引用计数减1，当引用计数器为0是回收该对象。</p>
@@ -3936,7 +3951,7 @@ func f(s []int) int {
 </ul>
 </li>
 </ol>
-<h3 id="_57">三色回收</h3>
+<h3 id="_58">三色回收</h3>
 <ol>
 <li>
 <p>初始状态所有对象都是白色。</p>
@@ -4024,8 +4039,8 @@ func f(s []int) int {
 </code></pre></div>
 
 <p><a href="https://dgraph.io/blog/post/badger/">https://dgraph.io/blog/post/badger/</a> 文章中大量讨论cgo的一些问题，为什么新写一个KV引擎</p>
-<h1 id="_58">诊断与分析</h1>
-<h2 id="_59">性能分析</h2>
+<h1 id="_59">诊断与分析</h1>
+<h2 id="_60">性能分析</h2>
 <ol>
 <li>设置maxprocs的问题:<a href="https://www.infoq.cn/article/bwfJi86dEx48qFupBqNU">https://www.infoq.cn/article/bwfJi86dEx48qFupBqNU</a> </li>
 <li>自动设置： <a href="https://github.com/uber-go/automaxprocs">https://github.com/uber-go/automaxprocs</a> </li>
@@ -4039,14 +4054,14 @@ func f(s []int) int {
 <li>Profiling(分析)：在程序执行期间(或测试的时候)通过聚合采样收集的数据。分析是没有时间线的(和tracing不一样)。</li>
 <li>Tracing(跟踪)：通过程序执行期间(或测试的时候)收集发生的事件数据。跟踪是有时间线的。</li>
 </ul>
-<h2 id="_60">测试</h2>
+<h2 id="_61">测试</h2>
 <p>单元测试</p>
 <p>性能测试</p>
 <p>覆盖率</p>
 <p>Gofail 故障测试框架</p>
 <p>Gomock mock测试框架</p>
-<h1 id="_61">高级知识</h1>
-<h2 id="_62">泛型</h2>
+<h1 id="_62">高级知识</h1>
+<h2 id="_63">泛型</h2>
 <p><a href="https://blog.golang.org/generics-next-step">https://blog.golang.org/generics-next-step</a>
 示例求任意类型数组的最大值：
 <a href="https://go2goplay.golang.org/p/REx6YOpV3pb">https://go2goplay.golang.org/p/REx6YOpV3pb</a></p>
