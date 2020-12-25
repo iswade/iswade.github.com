@@ -15,7 +15,7 @@
     
     
       
-        <title>Go exercises100 - iswade</title>
+        <title>Go exercises100 - iswade's blog</title>
       
     
     
@@ -73,7 +73,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo" aria-label="iswade">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -86,7 +86,7 @@
       
         <div class="md-header-nav__ellipsis">
           <span class="md-header-nav__topic md-ellipsis">
-            iswade
+            iswade's blog
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
@@ -145,13 +145,13 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo" aria-label="iswade">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    iswade
+    iswade's blog
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -163,7 +163,7 @@
 
   <li class="md-nav__item">
     <a href="../.." class="md-nav__link">
-      my blog
+      iswade's blog
     </a>
   </li>
 
@@ -613,18 +613,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../exam04/" class="md-nav__link">
-      Exam04
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../go_exercises/" class="md-nav__link">
       Go exercises
     </a>
@@ -695,6 +683,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_exercises60/" class="md-nav__link">
+      单选题
+    </a>
   </li>
 
         
@@ -2093,7 +2093,7 @@ D. 13</p>
 </li>
 <li>
 <p>关于整型切片的初始化，下面正确的是（BCD）
-    A. s := make([]int)
+    A. s := make([]int)            // 必须指定长度
     B. s := make([]int, 0)
     C. s := make([]int, 5, 10)
     D. s := []int{1, 2, 3, 4, 5}</p>
@@ -2165,8 +2165,9 @@ D. 13</p>
 <p>B.</p>
 <div class="highlight"><pre><span></span><code>x := []int{
     1, 2, 3,
-    4, 5, 6
+    4, 5, 6     // 缺少逗号
 }
+// 编译报错
 </code></pre></div>
 
 <p>C.</p>
@@ -2177,6 +2178,9 @@ D. 13</p>
 
 <p>D.</p>
 <div class="highlight"><pre><span></span><code>x := []int{1, 2, 3, 4, 5, 6,}
+
+// 1. 格式化工具会删除最后一个 ,
+// 2. 如果没有运行格式化工具，编译也是OK的，len=6
 </code></pre></div>
 
 </li>
@@ -2282,6 +2286,7 @@ func (a Integer) Add(b *Integer) Integer {
 func (a *Integer) Add(b Integer) Integer {
      return *a + b
 }
+// 无法获取 i.(Integer) 的地址
 </code></pre></div>
 
 <p>D.</p>
@@ -2322,11 +2327,11 @@ D. var fragment Fragment = GetPodAction{}</p>
     A. 只要两个接口拥有相同的方法列表（次序不同不要紧），那么它们就是等价的，可以相互赋值
     B. 如果接口A的方法列表是接口B的方法列表的子集，那么接口B可以赋值给接口A
     C. 接口查询是否成功，要在运行期才能够确定
-    D. 接口赋值是否可行，要在运行期才能够确定</p>
+    D. 接口赋值是否可行，要在运行期才能够确定（编译期）</p>
 </li>
 <li>
 <p>关于channel，下面语法正确的是（ABC）XXX
-    A. var ch chan int
+    A. var ch chan int           // 这里定义后 ch == nil
     B. ch := make(chan int)
     C. &lt;- ch
     D. ch &lt;-</p>
@@ -2459,7 +2464,7 @@ m[&quot;one&quot;] = 1
     A. map反序列化时json.unmarshal的入参必须为map的地址
     B. 在函数调用中传递map，则子函数中对map元素的增加不会导致父函数中map的修改
     C. 在函数调用中传递map，则子函数中对map元素的修改不会导致父函数中map的修改
-    D. 不能使用内置函数delete删除map的元素</p>
+    D. 不能使用内置函数delete删除map的元素（delete只能用来删除map中的元素）</p>
 </li>
 <li>
 <p>关于GoStub，下面说法正确的是（ABD）XXX
@@ -2637,8 +2642,6 @@ func main() {
 </li>
 <li>
 <p>下面关于文件操作的代码可能触发异常（T）</p>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code>file, err := os.Open(&quot;test.go&quot;)
 defer file.Close()
 if err != nil {
@@ -2646,9 +2649,10 @@ if err != nil {
      return
 }
 ...
+// 打开成功之后，才能 defer file.Close()
 </code></pre></div>
 
-<ol start="7">
+</li>
 <li>
 <p>Golang不支持自动垃圾回收（F）</p>
 </li>
@@ -2656,7 +2660,7 @@ if err != nil {
 <p>Golang支持反射，反射最常见的使用场景是做对象的序列化（T）</p>
 </li>
 <li>
-<p>Golang可以复用C/C++的模块，这个功能叫Cgo（F）XXX</p>
+<p>Golang可以复用C/C++的模块，这个功能叫Cgo（F）XXX    // 无法调用C++模块</p>
 </li>
 <li>
 <p>下面代码中两个斜点之间的代码，比如<code>json:"x"</code>，作用是X字段在从结构体实例编码到JSON数据格式的时候，使用x作为名字，这可以看作是一种重命名的方式（T）</p>
@@ -2672,7 +2676,7 @@ if err != nil {
 <p>通过成员变量或函数首字母的大小写来决定其作用域（T）</p>
 </li>
 <li>
-<p>对于常量定义zero(const zero = 0.0)，zero是浮点型常量（F）XXX，常量是无类型的，但可以参与运算</p>
+<p>对于常量定义zero(const zero = 0.0)，zero是浮点型常量（F）XXX // 常量是无类型的，但可以参与运算</p>
 </li>
 <li>
 <p>对变量x的取反操作是~x（F）XXX Go语言中是 ^</p>
@@ -2721,7 +2725,7 @@ func main() {
 <p>函数执行时，如果由于panic导致了异常，则延迟函数不会执行（F）XXX</p>
 </li>
 <li>
-<p>当程序运行时，如果遇到引用空指针、下标越界或显式调用panic函数等情况，则先触发panic函数的执行，然后调用延迟函数。调用者继续传递panic，因此该过程一直在调用栈中重复发生：函数停止执行，调用延迟执行函数。如果一路在延迟函数中没有recover函数的调用，则会到达该携程的起点，该携程结束，然后终止其他所有携程，其他携程的终止过程也是重复发生：函数停止执行，调用延迟执行函数（F）</p>
+<p>当程序运行时，如果遇到引用空指针、下标越界或显式调用panic函数等情况，则先触发panic函数的执行，然后调用延迟函数。调用者继续传递panic，因此该过程一直在调用栈中重复发生：函数停止执行，调用延迟执行函数。如果一路在延迟函数中没有recover函数的调用，则会到达该协程的起点，该协程结束，然后终止其他所有协程，其他协程的终止过程也是重复发生：函数停止执行，调用延迟执行函数（F）</p>
 </li>
 <li>
 <p>任何类型都可以被Any类型引用，Any类型就是空接口，即interface{}（T）</p>
@@ -2919,13 +2923,13 @@ func main() {
           </a>
         
         
-          <a href="../go_interview/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../go_exercises60/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Go interview
+                单选题
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

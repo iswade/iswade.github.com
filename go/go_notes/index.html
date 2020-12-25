@@ -15,7 +15,7 @@
     
     
       
-        <title>Go - iswade</title>
+        <title>Go - iswade's blog</title>
       
     
     
@@ -73,7 +73,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://iswade.github.io/" title="iswade" class="md-header-nav__button md-logo" aria-label="iswade">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -86,7 +86,7 @@
       
         <div class="md-header-nav__ellipsis">
           <span class="md-header-nav__topic md-ellipsis">
-            iswade
+            iswade's blog
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
@@ -145,13 +145,13 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://iswade.github.io/" title="iswade" class="md-nav__button md-logo" aria-label="iswade">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    iswade
+    iswade's blog
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -163,7 +163,7 @@
 
   <li class="md-nav__item">
     <a href="../.." class="md-nav__link">
-      my blog
+      iswade's blog
     </a>
   </li>
 
@@ -613,18 +613,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../exam04/" class="md-nav__link">
-      Exam04
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../go_exercises/" class="md-nav__link">
       Go exercises
     </a>
@@ -639,6 +627,18 @@
   <li class="md-nav__item">
     <a href="../go_exercises100/" class="md-nav__link">
       Go exercises100
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_exercises60/" class="md-nav__link">
+      单选题
     </a>
   </li>
 
@@ -1992,9 +1992,8 @@
 <li>了解多核并发，性能优化调优，CPU架构等</li>
 </ol>
 <h1 id="_1">语言基础</h1>
-<ol>
-<li>特征：语法简单；并发模型；内存分配；垃圾收集；静态链接；标准库；工具链</li>
-</ol>
+<p>特征：语法简单；并发模型；内存分配；垃圾收集；静态链接；标准库；工具链</p>
+<p>Go语言是入门简单的语言，但是深入比较困难。（反过来说，哪一门语言不是如此呢？）</p>
 <h2 id="_2">类型</h2>
 <h3 id="_3">变量</h3>
 <ol>
@@ -2020,8 +2019,8 @@
 <li>在编译时创建，在定义函数的本地常量时也是一样</li>
 <li>定义常量的表达式必须是常量，在编译时可以计算</li>
 <li>如 <code>1&lt;&lt;3</code> 是常量表达式，<code>math.Sin(math.Pi/4)</code> 不是</li>
-<li>枚举类型通常使用 <code>iota</code> 枚举器来实现，可以定义较复杂的表达式，iota 从0开始</li>
-<li>常量通常会在编译器在预处理阶段直接展开，作为指令数据使用，无法获取地址</li>
+<li>枚举类型通常使用 <code>iota</code> 枚举器来实现，可以定义较复杂的表达式，iota 从 0 开始</li>
+<li>常量通常会在编译器预处理阶段直接展开，作为指令数据使用，无法获取地址</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span> <span class="nx">ByteSize</span> <span class="kt">float64</span>
 
@@ -2158,7 +2157,7 @@ RIGHT SHIFT   a &gt;&gt; 2       右移
 <p><code>Pointer</code> 类似C语言中的 <code>void *</code>，可以用来转换指针类型。</p>
 </li>
 <li>
-<p><code>uintptr</code> 进行是一个特殊整型，并不引用目标对象，无法阻止垃圾回收对象内存。</p>
+<p><code>uintptr</code> 仅仅是一个特殊整型，并不引用目标对象，无法阻止垃圾回收对象内存。</p>
 </li>
 <li>
 <p>零长度对象的地址是否相同和具体的版本有关，不过肯定不等于nil。</p>
@@ -2294,12 +2293,23 @@ RIGHT SHIFT   a &gt;&gt; 2       右移
 <p>根据运算符的优先级加入空格（例如 <code>x&lt;&lt;8 + y&lt;&lt;16</code>）</p>
 </li>
 <li>
-<p>goimport 导入顺序：空行或者行注释分割的块进行分布处理，块内部包名进行排序。</p>
+<p>goimport 导入顺序：</p>
 </li>
 </ol>
+<ul>
+<li>
+<p>空行或者行注释分割的块进行分别处理，块内根据包名进行排序。</p>
+</li>
+<li>
 <p>建议顺序：标准库，系统库，第三方库，本项目的库。</p>
+</li>
+<li>
 <p>不同的分组之间使用空行分割开。</p>
+</li>
+<li>
 <p>可以使用 goimports 工具自动格式化，自动删除和引入包。</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># 对文件格式化</span>
 gofmt -w main.go
 
@@ -2430,9 +2440,9 @@ goimport -w main.go
 <h3 id="_22">闭包</h3>
 <ol>
 <li>闭包是在其语法上下文中引用了自由变量的函数</li>
-<li>闭包是<strong>函数和其引用的环境</strong>的环境的组合体</li>
+<li>闭包是<strong>函数和其引用的环境</strong>的组合体</li>
 <li>闭包直接引用了原环境变量</li>
-<li>多个匿名函数引用同一环境变量，任何修改行为都会影响其他函数取值，在并发场景下，需要做同步处理</li>
+<li>多个匿名函数引用同一环境变量，任何修改都会影响其他函数取值，在并发场景下，需要做同步处理</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nx">test</span><span class="p">()</span> <span class="p">[]</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kd">func</span><span class="p">()</span>
@@ -2524,7 +2534,7 @@ goimport -w main.go
 <li>对字符串进行切片时返回子串时，内部依旧指向元字节数组。</li>
 <li>使用for遍历字符串时，分byte和rune两种方式。</li>
 <li>要修改字符串，需要将其转换为可变类型（[]rune 或者 []byte），完成后再转换回来。转换需要重新分配内存，并复制数据。</li>
-<li>有些时候，转换会拖累算法性能，可以尝试用“非安全”方法进行改善。原理是：[]byte和string的头结构“部分相同”。</li>
+<li>有时候，转换会拖累性能，可以尝试用“非安全”方法进行改善。原理：[]byte和string的头结构“部分相同”。</li>
 <li>动态构建字符串（用加法拼接字符串，每次都重新分配内存）也容易造成性能问题。可以使用 <code>strings.Join</code> 或者 <code>bytes.Buffer</code> 来改善。</li>
 <li>使用单引号的字符，默认就是rune类型。</li>
 </ol>
@@ -2590,7 +2600,7 @@ goimport -w main.go
 <li>如果把数组传给函数，则是数组的拷贝，并不是指针</li>
 <li>数组的大小是其类型的一部分。类型<code>[10]int</code>和<code>[20]int</code>是不同的类型。</li>
 <li>数组是构建切片的基础</li>
-<li>使用range进行数组遍历时，实际遍历的是数组的拷贝，可以使用切片来代替数组，避免数组的拷贝</li>
+<li>使用range遍历数组时，实际遍历的是数组的拷贝，可以使用切片来代替数组，避免数组的拷贝</li>
 <li>如果元素支持 == 或者 != 操作符，则数组也支持此操作</li>
 <li>可获取任意元素地址，数组指针可以用来操作元素</li>
 </ol>
@@ -2616,7 +2626,7 @@ goimport -w main.go
 <li>Append操作<ol>
 <li><code>s = append(s, d)</code>，需要将切片返回出来：传递slice给另一个函数，如果在这个函数中进行append操作，导致新创建了底层数组。则slice中的内容不会反映到上层调用函数中</li>
 <li>nil切片，也可以进行append操作</li>
-<li>append时，如果超出cap限制，，新分配数组是原数组cap的2倍</li>
+<li>append时，如果超出cap限制，新分配数组是原数组cap的2倍</li>
 </ol>
 </li>
 <li><code>copy(dst, src)</code> 仅拷贝len(dst)和len(src)较小的一个。允许区间重叠。</li>
@@ -2686,10 +2696,11 @@ goimport -w main.go
 <li>键可以是定义了相等运算符的任何类型（整数，浮点数，复数，字符串，指针，接口（只要动态类型支持相等运算），结构和数组）</li>
 <li>切片不能被当做key来使用，因为切片的相等是未定义的</li>
 <li>map可以通过函数参数传递，修改内容对调用者可见</li>
-<li>对map进行range迭代，每次返回的KV顺序都是不同的。但是<code>fmt.Printf("%v", m)</code>方式输出时固定的顺序（方便写测试用例）</li>
+<li>对map进行range迭代，每次返回的KV顺序都是不同的（故意使用了随机值）</li>
+<li><code>fmt.Printf("%v", m)</code>方式输出时固定的顺序（方便写测试用例）</li>
 <li>不能直接修改value成员（结构或者数组）</li>
 <li>在迭代期间删除或者新增键值是安全的</li>
-<li>运行时会对map的并发做出检测</li>
+<li>运行时会对map的并发做出检测（-race可以检测并发操作）</li>
 <li>在创建时预先准备足够的空间有助于提升性能，减少扩张时的内存分配和重新哈希操作</li>
 <li>map不会收缩，如果仅操作一个大map中的小部分，建议用新的map来替代，大的map可以被垃圾回收</li>
 </ol>
@@ -2857,7 +2868,7 @@ goimport -w main.go
 <span class="p">}</span>
 </code></pre></div>
 
-<p>"组合"方式还可以用于，数组、切片、映射的索引和键（只要索引和键不相同即可）：</p>
+<p>"组合"方式还可以用于数组、切片、映射的索引和键（只要索引和键不相同即可）：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="p">(</span>
     <span class="nx">Enone</span>  <span class="p">=</span> <span class="kc">iota</span>
     <span class="nx">Eio</span>
@@ -2869,17 +2880,21 @@ goimport -w main.go
 </code></pre></div>
 
 <h3 id="make">make</h3>
-<p>make 关键字的作用是创建 slice、map 和 chan 内置的数据结构，返回初始化后的值，而不是零值。（引用类型：特指内置的三种类型slice、map和chan）。</p>
-<p>make会被编译器翻译成具体的创建函数，由其分配内存和初始化成员结构，返回对象而非指针。</p>
-<p>原因是：这三种类型必须在使用前进行初始化。</p>
+<ul>
+<li>make 关键字的作用是创建 slice、map 和 chan 内置的数据结构，返回初始化后的值，而不是零值。（引用类型：特指内置的三种类型slice、map和chan）。</li>
+<li>make会被编译器翻译成具体的创建函数，由其分配内存和初始化成员结构，返回对象而非指针。原因是：这三种类型必须在使用前进行初始化。</li>
+</ul>
 <p>例如切片，包含了三个字段描述（指向数据的指针，内部是一个数组），长度还有容量。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nb">make</span><span class="p">(</span><span class="nx">t</span> <span class="nx">Type</span><span class="p">,</span> <span class="nx">size</span> <span class="o">...</span><span class="nx">IntegerType</span><span class="p">)</span> <span class="nx">Type</span>
 
 <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>              <span class="c1">// len=4,cap=4</span>
 <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>           <span class="c1">// len=4,cap=8</span>
+
 <span class="nx">s</span><span class="p">:</span> <span class="p">=</span> <span class="o">*</span><span class="nb">new</span><span class="p">([]</span><span class="kt">int</span><span class="p">)</span>            <span class="c1">// len=0,cap=0,注意new返回指针</span>
+
 <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>        <span class="c1">// len=0,cap=NA</span>
 <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>     <span class="c1">// len=0,cap=NA</span>
+
 <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>              <span class="c1">// len=0,cap=0,unbuffered</span>
 <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>           <span class="c1">// len=0,cap=4</span>
 </code></pre></div>
@@ -2931,11 +2946,11 @@ goimport -w main.go
 <p><code>%q</code> 打印双引号引起来的值；<code>%#q</code> 使用反引号</p>
 </li>
 <li>
-<p><code>%x</code> 可在字符串，字节数组和字节切片以及整数上使用，生成一个长的十六进制字符串
-- <code>% x</code> 格式的空格在字节之间放置空格。
-  - <code>fmt.Printf("% x\n", "string")</code></p>
+<p><code>%x</code> 可在字符串，字节数组和字节切片以及整数上使用，生成一个长的十六进制字符串</p>
 <ul>
-<li><code>Output: 73 74 72 69 6e 67</code></li>
+<li><code>% x</code> 格式的空格在字节之间放置空格。</li>
+<li><code>fmt.Printf("% x\n", "string")</code></li>
+<li><code>Output: 73 74 72 69 6e 67</code> </li>
 <li><code>%#x</code> 格式在打印十六进制时，打印<code>0x</code>前缀</li>
 </ul>
 </li>
@@ -3005,7 +3020,7 @@ goimport -w main.go
 <ul>
 <li><code>%5d</code> 表示该整型最大长度是5，下面这段代码</li>
 </ul>
-<div class="highlight"><pre><span></span><code>  fmt.Printf<span class="o">(</span><span class="s2">&quot;|%5d|&quot;</span>, <span class="m">1</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code>fmt.Printf<span class="o">(</span><span class="s2">&quot;|%5d|&quot;</span>, <span class="m">1</span><span class="o">)</span>
   fmt.Printf<span class="o">(</span><span class="s2">&quot;|%5d|&quot;</span>, <span class="m">1234567</span><span class="o">)</span>
 </code></pre></div>
 
@@ -3065,7 +3080,7 @@ goimport -w main.go
 <h3 id="append">append</h3>
 <ol>
 <li><code>func append(slice []T, elements ...T) []T</code></li>
-<li>我们无法写 T 类型这样的行数，需要编译器的支持</li>
+<li>我们无法写 T 类型这样的函数，需要编译器的支持</li>
 <li>并且需要返回切片，因为函数内部可能会变更切片</li>
 <li><code>s = append(s, 4, 5, 6)</code> 多个元素加入切片</li>
 <li><code>s = append(s, s...)</code>  切片加入切片</li>
@@ -3212,7 +3227,7 @@ goimport -w main.go
 </code></pre></div>
 
 <ol start="7">
-<li>面向对象的三大特征“封装”、“继承”和”多态“，Go仅实现了部分特征，更倾向于使用”组合优于继承“这种思想。</li>
+<li>面向对象的三大特征“封装”、“继承”和”多态“，Go仅实现了部分特征，更倾向于使用”<strong>组合优于继承</strong>“这种思想。</li>
 </ol>
 <h3 id="_33">指针与值接收器总结</h3>
 <ol>
@@ -3228,7 +3243,7 @@ goimport -w main.go
 <li>对于简单的基本类型：int, string</li>
 <li>只有值类型，没有可变字段和指针的小数组，结构</li>
 <li>对于切片，不会触发重新切片或者重新分配</li>
-<li>可以将接收器，当做函数的一个参数来思考用哪种方式传递</li>
+<li>可以将接收器，当做函数的第一个参数来思考用哪种方式传递</li>
 </ol>
 <h3 id="_34">匿名字段</h3>
 <ol>
@@ -3268,7 +3283,7 @@ goimport -w main.go
 </code></pre></div>
 
 <ol>
-<li>在Go语言中，接口提供了一种特定化一个对象行为的方式：如果可以这样做，则可以在这里使用。</li>
+<li>在Go语言中，接口提供了特定化一个对象行为的方式：如果可以这样做，则可以在这里使用。</li>
 <li>在Go语言中，一个或者两个方法的接口很常见。</li>
 <li>通常接口名称根据方法名称派生而来，例如 <code>io.writer</code> 是实现了 <code>Write</code> 接口。</li>
 <li>一个类型可以实现多个接口。（例如一个集合类型可以通过排序接口排序，还可以通过格式化接口自定义输出格式）</li>
@@ -3300,7 +3315,7 @@ goimport -w main.go
 
 <h3 id="_36">接口转换和类型断言</h3>
 <ol>
-<li><code>type switch</code>  也是一种转化：接受一个接口，对于每个分支，转化为一种类型。<code>switch str := value.(type)</code></li>
+<li><code>switch type</code> 也是一种转化：接受一个接口，对于每个分支，转化为一种类型。<code>switch str := value.(type)</code></li>
 <li>如果我们只关心一种类型，如果我们知道值保存的是 <code>string</code> ，我们希望提取出来，则可以使用类型断言。<code>value.(string)</code></li>
 <li>类型断言后的结果是：（1）精确的类型（2）可以转换成的另一个接口</li>
 <li>类型断言如果与期望的类型不匹配，则会出现运行时错误。</li>
@@ -3582,11 +3597,8 @@ goimport -w main.go
 <ul>
 <li>所有通道都会被监听</li>
 <li>select 会阻塞直到某个通道读取到内容</li>
-<li>如果多个通道都可以处理，则会以伪随机的方式处理</li>
-<li>
-<p>如果有默认分支，并且没有通道就绪，则会立即执行</p>
-</li>
-<li></li>
+<li>如果多个通道都可以处理，则会以随机的方式处理</li>
+<li>如果有默认分支，并且没有通道就绪，则会立即执行</li>
 </ul>
 <h2 id="web">web服务器</h2>
 <p>生成二维码</p>
@@ -3645,8 +3657,8 @@ goimport -w main.go
 <ol>
 <li>规则1.1：使用驼峰记法进行多单词名称的命名</li>
 <li>规则1.2：代码中禁止使用魔鬼数</li>
-<li>规则1.3：文件名必须为小写单词，允许加下划线‘_’组合方式</li>
-<li>规则1.4：目录名必须为全小写单词，允许加中划线‘-’组合方式，但是头尾不能为中划线</li>
+<li>规则1.3：文件名必须为小写单词，允许加下划线 <code>_</code> 组合方式</li>
+<li>规则1.4：目录名必须为全小写单词，允许加中划线 <code>-</code> 组合方式，但是头尾不能为中划线</li>
 <li>规则1.5：包名<strong>必须全部为小写单词，无下划线</strong>。不要与标准库重名</li>
 <li>规则1.6：方法接收名必须为大小写混排，首字母小写。方法接收者命名要能够体现接收者对象</li>
 <li>建议1.1：包名尽量与所在目录名一致</li>
