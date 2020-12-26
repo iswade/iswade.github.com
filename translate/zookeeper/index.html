@@ -2254,19 +2254,17 @@
 <p>虽然简单锁协议可以工作，但还有一些问题。首先，有群体效应问题，如果很多客户端等待锁，对这个锁的竞争就会很激烈，当锁释放时，仅仅有一个等待的客户端获得锁。其次，仅仅实现了互斥锁。下面两个原语克服了这些问题。</p>
 <p><strong>无群体效应的简单锁</strong> 定义一个znode <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> 来实现这种锁，将所有客户端按请求顺序排列，依次获得锁。希望获得锁的客户端做如下的操作：</p>
 <p><strong>lock</strong></p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">1 n = create(l + “/lock-”, EPHEMERAL|SEQUENTIAL)</span>
-<span style="color: #839496; background-color: #dc322f">2 C = getChildren(l, false)</span>
-<span style="color: #839496; background-color: #dc322f">3 if n is lowest znode in C, exit</span>
-<span style="color: #839496; background-color: #dc322f">4 p = znode in C ordered just before n</span>
-<span style="color: #839496; background-color: #dc322f">5 if exists(p, true) wait for watch event</span>
-<span style="color: #839496; background-color: #dc322f">6 goto 2</span>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="n">n</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="err">“</span><span class="o">/</span><span class="n">lock</span><span class="o">-</span><span class="err">”</span><span class="p">,</span> <span class="n">EPHEMERAL</span><span class="o">|</span><span class="n">SEQUENTIAL</span><span class="p">)</span>
+<span class="mi">2</span> <span class="n">C</span> <span class="o">=</span> <span class="n">getChildren</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="nb">false</span><span class="p">)</span>
+<span class="mi">3</span> <span class="k">if</span> <span class="n">n</span> <span class="n">is</span> <span class="n">lowest</span> <span class="n">znode</span> <span class="n">in</span> <span class="n">C</span><span class="p">,</span> <span class="n">exit</span>
+<span class="mi">4</span> <span class="n">p</span> <span class="o">=</span> <span class="n">znode</span> <span class="n">in</span> <span class="n">C</span> <span class="n">ordered</span> <span class="n">just</span> <span class="n">before</span> <span class="n">n</span>
+<span class="mi">5</span> <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">watch</span> <span class="n">event</span>
+<span class="mi">6</span> <span class="k">goto</span> <span class="mi">2</span>
 </code></pre></div>
-
 
 <p><strong>unlock</strong></p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">1 delete(n)</span>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="n">delete</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>在 lock 第1行中，使用顺序标识将所有获取锁的客户端排序。如果客户端有最小的序号，则获得锁，否则，客户端等待删除已经获得锁或者这个客户端之前接受锁的 znode。通过监视先于客户端的 znode，当释放锁或者放弃锁请求时，一次唤醒一个客户端，这样就避免了群体效应。一旦监视的 znode 不存在，客户端要检查是否获得了锁。（前面的锁请求会被放弃，有一个小序号的 znode 还在等待锁。）</p>
 <p>释放锁的操作很简单，删除代表了锁的 znode 即可。创建节点时使用临时标识，进程崩溃时会自动锁请求释放所有的锁。</p>
@@ -2276,24 +2274,22 @@
 3. 由于我们实现锁的方式，通过浏览 ZooKeeper 的数据，我们可以观察锁的竞争，解锁，调试锁。</p>
 <p><strong>读写锁</strong> 为了实现读写锁，稍微改一下前面的锁步骤即可，将其分解为读锁和写锁，释放锁的过程与前面全局锁一样。</p>
 <p><strong>write lock</strong></p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">1 n = create(l + “/write-”, EPHEMERAL|SEQUENTIAL)</span>
-<span style="color: #839496; background-color: #dc322f">2 C = getChildren(l, false)</span>
-<span style="color: #839496; background-color: #dc322f">3 if n is lowest znode in C, exit</span>
-<span style="color: #839496; background-color: #dc322f">4 p = znode in C ordered just before n</span>
-<span style="color: #839496; background-color: #dc322f">5 if exists(p, true) wait for event</span>
-<span style="color: #839496; background-color: #dc322f">6 goto 2</span>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="n">n</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="err">“</span><span class="o">/</span><span class="n">write</span><span class="o">-</span><span class="err">”</span><span class="p">,</span> <span class="n">EPHEMERAL</span><span class="o">|</span><span class="n">SEQUENTIAL</span><span class="p">)</span>
+<span class="mi">2</span> <span class="n">C</span> <span class="o">=</span> <span class="n">getChildren</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="nb">false</span><span class="p">)</span>
+<span class="mi">3</span> <span class="k">if</span> <span class="n">n</span> <span class="n">is</span> <span class="n">lowest</span> <span class="n">znode</span> <span class="n">in</span> <span class="n">C</span><span class="p">,</span> <span class="n">exit</span>
+<span class="mi">4</span> <span class="n">p</span> <span class="o">=</span> <span class="n">znode</span> <span class="n">in</span> <span class="n">C</span> <span class="n">ordered</span> <span class="n">just</span> <span class="n">before</span> <span class="n">n</span>
+<span class="mi">5</span> <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">event</span>
+<span class="mi">6</span> <span class="k">goto</span> <span class="mi">2</span>
 </code></pre></div>
-
 
 <p><strong>read lock</strong></p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">1 n = create(l + “/read-”, EPHEMERAL|SEQUENTIAL)</span>
-<span style="color: #839496; background-color: #dc322f">2 C = getChildren(l, false)</span>
-<span style="color: #839496; background-color: #dc322f">3 if no write znodes lower than n in C, exit</span>
-<span style="color: #839496; background-color: #dc322f">4 p = write znode in C ordered just before n</span>
-<span style="color: #839496; background-color: #dc322f">5 if exists(p, true) wait for event</span>
-<span style="color: #839496; background-color: #dc322f">6 goto 3</span>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="n">n</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="err">“</span><span class="o">/</span><span class="n">read</span><span class="o">-</span><span class="err">”</span><span class="p">,</span> <span class="n">EPHEMERAL</span><span class="o">|</span><span class="n">SEQUENTIAL</span><span class="p">)</span>
+<span class="mi">2</span> <span class="n">C</span> <span class="o">=</span> <span class="n">getChildren</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="nb">false</span><span class="p">)</span>
+<span class="mi">3</span> <span class="k">if</span> <span class="n">no</span> <span class="n">write</span> <span class="n">znodes</span> <span class="n">lower</span> <span class="n">than</span> <span class="n">n</span> <span class="n">in</span> <span class="n">C</span><span class="p">,</span> <span class="n">exit</span>
+<span class="mi">4</span> <span class="n">p</span> <span class="o">=</span> <span class="n">write</span> <span class="n">znode</span> <span class="n">in</span> <span class="n">C</span> <span class="n">ordered</span> <span class="n">just</span> <span class="n">before</span> <span class="n">n</span>
+<span class="mi">5</span> <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">event</span>
+<span class="mi">6</span> <span class="k">goto</span> <span class="mi">3</span>
 </code></pre></div>
-
 
 <p>这个锁过程与前面的锁稍微有点差异，写锁仅仅命名不一样。读锁可以共享，第三、四行稍微变了一下，如果前面有写锁就不能获得读锁，当一些客户端等待读锁时，如果写锁被删除了，似乎会出现群体效应，实际上这种情况是正常的情况，所有客户端可以获得锁同时读取。</p>
 <p><strong>双屏障</strong> 双屏障使得客户端在计算开始和结束时进行同步。通过屏障阈值定义进程个数，当有足够多进程加入到屏障后，开始启动计算，计算结束时离开屏障，在 ZooKeeper 中使用一个 znode <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 来表示屏障。每个进程 p 进入时，创建 b 的子节点向 b 注册，当进程离开时删除子节点向 b 注销。在所有进程移除了子节点后进程可以退出屏障。使用监视器等待进入和离开的条件满足。进入时，进程监视 b 的就绪节点是否存在，这个节点由进程满足屏障阈值的那个进程创建，离开时，监视一个特殊子节点是否消失，一旦子节点被移除，仅检查退出条件即可。</p>
@@ -2322,14 +2318,13 @@
 <h3 id="43">4.3 复制数据库</h3>
 <p>每个副本都在内存中有一份 ZooKeeper 状态的拷贝，当 ZooKeeper 从故障中恢复时，需要恢复其内部状态。当服务器运行一段时间之后，重新发送所有消息恢复状态需要很长时间，所以 ZooKeeper 使用周期性的快照，每次只需要重新发送从快照开始的消息。将 ZooKeeper 快照称之为模糊快照，因为不需要锁定 ZooKeeper 状态来生成快照，使用深度优先扫描树，读取 znode 的数据和元数据并写到磁盘。虽然最终的模糊快照可能会包含状态变化的子集，因为在生成快照的时候也可能会有状态变化，结果与 ZooKeeper 某个状态不一致，但只要顺序写入状态变更消息，由于是幂等的，可以进行两次变更。</p>
 <p>例如，假设 ZooKeeper 数据树节点 <code>/foo</code> 和 <code>/goo</code> 各设置有 <code>f1</code> 和 <code>g1</code>，模糊快照开始时版本号都是1，状态变化流有如下的形式：</p>
-<div class="highlight"><pre><span></span><code>⟨transactionType, path, value, new-version&gt;
+<div class="highlight"><pre><span></span><code>⟨transactionType, path, value, new-version⟩ 
 </code></pre></div>
 
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">⟨SetDataTXN, /foo, f2, 2⟩ </span>
-<span style="color: #839496; background-color: #dc322f">⟨SetDataTXN, /goo, g2, 2⟩ </span>
-<span style="color: #839496; background-color: #dc322f">⟨SetDataTXN, /foo, f3, 3⟩</span>
+<div class="highlight"><pre><span></span><code>⟨SetDataTXN, /foo, f2, 2⟩ 
+⟨SetDataTXN, /goo, g2, 2⟩ 
+⟨SetDataTXN, /foo, f3, 3⟩
 </code></pre></div>
-
 
 <p>在处理这些状态变更之后，<code>/foo</code> 和 <code>/goo</code> 的值变为 <code>f3</code> 和 <code>g2</code>。但模糊快照可能记录 <code>/foo</code> 和 <code>/goo</code> 有 <code>f3</code> 和 <code>g1</code>，版本分布为3和1，这种状态不是 ZooKeeper 数据的最终状态，如果服务器宕机从快照恢复，Zab 重新发送状态变更，最终保证与宕机前的服务状态一致。</p>
 <h3 id="44-cs">4.4 C/S交互</h3>
