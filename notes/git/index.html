@@ -847,7 +847,7 @@
         
           <li class="md-nav__item">
   <a href="#21-github" class="md-nav__link">
-    2.1 创建一个库推送到github
+    2.1 创建一个库推送到 github
   </a>
   
 </li>
@@ -861,7 +861,7 @@
         
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
-    2.3 更新到远程仓库
+    2.3 更新远程仓库
   </a>
   
 </li>
@@ -921,14 +921,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alias" class="md-nav__link">
-    alias
+  <a href="#_5" class="md-nav__link">
+    
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     配置文件
   </a>
   
@@ -947,7 +947,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     第七章 工作流
   </a>
   
@@ -955,7 +955,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     合并
   </a>
   
@@ -969,7 +969,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     删除远程分支
   </a>
   
@@ -981,14 +981,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     第八章 速查表
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     参考书
   </a>
   
@@ -2071,7 +2071,7 @@
         
           <li class="md-nav__item">
   <a href="#21-github" class="md-nav__link">
-    2.1 创建一个库推送到github
+    2.1 创建一个库推送到 github
   </a>
   
 </li>
@@ -2085,7 +2085,7 @@
         
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
-    2.3 更新到远程仓库
+    2.3 更新远程仓库
   </a>
   
 </li>
@@ -2145,14 +2145,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alias" class="md-nav__link">
-    alias
+  <a href="#_5" class="md-nav__link">
+    
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     配置文件
   </a>
   
@@ -2171,7 +2171,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     第七章 工作流
   </a>
   
@@ -2179,7 +2179,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     合并
   </a>
   
@@ -2193,7 +2193,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     删除远程分支
   </a>
   
@@ -2205,14 +2205,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     第八章 速查表
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     参考书
   </a>
   
@@ -2255,26 +2255,30 @@ git add readme.md
 git commit -m <span class="s2">&quot;add readme&quot;</span>
 
 <span class="c1"># 查看提交日志</span>
-git log --pretty<span class="o">=</span>oneline
+git log
 
 <span class="c1"># 回退到上一个版本</span>
 git reset --hard HEAD^
 
-HEAD: 当前版本
-HEAD^: 上一个版本
-HEAD~100: 前一百个版本
-58a65b: 指定版本
+<span class="c1"># HEAD: 当前版本</span>
+<span class="c1"># HEAD^: 上一个版本</span>
+<span class="c1"># HEAD~100: 前一百个版本</span>
+<span class="c1"># 58a65b: 指定版本</span>
 </code></pre></div>
 
 <h3 id="12">1.2 工作区与暂存区</h3>
-<p>工作区 -- git add &rarr; 暂存区 -- git commit &rarr; 分支</p>
+<div class="highlight"><pre><span></span><code>|-------|            |-------|               |-------|
+| 工作区 | -- add --&gt; | 暂存区 | -- commit --&gt; | 主分支 |
+|-------|            |-------|               |-------|
+</code></pre></div>
+
 <div class="highlight"><pre><span></span><code><span class="c1"># 查看工作区与暂存区文件的差异</span>
 git diff readme.md
 
 <span class="c1"># 查看工作区和版本库最新版本的差异</span>
 git diff HEAD -- readme.md
 
-<span class="c1"># 放弃工作区的修改(还没有执行 git add 命令)</span>
+<span class="c1"># 放弃工作区的修改(未执行 git add 命令)</span>
 git checkout -- readme.md
 
 <span class="c1"># 撤销暂存区（已经执行了 git add 命令）</span>
@@ -2296,64 +2300,55 @@ git reset --hard CommitID
 </code></pre></div>
 
 <h2 id="_2">第二章 远程仓库</h2>
-<h3 id="21-github">2.1 创建一个库推送到github</h3>
-<p>在github上创建一个仓库 gitlearn</p>
-<p>在本地创建一个gitlearn目录，并进入</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">mkdir gitlearn</span>
-<span style="color: #839496; background-color: #dc322f">cd gitlearn</span>
+<h3 id="21-github">2.1 创建一个库推送到 github</h3>
+<p>在 github上 创建一个仓库  gitlearn。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在本地创建一个 gitlearn 目录，并进入</span>
+mkdir gitlearn
+<span class="nb">cd</span> gitlearn
+
+<span class="c1"># 使用命令 git init 初始化一个库</span>
+git init
+
+<span class="c1"># 添加远程库 origin</span>
+git remote add origin git@github.com:iswade/gitlearn.git
+
+<span class="c1"># 添加 readme.md 文件</span>
+<span class="nb">echo</span> <span class="s2">&quot;git learn is very easy!&quot;</span> &gt; readme.md
+
+<span class="c1"># 添加文件并提交到仓库</span>
+git add readme.md
+git commit -m <span class="s2">&quot;add readme&quot;</span>
+
+<span class="c1"># 执行向远程仓库 origin master 分支推送更新（-u 参数用于关联远程仓库）</span>
+git push -u origin master
 </code></pre></div>
-
-
-<p>使用命令git init初始化一个库</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git init</span>
-</code></pre></div>
-
-
-<p>然后使用如下命令添加远程库 origin</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git remote add origin git@github.com:iswade/gitlearn.git</span>
-</code></pre></div>
-
-
-<p>生成一个readme.md文件</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">echo &quot;git learn is very easy!&quot; &gt; readme.md</span>
-</code></pre></div>
-
-
-<p>添加文件到仓库</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git add readme.md</span>
-</code></pre></div>
-
-
-<p>提交更改</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git commit -m &quot;add readme file&quot;</span>
-</code></pre></div>
-
-
-<p>执行向远程仓库origin master分支推送更新（-u 参数用于关联远程仓库）
-下面的命令用户把当前分支 master 推送到远程：</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git push -u origin master</span>
-</code></pre></div>
-
 
 <h3 id="22">2.2 克隆一个远程仓库</h3>
-<p>在github上创建一个仓库 gitlearn</p>
-<p>从github上克隆仓库</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git clone git@github.com:iswade/gitlearn.git</span>
+<p>在 github 上创建一个仓库 gitlearn。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 从github上克隆仓库</span>
+git clone git@github.com:iswade/gitlearn.git
 </code></pre></div>
 
+<h3 id="23">2.3 更新远程仓库</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看当前分支的关联远程仓库</span>
+git branch -vv
 
-<h3 id="23">2.3 更新到远程仓库</h3>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">#</span><span style="color: #839496"> 获得当前远程仓库的url</span>
-<span style="color: #839496">git remote </span><span style="color: #859900">get</span><span style="color: #586e75">-</span><span style="color: #839496">url </span><span style="color: #586e75; font-style: italic">--all origin</span>
+<span class="c1"># 查看远程仓库的 URL</span>
+git remote -v
 
-<span style="color: #839496; background-color: #dc322f">#</span><span style="color: #839496"> 重新设置远程仓库的url</span>
-<span style="color: #839496">git remote </span><span style="color: #859900">set</span><span style="color: #586e75">-</span><span style="color: #839496">url origin git</span><span style="color: #268bd2">@github</span><span style="color: #839496">.</span><span style="color: #268bd2">com</span><span style="color: #839496">:iswade</span><span style="color: #586e75">/</span><span style="color: #839496">blog.git</span>
+<span class="c1"># 重新设置远程仓库的 URL</span>
+git remote set-url origin git@github.com:iswade/gitlearn.git
+
+<span class="c1"># 将当前修改更新到远程 master 分支</span>
+git push origin master
 </code></pre></div>
-
 
 <h2 id="_3">第三章 分支管理</h2>
 <h3 id="31">3.1 创建与合并分支</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 创建分支</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看当前分支</span>
+git branch 
+
+<span class="c1"># 基于当前分支创建新分支</span>
 git branch dev
 
 <span class="c1"># 切换分支</span>
@@ -2362,10 +2357,7 @@ git checkout dev
 <span class="c1"># 创建并切换分支</span>
 git checkout -b dev
 
-<span class="c1"># 查看分支, 带有*的分支为当前分支</span>
-git branch
-
-<span class="c1"># 切换到master分支</span>
+<span class="c1"># 切换到 master 分支</span>
 git checkout master
 
 <span class="c1"># 合并指定分支到当前分支(合并 dev 分支到 master 分支)</span>
@@ -2376,21 +2368,19 @@ git branch -d dev
 </code></pre></div>
 
 <h3 id="32">3.2 冲突管理</h3>
-<p>在master分支上修改readme.md，新增一行内容。提交修改。
-在dev分支上修改readme.md，也新增一行内容。提交修改。</p>
-<p>然后切换到master分支，将dev分支的内容合并。</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f">git merge dev</span>
+<p>在 master 分支上修改 readme.md，新增一行内容。提交修改。
+在 dev 分支上修改 readme.md，也新增一行内容。提交修改。</p>
+<p>然后切换到 master 分支，将 dev 分支的内容合并。</p>
+<div class="highlight"><pre><span></span><code>git merge dev
 </code></pre></div>
-
 
 <p>会有冲突提醒。打开 readme.md:</p>
-<div class="codehilite" style="background: #002b36"><pre style="line-height: 125%"><span></span><code><span style="color: #839496; background-color: #dc322f"> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
-<span style="color: #839496; background-color: #dc322f">Creating a new branch is quick &amp; simple.</span>
-<span style="color: #839496; background-color: #dc322f">=======</span>
-<span style="color: #839496; background-color: #dc322f">Creating a new branch is quick AND simple.</span>
-<span style="color: #839496; background-color: #dc322f">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</span>
+<div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Creating a new branch is quick &amp; simple.
+<span class="gh">=======</span>
+Creating a new branch is quick AND simple.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1
 </code></pre></div>
-
 
 <p>然后修改内容。再次提交。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 查看分支合并情况</span>
@@ -2402,14 +2392,14 @@ git stash
 <span class="c1"># 查看储藏的你内容</span>
 git stash list
 
-<span class="c1"># 恢复储藏的内容</span>
+<span class="c1"># 恢复储藏的内容，并删除</span>
+git stash pop
+
+<span class="c1"># 也可以指定恢复储藏的内容</span>
 git stash apply stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>
 
 <span class="c1"># 删除储藏的内容</span>
 git stash drop
-
-<span class="c1"># 恢复储藏的内容，并删除</span>
-git stash pop
 </code></pre></div>
 
 <h3 id="33">3.3 多人协作</h3>
@@ -2431,45 +2421,32 @@ git pull
 </code></pre></div>
 
 <h2 id="_4">第四章 搭建服务</h2>
-<div class="highlight"><pre><span></span><code><span class="o">(</span>server<span class="o">)</span>
-<span class="c1"># 创建一个用户git来运行git服务</span>
+<p>(server)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建一个用户 git 来运行 git 服务</span>
 adduser git
 
-<span class="c1"># 创建一个裸仓库(sample.git 所在目录/root/git/)</span>
+<span class="c1"># 创建一个空仓库 sample.git 所在目录 /root/git/</span>
 git init --bare sample.git
 
 <span class="c1"># 改变用户</span>
 sudo chown -R git:git sample.git
 
-<span class="c1"># 添加客户端的公钥到/root/.ssh/authorized_keys</span>
+<span class="c1"># 添加客户端公钥到 /root/.ssh/authorized_keys</span>
+</code></pre></div>
 
-<span class="o">(</span>client<span class="o">)</span>
-<span class="c1"># 克隆sample.git</span>
+<p>(client)
+<div class="highlight"><pre><span></span><code><span class="c1"># 克隆 sample.git</span>
 git clone git@192.168.137.200:/root/git/sample.git
 
-<span class="c1"># 增加readme.md</span>
+<span class="c1"># 增加 readme.md</span>
 <span class="nb">echo</span> <span class="s2">&quot;my first server sample&quot;</span> &gt; readme.md
 git add readme.md
-git <span class="nb">command</span> <span class="s2">&quot;my first server sample&quot;</span>
+git commit -m <span class="s2">&quot;my first server sample&quot;</span>
 git push
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="git_1">第五章 配置GIT</h2>
-<h3 id="alias">alias</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 所在文件 ~/.gitconfig</span>
-
-<span class="o">[</span>alias<span class="o">]</span>
-    <span class="nv">lg</span> <span class="o">=</span> log --color --pretty<span class="o">=</span>format:<span class="s1">&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset&#39;</span> --abbrev-commit
-    <span class="nv">lp</span> <span class="o">=</span> log --pretty<span class="o">=</span>oneline --abbrev-commit
-
-<span class="c1"># 配置 log 信息输出格式</span>
-git config --global alias.lg <span class="s2">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
-
-<span class="c1"># 配置缩写</span>
-git config --global alias.co <span class="s1">&#39;checkout&#39;</span>
-</code></pre></div>
-
-<h3 id="_5">配置文件</h3>
+<h3 id="_5"></h3>
+<h3 id="_6">配置文件</h3>
 <div class="highlight"><pre><span></span><code><span class="k">[user]</span>
     <span class="na">name</span> <span class="o">=</span> <span class="s">iswade</span>
 <span class="s">    email = iswade@163.com</span>
@@ -2480,7 +2457,8 @@ git config --global alias.co <span class="s1">&#39;checkout&#39;</span>
 <span class="s">    dt = difftool</span>
 <span class="s">    ca = commit -a</span>
 <span class="s">    br = branch</span>
-<span class="s">    lg = log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit</span>
+<span class="s">    lg = log --color --graph --abbrev-commit --pretty=format:\</span>
+<span class="s">    &#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; </span>
 <span class="s">    last = log -1</span>
 <span class="k">[diff]</span>
     <span class="na">tool</span> <span class="o">=</span> <span class="s">bc4</span>
@@ -2489,8 +2467,9 @@ git config --global alias.co <span class="s1">&#39;checkout&#39;</span>
 </code></pre></div>
 
 <h3 id="diff">Diff 工具配置</h3>
-<p>At a Windows command prompt enter the commands: </p>
-<div class="highlight"><pre><span></span><code>git config --global difftool.bc3.cmd <span class="s2">&quot;&quot;</span>c:/program files/beyond compare <span class="m">3</span>/bcomp.exe<span class="s2">&quot; &quot;</span>LOCAL<span class="se">\&quot;</span> <span class="se">\&quot;</span>REMOTE<span class="s2">&quot;&quot;</span>
+<p>在 windows 命令行，输入下面的配置命令：</p>
+<div class="highlight"><pre><span></span><code>git config --global difftool.bc3.cmd <span class="se">\</span>
+    <span class="s2">&quot;&quot;</span>c:/program files/beyond compare <span class="m">3</span>/bcomp.exe<span class="s2">&quot; &quot;</span>LOCAL<span class="se">\&quot;</span> <span class="se">\&quot;</span>REMOTE<span class="s2">&quot;&quot;</span>
 git config --global difftool.prompt <span class="nb">false</span>
 git difftool foofile.txt 
 </code></pre></div>
@@ -2500,8 +2479,8 @@ git diff --color branch1 branch2 &gt; foo.diff
 git diff --color commit1 commit2 -- readme.txt &gt; readme.diff
 </code></pre></div>
 
-<h2 id="_6">第七章 工作流</h2>
-<h4 id="_7">合并</h4>
+<h2 id="_7">第七章 工作流</h2>
+<h4 id="_8">合并</h4>
 <ol>
 <li>
 <p>修改代码</p>
@@ -2547,11 +2526,11 @@ git merge upstream/master
 git push
 </code></pre></div>
 
-<h4 id="_8">删除远程分支</h4>
+<h4 id="_9">删除远程分支</h4>
 <div class="highlight"><pre><span></span><code>git push origin --delete dev
 </code></pre></div>
 
-<h2 id="_9">第八章 速查表</h2>
+<h2 id="_10">第八章 速查表</h2>
 <div class="highlight"><pre><span></span><code>git add .                                     <span class="c1"># 增加当前子目录下所有更改过的文件至index</span>
 git add FILENAME                              <span class="c1"># 添加一个文件到git index</span>
 
@@ -2594,7 +2573,7 @@ git commit -a -v                              <span class="c1"># 一般提交命
 git commit --amend -m <span class="s1">&#39;xxx&#39;</span>                   <span class="c1"># 合并上一次提交（用于反复修改）</span>
 git commit -v                                 <span class="c1"># 当你用－v参数的时候可以看commit的差异</span>
 
-git clean -df
+git clean -df                                 <span class="c1"># 清理临时文件</span>
 
 git config --global color.branch auto
 git config --global color.diff auto
@@ -2703,11 +2682,13 @@ git update-index --assume-unchanged file      <span class="c1"># 忽略修改，
 git update-index --no-assume-unchanged file   <span class="c1"># 添加被忽略文件，git status会显示</span>
 </code></pre></div>
 
-<h2 id="_10">参考书</h2>
+<h2 id="_11">参考书</h2>
 <ol>
 <li><a href="http://git.oschina.net/progit/index.html">pro git 中文版</a></li>
 <li><a href="../res/github-git-cheat-sheet.pdf">git cheat sheet(pdf)</a></li>
 </ol>
+<p>history:</p>
+<p>2020-12-30 修订</p>
                 
               
               
