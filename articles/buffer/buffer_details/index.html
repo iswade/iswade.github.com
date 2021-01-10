@@ -1,0 +1,2848 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/buffer/buffer_details/">
+      
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>PostgreSQL 详解 - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postgresql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            iswade's blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              PostgreSQL 详解
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." class="md-nav__link">
+      iswade's blog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../00_long_time_plan/" class="md-nav__link">
+      5 年计划
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../01_database_notes/" class="md-nav__link">
+      Database Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../02_distributed_system_papers/" class="md-nav__link">
+      分布式系统领域经典论文翻译集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Algorithms
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Algorithms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../algorithms/algorithms/" class="md-nav__link">
+      Algorithms
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Articles
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Articles" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Articles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boltdb/" class="md-nav__link">
+      BoltDB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../etcd/" class="md-nav__link">
+      ETCD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_concurrency/" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../partition/" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pebble/" class="md-nav__link">
+      Pebble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../performance/" class="md-nav__link">
+      perf 工具使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raft/" class="md-nav__link">
+      Raft 算法实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../summary_2017/" class="md-nav__link">
+      2017 总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../summary_2018/" class="md-nav__link">
+      2018 总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-10" type="checkbox" id="nav-6-10" checked>
+    
+    <label class="md-nav__link" for="nav-6-10">
+      Buffer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Buffer" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-10">
+        <span class="md-nav__icon md-icon"></span>
+        Buffer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PostgreSQL 详解
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      PostgreSQL 详解
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    结构
+  </a>
+  
+    <nav class="md-nav" aria-label="结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据组织
+  </a>
+  
+    <nav class="md-nav" aria-label="数据组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 缓存哈希表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 缓存描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 缓存池
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    模块间关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    进程间关系
+  </a>
+  
+    <nav class="md-nav" aria-label="进程间关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postmaster" class="md-nav__link">
+    postmaster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    backend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgwriter" class="md-nav__link">
+    bgwriter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint" class="md-nav__link">
+    checkpoint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    原理
+  </a>
+  
+    <nav class="md-nav" aria-label="原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    替换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ring" class="md-nav__link">
+    ring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    同步
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    使用
+  </a>
+  
+    <nav class="md-nav" aria-label="使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ring_1" class="md-nav__link">
+    示例：顺序扫描/ring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared_buffers" class="md-nav__link">
+    参数：shared_buffers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective_cache_size" class="md-nav__link">
+    参数：effective_cache_size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pg_buffercache" class="md-nav__link">
+    插件：pg_buffercache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pg_prewarm" class="md-nav__link">
+    插件：pg_prewarm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pgfincore" class="md-nav__link">
+    插件：pgfincore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer_readme/" class="md-nav__link">
+      Buffer readme
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer_readme_cn/" class="md-nav__link">
+      Buffer readme cn
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Database
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Database" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Database
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals/" class="md-nav__link">
+      读书笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch13_dist_transactions/" class="md-nav__link">
+      分布式系统之分布式事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Distributed systems
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Distributed systems" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Distributed systems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" class="md-nav__link">
+      第二章 进程间通信：概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/04_representing/" class="md-nav__link">
+      第四章 表示分布式算法 _语法和语义_
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/06_time/" class="md-nav__link">
+      第六章 分布式系统中的时间
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Go
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Go" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Go
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_exercises100/" class="md-nav__link">
+      Go exercises100
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_exercises60/" class="md-nav__link">
+      单选题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_interview/" class="md-nav__link">
+      Go interview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_libs/" class="md-nav__link">
+      Go标准库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_notes/" class="md-nav__link">
+      Go
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_tools/" class="md-nav__link">
+      Go 语言工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/about/" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/advanced_markdown/" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Notes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/all/" class="md-nav__link">
+      笔记本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash/" class="md-nav__link">
+      Bash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash_turorial/" class="md-nav__link">
+      Bash 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/pragmatic_programmer/" class="md-nav__link">
+      程序员修炼之道读书笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/python/" class="md-nav__link">
+      python基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/vmware/" class="md-nav__link">
+      Vmware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-8" type="checkbox" id="nav-11-8">
+    
+    <label class="md-nav__link" for="nav-11-8">
+      Adb nodes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Adb nodes" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-8">
+        <span class="md-nav__icon md-icon"></span>
+        Adb nodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/01_in_memory_database/" class="md-nav__link">
+      内存数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/09_storage_models_data_layout/" class="md-nav__link">
+      存储模型和数据布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/15_execution/" class="md-nav__link">
+      15 execution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/17_hashjoins/" class="md-nav__link">
+      并行 JOIN 算法（Hashing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/22_optimizer_implementation_I/" class="md-nav__link">
+      优化器实现 I
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/23_optimizer_implementation_II/" class="md-nav__link">
+      优化器实现 II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/24_cost_models/" class="md-nav__link">
+      基于代价的优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/25_self_driving/" class="md-nav__link">
+      自动驾驶数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-9" type="checkbox" id="nav-11-9">
+    
+    <label class="md-nav__link" for="nav-11-9">
+      Db nodes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Db nodes" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-9">
+        <span class="md-nav__icon md-icon"></span>
+        Db nodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
+      关系语言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/01_relational_model/" class="md-nav__link">
+      关系模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/02_advanced_SQL/" class="md-nav__link">
+      高级 SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/03_Database_Storage_I/" class="md-nav__link">
+      数据库存储（I）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/04_Database_Storage_II/" class="md-nav__link">
+      数据库存储（II）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/05_Buffer_Pool/" class="md-nav__link">
+      缓存池
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/06_Hash_Tables/" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/07_Tree_Indexes_I/" class="md-nav__link">
+      树索引（I）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/08_Tree_Indexes_II/" class="md-nav__link">
+      树索引（II）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/09_Index_Concurrency/" class="md-nav__link">
+      索引并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/10_Query_Processing/" class="md-nav__link">
+      查询处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/11_Sorting_Aggregations/" class="md-nav__link">
+      排序和聚集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/12_joins/" class="md-nav__link">
+      JOIN 算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/13_Query_Optimization/" class="md-nav__link">
+      查询优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/14_parallel_execution/" class="md-nav__link">
+      并行执行
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/15_embedded_logic/" class="md-nav__link">
+      嵌入数据库逻辑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/16_concurrency_control/" class="md-nav__link">
+      并发控制理论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/18_timestamp_ordering/" class="md-nav__link">
+      时间顺序并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/19_MVCC/" class="md-nav__link">
+      多版本并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/20_logging/" class="md-nav__link">
+      日志
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/21_recovery/" class="md-nav__link">
+      数据库恢复
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/22_distribute_OLTP/" class="md-nav__link">
+      分布式 OLTP 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Translate
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translate" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Translate
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/An%20Overview%20of%20Query%20Optimization%20in%20Relational%20Systems/" class="md-nav__link">
+      关系系统中的查询优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
+      Aurora：如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Calvin%20Fast%20Distributed%20Transactions/" class="md-nav__link">
+      Calvin: 分区数据库的快速分布式事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" class="md-nav__link">
+      F1 Query：大规模数据的声明式查询
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/The%20State%20of%20the%20Art%20in%20Distributed%20Query%20Processing/" class="md-nav__link">
+      分布式查询处理的最新进展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/btree_vs_lsmtree/" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/comparison_of_database_isolation/" class="md-nav__link">
+      数据库隔离级别的比较
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/distsys/" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/faunadb_transaction/" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/generalized_consensus/" class="md-nav__link">
+      广义分布式共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" class="md-nav__link">
+      如何使用 Go 接口？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" class="md-nav__link">
+      Linux sysadmin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/paxos_made_live/" class="md-nav__link">
+      Paxos Made Live(译)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/raft/" class="md-nav__link">
+      raft详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" class="md-nav__link">
+      Strong consistency models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper/" class="md-nav__link">
+      Taurus Database: How to be Fast, Available, and Frugal in the Cloud
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper_cn/" class="md-nav__link">
+      TaurusDB: 高性能高可用低成本云数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" class="md-nav__link">
+      ZooKeeper: 互联网系统无等待协调服务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-20" type="checkbox" id="nav-12-20">
+    
+    <label class="md-nav__link" for="nav-12-20">
+      Google practices
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Google practices" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-20">
+        <span class="md-nav__icon md-icon"></span>
+        Google practices
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/practices/" class="md-nav__link">
+      Goolge 工程实践文档
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-20-2" type="checkbox" id="nav-12-20-2">
+    
+    <label class="md-nav__link" for="nav-12-20-2">
+      Review
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Review" data-md-level="3">
+      <label class="md-nav__title" for="nav-12-20-2">
+        <span class="md-nav__icon md-icon"></span>
+        Review
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/developer/" class="md-nav__link">
+      Developer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/review/" class="md-nav__link">
+      代码检视开发者指导
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/reviewer/" class="md-nav__link">
+      Reviewer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-21" type="checkbox" id="nav-12-21">
+    
+    <label class="md-nav__link" for="nav-12-21">
+      Crdb
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Crdb" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-21">
+        <span class="md-nav__icon md-icon"></span>
+        Crdb
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_distribution_layer/" class="md-nav__link">
+      分布层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_distsql/" class="md-nav__link">
+      分布式 SQL 查询
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_join/" class="md-nav__link">
+      CockroachDB 中的 JOIN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper/" class="md-nav__link">
+      CockroachDB: The Resilient Geo-Distributed SQL Database
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper_cn/" class="md-nav__link">
+      CockroachDB：弹性地理分布SQL数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_pipelining/" class="md-nav__link">
+      管道化共识写入加速分布式 SQL 事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_query_planning/" class="md-nav__link">
+      SQL 查询计划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_replication_layer/" class="md-nav__link">
+      复制层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_sql_layer/" class="md-nav__link">
+      SQL 层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_sql_life/" class="md-nav__link">
+      [译] SQL的一生（CRDB）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-22" type="checkbox" id="nav-12-22">
+    
+    <label class="md-nav__link" for="nav-12-22">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-22">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/misc/CI/" class="md-nav__link">
+      持续集成系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/misc/datastore/" class="md-nav__link">
+      DBDB: Dog Bed Database
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    结构
+  </a>
+  
+    <nav class="md-nav" aria-label="结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据组织
+  </a>
+  
+    <nav class="md-nav" aria-label="数据组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 缓存哈希表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 缓存描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 缓存池
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    模块间关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    进程间关系
+  </a>
+  
+    <nav class="md-nav" aria-label="进程间关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postmaster" class="md-nav__link">
+    postmaster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    backend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgwriter" class="md-nav__link">
+    bgwriter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint" class="md-nav__link">
+    checkpoint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    原理
+  </a>
+  
+    <nav class="md-nav" aria-label="原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    替换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ring" class="md-nav__link">
+    ring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    同步
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    使用
+  </a>
+  
+    <nav class="md-nav" aria-label="使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ring_1" class="md-nav__link">
+    示例：顺序扫描/ring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared_buffers" class="md-nav__link">
+    参数：shared_buffers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective_cache_size" class="md-nav__link">
+    参数：effective_cache_size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pg_buffercache" class="md-nav__link">
+    插件：pg_buffercache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pg_prewarm" class="md-nav__link">
+    插件：pg_prewarm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pgfincore" class="md-nav__link">
+    插件：pgfincore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="postgresql">PostgreSQL 详解</h1>
+<p><strong>缓存</strong>（buffer）是用于速度不匹配的组件之间提高数据的吞吐效率的技术，在硬件设计、软件系统中都有着广泛的使用，例如常见的 CPU 缓存，数据库缓存，缓存服务（redis, memcached）以及浏览器缓存等等。</p>
+<p>在数据库系统中的读写操作，都是针对内存中的数据，磁盘中的数据必须在处理前加载到内存，也就是数据库缓存中。</p>
+<p>PostgreSQL 数据库实现了高效的缓存管理。在这篇文章中我们详细介绍共享缓存的组织结构，实现原理以及基本的使用。</p>
+<h2 id="_1">结构</h2>
+<p>在 PostgreSQL 中，涉及的内存类型比较多，但是可以分成两大类：本地内存和共享内存。</p>
+<p><img alt="" src="../image/buffer_position.svg" /></p>
+<p>进程本地内存：</p>
+<ul>
+<li>temp_buffers: 每个数据库会话使用的最大临时缓存，用于访问临时表。</li>
+<li>work_mem: 查询操作(例如排序或哈希表)可使用的最大内存容量。</li>
+<li>maintenance_work_mem: 维护操作如 VACUUM、创建索引，修改表等使用的本地内存。</li>
+</ul>
+<p>共享内存：</p>
+<ul>
+<li>shared_buffers: 用于缓存数据（内部使用 NBuffers 表示）。</li>
+<li>wal_buffers: 用于还未写入磁盘的 WAL 日志的共享内存大小。</li>
+<li>CLOG buffers: 保存提交日志中的事务状态的缓存（不可配置，通过 NBuffers 计算获得）。</li>
+</ul>
+<h3 id="_2">数据组织</h3>
+<p>PostgreSQL 缓存管理器分成三层结构：哈希表、缓存描述符和缓存池，如下图所示：</p>
+<p><img alt="" src="../image/buffer_structure.svg" /></p>
+<h4 id="1">1. 缓存哈希表</h4>
+<p>存储页面和元数据的缓存描述符之间的映射关系。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 哈希表中的 key</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">buftag</span>
+<span class="p">{</span>
+    <span class="n">RelFileNode</span> <span class="n">rnode</span><span class="p">;</span>    <span class="c1">// 表示物理文件</span>
+    <span class="n">ForkNumber</span>  <span class="n">forkNum</span><span class="p">;</span>  <span class="c1">// 表示分叉号（-1：无效，0：MAIN，1：FSM，2：VM）</span>
+    <span class="n">BlockNumber</span> <span class="n">blockNum</span><span class="p">;</span> <span class="c1">// 页面块号</span>
+<span class="p">}</span> <span class="n">BufferTag</span><span class="p">;</span>
+
+<span class="c1">// 哈希表中的 key-value 结构</span>
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+    <span class="n">BufferTag</span>   <span class="n">key</span><span class="p">;</span>      <span class="c1">// 磁盘页的 key</span>
+    <span class="kt">int</span>         <span class="n">id</span><span class="p">;</span>       <span class="c1">// Buffer ID</span>
+<span class="p">}</span> <span class="n">BufferLookupEnt</span><span class="p">;</span>
+</code></pre></div>
+
+<h4 id="2">2. 缓存描述符</h4>
+<p>缓存描述符是一个对缓存池的描述数组，每个描述符与缓存位置有一对一的关系。类似于每个 8KB 页面的头部，但是这个结构仅存在于内存中，并且与缓存池是分离的。</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">BufferDesc</span>
+<span class="p">{</span>
+    <span class="n">BufferTag</span>        <span class="n">tag</span><span class="p">;</span>              <span class="cm">/* ID of page contained in buffer */</span>
+    <span class="kt">int</span>              <span class="n">buf_id</span><span class="p">;</span>           <span class="cm">/* buffer&#39;s index number (from 0) */</span>
+    <span class="n">pg_atomic_uint32</span> <span class="n">state</span><span class="p">;</span>            <span class="cm">/* state info */</span>
+    <span class="kt">int</span>              <span class="n">wait_backend_pid</span><span class="p">;</span> <span class="cm">/* backend PID of pin-count waiter */</span>
+    <span class="kt">int</span>              <span class="n">freeNext</span><span class="p">;</span>         <span class="cm">/* link in freelist chain */</span>
+    <span class="n">LWLock</span>           <span class="n">content_lock</span><span class="p">;</span>     <span class="cm">/* to lock access to buffer contents */</span>
+<span class="p">}</span> <span class="n">BufferDesc</span><span class="p">;</span>
+</code></pre></div>
+
+<p>state 由下面的三个字段组合而成，主要目的是将多个字段存到一个 32bit 长的字段中，可以通过原子操作 CAS 进行修改，不需要对 buffer 加锁。</p>
+<div class="highlight"><pre><span></span><code>+-------------------+-------------+--------------------------+
+|      10 bit       |   4 bit     |          18 bit          |
++-------------------+-------------+--------------------------+
+|      flags        | usagecount  |         refcount         |
++-------------------+-------------+--------------------------+
+</code></pre></div>
+
+<ul>
+<li>flags：标记 buffer 的状态</li>
+<li>usagecount：使用次数，标记被访问的次数，用于 buffer 替换算法</li>
+<li>refcount：引用计数，当前 buffer 被多少个后端进程 pin（buffer 正在被使用，不能被替换出去）</li>
+</ul>
+<p>flags 标记状态如下：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define BM_LOCKED            (1U &lt;&lt; 22) </span><span class="cm">/* buffer header is locked */</span><span class="cp"></span>
+<span class="cp">#define BM_DIRTY             (1U &lt;&lt; 23) </span><span class="cm">/* data needs writing */</span><span class="cp"></span>
+<span class="cp">#define BM_VALID             (1U &lt;&lt; 24) </span><span class="cm">/* data is valid */</span><span class="cp"></span>
+<span class="cp">#define BM_TAG_VALID         (1U &lt;&lt; 25) </span><span class="cm">/* tag is assigned */</span><span class="cp"></span>
+<span class="cp">#define BM_IO_IN_PROGRESS    (1U &lt;&lt; 26) </span><span class="cm">/* read or write in progress */</span><span class="cp"></span>
+<span class="cp">#define BM_IO_ERROR          (1U &lt;&lt; 27) </span><span class="cm">/* previous I/O failed */</span><span class="cp"></span>
+<span class="cp">#define BM_JUST_DIRTIED      (1U &lt;&lt; 28) </span><span class="cm">/* dirtied since write started */</span><span class="cp"></span>
+<span class="cp">#define BM_PIN_COUNT_WAITER  (1U &lt;&lt; 29) </span><span class="cm">/* have waiter for sole pin */</span><span class="cp"></span>
+<span class="cp">#define BM_CHECKPOINT_NEEDED (1U &lt;&lt; 30) </span><span class="cm">/* must write for checkpoint */</span><span class="cp"></span>
+<span class="cp">#define BM_PERMANENT         (1U &lt;&lt; 31) </span><span class="cm">/* permanent buffer(not unlogged,or init fork) */</span><span class="cp"></span>
+</code></pre></div>
+
+<h4 id="3">3. 缓存池</h4>
+<p>缓存池是一个数组。每个位置存储一个页面(8KB)，比如表和索引的一个完整的页面。</p>
+<h3 id="_3">模块间关系</h3>
+<p>模块间的关系主要介绍后端进程访问数据缓存时涉及的模块。</p>
+<ol>
+<li><strong>数据访问层</strong>：使用缓存的上层代码：<code>src/backend/access</code>，这一层主要是数据库引擎中对于数据的逻辑使用的层次，如用户查询数据，数据通过索引被访问到，索引不是直接从存储介质上请求 IO，而是从数据缓存层中读取，如果缓存中没有，则由缓存层负责向底层（数据存储层）获取相应的数据。参考：<code>ReadBuffer</code>。</li>
+<li><strong>数据缓存区</strong>：在数据存储层与数据库访问层之间，是一个重要的模块，起着关联内外存储介质的作用，在访问时，PG 将表和索引中的页面从持久化存储加载到共享数据缓存中，然后直接对它们进行操作。写数据实际是改写缓存区，然后把缓存区标记为 “Dirty”，在必要的时候（替换：如缓存区满需要新的缓存区、CheckPoint：系统做检查点时刷出内存的脏数据等，bgwriter：周期性地少量页面刷写）被刷出缓存（写被修改的数据到外存文件）。</li>
+<li><strong>数据存储层</strong>：位于数据缓存区的下层代码：<code>src/backend/storage/smgr</code>，主要是数据库的存储层，直接和存储介质交互（实际是和 OS 的 IO 调度交互）。参考：<code>ReadBufferExtended</code>函数及其调用的 <code>ReadBuffer_common</code> 函数，可能涉及 <code>smgrread</code> 调用，数据缓存层发现缓存中没有对应的数据可以向数据访问层提供，则缓存管理器直接向数据存储层请求进行 IO，使得数据能够被读到缓存中。</li>
+</ol>
+<p><img alt="" src="../image/buffer_modules.png" /></p>
+<h3 id="_4">进程间关系</h3>
+<h4 id="postmaster">postmaster</h4>
+<p>负责调用缓存管理中的接口申请共享缓存区。</p>
+<div class="highlight"><pre><span></span><code><span class="n">CreateSharedMemoryAndSemaphores</span>
+    <span class="n">InitBufferPool</span> 
+        <span class="c1">// 创建哈希表</span>
+        <span class="c1">// 创建缓存描述符</span>
+        <span class="c1">// 创建缓存池</span>
+</code></pre></div>
+
+<h4 id="backend">backend</h4>
+<p>每个客户端连接对应一个独立的后端进程，用于处理 SQL 消息，后端进程通过缓存管理器提供的接口访问缓存。</p>
+<div class="highlight"><pre><span></span><code><span class="n">heap_fetch</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="n">ReadBuffer</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+    <span class="n">LockBuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">BUFFER_LOCK_SHARE</span><span class="p">);</span>
+    <span class="c1">// ……</span>
+    <span class="n">LockBuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">BUFFER_LOCK_UNLOCK</span><span class="p">);</span>
+    <span class="n">ReleaseBuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="bgwriter">bgwriter</h4>
+<p>后台进程，周期性将<strong>少量页面</strong>刷到磁盘中。参考接口 <code>BgBufferSync()</code>。</p>
+<h4 id="checkpoint">checkpoint</h4>
+<p>后台进程，周期性触发，每次触发会将<strong>全部脏页面</strong>刷到磁盘中，参考接口 <code>BufferSync()</code>。</p>
+<h2 id="_5">原理</h2>
+<h3 id="_6">分配</h3>
+<ol>
+<li>当后端进程读取页面时，调用 BufferAlloc 来加载对应的页面。</li>
+<li>如果页面已经被缓存，它就会被 pin，然后返回。</li>
+<li>如果页面没有被缓存，必须找到一个新缓存位置来保存请求的页面。</li>
+<li>如果有可用的缓存，则将待读取的页面加载到可用的缓存中。</li>
+<li>如果没有可用的缓存，则找到一个缓存位置进行替换。</li>
+<li>如果待替换的页面是脏的，需要被写出到磁盘中。</li>
+<li>将请求的页面读取到缓存中。</li>
+<li>缓存开始被 pin，直到请求数据的进程释放缓存。</li>
+<li>Pin 会增加缓存区的使用计数。</li>
+</ol>
+<h3 id="_7">替换</h3>
+<p>缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有：先进先出策略 FIFO（First In，First Out）、最少使用策略 LFU（Least Frequently Used）、最近最少使用策略 LRU（Least Recently Used），CLOCK等。</p>
+<p>LRU（最近最少使用）：</p>
+<ol>
+<li>最近访问最频繁页面在接下来被使用的概率很高。</li>
+<li>虽然LRU在理论上可以提供接近最佳的性能，但在实践中实现起来代价很高（哈希表，队列）。</li>
+<li>内存引用会触发列表元素的移动。</li>
+<li>执行顺序扫描可能会在每次访问时需要从物理磁盘上读取页面</li>
+</ol>
+<div class="highlight"><pre><span></span><code>--&gt;4-&gt;3-&gt;2  &lt;-- read(p1), 页面2被替换出去 
+--&gt;1-&gt;4-&gt;3  &lt;-- read(p2), 页面3被替换出去 
+--&gt;1-&gt;2-&gt;4  &lt;-- read(p3), 页面4被替换出去 
+--&gt;1-&gt;2-&gt;3 
+</code></pre></div>
+
+<p>clock sweep 算法示意图如下：（其中，黑色:pin  灰色:unpin  绿色:可以被替换）</p>
+<p><img alt="" src="../image/buffer_clock.svg" /></p>
+<ol>
+<li>获取下一个待替换（hand：nextVictimBuffer）的缓存 ID</li>
+<li>如果缓存没有被 pin，则进入 3，否则进入 4</li>
+<li>如果缓存的使用计数 = 0，则返回这个缓存 ID；如果缓存的使用计数&gt;0，则将对应缓存的使用计数-1</li>
+<li>将待替换的缓存 ID 移动到下一个描述符（如果超过 NBuffers，则转换为 0），继续 1</li>
+</ol>
+<p>使用计数最大是5。</p>
+<h3 id="ring">ring</h3>
+<p>顺序扫描可能将缓存中数据都替换出去（缓存污染）。通过缓存环（buffer ring）特性来解决这个问题。</p>
+<ul>
+<li>重复使用缓存的一个子集，一旦环已满，循环使用一个前面使用过的页面</li>
+<li>缓存环特性降低了顺序扫描、VACUUM 和批量写入的缓存消耗</li>
+</ul>
+<p><strong>顺序扫描</strong></p>
+<ol>
+<li>使用 <strong>32 * 8KB = 256KB ring</strong> 。这个空间足够小，可以在 L2 中缓存，这使得页面从操作系统缓存传输到共享缓存的效率更高。甚至更少也足够了，但 ring 必须足够大，以容纳扫描中同时固定的所有页面。</li>
+<li>如果 ring 缓存区被写入并且更新了 LSN，在这种情况下，我们从 ring 中丢弃缓存区，然后（稍后）使用正常的时钟扫描算法选择替换缓存区。</li>
+<li>该策略最适合只读的扫描（或者更新hint bit）。</li>
+</ol>
+<p><strong>VACUUM</strong> </p>
+<ol>
+<li>像顺序扫描一样使用 <strong>256KB 的 ring</strong> ，但是脏页不会从 ring 中删除。</li>
+<li>如果需要，WAL 会被刷新，让缓存区可以重用。</li>
+</ol>
+<p><strong>批量写入</strong></p>
+<ol>
+<li>使用 <strong>16MB 的 ring</strong> 大小。</li>
+<li>当前支持 COPY FROM，CREATE TABLE AS，ALTER TABLE，CREATE MATERIALIZED VIEW 以及 REFRESH MATERIALIZED  VIEW。</li>
+<li>较小的 ring 会导致 COPY 阻塞太频繁。</li>
+</ol>
+<p>不支持 UPDATE/DELETE 使用 ring：在更新相关的页面的扫描中，如批量 UPDATE 或 DELETE， ring 中的缓存总是被弄脏，并且 ring 策略有效地退化为正常的替换策略。</p>
+<h3 id="_8">同步</h3>
+<p><strong>哈希表同步</strong></p>
+<ul>
+<li>使用读写锁控制哈希表的访问</li>
+<li>哈希表示全局对象，通过分区来降低哈希表的同步开销</li>
+<li>当前使用 128 个分区锁</li>
+<li>参考：BufMappingPartitionLock</li>
+</ul>
+<p><strong>pin</strong>：</p>
+<ul>
+<li>
+<p>pin 用于标记当前的缓存正在被使用，不能被替换出去</p>
+</li>
+<li>
+<p>一个后端进程可以同时持有多个页面的 pin</p>
+</li>
+<li>pin 不能跨事务边界持有</li>
+<li>参考：PinBuffer 和 UnpinBuffer</li>
+</ul>
+<p><strong>content_lock</strong>：</p>
+<ul>
+<li>每个缓存都有一个读写锁在保护，通过 buffer id 就可以获取。</li>
+<li>读取时，需要先加 pin，然后再加读锁</li>
+<li>更新时，需要先加 pin，然后再加写锁</li>
+<li>通过 LockBuffer 加锁解锁</li>
+</ul>
+<p><strong>buffer header lock</strong></p>
+<ul>
+<li>在修改缓存头部时，都需要获取它的头部锁。是一个自旋锁。</li>
+<li>头部锁由 <code>BM_LOCKED</code> 标记位表示。</li>
+<li>通过 LockBufHdr 加锁，通过 UnlockBufHdr 解锁</li>
+</ul>
+<p><strong>io_in_progress_lock</strong></p>
+<ul>
+<li>用于等待缓存区上的 I/O 完成，是读写锁</li>
+<li>参考：BufferDescriptorGetIOLock，StartBufferIO，TerminateBufferIO 等</li>
+</ul>
+<p><strong>buffer_strategy_lock</strong></p>
+<ul>
+<li>用于保护freelist（单链表，初始空缓存，删除表之后的空闲缓存保存在这里），用于保护缓存替换时的操作</li>
+<li>是一个自旋锁</li>
+<li>参考：StrategyGetBuffer</li>
+</ul>
+<h2 id="_9">使用</h2>
+<p>下面我们通过实际的示例来看一下缓存如何使用。</p>
+<h3 id="ring_1">示例：顺序扫描/ring</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- shared_buffers 配置为默认的 128MB</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">seq</span><span class="p">(</span><span class="n">id</span> <span class="nb">int</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">seq</span> <span class="k">select</span> <span class="n">generate_series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">);</span>
+
+<span class="k">EXPLAIN</span> <span class="p">(</span><span class="k">analyze</span> <span class="k">on</span><span class="p">,</span> <span class="n">buffers</span> <span class="k">on</span><span class="p">,</span> <span class="n">costs</span> <span class="k">off</span><span class="p">,</span> <span class="n">timing</span> <span class="k">off</span><span class="p">)</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">seq</span><span class="p">;</span>                                    
+                  <span class="n">QUERY</span> <span class="n">PLAN</span>                   
+<span class="c1">-----------------------------------------------</span>
+ <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">seq</span> <span class="p">(</span><span class="n">actual</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1000000</span> <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+   <span class="n">Buffers</span><span class="p">:</span> <span class="n">shared</span> <span class="n">hit</span><span class="o">=</span><span class="mi">4425</span>
+ <span class="n">Planning</span> <span class="k">Time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">046</span> <span class="n">ms</span>
+ <span class="n">Execution</span> <span class="k">Time</span><span class="p">:</span> <span class="mi">84</span><span class="p">.</span><span class="mi">642</span> <span class="n">ms</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+
+<span class="c1">-- 重启数据库后，第一次查询</span>
+<span class="k">EXPLAIN</span> <span class="p">(</span><span class="k">analyze</span> <span class="k">on</span><span class="p">,</span> <span class="n">buffers</span> <span class="k">on</span><span class="p">,</span> <span class="n">costs</span> <span class="k">off</span><span class="p">,</span> <span class="n">timing</span> <span class="k">off</span><span class="p">)</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">seq</span><span class="p">;</span>
+                  <span class="n">QUERY</span> <span class="n">PLAN</span>                   
+<span class="c1">-----------------------------------------------</span>
+ <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">seq</span> <span class="p">(</span><span class="n">actual</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1000000</span> <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+   <span class="n">Buffers</span><span class="p">:</span> <span class="n">shared</span> <span class="k">read</span><span class="o">=</span><span class="mi">4425</span>
+ <span class="n">Planning</span> <span class="k">Time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">179</span> <span class="n">ms</span>
+ <span class="n">Execution</span> <span class="k">Time</span><span class="p">:</span> <span class="mi">69</span><span class="p">.</span><span class="mi">760</span> <span class="n">ms</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+
+<span class="c1">-- 第二次查询</span>
+<span class="k">EXPLAIN</span> <span class="p">(</span><span class="k">analyze</span> <span class="k">on</span><span class="p">,</span> <span class="n">buffers</span> <span class="k">on</span><span class="p">,</span> <span class="n">costs</span> <span class="k">off</span><span class="p">,</span> <span class="n">timing</span> <span class="k">off</span><span class="p">)</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">seq</span><span class="p">;</span>
+                  <span class="n">QUERY</span> <span class="n">PLAN</span>                   
+<span class="c1">-----------------------------------------------</span>
+ <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">seq</span> <span class="p">(</span><span class="n">actual</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1000000</span> <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+   <span class="n">Buffers</span><span class="p">:</span> <span class="n">shared</span> <span class="n">hit</span><span class="o">=</span><span class="mi">32</span> <span class="k">read</span><span class="o">=</span><span class="mi">4393</span>
+ <span class="n">Planning</span> <span class="k">Time</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">024</span> <span class="n">ms</span>
+ <span class="n">Execution</span> <span class="k">Time</span><span class="p">:</span> <span class="mi">69</span><span class="p">.</span><span class="mi">695</span> <span class="n">ms</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>shared read: 表示从磁盘读取了多少页面</li>
+<li>shared hit：表示缓存命中了多少页面，不需要从磁盘读取</li>
+</ul>
+<h3 id="shared_buffers">参数：shared_buffers</h3>
+<ul>
+<li>
+<p>PG 使用 「双缓存」，PG 使用了自己的共享缓存以及操作系统内核缓存。</p>
+</li>
+<li>
+<p>参数 shared_buffers 用于配置数据库申请的共享缓存池大小。默认值 128MB。</p>
+</li>
+<li>
+<p>一般来说，对于专用的数据库服务器，shared_buffers 的值应该大约占整个系统内存的 25%。</p>
+</li>
+<li>
+<p>为什么 Aurora 的 PostgreSQL 将 shared buffers 设置为可用内存的 75%? </p>
+</li>
+</ul>
+<p>对于 RDS DB 实例，DB 参数组的默认值设置为总内存的 25%。但是 Aurora DB 实例，参数默认值设置为总内存的 75%。这是因为：Aurora PostgreSQL 使用了共享存储，SQL 层不再保存数据，所以消除了双缓存，不再使用文件系统缓存。</p>
+<h3 id="effective_cache_size">参数：effective_cache_size</h3>
+<ul>
+<li>设置优化器对一个单一查询可用的有效磁盘缓存区大小的一个预设值。 </li>
+<li>这个参数会被考虑在使用一个索引的代价估计中，更大的值会使得索引扫描更可能被使用，更低的数值会使得顺序扫描更可能被使用。默认值是 4GB。</li>
+<li>它只是一个优化器参数，这个参数并不会实际分配内存，而是告诉优化器可用的缓存的大小。</li>
+<li>将 effective_cache_size 设置为内存的 50% 比较常见。更激进的设置大约是物理内存的 75%。</li>
+</ul>
+<h3 id="pg_buffercache">插件：pg_buffercache</h3>
+<p>PG 自带插件 pg_buffercache 提供了一个函数，用于获取每个缓存的信息，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 查询占用缓存最多（TOP10）的关系</span>
+<span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">buffers</span> <span class="k">FROM</span> <span class="n">pg_class</span> <span class="k">c</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">pg_buffercache</span> <span class="n">b</span> <span class="k">ON</span> <span class="n">b</span><span class="p">.</span><span class="n">relfilenode</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">relfilenode</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">pg_database</span> <span class="n">d</span> <span class="k">ON</span> <span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">reldatabase</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">oid</span> <span class="k">AND</span> <span class="n">d</span><span class="p">.</span><span class="n">datname</span><span class="o">=</span><span class="s1">&#39;postgres&#39;</span><span class="p">)</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">c</span><span class="p">.</span><span class="n">relname</span> 
+    <span class="k">ORDER</span>  <span class="k">BY</span> <span class="mi">2</span> <span class="k">DESC</span> 
+    <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+
+             <span class="n">relname</span>              <span class="o">|</span> <span class="n">buffers</span> 
+<span class="c1">----------------------------------+---------</span>
+ <span class="n">seq</span>                              <span class="o">|</span>      <span class="mi">32</span>
+ <span class="n">pg_statistic</span>                     <span class="o">|</span>      <span class="mi">23</span>
+ <span class="n">pg_amop</span>                          <span class="o">|</span>       <span class="mi">5</span>
+ <span class="n">pg_statistic_relid_att_inh_index</span> <span class="o">|</span>       <span class="mi">5</span>
+ <span class="n">pg_index</span>                         <span class="o">|</span>       <span class="mi">4</span>
+ <span class="n">pg_amproc</span>                        <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_amop_opr_fam_index</span>            <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_amop_fam_strat_index</span>          <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_index_indrelid_index</span>          <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_amproc_fam_proc_index</span>         <span class="o">|</span>       <span class="mi">3</span>
+<span class="p">(</span><span class="mi">10</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="pg_prewarm">插件：pg_prewarm</h3>
+<p>PG 自带插件，用于缓存的预热，主要有两个功能：</p>
+<ol>
+<li>函数 pg_prewarm 函数用于预热指定表的页面</li>
+<li>支持重启后对缓存自动预热，后台周期性将缓存池的所有tag保存到一个文件，重启时读取这个文件然后进行预热</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">oid</span><span class="p">,</span> <span class="n">relname</span> <span class="k">from</span> <span class="n">pg_class</span> <span class="k">where</span> <span class="n">relname</span><span class="o">=</span><span class="s1">&#39;seq&#39;</span><span class="p">;</span>   
+  <span class="n">oid</span>  <span class="o">|</span> <span class="n">relname</span> 
+<span class="c1">-------+---------</span>
+ <span class="mi">18656</span> <span class="o">|</span> <span class="n">seq</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="n">pg_prewarm</span><span class="p">(</span><span class="mi">18656</span><span class="p">,</span> <span class="s1">&#39;buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>   
+ <span class="n">pg_prewarm</span> 
+<span class="c1">------------</span>
+        <span class="mi">100</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">buffers</span>                 
+    <span class="k">FROM</span> <span class="n">pg_class</span> <span class="k">c</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">pg_buffercache</span> <span class="n">b</span> <span class="k">ON</span> <span class="n">b</span><span class="p">.</span><span class="n">relfilenode</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">relfilenode</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">pg_database</span> <span class="n">d</span> <span class="k">ON</span> <span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">reldatabase</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">oid</span> <span class="k">AND</span> <span class="n">d</span><span class="p">.</span><span class="n">datname</span><span class="o">=</span><span class="s1">&#39;postgres&#39;</span><span class="p">)</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">c</span><span class="p">.</span><span class="n">relname</span> 
+    <span class="k">ORDER</span>  <span class="k">BY</span> <span class="mi">2</span> <span class="k">DESC</span> 
+    <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+             <span class="n">relname</span>             <span class="o">|</span> <span class="n">buffers</span> 
+<span class="c1">---------------------------------+---------</span>
+ <span class="n">seq</span>                             <span class="o">|</span>     <span class="mi">100</span>
+ <span class="n">pg_amproc</span>                       <span class="o">|</span>       <span class="mi">7</span>
+ <span class="n">pg_amop</span>                         <span class="o">|</span>       <span class="mi">6</span>
+ <span class="n">pg_index</span>                        <span class="o">|</span>       <span class="mi">4</span>
+ <span class="n">pg_amop_opr_fam_index</span>           <span class="o">|</span>       <span class="mi">4</span>
+ <span class="n">pg_operator_oid_index</span>           <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_amproc_fam_proc_index</span>        <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_opclass</span>                      <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_amop_fam_strat_index</span>         <span class="o">|</span>       <span class="mi">3</span>
+ <span class="n">pg_operator_oprname_l_r_n_index</span> <span class="o">|</span>       <span class="mi">3</span>
+<span class="p">(</span><span class="mi">10</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="pgfincore">插件：pgfincore</h3>
+<p>这是一个第三方插件模块，它提供了操作系统如何缓存页面的信息。非常底层，但也非常强大。</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="p">,</span>
+  <span class="n">pg_size_pretty</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8192</span><span class="p">)</span> 
+      <span class="k">as</span> <span class="n">pg_buffered</span><span class="p">,</span>
+  <span class="n">round</span><span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="k">select</span> <span class="n">setting</span> <span class="k">from</span> <span class="n">pg_settings</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;shared_buffers&#39;</span><span class="p">)::</span><span class="nb">integer</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> 
+      <span class="k">as</span> <span class="n">pgbuffer_percent</span><span class="p">,</span>
+  <span class="n">round</span><span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8192</span> <span class="o">/</span> <span class="n">pg_table_size</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">oid</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> 
+      <span class="k">as</span> <span class="n">percent_of_relation</span><span class="p">,</span>
+  <span class="p">(</span><span class="k">select</span> <span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="n">pages_mem</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">from</span> <span class="n">pgfincore</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="p">::</span><span class="nb">text</span><span class="p">))</span>  
+      <span class="k">as</span> <span class="n">os_cache_MB</span><span class="p">,</span>
+  <span class="n">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="k">select</span> <span class="k">sum</span><span class="p">(</span><span class="n">pages_mem</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4096</span> <span class="k">from</span> <span class="n">pgfincore</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="p">::</span><span class="nb">text</span><span class="p">))</span> <span class="o">/</span> <span class="n">pg_table_size</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">oid</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span> 
+      <span class="k">as</span> <span class="n">os_cache_percent_of_relation</span><span class="p">,</span>
+  <span class="n">pg_size_pretty</span><span class="p">(</span><span class="n">pg_table_size</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">oid</span><span class="p">))</span> 
+      <span class="k">as</span> <span class="n">rel_size</span>
+<span class="k">from</span> <span class="n">pg_class</span> <span class="k">c</span>
+  <span class="k">inner</span> <span class="k">join</span> <span class="n">pg_buffercache</span> <span class="n">b</span> <span class="k">on</span> <span class="n">b</span><span class="p">.</span><span class="n">relfilenode</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">relfilenode</span>
+  <span class="k">inner</span> <span class="k">join</span> <span class="n">pg_database</span> <span class="n">d</span> <span class="k">on</span> <span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">reldatabase</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">oid</span> <span class="k">and</span> <span class="n">d</span><span class="p">.</span><span class="n">datname</span> <span class="o">=</span> <span class="n">current_database</span><span class="p">()</span> <span class="k">and</span>
+  <span class="k">c</span><span class="p">.</span><span class="n">relnamespace</span> <span class="o">=</span> <span class="p">(</span><span class="k">select</span> <span class="n">oid</span> <span class="k">from</span> <span class="n">pg_namespace</span> <span class="k">where</span> <span class="n">nspname</span> <span class="o">=</span> <span class="s1">&#39;public&#39;</span><span class="p">))</span>
+<span class="k">group</span> <span class="k">by</span> <span class="k">c</span><span class="p">.</span><span class="n">oid</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">relname</span>
+<span class="k">order</span> <span class="k">by</span> <span class="mi">3</span> <span class="k">desc</span>
+<span class="k">limit</span> <span class="mi">30</span><span class="p">;</span>
+</code></pre></div>
+
+<p><img alt="" src="../image/pgfincore.png" /></p>
+<ul>
+<li>pg_buffered：表示多少数据缓存在 PG 的缓存中</li>
+<li>pgbuffer_percent：表示 pg_buffered/total_buffer_size * 100</li>
+<li>percent_of_relation：表示 pg_buffered/total_relation_size * 100</li>
+<li>os_cache_mb：表示多少数据缓存在 OS 的缓存中</li>
+<li>os_cache_percent_of_relation：表示 缓存在 os_cache / total_relation_size * 100</li>
+</ul>
+<blockquote>
+<p>注：PgFincore needs mincore() or fincore() and POSIX_FADVISE</p>
+</blockquote>
+<h2 id="_10">代码</h2>
+<ol>
+<li>
+<p>buf_init.c: 缓存初始化功能，哈希表，描述符数组，缓存池以及访问策略的共享缓冲区内存分配。</p>
+<ul>
+<li>InitBufferPool
+2. buf_table.c: 缓存管理的哈希表，完成对 SharedBufHash 变量表示的内存的管理操作（如初始化、查找、插入、删除等）重要函数有：</li>
+<li>InitBufTable</li>
+<li>BufTableHashCode</li>
+<li>BufTableLookup</li>
+<li>BufTableInsert</li>
+<li>BufTableDelete
+3. bumgr.c: 缓存的管理文件，完成对 buffer 的管理操作，如 buffer 的分配、回收等。主要的一些函数：</li>
+<li>ReadBuffer</li>
+<li>ReleaseBuffer</li>
+<li>MarkBufferDirty
+4. freelist.c: 缓存替换策略的相关代码，完成对缓存区替换策略的管理，主要有函数：</li>
+<li>StrategyInitialize</li>
+<li>StrategyGetBuffer</li>
+<li>FreeAccessStrategy</li>
+<li>GetAccessStrategy</li>
+<li>GetBufferFromRing</li>
+<li>StrategyFreeBuffer
+5. localbuf.c:  本地缓存管理。本地缓存，指的是对临时表的管理（CREATE TEMP TABLE 实际访问的内存）。临时表的缓存区实现，也是类似共享缓存的结构（哈希表，BufDesc，Buffer），但内存是直接分配（palloc, malloc），非共享内存，替换也是简化版的 ClockSweep 算法，如果空间(temp_buffers)不够会写出到磁盘。</li>
+</ul>
+</li>
+</ol>
+<h2 id="_11">参考</h2>
+<ol>
+<li><a href="https://book.douban.com/subject/33477094/">PostgreSQL指南：内幕探索</a></li>
+<li><a href="https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README">buffer/README</a></li>
+<li><a href="http://mysql.taobao.org/monthly/2019/03/01/">PgSQL · 特性分析 · 内存管理机制</a></li>
+<li><a href="https://zhmin.github.io/2019/10/17/postgresql-buffer-pool/">Postgresql 缓存池原理</a></li>
+<li><a href="https://severalnines.com/database-blog/architecture-and-tuning-memory-postgresql-databases">Architecture and Tuning of Memory in PostgreSQL Databases</a> 各种内存类型介绍</li>
+<li><a href="http://postgres.cn/docs/12/runtime-config-resource.html">内存参数介绍</a></li>
+<li><a href="http://www.interdb.jp/pg/pgsql08.html">http://www.interdb.jp/pg/pgsql08.html</a></li>
+<li><a href="http://mysql.taobao.org/monthly/2019/03/01/">http://mysql.taobao.org/monthly/2019/03/01/</a></li>
+<li><a href="http://www.postgres.cn/docs/12/pgbuffercache.html">http://www.postgres.cn/docs/12/pgbuffercache.html</a></li>
+<li><a href="http://www.postgres.cn/docs/12/pgprewarm.html">http://www.postgres.cn/docs/12/pgprewarm.html</a></li>
+<li><a href="https://github.com/klando/pgfincore">https://github.com/klando/pgfincore</a></li>
+<li><a href="https://madusudanan.com/blog/understanding-postgres-caching-in-depth/">https://madusudanan.com/blog/understanding-postgres-caching-in-depth/</a></li>
+<li><a href="https://www.modb.pro/db/26062">https://www.modb.pro/db/26062</a></li>
+<li><a href="https://www.cnblogs.com/wy123/p/13463806.html">https://www.cnblogs.com/wy123/p/13463806.html</a></li>
+<li><a href="https://sites.google.com/site/itmyshare/database-tips-and-examples/postgres/postgresql-buffering">https://sites.google.com/site/itmyshare/database-tips-and-examples/postgres/postgresql-buffering</a></li>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/rds-aurora-postgresql-shared-buffers/">https://aws.amazon.com/premiumsupport/knowledge-center/rds-aurora-postgresql-shared-buffers/</a></li>
+<li><a href="http://liuyangming.tech/10-2019/INNODB-vs-PgSQL-buffer.html">http://liuyangming.tech/10-2019/INNODB-vs-PgSQL-buffer.html</a></li>
+<li><a href="https://www.tutorialdba.com/p/postgresql-buffer-cache.html">PostgreSQL Buffer Cache</a></li>
+<li><a href="https://www.percona.com/blog/2018/08/31/tuning-postgresql-database-parameters-to-optimize-performance/">Tuning PostgreSQL Database Parameters to Optimize Performance</a></li>
+<li><a href="https://distributedsystemsauthority.com/optimizing-postgresql-shared-buffers/">https://distributedsystemsauthority.com/optimizing-postgresql-shared-buffers/</a></li>
+<li><a href="https://momjian.us/main/writings/pgsql/hw_performance/">PostgreSQL Hardware Performance Tuning</a></li>
+<li><a href="https://www.geeksforgeeks.org/difference-between-buffer-and-cache/">https://www.geeksforgeeks.org/difference-between-buffer-and-cache/</a></li>
+<li><a href="https://sites.google.com/site/itmyshare/database-tips-and-examples/postgres/postgresql-buffering">https://sites.google.com/site/itmyshare/database-tips-and-examples/postgres/postgresql-buffering</a></li>
+<li><a href="https://github.com/klando/pgfincore">https://github.com/klando/pgfincore</a></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../summary_2018/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                2018 总结
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../buffer_readme/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Buffer readme
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

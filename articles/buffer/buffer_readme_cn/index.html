@@ -1,0 +1,2142 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/buffer/buffer_readme_cn/">
+      
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>Buffer readme cn - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            iswade's blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Buffer readme cn
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." class="md-nav__link">
+      iswade's blog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../00_long_time_plan/" class="md-nav__link">
+      5 年计划
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../01_database_notes/" class="md-nav__link">
+      Database Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../02_distributed_system_papers/" class="md-nav__link">
+      分布式系统领域经典论文翻译集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Algorithms
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Algorithms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../algorithms/algorithms/" class="md-nav__link">
+      Algorithms
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Articles
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Articles" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Articles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boltdb/" class="md-nav__link">
+      BoltDB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../etcd/" class="md-nav__link">
+      ETCD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_concurrency/" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../partition/" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pebble/" class="md-nav__link">
+      Pebble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../performance/" class="md-nav__link">
+      perf 工具使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raft/" class="md-nav__link">
+      Raft 算法实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../summary_2017/" class="md-nav__link">
+      2017 总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../summary_2018/" class="md-nav__link">
+      2018 总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-10" type="checkbox" id="nav-6-10" checked>
+    
+    <label class="md-nav__link" for="nav-6-10">
+      Buffer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Buffer" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-10">
+        <span class="md-nav__icon md-icon"></span>
+        Buffer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer_details/" class="md-nav__link">
+      PostgreSQL 详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer_readme/" class="md-nav__link">
+      Buffer readme
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Buffer readme cn
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Buffer readme cn
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    缓存区管理器内部锁定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    普通缓存替换策略
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ring" class="md-nav__link">
+    缓存 ring 替换策略
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bgwriter" class="md-nav__link">
+    bgwriter 的处理
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Database
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Database" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Database
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals/" class="md-nav__link">
+      读书笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch13_dist_transactions/" class="md-nav__link">
+      分布式系统之分布式事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Distributed systems
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Distributed systems" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Distributed systems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" class="md-nav__link">
+      第二章 进程间通信：概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/04_representing/" class="md-nav__link">
+      第四章 表示分布式算法 _语法和语义_
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/06_time/" class="md-nav__link">
+      第六章 分布式系统中的时间
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Go
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Go" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Go
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_exercises100/" class="md-nav__link">
+      Go exercises100
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_exercises60/" class="md-nav__link">
+      单选题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_interview/" class="md-nav__link">
+      Go interview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_libs/" class="md-nav__link">
+      Go标准库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_notes/" class="md-nav__link">
+      Go
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_tools/" class="md-nav__link">
+      Go 语言工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/about/" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/advanced_markdown/" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Notes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/all/" class="md-nav__link">
+      笔记本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash/" class="md-nav__link">
+      Bash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash_turorial/" class="md-nav__link">
+      Bash 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/pragmatic_programmer/" class="md-nav__link">
+      程序员修炼之道读书笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/python/" class="md-nav__link">
+      python基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/vmware/" class="md-nav__link">
+      Vmware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-8" type="checkbox" id="nav-11-8">
+    
+    <label class="md-nav__link" for="nav-11-8">
+      Adb nodes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Adb nodes" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-8">
+        <span class="md-nav__icon md-icon"></span>
+        Adb nodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/01_in_memory_database/" class="md-nav__link">
+      内存数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/09_storage_models_data_layout/" class="md-nav__link">
+      存储模型和数据布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/15_execution/" class="md-nav__link">
+      15 execution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/17_hashjoins/" class="md-nav__link">
+      并行 JOIN 算法（Hashing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/22_optimizer_implementation_I/" class="md-nav__link">
+      优化器实现 I
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/23_optimizer_implementation_II/" class="md-nav__link">
+      优化器实现 II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/24_cost_models/" class="md-nav__link">
+      基于代价的优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/25_self_driving/" class="md-nav__link">
+      自动驾驶数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-9" type="checkbox" id="nav-11-9">
+    
+    <label class="md-nav__link" for="nav-11-9">
+      Db nodes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Db nodes" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-9">
+        <span class="md-nav__icon md-icon"></span>
+        Db nodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
+      关系语言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/01_relational_model/" class="md-nav__link">
+      关系模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/02_advanced_SQL/" class="md-nav__link">
+      高级 SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/03_Database_Storage_I/" class="md-nav__link">
+      数据库存储（I）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/04_Database_Storage_II/" class="md-nav__link">
+      数据库存储（II）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/05_Buffer_Pool/" class="md-nav__link">
+      缓存池
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/06_Hash_Tables/" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/07_Tree_Indexes_I/" class="md-nav__link">
+      树索引（I）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/08_Tree_Indexes_II/" class="md-nav__link">
+      树索引（II）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/09_Index_Concurrency/" class="md-nav__link">
+      索引并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/10_Query_Processing/" class="md-nav__link">
+      查询处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/11_Sorting_Aggregations/" class="md-nav__link">
+      排序和聚集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/12_joins/" class="md-nav__link">
+      JOIN 算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/13_Query_Optimization/" class="md-nav__link">
+      查询优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/14_parallel_execution/" class="md-nav__link">
+      并行执行
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/15_embedded_logic/" class="md-nav__link">
+      嵌入数据库逻辑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/16_concurrency_control/" class="md-nav__link">
+      并发控制理论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/18_timestamp_ordering/" class="md-nav__link">
+      时间顺序并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/19_MVCC/" class="md-nav__link">
+      多版本并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/20_logging/" class="md-nav__link">
+      日志
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/21_recovery/" class="md-nav__link">
+      数据库恢复
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/22_distribute_OLTP/" class="md-nav__link">
+      分布式 OLTP 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Translate
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translate" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Translate
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/An%20Overview%20of%20Query%20Optimization%20in%20Relational%20Systems/" class="md-nav__link">
+      关系系统中的查询优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
+      Aurora：如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Calvin%20Fast%20Distributed%20Transactions/" class="md-nav__link">
+      Calvin: 分区数据库的快速分布式事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" class="md-nav__link">
+      F1 Query：大规模数据的声明式查询
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/The%20State%20of%20the%20Art%20in%20Distributed%20Query%20Processing/" class="md-nav__link">
+      分布式查询处理的最新进展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/btree_vs_lsmtree/" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/comparison_of_database_isolation/" class="md-nav__link">
+      数据库隔离级别的比较
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/distsys/" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/faunadb_transaction/" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/generalized_consensus/" class="md-nav__link">
+      广义分布式共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" class="md-nav__link">
+      如何使用 Go 接口？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" class="md-nav__link">
+      Linux sysadmin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/paxos_made_live/" class="md-nav__link">
+      Paxos Made Live(译)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/raft/" class="md-nav__link">
+      raft详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" class="md-nav__link">
+      Strong consistency models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper/" class="md-nav__link">
+      Taurus Database: How to be Fast, Available, and Frugal in the Cloud
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper_cn/" class="md-nav__link">
+      TaurusDB: 高性能高可用低成本云数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" class="md-nav__link">
+      ZooKeeper: 互联网系统无等待协调服务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-20" type="checkbox" id="nav-12-20">
+    
+    <label class="md-nav__link" for="nav-12-20">
+      Google practices
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Google practices" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-20">
+        <span class="md-nav__icon md-icon"></span>
+        Google practices
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/practices/" class="md-nav__link">
+      Goolge 工程实践文档
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-20-2" type="checkbox" id="nav-12-20-2">
+    
+    <label class="md-nav__link" for="nav-12-20-2">
+      Review
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Review" data-md-level="3">
+      <label class="md-nav__title" for="nav-12-20-2">
+        <span class="md-nav__icon md-icon"></span>
+        Review
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/developer/" class="md-nav__link">
+      Developer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/review/" class="md-nav__link">
+      代码检视开发者指导
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/reviewer/" class="md-nav__link">
+      Reviewer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-21" type="checkbox" id="nav-12-21">
+    
+    <label class="md-nav__link" for="nav-12-21">
+      Crdb
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Crdb" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-21">
+        <span class="md-nav__icon md-icon"></span>
+        Crdb
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_distribution_layer/" class="md-nav__link">
+      分布层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_distsql/" class="md-nav__link">
+      分布式 SQL 查询
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_join/" class="md-nav__link">
+      CockroachDB 中的 JOIN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper/" class="md-nav__link">
+      CockroachDB: The Resilient Geo-Distributed SQL Database
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper_cn/" class="md-nav__link">
+      CockroachDB：弹性地理分布SQL数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_pipelining/" class="md-nav__link">
+      管道化共识写入加速分布式 SQL 事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_query_planning/" class="md-nav__link">
+      SQL 查询计划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_replication_layer/" class="md-nav__link">
+      复制层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_sql_layer/" class="md-nav__link">
+      SQL 层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_sql_life/" class="md-nav__link">
+      [译] SQL的一生（CRDB）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-22" type="checkbox" id="nav-12-22">
+    
+    <label class="md-nav__link" for="nav-12-22">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-22">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/misc/CI/" class="md-nav__link">
+      持续集成系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/misc/datastore/" class="md-nav__link">
+      DBDB: Dog Bed Database
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    缓存区管理器内部锁定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    普通缓存替换策略
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ring" class="md-nav__link">
+    缓存 ring 替换策略
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bgwriter" class="md-nav__link">
+    bgwriter 的处理
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p>src/backend/storage/buffer/README </p>
+<h1 id="_1">共享缓存区访问规则说明</h1>
+<p>共享磁盘缓存有两种独立的访问控制机制：引用计数（也叫做 pin 计数）和缓存内容锁。（实际上，有第三级访问控制：在合法访问属于关系的任何页面之前，必须对关系持有适当的锁。此处不讨论关系级别锁。）</p>
+<p><strong>pin</strong>：必须「持有一个缓存的 pin」（增加它的引用计数）才能被允许做任何事情。未被 pin 的缓存区随时会被回收并重新用于不同的页面，对未 pin 的缓存访问是不安全的。通常 pin 通过 ReadBuffer 获取，通过 ReleaseBuffer 释放。单个后端同时多次锁定页面是正常的，而且确实很常见；缓存区管理器可以有效地处理这种情况。较长时间持有一个 pin 也是可以的 —— 例如，顺序扫描对当前页面持有 pin，直到处理完该页上的所有元组为止，如果是 JOIN 的外部扫描，这可能需要相当长的时间。类似地，btree 索引扫描也可以持有当前索引页上的 pin。这是可以的，因为正常操作从来不等待页面的 pin 计数降为零。（任何可能需要等待的事情都通过等待获取关系级别锁来处理，这就是为什么您最好先持有一个锁。）但是，pin不能跨事务边界持有。</p>
+<p><strong>content_lock</strong>：内容锁，有两种类型的内容锁，共享和独占，它们的作用：多个后端可以在同一缓存区上持有共享锁，但独占锁阻止其他人持有共享锁或独占锁。（这些锁也可以称为读锁和写锁。）这些锁是短期的，不应长期持有。缓存内容锁的获取和释放由 LockBuffer() 完成，对于单个后端进程来说，无法在同一缓存上获取多个锁。在尝试锁定缓存区之前，必须先持有对缓存的 pin。</p>
+<p>缓存访问规则：</p>
+<ol>
+<li>
+<p>要扫描一个页面的元组，必须持有一个 pin 和 content_lock 共享或独占锁。要检查共享缓存区中元组的提交状态（XID 和状态位），同样必须持有 pin 和共享锁或排他锁。</p>
+</li>
+<li>
+<p>一旦你确定一个元组是有用的（对当前事务可见），你就可以放弃内容锁，但是只要你持有缓存 pin，就可以继续访问元组的数据。这是堆扫描通常完成的，因为 heap_fetch 返回的元组包含指向共享缓存区中的元组数据的指针。因此，在保持 pin 时，元组不能离开（参见规则#5）。其状态可以改变，但假定在初步确定可见性后，这无关紧要。</p>
+</li>
+<li>
+<p>要增加元组或改变现有元组的 xmin/xmax 字段，必须在包含缓存区上持有 pin 和排他内容锁。这确保了其他人在执行可见性检查时不会看到元组的部分更新状态。</p>
+</li>
+<li>
+<p>更新元组提交状态位（即，或 HEAP_XMIN_COMMITTED, HEAP_XMIN_INVALID, HEAP_XMAX_COMMITTED 或 HEAP_XMAX_INVALID 到 t_infomask）中，同时仅保留缓存区上的共享锁和 pin。这是正常的，因为另一个后端进程查看元组在同一时间会或相同的位进入字段，所以很少或没有冲突更新的风险；更重要的是，如果确实发生了冲突，那将仅仅意味着丢失一个位更新，并且需要稍后再次执行。这四个位只是提示（它们在 pg_xact 中缓存了事务状态查找的结果），因此如果它们被冲突的更新重置为零，不会造成很大的伤害。但是，请注意，通过设置 HEAP_XMIN_INVALID 和 HEAP_XMIN_COMMITTED 来冻结元组；这是一个关键更新，因此需要排他缓存区锁（并且必须记录 WAL 日志）。</p>
+</li>
+<li>
+<p>要物理地删除页面上的元组或压缩空闲空间，必须持有一个 pin 和一个排他锁，在持有排他锁时必须检查缓存区的共享引用计数为 1（即，没有其他后端持有 pin）。如果满足这些条件，则其他后端无法执行页面扫描，直到删除排他锁，并且其他后端无法持有对现有元组的引用，而该元组的引用可能要再次检查。注意，另一个后端可能会在执行清理时锁定缓存区（增加 refcount），但是在获取共享或排他内容锁之前，它无法实际检查页面。</p>
+</li>
+</ol>
+<p>获取锁的规则#5 是由缓存管理器的 LockBufferForCleanup() 或 ConditionalLockBufferForCleanup() 完成的。这两个函数首先会获得排他锁，然后检查共享 pin 计数当前是否为 1。如果不为 1，ConditionalLockBufferForCleanup() 释放排他锁，然后返回 false，而 LockBufferForCleanup()释放排他锁（但不释放调用者的 pin），等待另一个后端发出信号。然后重试。当 UnpinBuffer 将共享 pin 计数减至 1 时，会发送该信号。如上所述，此操作可能需要等待很长时间才能获得锁，但对于并发 VACUUM 来说，这应该不重要。当前实现仅支持对任何特定共享缓存区上的 pin-count-1 的单个等待器。对于 VACUUM 来说，这已经足够了，因为我们不允许在一个关系上同时使用多个 VACUUM。任何希望在恢复或 VACUUM 之外获得清理锁的人都必须使用带条件函数（ConditionalLockBufferForCleanup）。</p>
+<h2 id="_2">缓存区管理器内部锁定</h2>
+<p>在 PostgreSQL 8.1 之前，共享缓存区管理器本身的所有操作都由一个系统范围的锁 BufMgrLock 保护，这个很明显是竞争热点。新的锁定方案避免了在公共代码路径中抢占系统范围的独占锁。它的工作方式如下：</p>
+<ul>
+<li>
+<p>有一个系统范围的 LWLock（BufMappingLock）从理论上保护从缓存区标记（页面标识符）到缓存区的映射。（物理上可以看成是保护 buf_table.c 维护的 hash 表）为了查找标签是否有 buffer，只需要在 BufMappingLock 上获取共享锁即可。请注意，如果找到的缓存区，在释放 BufMappingLock 之前必须锁定。要改变任何缓存区的页分配，必须在 BufMappingLock 上持有排他锁。此锁必须在调整缓存区的标头字段和更改 buf_table 哈希表期间保持。唯一需要独占锁的操作是在已经不在共享缓存区中的页中读取，这至少需要一个内核调用，并且通常需要等待 I/O，所以无论如何它都会很慢。</p>
+</li>
+<li>
+<p>从 PG 8.2 开始，BufMappingLock 被拆分为 NUM_BUFFER_PARTITIONS(128) 个独立的锁，每个锁保护一部分缓存区标记空间。这允许进一步减少正常代码路径中的竞争。特定缓存区标记所属的分区由标记的哈希值的低位决定。上述规则独立适用于每个分区。如果必须同时锁定多个分区，则必须按分区编号顺序锁定它们，以避免出现死锁的风险。</p>
+</li>
+<li>
+<p>单独的系统范围自旋锁 buffer_strategy_lock 为访问缓存区空闲列表或选择缓存区进行替换的操作提供互斥。为了提高效率，这里使用自旋锁而不是轻量级锁；在保留 buffer_strategy_lock 时，不应获取其他任何类型的锁。这对于允许在多个后端以合理的并发度进行缓存区替换至关重要。</p>
+</li>
+<li>
+<p>每个缓存头都包含一个自旋锁，在检查或更改该缓存头的字段时必须获取这个锁。这允许诸如 ReleaseBuffer 之类的操作进行本地状态更改，而无需获得任何系统范围的锁。这里使用了自旋锁，而不是 LWLock，因为在任何情况下都不需要持有多于几个指令的锁。</p>
+</li>
+</ul>
+<p>请注意，缓存头的自旋锁不控制对缓存区中保存的数据的访问。每个缓存头中还包含一个 LWLock，即「缓存内容锁」，代表访问缓存区中数据的权限。按照上述规则使用。</p>
+<p>还有一组每个缓存的 LWLocks（io_in_progress） 锁，用于等待缓存区上的 I/O 完成。进行读写的进程在一段时间内会获得独占锁，需要等待完成的进程会尝试获得共享锁（它们在获得共享锁后会立即释放），在 LWLock 代表非平凡资源的系统中，需要这么多锁，真烦人。也许我们可以使用每个后端 LWLock 来代替（缓存头将包含一个字段来显示哪个后端正在执行其 I/O ）。</p>
+<h2 id="_3">普通缓存替换策略</h2>
+<p>有一个「freelist」缓存是主要的替换候选。特别地，完全空闲（不包含任何有效页面）的缓存总是在此列表中。如果我们认为缓存不太可能很快被需要，我们也可以将缓存放入此列表中；但是，当前算法从不这样做。该列表使用缓存头中的字段（freeNext）形成单链表；我们在全局变量中维护头和尾指针。（注意：虽然列表链接位于缓存头中，但它们被 buffer_strategy_lock 保护，而不是受缓存自旋锁保护。）若要选择淘汰缓存区，当没有可用缓存区时，要回收，我们使用一个简单的时钟扫描算法，它避免了在常规操作中需要获取系统范围的锁。它的工作方式如下：</p>
+<p>每个缓存头包含一个使用计数器（usage count），每当缓存区被 pin 时，该计数器就递增（最多不超过较小的限制值）。（这只需要缓存头自旋锁，无论如何必须使用它来增加缓存区引用计数，因为它的开销非常低。）</p>
+<p>"clock hand" 是一个缓存区索引，nextVictimBuffer，它循环移动所有可用的缓存区。nextVictimBuffer 受 buffer_strategy_lock 保护。
+对于需要获取淘汰缓存区的进程，其算法为：</p>
+<ol>
+<li>
+<p>获取 buffer_strategy_lock。</p>
+</li>
+<li>
+<p>如果<strong>缓存空闲列表</strong>非空，则移除其头部缓存区。释放 buffer_strategy_lock。如果缓存区被 pin 或使用计数不为零，则无法使用；忽略它返回步骤 1。否则，锁定缓存区并返回它。</p>
+</li>
+<li>
+<p>否则，缓存空闲列表为空。选择 nextVictimBuffer 指向的 buffer，循环向前推进 nextVictimBuffer，下次使用。释放 buffer_strategy_lock。</p>
+</li>
+<li>
+<p>如果所选缓存区被 pin 或使用计数不为零，则无法使用。减少其使用计数（如果非零），重新获取 buffer_strategy_lock，然后返回步骤 3 以检查下一个缓存区。</p>
+</li>
+<li>
+<p>锁定选定的缓存区，然后返回。</p>
+</li>
+</ol>
+<p>（需要注意的是，如果选定的缓存区是脏的，我们将不得不将其写出，然后才能回收它；如果其他人同时锁定缓存区，我们将不得不放弃并尝试另一个缓存区。当然，基本的 select-a-victim-buffer 算法对这个点不太关心。）</p>
+<h2 id="ring">缓存 ring 替换策略</h2>
+<p>当运行一次需要访问大量页的查询时，如 VACUUM 或大表顺序扫描，会使用不同的策略。仅仅通过这样的扫描页面不太可能很快再次被使用，因此，与其运行正常的时钟扫描算法，并淘汰掉整个缓存区高速缓存，使用正常的时钟扫描算法分配一个小的缓存区 ring ，并且这些缓存区被用于整个扫描。这也意味着，由这样一条语句引起的大部分写流量将由后端自己完成，而不是推到其他进程上。</p>
+<ol>
+<li>
+<p>对于<strong>顺序扫描</strong>，使用 <strong>32 * 8KB = 256KB  ring</strong> 。这个空间足够小，可以在 L2 中缓存，这使得页面从操作系统缓存传输到共享缓存的效率更高。甚至更少也足够了，但 ring 必须足够大，以容纳扫描中同时固定的所有页面。256KB 也应该足够为其他后端加入同步序列扫描留下一个小的缓存路径。如果 ring 缓存区被污染并且更新了 LSN，我们通常必须写入并刷新 WAL，然后才能重新使用缓存区；在这种情况下，我们从 ring 中丢弃缓存区，然后（稍后）使用正常的时钟扫描算法选择替换缓存区。因此，该策略最适合只读的扫描（或者最坏的更新提示位）。在修改扫描中每个页面的扫描中，如批量 UPDATE 或 DELETE， ring 中的缓存器总是被弄脏，并且 ring 策略有效地退化为正常策略。</p>
+</li>
+<li>
+<p><strong>VACUUM</strong> 像顺序扫描一样使用 <strong>256KB 的 ring</strong> ，但是脏页不会从 ring 中删除。相反，如果需要，WAL 会被刷新，以便允许缓存区的重用。在 8.3 中引入缓存 ring 策略之前，VACUUM 的缓存区被发送到 freelist 中，实际上是一个缓存区的缓存区 ring ，导致 WAL 刷盘过多。允许 VACUUM 在两次 WAL 刷新之间更新 256KB 应该更有效。</p>
+</li>
+<li>
+<p><strong>批量写入</strong>与 VACUUM 类似。目前这仅适用于 COPY IN 和 CREATE TABLE AS SELECT。（让 seqscan UPDATE 和 DELETE 使用批量写入策略是否也很有意义?）对于批量写入，我们使用 <strong>16MB 的 ring</strong> 大小（但不超过 shared_buffer 的 &#8539;）。结果显示较小大小 COPY 阻塞太频繁，无法进行 WAL 刷新。虽然通过做自己的 WAL 刷新来减缓背景真空是可以的，但我们希望 COPY 不会受此影响，因此我们让它消耗更多的缓存空间。</p>
+</li>
+</ol>
+<h2 id="bgwriter">bgwriter 的处理</h2>
+<p>bgwriter 设计成写出可能很快被回收的页面，从而从活跃的后端卸载写的工作。为此，它从 nextVictimBuffer 的当前位置（这里不会被改变!）循环向前扫描，查找脏的、没有被 pin、也没有标记正使用计数的缓存区。它锁定、写入和释放任何此类缓存区。</p>
+<p>如果我们可以假设读取 nextVictimBuffer 是一个原子动作，那么 bgwriter 甚至不需要采取 buffer_strategy_lock 来查找要写入的缓存区；它只需要自旋锁每个缓存头足够长的时间来检查脏比特。即使没有这个假设，bgwriter 只需要花费足够长的时间来读取变量值，而不必在扫描缓存区时。（与 PG 8.0 相比，这在bgwriter的竞争代价方面有很大的改进。）</p>
+<p>bgwriter 在写入缓存区时对缓存区进行共享内容锁定（而将缓存区内容刷新到磁盘的其他人也必须这样做）。这确保传输到磁盘的页面是一致的。我们可能会错过一两个提示位更新，但这不是问题，原因与缓存区访问规则中提到的相同。</p>
+<p>从 8.4 版本开始，当有某种形式的可能扩展的恢复执行时，后台写入程序将在恢复模式期间启动。它执行与正常处理相同的服务，只是它写入的检查点在技术上是重启点。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../buffer_readme/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Buffer readme
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../../database/db_internals/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                读书笔记
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2105 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/buffer/buffer_readme/">
+      
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>Buffer readme - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#notes-about-shared-buffer-access-rules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            iswade's blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Buffer readme
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." class="md-nav__link">
+      iswade's blog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../00_long_time_plan/" class="md-nav__link">
+      5 年计划
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../01_database_notes/" class="md-nav__link">
+      Database Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../02_distributed_system_papers/" class="md-nav__link">
+      分布式系统领域经典论文翻译集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Algorithms
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Algorithms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../algorithms/algorithms/" class="md-nav__link">
+      Algorithms
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Articles
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Articles" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Articles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boltdb/" class="md-nav__link">
+      BoltDB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../etcd/" class="md-nav__link">
+      ETCD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_concurrency/" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../partition/" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pebble/" class="md-nav__link">
+      Pebble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../performance/" class="md-nav__link">
+      perf 工具使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../raft/" class="md-nav__link">
+      Raft 算法实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../summary_2017/" class="md-nav__link">
+      2017 总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../summary_2018/" class="md-nav__link">
+      2018 总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-10" type="checkbox" id="nav-6-10" checked>
+    
+    <label class="md-nav__link" for="nav-6-10">
+      Buffer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Buffer" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-10">
+        <span class="md-nav__icon md-icon"></span>
+        Buffer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer_details/" class="md-nav__link">
+      PostgreSQL 详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Buffer readme
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Buffer readme
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#buffer-managers-internal-locking" class="md-nav__link">
+    Buffer Manager's Internal Locking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normal-buffer-replacement-strategy" class="md-nav__link">
+    Normal Buffer Replacement Strategy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buffer-ring-replacement-strategy" class="md-nav__link">
+    Buffer Ring Replacement Strategy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-writers-processing" class="md-nav__link">
+    Background Writer's Processing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer_readme_cn/" class="md-nav__link">
+      Buffer readme cn
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Database
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Database" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Database
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals/" class="md-nav__link">
+      读书笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch13_dist_transactions/" class="md-nav__link">
+      分布式系统之分布式事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Distributed systems
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Distributed systems" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Distributed systems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" class="md-nav__link">
+      第二章 进程间通信：概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/04_representing/" class="md-nav__link">
+      第四章 表示分布式算法 _语法和语义_
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/06_time/" class="md-nav__link">
+      第六章 分布式系统中的时间
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Go
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Go" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Go
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_exercises100/" class="md-nav__link">
+      Go exercises100
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_exercises60/" class="md-nav__link">
+      单选题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_interview/" class="md-nav__link">
+      Go interview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_libs/" class="md-nav__link">
+      Go标准库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_notes/" class="md-nav__link">
+      Go
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../go/go_tools/" class="md-nav__link">
+      Go 语言工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/about/" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/advanced_markdown/" class="md-nav__link">
+      高级markdown
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Notes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/all/" class="md-nav__link">
+      笔记本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash/" class="md-nav__link">
+      Bash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash_turorial/" class="md-nav__link">
+      Bash 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" class="md-nav__link">
+      git 入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/pragmatic_programmer/" class="md-nav__link">
+      程序员修炼之道读书笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/python/" class="md-nav__link">
+      python基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/vmware/" class="md-nav__link">
+      Vmware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-8" type="checkbox" id="nav-11-8">
+    
+    <label class="md-nav__link" for="nav-11-8">
+      Adb nodes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Adb nodes" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-8">
+        <span class="md-nav__icon md-icon"></span>
+        Adb nodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/01_in_memory_database/" class="md-nav__link">
+      内存数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/09_storage_models_data_layout/" class="md-nav__link">
+      存储模型和数据布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/15_execution/" class="md-nav__link">
+      15 execution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/17_hashjoins/" class="md-nav__link">
+      并行 JOIN 算法（Hashing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/22_optimizer_implementation_I/" class="md-nav__link">
+      优化器实现 I
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/23_optimizer_implementation_II/" class="md-nav__link">
+      优化器实现 II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/24_cost_models/" class="md-nav__link">
+      基于代价的优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/adb_nodes/25_self_driving/" class="md-nav__link">
+      自动驾驶数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-9" type="checkbox" id="nav-11-9">
+    
+    <label class="md-nav__link" for="nav-11-9">
+      Db nodes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Db nodes" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-9">
+        <span class="md-nav__icon md-icon"></span>
+        Db nodes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
+      关系语言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/01_relational_model/" class="md-nav__link">
+      关系模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/02_advanced_SQL/" class="md-nav__link">
+      高级 SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/03_Database_Storage_I/" class="md-nav__link">
+      数据库存储（I）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/04_Database_Storage_II/" class="md-nav__link">
+      数据库存储（II）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/05_Buffer_Pool/" class="md-nav__link">
+      缓存池
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/06_Hash_Tables/" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/07_Tree_Indexes_I/" class="md-nav__link">
+      树索引（I）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/08_Tree_Indexes_II/" class="md-nav__link">
+      树索引（II）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/09_Index_Concurrency/" class="md-nav__link">
+      索引并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/10_Query_Processing/" class="md-nav__link">
+      查询处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/11_Sorting_Aggregations/" class="md-nav__link">
+      排序和聚集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/12_joins/" class="md-nav__link">
+      JOIN 算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/13_Query_Optimization/" class="md-nav__link">
+      查询优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/14_parallel_execution/" class="md-nav__link">
+      并行执行
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/15_embedded_logic/" class="md-nav__link">
+      嵌入数据库逻辑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/16_concurrency_control/" class="md-nav__link">
+      并发控制理论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/18_timestamp_ordering/" class="md-nav__link">
+      时间顺序并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/19_MVCC/" class="md-nav__link">
+      多版本并发控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/20_logging/" class="md-nav__link">
+      日志
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/21_recovery/" class="md-nav__link">
+      数据库恢复
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/22_distribute_OLTP/" class="md-nav__link">
+      分布式 OLTP 数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Translate
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translate" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Translate
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/An%20Overview%20of%20Query%20Optimization%20in%20Relational%20Systems/" class="md-nav__link">
+      关系系统中的查询优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
+      Aurora：如何设计云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Calvin%20Fast%20Distributed%20Transactions/" class="md-nav__link">
+      Calvin: 分区数据库的快速分布式事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" class="md-nav__link">
+      F1 Query：大规模数据的声明式查询
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/The%20State%20of%20the%20Art%20in%20Distributed%20Query%20Processing/" class="md-nav__link">
+      分布式查询处理的最新进展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/btree_vs_lsmtree/" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/comparison_of_database_isolation/" class="md-nav__link">
+      数据库隔离级别的比较
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/distsys/" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/faunadb_transaction/" class="md-nav__link">
+      无时钟的一致性：FaunaDB的分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/generalized_consensus/" class="md-nav__link">
+      广义分布式共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" class="md-nav__link">
+      如何使用 Go 接口？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" class="md-nav__link">
+      Linux sysadmin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/paxos_made_live/" class="md-nav__link">
+      Paxos Made Live(译)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/raft/" class="md-nav__link">
+      raft详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" class="md-nav__link">
+      Strong consistency models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper/" class="md-nav__link">
+      Taurus Database: How to be Fast, Available, and Frugal in the Cloud
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper_cn/" class="md-nav__link">
+      TaurusDB: 高性能高可用低成本云数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" class="md-nav__link">
+      ZooKeeper: 互联网系统无等待协调服务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-20" type="checkbox" id="nav-12-20">
+    
+    <label class="md-nav__link" for="nav-12-20">
+      Google practices
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Google practices" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-20">
+        <span class="md-nav__icon md-icon"></span>
+        Google practices
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/practices/" class="md-nav__link">
+      Goolge 工程实践文档
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-20-2" type="checkbox" id="nav-12-20-2">
+    
+    <label class="md-nav__link" for="nav-12-20-2">
+      Review
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Review" data-md-level="3">
+      <label class="md-nav__title" for="nav-12-20-2">
+        <span class="md-nav__icon md-icon"></span>
+        Review
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/developer/" class="md-nav__link">
+      Developer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/review/" class="md-nav__link">
+      代码检视开发者指导
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Google_practices/review/reviewer/" class="md-nav__link">
+      Reviewer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-21" type="checkbox" id="nav-12-21">
+    
+    <label class="md-nav__link" for="nav-12-21">
+      Crdb
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Crdb" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-21">
+        <span class="md-nav__icon md-icon"></span>
+        Crdb
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_distribution_layer/" class="md-nav__link">
+      分布层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_distsql/" class="md-nav__link">
+      分布式 SQL 查询
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_join/" class="md-nav__link">
+      CockroachDB 中的 JOIN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper/" class="md-nav__link">
+      CockroachDB: The Resilient Geo-Distributed SQL Database
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper_cn/" class="md-nav__link">
+      CockroachDB：弹性地理分布SQL数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_pipelining/" class="md-nav__link">
+      管道化共识写入加速分布式 SQL 事务
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_query_planning/" class="md-nav__link">
+      SQL 查询计划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_replication_layer/" class="md-nav__link">
+      复制层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_sql_layer/" class="md-nav__link">
+      SQL 层
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_sql_life/" class="md-nav__link">
+      [译] SQL的一生（CRDB）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12-22" type="checkbox" id="nav-12-22">
+    
+    <label class="md-nav__link" for="nav-12-22">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-22">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/misc/CI/" class="md-nav__link">
+      持续集成系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/misc/datastore/" class="md-nav__link">
+      DBDB: Dog Bed Database
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#buffer-managers-internal-locking" class="md-nav__link">
+    Buffer Manager's Internal Locking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normal-buffer-replacement-strategy" class="md-nav__link">
+    Normal Buffer Replacement Strategy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buffer-ring-replacement-strategy" class="md-nav__link">
+    Buffer Ring Replacement Strategy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-writers-processing" class="md-nav__link">
+    Background Writer's Processing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p>src/backend/storage/buffer/README</p>
+<h1 id="notes-about-shared-buffer-access-rules">Notes About Shared Buffer Access Rules</h1>
+<p>There are two separate access control mechanisms for shared disk buffers: reference counts (a/k/a pin counts) and buffer content locks. (Actually, there's a third level of access control: one must hold the appropriate kind of lock on a relation before one can legally access any page belonging to the relation. Relation-level locks are not discussed here.)</p>
+<p><strong>Pins</strong>: one must "hold a pin on" a buffer (increment its reference count) before being allowed to do anything at all with it. An unpinned buffer is subject to being reclaimed and reused for a different page at any instant, so touching it is unsafe. Normally a pin is acquired via ReadBuffer and released via ReleaseBuffer. It is OK and indeed common for a single backend to pin a page more than once concurrently; the buffer manager handles this efficiently. It is considered OK to hold a pin for long intervals --- for example, sequential scans hold a pin on the current page until done processing all the tuples on the page, which could be quite a while if the scan is the outer scan of a join. Similarly, a btree index scan may hold a pin on the current index page. This is OK because normal operations never wait for a page's pin count to drop to zero. (Anything that might need to do such a wait is instead handled by waiting to obtain the relation-level lock, which is why you'd better hold one first.) Pins may not be held across transaction boundaries, however.</p>
+<p><strong>Buffer content locks</strong>: there are two kinds of buffer lock, shared and exclusive, which act just as you'd expect: multiple backends can hold shared locks on the same buffer, but an exclusive lock prevents anyone else from holding either shared or exclusive lock. (These can alternatively be called READ and WRITE locks.) These locks are intended to be short-term: they should not be held for long. Buffer locks are acquired and released by LockBuffer(). It will <em>not</em> work for a single backend to try to acquire multiple locks on the same buffer. One must pin a buffer before trying to lock it.</p>
+<p>Buffer access rules:</p>
+<ol>
+<li>To scan a page for tuples, one must hold a pin and either shared or exclusive content lock. To examine the commit status (XIDs and status bits) of a tuple in a shared buffer, one must likewise hold a pin and either shared or exclusive lock.</li>
+<li>Once one has determined that a tuple is interesting (visible to the current transaction) one may drop the content lock, yet continue to access the tuple's data for as long as one holds the buffer pin. This is what is typically done by heap scans, since the tuple returned by heap_fetch contains a pointer to tuple data in the shared buffer. Therefore the tuple cannot go away while the pin is held (see rule #5). Its state could change, but that is assumed not to matter after the initial determination of visibility is made.</li>
+<li>To add a tuple or change the xmin/xmax fields of an existing tuple, one must hold a pin and an exclusive content lock on the containing buffer. This ensures that no one else might see a partially-updated state of the tuple while they are doing visibility checks.</li>
+<li>It is considered OK to update tuple commit status bits (ie, OR the values HEAP_XMIN_COMMITTED, HEAP_XMIN_INVALID, HEAP_XMAX_COMMITTED, or HEAP_XMAX_INVALID into t_infomask) while holding only a shared lock and pin on a buffer. This is OK because another backend looking at the tuple at about the same time would OR the same bits into the field, so there is little or no risk of conflicting update; what's more, if there did manage to be a conflict it would merely mean that one bit-update would be lost and need to be done again later. These four bits are only hints (they cache the results of transaction status lookups in pg_xact), so no great harm is done if they get reset to zero by conflicting updates. Note, however, that a tuple is frozen by setting both HEAP_XMIN_INVALID and HEAP_XMIN_COMMITTED; this is a critical update and accordingly requires an exclusive buffer lock (and it must also be WAL-logged).</li>
+<li>To physically remove a tuple or compact free space on a page, one must hold a pin and an exclusive lock, <em>and</em> observe while holding the exclusive lock that the buffer's shared reference count is one (ie, no other backend holds a pin). If these conditions are met then no other backend can perform a page scan until the exclusive lock is dropped, and no other backend can be holding a reference to an existing tuple that it might expect to examine again. Note that another backend might pin the buffer (increment the refcount) while one is performing the cleanup, but it won't be able to actually examine the page until it acquires shared or exclusive content lock.</li>
+</ol>
+<p>Obtaining the lock needed under rule #5 is done by the bufmgr routines LockBufferForCleanup() or ConditionalLockBufferForCleanup(). They first get an exclusive lock and then check to see if the shared pin count is currently 1. If not, ConditionalLockBufferForCleanup() releases the exclusive lock and then returns false, while LockBufferForCleanup() releases the exclusive lock (but not the caller's pin) and waits until signaled by another backend, whereupon it tries again. The signal will occur when UnpinBuffer decrements the shared pin count to 1. As indicated above, this operation might have to wait a good while before it acquires the lock, but that shouldn't matter much for concurrent VACUUM. The current implementation only supports a single waiter for pin-count-1 on any particular shared buffer. This is enough for VACUUM's use, since we don't allow multiple VACUUMs concurrently on a single relation anyway. Anyone wishing to obtain a cleanup lock outside of recovery or a VACUUM must use the conditional variant of the function.</p>
+<h2 id="buffer-managers-internal-locking">Buffer Manager's Internal Locking</h2>
+<p>Before PostgreSQL 8.1, all operations of the shared buffer manager itself were protected by a single system-wide lock, the BufMgrLock, which unsurprisingly proved to be a source of contention. The new locking scheme avoids grabbing system-wide exclusive locks in common code paths. It works like this:</p>
+<ul>
+<li>There is a system-wide LWLock, the BufMappingLock, that notionally protects the mapping from buffer tags (page identifiers) to buffers. (Physically, it can be thought of as protecting the hash table maintained by buf_table.c.) To look up whether a buffer exists for a tag, it is sufficient to obtain share lock on the BufMappingLock. Note that one must pin the found buffer, if any, before releasing the BufMappingLock. To alter the page assignment of any buffer, one must hold exclusive lock on the BufMappingLock. This lock must be held across adjusting the buffer's header fields and changing the buf_table hash table. The only common operation that needs exclusive lock is reading in a page that was not in shared buffers already, which will require at least a kernel call and usually a wait for I/O, so it will be slow anyway.</li>
+<li>As of PG 8.2, the BufMappingLock has been split into NUM_BUFFER_PARTITIONS separate locks, each guarding a portion of the buffer tag space. This allows further reduction of contention in the normal code paths. The partition that a particular buffer tag belongs to is determined from the low-order bits of the tag's hash value. The rules stated above apply to each partition independently. If it is necessary to lock more than one partition at a time, they must be locked in partition-number order to avoid risk of deadlock.</li>
+<li>A separate system-wide spinlock, buffer_strategy_lock, provides mutual exclusion for operations that access the buffer free list or select buffers for replacement. A spinlock is used here rather than a lightweight lock for efficiency; no other locks of any sort should be acquired while buffer_strategy_lock is held. This is essential to allow buffer replacement to happen in multiple backends with reasonable concurrency.</li>
+<li>Each buffer header contains a spinlock that must be taken when examining or changing fields of that buffer header. This allows operations such as ReleaseBuffer to make local state changes without taking any system-wide lock. We use a spinlock, not an LWLock, since there are no cases where the lock needs to be held for more than a few instructions.</li>
+</ul>
+<p>Note that a buffer header's spinlock does not control access to the data held within the buffer. Each buffer header also contains an LWLock, the "buffer content lock", that <em>does</em> represent the right to access the data in the buffer. It is used per the rules above.</p>
+<p>There is yet another set of per-buffer LWLocks, the io_in_progress locks, that are used to wait for I/O on a buffer to complete. The process doing a read or write takes exclusive lock for the duration, and processes that need to wait for completion try to take shared locks (which they release immediately upon obtaining). XXX on systems where an LWLock represents nontrivial resources, it's fairly annoying to need so many locks. Possibly we could use per-backend LWLocks instead (a buffer header would then contain a field to show which backend is doing its I/O).</p>
+<h2 id="normal-buffer-replacement-strategy">Normal Buffer Replacement Strategy</h2>
+<p>There is a "free list" of buffers that are prime candidates for replacement. In particular, buffers that are completely free (contain no valid page) are always in this list. We could also throw buffers into this list if we consider their pages unlikely to be needed soon; however, the current algorithm never does that. The list is singly-linked using fields in the buffer headers; we maintain head and tail pointers in global variables. (Note: although the list links are in the buffer headers, they are considered to be protected by the buffer_strategy_lock, not the buffer-header spinlocks.) To choose a victim buffer to recycle when there are no free buffers available, we use a simple clock-sweep algorithm, which avoids the need to take system-wide locks during common operations. It works like this:</p>
+<p>Each buffer header contains a usage counter, which is incremented (up to a small limit value) whenever the buffer is pinned. (This requires only the buffer header spinlock, which would have to be taken anyway to increment the buffer reference count, so it's nearly free.)</p>
+<p>The "clock hand" is a buffer index, nextVictimBuffer, that moves circularly through all the available buffers. nextVictimBuffer is protected by the buffer_strategy_lock.</p>
+<p>The algorithm for a process that needs to obtain a victim buffer is:</p>
+<ol>
+<li>Obtain buffer_strategy_lock.</li>
+<li>If buffer free list is nonempty, remove its head buffer. Release buffer_strategy_lock. If the buffer is pinned or has a nonzero usage count, it cannot be used; ignore it go back to step 1. Otherwise, pin the buffer, and return it.</li>
+<li>Otherwise, the buffer free list is empty. Select the buffer pointed to by nextVictimBuffer, and circularly advance nextVictimBuffer for next time. Release buffer_strategy_lock.</li>
+<li>If the selected buffer is pinned or has a nonzero usage count, it cannot be used. Decrement its usage count (if nonzero), reacquire buffer_strategy_lock, and return to step 3 to examine the next buffer.</li>
+<li>Pin the selected buffer, and return. (Note that if the selected buffer is dirty, we will have to write it out before we can recycle it; if someone else pins the buffer meanwhile we will have to give up and try another buffer. This however is not a concern of the basic select-a-victim-buffer algorithm.)</li>
+</ol>
+<h2 id="buffer-ring-replacement-strategy">Buffer Ring Replacement Strategy</h2>
+<p>When running a query that needs to access a large number of pages just once, such as VACUUM or a large sequential scan, a different strategy is used. A page that has been touched only by such a scan is unlikely to be needed again soon, so instead of running the normal clock sweep algorithm and blowing out the entire buffer cache, a small ring of buffers is allocated using the normal clock sweep algorithm and those buffers are reused for the whole scan. This also implies that much of the write traffic caused by such a statement will be done by the backend itself and not pushed off onto other processes.</p>
+<p>For sequential scans, a 256KB ring is used. That's small enough to fit in L2 cache, which makes transferring pages from OS cache to shared buffer cache efficient. Even less would often be enough, but the ring must be big enough to accommodate all pages in the scan that are pinned concurrently. 256KB should also be enough to leave a small cache trail for other backends to join in a synchronized seq scan. If a ring buffer is dirtied and its LSN updated, we would normally have to write and flush WAL before we could re-use the buffer; in this case we instead discard the buffer from the ring and (later) choose a replacement using the normal clock-sweep algorithm. Hence this strategy works best for scans that are read-only (or at worst update hint bits). In a scan that modifies every page in the scan, like a bulk UPDATE or DELETE, the buffers in the ring will always be dirtied and the ring strategy effectively degrades to the normal strategy.</p>
+<p>VACUUM uses a 256KB ring like sequential scans, but dirty pages are not removed from the ring. Instead, WAL is flushed if needed to allow reuse of the buffers. Before introducing the buffer ring strategy in 8.3, VACUUM's buffers were sent to the freelist, which was effectively a buffer ring of 1 buffer, resulting in excessive WAL flushing. Allowing VACUUM to update 256KB between WAL flushes should be more efficient.</p>
+<p>Bulk writes work similarly to VACUUM. Currently this applies only to COPY IN and CREATE TABLE AS SELECT. (Might it be interesting to make seqscan UPDATE and DELETE use the bulkwrite strategy?) For bulk writes we use a ring size of 16MB (but not more than &#8539;th of shared_buffers). Smaller sizes have been shown to result in the COPY blocking too often for WAL flushes. While it's okay for a background vacuum to be slowed by doing its own WAL flushing, we'd prefer that COPY not be subject to that, so we let it use up a bit more of the buffer arena.</p>
+<h2 id="background-writers-processing">Background Writer's Processing</h2>
+<p>The background writer is designed to write out pages that are likely to be recycled soon, thereby offloading the writing work from active backends. To do this, it scans forward circularly from the current position of nextVictimBuffer (which it does not change!), looking for buffers that are dirty and not pinned nor marked with a positive usage count. It pins, writes, and releases any such buffer.</p>
+<p>If we can assume that reading nextVictimBuffer is an atomic action, then the writer doesn't even need to take buffer_strategy_lock in order to look for buffers to write; it needs only to spinlock each buffer header for long enough to check the dirtybit. Even without that assumption, the writer only needs to take the lock long enough to read the variable value, not while scanning the buffers. (This is a very substantial improvement in the contention cost of the writer compared to PG 8.0.)</p>
+<p>The background writer takes shared content lock on a buffer while writing it out (and anyone else who flushes buffer contents to disk must do so too). This ensures that the page image transferred to disk is reasonably consistent. We might miss a hint-bit update or two but that isn't a problem, for the same reasons mentioned under buffer access rules.</p>
+<p>As of 8.4, background writer starts during recovery mode when there is some form of potentially extended recovery to perform. It performs an identical service to normal processing, except that checkpoints it writes are technically restartpoints.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../buffer_details/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                PostgreSQL 详解
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../buffer_readme_cn/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Buffer readme cn
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
