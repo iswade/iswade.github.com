@@ -2709,26 +2709,40 @@
 <li>
 <p>buf_init.c: 缓存初始化功能，哈希表，描述符数组，缓存池以及访问策略的共享缓冲区内存分配。</p>
 <ul>
-<li>InitBufferPool
-2. buf_table.c: 缓存管理的哈希表，完成对 SharedBufHash 变量表示的内存的管理操作（如初始化、查找、插入、删除等）重要函数有：</li>
+<li>InitBufferPool</li>
+</ul>
+</li>
+<li>
+<p>buf_table.c: 缓存管理的哈希表，完成对 SharedBufHash 变量表示的内存的管理操作（如初始化、查找、插入、删除等）重要函数有：</p>
+<ul>
 <li>InitBufTable</li>
 <li>BufTableHashCode</li>
 <li>BufTableLookup</li>
 <li>BufTableInsert</li>
-<li>BufTableDelete
-3. bumgr.c: 缓存的管理文件，完成对 buffer 的管理操作，如 buffer 的分配、回收等。主要的一些函数：</li>
+<li>BufTableDelete</li>
+</ul>
+</li>
+<li>
+<p>bumgr.c: 缓存的管理文件，完成对 buffer 的管理操作，如 buffer 的分配、回收等。主要的一些函数：</p>
+<ul>
 <li>ReadBuffer</li>
 <li>ReleaseBuffer</li>
-<li>MarkBufferDirty
-4. freelist.c: 缓存替换策略的相关代码，完成对缓存区替换策略的管理，主要有函数：</li>
+<li>MarkBufferDirty</li>
+</ul>
+</li>
+<li>
+<p>freelist.c: 缓存替换策略的相关代码，完成对缓存区替换策略的管理，主要有函数：</p>
+<ul>
 <li>StrategyInitialize</li>
 <li>StrategyGetBuffer</li>
 <li>FreeAccessStrategy</li>
 <li>GetAccessStrategy</li>
 <li>GetBufferFromRing</li>
-<li>StrategyFreeBuffer
-5. localbuf.c:  本地缓存管理。本地缓存，指的是对临时表的管理（CREATE TEMP TABLE 实际访问的内存）。临时表的缓存区实现，也是类似共享缓存的结构（哈希表，BufDesc，Buffer），但内存是直接分配（palloc, malloc），非共享内存，替换也是简化版的 ClockSweep 算法，如果空间(temp_buffers)不够会写出到磁盘。</li>
+<li>StrategyFreeBuffer</li>
 </ul>
+</li>
+<li>
+<p>localbuf.c:  本地缓存管理。本地缓存，指的是对临时表的管理（CREATE TEMP TABLE 实际访问的内存）。临时表的缓存区实现，也是类似共享缓存的结构（哈希表，BufDesc，Buffer），但内存是直接分配（palloc, malloc），非共享内存，替换也是简化版的 ClockSweep 算法，如果空间(temp_buffers)不够会写出到磁盘。</p>
 </li>
 </ol>
 <h2 id="_11">参考</h2>
