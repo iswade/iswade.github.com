@@ -15,7 +15,7 @@
     
     
       
-        <title>PostgreSQL 详解 - iswade's blog</title>
+        <title>PostgreSQL 缓存详解 - iswade's blog</title>
       
     
     
@@ -90,7 +90,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              PostgreSQL 详解
+              PostgreSQL 缓存详解
             
           </span>
         </div>
@@ -411,12 +411,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        PostgreSQL 详解
+        PostgreSQL 缓存详解
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      PostgreSQL 详解
+      PostgreSQL 缓存详解
     </a>
     
       
@@ -2323,7 +2323,7 @@
               
                 
                 
-                <h1 id="postgresql">PostgreSQL 详解</h1>
+                <h1 id="postgresql">PostgreSQL 缓存详解</h1>
 <p><strong>缓存</strong>（buffer）是用于速度不匹配的组件之间提高数据的吞吐效率的技术，在硬件设计、软件系统中都有着广泛的使用，例如常见的 CPU 缓存，数据库缓存，缓存服务（redis, memcached）以及浏览器缓存等等。</p>
 <p>在数据库系统中的读写操作，都是针对内存中的数据，磁盘中的数据必须在处理前加载到内存，也就是数据库缓存中。</p>
 <p>PostgreSQL 数据库实现了高效的缓存管理。在这篇文章中我们详细介绍共享缓存的组织结构，实现原理以及基本的使用。</p>
@@ -2482,6 +2482,7 @@
 <p><strong>顺序扫描</strong></p>
 <ol>
 <li>使用 <strong>32 * 8KB = 256KB ring</strong> 。这个空间足够小，可以在 L2 中缓存，这使得页面从操作系统缓存传输到共享缓存的效率更高。甚至更少也足够了，但 ring 必须足够大，以容纳扫描中同时固定的所有页面。</li>
+<li>当扫描读取的数据的大小超过缓冲区的四分之一时，才会启用 ring。</li>
 <li>如果 ring 缓存区被写入并且更新了 LSN，在这种情况下，我们从 ring 中丢弃缓存区，然后（稍后）使用正常的时钟扫描算法选择替换缓存区。</li>
 <li>该策略最适合只读的扫描（或者更新hint bit）。</li>
 </ol>
