@@ -1345,9 +1345,9 @@
 <p><img alt="" src="../image/buffer_clock.svg" /></p>
 <ol>
 <li>获取下一个待替换（hand：nextVictimBuffer）的缓存 ID</li>
-<li>如果缓存没有被 pin，则进入步骤 3，否则进入步骤 4</li>
+<li>如果缓存没有被 pin，则进入步骤3，否则进入步骤4</li>
 <li>如果缓存的使用计数 = 0，则返回这个缓存 ID；如果缓存的使用计数 &gt; 0，则将对应缓存的使用计数-1</li>
-<li>将待替换的缓存 ID 移动到下一个描述符（如果超过 NBuffers，则转换为 0），继续 1</li>
+<li>将待替换的缓存 ID 移动到下一个描述符（如果超过 NBuffers，则转换为 0），继续 步骤1</li>
 </ol>
 <blockquote>
 <p>注：使用计数 (usage_count) 最大值是5。</p>
