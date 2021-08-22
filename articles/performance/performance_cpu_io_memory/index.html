@@ -1,0 +1,879 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/performance/performance_cpu_io_memory/">
+      
+      
+      <link rel="shortcut icon" href="../../../themes/me.svg">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>一、思维导图 - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
+      
+  <img src="../../../themes/me.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            iswade's blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              一、思维导图
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
+      
+  <img src="../../../themes/me.svg" alt="logo">
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      数据库
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="数据库" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../buffer/buffer_details/" class="md-nav__link">
+      PostgreSQL缓存
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper_cn/" class="md-nav__link">
+      CockroachDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/crdb/crdb_paper/" class="md-nav__link">
+      CockroachDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper_cn/" class="md-nav__link">
+      TaurusDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/taurus_paper/" class="md-nav__link">
+      TaurusDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pebble/" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/faunadb_transaction/" class="md-nav__link">
+      FaunaDB分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/btree_vs_lsmtree/" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/F1_query/" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boltdb/" class="md-nav__link">
+      Bolt数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      分布式系统
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        分布式系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/distsys/" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/replication/" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../partition/" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/db_internals_ch14_consensus/" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon"></span>
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/00_preface/" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/01_introduction/" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/02_interprocess/" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../distributed_systems/03_models/" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/strong_consistency_models/" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/zookeeper/" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/paxos_made_live/" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      编程语言
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="编程语言" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../go_concurrency/" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/go_interface/" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      软件工程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="软件工程" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        软件工程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/pragmatic_programmer/" class="md-nav__link">
+      程序员修炼之道笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/bash_turorial/" class="md-nav__link">
+      bash教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/linux_sysadmin/" class="md-nav__link">
+      linux系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../notes/git/" class="md-nav__link">
+      git入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../translate/to_be_manager/" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">一、思维导图</h1>
+<p><img alt="image-20210128173759069" src="C:\Users\w00278268\AppData\Roaming\Typora\typora-user-images\image-20210128173759069.png" /></p>
+<h1 id="_2">二、什么是性能优化？</h1>
+<p>性能优化指在不影响系统运行正确性的前提下，使之运行得更快，完成特定功能所需的时间更短，或拥有更强大的服务能力。</p>
+<h2 id="_3">关注</h2>
+<p>不同程序有不同的性能关注点，比如科学计算关注运算速度，游戏引擎注重渲染效率，而后端服务追求吞吐能力。</p>
+<p>服务器一般都是可水平扩展的分布式系统，系统处理能力取决于单机负载能力和水平扩展能力，所以，提升单机性能和提升水平扩展能力是两个主要方向，理论上系统水平方向可以无限扩展，但水平扩展后往往导致通信成本飙升（甚至瓶颈），同时面临单机处理能力下降的问题。</p>
+<h2 id="_4">指标</h2>
+<p>衡量单机性能有很多指标，比如：QPS（Query Per Second）、TPS、OPS、IOPS、最大连接数、并发数等评估吞吐的指标。</p>
+<p>CPU为了提高吞吐，会把指令执行分为多个阶段，会搞指令Pipeline，同样，软件系统为了提升处理能力，往往会引入批处理（攒包），跟CPU流水线会引起指令执行Latency增加一样，伴随着系统负载增加也会导致延迟（Latency）增加，可见，系统吞吐和延迟是两个冲突的目标。</p>
+<p>显然，过高的延迟是不能接受的，所以，服务器性能优化的目标往往变成：追求可容忍延迟（Latency）下的最大吞吐（Throughput）。</p>
+<p>延迟（也叫响应时间：RT）不是固定的，通常在一个范围内波动，我们可以用平均时延去评估系统性能，但有时候，平均时延是不够的，这很容易理解，比如80%的请求都在10毫秒以内得到响应，但20%的请求时延超过2秒，而这20%的高延迟可能会引发投诉，同样不可接受。</p>
+<p>一个改进措施是使用TP90、TP99之类的指标，它不是取平均，而是需确保排序后90%、99%请求满足时延的要求。</p>
+<p>通常，执行效率（CPU）是我们的重点关注，但有时候，我们也需要关注内存占用、网络带宽、磁盘IO等，影响性能的因素很多，它是一个复杂而有趣的问题。</p>
+<h1 id="_5">三、基础知识</h1>
+<p>能编写运行正确的程序不一定能做性能优化，性能优化有更高的要求，这样讲并不是想要吓阻想做性能优化的工程师，而是实事求是讲，性能优化既需要扎实的系统知识，又需要丰富的实践经验，只有这样，你才能具备case by case分析问题解决问题的能力。</p>
+<p>所以，相比直接给出结论，我更愿意多花些篇幅讲一些基础知识，我坚持认为底层基础是理解并掌握性能优化技能的前提，值得花费一些时间研究并掌握这些根技术。</p>
+<h2 id="cpu">CPU架构</h2>
+<p>你需要了解CPU架构，理解运算单元、记忆单元、控制单元是如何既各司其职又相互配合完成工作的。</p>
+<p>你需要了解CPU如何读取数据，CPU如何执行任务。</p>
+<p>你需要了解数据总线，地址总线和控制总线的区别和作用。</p>
+<p>你需要了解指令周期：取指、译指、执行、写回。</p>
+<p>你需要了解CPU Pipeline，超标量流水线，乱序执行。</p>
+<p>你需要了解多CPU、多核心、逻辑核、超线程、多线程、协程这些概念。</p>
+<h2 id="_6">存储金字塔</h2>
+<p>CPU的速度和访存速度相差200倍，高速缓存是跨越这个鸿沟的桥梁，你需要理解存储金字塔，而这个层次结构思维基于着一个称为局部性原理（principle of locality）的思想，它对软硬件系统的设计和性能有着极大的影响。</p>
+<p>局部性又分为时间局部性和空间局部性。</p>
+<h3 id="_7">缓存</h3>
+<p>现代计算机系统一般有L1-L2-L3三级缓存。</p>
+<p>比如在我的系统，我通过进入 /sys/devices/system/cpu/cpu0/cache/index0 1 2 3目录下查看。</p>
+<p>size对应大小、type对应类型、coherency_line_size对应cache line大小。</p>
+<p>每个CPU核心有独立的L1、L2高速缓存，所以L1和L2是on-chip缓存；L3是多个CPU核心共享的，它是off-chip缓存。</p>
+<p>L1缓存又分为i-cache（指令缓存）和d-cache（数据缓存），L1缓存通常只有32K/64KB，速度高达4 cycles。</p>
+<p>L2缓存能到256KB，速度在8 cycles左右。</p>
+<p>L3则高达30MB，速度32 cycles左右。</p>
+<p>而内存高达数G，访存时延则在200 cycles左右。</p>
+<p>所以CPU-&gt;寄存器-&gt;L1-&gt;L2-&gt;L3-&gt;内存-&gt;磁盘构成存储层级结构：越靠近CPU，存储容量越小、速度越快、单位成本越高，越远离CPU，存储容量越大、速度越慢、单位成本越低。</p>
+<h3 id="vm">虚拟存储器（VM）</h3>
+<p>进程和虚拟地址空间是操作系统的2个核心抽象。</p>
+<p>系统中的所有进程共享CPU和主存资源，虚拟存储是对主存的抽象，它为每个进程提供一个大的、一致的、私有的地址空间，我们gdb调试的时候，打印出来的变量地址是虚拟地址。</p>
+<p>操作系统+CPU硬件（MMU）紧密合作完成虚拟地址到物理地址的翻译（映射），这个过程总是沉默的自动的进行，不需要应用程序员的任何干预。</p>
+<p>每个进程有一个单独的页表（Page Table），页表是一个页表条目（PTE）的数组，该表的内容由操作系统管理，虚拟地址空间中的每个页（4K或者8K）通过查找页表找到物理地址，页表往往是层级式的，多级页表减少了页表对存储的需求，命失（Page Fault）将导致页面调度（Swapping或者Paging），这个惩罚很重，所以，我们要改善程序的行为，让它有更好的局部性，如果一段时间内访存的地址过于发散，将导致颠簸（Thrashing），从而严重影响程序性能。</p>
+<p>为了加速地址翻译，MMU中增加了一个关于PTE的小的缓存，叫翻译后备缓冲器（TLB），地址翻译单元做地址翻译的时候，会先查询TLB，只有TLB命失才会查询高速缓存（L1-2-3）。</p>
+<h2 id="_8">汇编基础</h2>
+<p>虽然写汇编的场景越来越少，但读懂汇编依然很有必要，理解高级语言的程序是怎么转化为汇编语言有助于我们编写高质量高性能的代码。</p>
+<p>对于汇编，至少需要了解几种寻址模式，了解数据操作、分支、传送、控制跳转指令。</p>
+<p>理解C语言的if else、while/do while/for、switch case、函数调用是怎么翻译成汇编代码。</p>
+<p>理解ebp+esp寄存器在函数调用过程中是如何构建和撤销栈帧的。</p>
+<p>理解函数参数和返回值是怎么传递的。</p>
+<h2 id="_9">异常和系统调用</h2>
+<p>异常会导致控制流突变，异常控制流发生在计算机系统的各个层次，异常可以分为四类：</p>
+<p>中断（interrupt）：中断是异步发生的，来自处理器外部IO设备信号，中断处理程序分上下部。</p>
+<p>陷阱（trap）：陷阱是有意的异常，是执行一条指令的结果，系统调用是通过陷阱实现的，陷阱在用户程序和内核之间提供一个像过程调用一样的接口：系统调用。</p>
+<p>故障（fault）：故障由错误情况引起，它有可能被故障处理程序修复，故障发生，处理器将控制转移到故障处理程序，缺页（Page Fault）是经典的故障实例。</p>
+<p>终止（abort）：终止是不可恢复的致命错误导致的结果，通常是硬件错误，会终止程序的执行。</p>
+<p>系统调用：</p>
+<h2 id="_10">内核态和用户态</h2>
+<p>你需要了解操作系统的一些概念，比如内核态和用户态，应用程序在用户态运行我们编写的逻辑，一旦调用系统调用，便会通过一个特定的陷阱陷入内核，通过系统调用号标识功能，不同于普通函数调用，陷入内核态和从内核态返回需要做上下文切换，需要做环境变量的保存和恢复工作，它会带来额外的消耗，我们编写的程序应避免频繁做context swap，提升用户态的CPU占比是性能优化的一个目标。</p>
+<h2 id="_11">进程、线程、协程</h2>
+<p>在linux内核中，进程和线程是同样的系统调用（clone），进程跟线程的区别：线程是共享存储空间的，每个执行流有一个执行控制结构体，这里面会有一个指针，指向地址空间结构，一个进程内的多个线程，通过指向同一地址结构实现共享同一虚拟地址空间。</p>
+<p>通过fork创建子进程的时候，不会马上copy一份数据，而是推迟到子进程对地址空间进行改写，这样做是合理的，此即为COW（Copy On Write），在应用开发中，也有大量的类似借鉴。</p>
+<p>协程是用户态的多执行流，C语言提供makecontext/getcontext/swapcontext系列接口，很多协程库也是基于这些接口实现的，微信的协程库libco（已开源）通过hook慢速系统调用（比如write，read）做到静默替换，非常巧妙。</p>
+<h2 id="_12">链接</h2>
+<p>C/C++源代码经编译链接后产生可执行程序，其中数据和代码分段存储，我们写的函数将进入text节，全局数据将进入数据段，未初始化的全局变量进入bss，堆和栈向着相反的方向生长，局部变量在栈里，参数通过栈传递，返回值一般通过eax寄存器返回。</p>
+<p>想要程序运行的更快，最好把相互调用，关系紧密的函数放到代码段相近的地方，这样能提高icache命中性。减少代码量、减少函数调用、减少函数指针同样能提高i-cache命中性。</p>
+<p>内联既避免了栈帧建立撤销的开销，又避免了控制跳转对i-cache的冲刷，所以有利于性能。同样，关键路径的性能敏感函数也应该避免递归函数。</p>
+<p>减少函数调用（就地展开）跟封装是相违背的，有时候，为了性能，我们不得不破坏封装和损伤可读性的代码，这是一个权衡利弊的问题。</p>
+<h2 id="_13">常识和数据</h2>
+<p>CPU拷贝数据一般一秒钟能做到几百兆，当然每次拷贝的数据长度不同，吞吐不同。</p>
+<p>一次函数执行如果耗费超过1000 cycles就比较大了（刨除调用子函数的开销）。</p>
+<p>pthread_mutex_t是futex实现，不用每次都进入内核，首次加解锁大概耗时4000-5000 cycles左右，之后，每次加解锁大概120 cycles，O2优化的时候100 cycles，spinlock耗时略少。</p>
+<p>lock内存总线+xchg需要50 cycles，一次内存屏障要50 cycles。</p>
+<p>有一些无锁的技术，比如CAS，比如linux kernel里的kfifo，主要利用了整型回绕+内存屏障。</p>
+<h1 id="todo">四、怎么做性能优化（TODO）</h1>
+<p>两个⽅向：提⾼运⾏速度 + 减少计算量。</p>
+<p>性能优化监控先⾏，要基于数据⽽⾮基于猜测，要搭建能尽量模拟真实运⾏状态的压⼒测试环境，在此基于上获取的profiling数据才是有⽤的。</p>
+<p>方法论：监控 -&gt; 分析 -&gt; 优化 三部曲。</p>
+<p>工具：</p>
+<p>perf是linux内核自带的profiling工具，除之之外还有gprof，但gprof是侵入式的（插桩），编译的时候需要加-pg参数，会导致运行变慢（慢很多）。</p>
+<p>perf采集的数据，可以用来生成火焰图，也可以用gprof2dot.py这个工具来产生比火焰图更直观的调用图，这些工具就是我经常用的。</p>
+<p>gprof2dot.py链接：<a href="https://github.com/jrfonseca/gprof2dot/blob/master/gprof2dot.py">https://github.com/jrfonseca/gprof2dot/blob/master/gprof2dot.py</a></p>
+<p>性能优化一个重要原则就是用数据说话，而不能凭空猜测。</p>
+<p>瓶颈点可能有多个，如果不解决最狭窄的瓶颈点，性能优化就不能达到预期效果。所以性能优化之前一定要先进行性能测试，摸清家底，建立测试基线。</p>
+<p>例子：之前做SIP协议栈，公司的产品需要提高SIP性能。美国的一个团队经过理论分析，单凭理论分析认为主要是动态内存分配是主要瓶颈，把内存申请成一大块内存，指针都变成的一大块内存的偏移量，非常难于调试，最后效果也不好。我们又通过测试分析的方式重构了程序，性能是它们的五倍。</p>
+<p>另外，性能优化要一个点一个点的做，做完一点，马上做性能验证。这样可以避免无用的修改。</p>
+<h1 id="todo_1">五、几个具体问题（TODO）</h1>
+<ol>
+<li>如何定位CPU瓶颈？</li>
+</ol>
+<p>CPU是通常大家最先关注的性能指标，宏观维度有核的CPU使用率，微观有函数的CPU cycle数，根据性能的模型，性能规格与CPU使用率是互相关联的，规格越高，CPU使用率越高，但是处理器的性能往往又受到内存带宽、Cache、发热等因素的影响，所以CPU使用率和规格参数之间并不是简单的线性关系，所以性能规格翻倍并不能简单地翻译成我们的CPU使用率要优化一倍。</p>
+<p>至于CPU瓶颈的定位工具，最有名也是最有用的工具就是perf，它是性能分析的第一步，可以帮我们找到系统的热点函数。就像人看病一样，只知道症状是不够的，需要通过医疗机器进一步分析病因，才能对症下药。</p>
+<p>所以我们通过性能分析工具PMU或者其他工具去进一步分析CPU热点的原因比如是指令数本身就比较多，还是Cache miss导致的等，这样在做性能优化的时候不会走偏。</p>
+<ol start="2">
+<li>如何定位IO瓶颈？</li>
+</ol>
+<p>系统IO的瓶颈可以通过CPU和负载的非线性关系体现出来。当负载增大时，系统吞吐量不能有效增大，CPU不能线性增长，其中一种可能是IO出现阻塞。</p>
+<p>系统的队列长度特别是发送、写磁盘线程的队列长度也是IO瓶颈的一个间接指标。</p>
+<p>对于网络系统来讲，我建议先从外部观察系统。所谓外部观察是指通过观察外部的网络报文交换，可以用tcpdump, wireshark等工具，抓包看一下。</p>
+<p>比如我们优化一个RPC项目，它的吞吐量是10TPS，客户希望是100TPS。我们使用wireshark抓取TCP报文流，可以分析报文之间的时间戳，响应延迟等指标来判断是否是由网络引起来的。</p>
+<p>然后可以通过netstat -i/-s选项查看网络错误、重传等统计信息。</p>
+<p>还可以通过iostat查看cpu等待IO的比例。</p>
+<p>IO的概念也可以扩展到进程间通信。</p>
+<p>对于磁盘类的应用程序，我们最希望看到写磁盘有没有时延、频率如何。其中一个方法就是通过内核ftrace、perf-event事件来动态观测系统。比如记录写块设备的起始和返回时间，这样我们就可以知道磁盘写是否有延时，也可以统计写磁盘时间耗费分布。有一个开源的工具包perf-tools里面包含着iolatency, iosnoop等工具。</p>
+<ol start="3">
+<li>如何定位IO瓶颈？</li>
+</ol>
+<p>应用程序常用的IO有两种：Disk IO和网络IO。判断系统是否存在IO瓶颈可以通过观测系统或进程的CPU的IO等待比例来进行，比如使用mpstat、top命令。</p>
+<p>系统的队列长度特别是发送、写磁盘线程的队列长度也是IO瓶颈的一个重要指标。</p>
+<p>对于网络 IO来讲，我们可以先使用netstat -i/-s查看网络错误、重传等统计信息，然后使用sar -n DEV 1和sar -n TCP,ETCP 1查看网路实时的统计信息。ss （Socket Statistics）工具可以提供每个socket相关的队列、缓存等详细信息。</p>
+<p>更直接的方法可以用tcpdump, wireshark等工具，抓包看一下。</p>
+<p>对于Disk IO，我们可以通过iostat -x -p xxx来查看具体设备使用率和读写平均等待时间。如果使用率接近100%，或者等待时间过长，都说明Disk IO出现饱和。</p>
+<p>一个更细致的观察方法就是通过内核ftrace、perf-event来动态观测Linux内核。比如记录写块设备的起始和返回时间，这样我们就可以知道磁盘写是否有延时，也可以统计写磁盘时间耗费分布。有一个开源的工具包perf-tools里面包含着iolatency, iosnoop等工具。</p>
+<p>4.如何定位锁的问题？</p>
+<p>大家都知道锁会引入额外开销，但锁的开销到底有多大，估计很多人没有实测过，我可以给一个数据，一般单次加解锁100 cycles，spinlock或者cas更快一点。</p>
+<p>使用锁的时候，要注意锁的粒度，但锁的粒度也不是越小越好，太大会增加撞锁的概率，太小会导致代码更难写。</p>
+<p>多线程场景下，如果cpu利用率上不去，而系统吞吐也上不去，那就有可能是锁导致的性能下降，这个时候，可以观察程序的sys cpu和usr cpu，这个时候通过perf如果发现lock的开销大，那就没错了。</p>
+<p>如果程序卡住了，可以用pstack把堆栈打出来，定位死锁的问题。</p>
+<ol start="5">
+<li>如何提⾼Cache利用率？</li>
+</ol>
+<p>内存/Cache问题是我们常见的负载瓶颈问题，通常可利用perf等一些通用工具来辅助分析，优化cache的思想可以从两方面来着手，一个是增加局部数据/代码的连续性，提升cacheline的利用率，减少cache miss，另一个是通过prefetch，降低miss带来的开销。</p>
+<p>通过对数据/代码根据冷热进行重排分区，可提升cacheline的有效利用率，当然触发false-sharing另当别论，这个需要根据运行trace进行深入调整了；</p>
+<p>说到prefetch，用过的人往往都有一种体会，现实效果比预期差的比较远，确实无论是数据prefetch还是代码prefetch，不确定性太大，我们和无线做过一些实践，最终以无线输出预取pattern，编译器自动插入prefetch的方案，效果还算可以。</p>
+<h1 id="todo_2">六、实践经验和案例分析（TODO）</h1>
+<p>这块内容非常多，需要好好说，在此先列一个提纲</p>
+<p>参考思维导图</p>
+<h1 id="_14">七、性能优化黑科技</h1>
+<p>人</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2021 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

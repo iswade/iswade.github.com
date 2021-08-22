@@ -1,0 +1,1006 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/articles/backup_restore/">
+      
+      
+      <link rel="shortcut icon" href="../../themes/me.svg">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>PostgreSQL 备份恢复操作流程 - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postgresql" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
+      
+  <img src="../../themes/me.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            iswade's blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              PostgreSQL 备份恢复操作流程
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
+      
+  <img src="../../themes/me.svg" alt="logo">
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      数据库
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="数据库" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buffer/buffer_details/" class="md-nav__link">
+      PostgreSQL缓存
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/crdb/crdb_paper_cn/" class="md-nav__link">
+      CockroachDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/crdb/crdb_paper/" class="md-nav__link">
+      CockroachDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/taurus_paper_cn/" class="md-nav__link">
+      TaurusDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/taurus_paper/" class="md-nav__link">
+      TaurusDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pebble/" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/faunadb_transaction/" class="md-nav__link">
+      FaunaDB分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/btree_vs_lsmtree/" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/F1_query/" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boltdb/" class="md-nav__link">
+      Bolt数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      分布式系统
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        分布式系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/distsys/" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../partition/" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon"></span>
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/strong_consistency_models/" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/zookeeper/" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/paxos_made_live/" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      编程语言
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="编程语言" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_concurrency/" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/go_interface/" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      软件工程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="软件工程" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        软件工程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/pragmatic_programmer/" class="md-nav__link">
+      程序员修炼之道笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/bash_turorial/" class="md-nav__link">
+      bash教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/linux_sysadmin/" class="md-nav__link">
+      linux系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" class="md-nav__link">
+      git入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../translate/to_be_manager/" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 编译安装数据库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 全量备份与恢复
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 按时间点恢复
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="postgresql">PostgreSQL 备份恢复操作流程</h1>
+<p>摘要：本文给出 PostgreSQL 基本的全量备份恢复，以及按时间点恢复的基本流程。所有操作基于 PostgreSQL-13.2 版本。</p>
+<p>主要内容如下：</p>
+<ol>
+<li>编译安装数据库</li>
+<li>全量备份与恢复</li>
+<li>按时间点恢复</li>
+</ol>
+<h2 id="1">1. 编译安装数据库</h2>
+<p>新建用户，并下载代码，然后编译安装一个新的数据库。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 新建用户</span>
+useradd postgres
+passwd postgres
+su - postgres
+
+<span class="c1"># 下载代码并解压</span>
+wget https://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.gz
+tar -xzf postgresql-13.2.tar.gz
+<span class="nb">cd</span> postgresql-13.2
+
+<span class="c1"># 编译安装</span>
+./configure --prefix<span class="o">=</span>/home/postgres/install --enable-debug
+
+make -sj8
+make install -s
+
+<span class="nb">cd</span> ~
+
+<span class="c1"># 当前目录结构</span>
+ls -1
+    install/
+    postgresql-13.2/
+    postgresql-13.2.tar.gz*
+
+<span class="c1"># 配置环境变量</span>
+vim ~/.bashrc
+<span class="nb">export</span> <span class="nv">PGHOME</span><span class="o">=</span>/home/postgres/
+<span class="nb">export</span> <span class="nv">PGDATA</span><span class="o">=</span><span class="nv">$PGHOME</span>/data/
+<span class="nb">export</span> <span class="nv">PGPORT</span><span class="o">=</span><span class="m">5432</span>
+<span class="nb">export</span> <span class="nv">PGUSER</span><span class="o">=</span>postgres
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PGHOME</span>/install/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$PGHOME</span>/install/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="nb">export</span> <span class="nv">PG_COLOR</span><span class="o">=</span>always
+
+<span class="nb">source</span> ~/.bashrc
+
+<span class="c1"># 初始化数据库</span>
+initdb -D data -U postgres
+
+<span class="c1"># 配置日志输出</span>
+vim /home/postgres/data/postgresql.conf
+    <span class="nv">logging_collector</span> <span class="o">=</span> on
+    <span class="nv">log_directory</span> <span class="o">=</span> <span class="s1">&#39;log&#39;</span>
+    <span class="nv">log_filename</span> <span class="o">=</span> <span class="s1">&#39;postgresql.log&#39;</span>
+    <span class="nv">log_rotation_size</span> <span class="o">=</span> 1GB
+
+<span class="c1"># 启动数据库</span>
+pg_ctl start
+
+<span class="c1"># 查看状态</span>
+pg_ctl status
+    pg_ctl: server is running <span class="o">(</span>PID: <span class="m">18425</span><span class="o">)</span>
+    /home/postgres/install/bin/postgres
+</code></pre></div>
+
+<h2 id="2">2. 全量备份与恢复</h2>
+<p>下面介绍基础备份和恢复的操作流程，以及相关的配置。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建归档目录</span>
+mkdir /home/postgres/archive/
+
+<span class="c1"># 启用归档日志</span>
+vim /home/postgres/data/postgresql.conf
+    <span class="nv">wal_level</span> <span class="o">=</span> replica
+    <span class="nv">archive_mode</span> <span class="o">=</span> on     <span class="c1"># (change requires restart)</span>
+    <span class="nv">archive_command</span> <span class="o">=</span> <span class="s1">&#39;cp %p /home/postgres/archive/%f&#39;</span>
+
+<span class="c1"># 重启数据库</span>
+pg_ctl restart
+
+<span class="c1"># 建表并插入数据</span>
+psql -c <span class="s2">&quot;create table seq(id int)&quot;</span>
+psql -c <span class="s2">&quot;insert into seq values(1), (2)&quot;</span>
+
+<span class="c1"># 切换日志，将日志归档</span>
+psql -c <span class="s2">&quot;select pg_switch_wal()&quot;</span>
+
+<span class="c1"># 备份数据库</span>
+pg_basebackup -Ft -D /home/postgres/backup
+
+<span class="c1"># 停止数据库</span>
+pg_ctl stop
+
+<span class="c1"># 删除数据</span>
+rm /home/postgres/data/* -r
+ls /home/postgres/data/
+
+<span class="c1"># 恢复数据和日志</span>
+tar -xf /home/postgres/backup/base.tar -C /home/postgres/data/
+tar -xf /home/postgres/backup/pg_wal.tar -C /home/postgres/data/pg_wal/
+
+<span class="c1"># 创建按恢复模式启动的文件 recovery.signal</span>
+touch /home/postgres/data/recovery.signal
+
+<span class="c1"># 增加从归档恢复日志的命令</span>
+vim /home/postgres/data/postgresql.conf
+    <span class="nv">restore_command</span> <span class="o">=</span> <span class="s1">&#39;cp /home/postgres/archive/%f %p&#39;</span>
+
+<span class="c1"># 启动数据库，会自动恢复</span>
+pg_ctl start
+
+<span class="c1"># 验证数据库恢复成功</span>
+psql -c <span class="s2">&quot;select * from seq&quot;</span>
+     id 
+    ----
+      <span class="m">1</span>
+      <span class="m">2</span>
+    <span class="o">(</span><span class="m">2</span> rows<span class="o">)</span>
+
+<span class="c1"># 清理备份的数据</span>
+rm /home/postgres/backup -r
+</code></pre></div>
+
+<h2 id="3">3. 按时间点恢复</h2>
+<p>按时间点恢复（PITR），可以将数据库恢复到指定时间点。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 备份数据库（-X none：不备份日志）</span>
+pg_basebackup -Ft -X none -D /home/postgres/backup
+
+<span class="c1"># 插入新的数据</span>
+psql -c <span class="s2">&quot;insert into seq values(3), (4)&quot;</span>
+
+<span class="c1"># 查询当前时间</span>
+psql -c <span class="s2">&quot;select now()&quot;</span>
+                  now              
+    -------------------------------
+     <span class="m">2021</span>-02-28 <span class="m">17</span>:48:59.835492+08
+    <span class="o">(</span><span class="m">1</span> row<span class="o">)</span>
+
+<span class="c1"># 归档日志</span>
+psql -c <span class="s2">&quot;select pg_switch_wal()&quot;</span>
+
+<span class="c1"># 插入新的数据</span>
+psql -c <span class="s2">&quot;insert into seq values(5), (6)&quot;</span>
+
+<span class="c1"># 归档日志</span>
+psql -c <span class="s2">&quot;select pg_switch_wal()&quot;</span>
+
+<span class="c1"># 停止数据库</span>
+pg_ctl stop
+
+<span class="c1"># 删除数据</span>
+rm /home/postgres/data/* -r
+ls /home/postgres/data/
+
+<span class="c1"># 恢复备份数据</span>
+tar -xf /home/postgres/backup/base.tar -C /home/postgres/data/
+
+<span class="c1"># 创建按恢复模式启动的文件 recovery.signal</span>
+touch /home/postgres/data/recovery.signal
+
+<span class="c1"># 配置按时间点恢复</span>
+vim /home/postgres/data/postgresql.conf
+    <span class="nv">restore_command</span> <span class="o">=</span> <span class="s1">&#39;cp /home/postgres/archive/%f %p&#39;</span>
+    <span class="nv">recovery_target_time</span> <span class="o">=</span> <span class="s1">&#39;2021-02-28 17:48:59.835492+08&#39;</span>
+
+<span class="c1"># 启动数据库</span>
+pg_ctl start
+
+<span class="c1"># 校验恢复成功</span>
+psql -c <span class="s2">&quot;select * from seq&quot;</span>
+     id 
+    ----
+      <span class="m">1</span>
+      <span class="m">2</span>
+      <span class="m">3</span>
+      <span class="m">4</span>
+    <span class="o">(</span><span class="m">4</span> rows<span class="o">)</span>
+
+<span class="c1"># 查看日志，确认当前状态</span>
+tail -n <span class="m">20</span> /home/postgres/data/log/postgresql.log
+    starting PostgreSQL <span class="m">13</span>.2 on x86_64-pc-linux-gnu, compiled by gcc <span class="o">(</span>Ubuntu <span class="m">9</span>.3.0-17ubuntu1~20.04<span class="o">)</span> <span class="m">9</span>.3.0, <span class="m">64</span>-bit
+    listening on IPv4 address <span class="s2">&quot;127.0.0.1&quot;</span>, port <span class="m">5432</span>
+    listening on Unix socket <span class="s2">&quot;/tmp/.s.PGSQL.5432&quot;</span>
+    database system was interrupted<span class="p">;</span> last known up at <span class="m">2021</span>-02-28 <span class="m">17</span>:48:05 CST
+    cp: cannot stat <span class="s1">&#39;/home/postgres/archive/00000004.history&#39;</span>: No such file or directory
+    starting point-in-time recovery to <span class="m">2021</span>-02-28 <span class="m">17</span>:48:59.835492+08
+    restored log file <span class="s2">&quot;00000003.history&quot;</span> from archive
+    restored log file <span class="s2">&quot;00000003000000000000000F&quot;</span> from archive
+    redo starts at <span class="m">0</span>/F000028
+    consistent recovery state reached at <span class="m">0</span>/F000100
+    database system is ready to accept <span class="nb">read</span> only connections
+    restored log file <span class="s2">&quot;000000030000000000000010&quot;</span> from archive
+    restored log file <span class="s2">&quot;000000030000000000000011&quot;</span> from archive
+    recovery stopping before commit of transaction <span class="m">492</span>, <span class="nb">time</span> <span class="m">2021</span>-02-28 <span class="m">17</span>:49:35.787748+08
+    pausing at the end of recovery
+    Execute pg_wal_replay_resume<span class="o">()</span> to promote.
+
+<span class="c1"># 完成恢复，并使得数据库继续</span>
+psql -c <span class="s2">&quot;select pg_wal_replay_resume()&quot;</span>
+
+<span class="c1"># 查看数据库日志，确认已经可以接受连接</span>
+tail -n <span class="m">10</span> /home/postgres/data/log/postgresql.log
+    recovery stopping before commit of transaction <span class="m">492</span>, <span class="nb">time</span> <span class="m">2021</span>-02-28 <span class="m">17</span>:49:35.787748+08
+    pausing at the end of recovery
+    Execute pg_wal_replay_resume<span class="o">()</span> to promote.
+    redo <span class="k">done</span> at <span class="m">0</span>/110000E0
+    last completed transaction was at log <span class="nb">time</span> <span class="m">2021</span>-02-28 <span class="m">17</span>:48:54.545842+08
+    cp: cannot stat <span class="s1">&#39;/home/postgres/archive/00000004.history&#39;</span>: No such file or directory
+    selected new timeline ID: <span class="m">4</span>
+    archive recovery <span class="nb">complete</span>
+    restored log file <span class="s2">&quot;00000003.history&quot;</span> from archive
+    database system is ready to accept connections
+
+<span class="c1"># 再次确认数据恢复正常</span>
+psql -c <span class="s2">&quot;select * from seq&quot;</span>
+     id 
+    ----
+      <span class="m">1</span>
+      <span class="m">2</span>
+      <span class="m">3</span>
+      <span class="m">4</span>
+    <span class="o">(</span><span class="m">4</span> rows<span class="o">)</span>
+
+<span class="c1"># 恢复成功后，/home/postgres/data/recovery.signal 文件会被删除</span>
+ls /home/postgres/data/recovery.signal
+    ls: cannot access <span class="s1">&#39;/home/postgres/data/recovery.signal&#39;</span>: No such file or directory
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2021 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

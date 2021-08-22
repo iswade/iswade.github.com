@@ -1,0 +1,1056 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/translate/application_frameworks/">
+      
+      
+      <link rel="shortcut icon" href="../../themes/me.svg">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.2">
+    
+    
+      
+        <title>Best Practice: Application Frameworks - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../themes/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#best-practice-application-frameworks" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-header-nav__button md-logo" aria-label="iswade's blog">
+      
+  <img src="../../themes/me.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            iswade's blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Best Practice: Application Frameworks
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://iswade.github.io/" title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog">
+      
+  <img src="../../themes/me.svg" alt="logo">
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      数据库
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="数据库" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/buffer/buffer_details/" class="md-nav__link">
+      PostgreSQL缓存
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../crdb/crdb_paper_cn/" class="md-nav__link">
+      CockroachDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../crdb/crdb_paper/" class="md-nav__link">
+      CockroachDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../taurus_paper_cn/" class="md-nav__link">
+      TaurusDB翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../taurus_paper/" class="md-nav__link">
+      TaurusDB论文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/pebble/" class="md-nav__link">
+      Pebble KV存储引擎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faunadb_transaction/" class="md-nav__link">
+      FaunaDB分布式事务协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Aurora_design_cloud_native_database/" class="md-nav__link">
+      Aurora云原生关系数据库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../btree_vs_lsmtree/" class="md-nav__link">
+      现代存储系统背后的算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/db_nodes/00_database_systems_2018/" class="md-nav__link">
+      数据库笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../F1_query/" class="md-nav__link">
+      F1 Query
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/boltdb/" class="md-nav__link">
+      Bolt数据库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      分布式系统
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        分布式系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../distsys/" class="md-nav__link">
+      分布式系统大纲
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/replication/" class="md-nav__link">
+      分布式系统之复制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/partition/" class="md-nav__link">
+      分布式系统之数据分区
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch09_failure_detection/" class="md-nav__link">
+      分布式系统之故障检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../database/db_internals_ch14_consensus/" class="md-nav__link">
+      分布式系统之共识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      分布式系统算法方法
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="分布式系统算法方法" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon"></span>
+        分布式系统算法方法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/00_preface/" class="md-nav__link">
+      前 言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/01_introduction/" class="md-nav__link">
+      第一章 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/02_interprocess/" class="md-nav__link">
+      第二章 进程间通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distributed_systems/03_models/" class="md-nav__link">
+      第三章 通信模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../strong_consistency_models/" class="md-nav__link">
+      强一致性模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zookeeper/" class="md-nav__link">
+      Zookeeper论文翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../paxos_made_live/" class="md-nav__link">
+      Paxos Made Live翻译
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      编程语言
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="编程语言" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        编程语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../articles/go_concurrency/" class="md-nav__link">
+      Go 并发编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../go_interface/" class="md-nav__link">
+      如何使用 Go 接口
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      软件工程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="软件工程" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        软件工程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/pragmatic_programmer/" class="md-nav__link">
+      程序员修炼之道笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/bash_turorial/" class="md-nav__link">
+      bash教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux_sysadmin/" class="md-nav__link">
+      linux系统管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../notes/git/" class="md-nav__link">
+      git入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../to_be_manager/" class="md-nav__link">
+      How to be a manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-framework" class="md-nav__link">
+    What is a Framework?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a Framework?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inversion-of-control" class="md-nav__link">
+    Inversion of control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensibility" class="md-nav__link">
+    Extensibility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-frameworks" class="md-nav__link">
+    Benefits of Frameworks
+  </a>
+  
+    <nav class="md-nav" aria-label="Benefits of Frameworks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    For developers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-product-teams" class="md-nav__link">
+    For product teams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-the-company" class="md-nav__link">
+    For the company
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradeoffs-for-frameworks" class="md-nav__link">
+    Tradeoffs for Frameworks
+  </a>
+  
+    <nav class="md-nav" aria-label="Tradeoffs for Frameworks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opinionated-frameworks-can-hinder-innovation" class="md-nav__link">
+    Opinionated frameworks can hinder innovation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#universality-can-lead-to-unnecessary-abstractions" class="md-nav__link">
+    Universality can lead to unnecessary abstractions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-framework-features" class="md-nav__link">
+    Important framework features
+  </a>
+  
+    <nav class="md-nav" aria-label="Important framework features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standardized-application-life-cycle" class="md-nav__link">
+    Standardized application life cycle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardized-request-life-cycle" class="md-nav__link">
+    Standardized request life cycle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-control-surfaces" class="md-nav__link">
+    Common control surfaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modularity" class="md-nav__link">
+    Modularity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservices" class="md-nav__link">
+    Microservices
+  </a>
+  
+    <nav class="md-nav" aria-label="Microservices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-microservices-the-monolith" class="md-nav__link">
+    Before microservices: the monolith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving-away-from-a-server-oriented-world" class="md-nav__link">
+    Moving away from a server-oriented world
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-with-frameworks" class="md-nav__link">
+    Relationship with frameworks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="best-practice-application-frameworks">Best Practice: Application Frameworks</h1>
+<p>While powerful, frameworks are not for everyone.</p>
+<p>Chris Nokleberg and Brad Hawkes, Google</p>
+<p>Shared libraries encourage code reuse, promote consistency across teams, and ultimately improve product velocity and quality. But application developers are still left to choose the right libraries to use, figure out how to configure those libraries correctly, and wire everything together. By preinstalling and preconfiguring libraries, application frameworks provide a simplified developer experience and even greater consistency, albeit at the cost of some flexibility.</p>
+<p>By owning the entire application life cycle, frameworks go beyond a mere collection of libraries. Guaranteed framework behavior can scale development—for example, by avoiding the need for in-depth security or privacy code reviews of every application. The cross-team and cross-language consistency provided by frameworks is also a necessary foundation for higher-level automation and smart systems.</p>
+<p>This article begins with an overview of the central aspects of frameworks, then dives deeper into the benefits of frameworks, the tradeoffs they entail, and the most important features we recommend implementing. Finally, the article presents a practical application of frameworks at Google: how developing a microservices platform allowed Google to break up its monolithic code base, and how frameworks enabled that change.</p>
+<h3 id="what-is-a-framework">What is a Framework?</h3>
+<p>A framework is in many ways similar to a shared library and has similar benefits. For Google, two technical principles help to distinguish a framework from a library: inversion of control and extensibility. While seemingly modest, the many benefits of frameworks discussed in this article are principally derived from these principles.</p>
+<h4 id="inversion-of-control">Inversion of control</h4>
+<p>In an application built from scratch, the engineer dictates the flow of the program—this is <em>normal control flow</em>. In a framework-based application, the framework controls the flow and will call into the user code—this is <em>inverted control flow</em>. Inverted control flow is sometimes referred to as the Hollywood principle: "Don't call us; we'll call you." The framework control flow is well defined and standard across all applications. Ideally, applications implement only the application-specific logic, and the framework can handle all of the other minutiae of building something like a microservice.</p>
+<h4 id="extensibility">Extensibility</h4>
+<p>Extensibility is the second key differentiator from a library and goes hand in hand with inversion of control. Because the control flow of a framework is owned by the framework, the only mechanism to alter the framework's behavior is via the extension points it exposes. For example, a server framework might have an extension point that allows an application to run some code after every request. This behavior also implies that nonextensible parts of a framework are fixed and cannot be changed by applications.</p>
+<h3 id="benefits-of-frameworks">Benefits of Frameworks</h3>
+<p>Frameworks have multiple benefits beyond the functionality that shared libraries provide, and they are advantageous to a variety of stakeholders in different ways.</p>
+<h4 id="for-developers">For developers</h4>
+<p>Developers, who ultimately decide whether or not to use an available framework, are the most obvious beneficiaries of frameworks. Primary developer benefits include increased productivity, simplicity, and conformance to best practices. Developers can write less code by leveraging built-in framework features, and the code they do write can be simpler because the framework handles boilerplate code. A framework provides a well-lit path for best practices by providing sensible defaults and eliminating pointless and time-consuming decision-making.</p>
+<h4 id="for-product-teams">For product teams</h4>
+<p>In addition to improving developer productivity, frameworks benefit product teams by freeing up team resources that would otherwise be spent building redundant infrastructure. Product teams can then focus on what makes their product special.</p>
+<p>Product teams also benefit when frameworks isolate them from changes in the underlying infrastructure. While not possible in all cases, the additional abstractions provided by a framework mean that some infrastructure migrations can be treated as implementation details that are handled entirely by whoever maintains the framework.</p>
+<p>Product launches at Google often require signoff from multiple teams. For example, a launch coordination engineer is responsible for reviewing launches for production safety and effectiveness, while an information security engineer will check an application's design for common security vulnerabilities. A framework can simplify the launch-review process when the teams performing reviews are familiar with the frameworks and can rely on their behavioral guarantees. After launch, standardization will also make the system easier to manage.</p>
+<h4 id="for-the-company">For the company</h4>
+<p>At the company level, common frameworks can increase developer mobility by reducing how long it takes for developers to get up to speed on a new application. If a company has a sufficiently large community of developers, investing in high-quality documentation and training programs is worthwhile; this in turn helps attract documentation and code contributions from the community itself. Widespread usage of a framework also means that a relatively small investment in improvements to the framework can have a large impact.</p>
+<p>Over time, centralization in framework architectures can allow widescale reaction to changing landscapes. For example, if you rely on a consistent microservice/RPC (remote procedure call) framework and bandwidth becomes more expensive relative to CPU, then the framework defaults can adjust compression parameters centrally based on that cost tradeoff.</p>
+<h3 id="tradeoffs-for-frameworks">Tradeoffs for Frameworks</h3>
+<p>While frameworks come with the multiple benefits just described, they also entail certain tradeoffs.</p>
+<h4 id="opinionated-frameworks-can-hinder-innovation">Opinionated frameworks can hinder innovation</h4>
+<p>Frameworks often have to make choices about which types of technologies to support. While supporting every conceivable technology is not practical, there are clear benefits when frameworks are <em>opinionated</em>—that is, when they encourage the use of some technologies or design patterns over others.</p>
+<p>Opinionated frameworks can greatly simplify the job of developers approaching their new system with a blank slate. When developers have many ways to accomplish the same task, they can easily get buried in the details of decisions that have negligible impacts on the overall system. For these developers, accepting framework-preferred technologies of an opinionated framework allows them to focus on the business of building their system. Having a common and consistent preference also benefits the entire company, even if that answer is less than perfect.</p>
+<p>Of course, you may have to deal with a long tail of applications and teams, and some product requirements or team preferences may not be well suited for existing frameworks. The framework maintainers are put in the position of deciding what is and isn't a best practice, and whether an unconventional use case is "valid" or not, which can be uncomfortable for everyone involved.</p>
+<p>Another important consideration is that even if something is clearly a best practice today, technology evolves quickly, and there's a risk that frameworks will not keep pace with innovation. Experimenting with alternative application designs may be more expensive because developers need either to learn framework implementation details or to rely on assistance from framework maintainers.</p>
+<h4 id="universality-can-lead-to-unnecessary-abstractions">Universality can lead to unnecessary abstractions</h4>
+<p>Many framework benefits such as common control surfaces (explained later) are realized only when a critical mass of applications use the same framework. Such a framework must be sufficiently generic to support the vast majority of use cases, which in practical terms means having a rich request life cycle and all the extensibility hooks that any application would need. These requirements necessarily add some layers of indirection between the application and underlying libraries, which can add both cognitive and CPU overhead. For application developers, more layers in the software stack can complicate debugging.</p>
+<p>Another potential drawback of frameworks is that they are yet one more thing engineers have to learn. Newly hired Googlers are frequently overwhelmed by the number of technologies they need to learn just to get a "hello world" example working. A full-featured framework might make the situation worse, not better.</p>
+<p>Google has mitigated these issues somewhat by trying to make the core of each framework as simple and performant as possible, and leaving other features as optional modules. Google also tries to provide framework-aware tools that can leverage the inherent structure of the frameworks to simplify debugging. Ultimately, however, frameworks have a cost that you must acknowledge, and you need to make sure that any given framework provides enough benefits to justify this cost. Different programming-language frameworks may also have differing sets of tradeoffs, creating another decision point and cost/benefit scenario for developers.</p>
+<h3 id="important-framework-features">Important framework features</h3>
+<p>As already discussed, inversion of control and extensibility are fundamental aspects of frameworks. Beyond those basic parameters, frameworks should account for several other features.</p>
+<h4 id="standardized-application-life-cycle">Standardized application life cycle</h4>
+<p>To reiterate, inversion of control means that a framework owns and standardizes an application's overall life cycle, but what benefit does this structure actually buy? The scenario of avoiding cascading failure provides one example.</p>
+<p>Cascading failure is a well-known cause of system outages, including many at Google. It can occur when part of a distributed system fails, which then increases the probability that other parts will fail. For more information on the causes of cascading failures and how to avoid them, see the chapter on <a href="https://landing.google.com/sre/sre-book/chapters/addressing-cascading-failures/">Addressing Cascading Failures</a> in <em>Site Reliability Engineering</em> (O'Reilly Media, 2016).</p>
+<p>Server frameworks at Google have a number of built-in protections against cascading failure. Two of the most important principles are:</p>
+<p>• Keep serving. If a server can answer requests successfully, it should do so. If it can successfully serve some kinds of requests but not other kinds, it should continue running and answer the requests that it can serve.</p>
+<p>• Start up quickly. The server should start up as quickly as possible. Faster startup means faster recovery from crashes. The server should avoid waiting serially for initializations involving RPCs to external systems to complete.</p>
+<p>The Google production environment gives each server a configurable amount of time to become "healthy" (start responding to requests). If the time expires, the system assumes that an unrecoverable error occurred and terminates the server process.</p>
+<p>There is one common antipattern that occurs naturally in the absence of a framework: A library creates its own RPC connection and then waits for that connection to be ready. As a server code base grows over time, you can end up with literally dozens of such libraries in the transitive dependencies. The result is server initialization code, which if unrolled effectively looks like figure 1.</p>
+<p><img alt="Best Practice: Application Frameworks" src="https://dl.acm.org/cms/attachment/db34000c-426f-4773-a286-66a1ab799a4b/nokleberg1.png" /></p>
+<p>Under normal circumstances, this code will work fine, which is especially problematic because there is no indication of a lurking problem. That problem shows itself when one of the associated back-end services slows down or goes down altogether—now the primary server's startup is delayed. If the startup is sufficiently delayed, it will be killed before it ever gets a chance to start handling requests, which can contribute to a cascading failure.</p>
+<p>One possible improvement is to create the RPC stubs first, as in figure 2, and then wait for them all in parallel. In this scenario, you need to wait only for the <em>max</em> of the stub initialization times rather than the <em>sum</em>.</p>
+<p><img alt="Best Practice: Application Frameworks" src="https://dl.acm.org/cms/attachment/53950e41-c53c-4699-81a8-20ea1e8cd897/nokleberg2.png" /></p>
+<p>While still not perfect, even this limited refactoring demonstrates that you need <em>some</em> coordination between the libraries creating the RPC stubs—they must hand off responsibility for waiting for the stub to something outside of the library. In Google's case, that responsibility is owned by the server framework, which also has the following features:</p>
+<p>• Waiting for all stubs to be ready <em>in parallel</em>, by polling readiness periodically (&lt; 1 sec). Once a configurable timeout has elapsed, the server can continue with initialization <em>even if not all back ends are ready.</em></p>
+<p>• Emitting human- and machine-readable logging for debugging and integration with standard monitoring and alerting systems.</p>
+<p>• Plugging in arbitrary resources, not just RPC stubs, through a generic mechanism. Technically, only a function returning a Boolean (for "Am I ready?") and a name is necessary for logging purposes. These hooks are typically used by the common libraries that deal with resources (e.g., a file API); application developers often get the behavior automatically just by using the library.</p>
+<p>• Providing a centralized way to configure certain back ends as "critical," which alters their startup and runtime behavior.</p>
+<p>These features would (rightly) be considered overkill for any individual library, but implementing them makes sense if you can do so in a central place from which all back-end-using libraries can benefit. Just as shared libraries are a way to share code among applications, in this case the framework is a way for libraries themselves to share functionality.</p>
+<p>SREs (site reliability engineers) are much happier to support framework-based servers because of features such as these, and they often encourage their developer counterparts to choose framework-based solutions. Frameworks provide a baseline level of production regularity that is difficult—if not impossible—to achieve when just gluing together a bunch of disconnected libraries.</p>
+<h4 id="standardized-request-life-cycle">Standardized request life cycle</h4>
+<p>While details vary depending on the type of application, many frameworks support additional life cycles beyond an overall application life cycle. For Google server frameworks, the most important unit of work is a request. Following a similar inversion-of-control model, the goal of the request life cycle is to divide the responsibilities for different aspects of the request into separate extensible pieces of code. This allows application developers to concentrate on writing the actual business logic that makes their application unique.</p>
+<p>Here's an example of one such real-world framework and its component pieces, as illustrated in figure 3:</p>
+<p>• Processors—intercept incoming and outgoing payloads. Mostly used for logging but have some capabilities for short-circuiting a request (e.g., enforcing invariants across an entire application).</p>
+<p>• Action—application business logic that takes the request and returns a response object, possibly with side effects.</p>
+<p>• Exception handler—converts an uncaught exception into a response object.</p>
+<p>• Response handler—serializes a response object to the client.</p>
+<p><img alt="Best Practice: Application Frameworks" src="https://dl.acm.org/cms/attachment/0753b893-2ba8-4ec4-875a-5971ae70cac1/nokleberg3.png" /></p>
+<p>While applications can take advantage of the framework extension points, the vast majority of application code takes the form of actions, which embody the application-specific business logic.</p>
+<p>This separation of concerns has been helpful in the realm of web security, for example. Google develops many web applications, so has a strong desire to guard against all of the various web security vulnerabilities, such as <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a> (cross-site scripting). XSS vulnerabilities are often caused by application code returning a string response containing insufficiently sanitized or escaped data. The traditional approach to fixing these bugs is simply to add in the missing escaping data and hope that tests and code reviews will prevent similar problems in the future (spoiler: they will not).</p>
+<p>Fundamentally, this approach won't work because the underlying APIs that the applications are coding against are inherently prone to bugs like XSS because they accept strings or similarly unstructured/untyped data. For example, the Java Servlet API gives applications a raw Writer, to which you can pass arbitrary characters. This approach puts too much of a burden on developers to do the right thing; instead, the security team at Google has focused on designing inherently safe APIs, such as:</p>
+<p>• HTML template systems with contextual-aware escaping.</p>
+<p>• SQL-injection-resistant database APIs.</p>
+<p>• "Safe HTML" wrapper types that carry contracts stipulating that their value is safe to use in various contexts.</p>
+<p>The request life cycle of Google's server frameworks complements the use of these APIs because the application code never deals with raw strings or bytes. Instead, the code returns high-level response objects with types such as <code>SafeHtmlResponse</code> that can be constructed only in ways that are guaranteed to be well formed. Turning those response objects into bytes on the wire is the responsibility of a <em>response handler</em>, which is typically a built-in part of the framework. Google sometimes needs custom response handlers, but all usages must be reviewed by the security team—a requirement that is enforced at the build level.</p>
+<p>The net impact is that Google has reduced the number of XSS vulnerabilities in applications using these frameworks to virtually zero. As you can imagine, Google's security team strongly encourages the use of frameworks and has made many framework contributions to improve the security story for all framework users. A standard framework-based server can effectively skip many of the security or privacy reviews that a bespoke server would require to launch, since the framework is trusted to guarantee certain behaviors.</p>
+<p>Of course, the benefits of a structured and extensible request life cycle go well beyond separating business logic from response serialization. The most basic benefit is that it keeps each component small and easy to reason about, which helps long-term code health. Other infrastructure teams within Google can easily extend framework functionality without working directly with the framework team. Finally, applications can introduce their own cross-cutting features without touching each action. In some cases, these features are domain specific, but other features end up being generally applicable and are eventually "upstreamed" into the framework itself.</p>
+<h4 id="common-control-surfaces">Common control surfaces</h4>
+<p>What we call <em>control surfaces</em> include all of the non-application-specific inputs and outputs of a binary when viewed as a black box. These include operational controls, monitoring, logging, and configuration.</p>
+<p>Uniformity across servers makes troubleshooting problems much easier. Regardless of which server they're troubleshooting, developers and SREs all know what information is available and where to look for it. If something about a server needs to be tweaked, everyone knows which knobs are available and how to change them.</p>
+<p>Beyond making it easier for humans to operate servers, having common control surfaces across servers also makes shared automation viable. For example, if all servers export errors in a standard way, changing the release pipeline to perform automatic canarying becomes possible: You can first roll out a new binary to a few servers and look for a spike in errors before performing a wider rollout. You can read more about the benefits of a common control surface from the SRE's perspective in the chapter on <a href="https://landing.google.com/sre/sre-book/chapters/evolving-sre-engagement-model/">the Evolving SRE Engagement Model</a> in <em>Site Reliability Engineering</em> (O'Reilly, 2016).</p>
+<p>Frameworks provide a great opportunity to enforce a level of uniformity across application control surfaces. While, generally, only a few people care about the exact composition of control surfaces, there is tremendous value to the company in having a single consistent answer. Consistency means that you can easily share and scale automation across multiple binaries. By simplifying integration with the surrounding ecosystem, you can reap the benefits of <em>having</em> a standard many times over, independent of the merits of the standard itself.</p>
+<p>One challenge of implementing a common control surface is that framework maintainers are often the first to discover inconsistencies across programming-language libraries. For example, all languages had an existing notion of a command-line argument whose value was a duration (a length of time). On the positive side, the syntax was somewhat compatible among languages, at least for the most basic examples such as "1h30m." Once we dug into the details, however, a different picture emerged, as shown in figure 4.</p>
+<p><img alt="Best Practice: Application Frameworks" src="https://dl.acm.org/cms/attachment/28884229-e120-4974-b315-4434526e187b/nokleberg4.png" /></p>
+<p>These days, library owners have a greater awareness of the value of cross-language consistency and the need to take such consistency into consideration. On the framework side, Google also uses test harnesses to run the same suite of tests against servers written in each programming language to ensure consistency going forward.</p>
+<h4 id="modularity">Modularity</h4>
+<p>For better or worse, there is no central software engineering authority at Google. Although most developers work against a single code repository, engineering practices still vary significantly among teams. The choice of technologies for any given project typically rests with the tech lead of the project, with few top-down mandates. Understandably, people tend to choose technologies with which they have prior experience. As a result, in order for a new technology to gain significant adoption, it must have either an obvious value or a low barrier to entry; typically, it must have both.</p>
+<p>For Google's server frameworks, core life-cycle management and request dispatching are the only strictly required features. All other functionality is bundled into optional, independent "modules" that implement their functionality using the various life-cycle hooks exposed by the framework, as discussed earlier. Application developers can pick and choose which modules to add to their server, and in many cases even major features can be added via a one-liner:</p>
+<div class="highlight"><pre><span></span><code>install(new LoadSheddingModule());
+</code></pre></div>
+
+<p>The actual list of available standard modules numbers in the hundreds, including features such as authentication, experiments, and logging.</p>
+<p>The ability to add framework features incrementally to a server was a big factor in framework adoption at Google. It allowed for "hello world" examples and prototype servers to be small and easy to understand, while still making it simple to scale up to a more full-featured server when appropriate.</p>
+<p>The independence of the modules also allows for easy substitution of an application-specific module for a standard framework module if you have special requirements. Because standard framework modules use the same extensibility APIs as application-specific modules, upstreaming a useful feature into the framework is usually a trivial matter of moving code. This allows a framework to be an ever-growing collection of best practices, once these practices have proven their value in the real world.</p>
+<p>The high degree of encapsulation exhibited here means that framework maintainers can radically change the implementation of a module without touching any application code. This is especially useful when a back-end system is deprecated or requires API changes (which is distressingly common). Google frameworks have insulated many application developers from needing to perform complex or costly migrations, and for many teams this is one of the most compelling benefits of frameworks today.</p>
+<p>One role of a framework maintainer is to ensure that modules collaborate with each other correctly. Maintainers can also select default module lists or provide recommendations and constraints about which modules should be used for different situations. One challenge is striking the right balance with regard to granularity: While developers tend to prefer fine-grained modules for flexibility, it's harder for framework maintainers to ensure that all combinations will work well together.</p>
+<h3 id="microservices">Microservices</h3>
+<p>The standardization provided by widespread use of frameworks leads to opportunities for higher-level tools and automation. This allowed Google to create a microservices platform and break up the monolithic servers.</p>
+<h4 id="before-microservices-the-monolith">Before microservices: the monolith</h4>
+<p>The existence of shared libraries and frameworks has greatly simplified the actual act of writing production-quality code within Google. Writing code, however, is just one part of deploying an application at Google. Other critical ingredients include integration testing; launch reviews for aspects such as security and privacy; acquiring production resources; performing releases; collecting and saving logs; experimentation; and debugging and resolving outages.</p>
+<p>Historically, handling all of these items was an expensive process that all server owners had to complete, regardless of the size of the server. As a result, instead of deploying new servers, smaller teams adding a new service would look for an <em>existing</em> server to which they could add their code. This way, the team could just focus on writing their business logic and get everything else "for free." Of course, once enough teams took this approach, it became clear that piggybacking onto existing server functionality was not actually free. This incentive structure resulted in a tragedy of the commons many times at Google: Well-supported servers continued to grow and grow until they became huge and unmaintainable monoliths.</p>
+<p>Monoliths have many negative consequences. On the developer productivity front, you must deal with slow builds, slow server startup, and a high likelihood that your presubmit tests will break when you try to submit your change. For example, one important Google Search-related C++ binary became so large that it was impossible even to link, given technical limits at the time (12 GB RAM).</p>
+<p>When it comes to releases, it's hard to push them to monoliths on schedule. As a monolith grows, so too does the number of contributing developers, which naturally results in more blocking bugs. A delayed release may make achieving the next release even more difficult, which can create a vicious cycle.</p>
+<p>In production, monoliths create a dangerous shared fate between ostensibly unrelated services, as well as a greater chance of bugs caused by unexpected interactions. Scaling services independently of one another is impossible, which makes resource provisioning more difficult.</p>
+<h4 id="moving-away-from-a-server-oriented-world">Moving away from a server-oriented world</h4>
+<p>Although it eventually became clear that the monolith situation at Google was unsustainable, there was no good alternative. Simply mandating that people stop adding to a monolith would have had equally bad consequences. Instead, Google needed to eliminate the toil of productionizing and running a new server. That would allow the decision of which <em>services</em> should make up a <em>server</em> to be based on purely production reasons, rather than developer convenience, shown in figure 5.</p>
+<p><img alt="Best Practice: Application Frameworks" src="https://dl.acm.org/cms/attachment/779dd963-9eee-4ea8-9133-94a7d24700e9/nokleberg5.png" /></p>
+<p>Working backward from the goal that developers should just focus on the business logic of their application-specific service, and that <em>everything else</em> should be automated as much as possible, some requirements eventually became clear:</p>
+<p>• Developers should be declaring and implementing service APIs, not writing <code>main</code> methods; orchestrating how a binary is actually run is the role of the microservice platform.</p>
+<p>• All of the metadata needed for automation, including production configuration, should live in a declarative format alongside the code for the service.</p>
+<p>• Resources and dependencies between services should be explicit and declarative. Ideally, you should be able to visualize the entire production topology just from looking at the metadata for the universe of services.</p>
+<p>• Services should be isolated from each other, so that arbitrary services can be co-assembled into a server. Among other requirements, this means avoiding global state and side effects.</p>
+<p>When these requirements are satisfied, virtually all formerly manual processes can be automated. For example, testing infrastructure can use the metadata to wire up a portion of the service-dependency graph when running integration tests.</p>
+<p>A microservice platform using these principles was developed at Google, initially for the purpose of breaking up a particular large monolithic server that had seen rapid growth as a result of intense feature development. Once the platform proved beneficial, it was organically adopted by other teams within Google and was eventually spun out into a separate officially supported project.</p>
+<p>Today the platform is the de facto standard for new server development, in part because it appeals to both small teams and large organizations. Because of the high level of automation, small teams can now easily turn up a Google-quality production service in a matter of days, whereas before a turn-up following best practices might have taken months. For large organizations, the consistency across teams reduces support costs, and the shared platform means that staffing org-specific infrastructure teams is often unnecessary.</p>
+<p>Another benefit of moving to microservices has been encouraging developers to think more about the proper division of work among services, which has led to more rational system architectures. Using technologies such as gRPC and protocol buffers as the boundary between separate systems forces you to consider the APIs in a way that doesn't necessarily happen when you're only using function calls in the same process. RPC systems are also language agnostic, so each microservice owner can independently decide which language to use.</p>
+<p>One remaining challenge, and a ripe area for future work, is providing higher-level tools to manage an ever-growing number of microservices. For example, monitoring consoles that were written in the previous era may have assumed a relatively small number of unique binaries, and this will require a new user interface to accommodate the much greater number of binaries that arises when people fully adopt microservices.</p>
+<h4 id="relationship-with-frameworks">Relationship with frameworks</h4>
+<p>Frameworks are a critical component of making Google's microservices platform work for a few reasons:</p>
+<p>• The inversion of control inherent in the framework's life cycle naturally lends itself to a model where application developers just hand off their service implementation to the platform.</p>
+<p>• Common control services (across both servers and languages) are required for many platform features, including release management, monitoring, and logging.</p>
+<p>• Modularity means that both the platform and application code can provide independent modules, which when combined together, work in a sane way to form a complete server.</p>
+<p>Figure 6 shows the full development stack for Google's microservices platform.</p>
+<p><img alt="Best Practice: Application Frameworks" src="https://dl.acm.org/cms/attachment/7d582177-a8a0-4033-86ba-8233fada641f/nokleberg6.png" /></p>
+<p>As discussed before, frameworks can offer a greater level of encapsulation than libraries, which simplifies writing applications and provides isolation from underlying library churn. In a similar way, the microservices platform goes beyond just code to encapsulate other artifacts such as production configuration. This allows for a corresponding higher level of simplification and isolation from churn. For example, the platform maintainers can (if necessary) automatically apply an emergency code fix or configuration change that rebuilds all affected binaries and pushes them to production in a uniform way—previously impossible.</p>
+<p>Using a microservices platform, however, does present some challenges. One of the biggest of these is that enforcing all of the invariants required to make the microservices platform function properly can be onerous and may even affect how applications are coded. To provide one example, Google's Java servers share certain thread pools. Combined with the requirement that all services must be isolated from each other, this implies that a blocking thread-per-request model cannot be allowed—it would be too easy for a blocking service to use up all the threads and starve another service. For that reason, servers are mandated to be async only, a solution that not all teams are happy with.</p>
+<p>Another challenge is that adding more hops between microservices may add latency to the overall request. In some cases, this latency can be mitigated by architectural improvements that happen as part of a microservices rewrite. For its microservices platform, Google has also ensured that requests between services that happen to be co-located in the same server use an optimized in-process transport.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>While frameworks can be a powerful tool, they have some disadvantages and may not make sense for all organizations. Framework maintainers need to provide standardization and well-defined behavior while not being overly prescriptive. When frameworks strike the right balance, however, they can offer large developer productivity gains. The consistency provided by widespread use of frameworks is a boon for other teams such as SRE and security that have a vested interest in the quality of applications. Additionally, the structure of frameworks provides a foundation for building higher-level abstractions such as microservices platforms, which unlock new opportunities for system architecture and automation. At Google, such frameworks and platforms have seen broad organic adoption and have had a significant positive impact.</p>
+<p><strong>Brad Hawkes</strong> is a senior software engineer working on core infrastructure at Google. He works on the server framework on the Java Virtual Machine, which is used in thousands of servers across Google. He is on LinkedIn at <a href="https://www.linkedin.com/in/bhawkes">www.linkedin.com/in/bhawkes</a>.</p>
+<p><strong>Chris Nokleberg</strong> is a principal software engineer and tech lead of server frameworks at Google. He started developing and evangelizing frameworks as a tech lead on Google Docs almost 10 years ago. His current focus is helping large teams adopt Google's microservices platform and standardizing developer best practices across the company.</p>
+<p>Copyright © 2020 held by owner/author. Publication rights licensed to ACM.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2021 iswade
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6c4496e8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.97185c3a.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
