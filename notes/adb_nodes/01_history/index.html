@@ -437,14 +437,14 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          分布式系统
+          分布式
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="分布式系统" data-md-level="1">
+      <nav class="md-nav" aria-label="分布式" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          分布式系统
+          分布式
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -710,6 +710,63 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    历史在重复自己
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1960s" class="md-nav__link">
+    1960s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1970s" class="md-nav__link">
+    1970s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1980s" class="md-nav__link">
+    1980s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1990s" class="md-nav__link">
+    1990s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2000s" class="md-nav__link">
+    2000s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    思考
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -724,88 +781,147 @@
 
 
 <h1 id="_1">数据库历史</h1>
+<h2 id="_2">历史在重复自己</h2>
 <ul>
-<li>正确、高性能代码；文档、测试；代码检视；大型代码库</li>
-<li>并发控制，索引，存储模型，压缩，并行JOIN，网络协议，日志与恢复，查询优化，执行，编译</li>
-<li>历史总是在不断地重复</li>
-<li>古老的数据库问题仍然跟今天相关</li>
-<li>SQL vs. NoSQL</li>
-<li>Relational vs. CODASYL</li>
-<li>关系模型总是会赢</li>
-<li>今天的数据库系统中很多思想并不是新的</li>
-<li>1960s<ul>
-<li>IDS：GE -&gt; Honeywell，网络模型，一次一行记录</li>
+<li>
+<p>正确、高性能代码；文档、测试；代码检视；大型代码库</p>
+</li>
+<li>
+<p>并发控制，索引，存储模型，压缩，并行JOIN，网络协议，日志与恢复，查询优化，执行，编译</p>
+</li>
+<li>
+<p>历史总是在不断地重复</p>
+</li>
+<li>
+<p>古老的数据库问题仍然跟今天相关</p>
+</li>
+<li>
+<p>SQL vs. NoSQL</p>
+</li>
+<li>
+<p>Relational vs. CODASYL</p>
+</li>
+<li>
+<p>关系模型总是会赢</p>
+</li>
+<li>
+<p>今天的数据库系统中很多思想并不是新的</p>
+</li>
+</ul>
+<h2 id="1960s">1960s</h2>
+<ul>
+<li>IDS：GE开发，被Honeywell收购；网络模型，一次一行记录</li>
 <li>CODASYL：提出了程序访问数据库的标准，Charles Bachman，网络模型，一次一行记录</li>
 <li><strong>网络模型</strong>：负载的查询，很容易损坏</li>
 <li>IBM IMS: 阿波罗登月计划中用于跟踪购买清单的早期数据库系统，层次模型，程序员定义的物理存储格式，一次一行记录</li>
 <li><strong>层次模型</strong>：重复数据，没有独立性</li>
 </ul>
-</li>
-<li>1970s<ul>
+<h2 id="1970s">1970s</h2>
+<ul>
 <li>Ted Codd: 观察到开发人员每次数据库模式、或者layout变更时都在重写IMS和Codasyl程序</li>
 <li>数据库抽象避免这样的维护：简单数据结构保存数据，通过高级语言访问数据，物理存储留给实现</li>
 <li><strong>关系模型</strong>：A Ralational Model of Data for Large Shared Data Banks</li>
 <li>System R; INGRES; Oracle</li>
 <li>Jim Gray; Stonebraker; Ellison</li>
 </ul>
-</li>
-<li>1980s<ul>
+<h2 id="1980s">1980s</h2>
+<ul>
 <li>关系模型赢了</li>
 <li>DB2/Oracle/Informix/Sybase/Teradata/Ingres/InterBase</li>
 <li><strong>对象模型</strong>：避免关系与对象的抗阻不匹配，将对象与数据库紧耦合，这些原始数据库基本都不存在了，但是许多技术以其他形式存在(JSON, XML)；查询复杂，没有标准API</li>
 </ul>
-</li>
-<li>1990s<ul>
+<h2 id="1990s">1990s</h2>
+<ul>
 <li>无聊的日子；在数据库系统和应用负载方面没有什么进步</li>
 <li>微软从Sybase分叉后创建了SQL server</li>
 <li>Postgres支持SQL语言</li>
 <li>SQLite启动</li>
 </ul>
-</li>
-<li>2000s<ul>
-<li><strong>互联网繁荣</strong></li>
+<h2 id="2000s">2000s</h2>
+<ul>
+<li>
+<p><strong>互联网繁荣</strong></p>
+<ul>
 <li>所有大的玩家都是重量级</li>
 <li>开源数据库丢失很多重要的特性</li>
 <li>很多公司定制自己的中间件来横向扩展单机数据库</li>
-<li><strong>数据仓库</strong></li>
-<li>分布式/无共享存储价格，关系型SQL，闭源</li>
-<li>Netezza，Paraccel，monetdb，Greenplum，Datallegro, Vertica</li>
-<li><strong>NoSQL系统</strong></li>
-<li>高可用和高扩展性</li>
-<li>无模式，无关系数据模型，文档，键值，无ACID，定制化的API，开源</li>
-<li>HBASE，DynamoDB，MongoDB，NOSQL，CouchDB，Redis，Cassandra，RethinkDB，Couchbase，Neo4j，Riak</li>
 </ul>
 </li>
-<li>2021s<ul>
-<li><strong>NewSQL</strong></li>
+<li>
+<p><strong>数据仓库</strong></p>
+<ul>
+<li>分布式/无共享存储价格，关系型SQL，闭源</li>
+<li>Netezza，Paraccel，monetdb，Greenplum，Datallegro, Vertica</li>
+</ul>
+</li>
+<li>
+<p><strong>NoSQL系统</strong></p>
+<ul>
+<li>高可用和高扩展性</li>
+<li>无模式，无关系数据模型，文档，键值，无ACID，定制化的API，开源</li>
+<li>
+<p>HBASE，DynamoDB，MongoDB，NOSQL，CouchDB，Redis，Cassandra，RethinkDB，Couchbase，Neo4j，Riak</p>
+</li>
+<li>
+<p>2021s</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>NewSQL</strong></p>
+<ul>
 <li>高性能OLTP负载，与NoSQL数据库系统一样，但是支持ACID</li>
 <li>关系型SQL，分布式，通常是闭源的</li>
 <li>Dbshards, H-Store, Clustrix, CockroachDB, ScaleArc HANA，VoltDB，NuoDB，TiDB，Spanner，MemSQL，HyPer，YugaByte</li>
-<li><strong>HTAP</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>HTAP</strong></p>
+<ul>
 <li>与NewSQL系统一样执行快速OLTP，同时跟数据仓库系统一样执行OLAP查询</li>
 <li>分布式，无共享，关系型SQL，开源或者闭源</li>
-<li><strong>云系统</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>云系统</strong></p>
+<ul>
 <li>第一个DDaaS是已有DBMS的容器化</li>
 <li>有一些从头设计的新DBMS在云环境中运行</li>
 <li>Snowflake，Redshift，Spanner，Aurora，Fauna，SlicingDice，DynamoDB，Microsoft</li>
-<li><strong>共享磁盘引擎</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>共享磁盘引擎</strong></p>
+<ul>
 <li>不再重新编写定制的存储管理器，直接利用共享存储</li>
 <li>可扩展的执行层，独立于存储</li>
 <li>支持日志结构化方法</li>
 <li>Apache Drill, SpliceMachine, Snowflake, cloudra impala, Spark, HIVE, Presto</li>
 <li>这是大多数人在谈论数据湖时想到的</li>
-<li><strong>图系统</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>图系统</strong></p>
+<ul>
 <li>存储查询图数据，支持以图为中心的查询API</li>
 <li>最近的研究表明使用图为中心的执行引擎和存储管理，带来的收益还不确定</li>
 <li>Neo4j, MemGraph, Dgraph, TigerGraph, JanusGraph, IndraDB，Giraph，graphbase.ai，TerminusDB</li>
-<li><strong>时序数据库</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>时序数据库</strong></p>
+<ul>
 <li>特定用于存储时序和事件数据的系统</li>
 <li>这些系统的设计有很强的假设：数据分布式和查询负载模式</li>
 <li>M3，Timescale，influxdb，Vectoria Metrics，ClickHouse</li>
 <li>专用系统：嵌入式，多模，区块链、硬件加速</li>
 </ul>
 </li>
-<li>思考：随着时间的推移，随着专用系统扩大其领域范围，DBMS类别的分界线将继续模糊。我相信关系模型和声明式查询语言促进了更好的数据工程</li>
+</ul>
+<h2 id="_3">思考</h2>
+<ul>
+<li>随着时间的推移，随着专用系统扩大其领域范围，DBMS类别的分界线将继续模糊。</li>
+<li>我相信关系模型和声明式查询语言促进了更好的数据工程</li>
 </ul>
 
 

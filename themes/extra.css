@@ -6,14 +6,14 @@ h1,
 }
 
 .md-typeset h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
     line-height: 1em;
     margin: 0 0 0em;
+    font-weight: 500;
 }
 
-.md-typeset h1, .md-typeset h2 {
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
-    font-weight: 500;
+.md-typeset h2 {
+    font-weight: 400;
 }
 
 .md-header {

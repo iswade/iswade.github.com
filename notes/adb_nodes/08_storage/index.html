@@ -437,14 +437,14 @@
       
       
         <label class="md-nav__link" for="__nav_3">
-          分布式系统
+          分布式
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="分布式系统" data-md-level="1">
+      <nav class="md-nav" aria-label="分布式" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          分布式系统
+          分布式
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -746,22 +746,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-nnsm" class="md-nav__link">
-    1. 行存： n元存储模型(NSM)
+  <a href="#nnsm" class="md-nav__link">
+    行存： n元存储模型(NSM)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2. 列式存储
+  <a href="#dsm" class="md-nav__link">
+    列存：分解存储模型(DSM)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 混合存储
+  <a href="#_6" class="md-nav__link">
+    混合存储
   </a>
   
 </li>
@@ -772,8 +772,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     系统目录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    思考
   </a>
   
 </li>
@@ -795,56 +802,105 @@
 
 <h1 id="_1">存储模型和数据布局</h1>
 <h2 id="_2">数据组织</h2>
-<p>我们可以认为内存数据库是一个很大的字节数组。</p>
+<p>我们可以认为内存数据库是一个很大的<strong>字节数组</strong>。</p>
 <ul>
-<li>数据库通过模式将字节转换为合适的类型。</li>
-<li>每个元组有一个头部包含了元数据。</li>
+<li>数据库通过<strong>模式</strong>将字节转换为合适的类型。</li>
+<li>每个元组有一个<strong>头部</strong>包含了元数据。</li>
 </ul>
 <p>将元组存储为固定长度的数据可以很容易计算一个元组的起始位置点。</p>
 <h2 id="_3">主要内容</h2>
-<p>类型表示；数据布局/对齐；存储模型；系统目录</p>
-<h2 id="_4">数据表示</h2>
-<p>INTEGER/BIGINT/SMALLINT/TINYINT  C/C++表示</p>
-<p>FLOAT/REAL vs. NUMBERIC/DECIMAL IEEE-754标准/定点小数</p>
-<p>TIME/DATE/TIMESTAMP 32/64比特从UNIX epoch的秒、毫秒、微秒</p>
-<p>VARCHAR/VARBININARY/TEXT/CLOB</p>
 <ul>
-<li>如果类型大于等于64比特指向其它位置</li>
-<li>头部有长度和指向下一个位置的地址，接着是数据</li>
+<li>类型表示</li>
+<li>数据布局/对齐</li>
+<li>存储模型</li>
+<li>系统目录</li>
 </ul>
-<p>固定精度数字。</p>
-<p>可变长度字段。</p>
-<p>NULL 数据类型表示。</p>
-<p>字节对齐对性能有很大影响。</p>
+<h2 id="_4">数据表示</h2>
+<ul>
+<li>
+<p><code>INTEGER/BIGINT/SMALLINT/TINYINT</code>  C/C++表示</p>
+</li>
+<li>
+<p><code>FLOAT/REAL vs. NUMBERIC/DECIMAL</code> IEEE-754标准/定点小数</p>
+</li>
+<li>
+<p><code>TIME/DATE/TIMESTAMP</code> 32/64比特从UNIX epoch开始的秒、毫秒、微秒</p>
+</li>
+<li>
+<p><code>VARCHAR/VARBININARY/TEXT/CLOB</code></p>
+<ul>
+<li>
+<p>如果类型大于等于64比特指向其它位置</p>
+</li>
+<li>
+<p>头部有长度和指向下一个位置的地址，接着是数据</p>
+</li>
+</ul>
+</li>
+<li>
+<p>可变精度的数字类型，通常比任意精度的数字更快</p>
+</li>
+<li>
+<p>固定精度数字：NUMERIC/DECIMAL 需要额外的元数据保存</p>
+</li>
+<li>
+<p>可变长度字段，VARCHAR(128)</p>
+</li>
+<li>
+<p>字节对齐对性能有很大影响。（插入负载场景）</p>
 <ol>
-<li>不对齐：0.523MB/s</li>
-<li>对齐加 padding：11.7MB/s</li>
-<li>对齐重新排序：814.8MB/s</li>
+<li>不对齐：0.523 MB/s</li>
+<li>对齐加 padding：11.7 MB/s</li>
+<li>对齐重新排序：814.8 MB/s</li>
 </ol>
+</li>
+</ul>
 <h2 id="_5">存储模型</h2>
-<h3 id="1-nnsm">1. 行存： n元存储模型(NSM)</h3>
+<h3 id="nnsm">行存： n元存储模型(NSM)</h3>
 <ol>
-<li>DBMS 将一个元组的所有属性连续存放。</li>
+<li>DBMS 将一个元组的所有属性<strong>连续存放</strong>。</li>
 <li>适合 OLTP 负载</li>
 <li>使用每次一个元组的迭代模型</li>
+<li>优势：更快的插入更新删除，对于需要整个元组的查询友好，可以使用面向索引的存储</li>
+<li>劣势：对于仅扫描部分属性的查询不友好</li>
 </ol>
-<p>物理存储：</p>
+<p>物理存储：堆表，索引表</p>
+<h3 id="dsm">列存：分解存储模型(DSM)</h3>
 <ol>
-<li>堆表</li>
-<li>索引表</li>
-</ol>
-<h3 id="2">2. 列式存储</h3>
-<ol>
-<li>元组的一个属性连续存放</li>
+<li>所有元组的一个属性连续存放</li>
 <li>适合 OLAP 负载</li>
 <li>使用每次一个向量的迭代模型</li>
+<li>优势：减少读取的大小，更好的压缩</li>
+<li>劣势：对于点查，插入，插入，更新和删除都比较慢，原因是需要元组的分裂和拼接</li>
 </ol>
-<h3 id="3">3. 混合存储</h3>
-<p>单个逻辑数据库实例，对热数据和冷数据使用不同存储模型。</p>
-<p>对于快速 OLTP 存储在行存中。对于更有效的 OLAP 将数据迁移到列存中。</p>
-<p>选择1：分离的执行引擎</p>
-<p>选择2：单个灵活的架构</p>
-<h2 id="_6">系统目录</h2>
+<h3 id="_6">混合存储</h3>
+<ol>
+<li>当数据插入到数据库中时是热的(不久后被更新的概率大)</li>
+<li>元组时间越长，更新越不频繁。</li>
+<li>单个逻辑数据库实例，对热冷数据使用不同存储模型。</li>
+<li>对于快速 OLTP 存储在NSM中。对于更有效的 OLAP 将数据迁移到DSM中。</li>
+</ol>
+<ul>
+<li>选择1：分离的执行引擎：镜像Oracle/IBM，Delta存储HANA</li>
+<li>选择2：单个灵活的架构：自适应存储</li>
+</ul>
+<h2 id="_7">系统目录</h2>
+<ol>
+<li>几乎所有数据库都是将数据库目录与通用数据以相同的方式存储</li>
+<li>DBMS需要感知事务，自动支持DDL和并发的事务</li>
+<li>增列：NSM将元组拷贝到新区域，DSM增加新的列段</li>
+<li>删列：NSM拷贝元组到新的区域，将列标记为废弃的，DSM删除列段即可</li>
+<li>创建索引：扫描所整个表，填充索引，必须记录变更，扫描完成后锁表解决变更的记录</li>
+<li>删除索引：逻辑删除索引，所有已经执行的事务还要能更新它</li>
+<li>序列：与隔离保护的逻辑不同，回滚操作不会将序列回滚，所有插入操作时写写冲突</li>
+</ol>
+<h2 id="_8">思考</h2>
+<p>我们已经放弃了混合存储模型</p>
+<ol>
+<li>巨大的工程量</li>
+<li>Delta版本存储 + 列存基本是等价的</li>
+</ol>
+<p>系统目录非常难</p>
 
 
 

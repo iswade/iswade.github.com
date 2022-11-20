@@ -261,12 +261,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://iswade.github.io/notes/adb_nodes/02_in_memory_database/</loc>
+         <loc>https://iswade.github.io/notes/adb_nodes/02_in_memory/</loc>
+         <lastmod>2022-11-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://iswade.github.io/notes/adb_nodes/06_btree/</loc>
          <lastmod>2022-11-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/08_storage/</loc>
+         <lastmod>2022-11-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://iswade.github.io/notes/adb_nodes/10_recovery/</loc>
          <lastmod>2022-11-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
