@@ -1,33 +1,29 @@
-body {
-    /*font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; */
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif; */
-}
-
 h1,
 .h1 {
-    font-size: 24px;
     padding: 5px 0px 5px 0px;
-    margin: 20px 0px 15px 0px;
     text-align: left;
     /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
 }
 
-.md-typeset h1, .md-typeset h2 {
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
-    font-weight: 400;
+.md-typeset h1 {
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 0 0 0em;
 }
 
-.md-content img {
-    background: white;
+.md-typeset h1, .md-typeset h2 {
+    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
+    font-weight: 500;
 }
 
 .md-header {
     position: static;
-    font-size: 40%;
-    /*background-color: #2f303e;*/
-    /*height: 0;*/
-    /*display: none;*/
     background-color: var(--md-primary-fg-color-invalid);
+    height: 3em;
+}
+
+.md-content img {
+    background: white;
 }
 
 .md-footer {
@@ -35,41 +31,52 @@ h1,
     display: none;
 }
 
-.md-header[data-md-state=shadow] {
-    box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0);
+.md-header--shadow {
+    box-shadow: 0px 0px 0px 0px #0000001a, 0 0.2rem 0.4rem #0000;
 }
 
-.md-sidebar__scrollwrap {
-    max-height: 95%;
+.md-search {
+    display: none;
+}
+
+.md-header__button[for=__search] {
+    display: none;
+}
+
+.md-nav__title[for=__drawer] {
+    display: none;
+}
+
+.md-typeset iframe, .md-typeset img, .md-typeset svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .md-typeset blockquote {
     border-left-width: 0.2rem;
 }
 
-.md-search__inner, .md-icon--search {
-    display: none;
-}
-
 .md-main__inner {
     padding-top: 0rem;
-    margin-top: 0.2rem;
+    margin-top: 0rem;
 }
 
+.md-sidebar {
+    color: black;
+}
 .md-sidebar--secondary {
     width: 18rem;
     padding: 1.2rem 0 0 2rem;
+}
+
+.md-header__title {
+    /* display: none; */
+    color: black;
 }
 
 @media print {
   a[href]:after {
     content: none !important;
   }
-}
-
-
-.md-typeset iframe, .md-typeset img, .md-typeset svg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
