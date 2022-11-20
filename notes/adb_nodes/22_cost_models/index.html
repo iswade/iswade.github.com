@@ -1,0 +1,995 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/22_cost_models/">
+      
+      <link rel="icon" href="../../../themes/me.svg">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>基于代价的优化 - iswade's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../themes/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="iswade&#39;s blog" class="md-header__button md-logo" aria-label="iswade's blog" data-md-component="logo">
+      
+  <img src="../../../themes/me.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            iswade's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基于代价的优化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="iswade&#39;s blog" class="md-nav__button md-logo" aria-label="iswade's blog" data-md-component="logo">
+      
+  <img src="../../../themes/me.svg" alt="logo">
+
+    </a>
+    iswade's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_index/" class="md-nav__link">
+        高级数据库笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../articles/buffer/buffer_details/" class="md-nav__link">
+        PostgreSQL缓存
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/crdb/crdb_paper_cn/" class="md-nav__link">
+        CockroachDB翻译
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/crdb/crdb_paper/" class="md-nav__link">
+        CockroachDB论文
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/taurus_paper_cn/" class="md-nav__link">
+        TaurusDB翻译
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/taurus_paper/" class="md-nav__link">
+        TaurusDB论文
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../articles/pebble/" class="md-nav__link">
+        Pebble KV存储引擎
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/faunadb_transaction/" class="md-nav__link">
+        FaunaDB分布式事务协议
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
+        Aurora云原生关系数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/btree_vs_lsmtree/" class="md-nav__link">
+        现代存储系统背后的算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../db_nodes/00_database_systems_2018/" class="md-nav__link">
+        数据库笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/F1_query/" class="md-nav__link">
+        F1 Query
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          分布式系统
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="分布式系统" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          分布式系统
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/distsys/" class="md-nav__link">
+        分布式系统大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../articles/partition/" class="md-nav__link">
+        数据分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/strong_consistency_models/" class="md-nav__link">
+        强一致性模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/zookeeper/" class="md-nav__link">
+        Zookeeper论文翻译
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/paxos_made_live/" class="md-nav__link">
+        Paxos Made Live翻译
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          编程语言
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="编程语言" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          编程语言
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../articles/go_concurrency/" class="md-nav__link">
+        Go并发编程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/go_interface/" class="md-nav__link">
+        如何使用Go接口
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          软件工程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="软件工程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          软件工程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pragmatic_programmer/" class="md-nav__link">
+        程序员修炼之道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash_turorial/" class="md-nav__link">
+        bash教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/linux_sysadmin/" class="md-nav__link">
+        linux系统管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        git入门教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../translate/to_be_manager/" class="md-nav__link">
+        How to be a manager
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代价模型组成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbms" class="md-nav__link">
+    基于磁盘的 DBMS 代价模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postgres" class="md-nav__link">
+    Postgres 代价模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-db2" class="md-nav__link">
+    IBM DB2代价模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbms_1" class="md-nav__link">
+    内存 DBMS 代价模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    小型代价模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    观察结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    选择度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-db2-" class="md-nav__link">
+    IBM DB2 - 学习优化器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    近似
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    采样
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    结果基数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    学习到的内容
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    部分思考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">基于代价的优化</h1>
+<p>生成对于当前数据库状态的执行一个特定查询计划的代价评估。</p>
+<ul>
+<li>评估仅对数据库内部有意义。</li>
+</ul>
+<p>对于查找策略，是独立的。</p>
+<h2 id="_2">代价模型组成</h2>
+<ol>
+<li>物理代价
+   - 预估CPU周期，I/O，缓存不命中，RAM消耗，预取等等。
+   - 依赖硬件。</li>
+<li>逻辑代价
+   - 估计每个算子的结果集大小。
+   - 独立的算子算法。
+   - 对算子结果集大小需要做估计。</li>
+<li>算法代价
+   - 算子算法实现的复杂度。</li>
+</ol>
+<h2 id="dbms">基于磁盘的 DBMS 代价模型</h2>
+<p>磁盘访问的次数总是占查询执行时间的主要部分。</p>
+<ul>
+<li>CPU 代价几乎可以忽略。</li>
+<li>需要考虑顺序和随机 I/O。</li>
+</ul>
+<p>如果 DBMS 对缓存管理完全控制，就很容易建模。</p>
+<ul>
+<li>我们知道替换策略，固定方式，对磁盘的独占访问。</li>
+</ul>
+<h2 id="postgres">Postgres 代价模型</h2>
+<p>使用 CPU 和 I/O 代价的组合，通过常量因子来加权。</p>
+<p>默认设置对于没有大量内存的磁盘驻留数据库比较友好。</p>
+<ul>
+<li>处理在内存中个一个元组比从磁盘上读取快 400 倍。</li>
+<li>顺序读 I/O 比随机读快4倍。</li>
+</ul>
+<h2 id="ibm-db2">IBM DB2代价模型</h2>
+<p>在系统表中的数据库特征。</p>
+<p>硬件环境。</p>
+<p>存储设备特点。</p>
+<p>通信带宽（仅分布式）</p>
+<p>内存资源（缓存池，排序堆）</p>
+<p>并发环境：平均用户数量，隔离级别/阻塞，可用锁数量</p>
+<h2 id="dbms_1">内存 DBMS 代价模型</h2>
+<p>没有 IO 代价，但是我们需要计算 CPU 和内存访问代价。</p>
+<p>内存代价很难计算因为 DBMS 没有控制缓存管理。</p>
+<ul>
+<li>未知的替换策略，没有固定、共享缓存，非统一的内存访问。</li>
+</ul>
+<p>每个算子处理的元组数量对 CPU 代价而言是一个合理的估计。</p>
+<h2 id="_3">小型代价模型</h2>
+<p>两阶段模型自动生成从逻辑模型生成硬件模型。</p>
+<p>阶段1：指定执行原语。</p>
+<ul>
+<li>当执行一个查询时 DBMS 的操作列表。</li>
+<li>例如，估计谓词，索引探测，排序。</li>
+</ul>
+<p>阶段2：微测评</p>
+<ul>
+<li>在启动时，配置操作来计算 CPU 内存代价。</li>
+<li>这些测量用在公式中计算基于表大小的算子代价。</li>
+</ul>
+<h2 id="_4">观察结论</h2>
+<p>每个算子处理的元组数量依赖下面三个因素：</p>
+<ol>
+<li>每个表可用的访问方法。</li>
+<li>在数据库中属性中值得分布。</li>
+<li>查询中使用的谓词。</li>
+</ol>
+<p>简单查询很容易计算，复杂的查询不容易评估。</p>
+<h2 id="_5">选择度</h2>
+<p>一个算子的选择度是每个谓词访问数据的百分比。</p>
+<ul>
+<li>建模为是否满足任何给定元组的谓词的概率。</li>
+</ul>
+<p>DBMS 计算选择度使用：</p>
+<ul>
+<li>域约束</li>
+<li>预先计算的统计数据（区域地图）</li>
+<li>直方图/近似值</li>
+<li>采样</li>
+</ul>
+<h2 id="ibm-db2-">IBM DB2 - 学习优化器</h2>
+<p>DBMS 在正常处理查询过程中扫描一个表时更新表的统计信息。</p>
+<p>检查优化器的评估是否与实际数据中遇到的值相匹配，并逐步更新它们。</p>
+<h2 id="_6">近似</h2>
+<p>维护准确的统计信息代价很高速度很慢。</p>
+<p>使用近似的数据结构 草图 生成限制误差的估计。</p>
+<ul>
+<li>count distinct</li>
+<li>分位数</li>
+<li>频繁访问条目</li>
+<li>元组草图</li>
+</ul>
+<p><a href="https://datasketches.github.io/">Yahoo! Sketching Library</a></p>
+<h2 id="_7">采样</h2>
+<p>对目标数据集的随机样本上执行一个谓词。</p>
+<p>元组的个数依赖表的大小。</p>
+<p>方法1：维护只读副本</p>
+<ul>
+<li>周期性刷新来维护准确性。</li>
+</ul>
+<p>方法2：采样实际表</p>
+<ul>
+<li>使用读未提交隔离级别。</li>
+<li>可能会读取相同逻辑元组的多个版本。</li>
+</ul>
+<h2 id="_8">结果基数</h2>
+<p>每个算子将生成的元组数量是根据其<strong>选择性</strong>乘以其输入中的<strong>元组数</strong>来计算的。</p>
+<p>假设＃1：统一数据
+→值的分布是相同的。</p>
+<p>假设＃2：独立谓词
+→属性的谓词是独立的</p>
+<p>假设＃3：包含原则
+→连接键的域重叠，使得内部关系中的每个键也将存在于外部表中。</p>
+<h2 id="_9">学习到的内容</h2>
+<p>查询优化比快速引擎更加重要。</p>
+<ul>
+<li>基于代价的连接顺序是必须的。</li>
+</ul>
+<p>基数估计通常是错误的。</p>
+<ul>
+<li>尝试使用不依赖估计的算子。</li>
+</ul>
+<p>Hash 连接 + 顺序扫描是一个可靠的执行模型。</p>
+<ul>
+<li>可用的索引越多，计划就越脆弱（但平均速度也更快）。</li>
+</ul>
+<p>使用精确模型是浪费时间。</p>
+<ul>
+<li>更好地改进基数估算</li>
+</ul>
+<h2 id="_10">部分思考</h2>
+<p>使用处理的元组数是内存DBMS的合理成本模型。</p>
+<ul>
+<li>但如何计算这个并不简单。</li>
+</ul>
+<p>我认为采样+草图的组合是实现准确估算的方法。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2021 iswade
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
