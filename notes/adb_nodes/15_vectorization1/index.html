@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/15_execution/">
+        <link rel="canonical" href="https://iswade.github.io/notes/adb_nodes/15_vectorization1/">
       
       <link rel="icon" href="../../../themes/me.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>15 execution - iswade's blog</title>
+        <title>向量化执行 - iswade's blog</title>
       
     
     
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15 execution
+              向量化执行
             
           </span>
         </div>
@@ -337,7 +337,7 @@
   
     <li class="md-nav__item">
       <a href="../../../articles/pebble/" class="md-nav__link">
-        Pebble KV存储引擎
+        PebbleKV存储引擎
       </a>
     </li>
   
@@ -351,7 +351,7 @@
   
     <li class="md-nav__item">
       <a href="../../../translate/faunadb_transaction/" class="md-nav__link">
-        FaunaDB分布式事务协议
+        FaunaDB分布式事务
       </a>
     </li>
   
@@ -365,7 +365,7 @@
   
     <li class="md-nav__item">
       <a href="../../../translate/Aurora_design_cloud_native_database/" class="md-nav__link">
-        Aurora云原生关系数据库
+        Aurora数据库
       </a>
     </li>
   
@@ -379,7 +379,7 @@
   
     <li class="md-nav__item">
       <a href="../../../translate/btree_vs_lsmtree/" class="md-nav__link">
-        现代存储系统背后的算法
+        BTREEvsLSMTree
       </a>
     </li>
   
@@ -497,7 +497,7 @@
   
     <li class="md-nav__item">
       <a href="../../../translate/zookeeper/" class="md-nav__link">
-        Zookeeper论文翻译
+        Zookeeper翻译
       </a>
     </li>
   
@@ -511,7 +511,7 @@
   
     <li class="md-nav__item">
       <a href="../../../translate/paxos_made_live/" class="md-nav__link">
-        Paxos Made Live翻译
+        PaxosMadeLive翻译
       </a>
     </li>
   
@@ -670,20 +670,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../translate/to_be_manager/" class="md-nav__link">
-        How to be a manager
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -710,206 +696,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    算子执行
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    查询执行
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    执行优化
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    优化目标
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monetdbx100" class="md-nav__link">
-    MonetDB/X100
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
-    CPU 概览
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dbmscpu" class="md-nav__link">
-    DBMS/CPU 问题
-  </a>
-  
-    <nav class="md-nav" aria-label="DBMS/CPU 问题">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    分支预测错误
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#selection" class="md-nav__link">
-    SELECTION扫描
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    过多的指令
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    处理模型
-  </a>
-  
-    <nav class="md-nav" aria-label="处理模型">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    迭代模型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    物化模型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    向量化模型
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    计划执行方向
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    并行
-  </a>
-  
-    <nav class="md-nav" aria-label="并行">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    查询间并行
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    查询内并行
-  </a>
-  
-    <nav class="md-nav" aria-label="查询内并行">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    算子内
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    算子间并行
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    观察
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    工作线程分配
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    任务分配
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    部分思考
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -923,21 +709,60 @@
                   
 
 
-<h1 id="_1">查询执行处理</h1>
-<h2 id="_2">算子执行</h2>
+<h1 id="_1">向量化执行</h1>
+<ol>
+<li>向量化：将一个算法的标量实现(一次处理一个操作数)转换为一次处理多个操作数的过程。</li>
+<li>为什么很有用？例如我们可以将算法在32核上并行，每个核可以处理4路SIMD寄存器。可能得加速：32x * 4x = 128x</li>
+<li>单指令多数据流：一类CPU指令，使得处理器可以同时在多个数据位上执行操作</li>
+<li>所有主要的 ISA（Instruction Set Architecture）都具有支持 SIMD 操作的微架构。</li>
+<li>X86: MMX, SSE, SSE2, SSE3, SSE4, AVX, AVX2, AVX512</li>
+<li>ARM: NEON, SVE</li>
+<li>优势：如果算法可以向量化，可以获得很高的性能和资源利用率</li>
+<li>劣势：实现SIMD算法通常都需要手动处理；对于数据对齐SIMD可能有限制；将数据收集到 SIMD 寄存器中并将其分散到正确的位置既棘手又/或效率低下</li>
+<li>实现方式：a) 自动向量化 b) 编译器hists c) 显式向量化</li>
+<li>自动向量化：编译器自动识别将一个循环内的指令什么时候可以被重写为向量化操作。仅能处理简单循环，在数据库运算符中很少见，需要硬件支持SIMD指令。</li>
+<li>编译器hists：<ol>
+<li>给编译器添加额外的信息，使得编译器更安全地进行向量化。</li>
+<li>关于内存位置给一些显式信息。restrict 关键字</li>
+<li>告诉编译器忽略向量依赖。#pragma ivdep 在for上方。</li>
+<li>通过关键字 restrict 告诉编译器数组是内存中的不同位置：<code>void add(int *restrict X, int *restrict Y, int *restrict Z)</code></li>
+</ol>
+</li>
+<li>显式向量化：<ol>
+<li>使用 CPU 内部函数在 SIMD 寄存器之间手动封送数据并执行矢量化指令。可能不可移植。</li>
+<li>向量化方向，水平将寄存器中多个字相加，将两个寄存器中对应位置的字相加</li>
+<li>线性访问算子：谓词计算，压缩</li>
+<li>Ad-hoc 向量化：排序，合并</li>
+<li>组合操作：多路树，桶化哈希表</li>
+</ol>
+</li>
+<li>通过使用基本矢量函数构建更高级的功能来实现高效矢量化的原则。<ol>
+<li>通过处理每个通道的不同输入数据来支持垂直矢量化。</li>
+<li>通过为每个车道子集执行唯一的数据项（即，没有无用的计算）来最大化车道利用率</li>
+</ol>
+</li>
+<li>思考：<ol>
+<li>向量化对于OLAP查询非常重要。</li>
+<li>如果数据超过了CPU cache，算法无法工作。</li>
+<li>可以结合查询内的并行：多个线程同时处理一个查询，每个线程执行一个编译好的计划，每个编译好的计划可以执行向量化操作。</li>
+</ol>
+</li>
+</ol>
+<h1 id="_2">查询执行处理</h1>
+<h2 id="_3">算子执行</h2>
 <p>查询计划处理</p>
 <p>应用逻辑执行（UDFs）</p>
 <p>并行 JOIN 算法</p>
 <p>向量化算子</p>
 <p>查询编译</p>
-<h2 id="_3">查询执行</h2>
+<h2 id="_4">查询执行</h2>
 <p>一个查询计划由<strong>算子</strong>组成</p>
 <p>一个<strong>算子实例</strong>是对数据的某个片段的一个算子的一次调用</p>
 <p>一个<strong>任务</strong>是一个或者多个算子实例的执行序列</p>
-<h2 id="_4">执行优化</h2>
+<h2 id="_5">执行优化</h2>
 <p>我们现在就开始讨论提升数据集在内存中的 DBMS 查询执行性能的各种方法。</p>
 <p>当我们移除磁盘之后，达成目标有其它的瓶颈。</p>
-<h2 id="_5">优化目标</h2>
+<h2 id="_6">优化目标</h2>
 <ol>
 <li>减少指令个数：使用更少的指令完成相同的工作。</li>
 <li>减少每个指令的周期：在更少的周期内执行更多的 CPU 指令；这意味着减少因为内存加载而导致的缓存未命中和停顿。</li>
@@ -958,7 +783,7 @@
 <li>问题1：依赖，如果一个指令依赖另一个指令，则不能被立即推送到同一个 pipeline 上。</li>
 <li>问题2：分支预测，CPU 超市预测程序的分支，并且将其指令填充到 pipeline 上；如果预测错误，它必须抛弃任前面的预测工作并冲洗管道。</li>
 </ol>
-<h3 id="_6">分支预测错误</h3>
+<h3 id="_7">分支预测错误</h3>
 <p>由于管道较长，CPU会推测性地执行分支。 这可能会隐藏相关指令之间的长时间停顿。</p>
 <p>DBMS 中执行最多的分支是顺序扫描过程中的过滤操作，但这几乎无法正确预测。</p>
 <h3 id="selection">SELECTION扫描</h3>
@@ -984,7 +809,7 @@
 </code></pre></div>
 
 <p><img alt="image-20190406083525496" src="../image/15_execute_branch_branchless.png" /></p>
-<h2 id="_7">过多的指令</h2>
+<h2 id="_8">过多的指令</h2>
 <p>DBMS 需要支持不同数据类型，所以必须在执行对这个值得任何操作之前，检查一个值的类型。</p>
 <ul>
 <li>这通常实现为一个很大的 switch 语句。</li>
@@ -1049,14 +874,14 @@
  <span class="p">......</span>
 </code></pre></div>
 
-<h2 id="_8">处理模型</h2>
+<h2 id="_9">处理模型</h2>
 <p>DBMS 的处理模型定义系统执行一个查询计划如何执行：对不同负载的不同权衡。</p>
 <ol>
 <li>方法1：迭代模型</li>
 <li>方法2：物化模型</li>
 <li>方法3：向量化/批量模型</li>
 </ol>
-<h3 id="_9">迭代模型</h3>
+<h3 id="_10">迭代模型</h3>
 <p>每个查询计划算子实现一个 next 函数。</p>
 <ul>
 <li>在每次调用的时候，算子返回单个原则或者一个 null 标识符。</li>
@@ -1070,7 +895,7 @@
 <li>Join，子查询，order by</li>
 </ul>
 <p>使用这种方法，输出控制很容易。</p>
-<h3 id="_10">物化模型</h3>
+<h3 id="_11">物化模型</h3>
 <p>每个算子处理一次处理所有输入，每个发送所有的输出。</p>
 <ul>
 <li>算子将其结果物化为单个结果。</li>
@@ -1085,7 +910,7 @@
 </ul>
 <p>对于立即返回大量结果的 OLAP 查询不友好。</p>
 <p>MonetDB/VoltDB/HYRISE</p>
-<h3 id="_11">向量化模型</h3>
+<h3 id="_12">向量化模型</h3>
 <p>跟迭代模型很像，每个算子实现一个 next 函数。</p>
 <p>每个算子发送一批元组而不是单个元组。</p>
 <ul>
@@ -1094,7 +919,7 @@
 </ul>
 <p>对于 OLAP 查询很友好，因为会大幅度减少每个算子的调用数量。</p>
 <p>允许算子使用向量化指令(SIMD)来处理一批元组。</p>
-<h2 id="_12">计划执行方向</h2>
+<h2 id="_13">计划执行方向</h2>
 <ol>
 <li>自顶向下</li>
 </ol>
@@ -1106,22 +931,22 @@
 <p>从叶子节点开始将数据 push 到父节点。</p>
 <p>允许在 pipeline 中对缓存、寄存器更紧密的控制</p>
 <p>我们后面会在 Hyper 和 Pelton ROF 中看到。</p>
-<h2 id="_13">并行</h2>
-<h3 id="_14">查询间并行</h3>
+<h2 id="_14">并行</h2>
+<h3 id="_15">查询间并行</h3>
 <p>多个查询同时进行提高整体性能。通过并发控制模式提供隔离的假象。</p>
 <p>实现一个并发控制模式的难度，不会受到 DBMS 处理模型的显著影响。</p>
-<h3 id="_15">查询内并行</h3>
+<h3 id="_16">查询内并行</h3>
 <p>通过并行执行单个查询来提升性能。</p>
 <ol>
 <li>算子内（水平）</li>
 <li>算子间（垂直）</li>
 </ol>
 <p>这些技术并不是互斥的。每个关系算子都有并行化算法。</p>
-<h4 id="_16">算子内</h4>
+<h4 id="_17">算子内</h4>
 <p>算子被分解为独立的示例来执行不同数据子集的相同函数。</p>
 <p>DBMS 插入一个 exchange 算子到查询计划中合并孩子算子的结果。</p>
 <p><img alt="image-20190406162614992" src="../image/15_exchange_operator.png" /></p>
-<h4 id="_17">算子间并行</h4>
+<h4 id="_18">算子间并行</h4>
 <p>算子是重叠的，以便将数据从一个阶段传递到下一个阶段，而不需要物化。</p>
 <p>也叫做 pipelined 并行。</p>
 <p>AFAIK，这种方法不被传统关系数据库广泛使用。</p>
@@ -1130,19 +955,19 @@
 <li>在流式处理系统中更加常见。</li>
 </ul>
 <p><img alt="image-20190406165516226" src="../image/15_inter_operator_parallelism.png" /></p>
-<h3 id="_18">观察</h3>
+<h3 id="_19">观察</h3>
 <p>提供适当数量的工作程序用于查询计划，取决于 CPU 的核心数、数据大小和算子的功能。</p>
-<h3 id="_19">工作线程分配</h3>
+<h3 id="_20">工作线程分配</h3>
 <ol>
 <li>每个核心一个工作线程。每个核心分配一个线程并绑定到那个核心上；设置<a href="http://man7.org/linux/man-pages/man2/sched_setaffinity.2.html">亲和性</a>。</li>
 <li>每个核心多个工作线程。每个核或者每个连接一个工作线程池；单个核心阻塞之后，CPU 核心会被充分使用。</li>
 </ol>
-<h3 id="_20">任务分配</h3>
+<h3 id="_21">任务分配</h3>
 <ol>
 <li>Push：一个中心化的分配器用来分配任务到工作线程，监视其处理；当工作线程通知分配器完成后，会被分配一个新的任务。</li>
 <li>Pull：工作线程从一个队列中获取下一个任务，处理，然后接着处理下一个。</li>
 </ol>
-<h3 id="_21">部分思考</h3>
+<h3 id="_22">部分思考</h3>
 <p>对于现代 CPU 而言，最容易的实现方式通常并不会产生最有效的执行策略。</p>
 <p>我们我们会看到向量化/自底向上执行对于 OLAP 查询更加合适。</p>
 
@@ -1166,7 +991,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2016 - 2021 iswade
+      Copyright &copy; 2016 - 2022 iswade
     </div>
   
   

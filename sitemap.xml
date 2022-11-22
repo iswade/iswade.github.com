@@ -2,612 +2,612 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://iswade.github.io/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/00_long_time_plan/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/01_database_notes/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/02_distributed_system_papers/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/algorithms/algorithms/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/backup_restore/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/boltdb/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/etcd/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/go_concurrency/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/partition/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/pebble/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/performance/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/raft/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/summary_2017/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/summary_2018/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/summary_2019/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/summary_2020/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/summary_2021/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/summary_2022/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/buffer/buffer_details/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/buffer/buffer_readme/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/buffer/buffer_readme_cn/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/performance/performance/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/articles/performance/performance_cpu_io_memory/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/database/db_internals/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/database/db_internals_ch09_failure_detection/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/database/db_internals_ch13_dist_transactions/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/database/db_internals_ch14_consensus/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/database/replication/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/distributed_systems/00_preface/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/distributed_systems/01_introduction/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/distributed_systems/02_interprocess/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/distributed_systems/03_models/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/distributed_systems/04_representing/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/distributed_systems/06_time/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/go/go_exercises100/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/go/go_exercises60/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/go/go_interview/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/go/go_libs/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/go/go_notes/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/go/go_tools/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/misc/about/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/misc/advanced_markdown/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/all/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/bash/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/bash_turorial/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/git/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/pragmatic_programmer/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/python/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/vmware/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/00_index/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/01_history/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/02_in_memory/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/06_btree/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/08_storage/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/10_recovery/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://iswade.github.io/notes/adb_nodes/15_execution/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <loc>https://iswade.github.io/notes/adb_nodes/15_vectorization1/</loc>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/16_vectorization2/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/17_hashjoins/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/19_optimizer1/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/20_optimizer2/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/22_cost_models/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/adb_nodes/25_self_driving/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/00_database_systems_2018/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/01_relational_model/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/02_advanced_SQL/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/03_Database_Storage_I/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/04_Database_Storage_II/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/05_Buffer_Pool/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/06_Hash_Tables/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/07_Tree_Indexes_I/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/08_Tree_Indexes_II/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/09_Index_Concurrency/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/10_Query_Processing/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/11_Sorting_Aggregations/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/12_joins/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/13_Query_Optimization/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/14_parallel_execution/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/15_embedded_logic/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/16_concurrency_control/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/18_timestamp_ordering/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/19_MVCC/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/20_logging/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/21_recovery/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/notes/db_nodes/22_distribute_OLTP/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/profile/wangshide/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/An%20Overview%20of%20Query%20Optimization%20in%20Relational%20Systems/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/Aurora_design_cloud_native_database/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/Calvin%20Fast%20Distributed%20Transactions/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/F1_query/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/The%20State%20of%20the%20Art%20in%20Distributed%20Query%20Processing/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/application_frameworks/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/btree_vs_lsmtree/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/comparison_of_database_isolation/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/distsys/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/faunadb_transaction/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/generalized_consensus/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/go_interface/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/linux_sysadmin/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/paxos_made_live/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/raft/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/strong_consistency_models/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/taurus_paper/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/taurus_paper_cn/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/to_be_manager/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/zookeeper/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/Google_practices/practices/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/Google_practices/review/developer/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/Google_practices/review/review/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/Google_practices/review/reviewer/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_distribution_layer/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_distsql/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_join/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_paper/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_paper_cn/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_pipelining/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_query_planning/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_replication_layer/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_sql_layer/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/crdb/crdb_sql_life/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/misc/CI/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://iswade.github.io/translate/misc/datastore/</loc>
-         <lastmod>2022-11-20</lastmod>
+         <lastmod>2022-11-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
