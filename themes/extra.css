@@ -2,7 +2,6 @@ h1,
 .h1 {
     padding: 5px 0px 5px 0px;
     text-align: left;
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;*/
 }
 
 .md-typeset h1 {
@@ -10,6 +9,7 @@ h1,
     line-height: 1em;
     margin: 0 0 0em;
     font-weight: 500;
+    color: #707070;
 }
 
 .md-typeset h2 {
@@ -63,7 +63,7 @@ h1,
 }
 
 .md-sidebar {
-    color: black;
+    color: #707070;
 }
 .md-sidebar--secondary {
     width: 18rem;
@@ -72,7 +72,7 @@ h1,
 
 .md-header__title {
     /* display: none; */
-    color: black;
+    color: #707070;
 }
 
 @media print {
